@@ -53,3 +53,8 @@ fix = true
 
 [tool.ruff.lint]
 select = ["E", "F", "I"]
+
+[tool.docformatter]
+in-place = true
+pre-summary-newline = true
+recursive = true
