@@ -24,7 +24,6 @@ packages = [{include = "one_public_api", from = "src"}]
 [tool.poetry.group.dev.dependencies]
 alembic = "^1.16.1"
 babel = "^2.17.0"
-black = "^25.1.0"
 docformatter = "^1.7.7"
 httpx = "^0.28.1"
 mypy = "^1.16.0"
