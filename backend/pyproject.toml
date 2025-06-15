@@ -1,0 +1,36 @@
+[project]
+name = "one-public-api"
+version = "0.1.0-alpha"
+description = "This package provides the API layer of the One Public Framework."
+license = {text = "MIT"}
+authors = [
+    {name = "Roba",email = "roba@one-coder.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "fastapi (>=0.115.12,<0.116.0)",
+    "sqlmodel (>=0.0.24,<0.0.25)",
+    "pydantic-settings (>=2.9.1,<3.0.0)",
+    "psycopg2-binary (>=2.9.10,<3.0.0)",
+    "python-multipart (>=0.0.20,<0.0.21)"
+]
+
+[tool.poetry]
+packages = [{include = "one_public_api", from = "src"}]
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+docformatter = "^1.7.7"
+flake8 = "^7.2.0"
+isort = "^6.0.1"
+mypy = "^1.16.0"
+pre-commit = "^4.2.0"
+alembic = "^1.16.1"
+babel = "^2.17.0"
+pytest = "^8.4.0"
+httpx = "^0.28.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
