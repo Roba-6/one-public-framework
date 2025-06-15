@@ -26,13 +26,22 @@ alembic = "^1.16.1"
 babel = "^2.17.0"
 black = "^25.1.0"
 docformatter = "^1.7.7"
-flake8 = "^7.2.0"
 httpx = "^0.28.1"
-isort = "^6.0.1"
 mypy = "^1.16.0"
 pre-commit = "^4.2.0"
 pytest = "^8.4.0"
+ruff = "^0.11.13"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+exclude = [".venv", "__pycache__", "migrations"]
+fix = true
