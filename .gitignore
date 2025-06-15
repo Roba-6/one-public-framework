@@ -1,35 +1,9 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+# One Public Framework
+/logs
+/media
 
-# C extensions
-*.so
-
-# Virtual environments (Poetry or manually created)
-.venv/
-venv/
-
-# Distribution / packaging
-build/
-dist/
-*.egg-info/
-.eggs/
-*.whl
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
+# macOS
+.DS_Store
 
 # PyCharm
 .idea/
@@ -38,18 +12,5 @@ coverage.xml
 # VS Code
 .vscode/
 
-# mypy, pyre, etc.
-.mypy_cache/
-.dmypy.json
-.pyre/
-
-# macOS
-.DS_Store
-
 # Other
-*.log
 *.sqlite3
-
-# One Public Framework
-/logs
-/media
