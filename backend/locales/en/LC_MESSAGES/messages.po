@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha\n"
 "Report-Msgid-Bugs-To: roba@vrstu.net\n"
-"POT-Creation-Date: 2025-06-15 22:27+0900\n"
+"POT-Creation-Date: 2025-06-15 23:32+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@vrstu.net>\n"
 "Language: en\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 #: src/one_public_api/main.py:9
-msgid "One Public Framework API"
+msgid "One Public API"
 msgstr ""
 
 #: src/one_public_api/main.py:14 src/one_public_api/main.py:29
@@ -183,72 +183,72 @@ msgstr "[%s] Processing Started"
 msgid "PROCESSING_COMPLETED"
 msgstr "[%s] Processing Completed (%.3f seconds)"
 
-#: src/one_public_api/routers/configuration_router.py:29
+#: src/one_public_api/routers/configuration_router.py:30
 msgid "List Public Configurations"
 msgstr ""
 
-#: src/one_public_api/routers/configuration_router.py:69
+#: src/one_public_api/routers/configuration_router.py:70
 msgid "List Configurations"
 msgstr ""
 
-#: src/one_public_api/routers/configuration_router.py:84
+#: src/one_public_api/routers/configuration_router.py:85
 msgid "Create Configuration"
 msgstr ""
 
-#: src/one_public_api/routers/configuration_router.py:99
+#: src/one_public_api/routers/configuration_router.py:102
 msgid "Get Configuration"
 msgstr ""
 
-#: src/one_public_api/routers/configuration_router.py:105
+#: src/one_public_api/routers/configuration_router.py:108
 msgid "The ID of the configuration item to be retrieved"
 msgstr ""
 
-#: src/one_public_api/routers/configuration_router.py:116
+#: src/one_public_api/routers/configuration_router.py:119
 msgid "Update Configuration"
 msgstr ""
 
-#: src/one_public_api/routers/configuration_router.py:123
+#: src/one_public_api/routers/configuration_router.py:126
 msgid "The ID of the configuration item to be updated"
 msgstr ""
 
-#: src/one_public_api/routers/configuration_router.py:134
+#: src/one_public_api/routers/configuration_router.py:139
 msgid "Delete Configuration"
 msgstr ""
 
-#: src/one_public_api/routers/configuration_router.py:140
-#: src/one_public_api/routers/user_router.py:111
+#: src/one_public_api/routers/configuration_router.py:145
+#: src/one_public_api/routers/user_router.py:116
 msgid "The ID of the configuration item to be deleted"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:29
+#: src/one_public_api/routers/user_router.py:30
 msgid "List Public Users"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:47
+#: src/one_public_api/routers/user_router.py:48
 msgid "List Users"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:60
+#: src/one_public_api/routers/user_router.py:61
 msgid "Create User"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:74
+#: src/one_public_api/routers/user_router.py:77
 msgid "Get User"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:79
+#: src/one_public_api/routers/user_router.py:82
 msgid "The ID of the user to be retrieved"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:89
+#: src/one_public_api/routers/user_router.py:92
 msgid "Update User"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:95
+#: src/one_public_api/routers/user_router.py:98
 msgid "The ID of the user to be updated"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:105
+#: src/one_public_api/routers/user_router.py:110
 msgid "Delete User"
 msgstr ""
 

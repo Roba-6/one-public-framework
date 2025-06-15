@@ -6,7 +6,7 @@ from one_public_api.core import translate as _
 from one_public_api.routers import configuration_router, user_router
 
 app = FastAPI(
-    title=_("One Public Framework API"),
+    title=_("One Public API"),
     version=constants.VERSION,
     lifespan=lifespan,
     openapi_tags=[
