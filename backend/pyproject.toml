@@ -1,0 +1,60 @@
+[project]
+name = "one-public-api"
+version = "0.1.0-alpha"
+description = "This package provides the API layer of the One Public Framework."
+license = {file = "../LICENSE"}
+authors = [
+    {name = "Roba",email = "roba@one-coder.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "fastapi (>=0.115.12,<0.116.0)",
+    "pydantic[email] (>=2.11.7,<3.0.0)",
+    "pydantic-settings (>=2.9.1,<3.0.0)",
+    "python-multipart (>=0.0.20,<0.0.21)",
+    "psycopg2-binary (>=2.9.10,<3.0.0)",
+    "sqlmodel (>=0.0.24,<0.0.25)",
+    "uvicorn[standard] (>=0.34.3,<0.35.0)",
+]
+
+[tool.poetry]
+packages = [{include = "one_public_api", from = "src"}]
+
+[tool.poetry.group.dev.dependencies]
+alembic = "^1.16.1"
+babel = "^2.17.0"
+docformatter = "^1.7.7"
+httpx = "^0.28.1"
+mypy = "^1.16.0"
+pre-commit = "^4.2.0"
+pytest = "^8.4.0"
+ruff = "^0.11.13"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+mypy_path = "src"
+python_version = "3.11"
+strict = true
+exclude = [".venv", "migrations/versions", "tests"]
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+exclude = [".venv", "__pycache__", "migrations"]
+fix = true
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.docformatter]
+in-place = true
+pre-summary-newline = true
+recursive = true
