@@ -1,0 +1,19 @@
+@import '../../app.css';
+@import './component.css';
+
+.error-panel {
+  @apply p-2 sm:p-8 w-full align-middle text-center;
+
+  h1 {
+    @apply text-2xl font-bold;
+  }
+
+  .error-detail {
+    @apply mt-4 pe-2.5 pb-2.5 h-[400px] overflow-hidden
+    text-gray-500 text-start;
+  }
+
+  .error-code {
+    @apply p-2;
+  }
+}

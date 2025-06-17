@@ -1,0 +1,17 @@
+@import '../../../app.css';
+
+header.welcome-header {
+  @apply w-full flex flex-col items-center gap-8;
+}
+
+main.welcome {
+  @apply pt-8 pb-4 flex flex-col items-center justify-center;
+
+  .description {
+    @apply max-w-[800px] text-center;
+  }
+
+  .nav {
+    @apply pt-8 flex flex-row items-center gap-4;
+  }
+}
