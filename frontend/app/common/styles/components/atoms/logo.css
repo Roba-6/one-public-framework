@@ -1,0 +1,14 @@
+@import '../../../../app.css';
+
+.logo {
+  @apply flex items-center;
+
+  .logo-img {
+    @apply sm:p-1 w-[12vw] sm:w-[60px] max-w-[100vw];
+  }
+
+  h1 {
+    @apply p-2 text-[6vw] sm:text-3xl font-bold
+      text-black dark:text-white;
+  }
+}

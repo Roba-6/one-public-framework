@@ -1,5 +1,9 @@
-import './app.css'
+import '~/app.css'
+import '~/common/styles/component.css'
+import '~/common/styles/error-boundary.css'
 
+import React, { useEffect } from 'react'
+import { Provider } from 'react-redux'
 import {
   isRouteErrorResponse,
   Links,
@@ -9,44 +13,53 @@ import {
   ScrollRestoration,
 } from 'react-router'
 
+import { loadComplete, selectIsLoading } from '~/common/app-slice'
+import Spinner from '~/common/components/atoms/spinner'
+import { ThemeProvider } from '~/common/components/theme-provider'
+import { ScrollArea, ScrollBar } from '~/common/components/ui/scroll-area'
+import { useAppDispatch, useAppSelector } from '~/hooks/use-store'
+import { store } from '~/store'
+
 import type { Route } from './+types/root'
 
-export const links: Route.LinksFunction = () => [
-  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-  {
-    rel: 'preconnect',
-    href: 'https://fonts.gstatic.com',
-    crossOrigin: 'anonymous',
-  },
-  {
-    rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
-  },
-]
-
-export function Layout({ children }: { children: React.ReactNode }) {
+/**
+ * Global Layout
+ *
+ * @param children child node
+ * @constructor
+ */
+export const Layout = ({
+  children,
+}: {
+  children: React.ReactNode
+}): React.ReactNode => {
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title></title>
         <Meta />
         <Links />
       </head>
       <body>
-        {children}
-        <ScrollRestoration />
+        <Provider store={store}>
+          {children}
+          <ScrollRestoration />
+        </Provider>
         <Scripts />
       </body>
     </html>
   )
 }
 
-export default function App() {
-  return <Outlet />
-}
-
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+/**
+ * Error Boundary
+ *
+ * @param error
+ * @constructor
+ */
+export const ErrorBoundary = ({ error }: Route.ErrorBoundaryProps): React.ReactNode => {
   let message = 'Oops!'
   let details = 'An unexpected error occurred.'
   let stack: string | undefined
@@ -63,14 +76,46 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
+    <main className="single-info-page">
+      <div className="error-panel">
+        <h1>{message}</h1>
+        <p>{details}</p>
+        {stack && (
+          <ScrollArea className="error-detail box">
+            <div className="error-code">
+              <pre>
+                <code>{stack}</code>
+              </pre>
+            </div>
+            <ScrollBar orientation="horizontal" />
+          </ScrollArea>
+        )}
+      </div>
     </main>
   )
 }
+
+/**
+ * Application Component
+ *
+ * @constructor
+ */
+const App = (): React.ReactNode => {
+  const isLoading = useAppSelector(selectIsLoading)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(loadComplete())
+    }, 3000)
+  }, [])
+
+  return (
+    <ThemeProvider defaultTheme="system" storageKey="app-theme">
+      <Outlet />
+      {isLoading && <Spinner />}
+    </ThemeProvider>
+  )
+}
+
+export default App
