@@ -39,11 +39,9 @@ mkdir -p "$LOG_DIR"
 # validate options
 if [ "$IS_PROD" = "" ]; then
   # Development Mode
-  printl "INFO"
   mode=$(print_with_style "Development" "cyan")
 else
   # Production Mode
-  printl "INFO"
   mode=$(print_with_style "Production" "cyan")
 fi
 
@@ -51,6 +49,8 @@ case $1 in
   # Initialization Process
   "${PROCESS[0]}" )
     printp "Initializing Application"
+
+    printl "INFO"
 
     if [ "$IS_BACK" != "" ] && [ "$IS_FRONT" = "" ]; then
       side=$(print_with_style " Backend" "cyan")
