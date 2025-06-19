@@ -5,6 +5,14 @@ on:
     paths:
       - 'backend/**'
       - 'frontend/**'
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
 
 jobs:
   lint-and-format-backend:
