@@ -1,0 +1,24 @@
+name: Code Check on Push
+
+on:
+  push:
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
+  pull_request:
+    branches:
+      - main
+      - develop
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
+
+jobs:
+  code-check:
+    uses: ./.github/workflows/check.yaml
+    with:
+      ref: ''
