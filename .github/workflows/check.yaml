@@ -60,6 +60,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Install dependencies
+        run: bash manage.sh init --front
+
       - name: Run Prettier
         working-directory: frontend
         run: yarn prettier . --check
