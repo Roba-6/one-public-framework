@@ -54,12 +54,10 @@ target-version = ["py311"]
 line-length = 88
 target-version = "py311"
 exclude = [".venv", "__pycache__", "migrations"]
-fix = true
 
 [tool.ruff.lint]
 select = ["E", "F", "I"]
 
 [tool.docformatter]
-in-place = true
 pre-summary-newline = true
 recursive = true
