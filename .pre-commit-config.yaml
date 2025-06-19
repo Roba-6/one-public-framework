@@ -62,7 +62,7 @@ repos:
         entry: |
           bash -c '
           cd backend &&
-          poetry run docformatter .'
+          poetry run docformatter . --in-place'
         language: system
         types:
           - python

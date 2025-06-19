@@ -1,0 +1,86 @@
+name: Code Check
+
+on:
+  push:
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
+
+jobs:
+  lint-and-format-backend:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 2
+      matrix:
+        python-version: [ '3.11' ]
+    if: ${{ github.event.head_commit.message != 'skip ci' }}
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          pip install poetry
+          bash manage.sh init --back
+
+      - name: Run ruff
+        working-directory: backend
+        run: |
+          source $(poetry env info --path)/bin/activate
+          poetry run ruff check .
+
+      - name: Run mypy
+        working-directory: backend
+        run: |
+          source $(poetry env info --path)/bin/activate
+          poetry run mypy .
+
+      - name: Run docformatter
+        working-directory: backend
+        run: |
+          source $(poetry env info --path)/bin/activate
+          poetry run docformatter .
+
+  lint-and-format-frontend:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['20']
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Prepare Yarn
+        run: corepack prepare yarn@4.9.2 --activate
+
+      - name: Install dependencies
+        run: bash manage.sh init --front
+
+      - name: Run Prettier
+        working-directory: frontend
+        run: yarn prettier . --check
+
+      - name: Run ESLint
+        working-directory: frontend
+        run: yarn eslint .

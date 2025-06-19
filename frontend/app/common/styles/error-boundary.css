@@ -1,5 +1,5 @@
-@import '../../app.css';
-@import './component.css';
+@import "../../app.css";
+@import "./component.css";
 
 .error-panel {
   @apply p-2 sm:p-8 w-full align-middle text-center;
