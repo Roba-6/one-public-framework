@@ -23,6 +23,6 @@ export default tseslint.config(
     },
   },
   {
-    ignores: ['**/.react-router/', '**/node_modules/'],
+    ignores: ['**/.react-router/', '**/node_modules/', '**/build/'],
   }
 )

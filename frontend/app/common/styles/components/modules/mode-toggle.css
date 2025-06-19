@@ -1,4 +1,4 @@
-@import '../../../../app.css';
+@import "../../../../app.css";
 
 .mode-toggle-button {
   @apply align-bottom cursor-pointer;

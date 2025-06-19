@@ -1,4 +1,4 @@
-@import '../../app.css';
+@import "../../app.css";
 
 .single-info-page {
   @apply mx-auto h-screen p-2 sm:p-8 container flex flex-col items-center justify-center;

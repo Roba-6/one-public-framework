@@ -16,3 +16,11 @@ overrides:
   - files: '*.html'
     options:
       parser: 'html'
+  - files:
+      - '*.css'
+      - '*.scss'
+      - '*.less'
+    options:
+      parser: css
+      tabWidth: 2
+      singleQuote: false

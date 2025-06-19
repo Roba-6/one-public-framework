@@ -1,4 +1,4 @@
-@import '../../../../../app.css';
+@import "../../../../../app.css";
 
 .header {
   @apply p-2 sm:p-4 flex flex-row items-center justify-between;

@@ -1,4 +1,4 @@
-@import '../../../app.css';
+@import "../../../app.css";
 
 header.welcome-header {
   @apply w-full flex flex-col items-center gap-8;

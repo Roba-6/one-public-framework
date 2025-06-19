@@ -1,4 +1,4 @@
-@import '../../../../app.css';
+@import "../../../../app.css";
 
 .text-image {
   @apply w-full sm:w-[585px] h-[100px] overflow-hidden relative select-none;
