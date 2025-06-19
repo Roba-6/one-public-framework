@@ -20,5 +20,3 @@ on:
 jobs:
   code-check:
     uses: ./.github/workflows/check.yaml
-    with:
-      ref: '${{ github.ref }}'
