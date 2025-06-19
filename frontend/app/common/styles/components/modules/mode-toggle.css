@@ -1,0 +1,23 @@
+@import "../../../../app.css";
+
+.mode-toggle-button {
+  @apply align-bottom cursor-pointer;
+
+  .light-mode {
+    @apply w-[1rem] h-[1rem]
+      rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0;
+  }
+  .dark-mode {
+    @apply w-[1rem] h-[1rem] absolute
+      rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100;
+  }
+  .mode-text {
+    @apply sr-only;
+  }
+}
+
+.mode-toggle-menu {
+  div {
+    @apply cursor-pointer;
+  }
+}

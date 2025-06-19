@@ -1,0 +1,29 @@
+@import "../../app.css";
+
+.single-info-page {
+  @apply mx-auto h-screen p-2 sm:p-8 container flex flex-col items-center justify-center;
+}
+
+.site-page {
+  @apply mx-auto p-2 sm:p-8 container flex flex-col items-center justify-center;
+}
+
+.page {
+  @apply min-h-screen m-auto container justify-center;
+}
+
+.inner {
+  @apply p-2 sm:p-4;
+}
+
+.box {
+  @apply border-8 border-gray-200
+    dark:border-0 dark:border-t-1 dark:border-s-1 dark:border-black
+    rounded-none dark:rounded-md
+  bg-gray-50 dark:bg-gray-950
+    shadow-sm shadow-gray-200 dark:shadow-gray-800;
+}
+
+button {
+  @apply cursor-pointer;
+}

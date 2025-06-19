@@ -1,0 +1,16 @@
+# One Public Framework
+/logs
+/media
+
+# macOS
+.DS_Store
+
+# PyCharm
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Other
+*.sqlite3

@@ -1,0 +1,58 @@
+import gettext
+import re
+
+from fastapi import Request
+
+from one_public_api.common import constants
+from one_public_api.core.settings import settings
+
+
+def get_translator(request: Request) -> gettext.NullTranslations:
+    """
+    Retrieve a translation object for the specified language in the request
+    headers.
+
+    This function determines the language from the request object's headers and
+    attempts to load the corresponding translation file. If a translation file is
+    not found, it returns a `NullTranslations` instance, which serves as a no-op
+    translator.
+
+    Parameters
+    ----------
+    request : Request
+        The HTTP request object which contains headers, including the language
+        header. The language is retrieved from the header specified by
+        `constants.HEADER_NAME_LANGUAGE`, with a fallback to the default language
+        defined in `settings.LANGUAGE`.
+
+    Returns
+    -------
+    gettext.NullTranslations
+        A translation object for the specified language, or a `NullTranslations`
+        object if the translation file for the language is not available.
+    """
+
+    lang = request.headers.get(constants.HEADER_NAME_LANGUAGE, settings.LANGUAGE)
+    lang = re.split(r"[;,]", lang)[0]
+
+    try:
+        translator = gettext.translation(
+            domain="messages",
+            localedir=constants.PATH_LOCALES,
+            languages=[lang],
+        )
+        translator.install()
+
+        return translator
+
+    except FileNotFoundError:
+        return gettext.NullTranslations()
+
+
+# i18n for log messages
+translate = _ = gettext.translation(
+    "messages",
+    localedir=constants.PATH_LOCALES,
+    languages=[settings.LOG_LANGUAGE],
+    fallback=True,
+).gettext

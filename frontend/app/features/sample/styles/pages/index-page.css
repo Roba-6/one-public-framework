@@ -1,0 +1,11 @@
+@import "../../../../app.css";
+
+main {
+  h1 {
+    @apply mb-4 text-3xl;
+  }
+
+  .page-section {
+    @apply flex items-center gap-4;
+  }
+}

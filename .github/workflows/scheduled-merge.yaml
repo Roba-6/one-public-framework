@@ -1,0 +1,37 @@
+name: Scheduled Merge
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+jobs:
+  code-check:
+    uses: ./.github/workflows/check.yaml
+    with:
+      ref: ''
+
+  merge:
+    needs:
+      - code-check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout develop
+        uses: actions/checkout@v4
+
+      - name: Check for diff
+        id: check_diff
+        run: |
+          git fetch origin develop
+          git diff --quiet origin/develop || echo "HAS_DIFF=true" >> $GITHUB_ENV
+
+      - name: Merge to main
+        if: env.HAS_DIFF == 'true'
+        run: |
+          git config user.name "Bot"
+          git config user.email "bot@one-coder.com"
+
+          git merge --no-ff origin/develop -m "Automated daily merge from develop to main"
+          git push origin main

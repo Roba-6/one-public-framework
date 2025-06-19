@@ -1,0 +1,21 @@
+from gettext import GNUTranslations
+from typing import Annotated, List
+
+from fastapi.params import Depends
+from sqlmodel import Session
+
+from one_public_api.core import get_session, get_translator
+from one_public_api.models import User
+from one_public_api.services.base_service import BaseService
+
+
+class UserService(BaseService[User]):
+    search_columns: List[str] = ["name", "firstname", "lastname", "nickname", "email"]
+    model = User
+
+    def __init__(
+        self,
+        session: Annotated[Session, Depends(get_session)],
+        translator: Annotated[GNUTranslations, Depends(get_translator)],
+    ):
+        super().__init__(session, translator)

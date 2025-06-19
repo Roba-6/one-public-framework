@@ -1,0 +1,26 @@
+services:
+  db:
+    image: postgres:16
+    container_name: opf-db
+    hostname: opf-db
+    restart: always
+    shm_size: 128mb
+    environment:
+      TZ: ${API_TIME_ZONE}
+      POSTGRES_DB: ${API_DB_NAME}
+      POSTGRES_USER: ${API_DB_USER}
+      POSTGRES_PASSWORD: ${API_DB_PASS}
+      POSTGRES_INITDB_ARGS: '--auth=md5'
+    volumes:
+      - db_data:/var/lib/postgres/data
+    ports:
+      - '5432:5432'
+    networks:
+      - opf-net
+
+volumes:
+  db_data:
+
+networks:
+  opf-net:
+    external: false
