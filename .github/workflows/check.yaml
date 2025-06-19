@@ -1,18 +1,11 @@
 name: Code Check
 
 on:
-  push:
-    paths:
-      - 'backend/**'
-      - 'frontend/**'
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-    paths:
-      - 'backend/**'
-      - 'frontend/**'
+  workflow_call:
+    inputs:
+      ref:
+        required: true
+        type: string
 
 jobs:
   lint-and-format-backend:
