@@ -1,6 +1,7 @@
 import '~/app.css'
 import '~/common/styles/component.css'
 import '~/common/styles/error-boundary.css'
+import '~/locales/configs'
 
 import React, { useEffect } from 'react'
 import { Provider } from 'react-redux'
@@ -13,7 +14,7 @@ import {
   ScrollRestoration,
 } from 'react-router'
 
-import { loadComplete, selectIsLoading } from '~/common/app-slice'
+import { initState, loadComplete, selectIsLoading } from '~/common/app-slice'
 import Spinner from '~/common/components/atoms/spinner'
 import { ThemeProvider } from '~/common/components/theme-provider'
 import { ScrollArea, ScrollBar } from '~/common/components/ui/scroll-area'
@@ -108,6 +109,7 @@ const App = (): React.ReactNode => {
     setTimeout(() => {
       dispatch(loadComplete())
     }, 3000)
+    dispatch(initState())
   }, [])
 
   return (
