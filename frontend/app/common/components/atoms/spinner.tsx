@@ -16,8 +16,10 @@ const Spinner = (): React.ReactNode => {
   }, [])
 
   return (
-    <div className="loader">
-      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+    <div className="spinner">
+      <div className="loader">
+        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+      </div>
     </div>
   )
 }
