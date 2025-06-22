@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import i18n from 'i18next'
 
 import { getEnv } from '~/common/utils/env'
@@ -44,8 +44,13 @@ export const appSlice = createSlice({
      */
     initState: (state) => {
       const lang = localStorage.getItem('language') as string
-      state.conf.language = lang
       void i18n.changeLanguage(lang)
+      state.conf.language = lang
+    },
+    changeLanguage: (state, action: PayloadAction<string>) => {
+      localStorage.setItem('language', action.payload)
+      void i18n.changeLanguage(action.payload)
+      state.conf.language = action.payload
     },
     loading: (state) => {
       state.isLoading = true
@@ -56,8 +61,7 @@ export const appSlice = createSlice({
   },
 })
 
+export const selectLanguage = (state: RootState) => state.app.conf.language
 export const selectIsLoading = (state: RootState) => state.app.isLoading
-
-export const { initState, loading, loadComplete } = appSlice.actions
-
+export const { initState, changeLanguage, loading, loadComplete } = appSlice.actions
 export default appSlice.reducer

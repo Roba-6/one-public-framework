@@ -107,15 +107,14 @@ const App = (): React.ReactNode => {
 
   useEffect(() => {
     setTimeout(() => {
+      dispatch(initState())
       dispatch(loadComplete())
     }, 3000)
-    dispatch(initState())
   }, [])
 
   return (
     <ThemeProvider defaultTheme="system" storageKey="app-theme">
-      <Outlet />
-      {isLoading && <Spinner />}
+      {isLoading ? <Spinner /> : <Outlet />}
     </ThemeProvider>
   )
 }

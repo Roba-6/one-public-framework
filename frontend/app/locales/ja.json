@@ -1,3 +1,7 @@
 {
+  "languages": {
+    "en": "English",
+    "ja": "日本語"
+  },
   "welcome": "One Public Framework へようこそ！"
 }
