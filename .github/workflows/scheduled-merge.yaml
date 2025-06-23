@@ -35,5 +35,7 @@ jobs:
           git config user.name "Bot"
           git config user.email "bot@one-coder.com"
 
+          git fetch origin main:main
+          git checkout main
           git merge --no-ff origin/develop -m "Automated daily merge from develop to main"
           git push origin main
