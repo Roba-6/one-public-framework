@@ -1,10 +1,13 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
+import Language from '~/common/components/atoms/language'
 import Logo from '~/common/components/atoms/logo'
 import GoHome from '~/common/components/modules/go-home'
 import { ModeToggle } from '~/common/components/modules/mode-toggle'
 
 const TopPage = () => {
+  const { t } = useTranslation()
   return (
     <div className="single-page">
       <div className="container mx-auto min-h-[100vh]">
@@ -13,10 +16,11 @@ const TopPage = () => {
           <div>
             <GoHome />
             <ModeToggle />
+            <Language />
           </div>
         </header>
         <main className="main">
-          <h1>Welcome to One Public Framework</h1>
+          <h1>{t('welcome')}</h1>
         </main>
       </div>
     </div>
