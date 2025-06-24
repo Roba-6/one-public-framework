@@ -67,6 +67,19 @@ ROUTER_COMMON_ADMIN = "/admin"
 # Common router path: admin with ID
 ROUTER_COMMON_ADMIN_WITH_ID = "/admin/{target_id}"
 
+# Signup API router path
+ROUTER_AUTH_SIGNUP = "/signup"
+# Login API router path
+ROUTER_AUTH_LOGIN = "/login"
+# Refresh Token API router path
+ROUTER_AUTH_REFRESH = "/refresh"
+# Profile API router path
+ROUTER_AUTH_ME = "/me"
+# Logout API router path
+ROUTER_AUTH_LOGOUT = "/logout"
+
+# Path prefix for the authentication API router
+ROUTER_PREFIX_AUTHENTICATION = "/auth"
 # Path prefix for the configuration API router
 ROUTER_PREFIX_CONFIGURATION = "/configurations"
 # Path prefix for the user API router
