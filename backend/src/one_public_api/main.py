@@ -3,7 +3,11 @@ from fastapi import FastAPI
 from one_public_api.common import constants
 from one_public_api.core import initialize, lifespan
 from one_public_api.core import translate as _
-from one_public_api.routers import configuration_router, user_router
+from one_public_api.routers import (
+    authenticate_router,
+    configuration_router,
+    user_router,
+)
 
 app = FastAPI(
     title=_("One Public API"),
@@ -27,6 +31,12 @@ app.include_router(
     router=configuration_router.router,
     prefix=constants.ROUTER_PREFIX_CONFIGURATION,
     tags=[_("Configurations")],
+)
+
+app.include_router(
+    router=authenticate_router.router,
+    prefix=constants.ROUTER_PREFIX_AUTHENTICATION,
+    tags=[_("Authentications")],
 )
 
 app.include_router(

@@ -8,7 +8,7 @@ T = TypeVar("T", bound=SQLModel)
 
 
 def create_response_data(
-    schema: Type[T],
+    schema: Type[T] | None,
     results: Any | List[Any] | None,
     count: int | None = None,
     detail: List[MessageSchema] | None = None,
@@ -25,7 +25,7 @@ def create_response_data(
 
     Parameters
     ----------
-    schema : Type[T]
+    schema : Type[T] or None
         The schema model used to validate the provided results data. This should be
         callable with a
         `model_validate` method to perform validation.
@@ -49,6 +49,8 @@ def create_response_data(
 
     if type(results) is list:
         rst = [getattr(schema, "model_validate")(d) for d in results]
+    elif results is None:
+        rst = None
     else:
         rst = getattr(schema, "model_validate")(results)
 

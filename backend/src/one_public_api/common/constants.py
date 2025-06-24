@@ -74,7 +74,7 @@ ROUTER_AUTH_LOGIN = "/login"
 # Refresh Token API router path
 ROUTER_AUTH_REFRESH = "/refresh"
 # Profile API router path
-ROUTER_AUTH_ME = "/me"
+ROUTER_AUTH_PROFILE = "/me"
 # Logout API router path
 ROUTER_AUTH_LOGOUT = "/logout"
 
