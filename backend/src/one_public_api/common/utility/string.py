@@ -46,3 +46,8 @@ def convert_text_logo(text: str, with_version: bool = True) -> str:
     if with_version:
         logo += " v%s"
     return logo
+
+
+def to_camel(string: str) -> str:
+    parts = string.split("_")
+    return parts[0] + "".join(word.capitalize() for word in parts[1:])

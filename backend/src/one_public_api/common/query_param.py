@@ -3,6 +3,7 @@ from typing import List
 from pydantic import BaseModel, ConfigDict, Field
 
 from one_public_api.common import constants
+from one_public_api.common.utility.string import to_camel
 from one_public_api.core.i18n import translate as _
 
 
@@ -44,4 +45,8 @@ class QueryParam(BaseModel):
     keywords: List[str] = Field(default=[], description=_("Keywords"))
     # filtering: Dict[str, Any] = Field()
 
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(
+        alias_generator=to_camel,
+        populate_by_name=True,
+        extra="forbid",
+    )
