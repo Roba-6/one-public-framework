@@ -6,8 +6,9 @@
 .DS_Store
 
 # PyCharm
-.idea/
 *.iml
+.idea/*
+!.idea/watcherTasks.xml
 
 # VS Code
 .vscode/
