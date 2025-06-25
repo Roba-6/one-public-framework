@@ -33,3 +33,8 @@ class APIError(HTTPException):
 
         msg_rsp = MessageSchema(code=code, message=message, detail=detail).model_dump()
         super().__init__(status_code=status_code, detail=msg_rsp, headers=self.headers)
+
+
+class UnauthorizedError(APIError):
+    def __init__(self, message: str = "", detail: Any | None = None):
+        super().__init__("E40100001", message, detail, status.HTTP_401_UNAUTHORIZED)
