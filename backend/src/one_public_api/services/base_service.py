@@ -1,5 +1,6 @@
 from gettext import GNUTranslations
-from typing import Annotated, Generic, List, Type, TypeVar
+from logging import Logger
+from typing import Annotated, Any, Dict, Generic, List, Type, TypeVar
 from uuid import UUID
 
 from fastapi import status
@@ -36,6 +37,7 @@ class BaseService(Generic[T]):
 
     search_columns: List[str] = []
     model: Type[T]
+    logger: Logger = logger
 
     def __init__(
         self,
@@ -51,6 +53,12 @@ class BaseService(Generic[T]):
         self.count: int = 0
         self.detail: List[MessageSchema] = []
 
+    def get_one(self, conditions: Dict[str, Any]) -> T:
+        return self.dr.one(self.model, conditions)
+
+    def get_one_by_id(self, target_id: UUID) -> T:
+        return self.dr.get(self.model, target_id)
+
     def get_all(self, query: QueryParam) -> List[T]:
         (data, self.count) = self.dr.all(self.model, query, self.search_columns)
 
@@ -62,9 +70,6 @@ class BaseService(Generic[T]):
         self.session.refresh(result)
 
         return result
-
-    def get_one_by_id(self, target_id: UUID) -> T:
-        return self.dr.get(self.model, target_id)
 
     def update_one(self, target_id: UUID, data: T) -> T:
         before: T = self.get_one_by_id(target_id)
