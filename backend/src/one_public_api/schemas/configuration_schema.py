@@ -1,6 +1,6 @@
 from typing import Any, Dict
 
-from one_public_api.common.utility.string import to_camel
+from one_public_api.common.utility.str import to_camel
 from one_public_api.models.mixins.id_mixin import IdMixin
 from one_public_api.models.mixins.timestamp_mixin import TimestampMixin
 from one_public_api.models.system.configuration_model import ConfigurationBase

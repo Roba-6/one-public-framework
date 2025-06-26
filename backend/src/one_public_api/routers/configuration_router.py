@@ -128,7 +128,7 @@ def update_admin_api(
 ) -> ResponseSchema[ConfigurationResponse]:
     return create_response_data(
         ConfigurationResponse,
-        cs.update_one(target_id, Configuration(**data.model_dump())),
+        cs.update_one_by_id(target_id, Configuration(**data.model_dump())),
         detail=cs.detail,
     )
 

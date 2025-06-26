@@ -3,7 +3,7 @@ from typing import List
 from pydantic import BaseModel, ConfigDict, Field
 
 from one_public_api.common import constants
-from one_public_api.common.utility.string import to_camel
+from one_public_api.common.utility.str import to_camel
 from one_public_api.core.i18n import translate as _
 
 

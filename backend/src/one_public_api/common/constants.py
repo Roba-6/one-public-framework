@@ -18,6 +18,14 @@ EXT_LOG = ".log"
 # SQLite File Extension
 EXT_SQLITE = ".sqlite3"
 
+# ----- Security Settings --------------------------------------------------------------
+# Access token expiration time (in minutes)
+ACCESS_TOKEN_EXPIRE = 15
+# Refresh token expiration time (in minutes)
+REFRESH_TOKEN_EXPIRE = 30 * 24 * 60
+# Algorithm used to sign the JWT tokens (e.g., HS256, RS256)
+JWT_ALGORITHM = "HS256"
+
 # File name for .env files
 FILES_ENV: List[str] = [".env", ".env.dev", ".env.test", ".env.stage", ".env.prod"]
 
@@ -108,6 +116,8 @@ CHAR_LOGO: str = (
 CHAR_PREFIX_ENV: str = "API_"
 # Newline character
 CHAR_NEW_LINE: str = "\n"
+# Key name used to store or retrieve the refresh token in cookies
+CHAR_REFRESH_TOKEN_KEY = "refresh_token"
 
 # Authenticate Header Name
 HEADER_NAME_AUTHENTICATE = "WWW-Authenticate"
@@ -124,6 +134,9 @@ MAX_LENGTH_100: int = 100
 MAX_LENGTH_255: int = 255
 MAX_LENGTH_500: int = 500
 MAX_LENGTH_1000: int = 1000
+
+# Maximum number of allowed failed login attempts before locking the account
+MAX_LOGIN_FAILED_TIMES: int = 5
 
 # ----- System Messages ----------------------------------------------------------------
 # Debug Messages

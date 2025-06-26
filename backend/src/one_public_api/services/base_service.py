@@ -3,14 +3,13 @@ from logging import Logger
 from typing import Annotated, Any, Dict, Generic, List, Type, TypeVar
 from uuid import UUID
 
-from fastapi import status
 from fastapi.params import Depends
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, SQLModel
 
 from one_public_api.common.query_param import QueryParam
 from one_public_api.core import get_session, get_translator, logger
-from one_public_api.core.exceptions import APIError
+from one_public_api.core.exceptions import DataError
 from one_public_api.crud.data_creator import DataCreator
 from one_public_api.crud.data_deleter import DataDeleter
 from one_public_api.crud.data_reader import DataReader
@@ -65,15 +64,28 @@ class BaseService(Generic[T]):
         return data
 
     def add_one(self, data: T) -> T:
-        result: T = self.dc.one(self.model, data.model_dump())
+        try:
+            result: T = self.dc.one(self.model, data.model_dump())
+            self.session.commit()
+            self.session.refresh(result)
+
+            return result
+        except IntegrityError:
+            raise DataError(
+                self._("Data already exists."), data.model_dump_json(), "E40900001"
+            )
+
+    def update_one_by_id(self, target_id: UUID, data: T) -> T:
+        before: T = self.get_one_by_id(target_id)
+        result: T = self.du.one(before, data.model_dump())
+
         self.session.commit()
         self.session.refresh(result)
 
         return result
 
-    def update_one(self, target_id: UUID, data: T) -> T:
-        before: T = self.get_one_by_id(target_id)
-        result: T = self.du.one(before, data.model_dump())
+    def update_one(self, data: T) -> T:
+        result: T = self.du.one(data)
 
         self.session.commit()
         self.session.refresh(result)
@@ -88,10 +100,8 @@ class BaseService(Generic[T]):
             self.session.commit()
 
             return result
-        except IntegrityError as e:
-            logger.error(e)
-            raise APIError(
-                status_code=status.HTTP_409_CONFLICT,
-                code="E40900001",
-                message=self._("This record might be referenced by other data."),
+        except IntegrityError:
+            raise DataError(
+                self._("This record might be referenced by other data."),
+                code="E40900002",
             )

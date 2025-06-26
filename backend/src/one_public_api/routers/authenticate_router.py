@@ -39,12 +39,7 @@ def login_api(
     request: LoginRequest,
     response: Response,
 ) -> ResponseSchema[TokenResponse]:
-    aths.login(request, response)
-
-    return create_response_data(
-        TokenResponse,
-        {"access_token": "test_token", "token_type": "test_refresh_token"},
-    )
+    return create_response_data(TokenResponse, aths.login(request, response))
 
 
 @router.get(

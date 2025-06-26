@@ -23,6 +23,12 @@ class Settings(BaseSettings):
         Default language for the application.
     CORS_ORIGINS : List[str]
         List of allowed origins for CORS.
+    SECRET_KEY : str
+        Secret key.
+    ACCESS_TOKEN_EXPIRE : int
+        Access token expiration time (in minutes)
+    REFRESH_TOKEN_EXPIRE : int
+        Refresh token expiration time (in minutes)
     DB_ENGINE : str
         Engine type for the database (e.g., 'sqlite3', 'postgresql').
     DB_HOST : str
@@ -78,6 +84,10 @@ class Settings(BaseSettings):
 
     LANGUAGE: str = constants.DEFAULT_LANGUAGE
     CORS_ORIGINS: List[str] = []
+
+    SECRET_KEY: str = ""
+    ACCESS_TOKEN_EXPIRE: int = constants.ACCESS_TOKEN_EXPIRE
+    REFRESH_TOKEN_EXPIRE: int = constants.REFRESH_TOKEN_EXPIRE
 
     DB_ENGINE: str = "sqlite3"
     DB_HOST: str = "localhost"

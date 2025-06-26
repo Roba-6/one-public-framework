@@ -1,8 +1,18 @@
-from typing import Any, List, Type, TypeVar
+from http.client import HTTPException
+from typing import Annotated, Any, List, Type, TypeVar
 
+import jwt
+from fastapi import Depends
+from jwt import ExpiredSignatureError, InvalidTokenError
 from sqlmodel import SQLModel
 
+from one_public_api.common import constants
+from one_public_api.core import settings
+from one_public_api.core.exceptions import UnauthorizedError
+from one_public_api.core.extensions import oauth2_scheme
+from one_public_api.models import User
 from one_public_api.schemas.response_schema import MessageSchema, ResponseSchema
+from one_public_api.services.user_service import UserService
 
 T = TypeVar("T", bound=SQLModel)
 
@@ -57,3 +67,28 @@ def create_response_data(
     rsp: ResponseSchema[T] = ResponseSchema(results=rst, count=count, detail=detail)
 
     return rsp
+
+
+def get_current_user(
+    us: Annotated[UserService, Depends()],
+    token: str = Depends(oauth2_scheme),
+) -> User:
+    try:
+        payload = jwt.decode(
+            token, settings.SECRET_KEY, algorithms=[constants.JWT_ALGORITHM]
+        )
+        username: str = payload.get("sub")
+        if username is None:
+            raise UnauthorizedError(
+                "No user information found in the token", token, "E40100003"
+            )
+        else:
+            return us.get_one(
+                {"name": username, "is_disabled": False, "is_locked": False}
+            )
+    except ExpiredSignatureError:
+        raise UnauthorizedError("The token has expired", token, "E40100004")
+    except InvalidTokenError:
+        raise UnauthorizedError("Invalid token", token, "E40100005")
+    except HTTPException:
+        raise UnauthorizedError("user not found", token, "E40100006")

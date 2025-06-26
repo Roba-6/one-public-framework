@@ -1,6 +1,8 @@
 from typing import Any, Dict
 
-from one_public_api.common.utility.string import to_camel
+from pydantic import computed_field
+
+from one_public_api.common.utility.str import to_camel
 from one_public_api.models.mixins.id_mixin import IdMixin
 from one_public_api.models.mixins.password_mixin import PasswordMixin
 from one_public_api.models.mixins.timestamp_mixin import TimestampMixin
@@ -26,6 +28,13 @@ example_id: Dict[str, Any] = {"id": "t83eb523-0a9e-4136-9602-f16a35c9525a"}
 
 
 class UserPublicResponse(UserBase, TimestampMixin, IdMixin):
+    @computed_field
+    def fullname(self) -> str:
+        firstname = self.firstname if self.firstname else ""
+        lastname = self.lastname if self.lastname else ""
+
+        return f"{firstname} {lastname}".strip()
+
     model_config = {
         "alias_generator": to_camel,
         "json_schema_extra": {
@@ -51,7 +60,7 @@ class UserUpdateRequest(UserBase):
     }
 
 
-class UserResponse(UserBase, TimestampMixin, IdMixin):
+class UserResponse(UserPublicResponse):
     model_config = {
         "alias_generator": to_camel,
         "json_schema_extra": {

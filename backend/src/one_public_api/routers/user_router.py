@@ -6,7 +6,7 @@ from fastapi.params import Depends, Query
 
 from one_public_api.common import constants
 from one_public_api.common.query_param import QueryParam
-from one_public_api.common.tools import create_response_data
+from one_public_api.common.tools import create_response_data, get_current_user
 from one_public_api.core import translate as _
 from one_public_api.models import User
 from one_public_api.routers.base_route import BaseRoute
@@ -51,6 +51,7 @@ def list_public_api(
 def list_admin_api(
     us: Annotated[UserService, Depends()],
     query: Annotated[QueryParam, Query()],
+    _current_user: Annotated[User, Depends(get_current_user)],
 ) -> ResponseSchema[UserResponse]:
     return create_response_data(UserResponse, us.get_all(query), us.count, us.detail)
 
@@ -70,7 +71,6 @@ def create_admin_api(
     )
 
 
-#
 @router.get(
     constants.ROUTER_COMMON_ADMIN_WITH_ID,
     name="SYS-USR-A-DTL",
@@ -99,7 +99,7 @@ def update_admin_api(
 ) -> ResponseSchema[UserResponse]:
     return create_response_data(
         UserResponse,
-        us.update_one(target_id, User(**data.model_dump())),
+        us.update_one_by_id(target_id, User(**data.model_dump())),
         detail=us.detail,
     )
 

@@ -1,4 +1,4 @@
-from pydantic import EmailStr, computed_field
+from pydantic import EmailStr
 from sqlmodel import Field, Relationship, SQLModel
 
 from one_public_api.common import constants
@@ -51,13 +51,6 @@ class UserBase(SQLModel):
         ),
     )
 
-    @computed_field
-    def fullname(self) -> str:
-        firstname = self.firstname if self.firstname else ""
-        lastname = self.lastname if self.lastname else ""
-
-        return f"{firstname} {lastname}".strip()
-
 
 class User(
     UserBase, PasswordMixin, TimestampMixin, MaintenanceMixin, IdMixin, table=True
@@ -65,11 +58,13 @@ class User(
     __tablename__ = constants.DB_PREFIX_SYS + "users"
 
     name: str = Field(
+        unique=True,
         min_length=constants.MAX_LENGTH_3,
         max_length=constants.MAX_LENGTH_55,
         description=_("The name of the user."),
     )
     email: EmailStr = Field(
+        unique=True,
         max_length=128,
         description=_("The email address of the user."),
     )

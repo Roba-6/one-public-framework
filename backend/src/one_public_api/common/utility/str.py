@@ -1,5 +1,7 @@
 from typing import List
 
+from passlib.context import CryptContext
+
 
 def convert_text_logo(text: str, with_version: bool = True) -> str:
     """
@@ -51,3 +53,7 @@ def convert_text_logo(text: str, with_version: bool = True) -> str:
 def to_camel(string: str) -> str:
     parts = string.split("_")
     return parts[0] + "".join(word.capitalize() for word in parts[1:])
+
+
+def get_hashed_password(password: str) -> str:
+    return CryptContext(schemes=["bcrypt"], deprecated="auto").hash(password)
