@@ -6,7 +6,7 @@ from fastapi.params import Depends, Query
 
 from one_public_api.common import constants
 from one_public_api.common.query_param import QueryParam
-from one_public_api.common.tools import create_response_data
+from one_public_api.common.tools import create_response_data, get_current_user
 from one_public_api.core import translate as _
 from one_public_api.models import Configuration
 from one_public_api.routers.base_route import BaseRoute
@@ -19,12 +19,15 @@ from one_public_api.schemas.configuration_schema import (
 from one_public_api.schemas.response_schema import ResponseSchema
 from one_public_api.services.configuration_service import ConfigurationService
 
-router = APIRouter(route_class=BaseRoute)
+public_router = APIRouter(route_class=BaseRoute)
+admin_router = APIRouter(
+    route_class=BaseRoute, dependencies=[Depends(get_current_user)]
+)
 
 # ----- Public APIs --------------------------------------------------------------------
 
 
-@router.get(
+@public_router.get(
     constants.ROUTER_COMMON_BLANK,
     name="SYS-COF-P-LST",
     summary=_("List Public Configurations"),
@@ -64,7 +67,7 @@ def list_public_api(
 # ----- Admin APIs ---------------------------------------------------------------------
 
 
-@router.get(
+@admin_router.get(
     constants.ROUTER_COMMON_ADMIN,
     name="SYS-COF-A-LST",
     summary=_("List Configurations"),
@@ -79,7 +82,7 @@ def list_admin_api(
     )
 
 
-@router.post(
+@admin_router.post(
     constants.ROUTER_COMMON_ADMIN,
     name="SYS-COF-A-ADD",
     summary=_("Create Configuration"),
@@ -96,7 +99,7 @@ def create_admin_api(
     )
 
 
-@router.get(
+@admin_router.get(
     constants.ROUTER_COMMON_ADMIN_WITH_ID,
     name="SYS-COF-A-DTL",
     summary=_("Get Configuration"),
@@ -113,7 +116,7 @@ def retrieve_admin_api(
     )
 
 
-@router.put(
+@admin_router.put(
     constants.ROUTER_COMMON_ADMIN_WITH_ID,
     name="SYS-COF-A-UPD",
     summary=_("Update Configuration"),
@@ -133,7 +136,7 @@ def update_admin_api(
     )
 
 
-@router.delete(
+@admin_router.delete(
     constants.ROUTER_COMMON_ADMIN_WITH_ID,
     name="SYS-COF-A-DEL",
     summary=_("Delete Configuration"),

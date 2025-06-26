@@ -77,5 +77,5 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, Any]:
 
 
 oauth2_scheme = OAuth2PasswordBearer(
-    tokenUrl=constants.ROUTER_PREFIX_AUTHENTICATION + constants.ROUTER_AUTH_LOGIN
+    tokenUrl=constants.ROUTER_PREFIX_AUTHENTICATION + constants.ROUTER_COMMON_BLANK
 )

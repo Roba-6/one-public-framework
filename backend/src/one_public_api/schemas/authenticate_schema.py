@@ -33,12 +33,11 @@ class LoginRequest(PasswordMixin, SQLModel):
     }
 
 
-class TokenResponse(SQLModel):
+class LoginFormResponse(SQLModel):
     access_token: str = Field(description=_("The access token."))
     token_type: str = Field(default="Bearer", description=_("The type of the token."))
 
     model_config = {
-        "alias_generator": to_camel,
         "json_schema_extra": {
             "examples": [
                 {
@@ -46,6 +45,22 @@ class TokenResponse(SQLModel):
                     "ZG1pbiIsImV4cCI6MTc1MTE2MTY0NX0.SKtu8mzzviAtvPJaD"
                     "FIqI2-kZzHSHa_6Y-kWHgCkVBA",
                     "token_type": "Bearer",
+                }
+            ],
+        },
+    }
+
+
+class TokenResponse(LoginFormResponse):
+    model_config = {
+        "alias_generator": to_camel,
+        "json_schema_extra": {
+            "examples": [
+                {
+                    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJh"
+                    "ZG1pbiIsImV4cCI6MTc1MTE2MTY0NX0.SKtu8mzzviAtvPJaD"
+                    "FIqI2-kZzHSHa_6Y-kWHgCkVBA",
+                    "tokenType": "Bearer",
                 }
             ],
         },

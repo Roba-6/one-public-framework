@@ -1,9 +1,10 @@
 from http.client import HTTPException
-from typing import Annotated, Any, List, Type, TypeVar
+from typing import Annotated, Any, List, TypeVar
 
 import jwt
 from fastapi import Depends
 from jwt import ExpiredSignatureError, InvalidTokenError
+from pydantic.generics import GenericModel
 from sqlmodel import SQLModel
 
 from one_public_api.common import constants
@@ -18,7 +19,7 @@ T = TypeVar("T", bound=SQLModel)
 
 
 def create_response_data(
-    schema: Type[T] | None,
+    schema: GenericModel,
     results: Any | List[Any] | None,
     count: int | None = None,
     detail: List[MessageSchema] | None = None,
@@ -35,7 +36,7 @@ def create_response_data(
 
     Parameters
     ----------
-    schema : Type[T] or None
+    schema : GenericModel
         The schema model used to validate the provided results data. This should be
         callable with a
         `model_validate` method to perform validation.

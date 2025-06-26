@@ -26,21 +26,38 @@ app = FastAPI(
 )
 initialize(app)
 
-
 app.include_router(
-    router=configuration_router.router,
+    router=configuration_router.public_router,
     prefix=constants.ROUTER_PREFIX_CONFIGURATION,
     tags=[_("Configurations")],
 )
 
 app.include_router(
-    router=authenticate_router.router,
+    router=configuration_router.admin_router,
+    prefix=constants.ROUTER_PREFIX_CONFIGURATION,
+    tags=[_("Configurations")],
+)
+
+app.include_router(
+    router=authenticate_router.public_router,
     prefix=constants.ROUTER_PREFIX_AUTHENTICATION,
     tags=[_("Authentications")],
 )
 
 app.include_router(
-    router=user_router.router,
+    router=authenticate_router.admin_router,
+    prefix=constants.ROUTER_PREFIX_AUTHENTICATION,
+    tags=[_("Authentications")],
+)
+
+app.include_router(
+    router=user_router.public_router,
+    prefix=constants.ROUTER_PREFIX_USER,
+    tags=[_("Users")],
+)
+
+app.include_router(
+    router=user_router.admin_router,
     prefix=constants.ROUTER_PREFIX_USER,
     tags=[_("Users")],
 )
