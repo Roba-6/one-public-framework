@@ -1,5 +1,6 @@
 from typing import Any, Dict
 
+from one_public_api.common.utility.str import to_camel
 from one_public_api.models.mixins.id_mixin import IdMixin
 from one_public_api.models.mixins.timestamp_mixin import TimestampMixin
 from one_public_api.models.system.configuration_model import ConfigurationBase
@@ -23,10 +24,10 @@ example_base: Dict[str, Any] = {
 example_id: Dict[str, Any] = {"id": "a83ab523-0a9e-4136-9602-f16a35c955a6"}
 
 example_audit: Dict[str, Any] = {
-    "created_by": "a83ab523-0a9e-4136-9602-f16a35c955a6",
-    "created_at": "2023-01-01T00:00:00+00:00",
-    "updated_by": "a83ab523-0a9e-4136-9602-f16a35c955a6",
-    "updated_at": "2023-01-01T00:00:00+00:00",
+    "createdBy": "a83ab523-0a9e-4136-9602-f16a35c955a6",
+    "createdAt": "2023-01-01T00:00:00+00:00",
+    "updatedBy": "a83ab523-0a9e-4136-9602-f16a35c955a6",
+    "updatedAt": "2023-01-01T00:00:00+00:00",
 }
 
 
@@ -38,6 +39,7 @@ class ConfigurationPublicResponse(ConfigurationBase, TimestampMixin, IdMixin):
     user: UserPublicResponse | None
 
     model_config = {
+        "alias_generator": to_camel,
         "json_schema_extra": {
             "examples": [{**example_base, **example_id}],
         },
@@ -51,6 +53,8 @@ class ConfigurationCreateRequest(ConfigurationBase):
     options: Dict[str, Any] = {}
 
     model_config = {
+        "alias_generator": to_camel,
+        "populate_by_name": True,
         "json_schema_extra": {"examples": [example_base]},
     }
 
@@ -59,6 +63,8 @@ class ConfigurationUpdateRequest(ConfigurationBase):
     options: Dict[str, Any] = {}
 
     model_config = {
+        "alias_generator": to_camel,
+        "populate_by_name": True,
         "json_schema_extra": {"examples": [example_base]},
     }
 
@@ -67,6 +73,7 @@ class ConfigurationResponse(ConfigurationBase, TimestampMixin, IdMixin):
     options: Dict[str, Any] = {}
 
     model_config = {
+        "alias_generator": to_camel,
         "json_schema_extra": {
             "examples": [{**example_base, **example_audit, **example_id}],
         },
