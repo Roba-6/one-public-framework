@@ -1,12 +1,13 @@
 from typing import Annotated
 
-from fastapi import APIRouter, Response
+from fastapi import APIRouter, Cookie, Response
 from fastapi.params import Depends
 from fastapi.security import OAuth2PasswordRequestForm
 
 from one_public_api.common import constants
-from one_public_api.common.tools import create_response_data, get_current_user
+from one_public_api.common.tools import create_response_data
 from one_public_api.core import translate as _
+from one_public_api.models import User
 from one_public_api.routers.base_route import BaseRoute
 from one_public_api.schemas.authenticate_schema import (
     LoginFormResponse,
@@ -15,7 +16,10 @@ from one_public_api.schemas.authenticate_schema import (
     TokenResponse,
 )
 from one_public_api.schemas.response_schema import EmptyResponse, ResponseSchema
-from one_public_api.services.authenticate_service import AuthenticateService
+from one_public_api.services.authenticate_service import (
+    AuthenticateService,
+    get_current_user,
+)
 
 public_router = APIRouter(route_class=BaseRoute)
 admin_router = APIRouter(
@@ -51,13 +55,13 @@ def login_api(
     constants.ROUTER_AUTH_REFRESH,
     name="SYS-ATH-A-RFS",
     summary=_("Refresh Token"),
-    response_model=ResponseSchema[TokenResponse],
+    response_model=TokenResponse,
 )
-def refresh_api() -> ResponseSchema[TokenResponse]:
-    return create_response_data(
-        TokenResponse,
-        {"access_token": "test_token", "token_type": "test_refresh_token"},
-    )
+def refresh_api(
+    aths: Annotated[AuthenticateService, Depends()],
+    refresh_token: str = Cookie(None),
+) -> TokenResponse:
+    return TokenResponse(**aths.refresh(refresh_token))
 
 
 @admin_router.get(
@@ -66,10 +70,12 @@ def refresh_api() -> ResponseSchema[TokenResponse]:
     summary=_("Get Profile"),
     response_model=ResponseSchema[ProfileResponse],
 )
-def profile_api() -> ResponseSchema[ProfileResponse]:
+def profile_api(
+    current_user: Annotated[User, Depends(get_current_user)],
+) -> ResponseSchema[ProfileResponse]:
     return create_response_data(
         ProfileResponse,
-        {},
+        current_user.model_dump(),
     )
 
 
@@ -77,13 +83,17 @@ def profile_api() -> ResponseSchema[ProfileResponse]:
     constants.ROUTER_AUTH_LOGOUT,
     name="SYS-ATH-A-LGO",
     summary=_("Logout"),
-    response_model=ResponseSchema,
+    response_model=ResponseSchema[EmptyResponse],
 )
-def logout_api() -> ResponseSchema[EmptyResponse]:
-    return create_response_data(EmptyResponse, None)
+def logout_api(
+    aths: Annotated[AuthenticateService, Depends()],
+    response: Response,
+) -> ResponseSchema[EmptyResponse]:
+    aths.logout(response)
+
+    return create_response_data(EmptyResponse)
 
 
-#
 @public_router.post(
     constants.ROUTER_COMMON_BLANK,
     name="SYS-ATH-P-LGN",

@@ -49,6 +49,7 @@ class UserPublicResponse(UserBase, TimestampMixin, IdMixin):
 class UserCreateRequest(UserBase, PasswordMixin):
     model_config = {
         "alias_generator": to_camel,
+        "populate_by_name": True,
         "json_schema_extra": {"examples": [example_base]},
     }
 
@@ -56,6 +57,7 @@ class UserCreateRequest(UserBase, PasswordMixin):
 class UserUpdateRequest(UserBase):
     model_config = {
         "alias_generator": to_camel,
+        "populate_by_name": True,
         "json_schema_extra": {"examples": [example_base]},
     }
 

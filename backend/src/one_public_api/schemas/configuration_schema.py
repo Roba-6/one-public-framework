@@ -54,6 +54,7 @@ class ConfigurationCreateRequest(ConfigurationBase):
 
     model_config = {
         "alias_generator": to_camel,
+        "populate_by_name": True,
         "json_schema_extra": {"examples": [example_base]},
     }
 
@@ -63,6 +64,7 @@ class ConfigurationUpdateRequest(ConfigurationBase):
 
     model_config = {
         "alias_generator": to_camel,
+        "populate_by_name": True,
         "json_schema_extra": {"examples": [example_base]},
     }
 

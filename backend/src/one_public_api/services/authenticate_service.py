@@ -7,15 +7,19 @@ import jwt
 from fastapi import HTTPException, Response
 from fastapi.params import Depends
 from fastapi.security import OAuth2PasswordRequestForm
+from jwt import ExpiredSignatureError, InvalidTokenError
 from sqlmodel import Session
 
 from one_public_api.common import constants
+from one_public_api.common.tools import get_username_from_token
 from one_public_api.common.utility.str import to_camel
 from one_public_api.core import get_session, get_translator, settings
 from one_public_api.core.exceptions import APIError, ForbiddenError, UnauthorizedError
+from one_public_api.core.extensions import oauth2_scheme
 from one_public_api.models import User
 from one_public_api.schemas.authenticate_schema import LoginRequest
 from one_public_api.services.base_service import BaseService
+from one_public_api.services.user_service import UserService
 
 
 class AuthenticateService(BaseService[User]):
@@ -35,15 +39,8 @@ class AuthenticateService(BaseService[User]):
     ) -> Dict[str, str]:
         try:
             user: User = self.get_one({"name": request.username})
-            if user.is_disabled:
-                raise ForbiddenError(
-                    self._("user disabled"), request.username, "E40300001"
-                )
-            elif user.is_locked:
-                raise ForbiddenError(
-                    self._("user locked"), request.username, "E40300002"
-                )
-            elif not self.verify_password(request.password, user.password):
+            self.is_activate_user(user)
+            if not self.verify_password(request.password, user.password):
                 user.login_failed_times += 1
                 if user.login_failed_times >= constants.MAX_LOGIN_FAILED_TIMES:
                     user.is_locked = True
@@ -87,12 +84,39 @@ class AuthenticateService(BaseService[User]):
                 self._("user not found"), request.username, "E40100002"
             )
 
+    def refresh(self, refresh_token: str) -> Dict[str, str]:
+        user: User = self.get_one({"name": get_username_from_token(refresh_token)})
+        try:
+            self.is_activate_user(user)
+            access_token, access_expire = AuthenticateService.create_token(
+                user,
+                timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE),
+            )
+            return {to_camel("access_token"): access_token}
+        except ExpiredSignatureError:
+            raise UnauthorizedError("The token has expired", refresh_token, "E40100007")
+        except InvalidTokenError:
+            raise UnauthorizedError("Invalid token", refresh_token, "E40100008")
+        except HTTPException:
+            raise UnauthorizedError("user not found", refresh_token, "E40100009")
+
+    def logout(self, response: Response) -> None:
+        response.delete_cookie(
+            key=constants.CHAR_REFRESH_TOKEN_KEY,
+        )
+
     @staticmethod
     def verify_password(plain_password: str, hashed_password: str) -> bool:
         return bcrypt.checkpw(
             plain_password.encode(constants.ENCODE_UTF8),
             hashed_password.encode(constants.ENCODE_UTF8),
         )
+
+    def is_activate_user(self, user: User) -> None:
+        if user.is_disabled:
+            raise ForbiddenError(self._("user disabled"), user.name, "E40300001")
+        elif user.is_locked:
+            raise ForbiddenError(self._("user locked"), user.name, "E40300002")
 
     @staticmethod
     def create_token(
@@ -114,3 +138,25 @@ class AuthenticateService(BaseService[User]):
         )
 
         return encoded_jwt, expire
+
+
+def get_current_user(
+    us: Annotated[UserService, Depends()],
+    token: Annotated[str, Depends(oauth2_scheme)],
+) -> User:
+    try:
+        username = get_username_from_token(token)
+        if username is None:
+            raise UnauthorizedError(
+                "No user information found in the token", token, "E40100003"
+            )
+        else:
+            return us.get_one(
+                {"name": username, "is_disabled": False, "is_locked": False}
+            )
+    except ExpiredSignatureError:
+        raise UnauthorizedError("The token has expired", token, "E40100004")
+    except InvalidTokenError:
+        raise UnauthorizedError("Invalid token", token, "E40100005")
+    except HTTPException:
+        raise UnauthorizedError("user not found", token, "E40100006")

@@ -22,6 +22,7 @@ class LoginRequest(PasswordMixin, SQLModel):
 
     model_config = {
         "alias_generator": to_camel,
+        "populate_by_name": True,
         "json_schema_extra": {
             "examples": [
                 {
@@ -68,4 +69,6 @@ class TokenResponse(LoginFormResponse):
 
 
 class ProfileResponse(UserBase):
-    pass
+    is_disabled: bool | None = Field(exclude=True)
+    is_locked: bool | None = Field(exclude=True)
+    login_failed_times: int = Field(exclude=True)
