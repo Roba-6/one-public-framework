@@ -1,6 +1,7 @@
 from typing import Any, Dict
 
 from pydantic import computed_field
+from sqlmodel import Field
 
 from one_public_api.common.utility.str import to_camel
 from one_public_api.models.mixins.id_mixin import IdMixin
@@ -16,6 +17,9 @@ example_base: Dict[str, Any] = {
     "nickname": "Roba",
     "email": "test@test.com",
     "password": "password123",
+}
+
+example_response: Dict[str, Any] = {
     "isDisabled": False,
     "isLocked": False,
     "loginFailedTimes": 0,
@@ -38,7 +42,7 @@ class UserPublicResponse(UserBase, TimestampMixin, IdMixin):
     model_config = {
         "alias_generator": to_camel,
         "json_schema_extra": {
-            "examples": [{**example_base, **example_id}],
+            "examples": [{**example_base, **example_response, **example_id}],
         },
     }
 
@@ -47,6 +51,10 @@ class UserPublicResponse(UserBase, TimestampMixin, IdMixin):
 
 
 class UserCreateRequest(UserBase, PasswordMixin):
+    is_disabled: bool | None = Field(exclude=True)
+    is_locked: bool | None = Field(exclude=True)
+    login_failed_times: int = Field(exclude=True)
+
     model_config = {
         "alias_generator": to_camel,
         "populate_by_name": True,
@@ -66,6 +74,6 @@ class UserResponse(UserPublicResponse):
     model_config = {
         "alias_generator": to_camel,
         "json_schema_extra": {
-            "examples": [{**example_base, **example_id}],
+            "examples": [{**example_base, **example_response, **example_id}],
         },
     }

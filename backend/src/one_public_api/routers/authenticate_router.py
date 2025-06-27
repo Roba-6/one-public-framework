@@ -16,10 +16,12 @@ from one_public_api.schemas.authenticate_schema import (
     TokenResponse,
 )
 from one_public_api.schemas.response_schema import EmptyResponse, ResponseSchema
+from one_public_api.schemas.user_schema import UserCreateRequest
 from one_public_api.services.authenticate_service import (
     AuthenticateService,
     get_current_user,
 )
+from one_public_api.services.user_service import UserService
 
 public_router = APIRouter(route_class=BaseRoute)
 admin_router = APIRouter(
@@ -33,8 +35,13 @@ admin_router = APIRouter(
     summary=_("Sign Up"),
     response_model=ResponseSchema[EmptyResponse],
 )
-def signup_api() -> ResponseSchema[EmptyResponse]:
-    return create_response_data(EmptyResponse, None)
+def signup_api(
+    us: Annotated[UserService, Depends()],
+    data: UserCreateRequest,
+) -> ResponseSchema[EmptyResponse]:
+    us.add_one(User(**data.model_dump()))
+
+    return create_response_data(EmptyResponse)
 
 
 @public_router.post(
