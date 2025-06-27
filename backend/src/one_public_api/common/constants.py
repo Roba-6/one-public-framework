@@ -18,6 +18,14 @@ EXT_LOG = ".log"
 # SQLite File Extension
 EXT_SQLITE = ".sqlite3"
 
+# ----- Security Settings --------------------------------------------------------------
+# Access token expiration time (in minutes)
+ACCESS_TOKEN_EXPIRE = 15
+# Refresh token expiration time (in minutes)
+REFRESH_TOKEN_EXPIRE = 30 * 24 * 60
+# Algorithm used to sign the JWT tokens (e.g., HS256, RS256)
+JWT_ALGORITHM = "HS256"
+
 # File name for .env files
 FILES_ENV: List[str] = [".env", ".env.dev", ".env.test", ".env.stage", ".env.prod"]
 
@@ -67,6 +75,19 @@ ROUTER_COMMON_ADMIN = "/admin"
 # Common router path: admin with ID
 ROUTER_COMMON_ADMIN_WITH_ID = "/admin/{target_id}"
 
+# Signup API router path
+ROUTER_AUTH_SIGNUP = "/signup"
+# Login API router path
+ROUTER_AUTH_LOGIN = "/login"
+# Refresh Token API router path
+ROUTER_AUTH_REFRESH = "/refresh"
+# Profile API router path
+ROUTER_AUTH_PROFILE = "/me"
+# Logout API router path
+ROUTER_AUTH_LOGOUT = "/logout"
+
+# Path prefix for the authentication API router
+ROUTER_PREFIX_AUTHENTICATION = "/auth"
 # Path prefix for the configuration API router
 ROUTER_PREFIX_CONFIGURATION = "/configurations"
 # Path prefix for the user API router
@@ -95,6 +116,8 @@ CHAR_LOGO: str = (
 CHAR_PREFIX_ENV: str = "API_"
 # Newline character
 CHAR_NEW_LINE: str = "\n"
+# Key name used to store or retrieve the refresh token in cookies
+CHAR_REFRESH_TOKEN_KEY = "refresh_token"
 
 # Authenticate Header Name
 HEADER_NAME_AUTHENTICATE = "WWW-Authenticate"
@@ -111,6 +134,9 @@ MAX_LENGTH_100: int = 100
 MAX_LENGTH_255: int = 255
 MAX_LENGTH_500: int = 500
 MAX_LENGTH_1000: int = 1000
+
+# Maximum number of allowed failed login attempts before locking the account
+MAX_LOGIN_FAILED_TIMES: int = 5
 
 # ----- System Messages ----------------------------------------------------------------
 # Debug Messages

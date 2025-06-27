@@ -29,11 +29,14 @@ class DataUpdater:
     def one(
         self,
         before: T,
-        after: Dict[str, Any],
+        after: Dict[str, Any] | None = None,
     ) -> T:
-        for k in after.keys():
-            if after[k] is not None:
-                setattr(before, k, after[k])
+        if after is not None:
+            for k in after.keys():
+                if k == "id":
+                    continue
+                if after[k] is not None:
+                    setattr(before, k, after[k])
         self.session.add(before)
         self.session.flush()
 

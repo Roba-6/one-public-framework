@@ -35,6 +35,16 @@ class DataReader:
 
         return result
 
+    def one(self, model: Type[T], conditions: Dict[str, Any]) -> T:
+        statement: Any = select(model)
+        for k, v in conditions.items():
+            statement = statement.where(getattr(model, k) == v)
+        result: T | None = self.session.exec(statement).one_or_none()
+        if result is None:
+            raise HTTPException(status_code=404, detail="Not found")
+
+        return result
+
     def all(
         self,
         model: Type[T],

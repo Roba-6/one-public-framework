@@ -33,3 +33,34 @@ class APIError(HTTPException):
 
         msg_rsp = MessageSchema(code=code, message=message, detail=detail).model_dump()
         super().__init__(status_code=status_code, detail=msg_rsp, headers=self.headers)
+
+
+class DataError(APIError):
+    def __init__(
+        self,
+        message: str = "",
+        detail: Any | None = None,
+        code: str = "E40900000",
+        status_code: int = status.HTTP_409_CONFLICT,
+    ):
+        super().__init__(code, message, detail, status_code)
+
+
+class UnauthorizedError(APIError):
+    def __init__(
+        self,
+        message: str = "",
+        detail: Any | None = None,
+        code: str = "E40100000",
+    ):
+        super().__init__(code, message, detail, status.HTTP_401_UNAUTHORIZED)
+
+
+class ForbiddenError(APIError):
+    def __init__(
+        self,
+        message: str = "",
+        detail: Any | None = None,
+        code: str = "E40300000",
+    ):
+        super().__init__(code, message, detail, status.HTTP_403_FORBIDDEN)

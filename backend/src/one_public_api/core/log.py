@@ -17,7 +17,7 @@ from typing import TYPE_CHECKING, Dict, List
 import fastapi.logger
 
 from one_public_api.common import constants
-from one_public_api.common.utility.string import convert_text_logo
+from one_public_api.common.utility.str import convert_text_logo
 from one_public_api.core.settings import Settings, settings
 
 if TYPE_CHECKING:

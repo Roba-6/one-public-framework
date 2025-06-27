@@ -3,8 +3,10 @@ from typing import Any, AsyncGenerator, List
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.security import OAuth2PasswordBearer
 from sqlmodel import inspect
 
+from one_public_api.common import constants
 from one_public_api.common.init_data import (
     init_configurations,
     init_features,
@@ -72,3 +74,8 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, Any]:
     init_users(session)
 
     yield
+
+
+oauth2_scheme = OAuth2PasswordBearer(
+    tokenUrl=constants.ROUTER_PREFIX_AUTHENTICATION + constants.ROUTER_COMMON_BLANK
+)

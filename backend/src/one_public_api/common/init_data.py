@@ -3,7 +3,9 @@ from typing import Any, Dict, List
 from fastapi import FastAPI
 from sqlmodel import Session
 
+from one_public_api.common.utility.str import get_hashed_password
 from one_public_api.crud.data_creator import DataCreator
+from one_public_api.crud.data_updater import DataUpdater
 from one_public_api.models import Configuration, Feature, User
 from one_public_api.models.system.configuration_model import ConfigurationType
 from one_public_api.routers.base_route import BaseRoute
@@ -54,9 +56,16 @@ def init_features(app: FastAPI, session: Session) -> None:
 
 def init_users(session: Session) -> None:
     users: List[Dict[str, Any]] = [
-        {"name": "admin", "password": "<PASSWORD>", "email": "test@test.com"}
+        {
+            "name": "admin",
+            "email": "test@test.com",
+        }
     ]
 
     dc = DataCreator(session)
-    dc.all_if_not_exists(User, users)
+    user_list: List[User] = dc.all_if_not_exists(User, users)
+    du = DataUpdater(session)
+    for user in user_list:
+        user.password = get_hashed_password("<PASSWORD>")
+        du.one(user)
     session.commit()

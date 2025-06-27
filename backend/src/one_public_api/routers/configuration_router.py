@@ -17,14 +17,18 @@ from one_public_api.schemas.configuration_schema import (
     ConfigurationUpdateRequest,
 )
 from one_public_api.schemas.response_schema import ResponseSchema
+from one_public_api.services.authenticate_service import get_current_user
 from one_public_api.services.configuration_service import ConfigurationService
 
-router = APIRouter(route_class=BaseRoute)
+public_router = APIRouter(route_class=BaseRoute)
+admin_router = APIRouter(
+    route_class=BaseRoute, dependencies=[Depends(get_current_user)]
+)
 
 # ----- Public APIs --------------------------------------------------------------------
 
 
-@router.get(
+@public_router.get(
     constants.ROUTER_COMMON_BLANK,
     name="SYS-COF-P-LST",
     summary=_("List Public Configurations"),
@@ -64,7 +68,7 @@ def list_public_api(
 # ----- Admin APIs ---------------------------------------------------------------------
 
 
-@router.get(
+@admin_router.get(
     constants.ROUTER_COMMON_ADMIN,
     name="SYS-COF-A-LST",
     summary=_("List Configurations"),
@@ -79,7 +83,7 @@ def list_admin_api(
     )
 
 
-@router.post(
+@admin_router.post(
     constants.ROUTER_COMMON_ADMIN,
     name="SYS-COF-A-ADD",
     summary=_("Create Configuration"),
@@ -96,7 +100,7 @@ def create_admin_api(
     )
 
 
-@router.get(
+@admin_router.get(
     constants.ROUTER_COMMON_ADMIN_WITH_ID,
     name="SYS-COF-A-DTL",
     summary=_("Get Configuration"),
@@ -113,7 +117,7 @@ def retrieve_admin_api(
     )
 
 
-@router.put(
+@admin_router.put(
     constants.ROUTER_COMMON_ADMIN_WITH_ID,
     name="SYS-COF-A-UPD",
     summary=_("Update Configuration"),
@@ -128,12 +132,12 @@ def update_admin_api(
 ) -> ResponseSchema[ConfigurationResponse]:
     return create_response_data(
         ConfigurationResponse,
-        cs.update_one(target_id, Configuration(**data.model_dump())),
+        cs.update_one_by_id(target_id, Configuration(**data.model_dump())),
         detail=cs.detail,
     )
 
 
-@router.delete(
+@admin_router.delete(
     constants.ROUTER_COMMON_ADMIN_WITH_ID,
     name="SYS-COF-A-DEL",
     summary=_("Delete Configuration"),

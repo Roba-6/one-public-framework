@@ -1,15 +1,19 @@
-from typing import Any, List, Type, TypeVar
+from typing import Any, List, TypeVar
 
+import jwt
+from pydantic.generics import GenericModel
 from sqlmodel import SQLModel
 
+from one_public_api.common import constants
+from one_public_api.core import settings
 from one_public_api.schemas.response_schema import MessageSchema, ResponseSchema
 
 T = TypeVar("T", bound=SQLModel)
 
 
 def create_response_data(
-    schema: Type[T],
-    results: Any | List[Any] | None,
+    schema: GenericModel,
+    results: Any | List[Any] | None = None,
     count: int | None = None,
     detail: List[MessageSchema] | None = None,
 ) -> ResponseSchema[T]:
@@ -25,7 +29,7 @@ def create_response_data(
 
     Parameters
     ----------
-    schema : Type[T]
+    schema : GenericModel
         The schema model used to validate the provided results data. This should be
         callable with a
         `model_validate` method to perform validation.
@@ -49,9 +53,18 @@ def create_response_data(
 
     if type(results) is list:
         rst = [getattr(schema, "model_validate")(d) for d in results]
+    elif results is None:
+        rst = None
     else:
         rst = getattr(schema, "model_validate")(results)
 
     rsp: ResponseSchema[T] = ResponseSchema(results=rst, count=count, detail=detail)
 
     return rsp
+
+
+def get_username_from_token(token: str) -> str | None:
+    payload = jwt.decode(
+        token, settings.SECRET_KEY, algorithms=[constants.JWT_ALGORITHM]
+    )
+    return str(payload.get("sub")) if payload.get("sub") else None

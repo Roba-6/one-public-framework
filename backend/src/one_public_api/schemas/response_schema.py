@@ -1,10 +1,15 @@
 from typing import Any, Generic, List, TypeVar
 
 from pydantic import BaseModel, Field
+from sqlmodel import SQLModel
 
 from one_public_api.core import translate as _
 
 T = TypeVar("T")
+
+
+class EmptyResponse(SQLModel):
+    pass
 
 
 class MessageSchema(BaseModel):

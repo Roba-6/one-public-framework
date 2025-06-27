@@ -17,14 +17,18 @@ from one_public_api.schemas.user_schema import (
     UserResponse,
     UserUpdateRequest,
 )
+from one_public_api.services.authenticate_service import get_current_user
 from one_public_api.services.user_service import UserService
 
-router = APIRouter(route_class=BaseRoute)
+public_router = APIRouter(route_class=BaseRoute)
+admin_router = APIRouter(
+    route_class=BaseRoute, dependencies=[Depends(get_current_user)]
+)
 
 # ----- Public APIs --------------------------------------------------------------------
 
 
-@router.get(
+@public_router.get(
     constants.ROUTER_COMMON_BLANK,
     name="SYS-USR-P-LST",
     summary=_("List Public Users"),
@@ -42,7 +46,7 @@ def list_public_api(
 # ----- Admin APIs ---------------------------------------------------------------------
 
 
-@router.get(
+@admin_router.get(
     constants.ROUTER_COMMON_ADMIN,
     name="SYS-USR-A-LST",
     summary=_("List Users"),
@@ -55,7 +59,7 @@ def list_admin_api(
     return create_response_data(UserResponse, us.get_all(query), us.count, us.detail)
 
 
-@router.post(
+@admin_router.post(
     constants.ROUTER_COMMON_ADMIN,
     name="SYS-USR-A-ADD",
     summary=_("Create User"),
@@ -70,8 +74,7 @@ def create_admin_api(
     )
 
 
-#
-@router.get(
+@admin_router.get(
     constants.ROUTER_COMMON_ADMIN_WITH_ID,
     name="SYS-USR-A-DTL",
     summary=_("Get User"),
@@ -86,7 +89,7 @@ def retrieve_admin_api(
     )
 
 
-@router.put(
+@admin_router.put(
     constants.ROUTER_COMMON_ADMIN_WITH_ID,
     name="SYS-USR-A-UPD",
     summary=_("Update User"),
@@ -99,12 +102,12 @@ def update_admin_api(
 ) -> ResponseSchema[UserResponse]:
     return create_response_data(
         UserResponse,
-        us.update_one(target_id, User(**data.model_dump())),
+        us.update_one_by_id(target_id, User(**data.model_dump())),
         detail=us.detail,
     )
 
 
-@router.delete(
+@admin_router.delete(
     constants.ROUTER_COMMON_ADMIN_WITH_ID,
     name="SYS-USR-A-DEL",
     summary=_("Delete User"),
