@@ -31,6 +31,12 @@ def init_configurations(session: Session) -> None:
             "value": "Asia/Tokyo",
             "type": ConfigurationType.SYS,
         },
+        {
+            "name": "Language",
+            "key": "language",
+            "value": "en",
+            "type": ConfigurationType.SYS,
+        },
     ]
 
     dc = DataCreator(session)
