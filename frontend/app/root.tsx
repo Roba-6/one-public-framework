@@ -19,6 +19,7 @@ import Spinner from '~/common/components/atoms/spinner'
 import { ThemeProvider } from '~/common/components/theme-provider'
 import { ScrollArea, ScrollBar } from '~/common/components/ui/scroll-area'
 import { CONSTANT } from '~/common/constants'
+import type { Configuration } from '~/common/types/configuration'
 import { getApi } from '~/common/utils/http'
 import { useAppDispatch, useAppSelector } from '~/hooks/use-store'
 import { store } from '~/store'
@@ -117,10 +118,8 @@ const App = ({ loaderData }: Route.ComponentProps): React.ReactNode => {
 
   useEffect(() => {
     console.log('loaderData: ', loaderData)
-    setTimeout(() => {
-      dispatch(initState())
-      dispatch(loadComplete())
-    }, 3000)
+    dispatch(initState(loaderData?.results as Configuration[]))
+    dispatch(loadComplete())
   }, [])
 
   return (

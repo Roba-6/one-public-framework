@@ -1,28 +1,27 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import i18n from 'i18next'
 
+import type { Configuration } from '~/common/types/configuration'
 import { getEnv } from '~/common/utils/env'
 import type { RootState } from '~/store'
 
-export interface Configuration {
+export interface Setting {
   name: string
   language: string
-  api: string
 }
 
 /**
  * Interface of Application Status.
  */
 export interface AppState {
-  conf: Configuration
+  settings: Setting
   isLoading: boolean
 }
 
 const initialState: AppState = {
-  conf: {
+  settings: {
     name: getEnv('UI_NAME') as string,
     language: getEnv('UI_LANGUAGE') as string,
-    api: getEnv('UI_API') as string,
   },
   isLoading: true,
 }
@@ -39,16 +38,29 @@ export const appSlice = createSlice({
      * language for the i18n instance to ensure proper localization.
      *
      * @param {Object} state - The current application state object to be updated.
+     * @param {PayloadAction<Configuration[]>} action - An action containing the configuration data to initialize the state.
      */
-    initState: (state) => {
-      const lang = localStorage.getItem('language') as string
+    initState: (state, action: PayloadAction<Configuration[]>) => {
+      action.payload.forEach((item: Configuration) => {
+        switch (item.key) {
+          case 'app_name':
+            state.settings.name = item.value
+            break
+          case 'app_language':
+            state.settings.language = item.value
+            break
+        }
+      })
+      const lang = localStorage.getItem('language')
+        ? (localStorage.getItem('language') as string)
+        : state.settings.language
       void i18n.changeLanguage(lang)
-      state.conf.language = lang
+      state.settings.language = lang
     },
     changeLanguage: (state, action: PayloadAction<string>) => {
       localStorage.setItem('language', action.payload)
       void i18n.changeLanguage(action.payload)
-      state.conf.language = action.payload
+      state.settings.language = action.payload
     },
     loading: (state) => {
       state.isLoading = true
@@ -59,7 +71,7 @@ export const appSlice = createSlice({
   },
 })
 
-export const selectLanguage = (state: RootState) => state.app.conf.language
+export const selectLanguage = (state: RootState) => state.app.settings.language
 export const selectIsLoading = (state: RootState) => state.app.isLoading
 export const { initState, changeLanguage, loading, loadComplete } = appSlice.actions
 export default appSlice.reducer
