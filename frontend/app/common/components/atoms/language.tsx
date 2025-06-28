@@ -1,7 +1,7 @@
 import { Select, type SelectItemProps } from '@radix-ui/react-select'
 import React, { useEffect } from 'react'
 
-import { changeLanguage } from '~/common/app-slice'
+import { changeLanguage, selectLanguage } from '~/common/app-slice'
 import {
   SelectContent,
   SelectItem,
@@ -11,7 +11,6 @@ import {
 import { CONSTANT } from '~/common/constants'
 import { getLocalMessage } from '~/common/utils/env'
 import { useAppDispatch, useAppSelector } from '~/hooks/use-store'
-import type { RootState } from '~/store'
 
 const Language = (): React.ReactNode => {
   const LANGUAGES: SelectItemProps[] = Object.keys(CONSTANT.LANGUAGE_RESOURCES).map(
@@ -22,11 +21,9 @@ const Language = (): React.ReactNode => {
       } as SelectItemProps
     }
   )
-  const languageFromRedux: string = useAppSelector(
-    (state: RootState): string => state.app.conf.language
-  )
+  const languageFromStore: string = useAppSelector(selectLanguage)
   const dispatch = useAppDispatch()
-  const [currentLang, setCurrentLang] = React.useState<string>(languageFromRedux)
+  const [currentLang, setCurrentLang] = React.useState<string>(languageFromStore)
 
   const changeCurrentLanguage = (lang: string): void => {
     dispatch(changeLanguage(lang))
@@ -34,9 +31,9 @@ const Language = (): React.ReactNode => {
   }
 
   useEffect(() => {
-    console.log('Current language: ', languageFromRedux)
-    // setCurrentLang(languageFromRedux)
-  }, [languageFromRedux])
+    console.log('Current language: ', languageFromStore)
+    // setCurrentLang(languageFromStore)
+  }, [languageFromStore])
 
   return (
     <Select defaultValue={currentLang} onValueChange={changeCurrentLanguage}>

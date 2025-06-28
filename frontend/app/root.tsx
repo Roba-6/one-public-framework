@@ -18,6 +18,8 @@ import { initState, loadComplete, selectIsLoading } from '~/common/app-slice'
 import Spinner from '~/common/components/atoms/spinner'
 import { ThemeProvider } from '~/common/components/theme-provider'
 import { ScrollArea, ScrollBar } from '~/common/components/ui/scroll-area'
+import { CONSTANT } from '~/common/constants'
+import { getApi } from '~/common/utils/http'
 import { useAppDispatch, useAppSelector } from '~/hooks/use-store'
 import { store } from '~/store'
 
@@ -96,16 +98,25 @@ export const ErrorBoundary = ({ error }: Route.ErrorBoundaryProps): React.ReactN
   )
 }
 
+export const loader = async () => {
+  try {
+    return await getApi(CONSTANT.API_URL_CONFIGURATION)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 /**
  * Application Component
  *
  * @constructor
  */
-const App = (): React.ReactNode => {
+const App = ({ loaderData }: Route.ComponentProps): React.ReactNode => {
   const isLoading = useAppSelector(selectIsLoading)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
+    console.log('loaderData: ', loaderData)
     setTimeout(() => {
       dispatch(initState())
       dispatch(loadComplete())

@@ -6,7 +6,6 @@ import type { RootState } from '~/store'
 
 export interface Configuration {
   name: string
-  url: string
   language: string
   api: string
 }
@@ -22,7 +21,6 @@ export interface AppState {
 const initialState: AppState = {
   conf: {
     name: getEnv('UI_NAME') as string,
-    url: getEnv('UI_URL') as string,
     language: getEnv('UI_LANGUAGE') as string,
     api: getEnv('UI_API') as string,
   },
