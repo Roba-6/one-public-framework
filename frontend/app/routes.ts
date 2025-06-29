@@ -9,6 +9,7 @@ import {
 export default [
   index('common/pages/home-page.tsx'),
   route('welcome', 'common/pages/welcome-page.tsx'),
+  route('login', 'common/pages/login-page.tsx'),
   layout('common/pages/admin-page.tsx', [
     ...prefix('admin', [
       index('common/pages/dashboard-page.tsx'),
