@@ -8,6 +8,7 @@ from one_public_api.models.mixins.id_mixin import IdMixin
 from one_public_api.models.mixins.password_mixin import PasswordMixin
 from one_public_api.models.mixins.timestamp_mixin import TimestampMixin
 from one_public_api.models.system.user_model import UserBase
+from one_public_api.schemas.response_schema import example_id
 
 example_base: Dict[str, Any] = {
     "name": "user-123",
@@ -24,8 +25,6 @@ example_response: Dict[str, Any] = {
     "isLocked": False,
     "loginFailedTimes": 0,
 }
-
-example_id: Dict[str, Any] = {"id": "t83eb523-0a9e-4136-9602-f16a35c9525a"}
 
 
 # ----- Public Schemas -----------------------------------------------------------------

@@ -88,6 +88,8 @@ ROUTER_AUTH_LOGOUT = "/logout"
 
 # Path prefix for the authentication API router
 ROUTER_PREFIX_AUTHENTICATION = "/auth"
+# Path prefix for the feature API router
+ROUTER_PREFIX_FEATURE = "/features"
 # Path prefix for the configuration API router
 ROUTER_PREFIX_CONFIGURATION = "/configurations"
 # Path prefix for the user API router

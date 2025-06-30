@@ -1,34 +1,31 @@
 from typing import Any, Dict
 
+from pydantic import computed_field
+
 from one_public_api.common.utility.str import to_camel
 from one_public_api.models.mixins.id_mixin import IdMixin
 from one_public_api.models.mixins.timestamp_mixin import TimestampMixin
-from one_public_api.models.system.configuration_model import ConfigurationBase
+from one_public_api.models.system.feature_model import FeatureBase
 from one_public_api.schemas.response_schema import example_audit, example_id
-from one_public_api.schemas.user_schema import UserPublicResponse
 
 example_base: Dict[str, Any] = {
-    "name": "Time Zone",
-    "key": "time_zone",
-    "value": "America/New_York",
-    "type": 1,
-    "description": "The time zone in which the application is running.",
-    "options": {
-        "type": "select",
-        "values": [
-            {"name": "America/New York", "value": "America/New_York"},
-            {"name": "Asia/Tokyo", "value": "Asia/Tokyo"},
-        ],
-    },
+    "name": "SYS-COF-P-LST",
+    "description": "List Public Configurations.",
+    "is_enabled": True,
+    "requires_auth": False,
 }
 
 
 # ----- Public Schemas -----------------------------------------------------------------
 
 
-class ConfigurationPublicResponse(ConfigurationBase, TimestampMixin, IdMixin):
-    options: Dict[str, Any] = {}
-    user: UserPublicResponse | None
+class FeaturePublicResponse(FeatureBase, IdMixin):
+    @computed_field
+    def category(self) -> str | None:
+        if self.name is None:
+            return None
+        else:
+            return self.name[:7]
 
     model_config = {
         "alias_generator": to_camel,
@@ -41,9 +38,7 @@ class ConfigurationPublicResponse(ConfigurationBase, TimestampMixin, IdMixin):
 # ----- Admin Schemas ------------------------------------------------------------------
 
 
-class ConfigurationCreateRequest(ConfigurationBase):
-    options: Dict[str, Any] = {}
-
+class FeatureCreateRequest(FeatureBase):
     model_config = {
         "alias_generator": to_camel,
         "populate_by_name": True,
@@ -51,9 +46,7 @@ class ConfigurationCreateRequest(ConfigurationBase):
     }
 
 
-class ConfigurationUpdateRequest(ConfigurationBase):
-    options: Dict[str, Any] = {}
-
+class FeatureUpdateRequest(FeatureBase):
     model_config = {
         "alias_generator": to_camel,
         "populate_by_name": True,
@@ -61,7 +54,7 @@ class ConfigurationUpdateRequest(ConfigurationBase):
     }
 
 
-class ConfigurationResponse(ConfigurationBase, TimestampMixin, IdMixin):
+class FeatureResponse(FeaturePublicResponse, TimestampMixin):
     options: Dict[str, Any] = {}
 
     model_config = {

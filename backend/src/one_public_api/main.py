@@ -6,6 +6,7 @@ from one_public_api.core import translate as _
 from one_public_api.routers import (
     authenticate_router,
     configuration_router,
+    feature_router,
     user_router,
 )
 
@@ -37,6 +38,19 @@ app.include_router(
     prefix=constants.ROUTER_PREFIX_CONFIGURATION,
     tags=[_("Configurations")],
 )
+
+app.include_router(
+    router=feature_router.public_router,
+    prefix=constants.ROUTER_PREFIX_FEATURE,
+    tags=[_("Features")],
+)
+
+app.include_router(
+    router=feature_router.admin_router,
+    prefix=constants.ROUTER_PREFIX_FEATURE,
+    tags=[_("Features")],
+)
+
 
 app.include_router(
     router=authenticate_router.public_router,

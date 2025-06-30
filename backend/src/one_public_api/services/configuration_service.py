@@ -4,7 +4,8 @@ from typing import Annotated, List
 from fastapi.params import Depends
 from sqlmodel import Session
 
-from one_public_api.core import get_session, get_translator
+from one_public_api.core import get_session
+from one_public_api.core.i18n import get_translator
 from one_public_api.models import Configuration
 from one_public_api.services.base_service import BaseService
 

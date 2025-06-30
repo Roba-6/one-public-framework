@@ -5,7 +5,7 @@ from pydantic.generics import GenericModel
 from sqlmodel import SQLModel
 
 from one_public_api.common import constants
-from one_public_api.core import settings
+from one_public_api.core.settings import settings
 from one_public_api.schemas.response_schema import MessageSchema, ResponseSchema
 
 T = TypeVar("T", bound=SQLModel)

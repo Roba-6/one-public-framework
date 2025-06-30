@@ -1,4 +1,3 @@
-from pydantic import computed_field
 from sqlmodel import Field, Relationship, SQLModel
 
 from one_public_api.common import constants
@@ -31,13 +30,6 @@ class FeatureBase(SQLModel):
             "A Boolean flag indicating whether the feature requires authentication."
         ),
     )
-
-    @computed_field
-    def category(self) -> str | None:
-        if self.name is None:
-            return None
-        else:
-            return self.name[:7]
 
 
 class Feature(FeatureBase, TimestampMixin, MaintenanceMixin, IdMixin, table=True):
