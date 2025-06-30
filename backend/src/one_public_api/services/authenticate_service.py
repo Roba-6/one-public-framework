@@ -13,9 +13,11 @@ from sqlmodel import Session
 from one_public_api.common import constants
 from one_public_api.common.tools import get_username_from_token
 from one_public_api.common.utility.str import to_camel
-from one_public_api.core import get_session, get_translator, settings
+from one_public_api.core import get_session
 from one_public_api.core.exceptions import APIError, ForbiddenError, UnauthorizedError
 from one_public_api.core.extensions import oauth2_scheme
+from one_public_api.core.i18n import get_translator
+from one_public_api.core.settings import settings
 from one_public_api.models import User
 from one_public_api.schemas.authenticate_schema import LoginRequest
 from one_public_api.services.base_service import BaseService

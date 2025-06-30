@@ -3,7 +3,7 @@ from typing import Any, Dict, Generic, List, TypeVar
 from pydantic import BaseModel, Field
 from sqlmodel import SQLModel
 
-from one_public_api.core import translate as _
+from one_public_api.core.i18n import translate as _
 
 T = TypeVar("T")
 
