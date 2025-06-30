@@ -21,7 +21,7 @@ class FeatureService(BaseService[Feature]):
     ):
         super().__init__(session, translator)
 
-    def get_all(self, query: QueryParam) -> List[Feature]:
+    def get_all_public(self, query: QueryParam) -> List[Feature]:
         (data, self.count) = self.dr.all(
             self.model, query, self.search_columns, {"is_enabled": True}
         )

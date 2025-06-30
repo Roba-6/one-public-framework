@@ -1,5 +1,7 @@
 from typing import Any, Dict
 
+from pydantic import computed_field
+
 from one_public_api.common.utility.str import to_camel
 from one_public_api.models.mixins.id_mixin import IdMixin
 from one_public_api.models.mixins.timestamp_mixin import TimestampMixin
@@ -18,6 +20,13 @@ example_base: Dict[str, Any] = {
 
 
 class FeaturePublicResponse(FeatureBase, IdMixin):
+    @computed_field
+    def category(self) -> str | None:
+        if self.name is None:
+            return None
+        else:
+            return self.name[:7]
+
     model_config = {
         "alias_generator": to_camel,
         "json_schema_extra": {
@@ -45,7 +54,7 @@ class FeatureUpdateRequest(FeatureBase):
     }
 
 
-class FeatureResponse(FeatureBase, TimestampMixin, IdMixin):
+class FeatureResponse(FeaturePublicResponse, TimestampMixin):
     options: Dict[str, Any] = {}
 
     model_config = {
