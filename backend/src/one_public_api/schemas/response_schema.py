@@ -1,4 +1,4 @@
-from typing import Any, Generic, List, TypeVar
+from typing import Any, Dict, Generic, List, TypeVar
 
 from pydantic import BaseModel, Field
 from sqlmodel import SQLModel
@@ -6,6 +6,16 @@ from sqlmodel import SQLModel
 from one_public_api.core import translate as _
 
 T = TypeVar("T")
+
+
+example_id: Dict[str, Any] = {"id": "a83ab523-0a9e-4136-9602-f16a35c955a6"}
+
+example_audit: Dict[str, Any] = {
+    "createdBy": "a83ab523-0a9e-4136-9602-f16a35c955a6",
+    "createdAt": "2023-01-01T00:00:00+00:00",
+    "updatedBy": "a83ab523-0a9e-4136-9602-f16a35c955a6",
+    "updatedAt": "2023-01-01T00:00:00+00:00",
+}
 
 
 class EmptyResponse(SQLModel):

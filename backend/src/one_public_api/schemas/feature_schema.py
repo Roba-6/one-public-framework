@@ -2,7 +2,9 @@ from typing import Any, Dict
 
 from one_public_api.common.utility.str import to_camel
 from one_public_api.models.mixins.id_mixin import IdMixin
+from one_public_api.models.mixins.timestamp_mixin import TimestampMixin
 from one_public_api.models.system.feature_model import FeatureBase
+from one_public_api.schemas.response_schema import example_audit, example_id
 
 example_base: Dict[str, Any] = {
     "name": "SYS-COF-P-LST",
@@ -10,8 +12,6 @@ example_base: Dict[str, Any] = {
     "is_enabled": True,
     "requires_auth": False,
 }
-
-example_id: Dict[str, Any] = {"id": "a83ab523-0a9e-4136-9602-f16a35c955a6"}
 
 
 # ----- Public Schemas -----------------------------------------------------------------
@@ -22,5 +22,35 @@ class FeaturePublicResponse(FeatureBase, IdMixin):
         "alias_generator": to_camel,
         "json_schema_extra": {
             "examples": [{**example_base, **example_id}],
+        },
+    }
+
+
+# ----- Admin Schemas ------------------------------------------------------------------
+
+
+class FeatureCreateRequest(FeatureBase):
+    model_config = {
+        "alias_generator": to_camel,
+        "populate_by_name": True,
+        "json_schema_extra": {"examples": [example_base]},
+    }
+
+
+class FeatureUpdateRequest(FeatureBase):
+    model_config = {
+        "alias_generator": to_camel,
+        "populate_by_name": True,
+        "json_schema_extra": {"examples": [example_base]},
+    }
+
+
+class FeatureResponse(FeatureBase, TimestampMixin, IdMixin):
+    options: Dict[str, Any] = {}
+
+    model_config = {
+        "alias_generator": to_camel,
+        "json_schema_extra": {
+            "examples": [{**example_base, **example_audit, **example_id}],
         },
     }

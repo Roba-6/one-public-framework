@@ -1,3 +1,5 @@
+from typing import Any, Dict
+
 from sqlmodel import Field, SQLModel
 
 from one_public_api.common import constants
@@ -5,6 +7,12 @@ from one_public_api.common.utility.str import to_camel
 from one_public_api.core.i18n import translate as _
 from one_public_api.models.mixins.password_mixin import PasswordMixin
 from one_public_api.models.system.user_model import UserBase
+
+example_base: Dict[str, Any] = {
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIs"
+    "ImV4cCI6MTc1MTE2MTY0NX0.SKtu8mzzviAtvPJaDFIqI2-kZzHSHa_6Y-kWHgCkVBA",
+    "token_type": "Bearer",
+}
 
 
 class LoginRequest(PasswordMixin, SQLModel):
@@ -40,14 +48,7 @@ class LoginFormResponse(SQLModel):
 
     model_config = {
         "json_schema_extra": {
-            "examples": [
-                {
-                    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJh"
-                    "ZG1pbiIsImV4cCI6MTc1MTE2MTY0NX0.SKtu8mzzviAtvPJaD"
-                    "FIqI2-kZzHSHa_6Y-kWHgCkVBA",
-                    "token_type": "Bearer",
-                }
-            ],
+            "examples": [{**example_base}],
         },
     }
 
@@ -56,14 +57,7 @@ class TokenResponse(LoginFormResponse):
     model_config = {
         "alias_generator": to_camel,
         "json_schema_extra": {
-            "examples": [
-                {
-                    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJh"
-                    "ZG1pbiIsImV4cCI6MTc1MTE2MTY0NX0.SKtu8mzzviAtvPJaD"
-                    "FIqI2-kZzHSHa_6Y-kWHgCkVBA",
-                    "tokenType": "Bearer",
-                }
-            ],
+            "examples": [{**example_base}],
         },
     }
 
