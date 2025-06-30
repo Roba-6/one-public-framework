@@ -1,10 +1,24 @@
 import gettext
 import re
+from gettext import GNUTranslations
 
 from fastapi import Request
 
 from one_public_api.common import constants
 from one_public_api.core.settings import settings
+
+
+def get_language_from_request_header(request: Request) -> GNUTranslations:
+    lang = request.headers.get(constants.HEADER_NAME_LANGUAGE, settings.LANGUAGE)
+    lang = re.split(r"[;,]", lang)[0]
+    translator = gettext.translation(
+        domain="messages",
+        localedir=constants.PATH_LOCALES,
+        languages=[lang],
+    )
+    translator.install()
+
+    return translator
 
 
 def get_translator(request: Request) -> gettext.NullTranslations:
@@ -32,18 +46,8 @@ def get_translator(request: Request) -> gettext.NullTranslations:
         object if the translation file for the language is not available.
     """
 
-    lang = request.headers.get(constants.HEADER_NAME_LANGUAGE, settings.LANGUAGE)
-    lang = re.split(r"[;,]", lang)[0]
-
     try:
-        translator = gettext.translation(
-            domain="messages",
-            localedir=constants.PATH_LOCALES,
-            languages=[lang],
-        )
-        translator.install()
-
-        return translator
+        return get_language_from_request_header(request)
 
     except FileNotFoundError:
         return gettext.NullTranslations()

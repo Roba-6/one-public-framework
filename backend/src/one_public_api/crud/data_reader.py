@@ -50,6 +50,7 @@ class DataReader:
         model: Type[T],
         query: QueryParam,
         search_target: List[str] | None = None,
+        conditions: Dict[str, Any] | None = None,
     ) -> Tuple[List[T], int]:
         statement: Any = select(model)
         count_statement: Any = select(func.count()).select_from(model)
@@ -65,6 +66,10 @@ class DataReader:
                     kw_col_list.append(col(getattr(model, column)).like(f"%{keyword}%"))
             statement = statement.where(or_(*kw_col_list))
             count_statement = count_statement.where(or_(*kw_col_list))
+        if conditions is not None and len(conditions) > 0:
+            for k, v in conditions.items():
+                statement = statement.where(getattr(model, k) == v)
+                count_statement = count_statement.where(getattr(model, k) == v)
         if query.offset is not None:
             statement = statement.offset(query.offset)
         if query.limit is not None:

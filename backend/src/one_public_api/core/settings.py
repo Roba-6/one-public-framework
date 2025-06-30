@@ -21,6 +21,8 @@ class Settings(BaseSettings):
     ----------
     LANGUAGE : str
         Default language for the application.
+    FEATURE_CONTROL : bool
+        Flag to verify feature accessibility.
     CORS_ORIGINS : List[str]
         List of allowed origins for CORS.
     SECRET_KEY : str
@@ -83,6 +85,7 @@ class Settings(BaseSettings):
     )
 
     LANGUAGE: str = constants.DEFAULT_LANGUAGE
+    FEATURE_CONTROL: bool = False
     CORS_ORIGINS: List[str] = []
 
     SECRET_KEY: str = ""
