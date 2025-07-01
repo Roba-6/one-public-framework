@@ -1,3 +1,5 @@
+import glob
+import importlib.util
 from contextlib import asynccontextmanager
 from typing import Any, AsyncGenerator, List
 
@@ -47,6 +49,23 @@ def initialize(app: FastAPI) -> None:
             allow_methods=["*"],
             allow_headers=["*"],
         )
+
+
+def load_router(app: FastAPI, input_dir: str) -> None:
+    for file in glob.glob(input_dir, recursive=True):
+        spec = importlib.util.spec_from_file_location("routers", file)
+        if spec:
+            mod = importlib.util.module_from_spec(spec)
+            if spec.loader and mod:
+                spec.loader.exec_module(mod)
+                if hasattr(mod, "public_router"):
+                    app.include_router(
+                        mod.public_router, prefix=mod.prefix, tags=mod.tags
+                    )
+                if hasattr(mod, "admin_router"):
+                    app.include_router(
+                        mod.admin_router, prefix=mod.prefix, tags=mod.tags
+                    )
 
 
 @asynccontextmanager
