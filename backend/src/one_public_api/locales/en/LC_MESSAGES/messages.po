@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-06-26 21:50+0900\n"
+"POT-Creation-Date: 2025-07-01 19:31+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -19,28 +19,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: src/one_public_api/main.py:13
+#: src/one_public_api/main.py:11
 msgid "One Public API"
 msgstr ""
 
-#: src/one_public_api/main.py:18 src/one_public_api/main.py:33
+#: src/one_public_api/main.py:16
+#: src/one_public_api/routers/configuration_router.py:28
 msgid "Configurations"
 msgstr ""
 
-#: src/one_public_api/main.py:19
+#: src/one_public_api/main.py:17
 msgid "configuration description"
 msgstr ""
 
-#: src/one_public_api/main.py:22 src/one_public_api/main.py:45
+#: src/one_public_api/main.py:20 src/one_public_api/routers/user_router.py:28
 msgid "Users"
 msgstr ""
 
-#: src/one_public_api/main.py:23
+#: src/one_public_api/main.py:21
 msgid "user description"
-msgstr ""
-
-#: src/one_public_api/main.py:39
-msgid "Authentications"
 msgstr ""
 
 #: src/one_public_api/common/query_param.py:36
@@ -113,7 +110,7 @@ msgid "The type of configuration, represented as an enum."
 msgstr ""
 
 #: src/one_public_api/models/system/configuration_model.py:66
-#: src/one_public_api/models/system/feature_model.py:22
+#: src/one_public_api/models/system/feature_model.py:21
 msgid "Additional details or explanation about the configuration."
 msgstr ""
 
@@ -127,29 +124,29 @@ msgstr ""
 msgid "The owner of this configuration item."
 msgstr ""
 
-#: src/one_public_api/models/system/feature_model.py:17
-#: src/one_public_api/models/system/feature_model.py:50
+#: src/one_public_api/models/system/feature_model.py:16
+#: src/one_public_api/models/system/feature_model.py:42
 msgid "The name of the feature."
 msgstr ""
 
-#: src/one_public_api/models/system/feature_model.py:26
-#: src/one_public_api/models/system/feature_model.py:54
+#: src/one_public_api/models/system/feature_model.py:25
+#: src/one_public_api/models/system/feature_model.py:46
 msgid "A Boolean flag indicating whether the feature is enabled."
 msgstr ""
 
-#: src/one_public_api/models/system/feature_model.py:31
-#: src/one_public_api/models/system/feature_model.py:59
+#: src/one_public_api/models/system/feature_model.py:30
+#: src/one_public_api/models/system/feature_model.py:51
 msgid "A Boolean flag indicating whether the feature requires authentication."
 msgstr ""
 
 #: src/one_public_api/models/system/user_model.py:17
-#: src/one_public_api/models/system/user_model.py:63
-#: src/one_public_api/schemas/authenticate_schema.py:14
+#: src/one_public_api/models/system/user_model.py:64
+#: src/one_public_api/schemas/authenticate_schema.py:22
 msgid "The name of the user."
 msgstr ""
 
 #: src/one_public_api/models/system/user_model.py:22
-#: src/one_public_api/models/system/user_model.py:68
+#: src/one_public_api/models/system/user_model.py:69
 msgid "The email address of the user."
 msgstr ""
 
@@ -166,174 +163,226 @@ msgid "The nickname of the user."
 msgstr ""
 
 #: src/one_public_api/models/system/user_model.py:41
-#: src/one_public_api/models/system/user_model.py:72
+#: src/one_public_api/models/system/user_model.py:73
 msgid "A Boolean flag indicating whether the user is disabled."
 msgstr ""
 
 #: src/one_public_api/models/system/user_model.py:45
-#: src/one_public_api/models/system/user_model.py:76
+#: src/one_public_api/models/system/user_model.py:77
 msgid "A Boolean flag indicating whether the user is locked."
 msgstr ""
 
 #: src/one_public_api/models/system/user_model.py:50
-#: src/one_public_api/models/system/user_model.py:81
+#: src/one_public_api/models/system/user_model.py:82
 msgid "Tracks the number of consecutive failed login attempts for the user."
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:24
+#: src/one_public_api/routers/authenticate_router.py:31
+msgid "Authentications"
+msgstr ""
+
+#: src/one_public_api/routers/authenticate_router.py:37
 msgid "Sign Up"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:34
+#: src/one_public_api/routers/authenticate_router.py:52
 msgid "Login"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:48
+#: src/one_public_api/routers/authenticate_router.py:66
 msgid "Refresh Token"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:61
+#: src/one_public_api/routers/authenticate_router.py:79
 msgid "Get Profile"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:74
+#: src/one_public_api/routers/authenticate_router.py:94
 msgid "Logout"
 msgstr ""
 
-#: src/one_public_api/routers/base_route.py:16
+#: src/one_public_api/routers/authenticate_router.py:109
+msgid "Login Form"
+msgstr ""
+
+#: src/one_public_api/routers/base_route.py:22
 msgid "PROCESSING_STARTED"
 msgstr "[%s] Processing Started"
 
-#: src/one_public_api/routers/base_route.py:22
+#: src/one_public_api/routers/base_route.py:31
 msgid "PROCESSING_COMPLETED"
 msgstr "[%s] Processing Completed (%.3f seconds)"
 
-#: src/one_public_api/routers/configuration_router.py:30
+#: src/one_public_api/routers/base_route.py:42
+msgid "Feature is disabled"
+msgstr ""
+
+#: src/one_public_api/routers/base_route.py:47
+msgid "Feature not found."
+msgstr ""
+
+#: src/one_public_api/routers/configuration_router.py:36
 msgid "List Public Configurations"
 msgstr ""
 
-#: src/one_public_api/routers/configuration_router.py:70
+#: src/one_public_api/routers/configuration_router.py:76
 msgid "List Configurations"
 msgstr ""
 
-#: src/one_public_api/routers/configuration_router.py:85
+#: src/one_public_api/routers/configuration_router.py:91
 msgid "Create Configuration"
 msgstr ""
 
-#: src/one_public_api/routers/configuration_router.py:102
+#: src/one_public_api/routers/configuration_router.py:108
 msgid "Get Configuration"
 msgstr ""
 
-#: src/one_public_api/routers/configuration_router.py:108
+#: src/one_public_api/routers/configuration_router.py:114
 msgid "The ID of the configuration item to be retrieved"
 msgstr ""
 
-#: src/one_public_api/routers/configuration_router.py:119
+#: src/one_public_api/routers/configuration_router.py:125
 msgid "Update Configuration"
 msgstr ""
 
-#: src/one_public_api/routers/configuration_router.py:126
+#: src/one_public_api/routers/configuration_router.py:132
 msgid "The ID of the configuration item to be updated"
 msgstr ""
 
-#: src/one_public_api/routers/configuration_router.py:139
+#: src/one_public_api/routers/configuration_router.py:145
 msgid "Delete Configuration"
 msgstr ""
 
-#: src/one_public_api/routers/configuration_router.py:145
-#: src/one_public_api/routers/user_router.py:116
+#: src/one_public_api/routers/configuration_router.py:151
+#: src/one_public_api/routers/user_router.py:121
 msgid "The ID of the configuration item to be deleted"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:30
+#: src/one_public_api/routers/feature_router.py:28
+msgid "Features"
+msgstr ""
+
+#: src/one_public_api/routers/feature_router.py:54
+msgid "List Features"
+msgstr ""
+
+#: src/one_public_api/routers/feature_router.py:67
+msgid "Create Feature"
+msgstr ""
+
+#: src/one_public_api/routers/feature_router.py:82
+msgid "Get Feature"
+msgstr ""
+
+#: src/one_public_api/routers/feature_router.py:87
+msgid "The ID of the feature item to be retrieved"
+msgstr ""
+
+#: src/one_public_api/routers/feature_router.py:97
+msgid "Update Feature"
+msgstr ""
+
+#: src/one_public_api/routers/feature_router.py:103
+msgid "The ID of the feature item to be updated"
+msgstr ""
+
+#: src/one_public_api/routers/feature_router.py:115
+msgid "Delete Feature"
+msgstr ""
+
+#: src/one_public_api/routers/feature_router.py:120
+msgid "The ID of the feature item to be deleted"
+msgstr ""
+
+#: src/one_public_api/routers/user_router.py:36
 msgid "List Public Users"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:48
+#: src/one_public_api/routers/user_router.py:54
 msgid "List Users"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:62
+#: src/one_public_api/routers/user_router.py:67
 msgid "Create User"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:77
+#: src/one_public_api/routers/user_router.py:82
 msgid "Get User"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:82
+#: src/one_public_api/routers/user_router.py:87
 msgid "The ID of the user to be retrieved"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:92
+#: src/one_public_api/routers/user_router.py:97
 msgid "Update User"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:98
+#: src/one_public_api/routers/user_router.py:103
 msgid "The ID of the user to be updated"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:110
+#: src/one_public_api/routers/user_router.py:115
 msgid "Delete User"
 msgstr ""
 
-#: src/one_public_api/schemas/authenticate_schema.py:19
+#: src/one_public_api/schemas/authenticate_schema.py:27
 msgid "A Boolean flag indicating whether the user should be remembered."
 msgstr ""
 
-#: src/one_public_api/schemas/authenticate_schema.py:37
+#: src/one_public_api/schemas/authenticate_schema.py:46
 msgid "The access token."
 msgstr ""
 
-#: src/one_public_api/schemas/authenticate_schema.py:38
+#: src/one_public_api/schemas/authenticate_schema.py:47
 msgid "The type of the token."
 msgstr ""
 
-#: src/one_public_api/schemas/response_schema.py:16
+#: src/one_public_api/schemas/response_schema.py:26
 msgid "Message Code"
 msgstr ""
 
-#: src/one_public_api/schemas/response_schema.py:17
+#: src/one_public_api/schemas/response_schema.py:27
 msgid "Message of the response"
 msgstr ""
 
-#: src/one_public_api/schemas/response_schema.py:18
+#: src/one_public_api/schemas/response_schema.py:28
 msgid "Detail of the response"
 msgstr ""
 
-#: src/one_public_api/schemas/response_schema.py:23
+#: src/one_public_api/schemas/response_schema.py:33
 msgid "Results of the request"
 msgstr ""
 
-#: src/one_public_api/schemas/response_schema.py:25
+#: src/one_public_api/schemas/response_schema.py:35
 msgid "Count of the results"
 msgstr ""
 
-#: src/one_public_api/schemas/response_schema.py:27
+#: src/one_public_api/schemas/response_schema.py:37
 msgid "Messages of the request"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:35
-msgid "user disabled"
-msgstr ""
-
-#: src/one_public_api/services/authenticate_service.py:39
-msgid "user locked"
-msgstr ""
-
-#: src/one_public_api/services/authenticate_service.py:47
+#: src/one_public_api/services/authenticate_service.py:51
 msgid "user not verified"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:77
+#: src/one_public_api/services/authenticate_service.py:86
 msgid "user not found"
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:75
-#: src/one_public_api/services/user_service.py:30
+#: src/one_public_api/services/authenticate_service.py:119
+msgid "user disabled"
+msgstr ""
+
+#: src/one_public_api/services/authenticate_service.py:121
+msgid "user locked"
+msgstr ""
+
+#: src/one_public_api/services/base_service.py:77
+#: src/one_public_api/services/user_service.py:31
 msgid "Data already exists."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:105
+#: src/one_public_api/services/base_service.py:107
 msgid "This record might be referenced by other data."
 msgstr ""

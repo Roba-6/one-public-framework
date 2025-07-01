@@ -1,4 +1,5 @@
 # ===== Constant Definitions ===========================================================
+import importlib.resources
 import os
 from pathlib import Path
 from typing import List, Tuple
@@ -35,6 +36,8 @@ FOLDER_LOCALES: str = "locales"
 FOLDER_LOGS: str = "logs"
 # Root folder of the source code
 FOLDER_SRC: str = "src"
+# Root folder of the OPA
+FOLDER_OPA: str = "one_public_api"
 
 # Absolute Path of Application directory
 PATH_APP: str = str(Path(__file__).resolve().parent.parent.parent.parent.parent)
@@ -42,8 +45,12 @@ PATH_APP: str = str(Path(__file__).resolve().parent.parent.parent.parent.parent)
 PATH_ROOT: str = str(Path(__file__).resolve().parent.parent.parent.parent)
 # Absolute Path of log directory
 PATH_LOG: str = os.path.join(PATH_APP, FOLDER_LOGS)
+# Absolute Path of src directory
+PATH_SRC: str = os.path.join(PATH_ROOT, FOLDER_SRC)
+# Absolute Path of OPA directory
+PATH_OPA = importlib.resources.files("one_public_api")
 # Absolute Path of language package directory
-PATH_LOCALES: str = os.path.join(PATH_ROOT, FOLDER_LOCALES)
+PATH_LOCALES = PATH_OPA.joinpath(FOLDER_LOCALES)
 # Environment File Path
 # Files listed later have higher priority; earlier ones are ignored if multiple exists.
 PATHS_ENV: Tuple[str, ...] = tuple(os.path.join(PATH_APP, env) for env in FILES_ENV)

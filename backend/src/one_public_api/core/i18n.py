@@ -13,7 +13,7 @@ def get_language_from_request_header(request: Request) -> GNUTranslations:
     lang = re.split(r"[;,]", lang)[0]
     translator = gettext.translation(
         domain="messages",
-        localedir=constants.PATH_LOCALES,
+        localedir=str(constants.PATH_LOCALES),
         languages=[lang],
     )
     translator.install()
@@ -56,7 +56,7 @@ def get_translator(request: Request) -> gettext.NullTranslations:
 # i18n for log messages
 translate = _ = gettext.translation(
     "messages",
-    localedir=constants.PATH_LOCALES,
+    localedir=str(constants.PATH_LOCALES),
     languages=[settings.LOG_LANGUAGE],
     fallback=True,
 ).gettext
