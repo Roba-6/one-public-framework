@@ -105,7 +105,7 @@ def logout_api(
 
 @public_router.post(
     constants.ROUTER_COMMON_BLANK,
-    name="SYS-ATH-P-LGN",
+    name="SYS-ATH-P-LNF",
     summary=_("Login Form"),
     response_model=LoginFormResponse,
 )
