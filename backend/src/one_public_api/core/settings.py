@@ -57,7 +57,7 @@ class Settings(BaseSettings):
         dynamically based on configuration settings.
     LOG_LEVEL : str
         Logging level for application logs.
-    LOG_LANGUAGE : str
+    LANGUAGE : str
         Language for log messages.
     LOG_NAME : str
         Name of the log file.
@@ -84,7 +84,7 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    LANGUAGE: str = constants.DEFAULT_LANGUAGE
+    RESPONSE_LANGUAGE: str = constants.DEFAULT_LANGUAGE
     FEATURE_CONTROL: bool = False
     CORS_ORIGINS: List[str] = []
 
@@ -111,7 +111,7 @@ class Settings(BaseSettings):
         return self.create_db_uri(True)
 
     LOG_LEVEL: str = constants.LOG_DEFAULT_LEVEL
-    LOG_LANGUAGE: str = constants.DEFAULT_LANGUAGE
+    LANGUAGE: str = constants.DEFAULT_LANGUAGE
     LOG_NAME: str = constants.LOG_DEFAULT_NAME
     LOG_ROTATING_WHEN: str = constants.LOG_DEFAULT_ROTATING_WHEN
     LOG_ROTATING_BACKUP_COUNT: int = constants.LOG_DEFAULT_ROTATING_BACKUP_COUNT

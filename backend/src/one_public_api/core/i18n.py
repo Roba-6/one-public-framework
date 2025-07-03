@@ -9,7 +9,9 @@ from one_public_api.core.settings import settings
 
 
 def get_language_from_request_header(request: Request) -> GNUTranslations:
-    lang = request.headers.get(constants.HEADER_NAME_LANGUAGE, settings.LANGUAGE)
+    lang = request.headers.get(
+        constants.HEADER_NAME_LANGUAGE, settings.RESPONSE_LANGUAGE
+    )
     lang = re.split(r"[;,]", lang)[0]
     translator = gettext.translation(
         domain="messages",
@@ -37,7 +39,7 @@ def get_translator(request: Request) -> gettext.NullTranslations:
         The HTTP request object which contains headers, including the language
         header. The language is retrieved from the header specified by
         `constants.HEADER_NAME_LANGUAGE`, with a fallback to the default language
-        defined in `settings.LANGUAGE`.
+        defined in `settings.RESPONSE_LANGUAGE`.
 
     Returns
     -------
@@ -57,6 +59,6 @@ def get_translator(request: Request) -> gettext.NullTranslations:
 translate = _ = gettext.translation(
     "messages",
     localedir=str(constants.PATH_LOCALES),
-    languages=[settings.LOG_LANGUAGE],
+    languages=[settings.LANGUAGE],
     fallback=True,
 ).gettext
