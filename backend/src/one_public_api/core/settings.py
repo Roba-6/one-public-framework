@@ -19,6 +19,8 @@ class Settings(BaseSettings):
 
     Attributes
     ----------
+    TITLE : str
+        The application name.
     LANGUAGE : str
         Default language for the application.
     FEATURE_CONTROL : bool
@@ -84,6 +86,7 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
+    TITLE: str = ""
     RESPONSE_LANGUAGE: str = constants.DEFAULT_LANGUAGE
     FEATURE_CONTROL: bool = False
     CORS_ORIGINS: List[str] = []
