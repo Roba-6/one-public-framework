@@ -5,6 +5,7 @@ from gettext import GNUTranslations
 from fastapi import Request
 
 from one_public_api.common import constants
+from one_public_api.common.utility.files import is_path_exists
 from one_public_api.core.settings import settings
 
 
@@ -18,6 +19,14 @@ def get_language_from_request_header(request: Request) -> GNUTranslations:
         localedir=str(constants.PATH_LOCALES),
         languages=[lang],
     )
+    if is_path_exists(settings.LOCALES_PATH):
+        translator.add_fallback(
+            gettext.translation(
+                domain="messages",
+                localedir=settings.LOCALES_PATH,
+                languages=[lang],
+            )
+        )
     translator.install()
 
     return translator
@@ -56,9 +65,18 @@ def get_translator(request: Request) -> gettext.NullTranslations:
 
 
 # i18n for log messages
-translate = _ = gettext.translation(
+translate_api = gettext.translation(
     "messages",
     localedir=str(constants.PATH_LOCALES),
     languages=[settings.LANGUAGE],
     fallback=True,
-).gettext
+)
+translate_ext = gettext.translation(
+    "messages",
+    localedir=settings.LOCALES_PATH,
+    languages=[settings.LANGUAGE],
+    fallback=True,
+)
+translate_api.add_fallback(translate_ext)
+
+translate = _ = translate_api.gettext

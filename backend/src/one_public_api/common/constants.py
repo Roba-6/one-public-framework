@@ -8,6 +8,8 @@ from typing import List, Tuple
 VERSION: str = "0.1.0-alpha"
 # Default Language
 DEFAULT_LANGUAGE: str = "en"
+# Default path for locale files
+DEFAULT_LOCALES_PATH: str = "locales"
 
 # ----- Encoding Constants -------------------------------------------------------------
 # Encoding format: UTF-8
@@ -105,6 +107,8 @@ ROUTER_PREFIX_USER = "/users"
 # ----- Log Settings -------------------------------------------------------------------
 # Default logging level for the API.
 LOG_DEFAULT_LEVEL: str = "DEBUG"
+# Default path for the log files.
+LOG_DEFAULT_PATH: str = "logs/"
 # Default name for the logger instance.
 LOG_DEFAULT_NAME: str = "api"
 # Defines the rotation policy for log files.
