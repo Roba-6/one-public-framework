@@ -20,7 +20,7 @@ from one_public_api.schemas.response_schema import ResponseSchema
 from one_public_api.services.authenticate_service import get_current_user
 from one_public_api.services.configuration_service import ConfigurationService
 
-public_router = APIRouter(route_class=BaseRoute, prefix="/configuration")
+public_router = APIRouter(route_class=BaseRoute)
 admin_router = APIRouter(
     route_class=BaseRoute, dependencies=[Depends(get_current_user)]
 )
