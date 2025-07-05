@@ -9,69 +9,70 @@ from one_public_api.common import constants
 
 class Settings(BaseSettings):
     """
-    Configuration settings for the application.
+    Settings configuration class for application.
 
-    This class provides a mechanism to manage configurations for the application,
-    including database settings, logging options, and environment-specific values
-    as defined in external files. It allows for the seamless integration of runtime
-    configuration options using environment variables. Additionally, it includes
-    methods to dynamically generate computed fields for database and logging settings.
+    This class is used to manage runtime configurations and environment-specific
+    settings for a Python application. It supports configuration of environment
+    variables and default values. The class also provides computed fields and
+    validators for dynamic attributes or specific preprocessing of the attributes.
 
     Attributes
     ----------
-    LANGUAGE : str
-        Default language for the application.
+    TITLE : str
+        Title of the application.
+    RESPONSE_LANGUAGE : str
+        Default response language for the application.
+    LOCALES_PATH : str
+        Path to localization files.
+    FEATURE_CONTROL : bool
+        Flag to enable or disable feature control.
     CORS_ORIGINS : List[str]
-        List of allowed origins for CORS.
+        List of allowed origins for Cross-Origin Resource Sharing (CORS).
+
     SECRET_KEY : str
-        Secret key.
+        Secret key for cryptographic operations.
     ACCESS_TOKEN_EXPIRE : int
-        Access token expiration time (in minutes)
+        Expiration time (in seconds) for access tokens.
     REFRESH_TOKEN_EXPIRE : int
-        Refresh token expiration time (in minutes)
+        Expiration time (in seconds) for refresh tokens.
+
     DB_ENGINE : str
-        Engine type for the database (e.g., 'sqlite3', 'postgresql').
+        Database engine to use (e.g. sqlite3, postgresql).
     DB_HOST : str
-        Hostname of the database server.
+        Host address for the database server.
     DB_PORT : int
         Port number for the database server.
     DB_NAME : str
         Name of the database.
     DB_USER : str
-        Username for authenticating with the database.
+        Username for the database authentication.
     DB_PASS : str
-        Password for authenticating with the database.
+        Password for the database authentication.
     DB_MAX_OVERFLOW_SIZE : int
         Maximum overflow size for the database connection pool.
     DB_POOL_SIZE : int
         Size of the database connection pool.
     DB_TIMEOUT : int
         Timeout duration for database connections.
-    db_uri : PostgresDsn or str
-        Fully constructed database URI for synchronous database engines, calculated
-        dynamically based on configuration settings.
-    async_db_uri : PostgresDsn or str
-        Fully constructed database URI for asynchronous database engines, calculated
-        dynamically based on configuration settings.
+
+    LANGUAGE : str
+        Application language setting.
     LOG_LEVEL : str
-        Logging level for application logs.
-    LOG_LANGUAGE : str
-        Language for log messages.
+        Default logging level.
+    LOG_PATH : str
+        Path for storing log files.
     LOG_NAME : str
-        Name of the log file.
+        Name of the log files.
     LOG_ROTATING_WHEN : str
-        Scheduling interval for rotating logs (e.g., 'daily').
+        Condition for rotating the log files (e.g., time interval).
     LOG_ROTATING_BACKUP_COUNT : int
-        Number of backup files to retain for rotated logs.
+        Number of backup log files to keep when rotating logs.
     LOG_FORMAT : str
-        Format string for log messages.
+        Format of the logs.
     LOG_CONSOLE : bool
-        Flag to determine if logs should also be printed to the console.
-    log_file_path : str
-        Absolute path to the generated log files, calculated dynamically based on
-        logging configuration.
+        Flag to enable or disable console logging.
     LOG_ECHO_SQL : bool
-        Flag indicating whether SQL statements should be echoed in the logs.
+        Flag to enable or disable SQL query logging for debugging purposes.
     """
 
     model_config = SettingsConfigDict(
@@ -82,7 +83,10 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    LANGUAGE: str = constants.DEFAULT_LANGUAGE
+    TITLE: str = ""
+    RESPONSE_LANGUAGE: str = constants.DEFAULT_LANGUAGE
+    LOCALES_PATH: str = constants.DEFAULT_LOCALES_PATH
+    FEATURE_CONTROL: bool = False
     CORS_ORIGINS: List[str] = []
 
     SECRET_KEY: str = ""
@@ -107,8 +111,9 @@ class Settings(BaseSettings):
     def async_db_uri(self) -> PostgresDsn | str:
         return self.create_db_uri(True)
 
+    LANGUAGE: str = constants.DEFAULT_LANGUAGE
     LOG_LEVEL: str = constants.LOG_DEFAULT_LEVEL
-    LOG_LANGUAGE: str = constants.DEFAULT_LANGUAGE
+    LOG_PATH: str = constants.LOG_DEFAULT_PATH
     LOG_NAME: str = constants.LOG_DEFAULT_NAME
     LOG_ROTATING_WHEN: str = constants.LOG_DEFAULT_ROTATING_WHEN
     LOG_ROTATING_BACKUP_COUNT: int = constants.LOG_DEFAULT_ROTATING_BACKUP_COUNT
@@ -118,15 +123,15 @@ class Settings(BaseSettings):
     @computed_field
     def log_file_path(self) -> str:
         """
-        Create an absolute path to the log files.
+        Create a path to the log files.
 
         Returns
         -------
         path: str
-            absolute path of log files
+            path of log files
         """
 
-        return os.path.join(constants.PATH_LOG, self.LOG_NAME + constants.EXT_LOG)
+        return os.path.join(self.LOG_PATH + self.LOG_NAME + constants.EXT_LOG)
 
     LOG_ECHO_SQL: bool = False
 
@@ -152,7 +157,7 @@ class Settings(BaseSettings):
             return (
                 f"{scheme}:///{self.DB_NAME}"
                 if self.DB_NAME == ":memory:"
-                else f"{scheme}:///{constants.PATH_APP}/{self.DB_NAME}"
+                else f"{scheme}:///{self.DB_NAME}"
             )
         else:
             raise ValueError(constants.MSG_E0010001 % self.DB_ENGINE)

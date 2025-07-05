@@ -1,11 +1,14 @@
-from typing import Any, List, TypeVar
+import glob
+import importlib.util
+from typing import Any, Awaitable, Callable, List, TypeVar, cast
 
 import jwt
+from fastapi import Request, Response
 from pydantic.generics import GenericModel
 from sqlmodel import SQLModel
 
 from one_public_api.common import constants
-from one_public_api.core import settings
+from one_public_api.core.settings import settings
 from one_public_api.schemas.response_schema import MessageSchema, ResponseSchema
 
 T = TypeVar("T", bound=SQLModel)
@@ -68,3 +71,26 @@ def get_username_from_token(token: str) -> str | None:
         token, settings.SECRET_KEY, algorithms=[constants.JWT_ALGORITHM]
     )
     return str(payload.get("sub")) if payload.get("sub") else None
+
+
+def load_route_handler(
+    input_dir: str, module_name: str, handler_name: str
+) -> (
+    Callable[[Request, Callable[[Request], Awaitable[Response]]], Awaitable[Response]]
+    | None
+):
+    for file in glob.glob(input_dir, recursive=True):
+        spec = importlib.util.spec_from_file_location(module_name, file)
+        if spec:
+            mod = importlib.util.module_from_spec(spec)
+            if spec.loader and mod:
+                spec.loader.exec_module(mod)
+                return cast(
+                    Callable[
+                        [Request, Callable[[Request], Awaitable[Response]]],
+                        Awaitable[Response],
+                    ],
+                    getattr(mod, handler_name),
+                )
+
+    return None

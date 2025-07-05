@@ -4,16 +4,16 @@ from typing import Annotated, List
 from fastapi.params import Depends
 from sqlmodel import Session
 
+from one_public_api.common.query_param import QueryParam
 from one_public_api.core import get_session
-from one_public_api.core.exceptions import DataError
 from one_public_api.core.i18n import get_translator
-from one_public_api.models import User
+from one_public_api.models import Feature
 from one_public_api.services.base_service import BaseService
 
 
-class UserService(BaseService[User]):
-    search_columns: List[str] = ["name", "firstname", "lastname", "nickname", "email"]
-    model = User
+class FeatureService(BaseService[Feature]):
+    search_columns: List[str] = ["name"]
+    model = Feature
 
     def __init__(
         self,
@@ -22,11 +22,9 @@ class UserService(BaseService[User]):
     ):
         super().__init__(session, translator)
 
-    def add_one(self, data: User) -> User:
-        try:
-            return super().add_one(data)
-        except DataError:
-            del data.password
-            raise DataError(
-                self._("Data already exists."), data.model_dump_json(), "E40900003"
-            )
+    def get_all_public(self, query: QueryParam) -> List[Feature]:
+        (data, self.count) = self.dr.all(
+            self.model, query, self.search_columns, {"is_enabled": True}
+        )
+
+        return data
