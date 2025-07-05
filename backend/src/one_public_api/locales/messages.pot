@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-07-01 19:31+0900\n"
+"POT-Creation-Date: 2025-07-05 14:53+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,25 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: src/one_public_api/main.py:11
-msgid "One Public API"
-msgstr ""
-
-#: src/one_public_api/main.py:16
-#: src/one_public_api/routers/configuration_router.py:28
-msgid "Configurations"
-msgstr ""
-
-#: src/one_public_api/main.py:17
-msgid "configuration description"
-msgstr ""
-
-#: src/one_public_api/main.py:20 src/one_public_api/routers/user_router.py:28
-msgid "Users"
-msgstr ""
-
-#: src/one_public_api/main.py:21
-msgid "user description"
+#: src/one_public_api/main.py:10
+msgid "API TITLE"
 msgstr ""
 
 #: src/one_public_api/common/query_param.py:36
@@ -58,11 +41,11 @@ msgstr ""
 msgid "API_ERROR_OCCURRED"
 msgstr ""
 
-#: src/one_public_api/core/extensions.py:41
+#: src/one_public_api/core/extensions.py:43
 msgid "D0010001"
 msgstr ""
 
-#: src/one_public_api/core/extensions.py:71
+#: src/one_public_api/core/extensions.py:90
 msgid "D0010002"
 msgstr ""
 
@@ -203,20 +186,24 @@ msgstr ""
 msgid "Login Form"
 msgstr ""
 
-#: src/one_public_api/routers/base_route.py:22
+#: src/one_public_api/routers/base_route.py:34
 msgid "PROCESSING_STARTED"
 msgstr ""
 
-#: src/one_public_api/routers/base_route.py:31
+#: src/one_public_api/routers/base_route.py:43
 msgid "PROCESSING_COMPLETED"
 msgstr ""
 
-#: src/one_public_api/routers/base_route.py:42
+#: src/one_public_api/routers/base_route.py:54
 msgid "Feature is disabled"
 msgstr ""
 
-#: src/one_public_api/routers/base_route.py:47
+#: src/one_public_api/routers/base_route.py:59
 msgid "Feature not found."
+msgstr ""
+
+#: src/one_public_api/routers/configuration_router.py:28
+msgid "Configurations"
 msgstr ""
 
 #: src/one_public_api/routers/configuration_router.py:36
@@ -290,6 +277,10 @@ msgstr ""
 
 #: src/one_public_api/routers/feature_router.py:120
 msgid "The ID of the feature item to be deleted"
+msgstr ""
+
+#: src/one_public_api/routers/user_router.py:28
+msgid "Users"
 msgstr ""
 
 #: src/one_public_api/routers/user_router.py:36

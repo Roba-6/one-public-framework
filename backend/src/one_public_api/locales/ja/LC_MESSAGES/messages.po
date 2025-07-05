@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-07-01 19:31+0900\n"
+"POT-Creation-Date: 2025-07-05 14:53+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -19,26 +19,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: src/one_public_api/main.py:11
-msgid "One Public API"
+#: src/one_public_api/main.py:10
+msgid "API TITLE"
 msgstr ""
-
-#: src/one_public_api/main.py:16
-#: src/one_public_api/routers/configuration_router.py:28
-msgid "Configurations"
-msgstr "設定"
-
-#: src/one_public_api/main.py:17
-msgid "configuration description"
-msgstr "設定項目管理するための機能です。"
-
-#: src/one_public_api/main.py:20 src/one_public_api/routers/user_router.py:28
-msgid "Users"
-msgstr "ユーザー"
-
-#: src/one_public_api/main.py:21
-msgid "user description"
-msgstr "ユーザー管理するための機能です。"
 
 #: src/one_public_api/common/query_param.py:36
 msgid "Offset from where to start"
@@ -60,11 +43,11 @@ msgstr ""
 msgid "API_ERROR_OCCURRED"
 msgstr "【%s】%s： %s"
 
-#: src/one_public_api/core/extensions.py:41
+#: src/one_public_api/core/extensions.py:43
 msgid "D0010001"
-msgstr "【D0010001】設定込み込み： %(settings)s"
+msgstr "【D0010001】設定読み込み： %(settings)s"
 
-#: src/one_public_api/core/extensions.py:71
+#: src/one_public_api/core/extensions.py:90
 msgid "D0010002"
 msgstr "【D0010002】 テーブル一覧（%(number)d）： %(tables)s"
 
@@ -203,23 +186,27 @@ msgstr ""
 
 #: src/one_public_api/routers/authenticate_router.py:109
 msgid "Login Form"
-msgstr ""
+msgstr "ログインフォーム"
 
-#: src/one_public_api/routers/base_route.py:22
+#: src/one_public_api/routers/base_route.py:34
 msgid "PROCESSING_STARTED"
 msgstr "【%s】処理開始"
 
-#: src/one_public_api/routers/base_route.py:31
+#: src/one_public_api/routers/base_route.py:43
 msgid "PROCESSING_COMPLETED"
 msgstr "【%s】処理完了（%.3f 秒）"
 
-#: src/one_public_api/routers/base_route.py:42
+#: src/one_public_api/routers/base_route.py:54
 msgid "Feature is disabled"
-msgstr ""
+msgstr "機能が無効になっています。"
 
-#: src/one_public_api/routers/base_route.py:47
+#: src/one_public_api/routers/base_route.py:59
 msgid "Feature not found."
-msgstr ""
+msgstr "機能が見つかりません。"
+
+#: src/one_public_api/routers/configuration_router.py:28
+msgid "Configurations"
+msgstr "設定"
 
 #: src/one_public_api/routers/configuration_router.py:36
 msgid "List Public Configurations"
@@ -260,44 +247,43 @@ msgstr ""
 
 #: src/one_public_api/routers/feature_router.py:28
 msgid "Features"
-msgstr ""
+msgstr "機能"
 
 #: src/one_public_api/routers/feature_router.py:54
-#, fuzzy
 msgid "List Features"
-msgstr "ユーザー一覧"
+msgstr "機能一覧"
 
 #: src/one_public_api/routers/feature_router.py:67
-#, fuzzy
 msgid "Create Feature"
-msgstr "ユーザー作成"
+msgstr "機能作成"
 
 #: src/one_public_api/routers/feature_router.py:82
-#, fuzzy
 msgid "Get Feature"
-msgstr "ユーザー確認"
+msgstr "機能確認"
 
 #: src/one_public_api/routers/feature_router.py:87
 msgid "The ID of the feature item to be retrieved"
 msgstr ""
 
 #: src/one_public_api/routers/feature_router.py:97
-#, fuzzy
 msgid "Update Feature"
-msgstr "ユーザー変更"
+msgstr "機能変更"
 
 #: src/one_public_api/routers/feature_router.py:103
 msgid "The ID of the feature item to be updated"
 msgstr ""
 
 #: src/one_public_api/routers/feature_router.py:115
-#, fuzzy
 msgid "Delete Feature"
-msgstr "ユーザー削除"
+msgstr "機能削除"
 
 #: src/one_public_api/routers/feature_router.py:120
 msgid "The ID of the feature item to be deleted"
 msgstr ""
+
+#: src/one_public_api/routers/user_router.py:28
+msgid "Users"
+msgstr "ユーザー"
 
 #: src/one_public_api/routers/user_router.py:36
 msgid "List Public Users"
@@ -345,7 +331,7 @@ msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:26
 msgid "Message Code"
-msgstr ""
+msgstr "メッセージコード"
 
 #: src/one_public_api/schemas/response_schema.py:27
 msgid "Message of the response"
@@ -369,24 +355,24 @@ msgstr ""
 
 #: src/one_public_api/services/authenticate_service.py:51
 msgid "user not verified"
-msgstr ""
+msgstr "ユーザーが確認されていません。"
 
 #: src/one_public_api/services/authenticate_service.py:86
 msgid "user not found"
-msgstr ""
+msgstr "ユーザーが見つかりません。"
 
 #: src/one_public_api/services/authenticate_service.py:119
 msgid "user disabled"
-msgstr ""
+msgstr "ユーザーが無効になっています。"
 
 #: src/one_public_api/services/authenticate_service.py:121
 msgid "user locked"
-msgstr ""
+msgstr "ユーザーがロックされています。"
 
 #: src/one_public_api/services/base_service.py:77
 #: src/one_public_api/services/user_service.py:31
 msgid "Data already exists."
-msgstr ""
+msgstr "データは既に存在します。"
 
 #: src/one_public_api/services/base_service.py:107
 msgid "This record might be referenced by other data."
