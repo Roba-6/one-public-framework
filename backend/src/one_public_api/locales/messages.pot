@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-07-05 14:53+0900\n"
+"POT-Creation-Date: 2025-07-05 22:07+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,7 +61,7 @@ msgstr ""
 msgid "The ID of the user who last updated the record."
 msgstr ""
 
-#: src/one_public_api/models/mixins/password_mixin.py:11
+#: src/one_public_api/models/mixins/password_mixin.py:10
 msgid "The hashed password of the user."
 msgstr ""
 
