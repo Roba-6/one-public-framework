@@ -1,3 +1,5 @@
+import type { Token } from '~/common/types/authenticate'
+
 export interface Message {
   code: string | null
   message: string
@@ -9,3 +11,5 @@ export interface CommonResponse {
   count: number | null
   detail: Message[] | null
 }
+
+export type ResponseData = Token

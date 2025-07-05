@@ -21,7 +21,12 @@ import {
 } from '~/common/components/ui/form'
 import { Input } from '~/common/components/ui/input'
 import { CONSTANT } from '~/common/constants'
-import { LoginFormSchema } from '~/common/types/authenticate'
+import {
+  type Login,
+  LoginFormSchema,
+  type LoginRequest,
+  type Token,
+} from '~/common/types/authenticate'
 import { getLocalMessage } from '~/common/utils/env'
 import { postApi } from '~/common/utils/http'
 import { cn } from '~/lib/utils'
@@ -32,9 +37,9 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
     defaultValues: { username: '', password: '' },
   })
 
-  const submitForm = (values: object) => {
+  const submitForm = (values: Login) => {
     console.debug(values)
-    postApi(CONSTANT.API_URL.LOGIN, values).then((res) => {
+    postApi(CONSTANT.API_URL.LOGIN, values as LoginRequest).then((res: Token) => {
       console.debug(res)
     })
   }

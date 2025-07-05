@@ -7,6 +7,7 @@ import axios, {
 import qs from 'qs'
 
 import { CONSTANT } from '~/common/constants'
+import type { ResponseData } from '~/common/types/response'
 import type { CommonResponse } from '~/common/types/response'
 import { getEnv } from '~/common/utils/env'
 
@@ -90,22 +91,22 @@ export const deleteApi = (
   url: string,
   data?: object,
   config?: AxiosRequestConfig
-): Promise<object> => axiosInstance.delete(url, { data, ...config })
+): Promise<ResponseData> => axiosInstance.delete(url, { data, ...config })
 
 export const postApi = (
   url: string,
   data?: object,
   config?: AxiosRequestConfig
-): Promise<object> => axiosInstance.post(url, data, config)
+): Promise<ResponseData> => axiosInstance.post(url, data, config)
 
 export const putApi = (
   url: string,
   data?: object,
   config?: AxiosRequestConfig
-): Promise<object> => axiosInstance.put(url, data, config)
+): Promise<ResponseData> => axiosInstance.put(url, data, config)
 
 export const patchApi = (
   url: string,
   data?: object,
   config?: AxiosRequestConfig
-): Promise<object> => axiosInstance.patch(url, data, config)
+): Promise<ResponseData> => axiosInstance.patch(url, data, config)
