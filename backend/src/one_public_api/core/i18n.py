@@ -5,17 +5,28 @@ from gettext import GNUTranslations
 from fastapi import Request
 
 from one_public_api.common import constants
+from one_public_api.common.utility.files import is_path_exists
 from one_public_api.core.settings import settings
 
 
 def get_language_from_request_header(request: Request) -> GNUTranslations:
-    lang = request.headers.get(constants.HEADER_NAME_LANGUAGE, settings.LANGUAGE)
+    lang = request.headers.get(
+        constants.HEADER_NAME_LANGUAGE, settings.RESPONSE_LANGUAGE
+    )
     lang = re.split(r"[;,]", lang)[0]
     translator = gettext.translation(
         domain="messages",
-        localedir=constants.PATH_LOCALES,
+        localedir=str(constants.PATH_LOCALES),
         languages=[lang],
     )
+    if is_path_exists(settings.LOCALES_PATH):
+        translator.add_fallback(
+            gettext.translation(
+                domain="messages",
+                localedir=settings.LOCALES_PATH,
+                languages=[lang],
+            )
+        )
     translator.install()
 
     return translator
@@ -37,7 +48,7 @@ def get_translator(request: Request) -> gettext.NullTranslations:
         The HTTP request object which contains headers, including the language
         header. The language is retrieved from the header specified by
         `constants.HEADER_NAME_LANGUAGE`, with a fallback to the default language
-        defined in `settings.LANGUAGE`.
+        defined in `settings.RESPONSE_LANGUAGE`.
 
     Returns
     -------
@@ -54,9 +65,18 @@ def get_translator(request: Request) -> gettext.NullTranslations:
 
 
 # i18n for log messages
-translate = _ = gettext.translation(
+translate_api = gettext.translation(
     "messages",
-    localedir=constants.PATH_LOCALES,
-    languages=[settings.LOG_LANGUAGE],
+    localedir=str(constants.PATH_LOCALES),
+    languages=[settings.LANGUAGE],
     fallback=True,
-).gettext
+)
+translate_ext = gettext.translation(
+    "messages",
+    localedir=settings.LOCALES_PATH,
+    languages=[settings.LANGUAGE],
+    fallback=True,
+)
+translate_api.add_fallback(translate_ext)
+
+translate = _ = translate_api.gettext

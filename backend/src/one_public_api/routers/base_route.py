@@ -4,6 +4,7 @@ from typing import Any, Callable, Coroutine
 from fastapi import HTTPException, Request, Response, status
 from fastapi.routing import APIRoute
 
+from one_public_api.common.tools import load_route_handler
 from one_public_api.core.database import session
 from one_public_api.core.exceptions import DataError, ForbiddenError
 from one_public_api.core.i18n import get_language_from_request_header
@@ -19,18 +20,29 @@ class BaseRoute(APIRoute):
         base_route_handler = super().get_route_handler()
 
         async def handler(request: Request) -> Response:
-            logger.info(_("PROCESSING_STARTED") % self.name)
-            start_time = time()
+            custom_handler = load_route_handler(
+                "custom_route/*.py",
+                "custom_route",
+                "custom_handler",
+            )
 
-            if settings.FEATURE_CONTROL:
-                await self.is_feature_enabled(request)
+            response: Response
+            if custom_handler:
+                # When using a common router handler defined by the user.
+                return await custom_handler(request, base_route_handler)
+            else:
+                logger.info(_("PROCESSING_STARTED") % self.name)
+                start_time = time()
 
-            response: Response = await base_route_handler(request)
+                if settings.FEATURE_CONTROL:
+                    await self.is_feature_enabled(request)
 
-            duration_time = time() - start_time
-            logger.info(_("PROCESSING_COMPLETED") % (self.name, duration_time))
+                response = await base_route_handler(request)
 
-            return response
+                duration_time = time() - start_time
+                logger.info(_("PROCESSING_COMPLETED") % (self.name, duration_time))
+
+                return response
 
         return handler
 
