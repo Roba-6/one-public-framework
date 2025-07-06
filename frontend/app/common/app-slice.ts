@@ -15,6 +15,7 @@ export interface Setting {
  */
 export interface AppState {
   settings: Setting
+  accessToken: string
   isLoading: boolean
 }
 
@@ -23,6 +24,7 @@ const initialState: AppState = {
     name: getEnv('UI_NAME') as string,
     language: getEnv('UI_LANGUAGE') as string,
   },
+  accessToken: '',
   isLoading: true,
 }
 
@@ -56,6 +58,7 @@ export const appSlice = createSlice({
         : state.settings.language
       void i18n.changeLanguage(lang)
       state.settings.language = lang
+      state.accessToken = localStorage.getItem('accessToken') as string
     },
     changeLanguage: (state, action: PayloadAction<string>) => {
       localStorage.setItem('language', action.payload)
@@ -68,10 +71,20 @@ export const appSlice = createSlice({
     loadComplete: (state) => {
       state.isLoading = false
     },
+    setAccessToken: (state, action: PayloadAction<string>) => {
+      if (action.payload === '') {
+        localStorage.removeItem('accessToken')
+      } else {
+        localStorage.setItem('accessToken', action.payload)
+      }
+      state.accessToken = action.payload
+    },
   },
 })
 
 export const selectLanguage = (state: RootState) => state.app.settings.language
 export const selectIsLoading = (state: RootState) => state.app.isLoading
-export const { initState, changeLanguage, loading, loadComplete } = appSlice.actions
+export const selectAccessToken = (state: RootState) => state.app.accessToken
+export const { initState, changeLanguage, loading, loadComplete, setAccessToken } =
+  appSlice.actions
 export default appSlice.reducer

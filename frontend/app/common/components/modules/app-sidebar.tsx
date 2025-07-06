@@ -10,6 +10,7 @@ import {
 } from 'lucide-react'
 import React from 'react'
 
+import { NavUser } from '~/common/components/modules/nav-user'
 import {
   Sidebar,
   SidebarContent,
@@ -91,7 +92,15 @@ const AppSidebar = () => {
           <SidebarGroupContent></SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>Footer</SidebarFooter>
+      <SidebarFooter>
+        <NavUser
+          user={{
+            name: 'shadcn',
+            email: 'm@example.com',
+            avatar: '/avatars/shadcn.jpg',
+          }}
+        />
+      </SidebarFooter>
     </Sidebar>
   )
 }
