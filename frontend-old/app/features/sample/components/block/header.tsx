@@ -2,8 +2,9 @@ import '~/common/styles/component.css'
 
 import React from 'react'
 
-import GoHome from '~/common/components/modules/go-home'
 import { ModeToggle } from '~/common/components/modules/mode-toggle'
+
+import GoHome from '../../../../../../frontend/src/components/modules/go-home'
 
 const Header = (): React.ReactNode => {
   return (

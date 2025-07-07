@@ -1,10 +1,11 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import Language from '~/common/components/atoms/language'
-import Logo from '~/common/components/atoms/logo'
-import GoHome from '~/common/components/modules/go-home'
 import { ModeToggle } from '~/common/components/modules/mode-toggle'
+
+import Language from '../../../../frontend/src/components/atoms/language'
+import Logo from '../../../../frontend/src/components/atoms/logo'
+import GoHome from '../../../../frontend/src/components/modules/go-home'
 
 const TopPage = () => {
   const { t } = useTranslation()

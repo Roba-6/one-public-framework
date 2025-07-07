@@ -1,7 +1,7 @@
 import '~/app.css'
 import '~/common/styles/component.css'
 import '~/common/styles/error-boundary.css'
-import '~/locales/configs'
+import '../../frontend/src/locales/configs'
 
 import React, { useEffect } from 'react'
 import { Provider } from 'react-redux'
@@ -14,16 +14,20 @@ import {
   ScrollRestoration,
 } from 'react-router'
 
-import { initState, loadComplete, selectIsLoading } from '~/common/app-slice'
-import Spinner from '~/common/components/atoms/spinner'
 import { ThemeProvider } from '~/common/components/theme-provider'
 import { ScrollArea, ScrollBar } from '~/common/components/ui/scroll-area'
-import { CONSTANT } from '~/common/constants'
-import type { Configuration } from '~/common/types/configuration'
-import { getApi } from '~/common/utils/http'
-import { useAppDispatch, useAppSelector } from '~/hooks/use-store'
-import { store } from '~/store'
 
+import {
+  initState,
+  loadComplete,
+  selectIsLoading,
+} from '../../frontend/src/common/app-slice'
+import { CONSTANT } from '../../frontend/src/common/constants'
+import Spinner from '../../frontend/src/components/atoms/spinner'
+import { useAppDispatch, useAppSelector } from '../../frontend/src/hooks/use-store'
+import { getApi } from '../../frontend/src/lib/http'
+import { store } from '../../frontend/src/store'
+import type { Configuration } from '../../frontend/src/types/configuration'
 import type { Route } from './+types/root'
 
 /**

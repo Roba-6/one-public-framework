@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate } from 'react-router'
 
-import { selectAccessToken } from '~/common/app-slice'
-import AppSidebar from '~/common/components/modules/app-sidebar'
 import { Separator } from '~/common/components/ui/separator'
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from '~/common/components/ui/sidebar'
-import { useAppSelector } from '~/hooks/use-store'
+
+import { selectAccessToken } from '../../../../frontend/src/common/app-slice'
+import AppSidebar from '../../../../frontend/src/components/modules/app-sidebar'
+import { useAppSelector } from '../../../../frontend/src/hooks/use-store'
 
 const AdminPage = ({ children }: { children: React.ReactNode }) => {
   const nav = useNavigate()
