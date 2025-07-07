@@ -1,4 +1,4 @@
-import js from '@eslint/js'
+import eslint from '@eslint/js'
 import { globalIgnores } from 'eslint/config'
 import prettierConfig from 'eslint-config-prettier'
 import reactPlugin from 'eslint-plugin-react'
@@ -13,7 +13,7 @@ export default tseslint.config([
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
-      js.configs.recommended,
+      eslint.configs.recommended,
       tseslint.configs.recommended,
       prettierConfig,
       reactHooks.configs['recommended-latest'],
@@ -30,6 +30,7 @@ export default tseslint.config([
     rules: {
       'eslint-plugin-react/jsx-uses-react': 'error',
       'eslint-plugin-react/jsx-uses-vars': 'error',
+      'react-refresh/only-export-components': 'off',
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
     },
