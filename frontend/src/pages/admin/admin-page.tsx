@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate } from 'react-router'
 
 import { selectAccessToken } from '@/common/app-slice.ts'
-import AppSidebar from '@/components/modules/app-sidebar'
-import { Separator } from '@/components/ui/separator.tsx'
-import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
-import { useAppSelector } from '@/hooks/use-store.ts'
+import AppSidebar from '@/common/components/modules/app-sidebar'
+import { Separator } from '@/common/components/ui/separator.tsx'
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from '@/common/components/ui/sidebar'
+import { useAppSelector } from '@/common/hooks/use-store.ts'
 
 const AdminPage = (): React.ReactNode => {
   const nav = useNavigate()

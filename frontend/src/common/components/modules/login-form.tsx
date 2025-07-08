@@ -4,16 +4,15 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 import { z } from 'zod/v4'
 
-import { selectAccessToken, setAccessToken } from '@/common/app-slice'
-import { CONSTANT } from '@/common/constants'
-import { Button } from '@/components/ui/button'
+import { selectAccessToken, setAccessToken } from '@/common/app-slice.ts'
+import { Button } from '@/common/components/ui/button.tsx'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
+} from '@/common/components/ui/card.tsx'
 import {
   Form,
   FormControl,
@@ -21,12 +20,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { useAppDispatch, useAppSelector } from '@/hooks/use-store'
-import { postApi } from '@/lib/http'
-import { cn } from '@/lib/utils'
-import { getLocalMessage } from '@/lib/utils'
+} from '@/common/components/ui/form.tsx'
+import { Input } from '@/common/components/ui/input.tsx'
+import { CONSTANT } from '@/common/constants.ts'
+import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store.ts'
+import { postApi } from '@/lib/http.ts'
+import { cn } from '@/lib/utils.ts'
+import { getLocalMessage } from '@/lib/utils.ts'
 import type { Login, LoginRequest, Token } from '@/types/authenticate'
 
 const LoginFormSchema = z.object({

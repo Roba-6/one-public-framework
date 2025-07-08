@@ -1,11 +1,11 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router'
 
 import { loadComplete, selectIsLoading } from '@/common/app-slice'
+import Spinner from '@/common/components/atoms/spinner'
+import { ThemeProvider } from '@/common/components/theme-provider'
 import { CONSTANT } from '@/common/constants'
-import Spinner from '@/components/atoms/spinner'
-import { ThemeProvider } from '@/components/theme-provider'
-import { useAppDispatch, useAppSelector } from '@/hooks/use-store'
+import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import { getApi } from '@/lib/http'
 import AdminPage from '@/pages/admin/admin-page'
 import LoginPage from '@/pages/admin/login-page'
@@ -16,7 +16,7 @@ import WelcomePage from '@/pages/welcome-page'
 import type { Configuration } from '@/types/configuration'
 import type { CommonResponse } from '@/types/response'
 
-function App() {
+const App = function (): React.ReactNode {
   const dispatch = useAppDispatch()
   const isLoading = useAppSelector(selectIsLoading)
   useEffect(() => {

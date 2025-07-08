@@ -21,9 +21,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@/components/ui/sidebar'
+} from '@/common/components/ui/sidebar.tsx'
 
-import { NavUser } from './nav-user'
+import { NavUser } from './nav-user.tsx'
 
 const items = [
   {

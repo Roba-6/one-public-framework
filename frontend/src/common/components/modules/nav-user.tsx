@@ -7,8 +7,8 @@ import {
 } from '@tabler/icons-react'
 import { useNavigate } from 'react-router'
 
-import { setAccessToken } from '@/common/app-slice'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { setAccessToken } from '@/common/app-slice.ts'
+import { Avatar, AvatarFallback, AvatarImage } from '@/common/components/ui/avatar.tsx'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,14 +17,14 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from '@/common/components/ui/dropdown-menu.tsx'
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from '@/components/ui/sidebar'
-import { useAppDispatch } from '@/hooks/use-store'
+} from '@/common/components/ui/sidebar.tsx'
+import { useAppDispatch } from '@/common/hooks/use-store.ts'
 
 export function NavUser({
   user,

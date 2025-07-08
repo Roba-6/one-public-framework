@@ -1,10 +1,10 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import Language from '@/components/atoms/language.tsx'
-import Logo from '@/components/atoms/logo.tsx'
-import GoHome from '@/components/modules/go-home.tsx'
-import ModeToggle from '@/components/modules/mode-toggle.tsx'
+import Language from '@/common/components/atoms/language.tsx'
+import Logo from '@/common/components/atoms/logo.tsx'
+import GoHome from '@/common/components/modules/go-home.tsx'
+import ModeToggle from '@/common/components/modules/mode-toggle.tsx'
 
 const HomePage = (): React.ReactNode => {
   const { t } = useTranslation()

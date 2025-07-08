@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router'
 
-import { Button } from '@/components/ui/button.tsx'
+import { Button } from '@/common/components/ui/button.tsx'
 import Header from '@/features/sample/components/block/header.tsx'
 
 const SamplePage = (): React.ReactNode => {

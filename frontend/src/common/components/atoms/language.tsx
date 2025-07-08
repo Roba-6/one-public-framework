@@ -1,16 +1,16 @@
 import { Select, type SelectItemProps } from '@radix-ui/react-select'
 import React, { useEffect } from 'react'
 
-import { changeLanguage, selectLanguage } from '@/common/app-slice'
-import { CONSTANT } from '@/common/constants'
+import { changeLanguage, selectLanguage } from '@/common/app-slice.ts'
 import {
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
-import { useAppDispatch, useAppSelector } from '@/hooks/use-store'
-import { getLocalMessage } from '@/lib/utils'
+} from '@/common/components/ui/select.tsx'
+import { CONSTANT } from '@/common/constants.ts'
+import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store.ts'
+import { getLocalMessage } from '@/lib/utils.ts'
 
 const Language = (): React.ReactNode => {
   const LANGUAGES: SelectItemProps[] = Object.keys(CONSTANT.LANGUAGE_RESOURCES).map(
