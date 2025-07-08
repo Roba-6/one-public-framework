@@ -2,6 +2,7 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import i18n from 'i18next'
 import type { WritableDraft } from 'immer'
 
+import { CONSTANT } from '@/common/constants.ts'
 import type { Configuration } from '@/common/types/configuration'
 import { getEnv } from '@/lib/utils'
 import type { RootState } from '@/store'
@@ -9,6 +10,8 @@ import type { RootState } from '@/store'
 export interface Setting {
   name: string
   language: string
+  url: string
+  api: string
 }
 
 /**
@@ -23,9 +26,12 @@ export interface AppState {
 const initialState: AppState = {
   settings: {
     name: getEnv('UI_NAME') as string,
-    language: (localStorage.getItem('language') || getEnv('UI_LANGUAGE')) as string,
+    language: (localStorage.getItem(CONSTANT.STORAGE_KEY.LANGUAGE) ||
+      getEnv('UI_LANGUAGE')) as string,
+    url: getEnv('UI_URL') as string,
+    api: getEnv('UI_API') as string,
   },
-  accessToken: localStorage.getItem('accessToken') as string,
+  accessToken: localStorage.getItem(CONSTANT.STORAGE_KEY.ACCESS_TOKEN) as string,
   isLoading: true,
 }
 
@@ -50,17 +56,22 @@ export const appSlice = createSlice({
       action.payload.forEach((item: Configuration) => {
         switch (item.key) {
           case 'app_name':
-            state.settings.name = item.value
+            if (item.value !== '') state.settings.name = item.value
             break
-          case 'app_language':
-            state.settings.language = item.value
-            void i18n.changeLanguage(item.value)
+          case 'language':
+            state.settings.language =
+              (localStorage.getItem(CONSTANT.STORAGE_KEY.LANGUAGE) as string) ||
+              item.value
+            void i18n.changeLanguage(state.settings.language)
+            break
+          case 'url':
+            state.settings.url = item.value
             break
         }
       })
     },
     changeLanguage: (state: WritableDraft<AppState>, action: PayloadAction<string>) => {
-      localStorage.setItem('language', action.payload)
+      localStorage.setItem(CONSTANT.STORAGE_KEY.LANGUAGE, action.payload)
       void i18n.changeLanguage(action.payload)
       state.settings.language = action.payload
     },
@@ -72,9 +83,9 @@ export const appSlice = createSlice({
     },
     setAccessToken: (state: WritableDraft<AppState>, action: PayloadAction<string>) => {
       if (action.payload === '') {
-        localStorage.removeItem('accessToken')
+        localStorage.removeItem(CONSTANT.STORAGE_KEY.ACCESS_TOKEN)
       } else {
-        localStorage.setItem('accessToken', action.payload)
+        localStorage.setItem(CONSTANT.STORAGE_KEY.ACCESS_TOKEN, action.payload)
       }
       state.accessToken = action.payload
     },

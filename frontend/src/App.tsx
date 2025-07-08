@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router'
 
-import { loadComplete, selectIsLoading } from '@/common/app-slice'
+import { initState, loadComplete, selectIsLoading } from '@/common/app-slice'
 import Spinner from '@/common/components/atoms/spinner'
 import { ThemeProvider } from '@/common/components/theme-provider'
 import { CONSTANT } from '@/common/constants'
@@ -23,13 +23,13 @@ const App = (): React.ReactNode => {
   useEffect(() => {
     getApi(CONSTANT.API_URL_CONFIGURATION).then((res: CommonResponse) => {
       const configs: Configuration[] = res.results!
-      console.debug(configs)
+      dispatch(initState(configs))
       dispatch(loadComplete())
     })
   }, [dispatch])
 
   return (
-    <ThemeProvider defaultTheme="dark" storageKey={CONSTANT.KEY_UI_THEME}>
+    <ThemeProvider defaultTheme="dark" storageKey={CONSTANT.STORAGE_KEY.THEME}>
       {isLoading ? (
         <Spinner />
       ) : (
