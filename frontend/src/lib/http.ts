@@ -3,12 +3,14 @@ import axios, {
   type AxiosInstance,
   type AxiosRequestConfig,
   type AxiosResponse,
+  type InternalAxiosRequestConfig,
 } from 'axios'
 import qs from 'qs'
 
 import { CONSTANT } from '@/common/constants'
 import type { CommonResponse, ResponseData } from '@/common/types/response'
 import { getEnv } from '@/lib/utils'
+import { store } from '@/store'
 
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: getEnv('UI_API') as string,
@@ -19,20 +21,19 @@ const axiosInstance: AxiosInstance = axios.create({
   withCredentials: true,
 })
 
-// axiosInstance.interceptors.request.use(
-//   (config: InternalAxiosRequestConfig) => {
-//     // Attach tokens as needed (e.g., set Authorization headers)
-//     const token = store.getState().app.accessToken
-//     if (token) {
-//       config.headers.authorization = `Bearer ${token}`
-//     }
-//     return config
-//   },
-//   (error: any): Promise<never> => {
-//     console.error('[API REQUEST ERROR]', error)
-//     return Promise.reject(error)
-//   }
-// )
+axiosInstance.interceptors.request.use(
+  (config: InternalAxiosRequestConfig) => {
+    // Attach access tokens
+    config.headers.authorization = `Bearer ${store.getState().app.accessToken}`
+
+    return config
+  },
+  (error): Promise<never> => {
+    console.error('[API REQUEST ERROR]', error)
+
+    return Promise.reject(error)
+  }
+)
 
 axiosInstance.interceptors.response.use(
   (response: AxiosResponse): AxiosResponse<CommonResponse> => response.data,

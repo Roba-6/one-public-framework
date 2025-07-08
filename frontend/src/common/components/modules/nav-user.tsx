@@ -5,10 +5,11 @@ import {
   IconNotification,
   IconUserCircle,
 } from '@tabler/icons-react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router'
 
-import { setAccessToken } from '@/common/app-slice.ts'
-import { Avatar, AvatarFallback, AvatarImage } from '@/common/components/ui/avatar.tsx'
+import { setAccessToken } from '@/common/app-slice'
+import { Avatar, AvatarFallback, AvatarImage } from '@/common/components/ui/avatar'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,14 +18,14 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/common/components/ui/dropdown-menu.tsx'
+} from '@/common/components/ui/dropdown-menu'
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from '@/common/components/ui/sidebar.tsx'
-import { useAppDispatch } from '@/common/hooks/use-store.ts'
+} from '@/common/components/ui/sidebar'
+import { useAppDispatch } from '@/common/hooks/use-store'
 
 export function NavUser({
   user,
@@ -38,6 +39,8 @@ export function NavUser({
   const nav = useNavigate()
   const dispatch = useAppDispatch()
   const { isMobile } = useSidebar()
+
+  useEffect(() => {}, [])
 
   return (
     <SidebarMenu>

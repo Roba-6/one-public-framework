@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate } from 'react-router'
 
-import { selectAccessToken } from '@/common/app-slice.ts'
+import { loadComplete, selectAccessToken, setAccessToken } from '@/common/app-slice.ts'
 import AppSidebar from '@/common/components/modules/app-sidebar.tsx'
 import { Separator } from '@/common/components/ui/separator.tsx'
 import {
@@ -9,22 +9,35 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from '@/common/components/ui/sidebar.tsx'
-import { useAppSelector } from '@/common/hooks/use-store.ts'
+import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store.ts'
+import { getApi } from '@/lib/http.ts'
 
 const AdminPage = (): React.ReactNode => {
   const nav = useNavigate()
+  const dispatch = useAppDispatch()
   const accessToken: string = useAppSelector(selectAccessToken)
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
 
   useEffect(() => {
-    console.log('AdminPage')
-    if (!accessToken) {
-      nav('/admin/login')
-    } else {
-      setIsAuthenticated(!!accessToken)
+    const fetch = async () => {
+      try {
+        if (accessToken) {
+          // TODO: set current user info
+          await getApi('/auth/me')
+          setIsAuthenticated(true)
+          dispatch(loadComplete())
+        } else {
+          dispatch(setAccessToken(''))
+          nav('/admin/login')
+        }
+      } catch (error) {
+        console.error(error)
+        dispatch(setAccessToken(''))
+        nav('/admin/login')
+      }
     }
-    // TODO: Add authenticate process
-  }, [accessToken, nav])
+    void fetch()
+  }, [accessToken, dispatch, nav])
 
   if (accessToken && isAuthenticated) {
     return (

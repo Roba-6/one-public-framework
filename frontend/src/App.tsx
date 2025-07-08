@@ -21,11 +21,17 @@ const App = (): React.ReactNode => {
   const isLoading = useAppSelector(selectIsLoading)
 
   useEffect(() => {
-    getApi(CONSTANT.API_URL_CONFIGURATION).then((res: CommonResponse) => {
-      const configs: Configuration[] = res.results!
-      dispatch(initState(configs))
-      dispatch(loadComplete())
-    })
+    const fetch = async () => {
+      try {
+        const res: CommonResponse = await getApi(CONSTANT.API_URL_CONFIGURATION)
+        const configs: Configuration[] = res.results!
+        dispatch(initState(configs))
+        dispatch(loadComplete())
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    void fetch()
   }, [dispatch])
 
   return (
