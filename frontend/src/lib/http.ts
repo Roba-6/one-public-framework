@@ -7,8 +7,8 @@ import axios, {
 import qs from 'qs'
 
 import { CONSTANT } from '@/common/constants'
+import type { CommonResponse, ResponseData } from '@/common/types/response'
 import { getEnv } from '@/lib/utils'
-import type { CommonResponse, ResponseData } from '@/types/response'
 
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: getEnv('UI_API') as string,

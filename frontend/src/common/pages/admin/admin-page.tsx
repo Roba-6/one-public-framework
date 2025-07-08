@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate } from 'react-router'
 
 import { selectAccessToken } from '@/common/app-slice.ts'
-import AppSidebar from '@/common/components/modules/app-sidebar'
+import AppSidebar from '@/common/components/modules/app-sidebar.tsx'
 import { Separator } from '@/common/components/ui/separator.tsx'
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from '@/common/components/ui/sidebar'
+} from '@/common/components/ui/sidebar.tsx'
 import { useAppSelector } from '@/common/hooks/use-store.ts'
 
 const AdminPage = (): React.ReactNode => {

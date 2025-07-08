@@ -1,4 +1,4 @@
-import '@/styles/components/atoms/text-image.css'
+import '@/common/styles/components/atoms/text-image.css'
 
 import React from 'react'
 

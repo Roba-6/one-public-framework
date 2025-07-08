@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ScrollArea, ScrollBar } from '@/common/components/ui/scroll-area'
+import { ScrollArea, ScrollBar } from '@/common/components/ui/scroll-area.tsx'
 
 const ErrorPage = (): React.ReactNode => {
   return (

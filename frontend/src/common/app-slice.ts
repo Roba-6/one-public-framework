@@ -2,9 +2,9 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import i18n from 'i18next'
 import type { WritableDraft } from 'immer'
 
+import type { Configuration } from '@/common/types/configuration'
 import { getEnv } from '@/lib/utils'
 import type { RootState } from '@/store'
-import type { Configuration } from '@/types/configuration'
 
 export interface Setting {
   name: string

@@ -1,5 +1,5 @@
-import type { Token } from '@/types/authenticate'
-import type { Configuration } from '@/types/configuration'
+import type { Token } from '@/common/types/authenticate'
+import type { Configuration } from '@/common/types/configuration'
 
 export interface Message {
   code: string | null

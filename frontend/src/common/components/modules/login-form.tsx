@@ -24,10 +24,10 @@ import {
 import { Input } from '@/common/components/ui/input.tsx'
 import { CONSTANT } from '@/common/constants.ts'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store.ts'
+import type { Login, LoginRequest, Token } from '@/common/types/authenticate'
 import { postApi } from '@/lib/http.ts'
 import { cn } from '@/lib/utils.ts'
 import { getLocalMessage } from '@/lib/utils.ts'
-import type { Login, LoginRequest, Token } from '@/types/authenticate'
 
 const LoginFormSchema = z.object({
   username: z.string().min(1, { message: getLocalMessage('Username is required') }),

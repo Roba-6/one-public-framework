@@ -1,9 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router'
 
-import Logo from '@/common/components/atoms/logo'
-import TextImage from '@/common/components/atoms/text-image'
-import { Button } from '@/common/components/ui/button'
+import Logo from '@/common/components/atoms/logo.tsx'
+import TextImage from '@/common/components/atoms/text-image.tsx'
+import { Button } from '@/common/components/ui/button.tsx'
 
 const WelcomePage = (): React.ReactNode => {
   return (

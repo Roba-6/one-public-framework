@@ -1,6 +1,6 @@
 import React from 'react'
 
-import LoginForm from '@/common/components/modules/login-form'
+import LoginForm from '@/common/components/modules/login-form.tsx'
 
 const LoginPage = (): React.ReactNode => {
   return (
