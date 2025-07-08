@@ -5,7 +5,6 @@ import { CONSTANT } from '@/common/constants'
 import { getEnv } from '@/lib/utils'
 import { store } from '@/store'
 
-// React 多言語設定初期化
 void i18n.use(initReactI18next).init({
   // Logs info level to console output
   debug: getEnv('APP_DEBUG') as boolean,

@@ -21,6 +21,8 @@ export const CONSTANT = {
   // Copyright notice for the App
   COPYRIGHT: '© 2025 Roba All Rights Reserved',
 
+  KEY_UI_THEME: 'theme',
+
   ENUM_CONFIGURATION_TYPE: { OTHER: 0, SYS: 1, API: 2, UI: 3 },
 
   API_URL_CONFIGURATION: '/configurations',

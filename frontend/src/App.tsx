@@ -16,9 +16,10 @@ import WelcomePage from '@/pages/welcome-page'
 import type { Configuration } from '@/types/configuration'
 import type { CommonResponse } from '@/types/response'
 
-const App = function (): React.ReactNode {
+const App = (): React.ReactNode => {
   const dispatch = useAppDispatch()
   const isLoading = useAppSelector(selectIsLoading)
+
   useEffect(() => {
     getApi(CONSTANT.API_URL_CONFIGURATION).then((res: CommonResponse) => {
       const configs: Configuration[] = res.results!
@@ -28,7 +29,7 @@ const App = function (): React.ReactNode {
   }, [dispatch])
 
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="dark" storageKey={CONSTANT.KEY_UI_THEME}>
       {isLoading ? (
         <Spinner />
       ) : (

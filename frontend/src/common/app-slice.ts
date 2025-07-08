@@ -23,9 +23,9 @@ export interface AppState {
 const initialState: AppState = {
   settings: {
     name: getEnv('UI_NAME') as string,
-    language: getEnv('UI_LANGUAGE') as string,
+    language: (localStorage.getItem('language') || getEnv('UI_LANGUAGE')) as string,
   },
-  accessToken: '',
+  accessToken: localStorage.getItem('accessToken') as string,
   isLoading: true,
 }
 
@@ -54,15 +54,10 @@ export const appSlice = createSlice({
             break
           case 'app_language':
             state.settings.language = item.value
+            void i18n.changeLanguage(item.value)
             break
         }
       })
-      const lang = localStorage.getItem('language')
-        ? (localStorage.getItem('language') as string)
-        : state.settings.language
-      void i18n.changeLanguage(lang)
-      state.settings.language = lang
-      state.accessToken = localStorage.getItem('accessToken') as string
     },
     changeLanguage: (state: WritableDraft<AppState>, action: PayloadAction<string>) => {
       localStorage.setItem('language', action.payload)
