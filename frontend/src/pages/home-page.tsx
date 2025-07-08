@@ -1,14 +1,14 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { ModeToggle } from '~/common/components/modules/mode-toggle'
+import Language from '@/components/atoms/language.tsx'
+import Logo from '@/components/atoms/logo.tsx'
+import GoHome from '@/components/modules/go-home.tsx'
+import ModeToggle from '@/components/modules/mode-toggle.tsx'
 
-import Language from '../../../../frontend/src/components/atoms/language'
-import Logo from '../../../../frontend/src/components/atoms/logo'
-import GoHome from '../../../../frontend/src/components/modules/go-home'
-
-const TopPage = () => {
+const HomePage = (): React.ReactNode => {
   const { t } = useTranslation()
+
   return (
     <div className="single-page">
       <div className="container mx-auto min-h-[100vh]">
@@ -28,4 +28,4 @@ const TopPage = () => {
   )
 }
 
-export default TopPage
+export default HomePage

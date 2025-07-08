@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate } from 'react-router'
 
-import { Separator } from '~/common/components/ui/separator'
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from '~/common/components/ui/sidebar'
+import { selectAccessToken } from '@/common/app-slice.ts'
+import AppSidebar from '@/components/modules/app-sidebar'
+import { Separator } from '@/components/ui/separator.tsx'
+import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
+import { useAppSelector } from '@/hooks/use-store.ts'
 
-import { selectAccessToken } from '../../../../frontend/src/common/app-slice'
-import AppSidebar from '../../../../frontend/src/components/modules/app-sidebar'
-import { useAppSelector } from '../../../../frontend/src/hooks/use-store'
-
-const AdminPage = ({ children }: { children: React.ReactNode }) => {
+const AdminPage = (): React.ReactNode => {
   const nav = useNavigate()
   const accessToken: string = useAppSelector(selectAccessToken)
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
@@ -20,12 +15,12 @@ const AdminPage = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     console.log('AdminPage')
     if (!accessToken) {
-      nav('/login')
+      nav('/admin/login')
     } else {
       setIsAuthenticated(!!accessToken)
     }
     // TODO: Add authenticate process
-  }, [])
+  }, [accessToken, nav])
 
   if (accessToken && isAuthenticated) {
     return (
@@ -45,7 +40,7 @@ const AdminPage = ({ children }: { children: React.ReactNode }) => {
           <main className="flex flex-1 flex-col">
             <div className="@container/main flex flex-1 flex-col gap-2">
               <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
-                111{children}232
+                111232
                 <Outlet />
               </div>
             </div>

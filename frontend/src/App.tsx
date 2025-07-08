@@ -3,11 +3,16 @@ import { BrowserRouter, Route, Routes } from 'react-router'
 
 import { loadComplete, selectIsLoading } from '@/common/app-slice'
 import { CONSTANT } from '@/common/constants'
-import Spinner from '@/components/atoms/spinner.tsx'
+import Spinner from '@/components/atoms/spinner'
 import { ThemeProvider } from '@/components/theme-provider'
 import { useAppDispatch, useAppSelector } from '@/hooks/use-store'
 import { getApi } from '@/lib/http'
-import WelcomePage from '@/pages/welcome-page.tsx'
+import AdminPage from '@/pages/admin/admin-page'
+import LoginPage from '@/pages/admin/login-page'
+import ErrorPage from '@/pages/error-page'
+import HomePage from '@/pages/home-page'
+import SamplePage from '@/pages/sample/sample-page.tsx'
+import WelcomePage from '@/pages/welcome-page'
 import type { Configuration } from '@/types/configuration'
 import type { CommonResponse } from '@/types/response'
 
@@ -29,12 +34,16 @@ function App() {
       ) : (
         <BrowserRouter>
           <Routes>
-            <Route index element={<div>Hello</div>} />
+            <Route index element={<HomePage />} />
             <Route path="welcome" element={<WelcomePage />} />
             <Route path="admin">
-              <Route index element={<>Admin</>} />
-              <Route path="login" element={<>Login</>} />
+              <Route index element={<AdminPage />} />
+              <Route path="login" element={<LoginPage />} />
             </Route>
+            <Route path="sample">
+              <Route index element={<SamplePage />} />
+            </Route>
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </BrowserRouter>
       )}

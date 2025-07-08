@@ -24,15 +24,15 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useAppDispatch, useAppSelector } from '@/hooks/use-store'
-import { postApi } from '@/lib/http.ts'
+import { postApi } from '@/lib/http'
 import { cn } from '@/lib/utils'
 import { getLocalMessage } from '@/lib/utils'
-import {
-  type Login,
-  LoginFormSchema,
-  type LoginRequest,
-  type Token,
-} from '@/types/authenticate'
+import type { Login, LoginRequest, Token } from '@/types/authenticate'
+
+const LoginFormSchema = z.object({
+  username: z.string().min(1, { message: getLocalMessage('Username is required') }),
+  password: z.string().min(1, { message: getLocalMessage('Password is required') }),
+})
 
 const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
   const nav = useNavigate()
