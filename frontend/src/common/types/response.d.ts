@@ -9,10 +9,14 @@ export interface Message {
 
 export type Results = Configuration[]
 
+export interface ResponseError {
+  detail: Message
+}
+
 export interface CommonResponse {
   results: Results | null
   count: number | null
   detail: Message[] | null
 }
 
-export type ResponseData = Token
+export type ResponseData = Token | CommonResponse

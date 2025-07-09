@@ -23,7 +23,9 @@ const App = (): React.ReactNode => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const res: CommonResponse = await getApi(CONSTANT.API_URL_CONFIGURATION)
+        const res: CommonResponse = await getApi<CommonResponse>(
+          CONSTANT.API_URL_CONFIGURATION
+        )
         const configs: Configuration[] = res.results!
         dispatch(initState(configs))
         dispatch(loadComplete())

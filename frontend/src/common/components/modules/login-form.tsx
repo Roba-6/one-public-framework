@@ -45,10 +45,12 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
 
   const submitForm = (values: Login) => {
-    postApi(CONSTANT.API_URL.LOGIN, values as LoginRequest).then((res: Token) => {
-      dispatch(setAccessToken(res.accessToken))
-      nav('/admin')
-    })
+    postApi<Token>(CONSTANT.API_URL.LOGIN, values as LoginRequest).then(
+      (res: Token) => {
+        dispatch(setAccessToken(res.accessToken))
+        nav('/admin')
+      }
+    )
   }
 
   useEffect(() => {

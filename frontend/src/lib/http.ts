@@ -7,8 +7,15 @@ import axios, {
 } from 'axios'
 import qs from 'qs'
 
+import { setAccessToken } from '@/common/app-slice.ts'
 import { CONSTANT } from '@/common/constants'
-import type { CommonResponse, ResponseData } from '@/common/types/response'
+import type { Token } from '@/common/types/authenticate'
+import type {
+  CommonResponse,
+  Message,
+  ResponseData,
+  ResponseError,
+} from '@/common/types/response'
 import { getEnv } from '@/lib/utils'
 import { store } from '@/store'
 
@@ -42,11 +49,18 @@ axiosInstance.interceptors.response.use(
     console.error('[API RESPONSE ERROR]', error)
 
     const status: number | undefined = error.response?.status
-    // const data: unknown = error.response?.data
+    const data: ResponseError = error.response?.data as ResponseError
+    const errorMessage: Message = data.detail
     // const type: 'message' | 'notification' = 'message'
 
     switch (status) {
       case 401:
+        if (errorMessage.code === 'E40100004') {
+          const res: Token = await getApi<Token>('/auth/refresh')
+          store.dispatch(setAccessToken(res.accessToken))
+          console.log('refresh token :::::: ', res.accessToken)
+          return axiosInstance.request(error.config)
+        }
         // if (error.request.responseURL.includes(CONSTANT.URL_API_CMN_LGN_03)) {
         //   store.dispatch(clearAccessToken())
         // } else if (['E4010101', 'E4010005', 'E4010007'].indexOf(data.code) >= 0) {
@@ -76,37 +90,37 @@ axiosInstance.interceptors.response.use(
   }
 )
 
-export const getApi = (
+export const getApi = <T = ResponseData>(
   url: string,
   data?: object,
   config?: AxiosRequestConfig
-): Promise<CommonResponse> =>
+): Promise<T> =>
   axiosInstance.get(url, {
     params: data,
     paramsSerializer: (params) => qs.stringify(params, { arrayFormat: 'repeat' }),
     ...config,
   })
 
-export const deleteApi = (
+export const deleteApi = <T = ResponseData>(
   url: string,
   data?: object,
   config?: AxiosRequestConfig
-): Promise<ResponseData> => axiosInstance.delete(url, { data, ...config })
+): Promise<T> => axiosInstance.delete(url, { data, ...config })
 
-export const postApi = (
+export const postApi = <T = ResponseData>(
   url: string,
   data?: object,
   config?: AxiosRequestConfig
-): Promise<ResponseData> => axiosInstance.post(url, data, config)
+): Promise<T> => axiosInstance.post(url, data, config)
 
-export const putApi = (
+export const putApi = <T = ResponseData>(
   url: string,
   data?: object,
   config?: AxiosRequestConfig
-): Promise<ResponseData> => axiosInstance.put(url, data, config)
+): Promise<T> => axiosInstance.put(url, data, config)
 
-export const patchApi = (
+export const patchApi = <T = ResponseData>(
   url: string,
   data?: object,
   config?: AxiosRequestConfig
-): Promise<ResponseData> => axiosInstance.patch(url, data, config)
+): Promise<T> => axiosInstance.patch(url, data, config)
