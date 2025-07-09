@@ -87,8 +87,8 @@ class AuthenticateService(BaseService[User]):
             )
 
     def refresh(self, refresh_token: str) -> Dict[str, str]:
-        user: User = self.get_one({"name": get_username_from_token(refresh_token)})
         try:
+            user: User = self.get_one({"name": get_username_from_token(refresh_token)})
             self.is_activate_user(user)
             access_token, access_expire = AuthenticateService.create_token(
                 user,
@@ -98,7 +98,7 @@ class AuthenticateService(BaseService[User]):
         except ExpiredSignatureError:
             raise UnauthorizedError("The token has expired", refresh_token, "E40100007")
         except InvalidTokenError:
-            raise UnauthorizedError("Invalid token", refresh_token, "E40100008")
+            raise UnauthorizedError("Invalid refresh token", refresh_token, "E40100008")
         except HTTPException:
             raise UnauthorizedError("user not found", refresh_token, "E40100009")
 
@@ -159,6 +159,6 @@ def get_current_user(
     except ExpiredSignatureError:
         raise UnauthorizedError("The token has expired", token, "E40100004")
     except InvalidTokenError:
-        raise UnauthorizedError("Invalid token", token, "E40100005")
+        raise UnauthorizedError("Invalid access token", token, "E40100005")
     except HTTPException:
         raise UnauthorizedError("user not found", token, "E40100006")
