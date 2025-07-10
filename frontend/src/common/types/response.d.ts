@@ -1,6 +1,11 @@
 import type { Token } from '@/common/types/authenticate'
 import type { Configuration } from '@/common/types/configuration'
 
+export interface FailedQueueItem {
+  resolve: (value?: unknown) => void
+  reject: (reason?: AxiosError) => void
+}
+
 export interface Message {
   code: string | null
   message: string
