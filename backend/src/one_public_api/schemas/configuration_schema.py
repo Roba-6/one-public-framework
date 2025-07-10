@@ -1,11 +1,12 @@
 from typing import Any, Dict
 
+from sqlmodel import Field
+
 from one_public_api.common.utility.str import to_camel
 from one_public_api.models.mixins.id_mixin import IdMixin
 from one_public_api.models.mixins.timestamp_mixin import TimestampMixin
 from one_public_api.models.system.configuration_model import ConfigurationBase
 from one_public_api.schemas.response_schema import example_audit, example_id
-from one_public_api.schemas.user_schema import UserPublicResponse
 
 example_base: Dict[str, Any] = {
     "name": "Time Zone",
@@ -26,14 +27,13 @@ example_base: Dict[str, Any] = {
 # ----- Public Schemas -----------------------------------------------------------------
 
 
-class ConfigurationPublicResponse(ConfigurationBase, TimestampMixin, IdMixin):
-    options: Dict[str, Any] = {}
-    user: UserPublicResponse | None
+class ConfigurationPublicResponse(ConfigurationBase):
+    options: Dict[str, Any] = Field(exclude=True)
 
     model_config = {
         "alias_generator": to_camel,
         "json_schema_extra": {
-            "examples": [{**example_base, **example_id}],
+            "examples": [{**example_base}],
         },
     }
 
