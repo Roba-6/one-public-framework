@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink } from 'react-router'
 
+import { loadComplete } from '@/common/app-slice.ts'
 import Logo from '@/common/components/atoms/logo.tsx'
 import TextImage from '@/common/components/atoms/text-image.tsx'
 import { Button } from '@/common/components/ui/button.tsx'
+import { useAppDispatch } from '@/common/hooks/use-store.ts'
 
 const WelcomePage = (): React.ReactNode => {
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(loadComplete())
+  }, [dispatch])
+
   return (
     <div className="single-info-page">
       <header className="w-full flex flex-col items-center gap-8">

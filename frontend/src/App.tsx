@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router'
 
-import { initState, loadComplete, selectIsLoading } from '@/common/app-slice'
+import { initState, selectIsLoading } from '@/common/app-slice'
 import Spinner from '@/common/components/atoms/spinner'
 import { ThemeProvider } from '@/common/components/theme-provider'
 import { CONSTANT } from '@/common/constants'
@@ -10,15 +10,15 @@ import AdminPage from '@/common/pages/admin/admin-page'
 import LoginPage from '@/common/pages/admin/login-page'
 import ErrorPage from '@/common/pages/error-page'
 import HomePage from '@/common/pages/home-page'
-import SamplePage from '@/common/pages/sample/sample-page.tsx'
+import SamplePage from '@/common/pages/sample/sample-page'
 import WelcomePage from '@/common/pages/welcome-page'
-import type { Configuration } from '@/common/types/configuration'
 import type { CommonResponse } from '@/common/types/response'
 import { getApi } from '@/lib/http'
 
 const App = (): React.ReactNode => {
   const dispatch = useAppDispatch()
   const isLoading = useAppSelector(selectIsLoading)
+  const [isFinished, setIsFinished] = React.useState<boolean>(false)
 
   useEffect(() => {
     const fetch = async () => {
@@ -26,9 +26,8 @@ const App = (): React.ReactNode => {
         const res: CommonResponse = await getApi<CommonResponse>(
           CONSTANT.API_URL_CONFIGURATION
         )
-        const configs: Configuration[] = res.results!
-        dispatch(initState(configs))
-        dispatch(loadComplete())
+        dispatch(initState(res.results!))
+        setIsFinished(true)
       } catch (error) {
         console.error(error)
       }
@@ -38,9 +37,7 @@ const App = (): React.ReactNode => {
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey={CONSTANT.STORAGE_KEY.THEME}>
-      {isLoading ? (
-        <Spinner />
-      ) : (
+      {isFinished && (
         <BrowserRouter>
           <Routes>
             <Route index element={<HomePage />} />
@@ -56,6 +53,7 @@ const App = (): React.ReactNode => {
           </Routes>
         </BrowserRouter>
       )}
+      {isLoading && <Spinner className="z-50" />}
     </ThemeProvider>
   )
 }

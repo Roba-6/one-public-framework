@@ -1,13 +1,19 @@
-import React from 'react'
-import { useTranslation } from 'react-i18next'
+import React, { useEffect } from 'react'
 
+import { loadComplete } from '@/common/app-slice.ts'
 import Language from '@/common/components/atoms/language.tsx'
 import Logo from '@/common/components/atoms/logo.tsx'
 import GoHome from '@/common/components/modules/go-home.tsx'
 import ModeToggle from '@/common/components/modules/mode-toggle.tsx'
+import { useAppDispatch } from '@/common/hooks/use-store.ts'
+import { getLocalMessage } from '@/lib/utils.ts'
 
 const HomePage = (): React.ReactNode => {
-  const { t } = useTranslation()
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(loadComplete())
+  }, [dispatch])
 
   return (
     <div className="single-page">
@@ -21,7 +27,7 @@ const HomePage = (): React.ReactNode => {
           </div>
         </header>
         <main className="main">
-          <h1>{t('welcome')}</h1>
+          <h1>{getLocalMessage('messages.welcome')}</h1>
         </main>
       </div>
     </div>

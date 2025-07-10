@@ -4,15 +4,16 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 import { z } from 'zod/v4'
 
-import { selectAccessToken, setAccessToken } from '@/common/app-slice.ts'
-import { Button } from '@/common/components/ui/button.tsx'
+import { selectAccessToken, setAccessToken } from '@/common/app-slice'
+import Password from '@/common/components/atoms/password'
+import { Button } from '@/common/components/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/common/components/ui/card.tsx'
+} from '@/common/components/ui/card'
 import {
   Form,
   FormControl,
@@ -20,14 +21,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/common/components/ui/form.tsx'
-import { Input } from '@/common/components/ui/input.tsx'
-import { CONSTANT } from '@/common/constants.ts'
-import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store.ts'
+} from '@/common/components/ui/form'
+import { Input } from '@/common/components/ui/input'
+import { CONSTANT } from '@/common/constants'
+import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import type { Login, LoginRequest, Token } from '@/common/types/authenticate'
-import { postApi } from '@/lib/http.ts'
-import { cn } from '@/lib/utils.ts'
-import { getLocalMessage } from '@/lib/utils.ts'
+import { postApi } from '@/lib/http'
+import { cn } from '@/lib/utils'
+import { getLocalMessage } from '@/lib/utils'
 
 const LoginFormSchema = z.object({
   username: z.string().min(1, { message: getLocalMessage('Username is required') }),
@@ -66,10 +67,8 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
       <div className={cn('flex flex-col gap-6', className)} {...props}>
         <Card>
           <CardHeader>
-            <CardTitle>Login to your account</CardTitle>
-            <CardDescription>
-              Enter your email below to login to your account
-            </CardDescription>
+            <CardTitle>{getLocalMessage('title.login')}</CardTitle>
+            <CardDescription>{getLocalMessage('messages.pleaseLogin')}</CardDescription>
           </CardHeader>
           <CardContent>
             <Form {...form}>
@@ -87,6 +86,7 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
                               placeholder="example"
                               {...field}
                               value={field.value as string}
+                              autoComplete="username"
                             />
                           </FormControl>
                           <FormMessage />
@@ -106,11 +106,11 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
                               href="#"
                               className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                             >
-                              Forgot your password?
+                              {getLocalMessage('labels.forgetPassword')}
                             </a>
                           </div>
                           <FormControl>
-                            <Input {...field} value={field.value as string} />
+                            <Password field={field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -119,7 +119,7 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
                   />
                   <div className="flex flex-col gap-3">
                     <Button type="submit" className="w-full">
-                      Login
+                      {getLocalMessage('buttons.login')}
                     </Button>
                     <Button variant="outline" className="w-full">
                       Login with Google

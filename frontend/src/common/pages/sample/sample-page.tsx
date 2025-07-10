@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink } from 'react-router'
 
+import { loadComplete } from '@/common/app-slice.ts'
 import { Button } from '@/common/components/ui/button.tsx'
+import { useAppDispatch } from '@/common/hooks/use-store.ts'
 import Header from '@/features/sample/components/block/header.tsx'
 
 const SamplePage = (): React.ReactNode => {
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(loadComplete())
+  }, [dispatch])
+
   return (
     <div className="page">
       <Header />

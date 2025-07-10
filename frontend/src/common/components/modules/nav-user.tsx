@@ -26,6 +26,7 @@ import {
   useSidebar,
 } from '@/common/components/ui/sidebar'
 import { useAppDispatch } from '@/common/hooks/use-store'
+import { getLocalMessage } from '@/lib/utils.ts'
 
 export function NavUser({
   user,
@@ -108,7 +109,7 @@ export function NavUser({
               }}
             >
               <IconLogout />
-              Log out
+              {getLocalMessage('buttons.logout')}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

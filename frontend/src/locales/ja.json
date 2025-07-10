@@ -3,5 +3,20 @@
     "en": "English",
     "ja": "日本語"
   },
-  "welcome": "One Public Framework へようこそ！"
+  "title": {
+    "login": "ログイン"
+  },
+  "buttons": {
+    "login": "ログイン",
+    "logout": "ログアウト"
+  },
+  "labels": {
+    "username": "ユーザー名",
+    "password": "パスワード",
+    "forgetPassword": "パスワードをお忘れですか？"
+  },
+  "messages": {
+    "pleaseLogin": "ユーザー名をご入力してログインしてください。",
+    "welcome": "One Public Framework へようこそ！"
+  }
 }
