@@ -1,0 +1,22 @@
+{
+  "languages": {
+    "en": "English",
+    "ja": "日本語"
+  },
+  "title": {
+    "login": "Login to your account"
+  },
+  "buttons": {
+    "login": "Login",
+    "logout": "Log out"
+  },
+  "labels": {
+    "username": "User Name",
+    "password": "Password",
+    "forgetPassword": "Forgot your password?"
+  },
+  "messages": {
+    "pleaseLogin": "Enter user name below to login to your account",
+    "welcome": "Welcome to One Public Framework!"
+  }
+}

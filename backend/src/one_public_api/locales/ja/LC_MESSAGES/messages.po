@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-07-05 14:53+0900\n"
+"POT-Creation-Date: 2025-07-05 22:07+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -63,7 +63,7 @@ msgstr ""
 msgid "The ID of the user who last updated the record."
 msgstr ""
 
-#: src/one_public_api/models/mixins/password_mixin.py:11
+#: src/one_public_api/models/mixins/password_mixin.py:10
 msgid "The hashed password of the user."
 msgstr ""
 

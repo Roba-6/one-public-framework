@@ -131,7 +131,9 @@ class Settings(BaseSettings):
             path of log files
         """
 
-        return os.path.join(self.LOG_PATH + self.LOG_NAME + constants.EXT_LOG)
+        log_path = self.LOG_PATH if self.LOG_PATH else constants.LOG_DEFAULT_PATH
+
+        return os.path.join(log_path, self.LOG_NAME + constants.EXT_LOG)
 
     LOG_ECHO_SQL: bool = False
 
