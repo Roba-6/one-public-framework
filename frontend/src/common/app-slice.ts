@@ -7,11 +7,14 @@ import type { Configuration } from '@/common/types/configuration'
 import { getEnv } from '@/lib/utils'
 import type { RootState } from '@/store'
 
+export type AppType = 'cms' | 'admin'
+
 export interface Setting {
   name: string
   language: string
   url: string
   api: string
+  type: AppType
 }
 
 /**
@@ -30,6 +33,7 @@ const initialState: AppState = {
       getEnv('UI_LANGUAGE')) as string,
     url: getEnv('UI_URL') as string,
     api: getEnv('UI_API') as string,
+    type: getEnv('UI_TYPE') as AppType,
   },
   accessToken: localStorage.getItem(CONSTANT.STORAGE_KEY.ACCESS_TOKEN) as string,
   isLoading: true,
@@ -95,6 +99,7 @@ export const appSlice = createSlice({
 export const selectLanguage = (state: RootState) => state.app.settings.language
 export const selectIsLoading = (state: RootState) => state.app.isLoading
 export const selectAccessToken = (state: RootState) => state.app.accessToken
+export const selectAppType = (state: RootState) => state.app.settings.type
 export const { initState, changeLanguage, loading, loadComplete, setAccessToken } =
   appSlice.actions
 export default appSlice.reducer
