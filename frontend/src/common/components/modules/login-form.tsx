@@ -56,7 +56,7 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
 
   useEffect(() => {
     if (accessToken) {
-      nav('/admin')
+      nav(CONSTANT.ROUTE_URL.ADMIN)
     } else {
       setIsAuthenticated(!!accessToken)
     }

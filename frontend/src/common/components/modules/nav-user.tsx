@@ -25,8 +25,9 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/common/components/ui/sidebar'
+import { CONSTANT } from '@/common/constants.ts'
 import { useAppDispatch } from '@/common/hooks/use-store'
-import { getLocalMessage } from '@/lib/utils.ts'
+import { getLocalMessage } from '@/lib/utils'
 
 export function NavUser({
   user,
@@ -105,7 +106,7 @@ export function NavUser({
               onSelect={(event: Event) => {
                 console.log(event)
                 dispatch(setAccessToken(''))
-                nav('login')
+                nav(CONSTANT.ROUTE_URL.LOGIN)
               }}
             >
               <IconLogout />
