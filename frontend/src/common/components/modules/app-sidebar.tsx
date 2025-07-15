@@ -9,6 +9,7 @@ import {
   Settings,
 } from 'lucide-react'
 
+import Logo from '@/common/components/atoms/logo'
 import {
   Sidebar,
   SidebarContent,
@@ -21,9 +22,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@/common/components/ui/sidebar.tsx'
+} from '@/common/components/ui/sidebar'
 
-import { NavUser } from './nav-user.tsx'
+import { NavUser } from './nav-user'
 
 const items = [
   {
@@ -57,7 +58,7 @@ const AppSidebar = () => {
   return (
     <Sidebar variant="inset">
       <SidebarHeader>
-        <h1>One Public Framework</h1>
+        <Logo size="sm" />
       </SidebarHeader>
       <SidebarContent>
         <Collapsible defaultOpen className="group/collapsible">

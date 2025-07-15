@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router'
 
 import { type AppType, selectAppType } from '@/common/app-slice'
+import { CONSTANT } from '@/common/constants'
 import { useAppSelector } from '@/common/hooks/use-store'
 import AdminPage from '@/common/pages/admin/admin-page'
 import LoginPage from '@/common/pages/admin/login-page'
@@ -31,11 +32,12 @@ const Router = (): React.ReactNode => {
     <BrowserRouter>
       <Routes>
         <Route index element={defaultRoute} />
-        <Route path="admin">
+        {!appType && <Route path={CONSTANT.ROUTE_URL.HOME} element={<HomePage />} />}
+        <Route path={CONSTANT.ROUTE_URL.ADMIN}>
           <Route index element={<AdminPage />} />
-          <Route path="login" element={<LoginPage />} />
+          <Route path={CONSTANT.ROUTE_URL.LOGIN.slice(1)} element={<LoginPage />} />
         </Route>
-        <Route path="sample">
+        <Route path={CONSTANT.ROUTE_URL.SAMPLE}>
           <Route index element={<SamplePage />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />

@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { NavLink } from 'react-router'
 
-import { loadComplete } from '@/common/app-slice.ts'
-import Logo from '@/common/components/atoms/logo.tsx'
-import TextImage from '@/common/components/atoms/text-image.tsx'
-import { Button } from '@/common/components/ui/button.tsx'
-import { useAppDispatch } from '@/common/hooks/use-store.ts'
+import { loadComplete } from '@/common/app-slice'
+import Logo from '@/common/components/atoms/logo'
+import TextImage from '@/common/components/atoms/text-image'
+import { Button } from '@/common/components/ui/button'
+import { CONSTANT } from '@/common/constants'
+import { useAppDispatch } from '@/common/hooks/use-store'
 
 const WelcomePage = (): React.ReactNode => {
   const dispatch = useAppDispatch()
@@ -33,13 +34,13 @@ const WelcomePage = (): React.ReactNode => {
         </div>
         <div className="pt-8 flex flex-row items-center gap-4">
           <Button asChild>
-            <NavLink to="/">Site Page</NavLink>
+            <NavLink to={CONSTANT.ROUTE_URL.HOME}>Site Page</NavLink>
           </Button>
           <Button>
-            <NavLink to="/admin">Admin Page</NavLink>
+            <NavLink to={CONSTANT.ROUTE_URL.ADMIN}>Admin Page</NavLink>
           </Button>
           <Button>
-            <NavLink to="/sample">Sample Page</NavLink>
+            <NavLink to={CONSTANT.ROUTE_URL.SAMPLE}>Sample Page</NavLink>
           </Button>
         </div>
       </main>

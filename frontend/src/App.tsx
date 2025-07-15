@@ -18,7 +18,7 @@ const App = (): React.ReactNode => {
     const fetch = async () => {
       try {
         const res: CommonResponse = await getApi<CommonResponse>(
-          CONSTANT.API_URL_CONFIGURATION
+          CONSTANT.API_URL.CONFIGURATION
         )
         dispatch(initState(res.results!))
         setIsFinished(true)

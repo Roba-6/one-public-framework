@@ -1,7 +1,7 @@
 import { House } from 'lucide-react'
 import { NavLink } from 'react-router'
 
-import { Button } from '@/common/components/ui/button.tsx'
+import { Button } from '@/common/components/ui/button'
 
 const GoHome = () => {
   return (

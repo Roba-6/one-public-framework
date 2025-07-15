@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-import { ScrollArea, ScrollBar } from '@/common/components/ui/scroll-area.tsx'
+import { loadComplete } from '@/common/app-slice'
+import { ScrollArea, ScrollBar } from '@/common/components/ui/scroll-area'
+import { useAppDispatch } from '@/common/hooks/use-store'
 
 const ErrorPage = (): React.ReactNode => {
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(loadComplete())
+  }, [dispatch])
+
   return (
     <main className="single-info-page">
       <div className="p-2 sm:p-8 w-full align-middle text-center">

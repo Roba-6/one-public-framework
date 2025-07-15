@@ -96,6 +96,7 @@ export const appSlice = createSlice({
   },
 })
 
+export const selectAppName = (state: RootState) => state.app.settings.name
 export const selectLanguage = (state: RootState) => state.app.settings.language
 export const selectIsLoading = (state: RootState) => state.app.isLoading
 export const selectAccessToken = (state: RootState) => state.app.accessToken
