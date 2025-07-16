@@ -25,8 +25,18 @@ export const CONSTANT = {
 
   ENUM_CONFIGURATION_TYPE: { OTHER: 0, SYS: 1, API: 2, UI: 3 },
 
-  API_URL_CONFIGURATION: '/configurations',
+  ROUTE_URL: {
+    ADMIN: '/admin',
+    HOME: '/home',
+    LOGIN: '/login',
+    SAMPLE: '/sample',
+    DASHBOARD: '/dashboard',
+    SETTINGS: '/settings',
+  },
+
   API_URL: {
+    CONFIGURATION: '/configurations',
     LOGIN: '/auth/login',
+    ME: '/auth/me',
   },
 } as const

@@ -9,6 +9,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from '@/common/components/ui/sidebar'
+import { CONSTANT } from '@/common/constants.ts'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import { getApi } from '@/lib/http'
 
@@ -23,17 +24,17 @@ const AdminPage = (): React.ReactNode => {
       try {
         if (accessToken) {
           // TODO: set current user info
-          await getApi('/auth/me')
+          await getApi(CONSTANT.API_URL.ME)
           setIsAuthenticated(true)
           dispatch(loadComplete())
         } else {
           dispatch(setAccessToken(''))
-          nav('/admin/login')
+          nav(CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.LOGIN)
         }
       } catch (error) {
         console.error(error)
         dispatch(setAccessToken(''))
-        nav('/admin/login')
+        nav(CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.LOGIN)
       }
     }
     void fetch()
