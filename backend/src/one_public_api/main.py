@@ -13,4 +13,4 @@ app = FastAPI(
 )
 initialize(app)
 load_router(app, constants.PATH_APP + "/**/routers/*.py")
-load_router(app, "routers/*.py")
+load_router(app, "**/routers/*.py")
