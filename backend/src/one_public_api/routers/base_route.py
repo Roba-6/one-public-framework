@@ -21,7 +21,7 @@ class BaseRoute(APIRoute):
 
         async def handler(request: Request) -> Response:
             custom_handler = load_route_handler(
-                "custom_route/*.py",
+                "**/custom_route/*.py",
                 "custom_route",
                 "custom_handler",
             )
