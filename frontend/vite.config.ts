@@ -1,12 +1,25 @@
+import alias from '@rollup/plugin-alias'
+import url from '@rollup/plugin-url'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), dts({ entryRoot: 'src', outDir: 'dist' })],
+  plugins: [
+    alias({
+      entries: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
+    }),
+    url({
+      include: ['**/*.svg', '**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif'],
+      limit: 0,
+      fileName: 'assets/[name][extname]',
+    }),
+    react(),
+    tailwindcss(),
+    dts({ entryRoot: 'src', outDir: 'dist' }),
+  ],
   server: { host: true },
   resolve: {
     alias: {
