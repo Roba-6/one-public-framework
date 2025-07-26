@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import { initState, selectIsLoading } from '@/common/app-slice'
 import Spinner from '@/common/components/atoms/spinner'
-import Router from '@/common/components/modules/router.tsx'
+import Router from '@/common/components/modules/router'
 import { ThemeProvider } from '@/common/components/theme-provider'
 import { CONSTANT } from '@/common/constants'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'

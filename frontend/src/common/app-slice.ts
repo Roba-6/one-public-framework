@@ -2,7 +2,7 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import i18n from 'i18next'
 import type { WritableDraft } from 'immer'
 
-import { CONSTANT } from '@/common/constants.ts'
+import { CONSTANT } from '@/common/constants'
 import type { Configuration } from '@/common/types/configuration'
 import { getEnv } from '@/lib/utils'
 import type { RootState } from '@/store'
