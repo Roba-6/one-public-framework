@@ -66,7 +66,9 @@ export const appSlice = createSlice({
             state.settings.language =
               (localStorage.getItem(CONSTANT.STORAGE_KEY.LANGUAGE) as string) ||
               item.value
-            void i18n.changeLanguage(state.settings.language)
+            if (i18n.isInitialized) {
+              void i18n.changeLanguage(state.settings.language)
+            }
             break
           case 'url':
             state.settings.url = item.value

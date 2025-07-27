@@ -24,10 +24,6 @@ export default defineConfig({
           src: path.resolve(__dirname, 'src/*.css'),
           dest: '.',
         },
-        {
-          src: path.resolve(__dirname, 'src/common/styles/**/*'),
-          dest: 'common/styles',
-        },
       ],
     }),
   ],
