@@ -5,7 +5,6 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "style": "dist/index.css",
-  "files": ["dist"],
   "exports": {
     ".": {
       "import": "./dist/index.js",
