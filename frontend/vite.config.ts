@@ -20,14 +20,9 @@ export default defineConfig({
           src: path.resolve(__dirname, 'src/assets'),
           dest: '.',
         },
-        {
-          src: path.resolve(__dirname, 'src/*.css'),
-          dest: '.',
-        },
       ],
     }),
   ],
-  assetsInclude: ['**/*.svg', '**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif'],
   server: { host: true },
   resolve: {
     alias: {

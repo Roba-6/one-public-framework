@@ -1,3 +1,5 @@
+import './index.css'
+
 import React, { useEffect } from 'react'
 
 import { initState, selectIsLoading } from '@/common/app-slice'
