@@ -1,4 +1,5 @@
 import './index.css'
+import '@/locales/configs'
 
 import React, { useEffect } from 'react'
 
@@ -19,6 +20,8 @@ const App = (): React.ReactNode => {
   useEffect(() => {
     const fetch = async () => {
       try {
+        console.debug('---------- .env var ----------')
+        console.debug(import.meta.env)
         const res: CommonResponse = await getApi<CommonResponse>(
           CONSTANT.API_URL.CONFIGURATION
         )
