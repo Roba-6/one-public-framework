@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-07-05 22:07+0900\n"
+"POT-Creation-Date: 2025-08-02 23:19+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: src/one_public_api/main.py:10
+#: src/one_public_api/main.py:9
 msgid "API TITLE"
 msgstr ""
 
@@ -45,63 +45,63 @@ msgstr ""
 msgid "D0010001"
 msgstr ""
 
-#: src/one_public_api/core/extensions.py:90
+#: src/one_public_api/core/extensions.py:78
 msgid "D0010002"
 msgstr ""
 
-#: src/one_public_api/models/mixins/id_mixin.py:22
-msgid "The ID of data."
+#: src/one_public_api/models/mixins/id_mixin.py:26
+msgid "Auto-generated unique ID for the record."
 msgstr ""
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:14
-msgid "The ID of the user who created the record."
+#: src/one_public_api/models/mixins/maintenance_mixin.py:31
+msgid "Creator ID."
 msgstr ""
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:20
-msgid "The ID of the user who last updated the record."
+#: src/one_public_api/models/mixins/maintenance_mixin.py:37
+msgid "Updater ID."
 msgstr ""
 
-#: src/one_public_api/models/mixins/password_mixin.py:10
-msgid "The hashed password of the user."
+#: src/one_public_api/models/mixins/password_mixin.py:23
+msgid "Password provided by the user."
 msgstr ""
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:11
-msgid "Timestamp indicating when the record was created."
+#: src/one_public_api/models/mixins/timestamp_mixin.py:27
+msgid "Record creation time."
 msgstr ""
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:16
-msgid "Timestamp indicating when the record was last updated."
+#: src/one_public_api/models/mixins/timestamp_mixin.py:32
+msgid "Last update time (auto-updated on modification)."
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:43
+#: src/one_public_api/models/system/configuration_model.py:41
 msgid "The name of the configuration."
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:49
-#: src/one_public_api/models/system/configuration_model.py:78
+#: src/one_public_api/models/system/configuration_model.py:47
+#: src/one_public_api/models/system/configuration_model.py:76
 msgid "The unique key representing this configuration."
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:54
+#: src/one_public_api/models/system/configuration_model.py:52
 msgid "The value associated with the configuration."
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:61
+#: src/one_public_api/models/system/configuration_model.py:59
 msgid "The type of configuration, represented as an enum."
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:66
+#: src/one_public_api/models/system/configuration_model.py:64
 #: src/one_public_api/models/system/feature_model.py:21
 msgid "Additional details or explanation about the configuration."
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:85
+#: src/one_public_api/models/system/configuration_model.py:83
 msgid ""
 "A JSON-encoded field to store additional configuration options as key-"
 "value pairs."
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:92
+#: src/one_public_api/models/system/configuration_model.py:90
 msgid "The owner of this configuration item."
 msgstr ""
 
@@ -120,41 +120,40 @@ msgstr ""
 msgid "A Boolean flag indicating whether the feature requires authentication."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:17
-#: src/one_public_api/models/system/user_model.py:64
+#: src/one_public_api/models/system/token_model.py:10
+msgid "Token"
+msgstr ""
+
+#: src/one_public_api/models/system/user_model.py:18
 #: src/one_public_api/schemas/authenticate_schema.py:22
 msgid "The name of the user."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:22
-#: src/one_public_api/models/system/user_model.py:69
+#: src/one_public_api/models/system/user_model.py:23
 msgid "The email address of the user."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:27
+#: src/one_public_api/models/system/user_model.py:28
 msgid "The first name of the user."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:32
+#: src/one_public_api/models/system/user_model.py:33
 msgid "The last name of the user."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:37
+#: src/one_public_api/models/system/user_model.py:38
 msgid "The nickname of the user."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:41
-#: src/one_public_api/models/system/user_model.py:73
+#: src/one_public_api/models/system/user_model.py:42
 msgid "A Boolean flag indicating whether the user is disabled."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:45
-#: src/one_public_api/models/system/user_model.py:77
+#: src/one_public_api/models/system/user_model.py:46
 msgid "A Boolean flag indicating whether the user is locked."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:50
-#: src/one_public_api/models/system/user_model.py:82
+#: src/one_public_api/models/system/user_model.py:51
 msgid "Tracks the number of consecutive failed login attempts for the user."
 msgstr ""
 
@@ -190,15 +189,15 @@ msgstr ""
 msgid "PROCESSING_STARTED"
 msgstr ""
 
-#: src/one_public_api/routers/base_route.py:43
+#: src/one_public_api/routers/base_route.py:47
 msgid "PROCESSING_COMPLETED"
 msgstr ""
 
-#: src/one_public_api/routers/base_route.py:54
+#: src/one_public_api/routers/base_route.py:56
 msgid "Feature is disabled"
 msgstr ""
 
-#: src/one_public_api/routers/base_route.py:59
+#: src/one_public_api/routers/base_route.py:61
 msgid "Feature not found."
 msgstr ""
 
