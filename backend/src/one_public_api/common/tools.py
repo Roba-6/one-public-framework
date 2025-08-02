@@ -1,10 +1,9 @@
 import importlib.util
 from glob import glob
-from typing import Any, Awaitable, Callable, List, TypeVar, cast
+from typing import Any, Awaitable, Callable, List, Type, TypeVar, cast
 
 import jwt
 from fastapi import FastAPI, Request, Response
-from pydantic.generics import GenericModel
 from sqlmodel import SQLModel
 
 from one_public_api.common import constants
@@ -15,7 +14,7 @@ T = TypeVar("T", bound=SQLModel)
 
 
 def create_response_data(
-    schema: GenericModel,
+    schema: Type[T],
     results: Any | List[Any] | None = None,
     count: int | None = None,
     detail: List[MessageSchema] | None = None,
@@ -32,7 +31,7 @@ def create_response_data(
 
     Parameters
     ----------
-    schema : GenericModel
+    schema
         The schema model used to validate the provided results data. This should be
         callable with a
         `model_validate` method to perform validation.
@@ -156,8 +155,6 @@ def load_route_handler(
 
     Returns
     -------
-    Callable[[Request, Callable[[Request], Awaitable[Response]]], Awaitable[Response]]
-    or None
         The route handler function if found; otherwise, None. The handler function
         is expected to accept a `Request` object and a callable as parameters and
         return an awaitable `Response` object.
