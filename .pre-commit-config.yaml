@@ -85,6 +85,6 @@ repos:
         entry: |
           bash -c '
           cd frontend &&
-          yarn eslint . --fix'
+          ./node_modules/.bin/eslint . --fix'
         language: system
         files: \.(ts|tsx|mjs|html)$

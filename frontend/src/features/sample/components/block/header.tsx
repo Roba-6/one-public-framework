@@ -1,7 +1,7 @@
 import React from 'react'
 
-import GoHome from '@/common/components/modules/go-home.tsx'
-import ModeToggle from '@/common/components/modules/mode-toggle.tsx'
+import GoHome from '@/common/components/modules/go-home'
+import ModeToggle from '@/common/components/modules/mode-toggle'
 
 const Header = (): React.ReactNode => {
   return (

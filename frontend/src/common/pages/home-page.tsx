@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 
-import { loadComplete } from '@/common/app-slice.ts'
-import Language from '@/common/components/atoms/language.tsx'
-import Logo from '@/common/components/atoms/logo.tsx'
-import GoHome from '@/common/components/modules/go-home.tsx'
-import ModeToggle from '@/common/components/modules/mode-toggle.tsx'
-import { useAppDispatch } from '@/common/hooks/use-store.ts'
-import { getLocalMessage } from '@/lib/utils.ts'
+import { loadComplete } from '@/common/app-slice'
+import Language from '@/common/components/atoms/language'
+import Logo from '@/common/components/atoms/logo'
+import GoHome from '@/common/components/modules/go-home'
+import ModeToggle from '@/common/components/modules/mode-toggle'
+import { useAppDispatch } from '@/common/hooks/use-store'
+import { getLocalMessage } from '@/lib/utils'
 
 const HomePage = (): React.ReactNode => {
   const dispatch = useAppDispatch()

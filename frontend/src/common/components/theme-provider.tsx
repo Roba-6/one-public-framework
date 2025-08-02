@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
-import { CONSTANT } from '@/common/constants.ts'
+import { CONSTANT } from '@/common/constants'
 
 type Theme = 'dark' | 'light' | 'system'
 

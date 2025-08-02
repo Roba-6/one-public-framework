@@ -2,7 +2,7 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import i18n from 'i18next'
 import type { WritableDraft } from 'immer'
 
-import { CONSTANT } from '@/common/constants.ts'
+import { CONSTANT } from '@/common/constants'
 import type { Configuration } from '@/common/types/configuration'
 import { getEnv } from '@/lib/utils'
 import type { RootState } from '@/store'
@@ -66,7 +66,9 @@ export const appSlice = createSlice({
             state.settings.language =
               (localStorage.getItem(CONSTANT.STORAGE_KEY.LANGUAGE) as string) ||
               item.value
-            void i18n.changeLanguage(state.settings.language)
+            if (i18n.isInitialized) {
+              void i18n.changeLanguage(state.settings.language)
+            }
             break
           case 'url':
             state.settings.url = item.value

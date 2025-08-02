@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 
-import { loadComplete } from '@/common/app-slice.ts'
-import LoginForm from '@/common/components/modules/login-form.tsx'
-import { useAppDispatch } from '@/common/hooks/use-store.ts'
+import { loadComplete } from '@/common/app-slice'
+import LoginForm from '@/common/components/modules/login-form'
+import { useAppDispatch } from '@/common/hooks/use-store'
 
 const LoginPage = (): React.ReactNode => {
   const dispatch = useAppDispatch()

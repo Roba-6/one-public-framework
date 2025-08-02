@@ -7,7 +7,7 @@ import axios, {
 } from 'axios'
 import qs from 'qs'
 
-import { setAccessToken } from '@/common/app-slice.ts'
+import { setAccessToken } from '@/common/app-slice'
 import { CONSTANT } from '@/common/constants'
 import type { Token } from '@/common/types/authenticate'
 import type {
