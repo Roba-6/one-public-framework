@@ -1,5 +1,3 @@
-import glob
-import importlib.util
 from contextlib import asynccontextmanager
 from typing import Any, AsyncGenerator, List
 
@@ -14,6 +12,8 @@ from one_public_api.common.init_data import (
     init_features,
     init_users,
 )
+from one_public_api.common.tools import load_router
+from one_public_api.common.utility.files import is_installed_package
 from one_public_api.core.database import engine, session
 from one_public_api.core.i18n import translate as _
 from one_public_api.core.log import logger
@@ -41,6 +41,7 @@ def initialize(app: FastAPI) -> None:
     """
 
     logger.debug(_("D0010001") % {"settings": settings})
+
     if settings.CORS_ORIGINS:
         app.add_middleware(
             CORSMiddleware,  # noqa
@@ -50,22 +51,9 @@ def initialize(app: FastAPI) -> None:
             allow_headers=["*"],
         )
 
-
-def load_router(app: FastAPI, input_dir: str) -> None:
-    for file in glob.glob(input_dir, recursive=True):
-        spec = importlib.util.spec_from_file_location("routers", file)
-        if spec:
-            mod = importlib.util.module_from_spec(spec)
-            if spec.loader and mod:
-                spec.loader.exec_module(mod)
-                if hasattr(mod, "public_router"):
-                    app.include_router(
-                        mod.public_router, prefix=mod.prefix, tags=mod.tags
-                    )
-                if hasattr(mod, "admin_router"):
-                    app.include_router(
-                        mod.admin_router, prefix=mod.prefix, tags=mod.tags
-                    )
+    if is_installed_package():
+        load_router(app, constants.PATH_APP + "/**/routers/*.py")
+    load_router(app, "**/routers/*.py")
 
 
 @asynccontextmanager

@@ -1,9 +1,9 @@
-import glob
 import importlib.util
+from glob import glob
 from typing import Any, Awaitable, Callable, List, TypeVar, cast
 
 import jwt
-from fastapi import Request, Response
+from fastapi import FastAPI, Request, Response
 from pydantic.generics import GenericModel
 from sqlmodel import SQLModel
 
@@ -67,10 +67,69 @@ def create_response_data(
 
 
 def get_username_from_token(token: str) -> str | None:
+    """
+    Decodes a JWT token to extract the username.
+
+    This function decodes a JSON Web Token (JWT) using a secret key and retrieves
+    the subject (`sub`) from the payload. If the subject is not present in the
+    payload, the function returns `None`.
+
+    Parameters
+    ----------
+    token : str
+        A JWT token to be decoded.
+
+    Returns
+    -------
+    str | None
+        The username extracted from the token's payload, or `None` if the
+        subject (`sub`) is not found.
+    """
+
     payload = jwt.decode(
         token, settings.SECRET_KEY, algorithms=[constants.JWT_ALGORITHM]
     )
+
     return str(payload.get("sub")) if payload.get("sub") else None
+
+
+def load_router(app: FastAPI, input_dir: str) -> None:
+    """
+    Dynamically loads and includes routers into a FastAPI application.
+
+    This function scans the specified directory for Python modules, dynamically imports
+    them, and looks for specific router objects (`public_router` and `admin_router`)
+    within these modules. When found, it includes these routers in the given FastAPI
+    application. This allows for dynamic and modular management of routes across the
+    application.
+
+    Parameters
+    ----------
+    app : FastAPI
+        The FastAPI application instance to which the routers are registered.
+    input_dir : str
+        The directory path to scan for Python modules containing router definitions.
+
+    Returns
+    -------
+    None
+        This function does not return any value.
+    """
+
+    for file in glob(input_dir, recursive=True):
+        spec = importlib.util.spec_from_file_location("routers", file)
+        if spec:
+            mod = importlib.util.module_from_spec(spec)
+            if spec.loader and mod:
+                spec.loader.exec_module(mod)
+                if hasattr(mod, "public_router"):
+                    app.include_router(
+                        mod.public_router, prefix=mod.prefix, tags=mod.tags
+                    )
+                if hasattr(mod, "admin_router"):
+                    app.include_router(
+                        mod.admin_router, prefix=mod.prefix, tags=mod.tags
+                    )
 
 
 def load_route_handler(
@@ -79,7 +138,32 @@ def load_route_handler(
     Callable[[Request, Callable[[Request], Awaitable[Response]]], Awaitable[Response]]
     | None
 ):
-    for file in glob.glob(input_dir, recursive=True):
+    """
+    Loads a route handler function dynamically from a specified module.
+
+    This function searches for a module by its name within a given directory, and
+    attempts to load and instantiate a function (route handler) with a given name.
+    If a matching handler cannot be found, the function returns None.
+
+    Parameters
+    ----------
+    input_dir : str
+        The directory to recursively search for the module file.
+    module_name : str
+        The name of the module to locate and load.
+    handler_name : str
+        The name of the handler function to retrieve from the module.
+
+    Returns
+    -------
+    Callable[[Request, Callable[[Request], Awaitable[Response]]], Awaitable[Response]]
+    or None
+        The route handler function if found; otherwise, None. The handler function
+        is expected to accept a `Request` object and a callable as parameters and
+        return an awaitable `Response` object.
+    """
+
+    for file in glob(input_dir, recursive=True):
         spec = importlib.util.spec_from_file_location(module_name, file)
         if spec:
             mod = importlib.util.module_from_spec(spec)
