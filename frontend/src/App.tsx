@@ -12,7 +12,7 @@ import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import type { CommonResponse } from '@/common/types/response'
 import { getApi } from '@/lib/http'
 
-const App = (): React.ReactNode => {
+const App = ({ children }: { children: React.ReactNode }): React.ReactNode => {
   const dispatch = useAppDispatch()
   const isLoading = useAppSelector(selectIsLoading)
   const [isFinished, setIsFinished] = React.useState<boolean>(false)
@@ -36,7 +36,7 @@ const App = (): React.ReactNode => {
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey={CONSTANT.STORAGE_KEY.THEME}>
-      {isFinished && <Router />}
+      {isFinished && <Router children={children} />}
       {isLoading && <Spinner className="z-50" />}
     </ThemeProvider>
   )
