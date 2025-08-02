@@ -45,11 +45,11 @@ msgstr "【%s】%s： %s"
 
 #: src/one_public_api/core/extensions.py:43
 msgid "D0010001"
-msgstr "【D0010001】設定読み込み： %(settings)s"
+msgstr "【D0010001】設定読み込み： [%(settings)s]"
 
 #: src/one_public_api/core/extensions.py:90
 msgid "D0010002"
-msgstr "【D0010002】 テーブル一覧（%(number)d）： %(tables)s"
+msgstr "【D0010002】 テーブル一覧：[(%(number)d)： %(tables)s]"
 
 #: src/one_public_api/models/mixins/id_mixin.py:22
 msgid "The ID of data."
