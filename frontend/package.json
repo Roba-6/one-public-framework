@@ -9,7 +9,11 @@
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
-    }
+    },
+    "./lib/utils": "./dist/lib/utils.js",
+    "./locales/configs": "./dist/locales/configs.js",
+    "./common/hooks/use-store": "./dist/common/hooks/use-store.js",
+    "./common/app-slice": "./dist/common/app-slice.js"
   },
   "scripts": {
     "dev": "vite",
