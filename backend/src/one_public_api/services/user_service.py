@@ -1,6 +1,5 @@
 from gettext import GNUTranslations
 from typing import Annotated, List
-from uuid import UUID
 
 from fastapi.params import Depends
 from sqlmodel import Session
@@ -36,10 +35,3 @@ class UserService(BaseService[User]):
             raise DataError(
                 self._("Data already exists."), data.model_dump_json(), "E40900003"
             )
-
-    def update_one_by_id_with_user(
-        self, target_id: UUID, data: User, current_user: User
-    ) -> User:
-        data.updated_by = current_user.id
-
-        return super().update_one_by_id(target_id, data)
