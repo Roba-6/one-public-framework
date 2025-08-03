@@ -28,11 +28,11 @@ class MaintenanceMixin:
         default=None,
         foreign_key=constants.DB_PREFIX_SYS + "users.id",
         ondelete="RESTRICT",
-        description=_("Creator ID."),
+        description=_("Creator ID"),
     )
     updated_by: UUID | None = Field(
         default=None,
         foreign_key=constants.DB_PREFIX_SYS + "users.id",
         ondelete="RESTRICT",
-        description=_("Updater ID."),
+        description=_("Updater ID"),
     )

@@ -1,13 +1,15 @@
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
-from pydantic import computed_field
+from pydantic import EmailStr, computed_field
 from sqlmodel import Field
 
+from one_public_api.common import constants
 from one_public_api.common.utility.str import to_camel
+from one_public_api.core.i18n import translate as _
 from one_public_api.models.mixins.id_mixin import IdMixin
 from one_public_api.models.mixins.password_mixin import PasswordMixin
 from one_public_api.models.mixins.timestamp_mixin import TimestampMixin
-from one_public_api.models.system.user_model import UserBase
+from one_public_api.models.system.user_model import UserBase, UserStatus
 from one_public_api.schemas.response_schema import example_id
 
 example_base: Dict[str, Any] = {
@@ -20,10 +22,15 @@ example_base: Dict[str, Any] = {
     "password": "password123",
 }
 
-example_response: Dict[str, Any] = {
+example_status: Dict[str, Any] = {
     "isDisabled": False,
     "isLocked": False,
     "loginFailedTimes": 0,
+}
+
+example_datetime: Dict[str, Any] = {
+    "createdAt": "2023-01-01T00:00:00+00:00",
+    "updatedAt": "2023-01-01T00:00:00+00:00",
 }
 
 
@@ -31,17 +38,11 @@ example_response: Dict[str, Any] = {
 
 
 class UserPublicResponse(UserBase, TimestampMixin, IdMixin):
-    @computed_field
-    def fullname(self) -> str:
-        firstname = self.firstname if self.firstname else ""
-        lastname = self.lastname if self.lastname else ""
-
-        return f"{firstname} {lastname}".strip()
-
     model_config = {
         "alias_generator": to_camel,
+        "populate_by_name": True,
         "json_schema_extra": {
-            "examples": [{**example_base, **example_response, **example_id}],
+            "examples": [{**example_id, **example_base, **example_datetime}],
         },
     }
 
@@ -50,9 +51,15 @@ class UserPublicResponse(UserBase, TimestampMixin, IdMixin):
 
 
 class UserCreateRequest(UserBase, PasswordMixin):
-    is_disabled: bool | None = Field(exclude=True)
-    is_locked: bool | None = Field(exclude=True)
-    login_failed_times: int = Field(exclude=True)
+    name: str = Field(
+        min_length=constants.MAX_LENGTH_3,
+        max_length=constants.MAX_LENGTH_55,
+        description=_("Unique login name"),
+    )
+    email: EmailStr = Field(
+        max_length=constants.MAX_LENGTH_128,
+        description=_("User's email address"),
+    )
 
     model_config = {
         "alias_generator": to_camel,
@@ -61,18 +68,35 @@ class UserCreateRequest(UserBase, PasswordMixin):
     }
 
 
-class UserUpdateRequest(UserBase):
+class UserUpdateRequest(UserBase, UserStatus):
     model_config = {
         "alias_generator": to_camel,
         "populate_by_name": True,
-        "json_schema_extra": {"examples": [example_base]},
+        "json_schema_extra": {"examples": [{**example_base, **example_status}]},
     }
 
 
-class UserResponse(UserPublicResponse):
+class UserResponse(UserBase, UserStatus, TimestampMixin, IdMixin):
+    creator: Optional[UserPublicResponse] = Field(
+        default=None,
+        description=_("Creator"),
+    )
+    updater: Optional[UserPublicResponse] = Field(
+        default=None,
+        description=_("Updater"),
+    )
+
+    @computed_field(return_type=str, description=_("Full name"))
+    def fullname(self) -> str:
+        firstname = self.firstname if self.firstname else ""
+        lastname = self.lastname if self.lastname else ""
+
+        return f"{firstname} {lastname}".strip()
+
     model_config = {
         "alias_generator": to_camel,
+        "populate_by_name": True,
         "json_schema_extra": {
-            "examples": [{**example_base, **example_response, **example_id}],
+            "examples": [{**example_base, **example_status, **example_id}],
         },
     }

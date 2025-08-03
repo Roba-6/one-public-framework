@@ -17,6 +17,7 @@ from one_public_api.core import get_session
 from one_public_api.core.exceptions import APIError, ForbiddenError, UnauthorizedError
 from one_public_api.core.extensions import oauth2_scheme
 from one_public_api.core.i18n import get_translator
+from one_public_api.core.i18n import translate as _
 from one_public_api.core.settings import settings
 from one_public_api.models import User
 from one_public_api.schemas.authenticate_schema import LoginRequest
@@ -96,11 +97,17 @@ class AuthenticateService(BaseService[User]):
             )
             return {to_camel("access_token"): access_token}
         except ExpiredSignatureError:
-            raise UnauthorizedError("The token has expired", refresh_token, "E40100007")
+            raise UnauthorizedError(
+                self._("The token has expired"), refresh_token, "E40100007"
+            )
         except InvalidTokenError:
-            raise UnauthorizedError("Invalid refresh token", refresh_token, "E40100008")
+            raise UnauthorizedError(
+                self._("Invalid refresh token"), refresh_token, "E40100008"
+            )
         except HTTPException:
-            raise UnauthorizedError("user not found", refresh_token, "E40100009")
+            raise UnauthorizedError(
+                self._("user not found"), refresh_token, "E40100009"
+            )
 
     def logout(self, response: Response) -> None:
         response.delete_cookie(
@@ -157,8 +164,8 @@ def get_current_user(
                 {"name": username, "is_disabled": False, "is_locked": False}
             )
     except ExpiredSignatureError:
-        raise UnauthorizedError("The token has expired", token, "E40100004")
+        raise UnauthorizedError(_("The token has expired"), token, "E40100004")
     except InvalidTokenError:
-        raise UnauthorizedError("Invalid access token", token, "E40100005")
+        raise UnauthorizedError(_("Invalid access token"), token, "E40100005")
     except HTTPException:
-        raise UnauthorizedError("user not found", token, "E40100006")
+        raise UnauthorizedError(_("user not found"), token, "E40100006")
