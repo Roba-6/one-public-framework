@@ -16,6 +16,7 @@ from one_public_api.crud.data_creator import DataCreator
 from one_public_api.crud.data_deleter import DataDeleter
 from one_public_api.crud.data_reader import DataReader
 from one_public_api.crud.data_updater import DataUpdater
+from one_public_api.models import User
 from one_public_api.schemas.response_schema import MessageSchema
 
 T = TypeVar("T", bound=SQLModel)
@@ -85,6 +86,13 @@ class BaseService(Generic[T]):
         self.session.refresh(result)
 
         return result
+
+    def update_one_by_id_with_user(
+        self, target_id: UUID, data: T, current_user: User
+    ) -> T:
+        setattr(data, "updated_by", current_user.id)
+
+        return self.update_one_by_id(target_id, data)
 
     def update_one(self, data: T) -> T:
         result: T = self.du.one(data)
