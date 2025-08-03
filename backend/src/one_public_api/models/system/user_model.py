@@ -14,7 +14,7 @@ class UserBase(SQLModel):
         default=None,
         min_length=constants.MAX_LENGTH_3,
         max_length=constants.MAX_LENGTH_55,
-        description=_("Unique login name"),
+        description=_("User name"),
     )
     email: Optional[EmailStr] = Field(
         default=None,
@@ -86,7 +86,7 @@ class User(
         unique=True,
         min_length=constants.MAX_LENGTH_3,
         max_length=constants.MAX_LENGTH_55,
-        description=_("Unique login name"),
+        description=_("User name"),
     )
     email: EmailStr = Field(
         nullable=False,

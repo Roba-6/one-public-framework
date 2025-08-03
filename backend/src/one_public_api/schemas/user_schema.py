@@ -54,7 +54,7 @@ class UserCreateRequest(UserBase, PasswordMixin):
     name: str = Field(
         min_length=constants.MAX_LENGTH_3,
         max_length=constants.MAX_LENGTH_55,
-        description=_("Unique login name"),
+        description=_("User name"),
     )
     email: EmailStr = Field(
         max_length=constants.MAX_LENGTH_128,
