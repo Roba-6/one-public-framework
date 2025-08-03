@@ -23,11 +23,13 @@ class TimestampMixin:
     """
 
     created_at: datetime = Field(
+        nullable=False,
         default_factory=datetime.now,
-        description=_("Record creation time."),
+        description=_("Record creation time"),
     )
     updated_at: datetime = Field(
         default_factory=datetime.now,
+        nullable=False,
         sa_column_kwargs={"onupdate": datetime.now},
-        description=_("Last update time (auto-updated on modification)."),
+        description=_("Last update time (auto-updated on modification)"),
     )

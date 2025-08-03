@@ -22,8 +22,10 @@ class UserService(BaseService[User]):
     ):
         super().__init__(session, translator)
 
-    def add_one(self, data: User) -> User:
+    def add_one_with_user(self, data: User, current_user: User) -> User:
         try:
+            data.created_by = current_user.id
+            data.updated_by = current_user.id
             return super().add_one(data)
         except DataError:
             del data.password

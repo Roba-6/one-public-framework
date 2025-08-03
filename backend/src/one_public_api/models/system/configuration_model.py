@@ -7,9 +7,7 @@ from sqlmodel import JSON, Column, Field, Relationship, SQLModel
 
 from one_public_api.common import constants
 from one_public_api.core.i18n import translate as _
-from one_public_api.models.mixins.id_mixin import IdMixin
-from one_public_api.models.mixins.maintenance_mixin import MaintenanceMixin
-from one_public_api.models.mixins.timestamp_mixin import TimestampMixin
+from one_public_api.models.mixins import IdMixin, MaintenanceMixin, TimestampMixin
 from one_public_api.models.system.user_model import User
 
 
