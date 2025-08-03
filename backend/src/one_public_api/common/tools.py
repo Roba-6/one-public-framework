@@ -54,11 +54,11 @@ def create_response_data(
     """
 
     if type(results) is list:
-        rst = [getattr(schema, "model_dump")(d) for d in results]
+        rst = [getattr(schema, "model_validate")(d) for d in results]
     elif results is None:
         rst = None
     else:
-        rst = getattr(schema, "model_dump")(results)
+        rst = getattr(schema, "model_validate")(results)
 
     rsp: ResponseSchema[T] = ResponseSchema(results=rst, count=count, detail=detail)
 

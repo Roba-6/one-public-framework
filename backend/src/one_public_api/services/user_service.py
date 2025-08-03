@@ -4,6 +4,7 @@ from typing import Annotated, List
 from fastapi.params import Depends
 from sqlmodel import Session
 
+from one_public_api.common.utility.str import get_hashed_password
 from one_public_api.core import get_session
 from one_public_api.core.exceptions import DataError
 from one_public_api.core.i18n import get_translator
@@ -24,8 +25,10 @@ class UserService(BaseService[User]):
 
     def add_one_with_user(self, data: User, current_user: User) -> User:
         try:
+            data.password = get_hashed_password(data.password)
             data.created_by = current_user.id
             data.updated_by = current_user.id
+
             return super().add_one(data)
         except DataError:
             del data.password
