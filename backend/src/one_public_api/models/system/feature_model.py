@@ -1,3 +1,5 @@
+from typing import Optional
+
 from sqlmodel import Field, Relationship, SQLModel
 
 from one_public_api.common import constants
@@ -9,57 +11,74 @@ from one_public_api.models.system.user_model import User
 
 
 class FeatureBase(SQLModel):
-    name: str | None = Field(
+    name: Optional[str] = Field(
         default=None,
         min_length=constants.MAX_LENGTH_13,
         max_length=constants.MAX_LENGTH_13,
-        description=_("The name of the feature."),
+        description=_("Feature name"),
     )
-    description: str | None = Field(
+    description: Optional[str] = Field(
         default=None,
         max_length=constants.MAX_LENGTH_1000,
-        description=_("Additional details or explanation about the configuration."),
-    )
-    is_enabled: bool | None = Field(
-        default=None,
-        description=_("A Boolean flag indicating whether the feature is enabled."),
-    )
-    requires_auth: bool | None = Field(
-        default=None,
-        description=_(
-            "A Boolean flag indicating whether the feature requires authentication."
-        ),
+        description=_("Feature description"),
     )
 
 
-class Feature(FeatureBase, TimestampMixin, MaintenanceMixin, IdMixin, table=True):
+class FeatureStatus(SQLModel):
+    is_enabled: Optional[bool] = Field(
+        default=None,
+        description=_("Whether the feature is enabled"),
+    )
+    requires_auth: Optional[bool] = Field(
+        default=None,
+        description=_("Whether auth is required"),
+    )
+
+
+class Feature(
+    FeatureBase,
+    FeatureStatus,
+    TimestampMixin,
+    MaintenanceMixin,
+    IdMixin,
+    table=True,
+):
     __tablename__ = constants.DB_PREFIX_SYS + "features"
 
     name: str = Field(
-        unique=True,
+        nullable=False,
         min_length=constants.MAX_LENGTH_13,
         max_length=constants.MAX_LENGTH_13,
-        description=_("The name of the feature."),
+        description=_("Feature name"),
+    )
+    description: str = Field(
+        default=None,
+        nullable=True,
+        max_length=constants.MAX_LENGTH_1000,
+        description=_("Feature description"),
     )
     is_enabled: bool = Field(
         default=False,
-        description=_("A Boolean flag indicating whether the feature is enabled."),
+        nullable=False,
+        description=_("Whether the feature is enabled"),
     )
     requires_auth: bool = Field(
         default=True,
-        description=_(
-            "A Boolean flag indicating whether the feature requires authentication."
-        ),
+        nullable=False,
+        description=_("Whether auth is required"),
     )
-    creator: "User" = Relationship(
+
+    creator: Optional["User"] = Relationship(
         sa_relationship_kwargs={
             "foreign_keys": "[Feature.created_by]",
             "primaryjoin": "Feature.created_by==User.id",
+            "remote_side": "[User.id]",
         }
     )
-    updater: "User" = Relationship(
+    updater: Optional["User"] = Relationship(
         sa_relationship_kwargs={
             "foreign_keys": "[Feature.updated_by]",
             "primaryjoin": "Feature.updated_by==User.id",
+            "remote_side": "[User.id]",
         }
     )
