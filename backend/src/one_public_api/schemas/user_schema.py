@@ -33,11 +33,20 @@ example_datetime: Dict[str, Any] = {
     "updatedAt": "2023-01-01T00:00:00+00:00",
 }
 
+example_user: Dict[str, Any] = {**example_id, **example_base, **example_datetime}
+
 
 # ----- Public Schemas -----------------------------------------------------------------
 
 
 class UserPublicResponse(UserBase, TimestampMixin, IdMixin):
+    @computed_field(return_type=str, description=_("Full name"))
+    def fullname(self) -> str:
+        firstname = self.firstname if self.firstname else ""
+        lastname = self.lastname if self.lastname else ""
+
+        return f"{firstname} {lastname}".strip()
+
     model_config = {
         "alias_generator": to_camel,
         "populate_by_name": True,
@@ -97,6 +106,14 @@ class UserResponse(UserBase, UserStatus, TimestampMixin, IdMixin):
         "alias_generator": to_camel,
         "populate_by_name": True,
         "json_schema_extra": {
-            "examples": [{**example_base, **example_status, **example_id}],
+            "examples": [
+                {
+                    "creator": example_user,
+                    "updater": example_user,
+                    **example_base,
+                    **example_status,
+                    **example_id,
+                }
+            ],
         },
     }
