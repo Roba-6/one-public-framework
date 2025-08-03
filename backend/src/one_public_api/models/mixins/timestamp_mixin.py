@@ -23,8 +23,8 @@ class TimestampMixin:
     """
 
     created_at: datetime = Field(
-        nullable=False,
         default_factory=datetime.now,
+        nullable=False,
         description=_("Record creation time"),
     )
     updated_at: datetime = Field(

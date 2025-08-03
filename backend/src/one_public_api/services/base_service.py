@@ -79,7 +79,7 @@ class BaseService(Generic[T]):
 
     def update_one_by_id(self, target_id: UUID, data: T) -> T:
         before: T = self.get_one_by_id(target_id)
-        result: T = self.du.one(before, data.model_dump())
+        result: T = self.du.one(before, data.model_dump(exclude_unset=True))
 
         self.session.commit()
         self.session.refresh(result)
