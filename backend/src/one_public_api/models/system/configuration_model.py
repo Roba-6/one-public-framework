@@ -1,5 +1,5 @@
 from enum import IntEnum
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 from uuid import UUID
 
 from sqlalchemy import Enum as SQLEnum
@@ -34,76 +34,101 @@ class ConfigurationType(IntEnum):
 
 
 class ConfigurationBase(SQLModel):
-    name: str | None = Field(
+    name: Optional[str] = Field(
         default=None,
         min_length=constants.MAX_LENGTH_6,
         max_length=constants.MAX_LENGTH_100,
-        description=_("The name of the configuration."),
+        description=_("Configuration name"),
     )
-    key: str | None = Field(
+    key: Optional[str] = Field(
         default=None,
         min_length=constants.MAX_LENGTH_3,
         max_length=constants.MAX_LENGTH_100,
-        description=_("The unique key representing this configuration."),
+        description=_("Configuration key"),
     )
-    value: str | None = Field(
+    value: Optional[str] = Field(
         default=None,
         max_length=constants.MAX_LENGTH_500,
-        description=_("The value associated with the configuration."),
+        description=_("Configuration value"),
     )
-    type: ConfigurationType = Field(
-        default=ConfigurationType.OTHER,
-        sa_column=Column(
-            SQLEnum(ConfigurationType, name="configuration_type"),
-        ),
-        description=_("The type of configuration, represented as an enum."),
+    type: Optional[ConfigurationType] = Field(
+        default=None,
+        description=_("Configuration type"),
     )
-    description: str | None = Field(
+    options: Optional[Dict[str, Any]] = Field(
+        default_factory=dict,
+        sa_column=Column(JSON),
+        description=_("Configuration options"),
+    )
+    description: Optional[str] = Field(
         default=None,
         max_length=constants.MAX_LENGTH_1000,
-        description=_("Additional details or explanation about the configuration."),
+        description=_("Configuration description"),
     )
 
 
 class Configuration(
-    ConfigurationBase, TimestampMixin, MaintenanceMixin, IdMixin, table=True
+    ConfigurationBase,
+    TimestampMixin,
+    MaintenanceMixin,
+    IdMixin,
+    table=True,
 ):
     __tablename__ = constants.DB_PREFIX_SYS + "configurations"
 
+    name: str = Field(
+        default=None,
+        nullable=True,
+        min_length=constants.MAX_LENGTH_6,
+        max_length=constants.MAX_LENGTH_100,
+        description=_("Configuration name"),
+    )
     key: str = Field(
+        nullable=False,
         min_length=constants.MAX_LENGTH_3,
         max_length=constants.MAX_LENGTH_100,
-        description=_("The unique key representing this configuration."),
+        description=_("Configuration key"),
     )
-
-    options: Dict[str, Any] = Field(
-        default_factory=dict,
-        sa_column=Column(JSON),
-        description=_(
-            "A JSON-encoded field to store additional configuration options as "
-            "key-value pairs."
-        ),
+    value: str = Field(
+        nullable=False,
+        max_length=constants.MAX_LENGTH_500,
+        description=_("Configuration value"),
     )
-    user_id: UUID | None = Field(
+    type: ConfigurationType = Field(
+        default=ConfigurationType.OTHER,
+        sa_column=Column(SQLEnum(ConfigurationType, name="configuration_type")),
+        description=_("Configuration type"),
+    )
+    description: str = Field(
+        default=None,
+        nullable=True,
+        max_length=constants.MAX_LENGTH_1000,
+        description=_("Configuration description"),
+    )
+    user_id: Optional[UUID] = Field(
         default=None,
         foreign_key=constants.DB_PREFIX_SYS + "users.id",
-        description=_("The owner of this configuration item."),
+        description=_("Owner of configuration item"),
     )
-    creator: "User" = Relationship(
-        sa_relationship_kwargs={
-            "foreign_keys": "[Configuration.created_by]",
-            "primaryjoin": "Configuration.created_by==User.id",
-        }
-    )
-    updater: "User" = Relationship(
-        sa_relationship_kwargs={
-            "foreign_keys": "[Configuration.updated_by]",
-            "primaryjoin": "Configuration.updated_by==User.id",
-        }
-    )
+
     user: "User" = Relationship(
         sa_relationship_kwargs={
             "foreign_keys": "[Configuration.user_id]",
             "primaryjoin": "Configuration.user_id==User.id",
+            "remote_side": "[User.id]",
+        }
+    )
+    creator: Optional["User"] = Relationship(
+        sa_relationship_kwargs={
+            "foreign_keys": "[Configuration.created_by]",
+            "primaryjoin": "Configuration.created_by==User.id",
+            "remote_side": "[User.id]",
+        }
+    )
+    updater: Optional["User"] = Relationship(
+        sa_relationship_kwargs={
+            "foreign_keys": "[Configuration.updated_by]",
+            "primaryjoin": "Configuration.updated_by==User.id",
+            "remote_side": "[User.id]",
         }
     )
