@@ -9,7 +9,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from '@/common/components/ui/sidebar'
-import { CONSTANT } from '@/common/constants.ts'
+import { CONSTANT } from '@/common/constants'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import { getApi } from '@/lib/http'
 

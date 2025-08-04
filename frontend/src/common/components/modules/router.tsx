@@ -11,7 +11,7 @@ import HomePage from '@/common/pages/home-page'
 import SamplePage from '@/common/pages/sample/sample-page'
 import WelcomePage from '@/common/pages/welcome-page'
 
-const Router = (): React.ReactNode => {
+const Router = ({ children }: { children: React.ReactNode }): React.ReactNode => {
   const appType: AppType = useAppSelector(selectAppType)
   const [defaultRoute, setDefaultRoute] = React.useState<React.ReactNode>(null)
 
@@ -40,6 +40,7 @@ const Router = (): React.ReactNode => {
         <Route path={CONSTANT.ROUTE_URL.SAMPLE}>
           <Route index element={<SamplePage />} />
         </Route>
+        {children}
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>

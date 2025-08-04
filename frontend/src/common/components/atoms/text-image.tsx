@@ -1,5 +1,3 @@
-import '@/common/styles/components/atoms/text-image.css'
-
 import React from 'react'
 
 const building = `
@@ -49,8 +47,8 @@ elkj f97\n\nwerh jsf\n\nwerndsm;\n\nsdf\n\nwer\n\ncst\n\ngo\n\nj\n\nd\n\n8\n\n4\
  */
 const TextImage = (): React.ReactNode => {
   return (
-    <div className="text-image">
-      <pre>
+    <div className="w-full sm:w-[585px] h-[100px] overflow-hidden relative select-none">
+      <pre className="w-[100%] rotate-180 text-[3pt] font-bold leading-0.5 [writing-mode:vertical-rl]">
         <code>{building}</code>
       </pre>
       {Array.from({ length: 3 }).map((_: unknown, idx: number) => (
