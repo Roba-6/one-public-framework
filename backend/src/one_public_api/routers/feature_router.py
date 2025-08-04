@@ -33,7 +33,7 @@ tags = [_("Features")]
 @public_router.get(
     constants.ROUTER_COMMON_BLANK,
     name="SYS-FTR-P-LST",
-    summary="List Public Features",
+    summary=_("List Public Features"),
     response_model=ResponseSchema[FeaturePublicResponse],
 )
 def list_public_api(

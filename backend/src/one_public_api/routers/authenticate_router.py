@@ -68,7 +68,7 @@ def login_api(
 )
 def refresh_api(
     aths: Annotated[AuthenticateService, Depends()],
-    refresh_token: str = Cookie(None),
+    refresh_token: str = Cookie(None, description=_("Refresh token")),
 ) -> TokenResponse:
     return TokenResponse(**aths.refresh(refresh_token))
 
