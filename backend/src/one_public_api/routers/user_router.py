@@ -74,7 +74,7 @@ def create_admin_api(
 ) -> ResponseSchema[UserResponse]:
     return create_response_data(
         UserResponse,
-        us.add_one_with_user(User(**data.model_dump()), current_user),
+        us.add_user(User(**data.model_dump()), current_user),
         detail=us.detail,
     )
 

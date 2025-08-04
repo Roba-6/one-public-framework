@@ -23,7 +23,7 @@ class UserService(BaseService[User]):
     ):
         super().__init__(session, translator)
 
-    def add_one_with_user(self, data: User, current_user: User) -> User:
+    def add_user(self, data: User, current_user: User) -> User:
         try:
             data.password = get_hashed_password(data.password)
             data.created_by = current_user.id

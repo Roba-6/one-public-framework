@@ -2,11 +2,16 @@ from typing import Any, Dict, Optional
 
 from sqlmodel import Field
 
+from one_public_api.common import constants
 from one_public_api.common.utility.str import to_camel
 from one_public_api.core.i18n import translate as _
 from one_public_api.models.mixins.id_mixin import IdMixin
 from one_public_api.models.mixins.timestamp_mixin import TimestampMixin
-from one_public_api.models.system.configuration_model import ConfigurationBase
+from one_public_api.models.system.configuration_model import (
+    ConfigurationBase,
+    ConfigurationOption,
+    ConfigurationType,
+)
 from one_public_api.schemas.response_schema import example_audit, example_id
 from one_public_api.schemas.user_schema import UserPublicResponse, example_user
 
@@ -31,9 +36,7 @@ example_options: Dict[str, Any] = {
 # ----- Public Schemas -----------------------------------------------------------------
 
 
-class ConfigurationPublicResponse(ConfigurationBase):
-    options: Dict[str, Any] = Field(default=None, exclude=True, repr=False)
-
+class ConfigurationPublicResponse(ConfigurationBase, IdMixin):
     model_config = {
         "alias_generator": to_camel,
         "populate_by_name": True,
@@ -46,7 +49,20 @@ class ConfigurationPublicResponse(ConfigurationBase):
 # ----- Admin Schemas ------------------------------------------------------------------
 
 
-class ConfigurationCreateRequest(ConfigurationBase):
+class ConfigurationCreateRequest(ConfigurationBase, ConfigurationOption):
+    key: str = Field(
+        min_length=constants.MAX_LENGTH_3,
+        max_length=constants.MAX_LENGTH_100,
+        description=_("Configuration key"),
+    )
+    value: str = Field(
+        max_length=constants.MAX_LENGTH_500,
+        description=_("Configuration value"),
+    )
+    type: ConfigurationType = Field(
+        description=_("Configuration type"),
+    )
+
     model_config = {
         "alias_generator": to_camel,
         "populate_by_name": True,
@@ -54,7 +70,7 @@ class ConfigurationCreateRequest(ConfigurationBase):
     }
 
 
-class ConfigurationUpdateRequest(ConfigurationBase):
+class ConfigurationUpdateRequest(ConfigurationBase, ConfigurationOption):
     model_config = {
         "alias_generator": to_camel,
         "populate_by_name": True,
@@ -62,7 +78,9 @@ class ConfigurationUpdateRequest(ConfigurationBase):
     }
 
 
-class ConfigurationResponse(ConfigurationBase, TimestampMixin, IdMixin):
+class ConfigurationResponse(
+    ConfigurationPublicResponse, ConfigurationOption, TimestampMixin
+):
     user: Optional[UserPublicResponse] = Field(
         default=None,
         description=_("User"),
