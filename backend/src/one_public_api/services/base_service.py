@@ -78,6 +78,17 @@ class BaseService(Generic[T]):
                 self._("Data already exists."), data.model_dump_json(), "E40900001"
             )
 
+    def add_one_with_user(self, data: T, current_user: User) -> T:
+        try:
+            data.created_by = current_user.id
+            data.updated_by = current_user.id
+
+            return self.add_one(data)
+        except DataError:
+            raise DataError(
+                self._("Data already exists."), data.model_dump_json(), "E40900004"
+            )
+
     def update_one_by_id(self, target_id: UUID, data: T) -> T:
         before: T = self.get_one_by_id(target_id)
         result: T = self.du.one(before, data.model_dump(exclude_unset=True))

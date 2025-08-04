@@ -85,7 +85,7 @@ class UserUpdateRequest(UserBase, UserStatus):
     }
 
 
-class UserResponse(UserBase, UserStatus, TimestampMixin, IdMixin):
+class UserResponse(UserPublicResponse, UserStatus):
     creator: Optional[UserPublicResponse] = Field(
         default=None,
         description=_("Creator"),
@@ -94,13 +94,6 @@ class UserResponse(UserBase, UserStatus, TimestampMixin, IdMixin):
         default=None,
         description=_("Updater"),
     )
-
-    @computed_field(return_type=str, description=_("Full name"))
-    def fullname(self) -> str:
-        firstname = self.firstname if self.firstname else ""
-        lastname = self.lastname if self.lastname else ""
-
-        return f"{firstname} {lastname}".strip()
 
     model_config = {
         "alias_generator": to_camel,

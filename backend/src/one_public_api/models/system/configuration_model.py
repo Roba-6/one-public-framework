@@ -55,11 +55,7 @@ class ConfigurationBase(SQLModel):
         default=None,
         description=_("Configuration type"),
     )
-    options: Optional[Dict[str, Any]] = Field(
-        default_factory=dict,
-        sa_column=Column(JSON),
-        description=_("Configuration options"),
-    )
+
     description: Optional[str] = Field(
         default=None,
         max_length=constants.MAX_LENGTH_1000,
@@ -67,8 +63,17 @@ class ConfigurationBase(SQLModel):
     )
 
 
+class ConfigurationOption(SQLModel):
+    options: Optional[Dict[str, Any]] = Field(
+        default_factory=dict,
+        sa_column=Column(JSON),
+        description=_("Configuration options"),
+    )
+
+
 class Configuration(
     ConfigurationBase,
+    ConfigurationOption,
     TimestampMixin,
     MaintenanceMixin,
     IdMixin,
@@ -107,6 +112,7 @@ class Configuration(
     )
     user_id: Optional[UUID] = Field(
         default=None,
+        nullable=True,
         foreign_key=constants.DB_PREFIX_SYS + "users.id",
         description=_("Owner of configuration item"),
     )
