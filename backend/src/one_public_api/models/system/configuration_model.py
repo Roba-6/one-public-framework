@@ -79,6 +79,8 @@ class Configuration(
     IdMixin,
     table=True,
 ):
+    """Represents a configuration model within the database."""
+
     __tablename__ = constants.DB_PREFIX_SYS + "configurations"
 
     name: str = Field(
