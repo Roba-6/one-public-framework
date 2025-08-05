@@ -43,6 +43,8 @@ class Feature(
     IdMixin,
     table=True,
 ):
+    """Represents a feature model within the database."""
+
     __tablename__ = constants.DB_PREFIX_SYS + "features"
 
     name: str = Field(

@@ -50,8 +50,8 @@ class LoginRequest(PasswordMixin, SQLModel):
 
 
 class LoginFormResponse(SQLModel):
-    access_token: str = Field(description=_("The access token"))
-    token_type: str = Field(default="Bearer", description=_("The type of the token"))
+    access_token: str = Field(description=_("Access token"))
+    token_type: str = Field(default="Bearer", description=_("Token type"))
 
     model_config = {
         "json_schema_extra": {

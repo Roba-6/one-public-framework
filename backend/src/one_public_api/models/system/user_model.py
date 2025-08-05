@@ -62,22 +62,7 @@ class User(
     IdMixin,
     table=True,
 ):
-    """
-    Represents a user in the system.
-
-    This class extends multiple mixins to provide functionality like password
-    management, timestamp tracking, maintenance operations, and unique ID generation.
-    It is mapped to the database table defined in __tablename__. The user's creator
-    and updater relationships link back to the User model itself, representing
-    hierarchical associations.
-
-    Attributes
-    ----------
-    creator : User
-        Relationship to represent the user who created this instance.
-    updater : User
-        Relationship to represent the user who last updated this instance.
-    """
+    """Represents a model within the database."""
 
     __tablename__ = constants.DB_PREFIX_SYS + "users"
 
