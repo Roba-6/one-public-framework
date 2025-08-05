@@ -113,7 +113,35 @@ class BaseService(Generic[T]):
 
         return result
 
-    def delete_one(self, target_id: UUID) -> T:
+    def delete_one(self, data: T) -> T:
+        try:
+            result: T = self.dd.one(data)
+
+            self.session.commit()
+
+            return result
+        except IntegrityError:
+            raise DataError(
+                self._("This record might be referenced by other data."),
+                code="E40900002",
+            )
+
+    def delete_all(self, data: List[T]) -> List[T]:
+        try:
+            results: List[T] = []
+            for d in data:
+                results.append(self.dd.one(d))
+
+            self.session.commit()
+
+            return results
+        except IntegrityError:
+            raise DataError(
+                self._("This record might be referenced by other data."),
+                code="E40900002",
+            )
+
+    def delete_one_by_id(self, target_id: UUID) -> T:
         try:
             data: T = self.get_one_by_id(target_id)
             result: T = self.dd.one(data)

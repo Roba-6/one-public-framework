@@ -128,5 +128,5 @@ def destroy_admin_api(
     ),
 ) -> ResponseSchema[UserResponse]:
     return create_response_data(
-        UserResponse, us.delete_one(target_id), detail=us.detail
+        UserResponse, us.delete_one_by_id(target_id), detail=us.detail
     )

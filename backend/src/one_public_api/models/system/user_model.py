@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List, Optional
 
 from pydantic import EmailStr
 from sqlmodel import Field, Relationship, SQLModel
@@ -7,6 +7,7 @@ from one_public_api.common import constants
 from one_public_api.core.i18n import translate as _
 from one_public_api.models.mixins import MaintenanceMixin, PasswordMixin, TimestampMixin
 from one_public_api.models.mixins.id_mixin import IdMixin
+from one_public_api.models.system.token_model import Token
 
 
 class UserBase(SQLModel):
@@ -126,4 +127,8 @@ class User(
             "primaryjoin": "User.updated_by==User.id",
             "remote_side": "[User.id]",
         }
+    )
+
+    tokens: List[Token] = Relationship(
+        back_populates="user", sa_relationship_kwargs={"cascade": "all, delete-orphan"}
     )
