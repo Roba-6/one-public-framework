@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-08-05 22:16+0900\n"
+"POT-Creation-Date: 2025-08-06 00:44+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -132,59 +132,59 @@ msgstr ""
 msgid "Whether auth is required"
 msgstr ""
 
-#: src/one_public_api/models/system/token_model.py:19
+#: src/one_public_api/models/system/token_model.py:23
 msgid "Token"
 msgstr ""
 
-#: src/one_public_api/models/system/token_model.py:23
+#: src/one_public_api/models/system/token_model.py:27
 #: src/one_public_api/schemas/authenticate_schema.py:54
 msgid "Token type"
 msgstr ""
 
-#: src/one_public_api/models/system/token_model.py:29
+#: src/one_public_api/models/system/token_model.py:33
 msgid "Owner of token"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:17
-#: src/one_public_api/models/system/user_model.py:74
+#: src/one_public_api/models/system/user_model.py:18
+#: src/one_public_api/models/system/user_model.py:75
 #: src/one_public_api/schemas/authenticate_schema.py:29
 #: src/one_public_api/schemas/user_schema.py:66
 msgid "User name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:22
-#: src/one_public_api/models/system/user_model.py:80
+#: src/one_public_api/models/system/user_model.py:23
+#: src/one_public_api/models/system/user_model.py:81
 #: src/one_public_api/schemas/user_schema.py:70
 msgid "User's email address"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:27
-#: src/one_public_api/models/system/user_model.py:86
+#: src/one_public_api/models/system/user_model.py:28
+#: src/one_public_api/models/system/user_model.py:87
 msgid "First name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:32
-#: src/one_public_api/models/system/user_model.py:92
+#: src/one_public_api/models/system/user_model.py:33
+#: src/one_public_api/models/system/user_model.py:93
 msgid "Last name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:37
-#: src/one_public_api/models/system/user_model.py:98
+#: src/one_public_api/models/system/user_model.py:38
+#: src/one_public_api/models/system/user_model.py:99
 msgid "Display nickname"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:44
-#: src/one_public_api/models/system/user_model.py:103
+#: src/one_public_api/models/system/user_model.py:45
+#: src/one_public_api/models/system/user_model.py:104
 msgid "Whether the account is disabled"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:48
-#: src/one_public_api/models/system/user_model.py:108
+#: src/one_public_api/models/system/user_model.py:49
+#: src/one_public_api/models/system/user_model.py:109
 msgid "Whether the account is locked"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:52
-#: src/one_public_api/models/system/user_model.py:113
+#: src/one_public_api/models/system/user_model.py:53
+#: src/one_public_api/models/system/user_model.py:114
 msgid "Number of failed login attempts"
 msgstr ""
 
@@ -411,30 +411,30 @@ msgstr ""
 msgid "user not verified"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:87
-#: src/one_public_api/services/authenticate_service.py:109
-#: src/one_public_api/services/authenticate_service.py:171
+#: src/one_public_api/services/authenticate_service.py:95
+#: src/one_public_api/services/authenticate_service.py:117
+#: src/one_public_api/services/authenticate_service.py:179
 msgid "user not found"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:101
-#: src/one_public_api/services/authenticate_service.py:167
+#: src/one_public_api/services/authenticate_service.py:109
+#: src/one_public_api/services/authenticate_service.py:175
 msgid "The token has expired"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:105
+#: src/one_public_api/services/authenticate_service.py:113
 msgid "Invalid refresh token"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:126
+#: src/one_public_api/services/authenticate_service.py:134
 msgid "user disabled"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:128
+#: src/one_public_api/services/authenticate_service.py:136
 msgid "user locked"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:169
+#: src/one_public_api/services/authenticate_service.py:177
 msgid "Invalid access token"
 msgstr ""
 
@@ -444,6 +444,8 @@ msgstr ""
 msgid "Data already exists."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:126
+#: src/one_public_api/services/base_service.py:125
+#: src/one_public_api/services/base_service.py:140
+#: src/one_public_api/services/base_service.py:154
 msgid "This record might be referenced by other data."
 msgstr ""

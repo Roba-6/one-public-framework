@@ -119,7 +119,7 @@ class Configuration(
         description=_("Owner of configuration item"),
     )
 
-    user: "User" = Relationship(
+    user: Optional["User"] = Relationship(
         sa_relationship_kwargs={
             "foreign_keys": "[Configuration.user_id]",
             "primaryjoin": "Configuration.user_id==User.id",

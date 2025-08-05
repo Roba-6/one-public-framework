@@ -156,5 +156,5 @@ def destroy_admin_api(
     ),
 ) -> ResponseSchema[ConfigurationResponse]:
     return create_response_data(
-        ConfigurationResponse, cs.delete_one(target_id), detail=cs.detail
+        ConfigurationResponse, cs.delete_one_by_id(target_id), detail=cs.detail
     )
