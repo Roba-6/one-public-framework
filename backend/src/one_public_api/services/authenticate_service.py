@@ -122,7 +122,28 @@ class AuthenticateService(BaseService[User]):
                 self._("user not found"), refresh_token, "E40100009"
             )
 
-    def logout(self, response: Response) -> None:
+    def logout(self, response: Response, current_user: User) -> None:
+        """
+        Logs the user out by deleting all tokens from the database and clearing
+        the refresh token cookie.
+
+        Parameters
+        ----------
+        response : Response
+            The HTTP response object used to delete the refresh token cookie.
+        current_user : User
+            The user who is logging out of the system.
+
+        Returns
+        -------
+        None
+            This function does not return any value.
+        """
+
+        self.dd.all(current_user.tokens)
+        self.session.refresh(current_user)
+        self.session.commit()
+
         response.delete_cookie(
             key=constants.CHAR_REFRESH_TOKEN_KEY,
         )

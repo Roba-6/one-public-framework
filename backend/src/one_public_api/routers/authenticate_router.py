@@ -95,10 +95,11 @@ def profile_api(
     response_model=ResponseSchema[EmptyResponse],
 )
 def logout_api(
+    current_user: Annotated[User, Depends(get_current_user)],
     aths: Annotated[AuthenticateService, Depends()],
     response: Response,
 ) -> ResponseSchema[EmptyResponse]:
-    aths.logout(response)
+    aths.logout(response, current_user)
 
     return create_response_data(EmptyResponse)
 
