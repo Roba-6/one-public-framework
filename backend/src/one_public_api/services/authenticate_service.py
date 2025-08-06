@@ -19,7 +19,8 @@ from one_public_api.core.extensions import oauth2_scheme
 from one_public_api.core.i18n import get_translator
 from one_public_api.core.i18n import translate as _
 from one_public_api.core.settings import settings
-from one_public_api.models import User
+from one_public_api.models import Token, User
+from one_public_api.models.system.token_model import TokenType
 from one_public_api.schemas.authenticate_schema import LoginRequest
 from one_public_api.services.base_service import BaseService
 from one_public_api.services.user_service import UserService
@@ -62,9 +63,21 @@ class AuthenticateService(BaseService[User]):
                     timedelta(minutes=settings.REFRESH_TOKEN_EXPIRE),
                     constants.CHAR_REFRESH_TOKEN_KEY,
                 )
+
+                # Delete the user tokens if them exists.
+                self.dd.all(user.tokens)
+                self.session.refresh(user)
+
+                # save new tokens to db.
+                user.tokens.append(Token(token=access_token, type=TokenType.ACCESS))
+                user.tokens.append(Token(token=refresh_token, type=TokenType.REFRESH))
+
+                # Clear the login failed times.
                 if not user.is_locked or user.login_failed_times > 0:
                     user.login_failed_times = 0
                     self.update_one(user)
+
+                self.session.commit()
 
                 if response:
                     response.set_cookie(
