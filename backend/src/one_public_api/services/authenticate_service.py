@@ -109,6 +109,16 @@ class AuthenticateService(BaseService[User]):
                 user,
                 timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE),
             )
+
+            # Update the access token if it exists.
+            token: Token | None = find_in_model_list(
+                user.tokens, "type", TokenType.ACCESS
+            )
+            if token is not None:
+                token.token = access_token
+                self.du.one(token)
+                self.session.commit()
+
             return {to_camel("access_token"): access_token}
         except ExpiredSignatureError:
             raise UnauthorizedError(
@@ -132,7 +142,7 @@ class AuthenticateService(BaseService[User]):
         ----------
         response : Response
             The HTTP response object used to delete the refresh token cookie.
-        current_user : Optional[User]
+        current_user : User | None
             The user who is logging out of the system.
 
         Returns

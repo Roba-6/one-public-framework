@@ -1,11 +1,11 @@
-from typing import Any, List, Optional, TypeVar
+from typing import Any, List, TypeVar
 
 from sqlmodel import SQLModel
 
 T = TypeVar("T", bound=SQLModel)
 
 
-def find_in_model_list(target_list: List[T], key: str, value: Any) -> Optional[T]:
+def find_in_model_list(target_list: List[T], key: str, value: Any) -> T | None:
     """
     Finds and returns the first item in a list of objects where a specified
     attribute matches a given value.
@@ -25,7 +25,7 @@ def find_in_model_list(target_list: List[T], key: str, value: Any) -> Optional[T
 
     Returns
     -------
-    Optional[T]
+    T | None
         The first object in the list that matches the specified attribute value,
         or None if
         no such object is found.
