@@ -12,6 +12,7 @@ from sqlmodel import Session
 
 from one_public_api.common import constants
 from one_public_api.common.tools import get_username_from_token
+from one_public_api.common.utility.search import find_in_model_list
 from one_public_api.common.utility.str import to_camel
 from one_public_api.core import get_session
 from one_public_api.core.exceptions import APIError, ForbiddenError, UnauthorizedError
@@ -122,7 +123,7 @@ class AuthenticateService(BaseService[User]):
                 self._("user not found"), refresh_token, "E40100009"
             )
 
-    def logout(self, response: Response, current_user: User) -> None:
+    def logout(self, response: Response, current_user: User | None = None) -> None:
         """
         Logs the user out by deleting all tokens from the database and clearing
         the refresh token cookie.
@@ -131,7 +132,7 @@ class AuthenticateService(BaseService[User]):
         ----------
         response : Response
             The HTTP response object used to delete the refresh token cookie.
-        current_user : User
+        current_user : Optional[User]
             The user who is logging out of the system.
 
         Returns
@@ -140,9 +141,10 @@ class AuthenticateService(BaseService[User]):
             This function does not return any value.
         """
 
-        self.dd.all(current_user.tokens)
-        self.session.refresh(current_user)
-        self.session.commit()
+        if current_user is not None:
+            self.dd.all(current_user.tokens)
+            self.session.refresh(current_user)
+            self.session.commit()
 
         response.delete_cookie(
             key=constants.CHAR_REFRESH_TOKEN_KEY,
@@ -191,15 +193,30 @@ def get_current_user(
         username = get_username_from_token(token)
         if username is None:
             raise UnauthorizedError(
-                "No user information found in the token", token, "E40100003"
+                _("No user information found in the token"), token, "E40100003"
             )
         else:
-            return us.get_one(
+            user: User = us.get_one(
                 {"name": username, "is_disabled": False, "is_locked": False}
             )
+
+            if len(user.tokens) == 0:
+                """Forced logout is required."""
+                raise UnauthorizedError(
+                    _("Your account has been logged out."), token, "E40100007"
+                )
+            elif find_in_model_list(user.tokens, "token", token) is None:
+                """Forced logout is required."""
+                raise UnauthorizedError(
+                    _("Your account has been logged in from another location."),
+                    token,
+                    "E40100006",
+                )
+
+            return user
     except ExpiredSignatureError:
         raise UnauthorizedError(_("The token has expired"), token, "E40100004")
     except InvalidTokenError:
         raise UnauthorizedError(_("Invalid access token"), token, "E40100005")
     except HTTPException:
-        raise UnauthorizedError(_("user not found"), token, "E40100006")
+        raise

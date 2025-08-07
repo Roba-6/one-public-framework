@@ -95,6 +95,8 @@ ROUTER_AUTH_REFRESH = "/refresh"
 ROUTER_AUTH_PROFILE = "/me"
 # Logout API router path
 ROUTER_AUTH_LOGOUT = "/logout"
+# Force logout API router path
+ROUTER_AUTH_FORCE_LOGOUT = "/force_logout"
 
 # Path prefix for the authentication API router
 ROUTER_PREFIX_AUTHENTICATION = "/auth"
