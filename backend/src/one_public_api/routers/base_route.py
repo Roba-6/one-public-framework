@@ -33,16 +33,18 @@ class BaseRoute(APIRoute):
             else:
                 logger.info(_("PROCESSING_STARTED") % self.name)
                 start_time = time()
+                try:
+                    if settings.FEATURE_CONTROL:
+                        await self.is_feature_enabled(request)
 
-                if settings.FEATURE_CONTROL:
-                    await self.is_feature_enabled(request)
+                    response = await base_route_handler(request)
 
-                response = await base_route_handler(request)
-
-                duration_time = time() - start_time
-                logger.info(_("PROCESSING_COMPLETED") % (self.name, duration_time))
-
-                return response
+                    return response
+                except Exception:
+                    raise
+                finally:
+                    duration_time = time() - start_time
+                    logger.info(_("PROCESSING_COMPLETED") % (self.name, duration_time))
 
         return handler
 

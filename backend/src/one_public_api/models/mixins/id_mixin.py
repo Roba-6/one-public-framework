@@ -7,17 +7,21 @@ from one_public_api.core.i18n import translate as _
 
 class IdMixin:
     """
-    Mixin providing a unique identifier for data entities.
+    Mixin class for providing an auto-generated unique identifier to records.
+
+    This class is designed as a mixin to be inherited by other classes. Its purpose
+    is to automatically assign a universally unique identifier (UUID) as the
+    primary key for the associated record. This ensures that each record has a
+    unique and immutable identifier.
 
     Attributes
     ----------
     id : UUID
-        The ID of the data, automatically generated as a version 4 UUID. It
-        serves as the primary key for instances of the model.
+        Auto-generated unique ID for the record, used as the primary key.
     """
 
     id: UUID = Field(
         default_factory=uuid4,
         primary_key=True,
-        description=_("The ID of data."),
+        description=_("Auto-generated unique ID for the record"),
     )

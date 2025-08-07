@@ -1,5 +1,5 @@
 import os
-from typing import Any, List
+from typing import Any
 
 from pydantic import PostgresDsn, computed_field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -9,70 +9,69 @@ from one_public_api.common import constants
 
 class Settings(BaseSettings):
     """
-    Settings configuration class for application.
+    Holds the configuration settings for an application.
 
-    This class is used to manage runtime configurations and environment-specific
-    settings for a Python application. It supports configuration of environment
-    variables and default values. The class also provides computed fields and
-    validators for dynamic attributes or specific preprocessing of the attributes.
+    This class defines various configuration settings for the application, such as
+    debug mode, API details, language settings, database configurations, logging
+    options, and security settings. It provides default values and mechanisms to
+    validate and compute configurations dynamically.
 
     Attributes
     ----------
+    DEBUG : bool
+        Determines whether the application runs in debug mode.
     TITLE : str
-        Title of the application.
-    RESPONSE_LANGUAGE : str
-        Default response language for the application.
-    LOCALES_PATH : str
-        Path to localization files.
-    FEATURE_CONTROL : bool
-        Flag to enable or disable feature control.
-    CORS_ORIGINS : List[str]
-        List of allowed origins for Cross-Origin Resource Sharing (CORS).
-
-    SECRET_KEY : str
-        Secret key for cryptographic operations.
-    ACCESS_TOKEN_EXPIRE : int
-        Expiration time (in seconds) for access tokens.
-    REFRESH_TOKEN_EXPIRE : int
-        Expiration time (in seconds) for refresh tokens.
-
-    DB_ENGINE : str
-        Database engine to use (e.g. sqlite3, postgresql).
-    DB_HOST : str
-        Host address for the database server.
-    DB_PORT : int
-        Port number for the database server.
-    DB_NAME : str
-        Name of the database.
-    DB_USER : str
-        Username for the database authentication.
-    DB_PASS : str
-        Password for the database authentication.
-    DB_MAX_OVERFLOW_SIZE : int
-        Maximum overflow size for the database connection pool.
-    DB_POOL_SIZE : int
-        Size of the database connection pool.
-    DB_TIMEOUT : int
-        Timeout duration for database connections.
-
+        The title of the API.
     LANGUAGE : str
-        Application language setting.
+        The language used for logs and database comments.
+    RESPONSE_LANGUAGE : str
+        The language used for API responses.
+    LOCALES_PATH : str
+        The path to the locale files used by the application.
+    FEATURE_CONTROL : bool
+        Indicates whether the feature availability check is enabled.
+    CORS_ORIGINS : list of str
+        List of allowed origins for Cross-Origin Resource Sharing (CORS).
+    SECRET_KEY : str
+        The application's secret key used for security.
+    ACCESS_TOKEN_EXPIRE : int
+        Expiration time (in minutes) for access tokens.
+    REFRESH_TOKEN_EXPIRE : int
+        Expiration time (in minutes) for refresh tokens.
+    DB_ENGINE : str
+        The database engine type, e.g., 'sqlite3' or 'postgresql'.
+    DB_HOST : str
+        The host address of the database.
+    DB_PORT : int
+        The port used to connect to the database.
+    DB_NAME : str
+        The name of the database.
+    DB_USER : str
+        The username for database authentication.
+    DB_PASS : str
+        The password for database authentication.
+    DB_POOL_SIZE : int
+        Number of connections to keep open in the connection pool.
+    DB_MAX_OVERFLOW_SIZE : int
+        Maximum number of connections allowed in the pool "overflow".
+    DB_TIMEOUT : int
+        Number of seconds to wait for a connection before timing out.
     LOG_LEVEL : str
-        Default logging level.
+        The level of logging (e.g., INFO, DEBUG).
     LOG_PATH : str
-        Path for storing log files.
+        The directory path where log files are stored.
     LOG_NAME : str
         Name of the log files.
     LOG_ROTATING_WHEN : str
-        Condition for rotating the log files (e.g., time interval).
+        Defines the log rotation interval (e.g., 'daily').
     LOG_ROTATING_BACKUP_COUNT : int
-        Number of backup log files to keep when rotating logs.
+        Number of backup logs to retain during rotation.
     LOG_FORMAT : str
-        Format of the logs.
+        Format of the log entries.
     LOG_CONSOLE : bool
-        Flag to enable or disable console logging.
+        Indicates whether logs should also be printed to the console.
     LOG_ECHO_SQL : bool
-        Flag to enable or disable SQL query logging for debugging purposes.
+        Specifies if SQL queries should be echoed in the logs.
     """
 
     model_config = SettingsConfigDict(
@@ -83,14 +82,25 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
+    # Debug mode
+    DEBUG: bool = False
+    # Title of API
     TITLE: str = ""
+    # Language used for logs and database comments
+    LANGUAGE: str = constants.DEFAULT_LANGUAGE
+    # Language used for response
     RESPONSE_LANGUAGE: str = constants.DEFAULT_LANGUAGE
+    # Path to locale files
     LOCALES_PATH: str = constants.DEFAULT_LOCALES_PATH
+    # Enable feature availability check
     FEATURE_CONTROL: bool = False
-    CORS_ORIGINS: List[str] = []
-
+    # Allowed origins for CORS
+    CORS_ORIGINS: Any = []
+    # Secret key
     SECRET_KEY: str = ""
+    # Access token expiration time (in minutes)
     ACCESS_TOKEN_EXPIRE: int = constants.ACCESS_TOKEN_EXPIRE
+    # Refresh token expiration time (in minutes)
     REFRESH_TOKEN_EXPIRE: int = constants.REFRESH_TOKEN_EXPIRE
 
     DB_ENGINE: str = "sqlite3"
@@ -99,8 +109,12 @@ class Settings(BaseSettings):
     DB_NAME: str = "opf_db" + constants.EXT_SQLITE
     DB_USER: str = ""
     DB_PASS: str = ""
-    DB_MAX_OVERFLOW_SIZE: int = constants.DB_DEFAULT_MAX_OVERFLOW_SIZE
+    # The number of connections to keep open inside the connection pool
     DB_POOL_SIZE: int = constants.DB_DEFAULT_POOL_SIZE
+    # The number of connections to allow in connection pool "overflow"
+    DB_MAX_OVERFLOW_SIZE: int = constants.DB_DEFAULT_MAX_OVERFLOW_SIZE
+    # The number of seconds to wait before giving up on getting a connection from
+    # the pool.
     DB_TIMEOUT: int = constants.DB_DEFAULT_TIMEOUT
 
     @computed_field
@@ -111,14 +125,14 @@ class Settings(BaseSettings):
     def async_db_uri(self) -> PostgresDsn | str:
         return self.create_db_uri(True)
 
-    LANGUAGE: str = constants.DEFAULT_LANGUAGE
     LOG_LEVEL: str = constants.LOG_DEFAULT_LEVEL
     LOG_PATH: str = constants.LOG_DEFAULT_PATH
     LOG_NAME: str = constants.LOG_DEFAULT_NAME
     LOG_ROTATING_WHEN: str = constants.LOG_DEFAULT_ROTATING_WHEN
     LOG_ROTATING_BACKUP_COUNT: int = constants.LOG_DEFAULT_ROTATING_BACKUP_COUNT
     LOG_FORMAT: str = constants.LOG_DEFAULT_FORMAT
-    LOG_CONSOLE: bool = True
+    LOG_CONSOLE: bool = False
+    LOG_ECHO_SQL: bool = False
 
     @computed_field
     def log_file_path(self) -> str:
@@ -134,8 +148,6 @@ class Settings(BaseSettings):
         log_path = self.LOG_PATH if self.LOG_PATH else constants.LOG_DEFAULT_PATH
 
         return os.path.join(log_path, self.LOG_NAME + constants.EXT_LOG)
-
-    LOG_ECHO_SQL: bool = False
 
     @field_validator("CORS_ORIGINS", mode="before")
     def split_origins(cls, v: Any) -> Any:  # noqa

@@ -60,15 +60,15 @@ def login_api(
     return TokenResponse(**aths.login(request, response))
 
 
-@public_router.get(
+@admin_router.get(
     constants.ROUTER_AUTH_REFRESH,
-    name="SYS-ATH-P-RFS",
+    name="SYS-ATH-A-RFS",
     summary=_("Refresh Token"),
     response_model=TokenResponse,
 )
 def refresh_api(
     aths: Annotated[AuthenticateService, Depends()],
-    refresh_token: str = Cookie(None),
+    refresh_token: str = Cookie(None, description=_("Refresh token")),
 ) -> TokenResponse:
     return TokenResponse(**aths.refresh(refresh_token))
 
@@ -88,16 +88,54 @@ def profile_api(
     )
 
 
-@public_router.get(
+@admin_router.get(
     constants.ROUTER_AUTH_LOGOUT,
-    name="SYS-ATH-P-LGO",
+    name="SYS-ATH-A-LGO",
     summary=_("Logout"),
     response_model=ResponseSchema[EmptyResponse],
 )
 def logout_api(
+    current_user: Annotated[User, Depends(get_current_user)],
     aths: Annotated[AuthenticateService, Depends()],
     response: Response,
 ) -> ResponseSchema[EmptyResponse]:
+    aths.logout(response, current_user)
+
+    return create_response_data(EmptyResponse)
+
+
+@public_router.get(
+    constants.ROUTER_AUTH_FORCE_LOGOUT,
+    name="SYS-ATH-P-LGO",
+    summary=_("Force logout"),
+    response_model=ResponseSchema[EmptyResponse],
+)
+def force_logout_api(
+    aths: Annotated[AuthenticateService, Depends()],
+    response: Response,
+) -> ResponseSchema[EmptyResponse]:
+    """
+    Forcibly logs out the user by deleting the refresh token cookie without
+    authentication.
+
+    This API endpoint is used for logging out a user and ensuring their session is
+    terminated. It invokes the logout process and returns an appropriate empty
+    response upon completion.
+
+    Parameters
+    ----------
+    aths : AuthenticateService
+        The authentication service providing the logout functionality. It is
+        a dependency that must be injected.
+    response : Response
+        The HTTP response object used to manage session-specific data and cookies.
+
+    Returns
+    -------
+    ResponseSchema[EmptyResponse]
+        An empty response body encapsulated in a standardized response schema.
+    """
+
     aths.logout(response)
 
     return create_response_data(EmptyResponse)

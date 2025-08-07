@@ -33,7 +33,7 @@ tags = [_("Features")]
 @public_router.get(
     constants.ROUTER_COMMON_BLANK,
     name="SYS-FTR-P-LST",
-    summary="List Public Features",
+    summary=_("List Public Features"),
     response_model=ResponseSchema[FeaturePublicResponse],
 )
 def list_public_api(
@@ -120,5 +120,5 @@ def destroy_admin_api(
     target_id: UUID = Path(description=_("The ID of the feature item to be deleted")),
 ) -> ResponseSchema[FeatureResponse]:
     return create_response_data(
-        FeatureResponse, fs.delete_one(target_id), detail=fs.detail
+        FeatureResponse, fs.delete_one_by_id(target_id), detail=fs.detail
     )

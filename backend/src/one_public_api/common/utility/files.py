@@ -21,3 +21,20 @@ def is_path_exists(path: str) -> bool:
     """
 
     return os.path.exists(path)
+
+
+def is_installed_package() -> bool:
+    """
+    Determine if the current script is running from an installed package.
+
+    This function checks whether the script's directory path contains
+    "site-packages," which commonly represents an installed Python package
+    directory.
+
+    Returns
+    -------
+    bool
+        True if the script is running from an installed package, False otherwise.
+    """
+
+    return "site-packages" in os.path.abspath(__file__)

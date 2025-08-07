@@ -16,6 +16,7 @@ from one_public_api.crud.data_creator import DataCreator
 from one_public_api.crud.data_deleter import DataDeleter
 from one_public_api.crud.data_reader import DataReader
 from one_public_api.crud.data_updater import DataUpdater
+from one_public_api.models import User
 from one_public_api.schemas.response_schema import MessageSchema
 
 T = TypeVar("T", bound=SQLModel)
@@ -77,14 +78,32 @@ class BaseService(Generic[T]):
                 self._("Data already exists."), data.model_dump_json(), "E40900001"
             )
 
+    def add_one_with_user(self, data: T, current_user: User) -> T:
+        try:
+            data.created_by = current_user.id
+            data.updated_by = current_user.id
+
+            return self.add_one(data)
+        except DataError:
+            raise DataError(
+                self._("Data already exists."), data.model_dump_json(), "E40900004"
+            )
+
     def update_one_by_id(self, target_id: UUID, data: T) -> T:
         before: T = self.get_one_by_id(target_id)
-        result: T = self.du.one(before, data.model_dump())
+        result: T = self.du.one(before, data.model_dump(exclude_unset=True))
 
         self.session.commit()
         self.session.refresh(result)
 
         return result
+
+    def update_one_by_id_with_user(
+        self, target_id: UUID, data: T, current_user: User
+    ) -> T:
+        setattr(data, "updated_by", current_user.id)
+
+        return self.update_one_by_id(target_id, data)
 
     def update_one(self, data: T) -> T:
         result: T = self.du.one(data)
@@ -94,7 +113,35 @@ class BaseService(Generic[T]):
 
         return result
 
-    def delete_one(self, target_id: UUID) -> T:
+    def delete_one(self, data: T) -> T:
+        try:
+            result: T = self.dd.one(data)
+
+            self.session.commit()
+
+            return result
+        except IntegrityError:
+            raise DataError(
+                self._("This record might be referenced by other data."),
+                code="E40900002",
+            )
+
+    def delete_all(self, data: List[T]) -> List[T]:
+        try:
+            results: List[T] = []
+            for d in data:
+                results.append(self.dd.one(d))
+
+            self.session.commit()
+
+            return results
+        except IntegrityError:
+            raise DataError(
+                self._("This record might be referenced by other data."),
+                code="E40900002",
+            )
+
+    def delete_one_by_id(self, target_id: UUID) -> T:
         try:
             data: T = self.get_one_by_id(target_id)
             result: T = self.dd.one(data)

@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import List, Tuple
 
 # Version of the One Public API
-VERSION: str = "0.1.1-alpha"
+VERSION: str = "0.1.0-alpha"
 # Default Language
 DEFAULT_LANGUAGE: str = "en"
 # Default path for locale files
@@ -58,17 +58,18 @@ PATH_LOCALES = PATH_OPA.joinpath(FOLDER_LOCALES)
 PATHS_ENV: Tuple[str, ...] = tuple(os.path.join(PATH_APP, env) for env in FILES_ENV)
 
 # ----- Database Settings --------------------------------------------------------------
-# The default number of connections to allow in connection pool "overflow"
-DB_DEFAULT_MAX_OVERFLOW_SIZE: int = 10
-# The default number of connections to keep open inside the connection pool.
+# The default number of connections to keep open inside the connection pool
 DB_DEFAULT_POOL_SIZE: int = 5
+# The default number of connections to allow in connection pool "overflow"
+# (2× DB_DEFAULT_POOL_SIZE)
+DB_DEFAULT_MAX_OVERFLOW_SIZE: int = 10
 # The default number of seconds to wait before giving up on getting a connection from
 # the pool.
 DB_DEFAULT_TIMEOUT: int = 30
 
-# The default number of rows to return in a query result.
+# The default number of rows to return in a query result
 DB_DEFAULT_LIMIT: int = 10
-# The maximum number of rows to return in a query result.
+# The maximum number of rows to return in a query result
 DB_MAX_LIMIT: int = 100
 
 # Table name prefix for system tables
@@ -94,6 +95,8 @@ ROUTER_AUTH_REFRESH = "/refresh"
 ROUTER_AUTH_PROFILE = "/me"
 # Logout API router path
 ROUTER_AUTH_LOGOUT = "/logout"
+# Force logout API router path
+ROUTER_AUTH_FORCE_LOGOUT = "/force_logout"
 
 # Path prefix for the authentication API router
 ROUTER_PREFIX_AUTHENTICATION = "/auth"
@@ -144,6 +147,7 @@ MAX_LENGTH_13: int = 13
 MAX_LENGTH_55: int = 55
 MAX_LENGTH_64: int = 64
 MAX_LENGTH_100: int = 100
+MAX_LENGTH_128: int = 128
 MAX_LENGTH_255: int = 255
 MAX_LENGTH_500: int = 500
 MAX_LENGTH_1000: int = 1000

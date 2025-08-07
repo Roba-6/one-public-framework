@@ -8,7 +8,7 @@ from one_public_api.common import constants
 from one_public_api.common.query_param import QueryParam
 from one_public_api.common.tools import create_response_data
 from one_public_api.core import translate as _
-from one_public_api.models import Configuration
+from one_public_api.models import Configuration, User
 from one_public_api.routers.base_route import BaseRoute
 from one_public_api.schemas.configuration_schema import (
     ConfigurationCreateRequest,
@@ -92,12 +92,13 @@ def list_admin_api(
     response_model=ResponseSchema[ConfigurationResponse],
 )
 def create_admin_api(
+    current_user: Annotated[User, Depends(get_current_user)],
     cs: Annotated[ConfigurationService, Depends()],
     data: ConfigurationCreateRequest,
 ) -> ResponseSchema[ConfigurationResponse]:
     return create_response_data(
         ConfigurationResponse,
-        cs.add_one(Configuration(**data.model_dump())),
+        cs.add_one_with_user(Configuration(**data.model_dump()), current_user),
         detail=cs.detail,
     )
 
@@ -126,6 +127,7 @@ def retrieve_admin_api(
     response_model=ResponseSchema[ConfigurationResponse],
 )
 def update_admin_api(
+    current_user: Annotated[User, Depends(get_current_user)],
     cs: Annotated[ConfigurationService, Depends()],
     data: ConfigurationUpdateRequest,
     target_id: UUID = Path(
@@ -134,7 +136,9 @@ def update_admin_api(
 ) -> ResponseSchema[ConfigurationResponse]:
     return create_response_data(
         ConfigurationResponse,
-        cs.update_one_by_id(target_id, Configuration(**data.model_dump())),
+        cs.update_one_by_id_with_user(
+            target_id, Configuration(**data.model_dump()), current_user
+        ),
         detail=cs.detail,
     )
 
@@ -152,5 +156,5 @@ def destroy_admin_api(
     ),
 ) -> ResponseSchema[ConfigurationResponse]:
     return create_response_data(
-        ConfigurationResponse, cs.delete_one(target_id), detail=cs.detail
+        ConfigurationResponse, cs.delete_one_by_id(target_id), detail=cs.detail
     )
