@@ -40,3 +40,26 @@ class DataDeleter:
         self.session.flush()
 
         return data
+
+    def all(self, data: list[T]) -> list[T]:
+        """
+        Delete multiple records from the provided data.
+
+        Parameters
+        ----------
+        data : list[T]
+            A list of objects to be deleted. Each object will be removed from the
+            session and subsequently flushed.
+
+        Returns
+        -------
+        list[T]
+            The same list of objects that were passed, indicating the objects
+            that were processed.
+        """
+
+        for d in data:
+            self.session.delete(d)
+        self.session.flush()
+
+        return data

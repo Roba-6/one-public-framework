@@ -68,11 +68,14 @@ def list_admin_api(
     response_model=ResponseSchema[UserResponse],
 )
 def create_admin_api(
+    current_user: Annotated[User, Depends(get_current_user)],
     us: Annotated[UserService, Depends()],
     data: UserCreateRequest,
 ) -> ResponseSchema[UserResponse]:
     return create_response_data(
-        UserResponse, us.add_one(User(**data.model_dump())), detail=us.detail
+        UserResponse,
+        us.add_user(User(**data.model_dump()), current_user),
+        detail=us.detail,
     )
 
 
@@ -98,13 +101,16 @@ def retrieve_admin_api(
     response_model=ResponseSchema[UserResponse],
 )
 def update_admin_api(
+    current_user: Annotated[User, Depends(get_current_user)],
     us: Annotated[UserService, Depends()],
     data: UserUpdateRequest,
     target_id: UUID = Path(description=_("The ID of the user to be updated")),
 ) -> ResponseSchema[UserResponse]:
     return create_response_data(
         UserResponse,
-        us.update_one_by_id(target_id, User(**data.model_dump())),
+        us.update_one_by_id_with_user(
+            target_id, User(**data.model_dump()), current_user
+        ),
         detail=us.detail,
     )
 
@@ -122,5 +128,5 @@ def destroy_admin_api(
     ),
 ) -> ResponseSchema[UserResponse]:
     return create_response_data(
-        UserResponse, us.delete_one(target_id), detail=us.detail
+        UserResponse, us.delete_one_by_id(target_id), detail=us.detail
     )

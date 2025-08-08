@@ -11,9 +11,9 @@ T = TypeVar("T")
 example_id: Dict[str, Any] = {"id": "a83ab523-0a9e-4136-9602-f16a35c955a6"}
 
 example_audit: Dict[str, Any] = {
-    "createdBy": "a83ab523-0a9e-4136-9602-f16a35c955a6",
+    # "createdBy": "a83ab523-0a9e-4136-9602-f16a35c955a6",
     "createdAt": "2023-01-01T00:00:00+00:00",
-    "updatedBy": "a83ab523-0a9e-4136-9602-f16a35c955a6",
+    # "updatedBy": "a83ab523-0a9e-4136-9602-f16a35c955a6",
     "updatedAt": "2023-01-01T00:00:00+00:00",
 }
 
@@ -34,5 +34,5 @@ class ResponseSchema(BaseModel, Generic[T]):
     )
     count: int | None = Field(default=None, description=_("Count of the results"))
     detail: List[MessageSchema] | None = Field(
-        default=None, description=_("Messages of the request")
+        default=None, description=_("Details of the results")
     )
