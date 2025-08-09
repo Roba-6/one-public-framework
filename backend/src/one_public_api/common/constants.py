@@ -111,7 +111,7 @@ ROUTER_PREFIX_USER = "/users"
 # Default logging level for the API.
 LOG_DEFAULT_LEVEL: str = "DEBUG"
 # Default path for the log files.
-LOG_DEFAULT_PATH: str = "logs/"
+LOG_DEFAULT_PATH: str = "logs"
 # Default name for the logger instance.
 LOG_DEFAULT_NAME: str = "api"
 # Defines the rotation policy for log files.

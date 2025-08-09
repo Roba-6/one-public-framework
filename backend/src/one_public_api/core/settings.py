@@ -5,6 +5,7 @@ from pydantic import PostgresDsn, computed_field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from one_public_api.common import constants
+from one_public_api.common.utility.files import is_installed_package
 
 
 class Settings(BaseSettings):
@@ -145,7 +146,10 @@ class Settings(BaseSettings):
             path of log files
         """
 
-        log_path = self.LOG_PATH if self.LOG_PATH else constants.LOG_DEFAULT_PATH
+        relative_path = (
+            constants.LOG_DEFAULT_PATH if is_installed_package() else constants.PATH_LOG
+        )
+        log_path = self.LOG_PATH if self.LOG_PATH else relative_path
 
         return os.path.join(log_path, self.LOG_NAME + constants.EXT_LOG)
 
