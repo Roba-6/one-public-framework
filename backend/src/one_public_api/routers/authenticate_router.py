@@ -107,7 +107,7 @@ def logout_api(
 @public_router.get(
     constants.ROUTER_AUTH_FORCE_LOGOUT,
     name="SYS-ATH-P-LGO",
-    summary=_("Force logout"),
+    summary=_("Force Logout"),
     response_model=ResponseSchema[EmptyResponse],
 )
 def force_logout_api(
