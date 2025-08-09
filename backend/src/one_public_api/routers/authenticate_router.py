@@ -60,9 +60,9 @@ def login_api(
     return TokenResponse(**aths.login(request, response))
 
 
-@admin_router.get(
+@public_router.get(
     constants.ROUTER_AUTH_REFRESH,
-    name="SYS-ATH-A-RFS",
+    name="SYS-ATH-P-RFS",
     summary=_("Refresh Token"),
     response_model=TokenResponse,
 )
