@@ -29,7 +29,7 @@ export const CONSTANT = {
 
   ROUTE_URL: {
     ADMIN: '/admin',
-    ADMIN_CONFIGURATION: '/configuration',
+    ADMIN_CONFIGURATION: '/configurations',
     ADMIN_USER: '/admin/user',
     ADMIN_ROLE: '/admin/role',
     ADMIN_PERMISSION: '/admin/permission',
@@ -37,12 +37,12 @@ export const CONSTANT = {
     HOME: '/home',
     LOGIN: '/login',
     SAMPLE: '/sample',
-    DASHBOARD: '/dashboard',
+    ADMIN_DASHBOARD: '/dashboard',
     SETTINGS: '/settings',
   },
 
   API_URL: {
-    CONFIGURATION: '/configurations',
+    CONFIGURATIONS: '/configurations',
     LOGIN: '/auth/login',
     REFRESH: '/auth/refresh',
     ME: '/auth/me',

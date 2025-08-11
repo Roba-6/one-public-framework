@@ -6,7 +6,8 @@ import { CONSTANT } from '@/common/constants'
 import { useAppSelector } from '@/common/hooks/use-store'
 import AdminPage from '@/common/pages/admin/admin-page'
 import LoginPage from '@/common/pages/admin/login-page'
-import ConfigurationListPage from '@/common/pages/configuration/list-page.tsx'
+import ConfigurationEditPage from '@/common/pages/configurations/edit-page'
+import DashboardPage from '@/common/pages/dashboard-page'
 import ErrorPage from '@/common/pages/error-page'
 import HomePage from '@/common/pages/home-page'
 import SamplePage from '@/common/pages/sample/sample-page'
@@ -36,10 +37,14 @@ const Router = ({ children }: { children: React.ReactNode }): React.ReactNode =>
         {!appType && <Route path={CONSTANT.ROUTE_URL.HOME} element={<HomePage />} />}
         <Route path={CONSTANT.ROUTE_URL.ADMIN}>
           <Route element={<AdminPage />}>
-            <Route index element={<ConfigurationListPage />} />
+            <Route index element={<DashboardPage />} />
+            <Route
+              path={CONSTANT.ROUTE_URL.ADMIN_DASHBOARD.slice(1)}
+              element={<DashboardPage />}
+            />
             <Route
               path={CONSTANT.ROUTE_URL.ADMIN_CONFIGURATION.slice(1)}
-              element={<ConfigurationListPage />}
+              element={<ConfigurationEditPage />}
             />
           </Route>
           <Route path={CONSTANT.ROUTE_URL.LOGIN.slice(1)} element={<LoginPage />} />

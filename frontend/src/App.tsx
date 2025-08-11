@@ -22,7 +22,7 @@ const App = ({ children }: { children: React.ReactNode }): React.ReactNode => {
     const fetch = async () => {
       try {
         const res: CommonResponse = await getApi<CommonResponse>(
-          CONSTANT.API_URL.CONFIGURATION
+          CONSTANT.API_URL.CONFIGURATIONS
         )
         dispatch(initState(res.results!))
         setIsFinished(true)
