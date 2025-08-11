@@ -4,9 +4,14 @@
     "ja": "日本語"
   },
   "title": {
-    "login": "Login to your account"
+    "login": "Login to your account",
+    "error": "Error",
+    "success": "Success",
+    "info": "Info",
+    "warning": "Warning"
   },
   "buttons": {
+    "close": "Close",
     "login": "Login",
     "logout": "Log out"
   },

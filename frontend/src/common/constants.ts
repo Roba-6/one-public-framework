@@ -18,25 +18,34 @@ export const CONSTANT = {
   HTTP_CONTENT_TYPE_JSON: 'application/json',
   // API request timeout (in milliseconds)
   HTTP_TIMEOUT: 30 * 1000,
+  // Display duration for system messages
+  MESSENGER_DURATION: 1000,
   // Copyright notice for the App
   COPYRIGHT: '© 2025 Roba All Rights Reserved',
-
+  // Key name for data stored in Web Storage
   STORAGE_KEY: { THEME: 'theme', LANGUAGE: 'language', ACCESS_TOKEN: 'accessToken' },
 
   ENUM_CONFIGURATION_TYPE: { OTHER: 0, SYS: 1, API: 2, UI: 3 },
 
   ROUTE_URL: {
     ADMIN: '/admin',
+    ADMIN_CONFIGURATION: '/configurations',
+    ADMIN_USER: '/admin/user',
+    ADMIN_ROLE: '/admin/role',
+    ADMIN_PERMISSION: '/admin/permission',
+    ADMIN_LOG: '/admin/log',
     HOME: '/home',
     LOGIN: '/login',
     SAMPLE: '/sample',
-    DASHBOARD: '/dashboard',
+    ADMIN_DASHBOARD: '/dashboard',
     SETTINGS: '/settings',
   },
 
   API_URL: {
-    CONFIGURATION: '/configurations',
+    CONFIGURATIONS: '/configurations',
     LOGIN: '/auth/login',
+    REFRESH: '/auth/refresh',
     ME: '/auth/me',
+    USER: '/users',
   },
 } as const

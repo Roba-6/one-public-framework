@@ -1,13 +1,7 @@
 import { Collapsible, CollapsibleTrigger } from '@radix-ui/react-collapsible'
-import {
-  Calendar,
-  ChevronDown,
-  Home,
-  Inbox,
-  Plus,
-  Search,
-  Settings,
-} from 'lucide-react'
+import { IconDashboard } from '@tabler/icons-react'
+import { Calendar, ChevronDown, Inbox, Plus, Search, Settings } from 'lucide-react'
+import { useNavigate } from 'react-router'
 
 import Logo from '@/common/components/atoms/logo'
 import {
@@ -23,14 +17,20 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/common/components/ui/sidebar'
+import { CONSTANT } from '@/common/constants'
 
 import { NavUser } from './nav-user'
 
 const items = [
   {
-    title: 'Home',
-    url: '#',
-    icon: Home,
+    title: 'Dashboard',
+    url: CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.ADMIN_DASHBOARD,
+    icon: IconDashboard,
+  },
+  {
+    title: 'Configurations',
+    url: CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.ADMIN_CONFIGURATION,
+    icon: Settings,
   },
   {
     title: 'Inbox',
@@ -47,14 +47,10 @@ const items = [
     url: '#',
     icon: Search,
   },
-  {
-    title: 'Settings',
-    url: '#',
-    icon: Settings,
-  },
 ]
 
 const AppSidebar = () => {
+  const nav = useNavigate()
   return (
     <Sidebar variant="inset">
       <SidebarHeader>
@@ -74,7 +70,12 @@ const AppSidebar = () => {
                 {items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>
-                      <a href={item.url}>
+                      <a
+                        className="cursor-pointer"
+                        onClick={() => {
+                          nav(item.url)
+                        }}
+                      >
                         <item.icon />
                         <span>{item.title}</span>
                       </a>
