@@ -1,9 +1,10 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, nanoid, type PayloadAction } from '@reduxjs/toolkit'
 import i18n from 'i18next'
 import type { WritableDraft } from 'immer'
 
 import { CONSTANT } from '@/common/constants'
 import type { Configuration } from '@/common/types/configuration'
+import type { Message } from '@/common/types/response'
 import { getEnv } from '@/lib/utils'
 import type { RootState } from '@/store'
 
@@ -17,12 +18,24 @@ export interface Setting {
   type: AppType
 }
 
+export type MessageType = 'success' | 'error' | 'info' | 'warning'
+
+export interface AppMessage {
+  id: string
+  status: number
+  type?: MessageType
+  message?: Message
+  timestamp?: number
+  sticky?: boolean
+}
+
 /**
  * Interface of Application Status.
  */
 export interface AppState {
   settings: Setting
   accessToken: string
+  messages: AppMessage[]
   isLoading: boolean
 }
 
@@ -36,6 +49,7 @@ const initialState: AppState = {
     type: getEnv('UI_TYPE') as AppType,
   },
   accessToken: localStorage.getItem(CONSTANT.STORAGE_KEY.ACCESS_TOKEN) as string,
+  messages: [],
   isLoading: true,
 }
 
@@ -81,6 +95,21 @@ export const appSlice = createSlice({
       void i18n.changeLanguage(action.payload)
       state.settings.language = action.payload
     },
+    enqueueMessage(
+      state: WritableDraft<AppState>,
+      action: PayloadAction<Omit<AppMessage, 'id' | 'timestamp'>>
+    ) {
+      state.messages.push({ id: nanoid(), timestamp: Date.now(), ...action.payload })
+    },
+    dequeueMessage(state: WritableDraft<AppState>, action: PayloadAction<string>) {
+      state.messages = state.messages.filter((x) => x.id !== action.payload)
+    },
+    clearMessages(state: WritableDraft<AppState>) {
+      state.messages = []
+    },
+    // setAutoDismiss(state, action: PayloadAction<number>) {
+    //   state.autoDismissMs = action.payload
+    // },
     loading: (state: WritableDraft<AppState>) => {
       state.isLoading = true
     },
@@ -103,6 +132,14 @@ export const selectLanguage = (state: RootState) => state.app.settings.language
 export const selectIsLoading = (state: RootState) => state.app.isLoading
 export const selectAccessToken = (state: RootState) => state.app.accessToken
 export const selectAppType = (state: RootState) => state.app.settings.type
-export const { initState, changeLanguage, loading, loadComplete, setAccessToken } =
-  appSlice.actions
+export const selectMessages = (state: RootState) => state.app.messages
+export const {
+  initState,
+  enqueueMessage,
+  changeLanguage,
+  dequeueMessage,
+  loading,
+  loadComplete,
+  setAccessToken,
+} = appSlice.actions
 export default appSlice.reducer

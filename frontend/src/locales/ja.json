@@ -4,9 +4,14 @@
     "ja": "日本語"
   },
   "title": {
-    "login": "ログイン"
+    "login": "ログイン",
+    "error": "エラー",
+    "success": "処理完了",
+    "info": "情報",
+    "warning": "警告"
   },
   "buttons": {
+    "close": "閉じる",
     "login": "ログイン",
     "logout": "ログアウト"
   },
