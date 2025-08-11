@@ -7,7 +7,7 @@ import axios, {
 } from 'axios'
 import qs from 'qs'
 
-import { setAccessToken } from '@/common/app-slice'
+import { enqueueMessage, setAccessToken } from '@/common/app-slice'
 import { CONSTANT } from '@/common/constants'
 import type { Token } from '@/common/types/authenticate'
 import type {
@@ -72,9 +72,10 @@ axiosInstance.interceptors.response.use(
       case 401:
         if (errorInfo.code === 'E40100004') {
           if (!isRefreshing) {
+            // Refresh token
             isRefreshing = true
             try {
-              const res: Token = await getApi<Token>('/auth/refresh')
+              const res: Token = await getApi<Token>(CONSTANT.API_URL.REFRESH)
               store.dispatch(setAccessToken(res.accessToken))
               // Retry pending requests
               processQueue(null, res.accessToken)
@@ -87,7 +88,7 @@ axiosInstance.interceptors.response.use(
             }
           }
 
-          // Add to pending queue (to be retried after refresh completes)
+          // Add to the pending queue (to be retried after refresh completed)
           return new Promise((resolve, reject) => {
             failedQueue.push({
               resolve: () => {
@@ -101,15 +102,17 @@ axiosInstance.interceptors.response.use(
         }
         break
       case 500:
-        // data.code = 'E5000000'
         break
     }
 
-    // if (type === 'message') {
-    //   popMessage(data.code)
-    // } else {
-    //   // TODO: system notification
-    // }
+    store.dispatch(
+      enqueueMessage({
+        message: errorInfo,
+        status: status || 500,
+        type: 'error',
+        sticky: true,
+      })
+    )
 
     return Promise.reject(error)
   }

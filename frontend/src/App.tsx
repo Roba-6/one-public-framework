@@ -5,6 +5,7 @@ import React, { useEffect } from 'react'
 
 import { initState, selectIsLoading } from '@/common/app-slice'
 import Spinner from '@/common/components/atoms/spinner'
+import Messenger from '@/common/components/modules/messenger.tsx'
 import Router from '@/common/components/modules/router'
 import { ThemeProvider } from '@/common/components/theme-provider'
 import { CONSTANT } from '@/common/constants'
@@ -20,8 +21,6 @@ const App = ({ children }: { children: React.ReactNode }): React.ReactNode => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        console.debug('---------- .env var ----------')
-        console.debug(import.meta.env)
         const res: CommonResponse = await getApi<CommonResponse>(
           CONSTANT.API_URL.CONFIGURATION
         )
@@ -38,6 +37,7 @@ const App = ({ children }: { children: React.ReactNode }): React.ReactNode => {
     <ThemeProvider defaultTheme="dark" storageKey={CONSTANT.STORAGE_KEY.THEME}>
       {isFinished && <Router children={children} />}
       {isLoading && <Spinner className="z-50" />}
+      <Messenger />
     </ThemeProvider>
   )
 }
