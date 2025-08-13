@@ -26,6 +26,7 @@ import {
   DropdownMenuTrigger,
 } from '@/common/components/ui/dropdown-menu'
 import { Input } from '@/common/components/ui/input'
+import { Skeleton } from '@/common/components/ui/skeleton'
 import {
   Table,
   TableBody,
@@ -48,6 +49,7 @@ const UserListPage = (): React.ReactNode => {
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
   const [data, setData] = React.useState<User[]>([])
+  const [loadingData, setLoadingData] = React.useState<boolean>(true)
 
   const columns: ColumnDef<User>[] = [
     {
@@ -181,6 +183,7 @@ const UserListPage = (): React.ReactNode => {
       (res: CommonResponse) => {
         console.log(res)
         setData(res.results as User[])
+        setLoadingData(false)
       }
     )
   }, [])
@@ -242,7 +245,29 @@ const UserListPage = (): React.ReactNode => {
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
+            {loadingData ? (
+              Array(3)
+                .fill(null)
+                .map((_, idx: number) => (
+                  <TableRow key={idx}>
+                    <TableCell>
+                      <Skeleton className="my-2 h-4 w-[18px]" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="h-4 w-[250px]" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="h-4 w-[250px]" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="h-4 w-[350px] float-end" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="h-4 w-[30px]" />
+                    </TableCell>
+                  </TableRow>
+                ))
+            ) : table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
                   {row.getVisibleCells().map((cell) => (
