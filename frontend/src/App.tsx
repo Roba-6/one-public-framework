@@ -10,6 +10,7 @@ import Router, { type RouterProps } from '@/common/components/modules/router'
 import { ThemeProvider } from '@/common/components/theme-provider'
 import { CONSTANT } from '@/common/constants'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
+import type { Configuration } from '@/common/types/configuration'
 import type { CommonResponse } from '@/common/types/response'
 import { getApi } from '@/lib/http'
 
@@ -24,7 +25,7 @@ const App = ({ children }: RouterProps): React.ReactNode => {
         const res: CommonResponse = await getApi<CommonResponse>(
           CONSTANT.API_URL.CONFIGURATIONS
         )
-        dispatch(initState(res.results!))
+        dispatch(initState(res.results! as Configuration[]))
         setIsFinished(true)
       } catch (error) {
         console.error(error)

@@ -41,3 +41,14 @@ export const getLocalMessage = (
 
   return msg
 }
+
+export const setUrlId = (
+  url: string,
+  id: number | string,
+  param?: number | string
+): string => {
+  if (param) {
+    return url.replace(':id', `${id}/?${param}`)
+  }
+  return url.replace(':id', id.toString())
+}

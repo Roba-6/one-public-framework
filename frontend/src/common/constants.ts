@@ -47,5 +47,6 @@ export const CONSTANT = {
     ME: '/auth/me',
     USER: '/users',
     USER_ADMIN: '/users/admin',
+    USER_ADMIN_ID: '/users/admin/:id',
   },
 } as const
