@@ -3,10 +3,10 @@ import { toast } from 'sonner'
 
 import { type AppMessage, dequeueMessage, selectMessages } from '@/common/app-slice'
 import { Toaster } from '@/common/components/ui/sonner'
-import { CONSTANT } from '@/common/constants.ts'
+import { CONSTANT } from '@/common/constants'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import type { Message } from '@/common/types/response'
-import { getLocalMessage } from '@/lib/utils.ts'
+import { getLocalMessage } from '@/lib/utils'
 
 const Messenger = (): React.ReactNode => {
   const dispatch = useAppDispatch()

@@ -13,7 +13,9 @@
     "./lib/utils": "./dist/lib/utils.js",
     "./locales/configs": "./dist/locales/configs.js",
     "./common/hooks/use-store": "./dist/common/hooks/use-store.js",
-    "./common/app-slice": "./dist/common/app-slice.js"
+    "./common/app-slice": "./dist/common/app-slice.js",
+    "./common/components/modules/router": "./dist/common/components/modules/router.js",
+    "./common/components/modules/messenger": "./dist/common/components/modules/messenger.js"
   },
   "scripts": {
     "dev": "vite",

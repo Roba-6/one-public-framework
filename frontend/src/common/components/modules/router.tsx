@@ -13,7 +13,14 @@ import HomePage from '@/common/pages/home-page'
 import SamplePage from '@/common/pages/sample/sample-page'
 import WelcomePage from '@/common/pages/welcome-page'
 
-const Router = ({ children }: { children: React.ReactNode }): React.ReactNode => {
+export type RouterProps = {
+  children: {
+    adminRouter?: React.ReactNode
+    publicRouter?: React.ReactNode
+  }
+}
+
+const Router = ({ children }: RouterProps): React.ReactNode => {
   const appType: AppType = useAppSelector(selectAppType)
   const [defaultRoute, setDefaultRoute] = React.useState<React.ReactNode>(null)
 
@@ -46,13 +53,14 @@ const Router = ({ children }: { children: React.ReactNode }): React.ReactNode =>
               path={CONSTANT.ROUTE_URL.ADMIN_CONFIGURATION.slice(1)}
               element={<ConfigurationEditPage />}
             />
+            {children.adminRouter}
           </Route>
           <Route path={CONSTANT.ROUTE_URL.LOGIN.slice(1)} element={<LoginPage />} />
         </Route>
         <Route path={CONSTANT.ROUTE_URL.SAMPLE}>
           <Route index element={<SamplePage />} />
         </Route>
-        {children}
+        {children.publicRouter}
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
