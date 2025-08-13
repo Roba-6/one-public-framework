@@ -11,6 +11,7 @@ import DashboardPage from '@/common/pages/dashboard-page'
 import ErrorPage from '@/common/pages/error-page'
 import HomePage from '@/common/pages/home-page'
 import SamplePage from '@/common/pages/sample/sample-page'
+import UserListPage from '@/common/pages/users/list-page'
 import WelcomePage from '@/common/pages/welcome-page'
 
 export type RouterProps = {
@@ -52,6 +53,10 @@ const Router = ({ children }: RouterProps): React.ReactNode => {
             <Route
               path={CONSTANT.ROUTE_URL.ADMIN_CONFIGURATION.slice(1)}
               element={<ConfigurationEditPage />}
+            />
+            <Route
+              path={CONSTANT.ROUTE_URL.ADMIN_USER.slice(1)}
+              element={<UserListPage />}
             />
             {children.adminRouter}
           </Route>

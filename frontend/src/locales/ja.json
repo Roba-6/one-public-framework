@@ -10,6 +10,11 @@
     "info": "情報",
     "warning": "警告"
   },
+  "menus": {
+    "dashboard": "ダッシュボード",
+    "configurations": "システム設定",
+    "users": "ユーザー"
+  },
   "buttons": {
     "close": "閉じる",
     "login": "ログイン",

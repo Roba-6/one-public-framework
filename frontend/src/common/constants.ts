@@ -30,10 +30,9 @@ export const CONSTANT = {
   ROUTE_URL: {
     ADMIN: '/admin',
     ADMIN_CONFIGURATION: '/configurations',
-    ADMIN_USER: '/admin/user',
-    ADMIN_ROLE: '/admin/role',
-    ADMIN_PERMISSION: '/admin/permission',
-    ADMIN_LOG: '/admin/log',
+    ADMIN_USER: '/users',
+    ADMIN_ROLE: '/roles',
+    ADMIN_PERMISSION: '/permissions',
     HOME: '/home',
     LOGIN: '/login',
     SAMPLE: '/sample',
@@ -47,5 +46,6 @@ export const CONSTANT = {
     REFRESH: '/auth/refresh',
     ME: '/auth/me',
     USER: '/users',
+    USER_ADMIN: '/users/admin',
   },
 } as const

@@ -24,7 +24,7 @@ const Messenger = (): React.ReactNode => {
         id: msg.id,
         description: (
           <>
-            <pre>{String(message.detail || '')}</pre>
+            <pre className="text-justify text-wrap">{String(message.detail || '')}</pre>
             <code className="text-neutral-400">{message.code}</code>
           </>
         ),

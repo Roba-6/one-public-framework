@@ -10,6 +10,11 @@
     "info": "Info",
     "warning": "Warning"
   },
+  "menus": {
+    "dashboard": "Dashboards",
+    "configurations": "Configurations",
+    "users": "Users"
+  },
   "buttons": {
     "close": "Close",
     "login": "Login",

@@ -1,5 +1,6 @@
 import type { Token } from '@/common/types/authenticate'
 import type { Configuration } from '@/common/types/configuration'
+import type { User } from '@/common/types/user'
 
 export interface FailedQueueItem {
   resolve: (value?: unknown) => void
@@ -12,7 +13,7 @@ export interface Message {
   detail: object | null
 }
 
-export type Results = Configuration[]
+export type Results = Configuration[] | User[]
 
 export interface ResponseError {
   detail: Message
