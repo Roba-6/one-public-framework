@@ -16,13 +16,20 @@
     "users": "ユーザー"
   },
   "buttons": {
+    "add": "新規",
+    "cancel": "キャンセル",
+    "create": "作成",
     "close": "閉じる",
     "login": "ログイン",
     "logout": "ログアウト"
   },
   "labels": {
+    "user": {
+      "name": "ユーザー名",
+      "password": "パスワード",
+      "email": "メールアドレス"
+    },
     "username": "ユーザー名",
-    "password": "パスワード",
     "forgetPassword": "パスワードをお忘れですか？"
   },
   "messages": {

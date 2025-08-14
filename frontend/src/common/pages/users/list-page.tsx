@@ -10,8 +10,9 @@ import {
   useReactTable,
   type VisibilityState,
 } from '@tanstack/react-table'
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from 'lucide-react'
+import { ArrowUpDown, ChevronDown, MoreHorizontal, Plus } from 'lucide-react'
 import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router'
 
 import { enqueueMessage } from '@/common/app-slice.ts'
 import { Button } from '@/common/components/ui/button'
@@ -40,9 +41,10 @@ import { useAppDispatch } from '@/common/hooks/use-store.ts'
 import type { CommonResponse } from '@/common/types/response'
 import type { User } from '@/common/types/user'
 import { deleteApi, getApi } from '@/lib/http'
-import { setUrlId } from '@/lib/utils.ts'
+import { getLocalMessage, setUrlParams } from '@/lib/utils.ts'
 
 const UserListPage = (): React.ReactNode => {
+  const nav = useNavigate()
   const dispatch = useAppDispatch()
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
@@ -126,8 +128,21 @@ const UserListPage = (): React.ReactNode => {
               <DropdownMenuItem>View payment details</DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => {
+                  nav(
+                    setUrlParams(
+                      CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.ADMIN_USER_EDIT,
+                      undefined,
+                      { id: user.id! }
+                    )
+                  )
+                }}
+              >
+                Edit user
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => {
                   deleteApi<CommonResponse>(
-                    setUrlId(CONSTANT.API_URL.USER_ADMIN_ID, user.id!)
+                    setUrlParams(CONSTANT.API_URL.USER_ADMIN_ID, user.id!)
                   ).then((res: CommonResponse) => {
                     console.debug(res)
                     getApi<CommonResponse>(CONSTANT.API_URL.USER_ADMIN, {}).then(
@@ -199,30 +214,41 @@ const UserListPage = (): React.ReactNode => {
           }
           className="max-w-sm"
         />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns <ChevronDown />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) => column.toggleVisibility(!!value)}
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                )
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="ml-auto flex items-center gap-2">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline">
+                Columns <ChevronDown />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => {
+                  return (
+                    <DropdownMenuCheckboxItem
+                      key={column.id}
+                      className="capitalize"
+                      checked={column.getIsVisible()}
+                      onCheckedChange={(value) => column.toggleVisibility(!!value)}
+                    >
+                      {column.id}
+                    </DropdownMenuCheckboxItem>
+                  )
+                })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Button
+            variant="outline"
+            onClick={() => {
+              nav(CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.ADMIN_USER_EDIT)
+            }}
+          >
+            <Plus />
+            {getLocalMessage('buttons.add')}
+          </Button>
+        </div>
       </div>
       <div className="overflow-hidden rounded-md border">
         <Table>

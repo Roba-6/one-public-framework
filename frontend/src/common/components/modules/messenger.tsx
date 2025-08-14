@@ -42,12 +42,12 @@ const Messenger = (): React.ReactNode => {
 
       if (msg.type === 'error') {
         toast.error(title ?? getLocalMessage('title.error'), data)
-      } else if (msg.type === getLocalMessage('title.success')) {
-        toast.success(title ?? 'Success', data)
-      } else if (msg.type === getLocalMessage('title.info')) {
-        toast.info(title ?? 'Info', data)
-      } else if (msg.type === getLocalMessage('title.warning')) {
-        toast.warning(title ?? 'Warning', data)
+      } else if (msg.type === 'success') {
+        toast.success(title ?? getLocalMessage('title.success'), data)
+      } else if (msg.type === 'info') {
+        toast.info(title ?? getLocalMessage('title.info'), data)
+      } else if (msg.type === 'warning') {
+        toast.warning(title ?? getLocalMessage('title.warning'), data)
       } else {
         toast(message.message ?? 'Unknown', data)
       }

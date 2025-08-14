@@ -1,8 +1,11 @@
 interface UserBase {
-  id?: string
-  fullname: string
   email: string
-  failedAttempts: number
 }
 
-export type User = UserBase
+export interface User extends UserBase {
+  id?: string
+  fullname?: string
+  failedAttempts?: number
+}
+
+export type UserRequest = UserBase

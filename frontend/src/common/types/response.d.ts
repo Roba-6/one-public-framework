@@ -13,7 +13,7 @@ export interface Message {
   detail: object | null
 }
 
-export type Results = Configuration[] | User[]
+export type Results = Configuration | Configuration[] | User | User[]
 
 export interface ResponseError {
   detail: Message

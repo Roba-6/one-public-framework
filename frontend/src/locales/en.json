@@ -16,13 +16,20 @@
     "users": "Users"
   },
   "buttons": {
+    "add": "Add",
+    "cancel": "Cancel",
+    "create": "Create",
     "close": "Close",
     "login": "Login",
     "logout": "Log out"
   },
   "labels": {
+    "user": {
+      "name": "User Name",
+      "password": "Password",
+      "email": "E-mail"
+    },
     "username": "User Name",
-    "password": "Password",
     "forgetPassword": "Forgot your password?"
   },
   "messages": {
