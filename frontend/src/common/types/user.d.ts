@@ -2,7 +2,7 @@ interface UserBase {
   id?: string
   fullname: string
   email: string
-  loginFailedTimes: number
+  failedAttempts: number
 }
 
 export type User = UserBase

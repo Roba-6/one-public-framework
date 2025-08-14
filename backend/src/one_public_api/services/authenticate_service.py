@@ -46,8 +46,8 @@ class AuthenticateService(BaseService[User]):
             user: User = self.get_one({"name": request.username})
             self.is_activate_user(user)
             if not self.verify_password(request.password, user.password):
-                user.login_failed_times += 1
-                if user.login_failed_times >= constants.MAX_LOGIN_FAILED_TIMES:
+                user.failed_attempts += 1
+                if user.failed_attempts >= constants.MAX_FAILED_ATTEMPTS:
                     user.is_locked = True
                 self.update_one(user)
                 raise UnauthorizedError(
@@ -73,9 +73,9 @@ class AuthenticateService(BaseService[User]):
                 user.tokens.append(Token(token=access_token, type=TokenType.ACCESS))
                 user.tokens.append(Token(token=refresh_token, type=TokenType.REFRESH))
 
-                # Clear the login failed times.
-                if not user.is_locked or user.login_failed_times > 0:
-                    user.login_failed_times = 0
+                # Clear the login failed attempts.
+                if not user.is_locked or user.failed_attempts > 0:
+                    user.failed_attempts = 0
                     self.update_one(user)
 
                 self.session.commit()

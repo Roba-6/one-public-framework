@@ -48,7 +48,7 @@ class UserStatus(SQLModel):
         default=None,
         description=_("Whether the account is locked"),
     )
-    login_failed_times: Optional[int] = Field(
+    failed_attempts: Optional[int] = Field(
         default=None,
         description=_("Number of failed login attempts"),
     )
@@ -108,7 +108,7 @@ class User(
         nullable=False,
         description=_("Whether the account is locked"),
     )
-    login_failed_times: int = Field(
+    failed_attempts: int = Field(
         default=0,
         nullable=False,
         description=_("Number of failed login attempts"),

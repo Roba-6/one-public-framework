@@ -43,6 +43,7 @@ export const CONSTANT = {
   API_URL: {
     CONFIGURATIONS: '/configurations',
     LOGIN: '/auth/login',
+    LOGOUT: '/auth/logout',
     REFRESH: '/auth/refresh',
     ME: '/auth/me',
     USER: '/users',

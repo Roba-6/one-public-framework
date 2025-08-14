@@ -153,7 +153,7 @@ MAX_LENGTH_500: int = 500
 MAX_LENGTH_1000: int = 1000
 
 # Maximum number of allowed failed login attempts before locking the account
-MAX_LOGIN_FAILED_TIMES: int = 5
+MAX_FAILED_ATTEMPTS: int = 5
 
 # ----- System Messages ----------------------------------------------------------------
 # Debug Messages

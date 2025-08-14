@@ -95,11 +95,11 @@ const UserListPage = (): React.ReactNode => {
       cell: ({ row }) => <div className="lowercase">{row.getValue('email')}</div>,
     },
     {
-      accessorKey: 'loginFailedTimes',
-      header: () => <div className="text-right">Amount</div>,
+      accessorKey: 'failedAttempts',
+      header: () => <div className="text-right">Failed Attempts</div>,
       cell: ({ row }) => {
-        const loginFailedTimes = parseFloat(row.getValue('loginFailedTimes'))
-        const formatted = new Intl.NumberFormat('en-US').format(loginFailedTimes)
+        const failedAttempts = parseFloat(row.getValue('failedAttempts'))
+        const formatted = new Intl.NumberFormat('en-US').format(failedAttempts)
         return <div className="text-right font-medium">{formatted}</div>
       },
     },
