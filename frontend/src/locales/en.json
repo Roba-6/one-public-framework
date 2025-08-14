@@ -27,7 +27,9 @@
     "user": {
       "name": "User Name",
       "password": "Password",
-      "email": "E-mail"
+      "email": "E-mail",
+      "firstname": "Firstname",
+      "lastname": "Lastname"
     },
     "username": "User Name",
     "forgetPassword": "Forgot your password?"

@@ -27,7 +27,9 @@
     "user": {
       "name": "ユーザー名",
       "password": "パスワード",
-      "email": "メールアドレス"
+      "email": "メールアドレス",
+      "firstname": "名前",
+      "lastname": "苗字"
     },
     "username": "ユーザー名",
     "forgetPassword": "パスワードをお忘れですか？"

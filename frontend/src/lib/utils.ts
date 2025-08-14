@@ -58,3 +58,10 @@ export const setUrlParams = (
   }
   return rst
 }
+
+export const arrayToObject = (arr: any[], key: string, value: string): any => {
+  return arr.reduce((result: Record<string, any>, item: Record<string, any>) => {
+    result[item[key] as string] = item[value]
+    return result
+  }, {})
+}
