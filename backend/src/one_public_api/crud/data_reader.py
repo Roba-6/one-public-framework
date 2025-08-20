@@ -48,14 +48,15 @@ class DataReader:
     def all(
         self,
         model: Type[T],
-        query: QueryParam,
+        query: QueryParam | None = None,
         search_target: List[str] | None = None,
         conditions: Dict[str, Any] | None = None,
     ) -> Tuple[List[T], int]:
         statement: Any = select(model)
         count_statement: Any = select(func.count()).select_from(model)
         if (
-            query.keywords is not None
+            query
+            and query.keywords is not None
             and len(query.keywords) > 0
             and search_target is not None
             and len(search_target) > 0
@@ -68,13 +69,19 @@ class DataReader:
             count_statement = count_statement.where(or_(*kw_col_list))
         if conditions is not None and len(conditions) > 0:
             for k, v in conditions.items():
-                statement = statement.where(getattr(model, k) == v)
-                count_statement = count_statement.where(getattr(model, k) == v)
-        if query.offset is not None:
+                if isinstance(v, list):
+                    statement = statement.where(col(getattr(model, k)).in_(v))
+                    count_statement = count_statement.where(
+                        col(getattr(model, k)).in_(v)
+                    )
+                else:
+                    statement = statement.where(getattr(model, k) == v)
+                    count_statement = count_statement.where(getattr(model, k) == v)
+        if query and query.offset is not None:
             statement = statement.offset(query.offset)
-        if query.limit is not None:
+        if query and query.limit is not None:
             statement = statement.limit(query.limit)
-        if query.order_by is not None and len(query.order_by) > 0:
+        if query and query.order_by is not None and len(query.order_by) > 0:
             ob_col_list: List[Any] = []
             for column in query.order_by:
                 if column.endswith("_desc"):
