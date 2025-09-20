@@ -28,7 +28,7 @@ import {
 import { CONSTANT } from '@/common/constants'
 import { useAppDispatch } from '@/common/hooks/use-store'
 import type { CommonResponse } from '@/common/types/response'
-import { getApi } from '@/lib/http.ts'
+import { getApi } from '@/lib/http'
 import { getLocalMessage } from '@/lib/utils'
 
 export function NavUser({

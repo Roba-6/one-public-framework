@@ -14,7 +14,8 @@ import { ArrowUpDown, ChevronDown, MoreHorizontal, Plus } from 'lucide-react'
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router'
 
-import { enqueueMessage } from '@/common/app-slice.ts'
+import { enqueueMessage } from '@/common/app-slice'
+import NaviButton from '@/common/components/atoms/navi-button'
 import { Button } from '@/common/components/ui/button'
 import { Checkbox } from '@/common/components/ui/checkbox'
 import {
@@ -36,12 +37,12 @@ import {
   TableHeader,
   TableRow,
 } from '@/common/components/ui/table'
-import { CONSTANT } from '@/common/constants.ts'
-import { useAppDispatch } from '@/common/hooks/use-store.ts'
+import { CONSTANT } from '@/common/constants'
+import { useAppDispatch } from '@/common/hooks/use-store'
 import type { CommonResponse } from '@/common/types/response'
 import type { User } from '@/common/types/user'
 import { deleteApi, getApi } from '@/lib/http'
-import { getLocalMessage, setUrlParams } from '@/lib/utils.ts'
+import { setUrlParams } from '@/lib/utils'
 
 const UserListPage = (): React.ReactNode => {
   const nav = useNavigate()
@@ -239,15 +240,11 @@ const UserListPage = (): React.ReactNode => {
                 })}
             </DropdownMenuContent>
           </DropdownMenu>
-          <Button
-            variant="outline"
-            onClick={() => {
-              nav(CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.ADMIN_USER_EDIT)
-            }}
-          >
-            <Plus />
-            {getLocalMessage('buttons.add')}
-          </Button>
+          <NaviButton
+            messageId="add"
+            icon={<Plus />}
+            url={CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.ADMIN_USER_EDIT}
+          />
         </div>
       </div>
       <div className="overflow-hidden rounded-md border">

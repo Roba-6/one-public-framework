@@ -11,7 +11,7 @@ import DashboardPage from '@/common/pages/dashboard-page'
 import ErrorPage from '@/common/pages/error-page'
 import HomePage from '@/common/pages/home-page'
 import SamplePage from '@/common/pages/sample/sample-page'
-import UserEditPage from '@/common/pages/users/edit-page.tsx'
+import UserEditPage from '@/common/pages/users/edit-page'
 import UserListPage from '@/common/pages/users/list-page'
 import WelcomePage from '@/common/pages/welcome-page'
 
