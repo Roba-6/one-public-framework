@@ -20,8 +20,13 @@
     "cancel": "キャンセル",
     "create": "作成",
     "close": "閉じる",
+    "column": "カラム",
+    "delete": "削除",
+    "edit": "編集",
     "login": "ログイン",
-    "logout": "ログアウト"
+    "logout": "ログアウト",
+    "nextPage": "次へ",
+    "previousPage": "前へ"
   },
   "labels": {
     "user": {

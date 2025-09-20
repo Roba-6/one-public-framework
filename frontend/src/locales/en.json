@@ -20,8 +20,13 @@
     "cancel": "Cancel",
     "create": "Create",
     "close": "Close",
+    "column": "Columns",
+    "delete": "Delete",
+    "edit": "Edit",
     "login": "Login",
-    "logout": "Log out"
+    "logout": "Log out",
+    "nextPage": "Next",
+    "previousPage": "Previous"
   },
   "labels": {
     "user": {

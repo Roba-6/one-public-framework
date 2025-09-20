@@ -1,8 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
 
-import { Button } from '@/common/components/ui/button.tsx'
-import { getLocalMessage } from '@/lib/utils.ts'
+import { Button } from '@/common/components/ui/button'
+import { getLocalMessage } from '@/lib/utils'
 
 export interface NaviButtonProps {
   messageId: string
