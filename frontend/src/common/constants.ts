@@ -1,5 +1,6 @@
 import enTranslation from '@/locales/en.json'
 import jaTranslation from '@/locales/ja.json'
+import zhTranslation from '@/locales/zh.json'
 
 /**
  * An immutable object containing constant values used across the application.
@@ -10,10 +11,13 @@ export const CONSTANT = {
   LANGUAGE_RESOURCES: {
     en: { translation: enTranslation },
     ja: { translation: jaTranslation },
+    zh: { translation: zhTranslation },
   },
 
   // HTTP header key for specifying the content type of request or response
   HTTP_CONTENT_TYPE_KEY: 'Content-Type',
+  // HTTP header key for specifying the language of request or response
+  HTTP_HEADER_LANGUAGE: 'Accept-Language',
   // HTTP header type for request or response
   HTTP_CONTENT_TYPE_JSON: 'application/json',
   // API request timeout (in milliseconds)
