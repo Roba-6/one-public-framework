@@ -1,0 +1,28 @@
+{
+  "languages": {
+    "en": "English",
+    "ja": "日本語",
+    "zh": "简体中文"
+  },
+  "title": {
+    "login": "登陆",
+    "error": "错误",
+    "success": "操作完成",
+    "info": "信息",
+    "warning": "警告"
+  },
+  "buttons": {
+    "close": "关闭",
+    "login": "登陆",
+    "logout": "登出"
+  },
+  "labels": {
+    "username": "用户名",
+    "password": "密码",
+    "forgetPassword": "忘记密码？"
+  },
+  "messages": {
+    "pleaseLogin": "请输入用户名登陆系统。",
+    "welcome": "欢迎来到 One Public Framework！"
+  }
+}
