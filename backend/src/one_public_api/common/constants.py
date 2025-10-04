@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import List, Tuple
 
 # Version of the One Public API
-VERSION: str = "0.1.0-alpha"
+VERSION: str = "0.1.0-alpha.2"
 # Default Language
 DEFAULT_LANGUAGE: str = "en"
 # Default path for locale files
