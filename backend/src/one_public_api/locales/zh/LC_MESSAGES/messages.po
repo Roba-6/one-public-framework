@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-10-03 19:05+0900\n"
+"POT-Creation-Date: 2025-10-04 20:44+0900\n"
 "PO-Revision-Date: 2025-10-03 18:52+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -419,7 +419,7 @@ msgstr ""
 #: src/one_public_api/services/authenticate_service.py:101
 #: src/one_public_api/services/authenticate_service.py:133
 msgid "user not found"
-msgstr ""
+msgstr "此用户不存在。"
 
 #: src/one_public_api/services/authenticate_service.py:125
 #: src/one_public_api/services/authenticate_service.py:228

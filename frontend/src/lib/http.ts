@@ -49,6 +49,8 @@ axiosInstance.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     // Attach access tokens
     config.headers.authorization = `Bearer ${store.getState().app.accessToken}`
+    config.headers[CONSTANT.HTTP_HEADER_LANGUAGE] =
+      store.getState().app.settings.language
 
     return config
   },
