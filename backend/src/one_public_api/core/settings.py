@@ -19,6 +19,8 @@ class Settings(BaseSettings):
 
     Attributes
     ----------
+    APP_TYPE : str
+        The type of the API.
     DEBUG : bool
         Determines whether the application runs in debug mode.
     TITLE : str
@@ -83,6 +85,8 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
+    # API type
+    APP_TYPE: str = ""
     # Debug mode
     DEBUG: bool = False
     # Title of API

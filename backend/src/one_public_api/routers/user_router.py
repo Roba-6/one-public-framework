@@ -1,4 +1,4 @@
-from typing import Annotated
+from typing import Annotated, List
 from uuid import UUID
 
 from fastapi import APIRouter, Path
@@ -34,7 +34,7 @@ tags = [_("Users")]
     constants.ROUTER_COMMON_BLANK,
     name="SYS-USR-P-LST",
     summary=_("List Public Users"),
-    response_model=ResponseSchema[UserPublicResponse],
+    response_model=ResponseSchema[List[UserPublicResponse]],
 )
 def list_public_api(
     us: Annotated[UserService, Depends()],
@@ -45,6 +45,21 @@ def list_public_api(
     )
 
 
+@public_router.get(
+    constants.ROUTER_COMMON_WITH_ID,
+    name="SYS-USR-P-DTL",
+    summary=_("Get Public User"),
+    response_model=ResponseSchema[UserPublicResponse],
+)
+def retrieve_api(
+    us: Annotated[UserService, Depends()],
+    target_id: UUID = Path(description=_("The ID of the user to be retrieved")),
+) -> ResponseSchema[UserPublicResponse]:
+    return create_response_data(
+        UserPublicResponse, us.get_one_by_id(target_id), detail=us.detail
+    )
+
+
 # ----- Admin APIs ---------------------------------------------------------------------
 
 
@@ -52,7 +67,7 @@ def list_public_api(
     constants.ROUTER_COMMON_ADMIN,
     name="SYS-USR-A-LST",
     summary=_("List Users"),
-    response_model=ResponseSchema[UserResponse],
+    response_model=ResponseSchema[List[UserResponse]],
 )
 def list_admin_api(
     us: Annotated[UserService, Depends()],
