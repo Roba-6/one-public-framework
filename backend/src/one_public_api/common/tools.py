@@ -121,14 +121,15 @@ def load_router(app: FastAPI, input_dir: str) -> None:
             mod = importlib.util.module_from_spec(spec)
             if spec.loader and mod:
                 spec.loader.exec_module(mod)
-                if hasattr(mod, "public_router"):
-                    app.include_router(
-                        mod.public_router, prefix=mod.prefix, tags=mod.tags
-                    )
                 if hasattr(mod, "admin_router"):
                     app.include_router(
                         mod.admin_router, prefix=mod.prefix, tags=mod.tags
                     )
+                if hasattr(mod, "public_router"):
+                    if settings.APP_TYPE == "cms" or mod.prefix == "/auth":
+                        app.include_router(
+                            mod.public_router, prefix=mod.prefix, tags=mod.tags
+                        )
 
 
 def load_route_handler(
@@ -140,7 +141,7 @@ def load_route_handler(
     """
     Loads a route handler function dynamically from a specified module.
 
-    This function searches for a module by its name within a given directory, and
+    This function searches for a module by its name within a given directory and
     attempts to load and instantiate a function (route handler) with a given name.
     If a matching handler cannot be found, the function returns None.
 

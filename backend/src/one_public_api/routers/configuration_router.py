@@ -1,4 +1,4 @@
-from typing import Annotated
+from typing import Annotated, List
 from uuid import UUID
 
 from fastapi import APIRouter, Path
@@ -34,7 +34,7 @@ tags = [_("Configurations")]
     constants.ROUTER_COMMON_BLANK,
     name="SYS-COF-P-LST",
     summary=_("List Public Configurations"),
-    response_model=ResponseSchema[ConfigurationPublicResponse],
+    response_model=ResponseSchema[List[ConfigurationPublicResponse]],
 )
 def list_public_api(
     cs: Annotated[ConfigurationService, Depends()],
@@ -74,7 +74,7 @@ def list_public_api(
     constants.ROUTER_COMMON_ADMIN,
     name="SYS-COF-A-LST",
     summary=_("List Configurations"),
-    response_model=ResponseSchema[ConfigurationResponse],
+    response_model=ResponseSchema[List[ConfigurationResponse]],
 )
 def list_admin_api(
     cs: Annotated[ConfigurationService, Depends()],
