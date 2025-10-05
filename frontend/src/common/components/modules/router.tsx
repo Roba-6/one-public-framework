@@ -17,6 +17,7 @@ import WelcomePage from '@/common/pages/welcome-page'
 
 export type RouterProps = {
   children: {
+    default?: React.ReactNode
     adminRouter?: React.ReactNode
     publicRouter?: React.ReactNode
   }
@@ -27,17 +28,21 @@ const Router = ({ children }: RouterProps): React.ReactNode => {
   const [defaultRoute, setDefaultRoute] = React.useState<React.ReactNode>(null)
 
   useEffect(() => {
-    switch (appType) {
-      case 'cms':
-        setDefaultRoute(<HomePage />)
-        break
-      case 'admin':
-        setDefaultRoute(<AdminPage />)
-        break
-      default:
-        setDefaultRoute(<WelcomePage />)
+    if (children.default) {
+      setDefaultRoute(children.default)
+    } else {
+      switch (appType) {
+        case 'cms':
+          setDefaultRoute(<HomePage />)
+          break
+        case 'admin':
+          setDefaultRoute(<AdminPage />)
+          break
+        default:
+          setDefaultRoute(<WelcomePage />)
+      }
     }
-  }, [appType])
+  }, [children, appType])
 
   return (
     <BrowserRouter>
