@@ -1,7 +1,7 @@
 import { IconTrendingUp } from '@tabler/icons-react'
 import React from 'react'
 
-import { Badge } from '@/common/components/ui/badge.tsx'
+import { Badge } from '@/common/components/ui/badge'
 import {
   Card,
   CardAction,
@@ -9,7 +9,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/common/components/ui/card.tsx'
+} from '@/common/components/ui/card'
 
 const DashboardPage = (): React.ReactNode => {
   return (

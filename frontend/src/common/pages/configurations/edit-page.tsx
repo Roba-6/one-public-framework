@@ -34,7 +34,7 @@ const ConfigurationEditPage = (): React.ReactNode => {
   useEffect(() => {
     getApi<CommonResponse>(CONSTANT.API_URL.CONFIGURATIONS).then(
       (res: CommonResponse) => {
-        setConfigurations(res.results!)
+        setConfigurations(res.results! as Configuration[])
       }
     )
   }, [])

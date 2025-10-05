@@ -41,7 +41,7 @@ export interface AppState {
 
 const initialState: AppState = {
   settings: {
-    name: getEnv('UI_NAME') as string,
+    name: getEnv('UI_TITLE') as string,
     language: (localStorage.getItem(CONSTANT.STORAGE_KEY.LANGUAGE) ||
       getEnv('UI_LANGUAGE')) as string,
     url: getEnv('UI_URL') as string,

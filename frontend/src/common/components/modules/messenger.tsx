@@ -3,10 +3,10 @@ import { toast } from 'sonner'
 
 import { type AppMessage, dequeueMessage, selectMessages } from '@/common/app-slice'
 import { Toaster } from '@/common/components/ui/sonner'
-import { CONSTANT } from '@/common/constants.ts'
+import { CONSTANT } from '@/common/constants'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import type { Message } from '@/common/types/response'
-import { getLocalMessage } from '@/lib/utils.ts'
+import { getLocalMessage } from '@/lib/utils'
 
 const Messenger = (): React.ReactNode => {
   const dispatch = useAppDispatch()
@@ -24,7 +24,7 @@ const Messenger = (): React.ReactNode => {
         id: msg.id,
         description: (
           <>
-            <pre>{String(message.detail || '')}</pre>
+            <pre className="text-justify text-wrap">{String(message.detail || '')}</pre>
             <code className="text-neutral-400">{message.code}</code>
           </>
         ),
@@ -42,12 +42,12 @@ const Messenger = (): React.ReactNode => {
 
       if (msg.type === 'error') {
         toast.error(title ?? getLocalMessage('title.error'), data)
-      } else if (msg.type === getLocalMessage('title.success')) {
-        toast.success(title ?? 'Success', data)
-      } else if (msg.type === getLocalMessage('title.info')) {
-        toast.info(title ?? 'Info', data)
-      } else if (msg.type === getLocalMessage('title.warning')) {
-        toast.warning(title ?? 'Warning', data)
+      } else if (msg.type === 'success') {
+        toast.success(title ?? getLocalMessage('title.success'), data)
+      } else if (msg.type === 'info') {
+        toast.info(title ?? getLocalMessage('title.info'), data)
+      } else if (msg.type === 'warning') {
+        toast.warning(title ?? getLocalMessage('title.warning'), data)
       } else {
         toast(message.message ?? 'Unknown', data)
       }

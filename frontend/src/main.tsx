@@ -9,7 +9,7 @@ import App from './App'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <App children={null} />
+      <App children={{}} />
     </Provider>
   </StrictMode>
 )

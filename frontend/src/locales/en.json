@@ -11,14 +11,33 @@
     "info": "Info",
     "warning": "Warning"
   },
+  "menus": {
+    "dashboard": "Dashboards",
+    "configurations": "Configurations",
+    "users": "Users"
+  },
   "buttons": {
+    "add": "Add",
+    "cancel": "Cancel",
+    "create": "Create",
     "close": "Close",
+    "column": "Columns",
+    "delete": "Delete",
+    "edit": "Edit",
     "login": "Login",
-    "logout": "Log out"
+    "logout": "Log out",
+    "nextPage": "Next",
+    "previousPage": "Previous"
   },
   "labels": {
+    "user": {
+      "name": "User Name",
+      "password": "Password",
+      "email": "E-mail",
+      "firstname": "Firstname",
+      "lastname": "Lastname"
+    },
     "username": "User Name",
-    "password": "Password",
     "forgetPassword": "Forgot your password?"
   },
   "messages": {
