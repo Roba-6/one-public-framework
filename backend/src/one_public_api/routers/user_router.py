@@ -45,6 +45,21 @@ def list_public_api(
     )
 
 
+@public_router.get(
+    constants.ROUTER_COMMON_WITH_ID,
+    name="SYS-USR-P-DTL",
+    summary=_("Get Public User"),
+    response_model=ResponseSchema[UserPublicResponse],
+)
+def retrieve_api(
+    us: Annotated[UserService, Depends()],
+    target_id: UUID = Path(description=_("The ID of the user to be retrieved")),
+) -> ResponseSchema[UserPublicResponse]:
+    return create_response_data(
+        UserPublicResponse, us.get_one_by_id(target_id), detail=us.detail
+    )
+
+
 # ----- Admin APIs ---------------------------------------------------------------------
 
 
