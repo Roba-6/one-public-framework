@@ -121,13 +121,13 @@ def load_router(app: FastAPI, input_dir: str) -> None:
             mod = importlib.util.module_from_spec(spec)
             if spec.loader and mod:
                 spec.loader.exec_module(mod)
-                if hasattr(mod, "public_router"):
-                    app.include_router(
-                        mod.public_router, prefix=mod.prefix, tags=mod.tags
-                    )
                 if hasattr(mod, "admin_router"):
                     app.include_router(
                         mod.admin_router, prefix=mod.prefix, tags=mod.tags
+                    )
+                if hasattr(mod, "public_router"):
+                    app.include_router(
+                        mod.public_router, prefix=mod.prefix, tags=mod.tags
                     )
 
 
