@@ -141,7 +141,7 @@ def load_route_handler(
     """
     Loads a route handler function dynamically from a specified module.
 
-    This function searches for a module by its name within a given directory, and
+    This function searches for a module by its name within a given directory and
     attempts to load and instantiate a function (route handler) with a given name.
     If a matching handler cannot be found, the function returns None.
 

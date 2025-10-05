@@ -4,5 +4,5 @@ extends:
   - '@open-turo/commitlint-config-conventional'
 
 rules:
-  header-max-length: [2, 'always', 72]
+  header-max-length: [2, 'always', 88]
   body-leading-blank: [2, 'always']
