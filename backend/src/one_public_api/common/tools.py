@@ -125,7 +125,7 @@ def load_router(app: FastAPI, input_dir: str) -> None:
                     app.include_router(
                         mod.admin_router, prefix=mod.prefix, tags=mod.tags
                     )
-                if hasattr(mod, "public_router"):
+                if settings.APP_TYPE == "cms" and hasattr(mod, "public_router"):
                     app.include_router(
                         mod.public_router, prefix=mod.prefix, tags=mod.tags
                     )
