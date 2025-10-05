@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-10-04 20:44+0900\n"
+"POT-Creation-Date: 2025-10-05 22:30+0900\n"
 "PO-Revision-Date: 2025-10-03 18:52+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -278,7 +278,7 @@ msgid "Delete Configuration"
 msgstr ""
 
 #: src/one_public_api/routers/configuration_router.py:155
-#: src/one_public_api/routers/user_router.py:127
+#: src/one_public_api/routers/user_router.py:142
 msgid "The ID of the configuration item to be deleted"
 msgstr ""
 
@@ -330,31 +330,36 @@ msgstr ""
 msgid "List Public Users"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:54
-msgid "List Users"
+#: src/one_public_api/routers/user_router.py:51
+msgid "Get Public User"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:67
-msgid "Create User"
-msgstr ""
-
-#: src/one_public_api/routers/user_router.py:85
-msgid "Get User"
-msgstr ""
-
-#: src/one_public_api/routers/user_router.py:90
+#: src/one_public_api/routers/user_router.py:56
+#: src/one_public_api/routers/user_router.py:105
 msgid "The ID of the user to be retrieved"
 msgstr ""
 
+#: src/one_public_api/routers/user_router.py:69
+msgid "List Users"
+msgstr ""
+
+#: src/one_public_api/routers/user_router.py:82
+msgid "Create User"
+msgstr ""
+
 #: src/one_public_api/routers/user_router.py:100
+msgid "Get User"
+msgstr ""
+
+#: src/one_public_api/routers/user_router.py:115
 msgid "Update User"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:107
+#: src/one_public_api/routers/user_router.py:122
 msgid "The ID of the user to be updated"
 msgstr ""
 
-#: src/one_public_api/routers/user_router.py:121
+#: src/one_public_api/routers/user_router.py:136
 msgid "Delete User"
 msgstr ""
 
