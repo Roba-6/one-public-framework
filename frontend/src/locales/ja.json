@@ -1,7 +1,8 @@
 {
   "languages": {
     "en": "English",
-    "ja": "日本語"
+    "ja": "日本語",
+    "zh": "简体中文"
   },
   "title": {
     "login": "ログイン",
@@ -10,14 +11,33 @@
     "info": "情報",
     "warning": "警告"
   },
+  "menus": {
+    "dashboard": "ダッシュボード",
+    "configurations": "システム設定",
+    "users": "ユーザー"
+  },
   "buttons": {
+    "add": "新規",
+    "cancel": "キャンセル",
+    "create": "作成",
     "close": "閉じる",
+    "column": "カラム",
+    "delete": "削除",
+    "edit": "編集",
     "login": "ログイン",
-    "logout": "ログアウト"
+    "logout": "ログアウト",
+    "nextPage": "次へ",
+    "previousPage": "前へ"
   },
   "labels": {
+    "user": {
+      "name": "ユーザー名",
+      "password": "パスワード",
+      "email": "メールアドレス",
+      "firstname": "名前",
+      "lastname": "苗字"
+    },
     "username": "ユーザー名",
-    "password": "パスワード",
     "forgetPassword": "パスワードをお忘れですか？"
   },
   "messages": {

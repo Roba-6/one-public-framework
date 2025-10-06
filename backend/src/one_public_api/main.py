@@ -8,6 +8,8 @@ from one_public_api.core.settings import settings
 app = FastAPI(
     title=settings.TITLE if settings.TITLE else _("API TITLE"),
     version=constants.VERSION,
+    docs_url="/docs" if settings.DEBUG else None,
+    redoc_url="/ref" if settings.DEBUG else None,
     lifespan=lifespan,
     debug=settings.DEBUG,
 )

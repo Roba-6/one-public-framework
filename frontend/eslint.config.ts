@@ -28,6 +28,7 @@ export default tseslint.config([
       'simple-import-sort': simpleImportSort,
     },
     rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
       'eslint-plugin-react/jsx-uses-react': 'error',
       'eslint-plugin-react/jsx-uses-vars': 'error',
       'react-refresh/only-export-components': 'off',

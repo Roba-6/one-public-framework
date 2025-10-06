@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import List, Tuple
 
 # Version of the One Public API
-VERSION: str = "0.1.0-alpha.2"
+VERSION: str = "0.1.0-alpha.4"
 # Default Language
 DEFAULT_LANGUAGE: str = "en"
 # Default path for locale files
@@ -153,7 +153,7 @@ MAX_LENGTH_500: int = 500
 MAX_LENGTH_1000: int = 1000
 
 # Maximum number of allowed failed login attempts before locking the account
-MAX_LOGIN_FAILED_TIMES: int = 5
+MAX_FAILED_ATTEMPTS: int = 5
 
 # ----- System Messages ----------------------------------------------------------------
 # Debug Messages

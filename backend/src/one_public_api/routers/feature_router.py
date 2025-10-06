@@ -1,4 +1,4 @@
-from typing import Annotated
+from typing import Annotated, List
 from uuid import UUID
 
 from fastapi import APIRouter, Path
@@ -34,7 +34,7 @@ tags = [_("Features")]
     constants.ROUTER_COMMON_BLANK,
     name="SYS-FTR-P-LST",
     summary=_("List Public Features"),
-    response_model=ResponseSchema[FeaturePublicResponse],
+    response_model=ResponseSchema[List[FeaturePublicResponse]],
 )
 def list_public_api(
     fs: Annotated[FeatureService, Depends()],
@@ -52,7 +52,7 @@ def list_public_api(
     constants.ROUTER_COMMON_ADMIN,
     name="SYS-FTR-A-LST",
     summary=_("List Features"),
-    response_model=ResponseSchema[FeatureResponse],
+    response_model=ResponseSchema[List[FeatureResponse]],
 )
 def list_admin_api(
     fs: Annotated[FeatureService, Depends()],

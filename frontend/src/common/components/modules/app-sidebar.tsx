@@ -1,6 +1,14 @@
 import { Collapsible, CollapsibleTrigger } from '@radix-ui/react-collapsible'
 import { IconDashboard } from '@tabler/icons-react'
-import { Calendar, ChevronDown, Inbox, Plus, Search, Settings } from 'lucide-react'
+import {
+  Calendar,
+  ChevronDown,
+  Inbox,
+  Plus,
+  Search,
+  Settings,
+  User2,
+} from 'lucide-react'
 import { useNavigate } from 'react-router'
 
 import Logo from '@/common/components/atoms/logo'
@@ -18,19 +26,25 @@ import {
   SidebarMenuItem,
 } from '@/common/components/ui/sidebar'
 import { CONSTANT } from '@/common/constants'
+import { getLocalMessage } from '@/lib/utils'
 
 import { NavUser } from './nav-user'
 
 const items = [
   {
-    title: 'Dashboard',
+    title: getLocalMessage('menus.dashboard'),
     url: CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.ADMIN_DASHBOARD,
     icon: IconDashboard,
   },
   {
-    title: 'Configurations',
+    title: getLocalMessage('menus.configurations'),
     url: CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.ADMIN_CONFIGURATION,
     icon: Settings,
+  },
+  {
+    title: getLocalMessage('menus.users'),
+    url: CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.ADMIN_USER,
+    icon: User2,
   },
   {
     title: 'Inbox',

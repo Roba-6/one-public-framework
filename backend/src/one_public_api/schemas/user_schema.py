@@ -16,16 +16,19 @@ example_base: Dict[str, Any] = {
     "name": "user-123",
     "firstname": "Taro",
     "lastname": "Yamada",
-    "fullname": "Taro Yamada",
     "nickname": "Roba",
     "email": "test@test.com",
     "password": "password123",
 }
 
+example_fullname: Dict[str, Any] = {
+    "fullname": "Taro Yamada",
+}
+
 example_status: Dict[str, Any] = {
     "isDisabled": False,
     "isLocked": False,
-    "loginFailedTimes": 0,
+    "failedAttempts": 0,
 }
 
 example_datetime: Dict[str, Any] = {
@@ -51,7 +54,9 @@ class UserPublicResponse(UserBase, TimestampMixin, IdMixin):
         "alias_generator": to_camel,
         "populate_by_name": True,
         "json_schema_extra": {
-            "examples": [{**example_id, **example_base, **example_datetime}],
+            "examples": [
+                {**example_id, **example_fullname, **example_base, **example_datetime}
+            ],
         },
     }
 
@@ -104,6 +109,7 @@ class UserResponse(UserPublicResponse, UserStatus):
                     "creator": example_user,
                     "updater": example_user,
                     **example_base,
+                    **example_fullname,
                     **example_status,
                     **example_id,
                 }

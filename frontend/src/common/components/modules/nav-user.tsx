@@ -27,6 +27,8 @@ import {
 } from '@/common/components/ui/sidebar'
 import { CONSTANT } from '@/common/constants'
 import { useAppDispatch } from '@/common/hooks/use-store'
+import type { CommonResponse } from '@/common/types/response'
+import { getApi } from '@/lib/http'
 import { getLocalMessage } from '@/lib/utils'
 
 export function NavUser({
@@ -105,8 +107,13 @@ export function NavUser({
             <DropdownMenuItem
               onSelect={(event: Event) => {
                 console.log(event)
-                dispatch(setAccessToken(''))
-                nav(CONSTANT.ROUTE_URL.LOGIN)
+                getApi<CommonResponse>(CONSTANT.API_URL.LOGOUT).then(
+                  (res: CommonResponse) => {
+                    console.debug('[logout] ', res)
+                    dispatch(setAccessToken(''))
+                    nav(CONSTANT.ROUTE_URL.LOGIN)
+                  }
+                )
               }}
             >
               <IconLogout />

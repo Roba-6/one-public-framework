@@ -1,5 +1,6 @@
 import enTranslation from '@/locales/en.json'
 import jaTranslation from '@/locales/ja.json'
+import zhTranslation from '@/locales/zh.json'
 
 /**
  * An immutable object containing constant values used across the application.
@@ -10,10 +11,13 @@ export const CONSTANT = {
   LANGUAGE_RESOURCES: {
     en: { translation: enTranslation },
     ja: { translation: jaTranslation },
+    zh: { translation: zhTranslation },
   },
 
   // HTTP header key for specifying the content type of request or response
   HTTP_CONTENT_TYPE_KEY: 'Content-Type',
+  // HTTP header key for specifying the language of request or response
+  HTTP_HEADER_LANGUAGE: 'Accept-Language',
   // HTTP header type for request or response
   HTTP_CONTENT_TYPE_JSON: 'application/json',
   // API request timeout (in milliseconds)
@@ -30,10 +34,10 @@ export const CONSTANT = {
   ROUTE_URL: {
     ADMIN: '/admin',
     ADMIN_CONFIGURATION: '/configurations',
-    ADMIN_USER: '/admin/user',
-    ADMIN_ROLE: '/admin/role',
-    ADMIN_PERMISSION: '/admin/permission',
-    ADMIN_LOG: '/admin/log',
+    ADMIN_USER: '/users',
+    ADMIN_USER_EDIT: '/users/edit',
+    ADMIN_ROLE: '/roles',
+    ADMIN_PERMISSION: '/permissions',
     HOME: '/home',
     LOGIN: '/login',
     SAMPLE: '/sample',
@@ -44,8 +48,11 @@ export const CONSTANT = {
   API_URL: {
     CONFIGURATIONS: '/configurations',
     LOGIN: '/auth/login',
+    LOGOUT: '/auth/logout',
     REFRESH: '/auth/refresh',
     ME: '/auth/me',
     USER: '/users',
+    USER_ADMIN: '/users/admin',
+    USER_ADMIN_ID: '/users/admin/:id',
   },
 } as const

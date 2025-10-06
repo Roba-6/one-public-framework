@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from 'clsx'
 import i18next from 'i18next'
+import qs from 'qs'
 import { twMerge } from 'tailwind-merge'
 
 export function cn(...inputs: ClassValue[]) {
@@ -40,4 +41,27 @@ export const getLocalMessage = (
   })
 
   return msg
+}
+
+export const setUrlParams = (
+  url: string,
+  id?: number | string,
+  params?: object
+): string => {
+  let rst = url
+  if (id) {
+    rst = rst.replace(':id', id.toString())
+  }
+  if (params) {
+    const queryParams = qs.stringify(params)
+    rst = `${rst}?${queryParams}`
+  }
+  return rst
+}
+
+export const arrayToObject = (arr: any[], key: string, value: string): any => {
+  return arr.reduce((result: Record<string, any>, item: Record<string, any>) => {
+    result[item[key] as string] = item[value]
+    return result
+  }, {})
 }
