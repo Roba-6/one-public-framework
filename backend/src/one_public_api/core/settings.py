@@ -1,5 +1,5 @@
 import os
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import PostgresDsn, computed_field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -41,6 +41,10 @@ class Settings(BaseSettings):
         Expiration time (in minutes) for access tokens.
     REFRESH_TOKEN_EXPIRE : int
         Expiration time (in minutes) for refresh tokens.
+    REFRESH_SAME_SITE : Literal["lax", "strict", "none"] | None
+        Controls whether the SameSite attribute is applied to authentication cookies.
+    REFRESH_TOKEN_SECURE : bool = False
+        Controls whether the refresh token cookie requires HTTPS
     DB_ENGINE : str
         The database engine type, e.g., 'sqlite3' or 'postgresql'.
     DB_HOST : str
@@ -107,6 +111,10 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE: int = constants.ACCESS_TOKEN_EXPIRE
     # Refresh token expiration time (in minutes)
     REFRESH_TOKEN_EXPIRE: int = constants.REFRESH_TOKEN_EXPIRE
+    # Controls whether the SameSite attribute is applied to authentication cookies.
+    REFRESH_SAME_SITE: Literal["lax", "strict", "none"] | None = None
+    # Controls whether the refresh token cookie requires HTTPS
+    REFRESH_TOKEN_SECURE: bool = False
 
     DB_ENGINE: str = "sqlite3"
     DB_HOST: str = "localhost"
