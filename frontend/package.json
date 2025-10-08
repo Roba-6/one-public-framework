@@ -1,6 +1,6 @@
 {
   "name": "one-public-ui",
-  "version": "0.1.0-alpha.5",
+  "version": "0.1.0-alpha.6",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,14 +9,7 @@
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
-    },
-    "./lib/utils": "./dist/lib/utils.js",
-    "./locales/configs": "./dist/locales/configs.js",
-    "./common/hooks/use-store": "./dist/common/hooks/use-store.js",
-    "./common/types/response": "./dist/common/types/response.js",
-    "./common/app-slice": "./dist/common/app-slice.js",
-    "./common/components/modules/router": "./dist/common/components/modules/router.js",
-    "./common/components/modules/messenger": "./dist/common/components/modules/messenger.js"
+    }
   },
   "scripts": {
     "dev": "vite",

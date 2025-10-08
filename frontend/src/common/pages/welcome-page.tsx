@@ -27,9 +27,9 @@ const WelcomePage = (): React.ReactNode => {
           <p>
             Thank you for choosing One Public Framework. This screen is displayed
             because the initial setup hasn't been completed yet. To proceed with the
-            configuration, please edit the <strong>.env</strong> file. Alternatively,
-            you can start by clicking one of the buttons below to explore the
-            corresponding pages.
+            configuration, please edit the <b>.env</b> file. Alternatively, you can
+            start by clicking one of the buttons below to explore the corresponding
+            pages.
           </p>
         </div>
         <div className="pt-8 flex flex-row items-center gap-4">
