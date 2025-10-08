@@ -14,6 +14,9 @@ overrides:
   - files: '*.json'
     options:
       parser: 'json'
+      trailingComma: none
+      bracketSpacing: true
+      endOfLine: lf
   - files: '*.html'
     options:
       parser: 'html'
