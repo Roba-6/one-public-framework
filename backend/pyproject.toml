@@ -1,6 +1,6 @@
 [project]
 name = "one-public-api"
-version = "0.1.0-alpha.4"
+version = "0.1.0-alpha.6"
 description = "This package provides the API layer of the One Public Framework."
 license = {file = "../LICENSE"}
 authors = [
@@ -11,7 +11,7 @@ requires-python = ">=3.11,<4.0"
 
 [tool.poetry]
 name = "one-public-api"
-version = "0.1.0-alpha.4"
+version = "0.1.0-alpha.6"
 description = "This package provides the API layer of the One Public Framework."
 authors = ["Roba <roba@one-coder.com>"]
 packages = [{ include = "one_public_api", from = "src" }]
