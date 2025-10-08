@@ -85,7 +85,8 @@ class AuthenticateService(BaseService[User]):
                         key=constants.CHAR_REFRESH_TOKEN_KEY,
                         value=refresh_token,
                         httponly=True,
-                        samesite="strict",
+                        samesite=settings.REFRESH_SAME_SITE,
+                        secure=settings.REFRESH_TOKEN_SECURE,
                         expires=refresh_expire
                         if getattr(request, "remember_me", None)
                         else None,
