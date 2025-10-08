@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.4\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-10-06 00:11+0900\n"
+"POT-Creation-Date: 2025-10-07 15:30+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -194,37 +194,74 @@ msgstr "ログイン失敗回数"
 msgid "Authentications"
 msgstr "認証"
 
-#: src/one_public_api/routers/authenticate_router.py:37
+#: src/one_public_api/routers/authenticate_router.py:40
 msgid "Sign Up"
-msgstr "登録"
+msgstr "サインアップ"
 
-#: src/one_public_api/routers/authenticate_router.py:52
+#: src/one_public_api/routers/authenticate_router.py:41
+msgid "Sign Up Description"
+msgstr "**SYS-ATH-P-SUP** ユーザー新規登録機能です。"
+
+#: src/one_public_api/routers/authenticate_router.py:56
 msgid "Login"
 msgstr "ログイン"
 
-#: src/one_public_api/routers/authenticate_router.py:66
-msgid "Refresh Token"
-msgstr "リフレッシュトークン"
+#: src/one_public_api/routers/authenticate_router.py:57
+msgid "Login Description"
+msgstr "**SYS-ATH-P-LGN** ログイン機能です。<br />"
+"渡された `ユーザー名` と `パスワード` を DB に保存された情報と一致するか判定を行います。"
+"一致していたらアクセストークンとリフレッシュトークンが発行します。"
+"不一致でしたら `ユーザー名` が存在した場合にログイン失敗回数をカウントし、`MAX_FAILED_ATTEMPTS` に"
+"設定された最大ログイン失敗回数に達すると該当アカウントをロックします。 `ユーザー名` が存在しない場合に"
+"エラーを出します。"
+"フィールド `rememberMe` が `true` の場合に、環境設定項目 `REFRESH_TOKEN_EXPIRE` に設定された"
+"リフレッシュトークンの有効時間が切れるまでリフレッシュトークンのクッキーが有効です。`false` の場合に、"
+"ブラウザーが終了されると、リフレッシュトークンのクッキーが消えます。"
 
 #: src/one_public_api/routers/authenticate_router.py:71
+msgid "Refresh Token"
+msgstr "トークンリフレッシュ"
+
+#: src/one_public_api/routers/authenticate_router.py:72
+msgid "Refresh Token Description"
+msgstr "**SYS-ATH-P-RFS** アクセストークン再発行機能です。"
+
+#: src/one_public_api/routers/authenticate_router.py:77
 msgid "Refresh token"
 msgstr "リフレッシュトークン"
 
-#: src/one_public_api/routers/authenticate_router.py:79
-msgid "Get Profile"
-msgstr "プロフィール確認"
-
-#: src/one_public_api/routers/authenticate_router.py:94
-msgid "Logout"
-msgstr "ログアウト"
-
-#: src/one_public_api/routers/authenticate_router.py:110
+#: src/one_public_api/routers/authenticate_router.py:85
 msgid "Force Logout"
 msgstr "強制ログアウト"
 
-#: src/one_public_api/routers/authenticate_router.py:147
+#: src/one_public_api/routers/authenticate_router.py:86
+msgid "Force Logout Description"
+msgstr "**SYS-ATH-P-FLT** 強制ログアウト機能です。<br />"
+"強制的にリフレッシュトークンのクッキーを削除します。"
+
+#: src/one_public_api/routers/authenticate_router.py:101
 msgid "Login Form"
 msgstr "ログインフォーム"
+
+#: src/one_public_api/routers/authenticate_router.py:102
+msgid "Login Form Description"
+msgstr "機能説明"
+
+#: src/one_public_api/routers/authenticate_router.py:119
+msgid "Get Profile"
+msgstr "プロフィール確認"
+
+#: src/one_public_api/routers/authenticate_router.py:120
+msgid "Get Profile Description"
+msgstr "機能説明"
+
+#: src/one_public_api/routers/authenticate_router.py:135
+msgid "Logout"
+msgstr "ログアウト"
+
+#: src/one_public_api/routers/authenticate_router.py:136
+msgid "Logout Description"
+msgstr "設定項目説明"
 
 #: src/one_public_api/routers/base_route.py:34
 msgid "PROCESSING_STARTED"
@@ -332,7 +369,6 @@ msgid "List Public Users"
 msgstr "公開ユーザー一覧"
 
 #: src/one_public_api/routers/user_router.py:51
-#, fuzzy
 msgid "Get Public User"
 msgstr "公開ユーザー一覧"
 

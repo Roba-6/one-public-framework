@@ -31,10 +31,14 @@ prefix = constants.ROUTER_PREFIX_AUTHENTICATION
 tags = [_("Authentications")]
 
 
+# ----- Public APIs --------------------------------------------------------------------
+
+
 @public_router.post(
     constants.ROUTER_AUTH_SIGNUP,
     name="SYS-ATH-P-SUP",
     summary=_("Sign Up"),
+    description=_("Sign Up Description"),
     response_model=ResponseSchema[EmptyResponse],
 )
 def signup_api(
@@ -50,6 +54,7 @@ def signup_api(
     constants.ROUTER_AUTH_LOGIN,
     name="SYS-ATH-P-LGN",
     summary=_("Login"),
+    description=_("Login Description"),
     response_model=TokenResponse,
 )
 def login_api(
@@ -64,6 +69,7 @@ def login_api(
     constants.ROUTER_AUTH_REFRESH,
     name="SYS-ATH-P-RFS",
     summary=_("Refresh Token"),
+    description=_("Refresh Token Description"),
     response_model=TokenResponse,
 )
 def refresh_api(
@@ -73,10 +79,45 @@ def refresh_api(
     return TokenResponse(**aths.refresh(refresh_token))
 
 
+@public_router.get(
+    constants.ROUTER_AUTH_FORCE_LOGOUT,
+    name="SYS-ATH-P-FLT",
+    summary=_("Force Logout"),
+    description=_("Force Logout Description"),
+    response_model=ResponseSchema[EmptyResponse],
+)
+def force_logout_api(
+    aths: Annotated[AuthenticateService, Depends()],
+    response: Response,
+) -> ResponseSchema[EmptyResponse]:
+    aths.logout(response)
+
+    return create_response_data(EmptyResponse)
+
+
+@public_router.post(
+    constants.ROUTER_COMMON_BLANK,
+    name="SYS-ATH-P-LGF",
+    summary=_("Login Form"),
+    description=_("Login Form Description"),
+    response_model=LoginFormResponse,
+)
+def login_form(
+    aths: Annotated[AuthenticateService, Depends()],
+    form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
+    response: Response,
+) -> LoginFormResponse:
+    return LoginFormResponse(**aths.login(form_data, response))
+
+
+# ----- Admin APIs ---------------------------------------------------------------------
+
+
 @admin_router.get(
     constants.ROUTER_AUTH_PROFILE,
     name="SYS-ATH-A-PRF",
     summary=_("Get Profile"),
+    description=_("Get Profile Description"),
     response_model=ResponseSchema[ProfileResponse],
 )
 def profile_api(
@@ -90,8 +131,9 @@ def profile_api(
 
 @admin_router.get(
     constants.ROUTER_AUTH_LOGOUT,
-    name="SYS-ATH-A-LGO",
+    name="SYS-ATH-A-LGT",
     summary=_("Logout"),
+    description=_("Logout Description"),
     response_model=ResponseSchema[EmptyResponse],
 )
 def logout_api(
@@ -102,54 +144,3 @@ def logout_api(
     aths.logout(response, current_user)
 
     return create_response_data(EmptyResponse)
-
-
-@public_router.get(
-    constants.ROUTER_AUTH_FORCE_LOGOUT,
-    name="SYS-ATH-P-LGO",
-    summary=_("Force Logout"),
-    response_model=ResponseSchema[EmptyResponse],
-)
-def force_logout_api(
-    aths: Annotated[AuthenticateService, Depends()],
-    response: Response,
-) -> ResponseSchema[EmptyResponse]:
-    """
-    Forcibly logs out the user by deleting the refresh token cookie without
-    authentication.
-
-    This API endpoint is used for logging out a user and ensuring their session is
-    terminated. It invokes the logout process and returns an appropriate empty
-    response upon completion.
-
-    Parameters
-    ----------
-    aths : AuthenticateService
-        The authentication service providing the logout functionality. It is
-        a dependency that must be injected.
-    response : Response
-        The HTTP response object used to manage session-specific data and cookies.
-
-    Returns
-    -------
-    ResponseSchema[EmptyResponse]
-        An empty response body encapsulated in a standardized response schema.
-    """
-
-    aths.logout(response)
-
-    return create_response_data(EmptyResponse)
-
-
-@public_router.post(
-    constants.ROUTER_COMMON_BLANK,
-    name="SYS-ATH-P-LNF",
-    summary=_("Login Form"),
-    response_model=LoginFormResponse,
-)
-def login_form(
-    aths: Annotated[AuthenticateService, Depends()],
-    form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
-    response: Response,
-) -> LoginFormResponse:
-    return LoginFormResponse(**aths.login(form_data, response))

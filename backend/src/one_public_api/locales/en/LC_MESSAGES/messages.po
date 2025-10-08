@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.4\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-10-06 00:11+0900\n"
+"POT-Creation-Date: 2025-10-07 15:30+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -194,36 +194,64 @@ msgstr ""
 msgid "Authentications"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:37
+#: src/one_public_api/routers/authenticate_router.py:40
 msgid "Sign Up"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:52
+#: src/one_public_api/routers/authenticate_router.py:41
+msgid "Sign Up Description"
+msgstr ""
+
+#: src/one_public_api/routers/authenticate_router.py:56
 msgid "Login"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:66
-msgid "Refresh Token"
+#: src/one_public_api/routers/authenticate_router.py:57
+msgid "Login Description"
 msgstr ""
 
 #: src/one_public_api/routers/authenticate_router.py:71
+msgid "Refresh Token"
+msgstr ""
+
+#: src/one_public_api/routers/authenticate_router.py:72
+msgid "Refresh Token Description"
+msgstr ""
+
+#: src/one_public_api/routers/authenticate_router.py:77
 msgid "Refresh token"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:79
-msgid "Get Profile"
-msgstr ""
-
-#: src/one_public_api/routers/authenticate_router.py:94
-msgid "Logout"
-msgstr ""
-
-#: src/one_public_api/routers/authenticate_router.py:110
+#: src/one_public_api/routers/authenticate_router.py:85
 msgid "Force Logout"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:147
+#: src/one_public_api/routers/authenticate_router.py:86
+msgid "Force Logout Description"
+msgstr ""
+
+#: src/one_public_api/routers/authenticate_router.py:101
 msgid "Login Form"
+msgstr ""
+
+#: src/one_public_api/routers/authenticate_router.py:102
+msgid "Login Form Description"
+msgstr ""
+
+#: src/one_public_api/routers/authenticate_router.py:119
+msgid "Get Profile"
+msgstr ""
+
+#: src/one_public_api/routers/authenticate_router.py:120
+msgid "Get Profile Description"
+msgstr ""
+
+#: src/one_public_api/routers/authenticate_router.py:135
+msgid "Logout"
+msgstr ""
+
+#: src/one_public_api/routers/authenticate_router.py:136
+msgid "Logout Description"
 msgstr ""
 
 #: src/one_public_api/routers/base_route.py:34
