@@ -70,13 +70,9 @@ jobs:
       - name: Install dependencies
         run: bash manage.sh init --front
 
-      - name: Debug Prettier
-        working-directory: frontend
-        run: yarn prettier package.json --list-different --log-level debug
-
       - name: Run Prettier
         working-directory: frontend
-        run: yarn prettier . --check
+        run: yarn prettier . --debug-check
 
       - name: Run ESLint
         working-directory: frontend
