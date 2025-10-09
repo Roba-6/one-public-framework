@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.7\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-10-09 00:39+0900\n"
+"POT-Creation-Date: 2025-10-09 16:10+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -200,7 +200,7 @@ msgstr "サインアップ"
 
 #: src/one_public_api/routers/authenticate_router.py:41
 msgid "Sign Up Description"
-msgstr "**SYS-ATH-P-SUP** ユーザー新規登録機能です。"
+msgstr "**SYS-ATH-P-SUP**<br />新規ユーザーを登録するための API です。"
 
 #: src/one_public_api/routers/authenticate_router.py:56
 msgid "Login"
@@ -208,15 +208,14 @@ msgstr "ログイン"
 
 #: src/one_public_api/routers/authenticate_router.py:57
 msgid "Login Description"
-msgstr "**SYS-ATH-P-LGN** ログイン機能です。<br />"
-"渡された `ユーザー名` と `パスワード` を DB に保存された情報と一致するか判定を行います。"
-"一致していたらアクセストークンとリフレッシュトークンが発行します。"
-"不一致でしたら `ユーザー名` が存在した場合にログイン失敗回数をカウントし、`MAX_FAILED_ATTEMPTS` に"
-"設定された最大ログイン失敗回数に達すると該当アカウントをロックします。 `ユーザー名` が存在しない場合に"
-"エラーを出します。"
-"フィールド `rememberMe` が `true` の場合に、環境設定項目 `REFRESH_TOKEN_EXPIRE` に設定された"
-"リフレッシュトークンの有効時間が切れるまでリフレッシュトークンのクッキーが有効です。`false` の場合に、"
-"ブラウザーが終了されると、リフレッシュトークンのクッキーが消えます。"
+msgstr ""
+"**SYS-ATH-P-LGN**<br "
+"/>ユーザー名とパスワードを受け取り、データベース上の情報と照合します。認証に成功した場合は、アクセストークンおよびリフレッシュトークンを発行します。<br"
+" />認証に失敗した場合、ユーザー名が存在する場合はログイン失敗回数をカウントし、環境設定値 `MAX_FAILED_ATTEMPTS` "
+"に設定された上限に達するとアカウントをロックします。ユーザー名が存在しない場合はエラーを返します。<br />また、`rememberMe` "
+"フィールドが `true` の場合は、環境設定項目 `REFRESH_TOKEN_EXPIRE` "
+"に設定された有効期間内でリフレッシュトークンのクッキーが保持されます。`false` "
+"の場合は、ブラウザ終了時にリフレッシュトークンのクッキーが削除されます。"
 
 #: src/one_public_api/routers/authenticate_router.py:71
 msgid "Refresh Token"
@@ -224,7 +223,9 @@ msgstr "トークンリフレッシュ"
 
 #: src/one_public_api/routers/authenticate_router.py:72
 msgid "Refresh Token Description"
-msgstr "**SYS-ATH-P-RFS** アクセストークン再発行機能です。"
+msgstr ""
+"**SYS-ATH-P-RFS**<br />アクセストークンを再発行するための API です。<br "
+"/>有効なリフレッシュトークンが存在する場合に新しいアクセストークンを返却します。"
 
 #: src/one_public_api/routers/authenticate_router.py:77
 msgid "Refresh token"
@@ -236,8 +237,7 @@ msgstr "強制ログアウト"
 
 #: src/one_public_api/routers/authenticate_router.py:86
 msgid "Force Logout Description"
-msgstr "**SYS-ATH-P-FLT** 強制ログアウト機能です。<br />"
-"強制的にリフレッシュトークンのクッキーを削除します。"
+msgstr "**SYS-ATH-P-FLT**<br />リフレッシュトークンのクッキーを強制的に削除し、ユーザーをログアウト状態にします。"
 
 #: src/one_public_api/routers/authenticate_router.py:101
 msgid "Login Form"
@@ -245,15 +245,17 @@ msgstr "ログインフォーム"
 
 #: src/one_public_api/routers/authenticate_router.py:102
 msgid "Login Form Description"
-msgstr "機能説明"
+msgstr ""
+"**SYS-ATH-P-LGF**<br />[Swagger UI](./docs) "
+"上でログイン動作を確認するためのフォームです。開発・検証用のエンドポイントとして使用します。"
 
 #: src/one_public_api/routers/authenticate_router.py:119
 msgid "Get Profile"
-msgstr "プロフィール確認"
+msgstr "プロフィール取得"
 
 #: src/one_public_api/routers/authenticate_router.py:120
 msgid "Get Profile Description"
-msgstr "機能説明"
+msgstr "**SYS-ATH-A-PRF**<br />現在ログイン中のユーザーのプロフィール情報を取得します。"
 
 #: src/one_public_api/routers/authenticate_router.py:135
 msgid "Logout"
@@ -261,7 +263,9 @@ msgstr "ログアウト"
 
 #: src/one_public_api/routers/authenticate_router.py:136
 msgid "Logout Description"
-msgstr "設定項目説明"
+msgstr ""
+"**SYS-ATH-A-LGT**<br "
+"/>現在ログイン中のユーザーのトークン情報をデータベースから削除し、併せてリフレッシュトークンのクッキーも削除します。"
 
 #: src/one_public_api/routers/base_route.py:34
 msgid "PROCESSING_STARTED"

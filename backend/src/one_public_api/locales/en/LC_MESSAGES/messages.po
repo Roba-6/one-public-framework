@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.7\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-10-09 00:39+0900\n"
+"POT-Creation-Date: 2025-10-09 16:10+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -194,37 +194,85 @@ msgstr ""
 msgid "Authentications"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:37
+#: src/one_public_api/routers/authenticate_router.py:40
 msgid "Sign Up"
-msgstr ""
+msgstr "Sign Up"
 
-#: src/one_public_api/routers/authenticate_router.py:52
+#: src/one_public_api/routers/authenticate_router.py:41
+msgid "Sign Up Description"
+msgstr "**SYS-ATH-P-SUP**<br />Registers a new user account."
+
+#: src/one_public_api/routers/authenticate_router.py:56
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
-#: src/one_public_api/routers/authenticate_router.py:66
-msgid "Refresh Token"
+#: src/one_public_api/routers/authenticate_router.py:57
+msgid "Login Description"
 msgstr ""
+"**SYS-ATH-P-LGN**<br />Validates the provided username and password "
+"against the records stored in the database.<br />If the credentials are "
+"correct, the system issues an access token and a refresh token. If "
+"authentication fails and the username exists, the system increments the "
+"login failure count. Once the count reaches the limit defined by "
+"`MAX_FAILED_ATTEMPTS`, the system locks the account. If the username does"
+" not exist, an error is returned.<br />When the `rememberMe` field is set"
+" to `true`, the refresh token cookie remains valid until the period "
+"specified by the `REFRESH_TOKEN_EXPIRE` setting expires.<br />If set to "
+"`false`, the cookie is deleted when the browser session ends."
 
 #: src/one_public_api/routers/authenticate_router.py:71
+msgid "Refresh Token"
+msgstr "Refresh Token"
+
+#: src/one_public_api/routers/authenticate_router.py:72
+msgid "Refresh Token Description"
+msgstr ""
+"**SYS-ATH-P-RFS**<br />Issues a new access token if a valid refresh token"
+" is present."
+
+#: src/one_public_api/routers/authenticate_router.py:77
 msgid "Refresh token"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:79
-msgid "Get Profile"
-msgstr ""
-
-#: src/one_public_api/routers/authenticate_router.py:94
-msgid "Logout"
-msgstr ""
-
-#: src/one_public_api/routers/authenticate_router.py:110
+#: src/one_public_api/routers/authenticate_router.py:85
 msgid "Force Logout"
-msgstr ""
+msgstr "Force Logout"
 
-#: src/one_public_api/routers/authenticate_router.py:147
-msgid "Login Form"
+#: src/one_public_api/routers/authenticate_router.py:86
+msgid "Force Logout Description"
 msgstr ""
+"**SYS-ATH-P-FLT**<br />Forcefully deletes the refresh token cookie and "
+"logs the user out."
+
+#: src/one_public_api/routers/authenticate_router.py:101
+msgid "Login Form"
+msgstr "Login Form"
+
+#: src/one_public_api/routers/authenticate_router.py:102
+msgid "Login Form Description"
+msgstr ""
+"**SYS-ATH-P-LGF**<br />A login form available in the [Swagger UI](./docs)"
+" for verifying login behavior during development or testing."
+
+#: src/one_public_api/routers/authenticate_router.py:119
+msgid "Get Profile"
+msgstr "Get Profile"
+
+#: src/one_public_api/routers/authenticate_router.py:120
+msgid "Get Profile Description"
+msgstr ""
+"**SYS-ATH-A-PRF**<br />Returns the profile information of the currently "
+"authenticated user."
+
+#: src/one_public_api/routers/authenticate_router.py:135
+msgid "Logout"
+msgstr "Logout"
+
+#: src/one_public_api/routers/authenticate_router.py:136
+msgid "Logout Description"
+msgstr ""
+"**SYS-ATH-A-LGT**<br />Removes the current user’s token data from the "
+"database and deletes the refresh token cookie."
 
 #: src/one_public_api/routers/base_route.py:34
 msgid "PROCESSING_STARTED"
