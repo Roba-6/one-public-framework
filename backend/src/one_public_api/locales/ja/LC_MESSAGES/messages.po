@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: One Public API 0.1.0-alpha.4\n"
+"Project-Id-Version: One Public API 0.1.0-alpha.7\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-10-07 15:30+0900\n"
+"POT-Creation-Date: 2025-10-09 00:39+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -459,41 +459,41 @@ msgstr "氏名"
 msgid "user not verified"
 msgstr "ユーザーが確認されていません。"
 
-#: src/one_public_api/services/authenticate_service.py:101
-#: src/one_public_api/services/authenticate_service.py:133
+#: src/one_public_api/services/authenticate_service.py:102
+#: src/one_public_api/services/authenticate_service.py:134
 msgid "user not found"
 msgstr "ユーザーが見つかりません。"
 
-#: src/one_public_api/services/authenticate_service.py:125
-#: src/one_public_api/services/authenticate_service.py:228
+#: src/one_public_api/services/authenticate_service.py:126
+#: src/one_public_api/services/authenticate_service.py:229
 msgid "The token has expired"
 msgstr "トークンの有効期限が切れました。"
 
-#: src/one_public_api/services/authenticate_service.py:129
+#: src/one_public_api/services/authenticate_service.py:130
 msgid "Invalid refresh token"
 msgstr "リフレッシュトークンが無効です。"
 
-#: src/one_public_api/services/authenticate_service.py:172
+#: src/one_public_api/services/authenticate_service.py:173
 msgid "user disabled"
 msgstr "ユーザーが無効になっています。"
 
-#: src/one_public_api/services/authenticate_service.py:174
+#: src/one_public_api/services/authenticate_service.py:175
 msgid "user locked"
 msgstr "ユーザーがロックされています。"
 
-#: src/one_public_api/services/authenticate_service.py:206
+#: src/one_public_api/services/authenticate_service.py:207
 msgid "No user information found in the token"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:216
+#: src/one_public_api/services/authenticate_service.py:217
 msgid "Your account has been logged out."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:221
+#: src/one_public_api/services/authenticate_service.py:222
 msgid "Your account has been logged in from another location."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:230
+#: src/one_public_api/services/authenticate_service.py:231
 msgid "Invalid access token"
 msgstr "アクセストークンが無効です。"
 
