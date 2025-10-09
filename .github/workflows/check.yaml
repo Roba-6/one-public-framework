@@ -72,7 +72,7 @@ jobs:
 
       - name: Debug Prettier
         working-directory: frontend
-        run: yarn prettier package.json --list-different --loglevel debug
+        run: yarn prettier package.json --list-different --log-level debug
 
       - name: Run Prettier
         working-directory: frontend
