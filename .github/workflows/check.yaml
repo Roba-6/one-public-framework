@@ -70,6 +70,10 @@ jobs:
       - name: Install dependencies
         run: bash manage.sh init --front
 
+      - name: Debug Prettier
+        working-directory: frontend
+        run: yarn prettier package.json --list-different --loglevel debug
+
       - name: Run Prettier
         working-directory: frontend
         run: yarn prettier . --check
