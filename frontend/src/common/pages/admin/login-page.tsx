@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 
-import { loadComplete } from '@/common/app-slice'
 import LoginForm from '@/common/components/modules/login-form'
 import { useAppDispatch } from '@/common/hooks/use-store'
+import { completed } from '@/lib/utils.ts'
 
 const LoginPage = (): React.ReactNode => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(loadComplete())
+    completed()
   }, [dispatch])
 
   return (

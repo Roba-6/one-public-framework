@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react'
 import { NavLink } from 'react-router'
 
-import { loadComplete } from '@/common/app-slice'
 import Logo from '@/common/components/atoms/logo'
 import TextImage from '@/common/components/atoms/text-image'
 import { Button } from '@/common/components/ui/button'
 import { CONSTANT } from '@/common/constants'
 import { useAppDispatch } from '@/common/hooks/use-store'
+import { completed } from '@/lib/utils.ts'
 
 const WelcomePage = (): React.ReactNode => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(loadComplete())
+    completed()
   }, [dispatch])
 
   return (

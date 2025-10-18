@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 
-import { loadComplete } from '@/common/app-slice'
 import { ScrollArea, ScrollBar } from '@/common/components/ui/scroll-area'
 import { useAppDispatch } from '@/common/hooks/use-store'
+import { completed } from '@/lib/utils.ts'
 
 const ErrorPage = (): React.ReactNode => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(loadComplete())
+    completed()
   }, [dispatch])
 
   return (

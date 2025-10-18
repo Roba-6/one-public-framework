@@ -1,18 +1,17 @@
 import React, { useEffect } from 'react'
 
-import { loadComplete } from '@/common/app-slice'
 import Language from '@/common/components/atoms/language'
 import Logo from '@/common/components/atoms/logo'
 import GoHome from '@/common/components/modules/go-home'
 import ModeToggle from '@/common/components/modules/mode-toggle'
 import { useAppDispatch } from '@/common/hooks/use-store'
-import { getLocalMessage } from '@/lib/utils'
+import { completed, getLocalMessage } from '@/lib/utils'
 
 const HomePage = (): React.ReactNode => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(loadComplete())
+    completed()
   }, [dispatch])
 
   return (
