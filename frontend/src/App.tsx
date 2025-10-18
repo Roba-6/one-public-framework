@@ -35,7 +35,7 @@ const App = ({ children }: RouterProps): React.ReactNode => {
   }, [dispatch])
 
   return (
-    <ThemeProvider defaultTheme="dark" storageKey={CONSTANT.STORAGE_KEY.THEME}>
+    <ThemeProvider storageKey={CONSTANT.STORAGE_KEY.THEME}>
       {isFinished && <Router children={children} />}
       {isLoading && <Spinner className="z-50" />}
       <Messenger />
