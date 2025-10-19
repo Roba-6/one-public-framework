@@ -6,7 +6,7 @@ import TextImage from '@/common/components/atoms/text-image'
 import { Button } from '@/common/components/ui/button'
 import { CONSTANT } from '@/common/constants'
 import { useAppDispatch } from '@/common/hooks/use-store'
-import { completed } from '@/lib/utils.ts'
+import { completed } from '@/lib/utils'
 
 const WelcomePage = (): React.ReactNode => {
   const dispatch = useAppDispatch()

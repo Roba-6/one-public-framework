@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import LoginForm from '@/common/components/modules/login-form'
 import { useAppDispatch } from '@/common/hooks/use-store'
-import { completed } from '@/lib/utils.ts'
+import { completed } from '@/lib/utils'
 
 const LoginPage = (): React.ReactNode => {
   const dispatch = useAppDispatch()

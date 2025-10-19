@@ -12,7 +12,7 @@ import {
 import { CONSTANT } from '@/common/constants'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import { getApi } from '@/lib/http'
-import { completed } from '@/lib/utils.ts'
+import { completed } from '@/lib/utils'
 
 const AdminPage = (): React.ReactNode => {
   const nav = useNavigate()
