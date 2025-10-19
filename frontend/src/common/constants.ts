@@ -24,6 +24,8 @@ export const CONSTANT = {
   HTTP_TIMEOUT: 30 * 1000,
   // Display duration for system messages
   MESSENGER_DURATION: 1000,
+  // The delay duration before the loading screen is hidden
+  LOADING_DURATION: 1000,
   // Copyright notice for the App
   COPYRIGHT: '© 2025 Roba All Rights Reserved',
   // Key name for data stored in Web Storage

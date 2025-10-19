@@ -3,9 +3,6 @@ import i18next from 'i18next'
 import qs from 'qs'
 import { twMerge } from 'tailwind-merge'
 
-import { loadComplete } from '@/common/app-slice'
-import { store } from '@/store'
-
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
@@ -67,13 +64,4 @@ export const arrayToObject = (arr: any[], key: string, value: string): any => {
     result[item[key] as string] = item[value]
     return result
   }, {})
-}
-
-/**
- * Complete the loading process
- */
-export const completed = (): void => {
-  setTimeout(() => {
-    store.dispatch(loadComplete())
-  }, 1000)
 }

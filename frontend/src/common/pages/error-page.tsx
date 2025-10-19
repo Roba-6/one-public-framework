@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import { ScrollArea, ScrollBar } from '@/common/components/ui/scroll-area'
 import { useAppDispatch } from '@/common/hooks/use-store'
-import { completed } from '@/lib/utils'
+import { completed } from '@/lib/functions'
 
 const ErrorPage = (): React.ReactNode => {
   const dispatch = useAppDispatch()

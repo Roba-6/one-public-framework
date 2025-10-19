@@ -5,7 +5,8 @@ import Logo from '@/common/components/atoms/logo'
 import GoHome from '@/common/components/modules/go-home'
 import ModeToggle from '@/common/components/modules/mode-toggle'
 import { useAppDispatch } from '@/common/hooks/use-store'
-import { completed, getLocalMessage } from '@/lib/utils'
+import { completed } from '@/lib/functions'
+import { getLocalMessage } from '@/lib/utils'
 
 const HomePage = (): React.ReactNode => {
   const dispatch = useAppDispatch()
