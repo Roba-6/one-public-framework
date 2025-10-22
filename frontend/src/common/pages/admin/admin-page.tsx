@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate } from 'react-router'
 
-import { loadComplete, selectAccessToken, setAccessToken } from '@/common/app-slice'
+import { selectAccessToken, setAccessToken } from '@/common/app-slice'
 import AppSidebar from '@/common/components/modules/app-sidebar'
 import { Separator } from '@/common/components/ui/separator'
 import {
@@ -11,6 +11,7 @@ import {
 } from '@/common/components/ui/sidebar'
 import { CONSTANT } from '@/common/constants'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
+import { completed } from '@/lib/functions'
 import { getApi } from '@/lib/http'
 
 const AdminPage = (): React.ReactNode => {
@@ -26,7 +27,7 @@ const AdminPage = (): React.ReactNode => {
           // TODO: set current user info
           await getApi(CONSTANT.API_URL.ME)
           setIsAuthenticated(true)
-          dispatch(loadComplete())
+          completed()
         } else {
           dispatch(setAccessToken(''))
           nav(CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.LOGIN)
