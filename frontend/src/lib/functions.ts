@@ -1,5 +1,5 @@
 import { loadComplete } from '@/common/app-slice'
-import { CONSTANT } from '@/common/constants.ts'
+import { CONSTANT } from '@/common/constants'
 import { store } from '@/store'
 
 /**
