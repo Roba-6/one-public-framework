@@ -1,6 +1,6 @@
 {
   "name": "one-public-ui",
-  "version": "0.1.0-alpha.7",
+  "version": "0.1.0-alpha.8",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
