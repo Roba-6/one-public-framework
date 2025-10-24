@@ -98,7 +98,7 @@ class Settings(BaseSettings):
     # Title of API
     TITLE: str = ""
     # URL of the OpenAPI JSON
-    JSON_URL: str = "openapi.json"
+    JSON_URL: str = "/openapi.json"
     # Language used for logs and database comments
     LANGUAGE: str = constants.DEFAULT_LANGUAGE
     # Language used for response
