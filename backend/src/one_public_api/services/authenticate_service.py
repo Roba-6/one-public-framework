@@ -110,6 +110,12 @@ class AuthenticateService(BaseService[User]):
                 user,
                 timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE),
             )
+            # Check the refresh token of the currently logged-in user
+            saved_refresh_token: Token | None = find_in_model_list(
+                user.tokens, "type", TokenType.REFRESH
+            )
+            if not saved_refresh_token or saved_refresh_token.token != refresh_token:
+                raise InvalidTokenError
 
             # Update the access token if it exists.
             token: Token | None = find_in_model_list(
