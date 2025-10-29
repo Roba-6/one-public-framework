@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.9\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-10-23 23:15+0900\n"
+"POT-Creation-Date: 2025-10-29 23:28+0900\n"
 "PO-Revision-Date: 2025-10-03 18:52+0900\n"
-"Last-Translator: FULL NAME <roba@one-coder.com>\n"
+"Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: zh\n"
 "Language-Team: zh <roba@one-coder.com>\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -451,40 +451,40 @@ msgid "user not verified"
 msgstr ""
 
 #: src/one_public_api/services/authenticate_service.py:102
-#: src/one_public_api/services/authenticate_service.py:134
+#: src/one_public_api/services/authenticate_service.py:140
 msgid "user not found"
 msgstr "此用户不存在。"
 
-#: src/one_public_api/services/authenticate_service.py:126
-#: src/one_public_api/services/authenticate_service.py:229
+#: src/one_public_api/services/authenticate_service.py:132
+#: src/one_public_api/services/authenticate_service.py:235
 msgid "The token has expired"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:130
+#: src/one_public_api/services/authenticate_service.py:136
 msgid "Invalid refresh token"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:173
+#: src/one_public_api/services/authenticate_service.py:179
 msgid "user disabled"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:175
+#: src/one_public_api/services/authenticate_service.py:181
 msgid "user locked"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:207
+#: src/one_public_api/services/authenticate_service.py:213
 msgid "No user information found in the token"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:217
+#: src/one_public_api/services/authenticate_service.py:223
 msgid "Your account has been logged out."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:222
+#: src/one_public_api/services/authenticate_service.py:228
 msgid "Your account has been logged in from another location."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:231
+#: src/one_public_api/services/authenticate_service.py:237
 msgid "Invalid access token"
 msgstr ""
 
