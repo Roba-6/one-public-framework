@@ -1,6 +1,6 @@
 [project]
 name = "one-public-api"
-version = "0.1.0-alpha.7"
+version = "0.1.0-alpha.9"
 description = "This package provides the API layer of the One Public Framework."
 license = {file = "../LICENSE"}
 authors = [
@@ -11,7 +11,7 @@ requires-python = ">=3.11,<4.0"
 
 [tool.poetry]
 name = "one-public-api"
-version = "0.1.0-alpha.7"
+version = "0.1.0-alpha.9"
 description = "This package provides the API layer of the One Public Framework."
 authors = ["Roba <roba@one-coder.com>"]
 packages = [{ include = "one_public_api", from = "src" }]
@@ -27,7 +27,7 @@ psycopg2-binary = ">=2.9.10,<3.0.0"
 sqlmodel = ">=0.0.24,<0.0.25"
 uvicorn = { version = ">=0.34.3,<0.35.0", extras = ["standard"] }
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}
-bcrypt = "^4.0.1"
+bcrypt = "^3.2.2"
 pyjwt = "^2.10.1"
 
 [tool.poetry.group.dev.dependencies]

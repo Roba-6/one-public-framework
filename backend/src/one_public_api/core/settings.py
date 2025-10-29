@@ -25,6 +25,8 @@ class Settings(BaseSettings):
         Determines whether the application runs in debug mode.
     TITLE : str
         The title of the API.
+    JSON_URL: str = "openapi.json"
+        URL of the OpenAPI JSON
     LANGUAGE : str
         The language used for logs and database comments.
     RESPONSE_LANGUAGE : str
@@ -95,6 +97,8 @@ class Settings(BaseSettings):
     DEBUG: bool = False
     # Title of API
     TITLE: str = ""
+    # URL of the OpenAPI JSON
+    JSON_URL: str = "/openapi.json"
     # Language used for logs and database comments
     LANGUAGE: str = constants.DEFAULT_LANGUAGE
     # Language used for response
