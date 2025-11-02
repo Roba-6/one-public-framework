@@ -11,7 +11,7 @@
 
 html,
 body {
-  @apply bg-white dark:bg-black;
+  @apply bg-[rgba(225,225,225,1.0)] dark:bg-[rgba(25,25,25,1.0)];
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -58,8 +58,8 @@ body {
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
+  --background: rgba(225, 225, 225, 1);
+  --foreground: rgba(25, 25, 25, 1);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
@@ -92,9 +92,9 @@ body {
 }
 
 .dark {
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.21 0.006 285.885);
+  --background: rgba(25, 25, 25, 1);
+  --foreground: rgba(245, 245, 245, 1);
+  --card: rgba(35, 35, 35, 1);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.21 0.006 285.885);
   --popover-foreground: oklch(0.985 0 0);
@@ -109,13 +109,13 @@ body {
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.552 0.016 285.938);
+  --ring: oklch(70.5% 0.213 47.604);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.21 0.006 285.885);
+  --sidebar: rgba(45, 45, 45, 1);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
   --sidebar-primary-foreground: oklch(0.985 0 0);
@@ -161,6 +161,25 @@ body {
 
 button {
   @apply cursor-pointer;
+}
+
+/*button:hover {*/
+/*  @apply text-[var(--foreground)] transition-all;*/
+/*  !*background-color: #fe447c;*!*/
+/*  border: solid 1px var(--primary);*/
+/*  background: linear-gradient(45deg,var(--input) 25%, var(--background) 25%,var(--background) 50%, var(--input) 50%,var(--input) 75%, var(--background) 75%,var(--background));*/
+/*  !*background: linear-gradient(45deg,#ffeca8 25%, #fce38a 25%,#fce38a 50%, #ffeca8 50%,#ffeca8 75%, #fce38a 75%,#fce38a);*!*/
+/*  background-size: 10px 10px;*/
+/*  animation: anime_btn_animation_1 .8s infinite linear;*/
+/*}*/
+
+/*@keyframes anime_btn_animation_1 {*/
+/*  0% {  background-position-y: 0;}*/
+/*  100% {  background-position-y: -20px;}*/
+/*}*/
+
+input:focus-visible {
+  box-shadow: 0 0 5px oklch(70.5% 0.213 47.604);
 }
 
 /* Sub Page Styles */

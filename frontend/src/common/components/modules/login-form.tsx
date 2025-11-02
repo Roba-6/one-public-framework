@@ -80,7 +80,7 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
                     render={({ field }) => (
                       <div className="grid gap-3">
                         <FormItem>
-                          <FormLabel>{getLocalMessage('labels.username')}</FormLabel>
+                          <FormLabel>{getLocalMessage('labels.user.name')}</FormLabel>
                           <FormControl>
                             <Input
                               placeholder="example"
@@ -101,7 +101,9 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
                       <div className="grid gap-3">
                         <FormItem>
                           <div className="flex items-center">
-                            <FormLabel>{getLocalMessage('labels.password')}</FormLabel>
+                            <FormLabel>
+                              {getLocalMessage('labels.user.password')}
+                            </FormLabel>
                             <a
                               href="#"
                               className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
@@ -121,16 +123,7 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
                     <Button type="submit" className="w-full">
                       {getLocalMessage('buttons.login')}
                     </Button>
-                    <Button variant="outline" className="w-full">
-                      Login with Google
-                    </Button>
                   </div>
-                </div>
-                <div className="mt-4 text-center text-sm">
-                  Don&apos;t have an account?{' '}
-                  <a href="#" className="underline underline-offset-4">
-                    Sign up
-                  </a>
                 </div>
               </form>
             </Form>
