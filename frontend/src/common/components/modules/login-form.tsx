@@ -67,7 +67,9 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
       <div className={cn('flex flex-col gap-6', className)} {...props}>
         <Card>
           <CardHeader>
-            <CardTitle>{getLocalMessage('title.login')}</CardTitle>
+            <CardTitle className={cn('leading')}>
+              {getLocalMessage('title.login')}
+            </CardTitle>
             <CardDescription>{getLocalMessage('messages.pleaseLogin')}</CardDescription>
           </CardHeader>
           <CardContent>

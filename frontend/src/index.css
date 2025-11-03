@@ -11,7 +11,7 @@
 
 html,
 body {
-  @apply bg-[rgba(225,225,225,1.0)] dark:bg-[rgba(25,25,25,1.0)];
+  @apply bg-[rgba(225,225,225,1.0)] dark:bg-[rgba(15,15,15,1.0)];
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -73,9 +73,9 @@ body {
   --accent: oklch(0.967 0.001 286.375);
   --accent-foreground: oklch(0.21 0.006 285.885);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0.004 286.32);
+  --border: rgba(195, 195, 195, 1);
   --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.705 0.015 286.067);
+  --ring: oklch(70.5% 0.253 47.604);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -109,7 +109,7 @@ body {
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(70.5% 0.213 47.604);
+  --ring: oklch(70.5% 0.253 47.604);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -159,6 +159,32 @@ body {
     shadow-sm shadow-gray-200 dark:shadow-gray-800;
 }
 
+.leading {
+}
+.leading:before {
+  @apply me-2 mb-0.25 w-2 h-2 inline-block content-['']
+    rounded-full bg-[oklch(70.5%_0.273_47.604)];
+  box-shadow: 0 0 5px oklch(70.5% 0.273 47.604);
+  animation: blink-anime 5s step-start infinite;
+}
+
+@keyframes blink-anime {
+  0%,
+  17%,
+  23%,
+  35%,
+  72%,
+  100% {
+    background-color: oklch(70.5% 0.273 47.604);
+  }
+  20%,
+  30%,
+  75% {
+    background-color: oklch(70.5% 0.273 47.604 / 0.25);
+    box-shadow: 0 0 3px oklch(70.5% 0.273 47.604 / 0.5);
+  }
+}
+
 button {
   @apply cursor-pointer;
 }
@@ -179,7 +205,7 @@ button {
 /*}*/
 
 input:focus-visible {
-  box-shadow: 0 0 5px oklch(70.5% 0.213 47.604);
+  box-shadow: 0 0 5px oklch(70.5% 0.273 47.604);
 }
 
 /* Sub Page Styles */
@@ -208,10 +234,10 @@ input:focus-visible {
       content-[''] origin-bottom-right;
   }
   &:before {
-    @apply w-full h-[1px] animate-[leftWing_8s_linear_infinite];
+    @apply w-full h-[1px] animate-[left-wing_8s_linear_infinite];
   }
   &:after {
-    @apply w-[1px] h-full animate-[rightWing_8s_linear_infinite];
+    @apply w-[1px] h-full animate-[right-wing_8s_linear_infinite];
   }
 }
 
@@ -239,7 +265,7 @@ input:focus-visible {
   }
 }
 
-@keyframes leftWing {
+@keyframes left-wing {
   0% {
     transform: rotate(-30deg);
   }
@@ -314,7 +340,7 @@ input:focus-visible {
   }
 }
 
-@keyframes rightWing {
+@keyframes right-wing {
   0% {
     transform: rotate(30deg);
   }
