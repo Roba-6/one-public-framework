@@ -4,6 +4,7 @@ import logoDark from '@/assets/logo-dark.svg'
 import logoLight from '@/assets/logo-light.svg'
 import { selectAppName } from '@/common/app-slice'
 import { useAppSelector } from '@/common/hooks/use-store'
+import { cn } from '@/lib/utils.ts'
 
 export type LogoSize = 'sm' | 'md' | 'lg'
 
@@ -39,7 +40,7 @@ const Logo = (props: { size?: LogoSize }): React.ReactNode => {
         break
       default:
         setStyles([
-          'w-[12vw] sm:w-[60px] max-w-[100vw]',
+          'w-[12vw] sm:w-[40px] max-w-[100vw]',
           'p-2 text-[6vw] sm:text-3xl font-bold',
         ])
     }
@@ -47,11 +48,18 @@ const Logo = (props: { size?: LogoSize }): React.ReactNode => {
 
   return (
     <div className="flex items-center whitespace-nowrap">
-      <div className={`sm:p-1 ${styles[0]}`}>
+      <div className={cn('sm:-1', styles[0])}>
         <img src={logoLight} alt="React Router" className="block w-full dark:hidden" />
         <img src={logoDark} alt="React Router" className="hidden w-full dark:block" />
       </div>
-      <h1 className={`text-black dark:text-white ${styles[1]}`}>{appName}</h1>
+      <h1
+        className={cn(
+          'text-black dark:text-white tracking-widest font-[Sense]',
+          styles[1]
+        )}
+      >
+        {appName}
+      </h1>
     </div>
   )
 }
