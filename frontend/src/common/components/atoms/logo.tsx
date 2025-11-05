@@ -36,19 +36,19 @@ const Logo = (props: { size?: LogoSize }): React.ReactNode => {
   useEffect(() => {
     switch (props.size) {
       case 'sm':
-        setStyles(['w-8', 'p-2 text-md font-bold'])
+        setStyles(['w-8', 'px-3 pb-2 pt-2.5 text-md'])
         break
       default:
         setStyles([
-          'w-[12vw] sm:w-[40px] max-w-[100vw]',
-          'p-2 text-[6vw] sm:text-3xl font-bold',
+          'w-[8vw] sm:w-[40px] max-w-[100vw]',
+          'px-3 pb-2 pt-2.5 text-[6vw] sm:text-3xl',
         ])
     }
   }, [props])
 
   return (
     <div className="flex items-center whitespace-nowrap">
-      <div className={cn('sm:-1', styles[0])}>
+      <div className={styles[0]}>
         <img src={logoLight} alt="React Router" className="block w-full dark:hidden" />
         <img src={logoDark} alt="React Router" className="hidden w-full dark:block" />
       </div>
