@@ -49,8 +49,8 @@ const Logo = (props: { size?: LogoSize }): React.ReactNode => {
   return (
     <div className="flex items-center whitespace-nowrap">
       <div className={styles[0]}>
-        <img src={logoLight} alt="React Router" className="block w-full dark:hidden" />
-        <img src={logoDark} alt="React Router" className="hidden w-full dark:block" />
+        <img src={logoLight} alt={appName} className="block w-full dark:hidden" />
+        <img src={logoDark} alt={appName} className="hidden w-full dark:block" />
       </div>
       <h1
         className={cn(
