@@ -40,8 +40,8 @@ const Logo = (props: { size?: LogoSize }): React.ReactNode => {
         break
       default:
         setStyles([
-          'w-[8vw] sm:w-[40px] max-w-[100vw]',
-          'px-3 pb-2 pt-2.5 text-[6vw] sm:text-3xl',
+          'w-[7vw] sm:w-[30px] max-w-[100vw]',
+          'px-2 pb-2 pt-2.5 text-[5vw] sm:text-2xl',
         ])
     }
   }, [props])
@@ -58,7 +58,7 @@ const Logo = (props: { size?: LogoSize }): React.ReactNode => {
           styles[1]
         )}
       >
-        {appName}
+        {appName.toUpperCase()}
       </h1>
     </div>
   )

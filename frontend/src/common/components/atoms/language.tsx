@@ -28,6 +28,7 @@ const Language = (): React.ReactNode => {
   const changeCurrentLanguage = (lang: string): void => {
     dispatch(changeLanguage(lang))
     setCurrentLang(lang)
+    window.location.reload()
   }
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const Language = (): React.ReactNode => {
 
   return (
     <Select defaultValue={currentLang} onValueChange={changeCurrentLanguage}>
-      <SelectTrigger className="w-[100px]">
+      <SelectTrigger>
         <SelectValue placeholder="Theme" />
       </SelectTrigger>
       <SelectContent>
