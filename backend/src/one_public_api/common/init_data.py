@@ -17,7 +17,7 @@ def init_configurations(session: Session) -> None:
         {
             "name": "Application Name",
             "key": "app_name",
-            "value": "ONE PUBLIC FRAMEWORK",
+            "value": "One Public Framework",
             "type": ConfigurationType.SYS,
         },
         {
