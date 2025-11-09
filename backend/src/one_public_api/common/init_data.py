@@ -17,25 +17,21 @@ def init_configurations(session: Session) -> None:
         {
             "name": "Application Name",
             "key": "app_name",
-            "value": "One Public Framework",
             "type": ConfigurationType.SYS,
         },
         {
             "name": "Application URL",
             "key": "app_url",
-            "value": "http://localhost:5173",
             "type": ConfigurationType.SYS,
         },
         {
             "name": "Time Zone",
             "key": "time_zone",
-            "value": "Asia/Tokyo",
             "type": ConfigurationType.SYS,
         },
         {
             "name": "Language",
             "key": "language",
-            "value": "en",
             "type": ConfigurationType.SYS,
         },
     ]
