@@ -37,11 +37,10 @@ const Logo = (props: { size?: LogoSize }): React.ReactNode => {
   useEffect(() => {
     switch (props.size) {
       case 'sm':
-        // setStyles(['w-6', 'ps-3 pb-2 pt-2.5 text-sm'])
         setStyles(['', 'w-6', 'ps-2 pt-1 text-[11.7pt]'])
         break
       default:
-        setStyles(['', 'w-[30px] max-w-[100vw]', 'px-2 pb-2 pt-2.5 text-2xl'])
+        setStyles(['', 'w-[30px] max-w-[100vw]', 'px-3 pb-2 pt-2.5 text-2xl'])
     }
   }, [props])
 
