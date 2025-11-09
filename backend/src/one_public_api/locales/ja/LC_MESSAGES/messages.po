@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.9\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-10-29 23:28+0900\n"
+"POT-Creation-Date: 2025-11-09 16:44+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -87,19 +87,19 @@ msgid "Configuration key"
 msgstr "設定項目キー"
 
 #: src/one_public_api/models/system/configuration_model.py:52
-#: src/one_public_api/models/system/configuration_model.py:102
+#: src/one_public_api/models/system/configuration_model.py:103
 #: src/one_public_api/schemas/configuration_schema.py:60
 msgid "Configuration value"
 msgstr "設定項目値"
 
 #: src/one_public_api/models/system/configuration_model.py:56
-#: src/one_public_api/models/system/configuration_model.py:107
+#: src/one_public_api/models/system/configuration_model.py:108
 #: src/one_public_api/schemas/configuration_schema.py:63
 msgid "Configuration type"
 msgstr "設定タイプ"
 
 #: src/one_public_api/models/system/configuration_model.py:62
-#: src/one_public_api/models/system/configuration_model.py:113
+#: src/one_public_api/models/system/configuration_model.py:114
 msgid "Configuration description"
 msgstr "設定項目説明"
 
@@ -107,7 +107,7 @@ msgstr "設定項目説明"
 msgid "Configuration options"
 msgstr "設定項目オプション"
 
-#: src/one_public_api/models/system/configuration_model.py:119
+#: src/one_public_api/models/system/configuration_model.py:120
 msgid "Owner of configuration item"
 msgstr "設定項目所有者"
 
@@ -200,7 +200,7 @@ msgstr "サインアップ"
 
 #: src/one_public_api/routers/authenticate_router.py:41
 msgid "Sign Up Description"
-msgstr "**SYS-ATH-P-SUP**<br />新規ユーザーを登録するための API です。"
+msgstr "**SYS-ATH-P-SUP**<br />新規ユーザーを登録するための API です．"
 
 #: src/one_public_api/routers/authenticate_router.py:56
 msgid "Login"
@@ -210,12 +210,12 @@ msgstr "ログイン"
 msgid "Login Description"
 msgstr ""
 "**SYS-ATH-P-LGN**<br "
-"/>ユーザー名とパスワードを受け取り、データベース上の情報と照合します。認証に成功した場合は、アクセストークンおよびリフレッシュトークンを発行します。<br"
-" />認証に失敗した場合、ユーザー名が存在する場合はログイン失敗回数をカウントし、環境設定値 `MAX_FAILED_ATTEMPTS` "
-"に設定された上限に達するとアカウントをロックします。ユーザー名が存在しない場合はエラーを返します。<br />また、`rememberMe` "
-"フィールドが `true` の場合は、環境設定項目 `REFRESH_TOKEN_EXPIRE` "
-"に設定された有効期間内でリフレッシュトークンのクッキーが保持されます。`false` "
-"の場合は、ブラウザ終了時にリフレッシュトークンのクッキーが削除されます。"
+"/>ユーザー名とパスワードを受け取り，データベース上の情報と照合します．認証に成功した場合は，アクセストークンおよびリフレッシュトークンを発行します．<br"
+" />認証に失敗した場合，ユーザー名が存在する場合はログイン失敗回数をカウントし，環境設定値 `MAX_FAILED_ATTEMPTS` "
+"に設定された上限に達するとアカウントをロックします．ユーザー名が存在しない場合はエラーを返します．<br />また，`rememberMe` "
+"フィールドが `true` の場合は，環境設定項目 `REFRESH_TOKEN_EXPIRE` "
+"に設定された有効期間内でリフレッシュトークンのクッキーが保持されます．`false` "
+"の場合は，ブラウザ終了時にリフレッシュトークンのクッキーが削除されます．"
 
 #: src/one_public_api/routers/authenticate_router.py:71
 msgid "Refresh Token"
@@ -224,8 +224,8 @@ msgstr "トークンリフレッシュ"
 #: src/one_public_api/routers/authenticate_router.py:72
 msgid "Refresh Token Description"
 msgstr ""
-"**SYS-ATH-P-RFS**<br />アクセストークンを再発行するための API です。<br "
-"/>有効なリフレッシュトークンが存在する場合に新しいアクセストークンを返却します。"
+"**SYS-ATH-P-RFS**<br />アクセストークンを再発行するための API です．<br "
+"/>有効なリフレッシュトークンが存在する場合に新しいアクセストークンを返却します．"
 
 #: src/one_public_api/routers/authenticate_router.py:77
 msgid "Refresh token"
@@ -237,7 +237,7 @@ msgstr "強制ログアウト"
 
 #: src/one_public_api/routers/authenticate_router.py:86
 msgid "Force Logout Description"
-msgstr "**SYS-ATH-P-FLT**<br />リフレッシュトークンのクッキーを強制的に削除し、ユーザーをログアウト状態にします。"
+msgstr "**SYS-ATH-P-FLT**<br />リフレッシュトークンのクッキーを強制的に削除し，ユーザーをログアウト状態にします．"
 
 #: src/one_public_api/routers/authenticate_router.py:101
 msgid "Login Form"
@@ -247,7 +247,7 @@ msgstr "ログインフォーム"
 msgid "Login Form Description"
 msgstr ""
 "**SYS-ATH-P-LGF**<br />[Swagger UI](./docs) "
-"上でログイン動作を確認するためのフォームです。開発・検証用のエンドポイントとして使用します。"
+"上でログイン動作を確認するためのフォームです．開発・検証用のエンドポイントとして使用します．"
 
 #: src/one_public_api/routers/authenticate_router.py:119
 msgid "Get Profile"
@@ -255,7 +255,7 @@ msgstr "プロフィール取得"
 
 #: src/one_public_api/routers/authenticate_router.py:120
 msgid "Get Profile Description"
-msgstr "**SYS-ATH-A-PRF**<br />現在ログイン中のユーザーのプロフィール情報を取得します。"
+msgstr "**SYS-ATH-A-PRF**<br />現在ログイン中のユーザーのプロフィール情報を取得します．"
 
 #: src/one_public_api/routers/authenticate_router.py:135
 msgid "Logout"
@@ -265,7 +265,7 @@ msgstr "ログアウト"
 msgid "Logout Description"
 msgstr ""
 "**SYS-ATH-A-LGT**<br "
-"/>現在ログイン中のユーザーのトークン情報をデータベースから削除し、併せてリフレッシュトークンのクッキーも削除します。"
+"/>現在ログイン中のユーザーのトークン情報をデータベースから削除し，併せてリフレッシュトークンのクッキーも削除します．"
 
 #: src/one_public_api/routers/base_route.py:34
 msgid "PROCESSING_STARTED"
@@ -277,11 +277,11 @@ msgstr "【%s】処理完了（%.3f 秒）"
 
 #: src/one_public_api/routers/base_route.py:56
 msgid "Feature is disabled"
-msgstr "機能が無効になっています。"
+msgstr "機能が無効になっています．"
 
 #: src/one_public_api/routers/base_route.py:61
 msgid "Feature not found."
-msgstr "機能が見つかりません。"
+msgstr "機能が見つかりません．"
 
 #: src/one_public_api/routers/configuration_router.py:28
 msgid "Configurations"
@@ -461,29 +461,29 @@ msgstr "氏名"
 
 #: src/one_public_api/services/authenticate_service.py:54
 msgid "user not verified"
-msgstr "ユーザーが確認されていません。"
+msgstr "ユーザーが確認されていません．"
 
 #: src/one_public_api/services/authenticate_service.py:102
 #: src/one_public_api/services/authenticate_service.py:140
 msgid "user not found"
-msgstr "ユーザーが見つかりません。"
+msgstr "ユーザーが見つかりません．"
 
 #: src/one_public_api/services/authenticate_service.py:132
 #: src/one_public_api/services/authenticate_service.py:235
 msgid "The token has expired"
-msgstr "トークンの有効期限が切れました。"
+msgstr "トークンの有効期限が切れました．"
 
 #: src/one_public_api/services/authenticate_service.py:136
 msgid "Invalid refresh token"
-msgstr "リフレッシュトークンが無効です。"
+msgstr "リフレッシュトークンが無効です．"
 
 #: src/one_public_api/services/authenticate_service.py:179
 msgid "user disabled"
-msgstr "ユーザーが無効になっています。"
+msgstr "ユーザーが無効になっています．"
 
 #: src/one_public_api/services/authenticate_service.py:181
 msgid "user locked"
-msgstr "ユーザーがロックされています。"
+msgstr "ユーザーがロックされています．"
 
 #: src/one_public_api/services/authenticate_service.py:213
 msgid "No user information found in the token"
@@ -499,16 +499,16 @@ msgstr ""
 
 #: src/one_public_api/services/authenticate_service.py:237
 msgid "Invalid access token"
-msgstr "アクセストークンが無効です。"
+msgstr "アクセストークンが無効です．"
 
 #: src/one_public_api/services/base_service.py:78
 #: src/one_public_api/services/base_service.py:89
 #: src/one_public_api/services/user_service.py:36
 msgid "Data already exists."
-msgstr "データは既に存在します。"
+msgstr "データは既に存在します．"
 
 #: src/one_public_api/services/base_service.py:125
 #: src/one_public_api/services/base_service.py:140
 #: src/one_public_api/services/base_service.py:154
 msgid "This record might be referenced by other data."
-msgstr "このデータが参照されているため、削除できません。"
+msgstr "このデータが参照されているため，削除できません．"
