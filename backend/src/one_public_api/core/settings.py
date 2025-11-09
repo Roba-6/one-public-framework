@@ -154,7 +154,7 @@ class Settings(BaseSettings):
     # Username of Administrator
     ADMIN_USER: str = "admin"
     # E-mail of Administrator
-    ADMIN_MAIL: str = ""
+    ADMIN_MAIL: str = "admin@one-coder.com"
     # Initial Password of Administrator
     ADMIN_PASSWORD: str = "admin"
 

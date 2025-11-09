@@ -36,26 +36,10 @@ def init_users(session: Session) -> User:
 
 def init_configurations(session: Session, user: User) -> None:
     configurations: List[Dict[str, Any]] = [
-        {
-            "name": "Application Name",
-            "key": "app_name",
-            "type": ConfigurationType.SYS,
-        },
-        {
-            "name": "Application URL",
-            "key": "app_url",
-            "type": ConfigurationType.SYS,
-        },
-        {
-            "name": "Time Zone",
-            "key": "time_zone",
-            "type": ConfigurationType.SYS,
-        },
-        {
-            "name": "Language",
-            "key": "language",
-            "type": ConfigurationType.SYS,
-        },
+        {"name": "Application Name", "key": "app_name", "type": ConfigurationType.SYS},
+        {"name": "Application URL", "key": "app_url", "type": ConfigurationType.SYS},
+        {"name": "Time Zone", "key": "time_zone", "type": ConfigurationType.SYS},
+        {"name": "Language", "key": "language", "type": ConfigurationType.SYS},
     ]
     configurations = add_maintenance(configurations, user)
 
