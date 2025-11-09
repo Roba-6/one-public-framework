@@ -23,8 +23,8 @@ class Settings(BaseSettings):
         The type of the API.
     DEBUG : bool
         Determines whether the application runs in debug mode.
-    TITLE : str
-        The title of the API.
+    NAME : str
+        API name.
     JSON_URL: str = "openapi.json"
         URL of the OpenAPI JSON
     LANGUAGE : str
@@ -95,8 +95,8 @@ class Settings(BaseSettings):
     APP_TYPE: str = ""
     # Debug mode
     DEBUG: bool = False
-    # Title of API
-    TITLE: str = ""
+    # API name
+    NAME: str = ""
     # URL of the OpenAPI JSON
     JSON_URL: str = "/openapi.json"
     # Language used for logs and database comments
@@ -150,6 +150,13 @@ class Settings(BaseSettings):
     LOG_FORMAT: str = constants.LOG_DEFAULT_FORMAT
     LOG_CONSOLE: bool = False
     LOG_ECHO_SQL: bool = False
+
+    # Username of Administrator
+    ADMIN_USER: str = "admin"
+    # E-mail of Administrator
+    ADMIN_MAIL: str = ""
+    # Initial Password of Administrator
+    ADMIN_PASSWORD: str = "admin"
 
     @computed_field
     def log_file_path(self) -> str:
