@@ -454,3 +454,71 @@ input:focus-visible {
     transform: rotate(30deg);
   }
 }
+
+/* LOGO */
+.logo-text {
+  @apply flex cursor-pointer;
+}
+
+.logo-text:hover .logo-letter {
+  @apply [animation:glitch_0.7s_calc(0.01s_*_var(--index))]
+    text-white transition-all
+    text-shadow-[-1px_-1px_0_oklch(0.577_0.245_27.325),1px_1px_0_oklch(0.769_0.188_70.08)];
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    text-shadow:
+      -1px -1px 0 oklch(0.577 0.245 27.325),
+      1px 1px 0 oklch(0.769 0.188 70.08);
+  }
+  10% {
+    transform: translate(-1px, 1px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(1px, -1px) rotate(1deg);
+    text-shadow:
+      1px 2px 0 oklch(0.577 0.245 27.325),
+      1px 1px 0 oklch(0.769 0.188 70.08);
+  }
+  30% {
+    transform: translate(-1px, 1px) rotate(0deg);
+    text-shadow:
+      -1px -1px 0 oklch(0.577 0.245 27.325),
+      1px 1px 0 oklch(0.769 0.188 70.08);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(-1deg);
+  }
+  50% {
+    transform: translate(-1px, 1px) rotate(1deg);
+    text-shadow:
+      1px 1px 0 oklch(0.577 0.245 27.325),
+      1px 1px 0 oklch(0.769 0.188 70.08);
+  }
+  60% {
+    transform: translate(1px, -1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(-1px, 1px) rotate(-1deg);
+    text-shadow:
+      -1px -1px 0 oklch(0.577 0.245 27.325),
+      1px 1px 0 oklch(0.769 0.188 70.08);
+  }
+  80% {
+    transform: translate(1px, -1px) rotate(1deg);
+    text-shadow:
+      1px 1px 0 oklch(0.577 0.245 27.325),
+      1px 2px 0 oklch(0.769 0.188 70.08);
+  }
+  90% {
+    transform: translate(-1px, 1px) rotate(0deg);
+  }
+  100% {
+    transform: translate(0.5px, -0.5px) rotate(-0.5deg);
+    text-shadow:
+      -1px -1px 0 oklch(0.577 0.245 27.325),
+      1px 1px 0 oklch(0.769 0.188 70.08);
+  }
+}

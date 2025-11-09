@@ -41,6 +41,7 @@ export const CONSTANT = {
     ADMIN_ROLE: '/roles',
     ADMIN_PERMISSION: '/permissions',
     HOME: '/home',
+    INDEX: '',
     LOGIN: '/login',
     SAMPLE: '/sample',
     ADMIN_DASHBOARD: '/dashboard',

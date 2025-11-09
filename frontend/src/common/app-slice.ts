@@ -74,18 +74,22 @@ export const appSlice = createSlice({
       action.payload.forEach((item: Configuration) => {
         switch (item.key) {
           case 'app_name':
-            if (item.value !== '') state.settings.name = item.value
+            if (item.value && item.value !== '') state.settings.name = item.value
             break
           case 'language':
-            state.settings.language =
-              (localStorage.getItem(CONSTANT.STORAGE_KEY.LANGUAGE) as string) ||
-              item.value
+            if (localStorage.getItem(CONSTANT.STORAGE_KEY.LANGUAGE)) {
+              state.settings.language = localStorage.getItem(
+                CONSTANT.STORAGE_KEY.LANGUAGE
+              ) as string
+            } else if (item.value && item.value !== '') {
+              state.settings.language = item.value
+            }
             if (i18n.isInitialized) {
               void i18n.changeLanguage(state.settings.language)
             }
             break
           case 'url':
-            state.settings.url = item.value
+            if (item.value && item.value !== '') state.settings.url = item.value
             break
         }
       })
@@ -128,6 +132,7 @@ export const appSlice = createSlice({
 })
 
 export const selectAppName = (state: RootState) => state.app.settings.name
+export const selectAppSettings = (state: RootState) => state.app.settings
 export const selectLanguage = (state: RootState) => state.app.settings.language
 export const selectIsLoading = (state: RootState) => state.app.isLoading
 export const selectAccessToken = (state: RootState) => state.app.accessToken

@@ -1,5 +1,3 @@
-import '@/common/styles/atoms/spinner.css'
-
 import React, { useEffect } from 'react'
 
 import LoginForm from '@/common/components/modules/login-form'

@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
+import { NavLink } from 'react-router'
 
 import logoDark from '@/assets/logo-dark.svg'
 import logoLight from '@/assets/logo-light.svg'
-import { selectAppName } from '@/common/app-slice'
+import { selectAppSettings, type Setting } from '@/common/app-slice'
 import { useAppSelector } from '@/common/hooks/use-store'
-import { cn } from '@/lib/utils.ts'
+import { cn } from '@/lib/utils'
 
 export type LogoSize = 'sm' | 'md' | 'lg'
 
@@ -24,7 +25,7 @@ export type LogoSize = 'sm' | 'md' | 'lg'
  *                            styled with responsive design.
  */
 const Logo = (props: { size?: LogoSize }): React.ReactNode => {
-  const appName: string = useAppSelector(selectAppName)
+  const appSettings: Setting = useAppSelector(selectAppSettings)
 
   /**
    * A variable or method responsible for applying or managing styles to a specific element or set of elements.
@@ -36,31 +37,53 @@ const Logo = (props: { size?: LogoSize }): React.ReactNode => {
   useEffect(() => {
     switch (props.size) {
       case 'sm':
-        setStyles(['w-8', 'px-3 pb-2 pt-2.5 text-md'])
+        // setStyles(['w-6', 'ps-3 pb-2 pt-2.5 text-sm'])
+        setStyles(['', 'w-6', 'ps-2 pt-1 text-[11.7pt]'])
         break
       default:
-        setStyles([
-          'w-[7vw] sm:w-[30px] max-w-[100vw]',
-          'px-2 pb-2 pt-2.5 text-[5vw] sm:text-2xl',
-        ])
+        setStyles(['', 'w-[30px] max-w-[100vw]', 'px-2 pb-2 pt-2.5 text-2xl'])
     }
   }, [props])
 
   return (
-    <div className="flex items-center whitespace-nowrap">
-      <div className={styles[0]}>
-        <img src={logoLight} alt={appName} className="block w-full dark:hidden" />
-        <img src={logoDark} alt={appName} className="hidden w-full dark:block" />
+    <NavLink
+      to=""
+      className={cn(
+        'flex items-center whitespace-nowrap cursor-pointer select-none',
+        styles[0]
+      )}
+    >
+      <div className={styles[1]}>
+        <img
+          src={logoLight}
+          alt={appSettings.name}
+          className="block w-full dark:hidden"
+        />
+        <img
+          src={logoDark}
+          alt={appSettings.name}
+          className="hidden w-full dark:block"
+        />
       </div>
       <h1
         className={cn(
-          'text-black dark:text-white tracking-widest font-[Sense]',
-          styles[1]
+          'logo-text text-black dark:text-white tracking-widest font-[Sense]',
+          styles[2]
         )}
       >
-        {appName.toUpperCase()}
+        {Array.from(appSettings.name?.toUpperCase()).map(
+          (letter: string, idx: number) => (
+            <span
+              key={idx}
+              className="logo-letter"
+              style={{ '--index': idx + 1 } as React.CSSProperties}
+            >
+              {letter === ' ' ? <React.Fragment>&nbsp;</React.Fragment> : letter}
+            </span>
+          )
+        )}
       </h1>
-    </div>
+    </NavLink>
   )
 }
 
