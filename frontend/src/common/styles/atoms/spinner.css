@@ -1,5 +1,0 @@
-@import "@/index.css";
-
-.fade-out {
-  @apply opacity-0 transition-all duration-750;
-}

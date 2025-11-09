@@ -277,6 +277,10 @@ input:focus-visible {
   }
 }
 
+.fade-out {
+  @apply opacity-0 transition-all duration-750;
+}
+
 /*　bird fling anime */
 @keyframes moving {
   0% {
