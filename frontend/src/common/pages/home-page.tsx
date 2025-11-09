@@ -20,11 +20,11 @@ const HomePage = (): React.ReactNode => {
   return (
     <div className="single-page md:px-4 relative">
       <div className="container mx-auto min-h-[100vh] relative">
-        <header className="px-4 md:px-0 py-2 w-full flex items-center">
+        <header className="px-4 sm:px-0 py-2 w-full flex items-center">
           <Logo />
         </header>
         <Separator />
-        <main className="pt-4 pb-36 px-4 md:px-0">
+        <main className="pt-4 pb-36 px-4 sm:px-0">
           <Outlet />
           <h1>{getLocalMessage('messages.welcome')}</h1>
         </main>
