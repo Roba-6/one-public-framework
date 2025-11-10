@@ -22,7 +22,7 @@ import { useAppDispatch } from '@/common/hooks/use-store'
 import type { CommonResponse } from '@/common/types/response'
 import type { User, UserRequest } from '@/common/types/user'
 import { getApi, postApi, putApi } from '@/lib/http'
-import { arrayToObject, getLocalMessage, setUrlParams } from '@/lib/utils'
+import { arrayToObject, getAdminPath, getLocalMessage, setUrlParams } from '@/lib/utils'
 
 type TestType = 'name' | 'email' | 'password'
 
@@ -131,7 +131,7 @@ const UserEditPage = (): React.ReactNode => {
               type: 'success',
             })
           )
-          nav(CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.ADMIN_USER)
+          nav(getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER)
         }
       )
     }

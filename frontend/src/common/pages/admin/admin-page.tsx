@@ -13,6 +13,7 @@ import { CONSTANT } from '@/common/constants'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import { completed } from '@/lib/functions'
 import { getApi } from '@/lib/http'
+import { getAdminPath } from '@/lib/utils'
 
 const AdminPage = (): React.ReactNode => {
   const nav = useNavigate()
@@ -30,12 +31,12 @@ const AdminPage = (): React.ReactNode => {
           completed()
         } else {
           dispatch(setAccessToken(''))
-          nav(CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.LOGIN)
+          nav(getAdminPath() + CONSTANT.ROUTE_URL.LOGIN)
         }
       } catch (error) {
         console.error(error)
         dispatch(setAccessToken(''))
-        nav(CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.LOGIN)
+        nav(getAdminPath() + CONSTANT.ROUTE_URL.LOGIN)
       }
     }
     void fetch()

@@ -3,6 +3,8 @@ import i18next from 'i18next'
 import qs from 'qs'
 import { twMerge } from 'tailwind-merge'
 
+import { CONSTANT } from '@/common/constants'
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
@@ -15,6 +17,10 @@ export function cn(...inputs: ClassValue[]) {
  */
 export const getEnv = (key: string): string | number | boolean => {
   return import.meta.env[key]
+}
+
+export const getAdminPath = (): string => {
+  return (getEnv('UI_ADMIN_PATH') as string) || CONSTANT.ROUTE_URL.ADMIN
 }
 
 /**

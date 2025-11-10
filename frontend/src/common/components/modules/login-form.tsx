@@ -27,7 +27,7 @@ import { CONSTANT } from '@/common/constants'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import type { Login, LoginRequest, Token } from '@/common/types/authenticate'
 import { postApi } from '@/lib/http'
-import { cn } from '@/lib/utils'
+import { cn, getAdminPath } from '@/lib/utils'
 import { getLocalMessage } from '@/lib/utils'
 
 const LoginFormSchema = z.object({
@@ -49,14 +49,14 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
     postApi<Token>(CONSTANT.API_URL.LOGIN, values as LoginRequest).then(
       (res: Token) => {
         dispatch(setAccessToken(res.accessToken))
-        nav('/admin')
+        nav(getAdminPath())
       }
     )
   }
 
   useEffect(() => {
     if (accessToken) {
-      nav(CONSTANT.ROUTE_URL.ADMIN)
+      nav(getAdminPath())
     } else {
       setIsAuthenticated(!!accessToken)
     }

@@ -11,7 +11,7 @@ import {
 import { Input } from '@/common/components/ui/input'
 import { CONSTANT } from '@/common/constants'
 import type { DataProps } from '@/common/types/props'
-import { getLocalMessage } from '@/lib/utils'
+import { getAdminPath, getLocalMessage } from '@/lib/utils'
 
 const DataToolBar = (props: DataProps) => {
   return (
@@ -53,7 +53,7 @@ const DataToolBar = (props: DataProps) => {
         <NaviButton
           messageId="add"
           icon={<Plus />}
-          url={CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.ADMIN_USER_EDIT}
+          url={getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER_EDIT}
         />
       </div>
     </div>

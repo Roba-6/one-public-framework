@@ -14,6 +14,7 @@ import SamplePage from '@/common/pages/sample/sample-page'
 import UserEditPage from '@/common/pages/users/edit-page'
 import UserListPage from '@/common/pages/users/list-page'
 import WelcomePage from '@/common/pages/welcome-page'
+import { getAdminPath } from '@/lib/utils'
 
 export type RouterProps = {
   children: {
@@ -52,7 +53,7 @@ const Router = ({ children }: RouterProps): React.ReactNode => {
           {children.publicOutlet}
         </Route>
         {!appType && <Route path={CONSTANT.ROUTE_URL.HOME} element={<HomePage />} />}
-        <Route path={CONSTANT.ROUTE_URL.ADMIN}>
+        <Route path={getAdminPath()}>
           <Route element={<AdminPage />}>
             <Route index element={<DashboardPage />} />
             <Route

@@ -26,24 +26,24 @@ import {
   SidebarMenuItem,
 } from '@/common/components/ui/sidebar'
 import { CONSTANT } from '@/common/constants'
-import { getLocalMessage } from '@/lib/utils'
+import { getAdminPath, getLocalMessage } from '@/lib/utils'
 
 import { NavUser } from './nav-user'
 
 const items = [
   {
     title: getLocalMessage('menus.dashboard'),
-    url: CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.ADMIN_DASHBOARD,
+    url: getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_DASHBOARD,
     icon: IconDashboard,
   },
   {
     title: getLocalMessage('menus.configurations'),
-    url: CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.ADMIN_CONFIGURATION,
+    url: getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_CONFIGURATION,
     icon: Settings,
   },
   {
     title: getLocalMessage('menus.users'),
-    url: CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.ADMIN_USER,
+    url: getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER,
     icon: User2,
   },
   {
