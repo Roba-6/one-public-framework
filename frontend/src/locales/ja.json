@@ -12,6 +12,7 @@
     "warning": "警告"
   },
   "menus": {
+    "system": "システム",
     "dashboard": "ダッシュボード",
     "configurations": "システム設定",
     "users": "ユーザー"

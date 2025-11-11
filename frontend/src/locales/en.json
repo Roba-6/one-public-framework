@@ -12,6 +12,7 @@
     "warning": "Warning"
   },
   "menus": {
+    "system": "SYSTEM",
     "dashboard": "Dashboards",
     "configurations": "Configurations",
     "users": "Users"

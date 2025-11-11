@@ -11,6 +11,12 @@
     "info": "信息",
     "warning": "警告"
   },
+  "menus": {
+    "system": "系统",
+    "dashboard": "仪表盘",
+    "configurations": "设置",
+    "users": "用户"
+  },
   "buttons": {
     "close": "关闭",
     "login": "登陆",
