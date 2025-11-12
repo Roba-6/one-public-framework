@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router'
 
-import { type AppType, selectAppType } from '@/common/app-slice'
+import { type AppType, selectAppType, setMenu } from '@/common/app-slice'
 import { CONSTANT } from '@/common/constants'
-import { useAppSelector } from '@/common/hooks/use-store'
+import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import AdminPage from '@/common/pages/admin/admin-page'
 import LoginPage from '@/common/pages/admin/login-page'
 import ConfigurationEditPage from '@/common/pages/configurations/edit-page'
@@ -14,6 +14,7 @@ import SamplePage from '@/common/pages/sample/sample-page'
 import UserEditPage from '@/common/pages/users/edit-page'
 import UserListPage from '@/common/pages/users/list-page'
 import WelcomePage from '@/common/pages/welcome-page'
+import type { MenuItem } from '@/common/types/data'
 import { getAdminPath } from '@/lib/utils'
 
 export type RouterProps = {
@@ -23,10 +24,13 @@ export type RouterProps = {
     publicRouter?: React.ReactNode
     publicOutlet?: React.ReactNode
   }
+  menu?: { [key: string]: MenuItem[] }
 }
 
-const Router = ({ children }: RouterProps): React.ReactNode => {
+const Router = ({ children, menu }: RouterProps): React.ReactNode => {
+  const dispatch = useAppDispatch()
   const appType: AppType = useAppSelector(selectAppType)
+
   const [defaultRoute, setDefaultRoute] = React.useState<React.ReactNode>(null)
 
   useEffect(() => {
@@ -44,7 +48,8 @@ const Router = ({ children }: RouterProps): React.ReactNode => {
           setDefaultRoute(<WelcomePage />)
       }
     }
-  }, [children, appType])
+    dispatch(setMenu(menu!))
+  }, [children, menu, appType, dispatch])
 
   return (
     <BrowserRouter>

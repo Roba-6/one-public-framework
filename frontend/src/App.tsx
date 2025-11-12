@@ -14,7 +14,7 @@ import type { Configuration } from '@/common/types/configuration'
 import type { CommonResponse } from '@/common/types/response'
 import { getApi } from '@/lib/http'
 
-const App = ({ children }: RouterProps): React.ReactNode => {
+const App = ({ children, menu }: RouterProps): React.ReactNode => {
   const dispatch = useAppDispatch()
   const [isFinished, setIsFinished] = React.useState<boolean>(false)
 
@@ -35,7 +35,7 @@ const App = ({ children }: RouterProps): React.ReactNode => {
 
   return (
     <ThemeProvider storageKey={CONSTANT.STORAGE_KEY.THEME}>
-      {isFinished && <Router children={children} />}
+      {isFinished && <Router children={children} menu={menu} />}
       <Spinner className="z-50" />
       <Messenger />
     </ThemeProvider>

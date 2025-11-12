@@ -4,9 +4,11 @@ import type { WritableDraft } from 'immer'
 
 import { CONSTANT } from '@/common/constants'
 import type { Configuration } from '@/common/types/configuration'
+import type { MenuItem } from '@/common/types/data'
 import type { Message } from '@/common/types/response'
 import { getEnv } from '@/lib/utils'
 import type { RootState } from '@/store'
+import menu from '@/templates/menu'
 
 export type AppType = 'cms' | 'admin'
 
@@ -34,6 +36,7 @@ export interface AppMessage {
  */
 export interface AppState {
   settings: Setting
+  menu: { [key: string]: MenuItem[] }
   accessToken: string
   messages: AppMessage[]
   isLoading: boolean
@@ -48,6 +51,7 @@ const initialState: AppState = {
     api: getEnv('UI_API') as string,
     type: getEnv('UI_TYPE') as AppType,
   },
+  menu: menu,
   accessToken: localStorage.getItem(CONSTANT.STORAGE_KEY.ACCESS_TOKEN) as string,
   messages: [],
   isLoading: true,
@@ -94,6 +98,12 @@ export const appSlice = createSlice({
         }
       })
     },
+    setMenu: (
+      state: WritableDraft<AppState>,
+      action: PayloadAction<{ [key: string]: MenuItem[] }>
+    ) => {
+      state.menu = { ...state.menu, ...action.payload }
+    },
     changeLanguage: (state: WritableDraft<AppState>, action: PayloadAction<string>) => {
       localStorage.setItem(CONSTANT.STORAGE_KEY.LANGUAGE, action.payload)
       void i18n.changeLanguage(action.payload)
@@ -133,6 +143,7 @@ export const appSlice = createSlice({
 
 export const selectAppName = (state: RootState) => state.app.settings.name
 export const selectAppSettings = (state: RootState) => state.app.settings
+export const selectMenu = (state: RootState) => state.app.menu
 export const selectLanguage = (state: RootState) => state.app.settings.language
 export const selectIsLoading = (state: RootState) => state.app.isLoading
 export const selectAccessToken = (state: RootState) => state.app.accessToken
@@ -140,6 +151,7 @@ export const selectAppType = (state: RootState) => state.app.settings.type
 export const selectMessages = (state: RootState) => state.app.messages
 export const {
   initState,
+  setMenu,
   enqueueMessage,
   changeLanguage,
   dequeueMessage,
