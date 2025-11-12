@@ -219,6 +219,20 @@ case $1 in
     exit 0
     ;;
 
+  "${PROCESS[5]}" )
+    printp "Test Application"
+
+    # Test backend
+    if [ "$IS_BACK" != "" ] || [ "$IS_NOT_ALL" = "" ]; then
+
+      process="coverage run --source=backend --data-file=backend/.coverage -m pytest >> $LOG_FILE"
+      run_process "Running unit tests for backend" "$process"
+
+    fi
+
+    exit 0
+    ;;
+
   # Not specify process
   * )
     printl "FAT"
