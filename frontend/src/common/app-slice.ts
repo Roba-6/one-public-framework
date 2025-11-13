@@ -4,7 +4,7 @@ import type { WritableDraft } from 'immer'
 
 import { CONSTANT } from '@/common/constants'
 import type { Configuration } from '@/common/types/configuration'
-import type { MenuItem } from '@/common/types/data'
+import type { Menu } from '@/common/types/data'
 import type { Message } from '@/common/types/response'
 import { getEnv } from '@/lib/utils'
 import type { RootState } from '@/store'
@@ -36,7 +36,7 @@ export interface AppMessage {
  */
 export interface AppState {
   settings: Setting
-  menu: { [key: string]: MenuItem[] }
+  menu: Menu
   accessToken: string
   messages: AppMessage[]
   isLoading: boolean
@@ -98,10 +98,7 @@ export const appSlice = createSlice({
         }
       })
     },
-    setMenu: (
-      state: WritableDraft<AppState>,
-      action: PayloadAction<{ [key: string]: MenuItem[] }>
-    ) => {
+    setMenu: (state: WritableDraft<AppState>, action: PayloadAction<Menu>) => {
       state.menu = { ...state.menu, ...action.payload }
     },
     changeLanguage: (state: WritableDraft<AppState>, action: PayloadAction<string>) => {

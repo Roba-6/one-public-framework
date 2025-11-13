@@ -14,7 +14,7 @@ import SamplePage from '@/common/pages/sample/sample-page'
 import UserEditPage from '@/common/pages/users/edit-page'
 import UserListPage from '@/common/pages/users/list-page'
 import WelcomePage from '@/common/pages/welcome-page'
-import type { MenuItem } from '@/common/types/data'
+import type { Menu } from '@/common/types/data'
 import { getAdminPath } from '@/lib/utils'
 
 export type RouterProps = {
@@ -24,7 +24,7 @@ export type RouterProps = {
     publicRouter?: React.ReactNode
     publicOutlet?: React.ReactNode
   }
-  menu?: { [key: string]: MenuItem[] }
+  menu?: Menu
 }
 
 const Router = ({ children, menu }: RouterProps): React.ReactNode => {

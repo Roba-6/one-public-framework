@@ -6,3 +6,10 @@ interface MenuItem {
   icon?: keyof typeof Icon
   items?: MenuItem[]
 }
+
+interface Menu {
+  [key: string]: {
+    isOpened: boolean
+    items?: MenuItem[]
+  }
+}

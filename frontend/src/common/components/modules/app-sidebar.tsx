@@ -19,13 +19,13 @@ import {
   SidebarMenuItem,
 } from '@/common/components/ui/sidebar'
 import { useAppSelector } from '@/common/hooks/use-store'
-import type { MenuItem } from '@/common/types/data'
+import type { Menu, MenuItem } from '@/common/types/data'
 import { getLocalMessage } from '@/lib/utils'
 
 import { NavUser } from './nav-user'
 
 const AppSidebar = () => {
-  const menu: { [key: string]: MenuItem[] } = useAppSelector(selectMenu)
+  const menu: Menu = useAppSelector(selectMenu)
 
   return (
     <Sidebar variant="inset">
@@ -34,7 +34,7 @@ const AppSidebar = () => {
       </SidebarHeader>
       <SidebarContent>
         {Object.entries(menu).map(([key, value]) => (
-          <Collapsible defaultOpen className="group/collapsible">
+          <Collapsible defaultOpen={value.isOpened} className="group/collapsible">
             <SidebarGroup>
               <SidebarGroupLabel asChild>
                 <CollapsibleTrigger>
@@ -45,7 +45,7 @@ const AppSidebar = () => {
               <CollapsibleContent>
                 <SidebarGroupContent>
                   <SidebarMenu>
-                    {value.map((item: MenuItem) => {
+                    {value.items?.map((item: MenuItem) => {
                       const ItemIcon = Icon[item.icon!] as React.FC<any>
 
                       return (
