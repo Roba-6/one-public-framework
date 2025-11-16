@@ -1,6 +1,7 @@
 import { createSlice, nanoid, type PayloadAction } from '@reduxjs/toolkit'
 import i18n from 'i18next'
 import type { WritableDraft } from 'immer'
+import type { Location } from 'react-router'
 
 import { CONSTANT } from '@/common/constants'
 import type { Configuration } from '@/common/types/configuration'
@@ -40,6 +41,8 @@ export interface AppState {
   accessToken: string
   messages: AppMessage[]
   isLoading: boolean
+  // Current Page URL
+  location: Location | null
 }
 
 const initialState: AppState = {
@@ -55,6 +58,7 @@ const initialState: AppState = {
   accessToken: localStorage.getItem(CONSTANT.STORAGE_KEY.ACCESS_TOKEN) as string,
   messages: [],
   isLoading: true,
+  location: null,
 }
 
 export const appSlice = createSlice({
@@ -101,6 +105,13 @@ export const appSlice = createSlice({
     setMenu: (state: WritableDraft<AppState>, action: PayloadAction<Menu>) => {
       state.menu = { ...state.menu, ...action.payload }
     },
+    toggleMenu: (state: WritableDraft<AppState>, action: PayloadAction<string>) => {
+      console.log(!state.menu[action.payload].isOpened)
+      state.menu[action.payload].isOpened = !state.menu[action.payload].isOpened
+    },
+    openMenu: (state: WritableDraft<AppState>, action: PayloadAction<string>) => {
+      state.menu[action.payload].isOpened = true
+    },
     changeLanguage: (state: WritableDraft<AppState>, action: PayloadAction<string>) => {
       localStorage.setItem(CONSTANT.STORAGE_KEY.LANGUAGE, action.payload)
       void i18n.changeLanguage(action.payload)
@@ -135,6 +146,9 @@ export const appSlice = createSlice({
       }
       state.accessToken = action.payload
     },
+    setLocation: (state: WritableDraft<AppState>, action: PayloadAction<Location>) => {
+      state.location = action.payload
+    },
   },
 })
 
@@ -146,14 +160,18 @@ export const selectIsLoading = (state: RootState) => state.app.isLoading
 export const selectAccessToken = (state: RootState) => state.app.accessToken
 export const selectAppType = (state: RootState) => state.app.settings.type
 export const selectMessages = (state: RootState) => state.app.messages
+export const selectLocation = (state: RootState) => state.app.location
 export const {
   initState,
   setMenu,
+  toggleMenu,
+  openMenu,
   enqueueMessage,
   changeLanguage,
   dequeueMessage,
   loading,
   loadComplete,
   setAccessToken,
+  setLocation,
 } = appSlice.actions
 export default appSlice.reducer

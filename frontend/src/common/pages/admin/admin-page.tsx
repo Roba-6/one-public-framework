@@ -10,6 +10,7 @@ import {
   SidebarTrigger,
 } from '@/common/components/ui/sidebar'
 import { CONSTANT } from '@/common/constants'
+import { useUrlChange } from '@/common/hooks/use-current-url'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import { completed } from '@/lib/functions'
 import { getApi } from '@/lib/http'
@@ -20,6 +21,8 @@ const AdminPage = (): React.ReactNode => {
   const dispatch = useAppDispatch()
   const accessToken: string = useAppSelector(selectAccessToken)
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
+
+  useUrlChange()
 
   useEffect(() => {
     const fetch = async () => {
