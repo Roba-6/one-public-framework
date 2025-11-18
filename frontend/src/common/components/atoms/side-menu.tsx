@@ -6,7 +6,6 @@ import { type Location, NavLink } from 'react-router'
 import { openMenu, selectLocation, selectMenu, toggleMenu } from '@/common/app-slice'
 import { CollapsibleContent } from '@/common/components/ui/collapsible'
 import {
-  SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -39,9 +38,9 @@ const SideMenu = (): React.ReactNode => {
   }, [])
 
   return (
-    <SidebarContent>
+    <React.Fragment>
       {Object.entries(menu).map(([key, value]) => (
-        <Collapsible open={value.isOpened} className="group/collapsible">
+        <Collapsible key={key} open={value.isOpened} className="group/collapsible">
           <SidebarGroup>
             <SidebarGroupLabel asChild>
               <CollapsibleTrigger onClick={() => dispatch(toggleMenu(key))}>
@@ -52,34 +51,36 @@ const SideMenu = (): React.ReactNode => {
             <CollapsibleContent>
               <SidebarGroupContent>
                 <SidebarMenu>
-                  {value.items?.map((item: MenuItem) => {
-                    const ItemIcon = Icon[item.icon!] as React.FC<any>
+                  {value.items
+                    ?.filter((item) => item.show !== false)
+                    .map((item: MenuItem) => {
+                      const ItemIcon = Icon[item.icon!] as React.FC<any>
 
-                    return (
-                      <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton
-                          isActive={item.url! === currentLocation!.pathname}
-                          asChild
-                        >
-                          <NavLink
-                            className="cursor-pointer"
-                            to={item.url!}
-                            onClick={() => console.log('Clicked', item.title)}
+                      return (
+                        <SidebarMenuItem key={item.name}>
+                          <SidebarMenuButton
+                            isActive={item.url! === currentLocation!.pathname}
+                            asChild
                           >
-                            {ItemIcon && <ItemIcon />}
-                            <span>{getLocalMessage(item.title)}</span>
-                          </NavLink>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                    )
-                  })}
+                            <NavLink
+                              className="cursor-pointer"
+                              to={item.url!}
+                              onClick={() => console.log('Clicked', item.name)}
+                            >
+                              {ItemIcon && <ItemIcon />}
+                              <span>{getLocalMessage(item.name)}</span>
+                            </NavLink>
+                          </SidebarMenuButton>
+                        </SidebarMenuItem>
+                      )
+                    })}
                 </SidebarMenu>
               </SidebarGroupContent>
             </CollapsibleContent>
           </SidebarGroup>
         </Collapsible>
       ))}
-    </SidebarContent>
+    </React.Fragment>
   )
 }
 

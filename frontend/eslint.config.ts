@@ -29,6 +29,7 @@ export default tseslint.config([
     },
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       'eslint-plugin-react/jsx-uses-react': 'error',
       'eslint-plugin-react/jsx-uses-vars': 'error',
       'react-hooks/exhaustive-deps': 'off',

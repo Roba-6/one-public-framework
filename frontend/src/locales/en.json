@@ -15,7 +15,8 @@
     "system": "SYSTEM",
     "dashboard": "Dashboards",
     "configurations": "Configurations",
-    "users": "Users"
+    "users": "Users",
+    "add": "Add"
   },
   "buttons": {
     "add": "Add",

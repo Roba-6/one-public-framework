@@ -15,7 +15,8 @@
     "system": "システム",
     "dashboard": "ダッシュボード",
     "configurations": "システム設定",
-    "users": "ユーザー"
+    "users": "ユーザー",
+    "add": "新規追加"
   },
   "buttons": {
     "add": "新規",

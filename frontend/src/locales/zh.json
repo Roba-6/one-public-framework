@@ -15,16 +15,31 @@
     "system": "系统",
     "dashboard": "仪表盘",
     "configurations": "设置",
-    "users": "用户"
+    "users": "用户",
+    "add": "添加"
   },
   "buttons": {
+    "add": "新建",
+    "cancel": "取消",
+    "create": "创建",
     "close": "关闭",
+    "column": "列",
+    "delete": "删除",
+    "edit": "编辑",
     "login": "登陆",
-    "logout": "登出"
+    "logout": "登出",
+    "nextPage": "下一页",
+    "previousPage": "前一页"
   },
   "labels": {
+    "user": {
+      "name": "用户名",
+      "password": "密码",
+      "email": "邮箱",
+      "firstname": "名",
+      "lastname": "姓"
+    },
     "username": "用户名",
-    "password": "密码",
     "forgetPassword": "忘记密码？"
   },
   "messages": {

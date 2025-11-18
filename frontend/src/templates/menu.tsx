@@ -7,34 +7,25 @@ const menu: Menu = {
     isOpened: false,
     items: [
       {
-        title: 'menus.dashboard',
+        name: 'menus.dashboard',
         url: getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_DASHBOARD,
         icon: 'CircleGauge',
       },
       {
-        title: 'menus.configurations',
+        name: 'menus.configurations',
         url: getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_CONFIGURATION,
         icon: 'Settings',
       },
       {
-        title: 'menus.users',
+        name: 'menus.users',
         url: getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER,
         icon: 'User2',
       },
       {
-        title: 'Inbox',
-        url: '#',
-        icon: 'Inbox',
-      },
-      {
-        title: 'Calendar',
-        url: '#',
-        icon: 'Calendar',
-      },
-      {
-        title: 'Search',
-        url: '#',
-        icon: 'Search',
+        name: 'menus.add',
+        url: getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER_EDIT,
+        icon: 'User2',
+        show: false,
       },
     ],
   },

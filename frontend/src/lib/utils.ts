@@ -71,3 +71,9 @@ export const arrayToObject = (arr: any[], key: string, value: string): any => {
     return result
   }, {})
 }
+
+export const getValueFromObjectArray = (
+  array: any[],
+  value: string,
+  key: string = 'id'
+): any => array.filter((element) => element[key] === value)[0]

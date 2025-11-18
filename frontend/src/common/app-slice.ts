@@ -7,7 +7,7 @@ import { CONSTANT } from '@/common/constants'
 import type { Configuration } from '@/common/types/configuration'
 import type { Menu } from '@/common/types/data'
 import type { Message } from '@/common/types/response'
-import { getEnv } from '@/lib/utils'
+import { getEnv, getValueFromObjectArray } from '@/lib/utils'
 import type { RootState } from '@/store'
 import menu from '@/templates/menu'
 
@@ -32,6 +32,11 @@ export interface AppMessage {
   sticky?: boolean
 }
 
+export interface Bread {
+  url: string
+  name: string
+}
+
 /**
  * Interface of Application Status.
  */
@@ -39,6 +44,7 @@ export interface AppState {
   settings: Setting
   menu: Menu
   accessToken: string
+  breadcrumb: Bread[]
   messages: AppMessage[]
   isLoading: boolean
   // Current Page URL
@@ -56,6 +62,7 @@ const initialState: AppState = {
   },
   menu: menu,
   accessToken: localStorage.getItem(CONSTANT.STORAGE_KEY.ACCESS_TOKEN) as string,
+  breadcrumb: [],
   messages: [],
   isLoading: true,
   location: null,
@@ -147,6 +154,25 @@ export const appSlice = createSlice({
       state.accessToken = action.payload
     },
     setLocation: (state: WritableDraft<AppState>, action: PayloadAction<Location>) => {
+      let temp = action.payload.pathname
+      const breadPath: string[] = []
+      const bread: Bread[] = []
+
+      while (temp.lastIndexOf('/') >= 0) {
+        breadPath.unshift(temp)
+        temp = temp.substring(0, temp.lastIndexOf('/'))
+      }
+      breadPath.forEach((item: string) => {
+        const menu = JSON.parse(JSON.stringify(state.menu))
+        Object.entries(menu).forEach(([_, value]: [string, any]) => {
+          const b = getValueFromObjectArray(value.items, item, 'url') as Bread
+          if (b) {
+            bread.push(b)
+          }
+        })
+      })
+
+      state.breadcrumb = bread
       state.location = action.payload
     },
   },
@@ -156,6 +182,7 @@ export const selectAppName = (state: RootState) => state.app.settings.name
 export const selectAppSettings = (state: RootState) => state.app.settings
 export const selectMenu = (state: RootState) => state.app.menu
 export const selectLanguage = (state: RootState) => state.app.settings.language
+export const selectBreadcrumb = (state: RootState) => state.app.breadcrumb
 export const selectIsLoading = (state: RootState) => state.app.isLoading
 export const selectAccessToken = (state: RootState) => state.app.accessToken
 export const selectAppType = (state: RootState) => state.app.settings.type

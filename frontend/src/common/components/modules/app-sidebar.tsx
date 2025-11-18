@@ -2,7 +2,12 @@ import React from 'react'
 
 import Logo from '@/common/components/atoms/logo'
 import SideMenu from '@/common/components/atoms/side-menu'
-import { Sidebar, SidebarFooter, SidebarHeader } from '@/common/components/ui/sidebar'
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+} from '@/common/components/ui/sidebar'
 
 import { NavUser } from './nav-user'
 
@@ -12,7 +17,9 @@ const AppSidebar = (): React.ReactNode => {
       <SidebarHeader>
         <Logo size="sm" />
       </SidebarHeader>
-      <SideMenu />
+      <SidebarContent>
+        <SideMenu />
+      </SidebarContent>
       <SidebarFooter>
         <NavUser
           user={{
