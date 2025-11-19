@@ -1,22 +1,10 @@
-import {
-  type ColumnDef,
-  type ColumnFiltersState,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  type SortingState,
-  useReactTable,
-  type VisibilityState,
-} from '@tanstack/react-table'
+import { type ColumnDef } from '@tanstack/react-table'
 import { ArrowUpDown, MoreHorizontal } from 'lucide-react'
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router'
 
 import { enqueueMessage } from '@/common/app-slice'
 import DataList from '@/common/components/modules/data-list'
-import DataPagination from '@/common/components/modules/data-pagination'
-import DataToolBar from '@/common/components/modules/data-tool-bar'
 import { Button } from '@/common/components/ui/button'
 import { Checkbox } from '@/common/components/ui/checkbox'
 import {
@@ -37,10 +25,6 @@ import { getAdminPath, getLocalMessage, setUrlParams } from '@/lib/utils'
 const UserListPage = (): React.ReactNode => {
   const nav = useNavigate()
   const dispatch = useAppDispatch()
-  const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
   const [data, setData] = React.useState<User[]>([])
 
   const columns: ColumnDef<User>[] = [
@@ -97,6 +81,7 @@ const UserListPage = (): React.ReactNode => {
     },
     {
       id: 'actions',
+      header: () => <div className="text-left">Actions</div>,
       enableHiding: false,
       cell: ({ row }) => {
         const user = row.original
@@ -139,25 +124,6 @@ const UserListPage = (): React.ReactNode => {
     },
   ]
 
-  const table = useReactTable({
-    data,
-    columns,
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
-    state: {
-      sorting,
-      columnFilters,
-      columnVisibility,
-      rowSelection,
-    },
-  })
-
   useEffect(() => {
     getData()
   }, [])
@@ -192,9 +158,7 @@ const UserListPage = (): React.ReactNode => {
 
   return (
     <div className="w-full">
-      <DataToolBar table={table} />
-      <DataList table={table} columns={columns} />
-      <DataPagination table={table} />
+      <DataList<User> columns={columns} data={data} />
     </div>
   )
 }
