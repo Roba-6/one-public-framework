@@ -59,7 +59,7 @@ const DataList = <T,>(props: DataProps<T>) => {
   }, [props])
 
   return (
-    <>
+    <React.Fragment>
       <DataToolBar table={table} />
       <div className="overflow-hidden rounded-md border">
         <Table>
@@ -85,7 +85,7 @@ const DataList = <T,>(props: DataProps<T>) => {
             {loadingData ? (
               Array(3)
                 .fill(null)
-                .map((_, idx: number) => <DataSkeleton index={idx} />)
+                .map((_, idx: number) => <DataSkeleton key={idx} index={idx} />)
             ) : table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
@@ -107,7 +107,7 @@ const DataList = <T,>(props: DataProps<T>) => {
         </Table>
       </div>
       <DataPagination table={table} />
-    </>
+    </React.Fragment>
   )
 }
 
