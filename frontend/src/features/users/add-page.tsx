@@ -50,7 +50,7 @@ const testData = [
 
 // const UserFormSchema = z.object(arrayToObject(testData, 'name', 'validate'))
 
-const UserEditPage = (): React.ReactNode => {
+const AddUserPage = (): React.ReactNode => {
   const nav = useNavigate()
   const dispatch = useAppDispatch()
 
@@ -129,4 +129,4 @@ const UserEditPage = (): React.ReactNode => {
   )
 }
 
-export default UserEditPage
+export default AddUserPage

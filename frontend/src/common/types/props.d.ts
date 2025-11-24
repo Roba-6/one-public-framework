@@ -1,6 +1,7 @@
-import type { ColumnDef } from '@tanstack/react-table'
+import type { DataColumn } from '@/common/types/data'
 
-export interface DataProps<T> {
-  columns: ColumnDef<T>[]
+export interface DataListProps<T> {
+  columns: DataColumn<T>[]
   data: T[]
+  selectable?: boolean
 }

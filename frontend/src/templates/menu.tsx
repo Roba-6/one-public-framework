@@ -23,7 +23,13 @@ const menu: Menu = {
       },
       {
         name: 'menus.add',
-        url: getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER_EDIT,
+        url: getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER_ADD,
+        icon: 'User2',
+        show: false,
+      },
+      {
+        name: 'menus.update',
+        url: getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER_UPDATE,
         icon: 'User2',
         show: false,
       },

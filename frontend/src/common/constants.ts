@@ -30,6 +30,8 @@ export const CONSTANT = {
   COPYRIGHT: '© 2025 Roba All Rights Reserved',
   // Key name for data stored in Web Storage
   STORAGE_KEY: { THEME: 'theme', LANGUAGE: 'language', ACCESS_TOKEN: 'accessToken' },
+  // The display length of the UUID
+  UUID_DISPLAY_LENGTH: 4,
 
   ENUM_CONFIGURATION_TYPE: { OTHER: 0, SYS: 1, API: 2, UI: 3 },
 
@@ -37,7 +39,8 @@ export const CONSTANT = {
     ADMIN: '/admin',
     ADMIN_CONFIGURATION: '/configurations',
     ADMIN_USER: '/users',
-    ADMIN_USER_EDIT: '/users/edit',
+    ADMIN_USER_ADD: '/users/add',
+    ADMIN_USER_UPDATE: '/users/update',
     ADMIN_ROLE: '/roles',
     ADMIN_PERMISSION: '/permissions',
     HOME: '/home',

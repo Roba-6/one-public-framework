@@ -16,7 +16,12 @@
     "dashboard": "ダッシュボード",
     "configurations": "システム設定",
     "users": "ユーザー",
-    "add": "新規追加"
+    "add": "新規追加",
+    "update": "情報編集"
+  },
+  "format": {
+    "datetime": "YYYY年M月D日 HH:mm",
+    "shortDatetime": "M月D日 HH:mm"
   },
   "buttons": {
     "add": "新規",
@@ -32,15 +37,23 @@
     "previousPage": "前へ"
   },
   "labels": {
+    "createdAt": "作成日時",
+    "forgetPassword": "パスワードをお忘れですか？",
+    "id": "ID",
     "user": {
-      "name": "ユーザー名",
-      "password": "パスワード",
       "email": "メールアドレス",
+      "enabled": "有効",
+      "failedAttempts": "ログイン失敗",
       "firstname": "名前",
-      "lastname": "苗字"
+      "fullname": "氏名",
+      "lastname": "苗字",
+      "lock": "ロック",
+      "name": "ユーザー名",
+      "nickname": "表示名",
+      "password": "パスワード"
     },
-    "username": "ユーザー名",
-    "forgetPassword": "パスワードをお忘れですか？"
+    "updatedAt": "最終変更日時",
+    "username": "ユーザー名"
   },
   "messages": {
     "pleaseLogin": "ユーザー名をご入力してログインしてください。",
