@@ -1,4 +1,9 @@
 import * as Icon from 'lucide-react'
+import React from 'react'
+
+interface BaseType {
+  id?: string
+}
 
 interface MenuItem {
   name: string
@@ -27,6 +32,8 @@ export type ColumnType = 'badge' | 'label' | 'number' | 'datetime' | 'booleanIco
 
 export type ColumnAlign = 'left' | 'center' | 'right'
 
+export type EventType = 'handleClick'
+
 interface DataColumn {
   key?: string
   name?: string
@@ -37,6 +44,8 @@ interface DataColumn {
   align?: ColumnAlign
 }
 
-export interface DataColumnDef<T> extends ColumnDef<T> {
-  displayName?: string
+interface Action {
+  name?: string
+  type?: 'item' | 'separator'
+  events?: Partial<Record<EventType, React.EventHandler<any>>> | null
 }

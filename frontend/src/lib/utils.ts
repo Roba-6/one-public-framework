@@ -77,3 +77,14 @@ export const getValueFromObjectArray = (
   value: string,
   key: string = 'id'
 ): any => array.filter((element) => element[key] === value)[0]
+
+/**
+ * Copies the provided text to the system clipboard.
+ *
+ * @param {string} text - The text string to be copied to the clipboard.
+ * @returns {void}
+ */
+export const copyToClipboard = (text: string): void => {
+  console.debug('Copying text to clipboard:', text)
+  void navigator.clipboard.writeText(text)
+}

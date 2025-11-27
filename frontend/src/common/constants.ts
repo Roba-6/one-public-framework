@@ -41,6 +41,7 @@ export const CONSTANT = {
     ADMIN_USER: '/users',
     ADMIN_USER_ADD: '/users/add',
     ADMIN_USER_UPDATE: '/users/update',
+    ADMIN_USER_DETAIL: '/users/:id',
     ADMIN_ROLE: '/roles',
     ADMIN_PERMISSION: '/permissions',
     HOME: '/home',

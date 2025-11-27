@@ -29,14 +29,18 @@
     "create": "作成",
     "close": "閉じる",
     "column": "カラム",
+    "copyId": "ID をコピー",
     "delete": "削除",
+    "details": "詳細確認",
     "edit": "編集",
     "login": "ログイン",
     "logout": "ログアウト",
     "nextPage": "次へ",
+    "openMenu": "メニューを開く",
     "previousPage": "前へ"
   },
   "labels": {
+    "actions": "操作",
     "createdAt": "作成日時",
     "forgetPassword": "パスワードをお忘れですか？",
     "id": "ID",

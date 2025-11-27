@@ -51,8 +51,9 @@ export const convertTableColumns = <T,>(objColumns: DataColumn[]): ColumnDef<T>[
         align = 'text-start'
     }
 
-    let cell: any = null
-    let header: any = null
+    let cell: any
+    let header: any
+
     if (dataColumn.isSortable) {
       header = ({ column }: HeaderContext<T, any>) => {
         return (

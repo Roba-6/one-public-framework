@@ -24,7 +24,7 @@ const DataToolBar = (props: any) => {
         className="max-w-sm"
       />
       <div className="ml-auto flex items-center gap-2">
-        <DropdownMenu>
+        <DropdownMenu modal={false}>
           <DropdownMenuTrigger asChild>
             <Button variant="outline">
               {getLocalMessage('buttons.column')}
@@ -35,16 +35,16 @@ const DataToolBar = (props: any) => {
             {props.table
               .getAllColumns()
               .filter((column: any) => column.getCanHide())
-              .map((column: any) => {
-                console.log(column)
+              .map((column: any, idx: number) => {
                 return (
                   <DropdownMenuCheckboxItem
                     key={column.id}
                     className="capitalize"
                     checked={column.getIsVisible()}
+                    onSelect={(e) => e.preventDefault()}
                     onCheckedChange={(value) => column.toggleVisibility(value)}
                   >
-                    {column.columnDef.header}
+                    {props.columns[idx]?.name}
                   </DropdownMenuCheckboxItem>
                 )
               })}
