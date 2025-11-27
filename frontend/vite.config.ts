@@ -11,7 +11,21 @@ export default defineConfig({
     alias({
       entries: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
     }),
-    react(),
+    react({
+      babel: {
+        plugins:
+          process.env.NODE_ENV === 'development'
+            ? []
+            : [
+                [
+                  'transform-remove-console',
+                  {
+                    exclude: ['error', 'warn', 'info', 'log'],
+                  },
+                ],
+              ],
+      },
+    }),
     tailwindcss(),
     dts({ entryRoot: 'src', outDir: 'dist' }),
     viteStaticCopy({
