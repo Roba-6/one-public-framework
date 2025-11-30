@@ -168,6 +168,7 @@ export const createSelectColumn = <T,>(): ColumnDef<T> => {
         }
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
+        role="checkdata"
       />
     ),
     cell: ({ row }: CellContext<T, any>) => (
@@ -175,6 +176,7 @@ export const createSelectColumn = <T,>(): ColumnDef<T> => {
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
         aria-label="Select row"
+        role="checkdata"
       />
     ),
     enableSorting: false,

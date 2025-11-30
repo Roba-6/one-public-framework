@@ -156,8 +156,14 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.ReactNode 
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
+                  let className = ''
+                  if (header.id === 'select') {
+                    className = 'sticky-start'
+                  } else if (header.id === 'actions') {
+                    className = 'sticky-end'
+                  }
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead key={header.id} className={className}>
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -178,11 +184,19 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.ReactNode 
             ) : table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </TableCell>
-                  ))}
+                  {row.getVisibleCells().map((cell) => {
+                    let className = ''
+                    if (cell.column.id === 'select') {
+                      className = 'sticky-start'
+                    } else if (cell.column.id === 'actions') {
+                      className = 'sticky-end'
+                    }
+                    return (
+                      <TableCell key={cell.id} className={className}>
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </TableCell>
+                    )
+                  })}
                 </TableRow>
               ))
             ) : (

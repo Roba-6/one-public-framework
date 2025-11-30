@@ -203,6 +203,14 @@ body {
   animation: blink-anime 10s step-start infinite;
 }
 
+.sticky-start {
+  @apply sticky left-0 bg-[var(--background)];
+}
+
+.sticky-end {
+  @apply sticky right-0 bg-[var(--background)];
+}
+
 @keyframes blink-anime {
   0%,
   23%,
