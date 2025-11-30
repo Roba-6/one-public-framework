@@ -26,7 +26,7 @@ let isRefreshing: boolean = false
 let failedQueue: Array<FailedQueueItem> = []
 
 const processQueue = (error: AxiosError | null, token: string | null = null) => {
-  failedQueue.forEach((prom) => {
+  failedQueue.forEach((prom: FailedQueueItem): void => {
     if (error) {
       prom.reject(error)
     } else {
@@ -73,12 +73,30 @@ axiosInstance.interceptors.response.use(
     switch (status) {
       case 401:
         if (errorInfo.code === 'E40100004') {
+          // Add to the pending queue (to be retried after refresh completed)
+          const retryOriginalRequest = new Promise((resolve, reject) => {
+            failedQueue.push({
+              resolve: () => {
+                if (error.config) {
+                  resolve(axiosInstance.request(error.config))
+                } else {
+                  reject(error)
+                }
+              },
+              reject: (err) => reject(err),
+            })
+          })
+
           if (!isRefreshing) {
             // Refresh token
             isRefreshing = true
+            console.debug('[1]Refreshing token...')
             try {
+              console.debug('[2]Get Token...')
+
               const res: Token = await getApi<Token>(CONSTANT.API_URL.REFRESH)
               store.dispatch(setAccessToken(res.accessToken))
+              console.debug('[3]New Token:', res.accessToken)
               // Retry pending requests
               processQueue(null, res.accessToken)
             } catch (refreshError) {
@@ -90,17 +108,7 @@ axiosInstance.interceptors.response.use(
             }
           }
 
-          // Add to the pending queue (to be retried after refresh completed)
-          return new Promise((resolve, reject) => {
-            failedQueue.push({
-              resolve: () => {
-                if (error.config) {
-                  resolve(axiosInstance.request(error.config))
-                }
-              },
-              reject: (err) => reject(err),
-            })
-          })
+          return retryOriginalRequest as never
         }
         break
       case 500:
