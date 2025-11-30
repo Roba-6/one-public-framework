@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.10\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-11-09 23:49+0900\n"
+"POT-Creation-Date: 2025-11-30 11:14+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -501,14 +501,18 @@ msgstr ""
 msgid "Invalid access token"
 msgstr "アクセストークンが無効です．"
 
-#: src/one_public_api/services/base_service.py:78
-#: src/one_public_api/services/base_service.py:89
+#: src/one_public_api/services/base_service.py:66
+msgid "Data not found."
+msgstr "データが見つかりません．"
+
+#: src/one_public_api/services/base_service.py:83
+#: src/one_public_api/services/base_service.py:94
 #: src/one_public_api/services/user_service.py:36
 msgid "Data already exists."
 msgstr "データは既に存在します．"
 
-#: src/one_public_api/services/base_service.py:125
-#: src/one_public_api/services/base_service.py:140
-#: src/one_public_api/services/base_service.py:154
+#: src/one_public_api/services/base_service.py:130
+#: src/one_public_api/services/base_service.py:145
+#: src/one_public_api/services/base_service.py:159
 msgid "This record might be referenced by other data."
 msgstr "このデータが参照されているため，削除できません．"

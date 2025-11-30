@@ -4,7 +4,7 @@ from typing import Annotated, Any, Dict, Generic, List, Type, TypeVar
 from uuid import UUID
 
 from fastapi.params import Depends
-from sqlalchemy.exc import IntegrityError
+from sqlalchemy.exc import IntegrityError, NoResultFound
 from sqlmodel import Session, SQLModel
 
 from one_public_api.common.query_param import QueryParam
@@ -59,7 +59,12 @@ class BaseService(Generic[T]):
         return self.dr.one(self.model, conditions)
 
     def get_one_by_id(self, target_id: UUID) -> T:
-        return self.dr.get(self.model, target_id)
+        try:
+            return self.dr.get(self.model, target_id)
+        except NoResultFound:
+            raise DataError(
+                self._("Data not found."), detail=str(target_id), code="E40400001"
+            )
 
     def get_all(self, query: QueryParam) -> List[T]:
         (data, self.count) = self.dr.all(self.model, query, self.search_columns)
