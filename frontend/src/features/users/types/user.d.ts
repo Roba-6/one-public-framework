@@ -1,3 +1,5 @@
+type TestType = 'name' | 'email' | 'password'
+
 interface UserBase {
   name: string
   email: string

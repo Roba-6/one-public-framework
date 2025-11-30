@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router'
-import { z } from 'zod/v4'
 
 import { enqueueMessage } from '@/common/app-slice'
 import EditForm from '@/common/components/modules/edit-form'
@@ -8,49 +7,14 @@ import { Card, CardContent } from '@/common/components/ui/card'
 import { CONSTANT } from '@/common/constants'
 import { useAppDispatch } from '@/common/hooks/use-store'
 import type { CommonResponse } from '@/common/types/response'
-import type { User, UserRequest } from '@/common/types/user'
-import { getApi, postApi, putApi } from '@/lib/http'
-import { getAdminPath, getLocalMessage, setUrlParams } from '@/lib/utils'
-
-const testData = [
-  {
-    name: 'name',
-    label: getLocalMessage('labels.user.name'),
-    type: 'text',
-    placeholder: 'yamada_taro',
-    autoComplete: 'username',
-    defaultValue: '',
-    validate: z.string().min(1, { message: getLocalMessage('Username is required') }),
-  },
-  {
-    name: 'password',
-    label: getLocalMessage('labels.user.password'),
-    type: 'password',
-    autoComplete: 'new-password',
-    defaultValue: '',
-    validate: z.string().min(1, { message: getLocalMessage('Password is required') }),
-  },
-  {
-    name: 'email',
-    label: getLocalMessage('labels.user.email'),
-    type: 'text',
-    placeholder: 'test@test.com',
-    defaultValue: '',
-    validate: z.string().min(1, { message: getLocalMessage('Email is required') }),
-  },
-  {
-    name: 'lastname',
-    label: getLocalMessage('labels.user.lastname'),
-    type: 'text',
-    placeholder: 'Yamada',
-    defaultValue: '',
-    validate: z.string().min(1, { message: getLocalMessage('lastname is required') }),
-  },
-]
+import { formItems } from '@/features/users/form-items'
+import type { User } from '@/features/users/types/user'
+import { getApi, putApi } from '@/lib/http'
+import { getAdminPath, setUrlParams } from '@/lib/utils'
 
 // const UserFormSchema = z.object(arrayToObject(testData, 'name', 'validate'))
 
-const UpdateUserPage = (): React.ReactNode => {
+const UpdateUserPage = (): React.JSX.Element => {
   const nav = useNavigate()
   const dispatch = useAppDispatch()
 
@@ -61,15 +25,13 @@ const UpdateUserPage = (): React.ReactNode => {
 
   useEffect(() => {
     if (id) {
-      console.debug('edit mode')
       getApi<CommonResponse>(setUrlParams(CONSTANT.API_URL.USER_ADMIN_ID, id)).then(
         (res: CommonResponse) => {
           setData(res.results! as User)
           setLoadingData(false)
+          console.log('Update Page:', res.results! as User)
         }
       )
-    } else {
-      console.debug('add mode')
     }
   }, [id])
 
@@ -92,36 +54,19 @@ const UpdateUserPage = (): React.ReactNode => {
             type: 'success',
           })
         )
+        nav(getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER)
       })
-    } else {
-      postApi<CommonResponse>(CONSTANT.API_URL.USER_ADMIN, values as UserRequest).then(
-        (res: CommonResponse) => {
-          console.log(res.results! as User)
-          dispatch(
-            enqueueMessage({
-              message: {
-                code: 'S2000001',
-                message: 'Added Successfully',
-                detail: null,
-              },
-              status: 200,
-              type: 'success',
-            })
-          )
-          nav(getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER)
-        }
-      )
     }
   }
 
   return (
     <Card>
       <CardContent>
-        <EditForm
+        <EditForm<User>
           id={id as string}
           data={data!}
           loadingData={loadingData}
-          testData={testData}
+          items={formItems}
           submitForm={submitForm}
         />
       </CardContent>

@@ -15,6 +15,7 @@ import {
 } from '@/common/components/ui/form'
 import { Input } from '@/common/components/ui/input'
 import { Skeleton } from '@/common/components/ui/skeleton'
+import type { TestType } from '@/features/users/types/user'
 import { arrayToObject, getLocalMessage } from '@/lib/utils'
 
 const UserFormSchema = z.object({
@@ -26,9 +27,9 @@ const UserFormSchema = z.object({
 
 interface EditFormProps<T> {
   id?: string
-  testData: any[]
-  data: T
-  loadingData: boolean
+  items: any[]
+  data?: T
+  loadingData?: boolean
   submitForm: any
 }
 
@@ -36,12 +37,13 @@ const EditForm = <T,>(props: EditFormProps<T>): React.ReactNode => {
   const nav = useNavigate()
   const form = useForm<z.infer<typeof UserFormSchema>>({
     resolver: zodResolver(UserFormSchema),
-    defaultValues: arrayToObject(props.testData, 'name', 'defaultValue'),
+    defaultValues: arrayToObject(props.items, 'name', 'defaultValue'),
   })
 
   useEffect(() => {
+    console.debug('Edit Form Data:', props.data!)
     form.reset(props.data!)
-  }, [])
+  }, [props])
 
   return (
     <Form {...form}>
@@ -56,7 +58,7 @@ const EditForm = <T,>(props: EditFormProps<T>): React.ReactNode => {
                     <Skeleton className="my-2 h-4 w-auto col-span-3" />
                   </div>
                 ))
-            : props.testData.map((item, idx: number) => (
+            : props.items.map((item, idx: number) => (
                 <FormField
                   key={idx}
                   control={form.control}

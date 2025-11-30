@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router'
 import { enqueueMessage } from '@/common/app-slice'
 import DataList from '@/common/components/modules/data-list'
 import { CONSTANT } from '@/common/constants'
-import { useAppDispatch } from '@/common/hooks/use-store.ts'
+import { useAppDispatch } from '@/common/hooks/use-store'
 import type { Action } from '@/common/types/data'
 import type { CommonResponse } from '@/common/types/response'
-import type { User } from '@/common/types/user'
-import { columns } from '@/features/users/columns'
+import { listColumns } from '@/features/users/list-columns'
+import type { User } from '@/features/users/types/user'
 import { deleteApi, getApi } from '@/lib/http'
 import {
   copyToClipboard,
@@ -132,7 +132,7 @@ const UserListPage = (): React.ReactNode => {
 
   return (
     <div className="w-full">
-      <DataList<User> columns={columns} data={data} actions={actions} selectable />
+      <DataList<User> columns={listColumns} data={data} actions={actions} selectable />
     </div>
   )
 }

@@ -5,7 +5,7 @@ import React from 'react'
 
 import { loadComplete } from '@/common/app-slice'
 import { Badge } from '@/common/components/ui/badge'
-import { Button } from '@/common/components/ui/button.tsx'
+import { Button } from '@/common/components/ui/button'
 import { Checkbox } from '@/common/components/ui/checkbox'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/common/components/ui/tooltip'
 import { CONSTANT } from '@/common/constants'
