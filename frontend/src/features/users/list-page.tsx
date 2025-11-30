@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router'
 
-// import { enqueueMessage } from '@/common/app-slice'
+import { enqueueMessage } from '@/common/app-slice'
 import DataList from '@/common/components/modules/data-list'
 import { CONSTANT } from '@/common/constants'
+import { useAppDispatch } from '@/common/hooks/use-store.ts'
 import type { Action } from '@/common/types/data'
-// import { useAppDispatch } from '@/common/hooks/use-store'
 import type { CommonResponse } from '@/common/types/response'
 import type { User } from '@/common/types/user'
 import { columns } from '@/features/users/columns'
-import { getApi } from '@/lib/http'
+import { deleteApi, getApi } from '@/lib/http'
 import {
   copyToClipboard,
   getAdminPath,
@@ -19,7 +19,7 @@ import {
 // import { setUrlParams } from '@/lib/utils'
 
 const UserListPage = (): React.ReactNode => {
-  // const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch()
   const nav = useNavigate()
   const [data, setData] = React.useState<User[]>([])
 
@@ -42,6 +42,30 @@ const UserListPage = (): React.ReactNode => {
         id: id,
       })
     )
+  }
+
+  const deleteData = (id: string): void => {
+    deleteApi<CommonResponse>(setUrlParams(CONSTANT.API_URL.USER_ADMIN_ID, id))
+      .then((res: CommonResponse) => {
+        const user: User = res.results as User
+        console.debug(res.results as User)
+        dispatch(
+          enqueueMessage({
+            message: {
+              code: 'I00100001',
+              message: getLocalMessage('messages.notices.I00100001', [user.name]),
+              detail: null,
+            },
+            status: 200,
+            type: 'success',
+          })
+        )
+
+        // getData()
+      })
+      .catch((err: CommonResponse) => {
+        console.error(err)
+      })
   }
 
   const actions: Action[] = [
@@ -68,6 +92,9 @@ const UserListPage = (): React.ReactNode => {
     },
     {
       name: getLocalMessage('buttons.delete'),
+      events: {
+        handleClick: deleteData,
+      },
     },
   ]
 
