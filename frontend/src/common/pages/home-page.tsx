@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import { completed } from '@/lib/functions'
 import { getLocalMessage } from '@/lib/utils'
 
-const HomePage = (): React.ReactNode => {
+const HomePage = (): React.JSX.Element => {
   const appName: string = useAppSelector(selectAppName)
   const dispatch = useAppDispatch()
 

@@ -4,7 +4,7 @@ import { ScrollArea, ScrollBar } from '@/common/components/ui/scroll-area'
 import { useAppDispatch } from '@/common/hooks/use-store'
 import { completed } from '@/lib/functions'
 
-const ErrorPage = (): React.ReactNode => {
+const ErrorPage = (): React.JSX.Element => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {

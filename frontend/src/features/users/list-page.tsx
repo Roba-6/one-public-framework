@@ -18,7 +18,7 @@ import {
 } from '@/lib/utils'
 // import { setUrlParams } from '@/lib/utils'
 
-const UserListPage = (): React.ReactNode => {
+const UserListPage = (): React.JSX.Element => {
   const dispatch = useAppDispatch()
   const nav = useNavigate()
   const [data, setData] = React.useState<User[]>([])

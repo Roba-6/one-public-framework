@@ -9,7 +9,7 @@ import { useAppDispatch } from '@/common/hooks/use-store'
 import { completed } from '@/lib/functions'
 import { getAdminPath } from '@/lib/utils'
 
-const WelcomePage = (): React.ReactNode => {
+const WelcomePage = (): React.JSX.Element => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
