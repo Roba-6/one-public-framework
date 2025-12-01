@@ -5,35 +5,15 @@ import { useNavigate } from 'react-router'
 import { z } from 'zod/v4'
 
 import { Button } from '@/common/components/ui/button'
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/common/components/ui/form'
-import { Input } from '@/common/components/ui/input'
+import { Form } from '@/common/components/ui/form'
 import { Skeleton } from '@/common/components/ui/skeleton'
-import type { TestType } from '@/features/users/types/user'
-import { arrayToObject, getLocalMessage } from '@/lib/utils'
-
-const UserFormSchema = z.object({
-  name: z.string().min(1, { message: getLocalMessage('Username is required') }),
-  password: z.string().min(1, { message: getLocalMessage('Password is required') }),
-  email: z.string().min(1, { message: getLocalMessage('Email is required') }),
-  lastname: z.string().min(1, { message: getLocalMessage('lastname is required') }),
-})
-
-interface EditFormProps<T> {
-  id?: string
-  items: any[]
-  data?: T
-  loadingData?: boolean
-  submitForm: any
-}
+import type { EditFormProps } from '@/common/types/props'
+import { convertFormItems } from '@/lib/functions'
+import { arrayToObject, createFormSchema, getLocalMessage } from '@/lib/utils'
 
 const EditForm = <T,>(props: EditFormProps<T>): React.ReactNode => {
+  const UserFormSchema = z.object(createFormSchema(props.items))
+
   const nav = useNavigate()
   const form = useForm<z.infer<typeof UserFormSchema>>({
     resolver: zodResolver(UserFormSchema),
@@ -58,30 +38,7 @@ const EditForm = <T,>(props: EditFormProps<T>): React.ReactNode => {
                     <Skeleton className="my-2 h-4 w-auto col-span-3" />
                   </div>
                 ))
-            : props.items.map((item, idx: number) => (
-                <FormField
-                  key={idx}
-                  control={form.control}
-                  name={item.name as TestType}
-                  render={({ field }) => (
-                    <FormItem>
-                      <div className="grid grid-cols-6 gap-3">
-                        <FormLabel>{item.label as string}</FormLabel>
-                        <FormControl className="col-span-3">
-                          <Input
-                            type={item.type as string}
-                            placeholder={item?.placeholder as string}
-                            {...field}
-                            value={field.value as string}
-                            autoComplete={item?.autoComplete as string}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </div>
-                    </FormItem>
-                  )}
-                />
-              ))}
+            : convertFormItems(props.items, form)}
           <div className="grid grid-cols-6 gap-3">
             <Button
               type="button"

@@ -10,22 +10,11 @@ import {
   useReactTable,
   type VisibilityState,
 } from '@tanstack/react-table'
-import { MoreHorizontal } from 'lucide-react'
 import React, { useEffect } from 'react'
 
-// import { useNavigate } from 'react-router'
 import DataPagination from '@/common/components/modules/data-pagination'
 import DataSkeleton from '@/common/components/modules/data-skeleton'
 import DataToolBar from '@/common/components/modules/data-tool-bar'
-import { Button } from '@/common/components/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/common/components/ui/dropdown-menu'
 import {
   Table,
   TableBody,
@@ -34,12 +23,13 @@ import {
   TableHeader,
   TableRow,
 } from '@/common/components/ui/table'
-import type { Action, BaseType } from '@/common/types/data'
-// import { CONSTANT } from '@/common/constants'
+import type { BaseType } from '@/common/types/data'
 import type { DataListProps } from '@/common/types/props'
-import { convertTableColumns, createSelectColumn } from '@/lib/functions'
-import { getLocalMessage } from '@/lib/utils'
-// import { getAdminPath, getLocalMessage, setUrlParams } from '@/lib/utils'
+import {
+  convertTableColumns,
+  createActionColumn,
+  createSelectColumn,
+} from '@/lib/functions'
 
 const DataList = <T extends BaseType>(props: DataListProps<T>): React.ReactNode => {
   // const nav = useNavigate()
@@ -54,68 +44,8 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.ReactNode 
   if (props.selectable) {
     columns.unshift(createSelectColumn<T>())
   }
-
   if (props.actions) {
-    columns.push({
-      id: 'actions',
-      // header: () => <div className="text-end">Actions</div>,
-      cell: ({ row }) => {
-        const data = row.original
-        return (
-          <div className="text-end">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="h-8 w-8 p-0">
-                  <span className="sr-only">{getLocalMessage('buttons.openMenu')}</span>
-                  <MoreHorizontal />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuLabel>
-                  {getLocalMessage('labels.actions')}
-                </DropdownMenuLabel>
-                {props.actions!.map((act: Action, idx: number) => {
-                  let properties = {}
-                  if (act.events && 'handleClick' in act.events) {
-                    console.log('DD ', act.events)
-                    properties = {
-                      ...properties,
-                      onClick: () => act.events?.handleClick!(data.id!),
-                    }
-                  }
-                  if (act.type === 'separator') {
-                    return <DropdownMenuSeparator key={idx} />
-                  } else {
-                    return (
-                      <DropdownMenuItem key={idx} {...properties}>
-                        {act.name}
-                      </DropdownMenuItem>
-                    )
-                  }
-                })}
-                {/*    <DropdownMenuItem*/}
-                {/*      onClick={() => {*/}
-                {/*        nav(*/}
-                {/*          setUrlParams(*/}
-                {/*            getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER_UPDATE,*/}
-                {/*            undefined,*/}
-                {/*            { id: user.id! }*/}
-                {/*          )*/}
-                {/*        )*/}
-                {/*      }}*/}
-                {/*    >*/}
-                {/*      {getLocalMessage('buttons.edit')}*/}
-                {/*    </DropdownMenuItem>*/}
-                {/*    <DropdownMenuItem onClick={() => deleteData(user.id!)}>*/}
-                {/*      {getLocalMessage('buttons.delete')}*/}
-                {/*    </DropdownMenuItem>*/}
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-        )
-      },
-      enableHiding: false,
-    })
+    columns.push(createActionColumn(props.actions))
   }
 
   const table = useReactTable({
@@ -143,8 +73,8 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.ReactNode 
     } else {
       setLoadingData(true)
     }
-    console.log('sorting: ', sorting)
-    console.log('filters: ', columnFilters)
+    console.debug('sorting:', sorting)
+    console.debug('filters:', columnFilters)
   }, [props, sorting, columnFilters])
 
   return (

@@ -2,6 +2,7 @@ import { type ClassValue, clsx } from 'clsx'
 import i18next from 'i18next'
 import qs from 'qs'
 import { twMerge } from 'tailwind-merge'
+import { z } from 'zod/v4'
 
 import { CONSTANT } from '@/common/constants'
 
@@ -87,4 +88,24 @@ export const getValueFromObjectArray = (
 export const copyToClipboard = (text: string): void => {
   console.debug('Copying text to clipboard:', text)
   void navigator.clipboard.writeText(text)
+}
+
+/**
+ * Generates a schema object for form validation based on the provided form items.
+ *
+ * @param {any[]} formItems - An array of form items where each item may optionally
+ * include a `validate` property.
+ * @returns {{ [key: string]: z.ZodString }} An object containing validation
+ * schemas, where the keys are the names of the form items and the values are their
+ * respective validation rules (Zod string validators).
+ */
+export const createFormSchema = (formItems: any[]): { [key: string]: z.ZodString } => {
+  const rst: { [key: string]: z.ZodString } = {}
+  formItems.forEach((item) => {
+    if ('validate' in item) {
+      rst[item.name] = item.validate
+    }
+  })
+
+  return rst
 }

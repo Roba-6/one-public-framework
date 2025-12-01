@@ -1,15 +1,34 @@
 import type { CellContext, ColumnDef, HeaderContext } from '@tanstack/react-table'
 import dayjs from 'dayjs'
 import * as Icon from 'lucide-react'
+import { MoreHorizontal } from 'lucide-react'
 import React from 'react'
 
 import { loadComplete } from '@/common/app-slice'
 import { Badge } from '@/common/components/ui/badge'
 import { Button } from '@/common/components/ui/button'
 import { Checkbox } from '@/common/components/ui/checkbox'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/common/components/ui/dropdown-menu'
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/common/components/ui/form'
+import { Input } from '@/common/components/ui/input'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/common/components/ui/tooltip'
 import { CONSTANT } from '@/common/constants'
+import type { Action, BaseType, FormFieldItem } from '@/common/types/data'
 import type { DataColumn, DatetimeType } from '@/common/types/data'
+import type { TestType } from '@/features/users/types/user'
 import { getLocalMessage } from '@/lib/utils'
 import { store } from '@/store'
 
@@ -184,6 +203,79 @@ export const createSelectColumn = <T,>(): ColumnDef<T> => {
   }
 }
 
-// export const createActionColumn = <T,>(): ColumnDef<T> => {
-//   return {}
-// }
+export const createActionColumn = <T extends BaseType>(
+  actions: Action[]
+): ColumnDef<T> => {
+  return {
+    id: 'actions',
+    // header: () => <div className="text-end">Actions</div>,
+    cell: ({ row }) => {
+      const data = row.original
+      return (
+        <div className="text-end">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <span className="sr-only">{getLocalMessage('buttons.openMenu')}</span>
+                <MoreHorizontal />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>{getLocalMessage('labels.actions')}</DropdownMenuLabel>
+              {actions.map((act: Action, idx: number) => {
+                const properties: { [key: string]: any } = {}
+                if (act.events && 'handleClick' in act.events) {
+                  properties.onClick = () => act.events?.handleClick!(data.id!)
+                }
+                if (act.type === 'separator') {
+                  return <DropdownMenuSeparator key={idx} />
+                } else {
+                  return (
+                    <DropdownMenuItem key={idx} {...properties}>
+                      {act.name}
+                    </DropdownMenuItem>
+                  )
+                }
+              })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      )
+    },
+    enableHiding: false,
+  }
+}
+
+export const convertFormItems = (
+  items: FormFieldItem[],
+  form: any
+): React.JSX.Element => {
+  return (
+    <React.Fragment>
+      {items.map((item: FormFieldItem, idx: number) => (
+        <FormField
+          key={idx}
+          control={form.control}
+          name={item.name as TestType}
+          render={({ field }) => (
+            <FormItem>
+              <div className="grid grid-cols-6 gap-3">
+                <FormLabel>{item.label as string}</FormLabel>
+                <FormControl className="col-span-3">
+                  <Input
+                    type={item.type as string}
+                    placeholder={item?.placeholder as string}
+                    {...field}
+                    value={field.value as string}
+                    autoComplete={item?.autoComplete as string}
+                  />
+                </FormControl>
+                <FormMessage />
+              </div>
+            </FormItem>
+          )}
+        />
+      ))}
+    </React.Fragment>
+  )
+}

@@ -1,5 +1,6 @@
 import * as Icon from 'lucide-react'
 import React from 'react'
+import { z } from 'zod/v4'
 
 interface BaseType {
   id?: string
@@ -32,6 +33,14 @@ export type ColumnType = 'badge' | 'label' | 'number' | 'datetime' | 'booleanIco
 
 export type ColumnAlign = 'left' | 'center' | 'right'
 
+export type FormType =
+  | 'text'
+  | 'email'
+  | 'password'
+  | 'textarea'
+  | 'select'
+  | 'checkbox'
+
 export type EventType = 'handleClick'
 
 interface DataColumn {
@@ -48,4 +57,15 @@ interface Action {
   name?: string
   type?: 'item' | 'separator'
   events?: Partial<Record<EventType, React.EventHandler<any>>> | null
+}
+
+interface FormFieldItem {
+  name: string
+  label?: string
+  type: FormType
+  placeholder?: string
+  autoComplete?: string
+  options?: { label: string; value: string }[]
+  defaultValue?: string
+  validate?: z.ZodString
 }
