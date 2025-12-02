@@ -1,6 +1,6 @@
 from gettext import GNUTranslations
 from logging import Logger
-from typing import Annotated, Any, Dict, Generic, List, Type, TypeVar
+from typing import Annotated, Any, Dict, Generic, List, Optional, Type, TypeVar
 from uuid import UUID
 
 from fastapi.params import Depends
@@ -53,7 +53,7 @@ class BaseService(Generic[T]):
         self.du = DataUpdater(session)
         self.dd = DataDeleter(session)
         self.count: int = 0
-        self.detail: List[MessageSchema] = []
+        self.detail: Optional[MessageSchema] = None
 
     def get_one(self, conditions: Dict[str, Any]) -> T:
         return self.dr.one(self.model, conditions)

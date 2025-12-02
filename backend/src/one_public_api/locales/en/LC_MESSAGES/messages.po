@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.9\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-12-02 14:20+0900\n"
+"POT-Creation-Date: 2025-12-02 17:07+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 #: src/one_public_api/main.py:9
-msgid "API TITLE"
+msgid "API NAME"
 msgstr ""
 
 #: src/one_public_api/common/query_param.py:36
@@ -87,19 +87,19 @@ msgid "Configuration key"
 msgstr ""
 
 #: src/one_public_api/models/system/configuration_model.py:54
-#: src/one_public_api/models/system/configuration_model.py:107
+#: src/one_public_api/models/system/configuration_model.py:108
 #: src/one_public_api/schemas/configuration_schema.py:61
 msgid "Configuration value"
 msgstr ""
 
 #: src/one_public_api/models/system/configuration_model.py:58
-#: src/one_public_api/models/system/configuration_model.py:112
+#: src/one_public_api/models/system/configuration_model.py:113
 #: src/one_public_api/schemas/configuration_schema.py:64
 msgid "Configuration type"
 msgstr ""
 
 #: src/one_public_api/models/system/configuration_model.py:63
-#: src/one_public_api/models/system/configuration_model.py:124
+#: src/one_public_api/models/system/configuration_model.py:125
 msgid "Configuration description"
 msgstr ""
 
@@ -108,7 +108,7 @@ msgid "Configuration options"
 msgstr ""
 
 #: src/one_public_api/models/system/configuration_model.py:75
-#: src/one_public_api/models/system/configuration_model.py:118
+#: src/one_public_api/models/system/configuration_model.py:119
 #: src/one_public_api/models/system/feature_model.py:34
 #: src/one_public_api/models/system/feature_model.py:70
 #: src/one_public_api/schemas/feature_schema.py:58
@@ -502,15 +502,19 @@ msgstr ""
 msgid "Invalid access token"
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:78
-#: src/one_public_api/services/base_service.py:89
+#: src/one_public_api/services/base_service.py:66
+msgid "Data not found."
+msgstr ""
+
+#: src/one_public_api/services/base_service.py:83
+#: src/one_public_api/services/base_service.py:94
 #: src/one_public_api/services/user_service.py:36
 msgid "Data already exists."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:125
-#: src/one_public_api/services/base_service.py:140
-#: src/one_public_api/services/base_service.py:154
+#: src/one_public_api/services/base_service.py:130
+#: src/one_public_api/services/base_service.py:145
+#: src/one_public_api/services/base_service.py:159
 msgid "This record might be referenced by other data."
 msgstr ""
 
@@ -518,4 +522,7 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "User"
+#~ msgstr ""
+
+#~ msgid "API TITLE"
 #~ msgstr ""
