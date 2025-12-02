@@ -1,13 +1,17 @@
-from typing import List, Optional
+from typing import TYPE_CHECKING, List, Optional
 
 from pydantic import EmailStr
 from sqlmodel import Field, Relationship, SQLModel
 
 from one_public_api.common import constants
 from one_public_api.core.i18n import translate as _
+from one_public_api.models.links.user_configuration_link import UserConfigurationLink
 from one_public_api.models.mixins import MaintenanceMixin, PasswordMixin, TimestampMixin
 from one_public_api.models.mixins.id_mixin import IdMixin
 from one_public_api.models.system.token_model import Token
+
+if TYPE_CHECKING:
+    from one_public_api.models import Configuration
 
 
 class UserBase(SQLModel):
@@ -128,7 +132,9 @@ class User(
             "remote_side": "[User.id]",
         }
     )
-
     tokens: List[Token] = Relationship(
         back_populates="user", sa_relationship_kwargs={"cascade": "all, delete-orphan"}
+    )
+    configurations: List["Configuration"] = Relationship(
+        back_populates="users", link_model=UserConfigurationLink
     )
