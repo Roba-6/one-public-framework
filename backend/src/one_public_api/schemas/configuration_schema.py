@@ -1,4 +1,4 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 
 from sqlmodel import Field
 
@@ -12,8 +12,9 @@ from one_public_api.models.system.configuration_model import (
     ConfigurationOption,
     ConfigurationType,
 )
+from one_public_api.schemas.base_schema import UserReferenceResponse
 from one_public_api.schemas.response_schema import example_audit, example_id
-from one_public_api.schemas.user_schema import UserPublicResponse, example_user
+from one_public_api.schemas.user_schema import example_user
 
 example_base: Dict[str, Any] = {
     "name": "Time Zone",
@@ -79,27 +80,17 @@ class ConfigurationUpdateRequest(ConfigurationBase, ConfigurationOption):
 
 
 class ConfigurationResponse(
-    ConfigurationPublicResponse, ConfigurationOption, TimestampMixin
+    ConfigurationPublicResponse,
+    ConfigurationOption,
+    TimestampMixin,
+    UserReferenceResponse,
 ):
-    user: Optional[UserPublicResponse] = Field(
-        default=None,
-        description=_("User"),
-    )
-    creator: Optional[UserPublicResponse] = Field(
-        default=None,
-        description=_("Creator"),
-    )
-    updater: Optional[UserPublicResponse] = Field(
-        default=None,
-        description=_("Updater"),
-    )
     model_config = {
         "alias_generator": to_camel,
         "populate_by_name": True,
         "json_schema_extra": {
             "examples": [
                 {
-                    "user": example_user,
                     "creator": example_user,
                     "updater": example_user,
                     **example_base,
