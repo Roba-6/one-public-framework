@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.9\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-12-02 17:07+0900\n"
+"POT-Creation-Date: 2025-12-03 16:07+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -20,9 +20,8 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 #: src/one_public_api/main.py:9
-#, fuzzy
 msgid "API NAME"
-msgstr "姓"
+msgstr "One Public Framework"
 
 #: src/one_public_api/common/query_param.py:36
 msgid "Offset from where to start"
@@ -497,9 +496,8 @@ msgid "Invalid access token"
 msgstr "アクセストークンが無効です。"
 
 #: src/one_public_api/services/base_service.py:66
-#, fuzzy
 msgid "Data not found."
-msgstr "機能が見つかりません。"
+msgstr "データが見つかりません。"
 
 #: src/one_public_api/services/base_service.py:83
 #: src/one_public_api/services/base_service.py:94
@@ -512,12 +510,3 @@ msgstr "データは既に存在します。"
 #: src/one_public_api/services/base_service.py:159
 msgid "This record might be referenced by other data."
 msgstr "このデータが参照されているため、削除できません。"
-
-#~ msgid "Owner of configuration item"
-#~ msgstr "設定項目所有者"
-
-#~ msgid "User"
-#~ msgstr "所有者"
-
-#~ msgid "API TITLE"
-#~ msgstr ""

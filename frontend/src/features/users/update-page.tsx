@@ -7,8 +7,8 @@ import { Card, CardContent } from '@/common/components/ui/card'
 import { CONSTANT } from '@/common/constants'
 import { useAppDispatch } from '@/common/hooks/use-store'
 import type { CommonResponse } from '@/common/types/response'
-import { formItems } from '@/features/users/form-items'
-import type { User } from '@/features/users/types/user'
+import { userItems } from '@/features/users/form-items'
+import type { UpdateUserRequest, User } from '@/features/users/types/user'
 import { getApi, putApi } from '@/lib/http'
 import { getAdminPath, setUrlParams } from '@/lib/utils'
 
@@ -36,11 +36,11 @@ const UpdateUserPage = (): React.JSX.Element => {
   }, [id])
 
   const submitForm = (values: User) => {
-    console.log(values)
+    console.debug('Update User:', values)
     if (id) {
       putApi<CommonResponse>(
         setUrlParams(CONSTANT.API_URL.USER_ADMIN_ID, id),
-        values
+        values as UpdateUserRequest
       ).then((res: CommonResponse) => {
         console.log(res.results! as User)
         dispatch(
@@ -66,7 +66,7 @@ const UpdateUserPage = (): React.JSX.Element => {
           id={id as string}
           data={data!}
           loadingData={loadingData}
-          items={formItems}
+          items={userItems}
           submitForm={submitForm}
         />
       </CardContent>

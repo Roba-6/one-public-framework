@@ -1,8 +1,9 @@
 import { z } from 'zod/v4'
 
+import type { FormFieldItem } from '@/common/types/data'
 import { getLocalMessage } from '@/lib/utils'
 
-export const newUser = [
+export const newUserItems: FormFieldItem[] = [
   {
     name: 'name',
     label: getLocalMessage('labels.user.name'),
@@ -54,7 +55,7 @@ export const newUser = [
   },
 ]
 
-export const formItems = [
+export const userItems: FormFieldItem[] = [
   {
     name: 'name',
     label: getLocalMessage('labels.user.name'),
@@ -103,5 +104,19 @@ export const formItems = [
     placeholder: 'Yamada',
     defaultValue: '',
     validate: z.string().min(1, { message: getLocalMessage('nickname is required') }),
+  },
+  {
+    name: 'isDisabled',
+    label: getLocalMessage('labels.isDisabled'),
+    type: 'switch',
+    defaultValue: true,
+    validate: z.boolean(),
+  },
+  {
+    name: 'isLocked',
+    label: getLocalMessage('labels.isLocked'),
+    type: 'switch',
+    defaultValue: false,
+    validate: z.boolean(),
   },
 ]

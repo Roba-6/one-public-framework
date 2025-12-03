@@ -40,6 +40,8 @@ export type FormType =
   | 'textarea'
   | 'select'
   | 'checkbox'
+  | 'radio'
+  | 'switch'
 
 export type EventType = 'handleClick'
 
@@ -66,6 +68,6 @@ interface FormFieldItem {
   placeholder?: string
   autoComplete?: string
   options?: { label: string; value: string }[]
-  defaultValue?: string
-  validate?: z.ZodString
+  defaultValue?: string | boolean
+  validate?: z.ZodString | z.ZodBoolean
 }

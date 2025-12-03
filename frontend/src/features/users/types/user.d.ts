@@ -12,6 +12,10 @@ export interface User extends UserBase {
   id?: string
   fullname?: string
   failedAttempts?: number
+  isDisabled?: boolean
+  isLocked?: boolean
 }
 
-export type UserRequest = UserBase
+export type CreateUserRequest = UserBase
+
+export type UpdateUserRequest = UserBase

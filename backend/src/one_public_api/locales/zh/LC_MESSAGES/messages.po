@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.9\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-12-02 17:07+0900\n"
+"POT-Creation-Date: 2025-12-03 16:07+0900\n"
 "PO-Revision-Date: 2025-10-03 18:52+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: zh\n"
@@ -483,9 +483,8 @@ msgid "Invalid access token"
 msgstr ""
 
 #: src/one_public_api/services/base_service.py:66
-#, fuzzy
 msgid "Data not found."
-msgstr "找不到该功能。"
+msgstr "找不到数据。"
 
 #: src/one_public_api/services/base_service.py:83
 #: src/one_public_api/services/base_service.py:94
@@ -498,12 +497,3 @@ msgstr ""
 #: src/one_public_api/services/base_service.py:159
 msgid "This record might be referenced by other data."
 msgstr ""
-
-#~ msgid "Owner of configuration item"
-#~ msgstr ""
-
-#~ msgid "User"
-#~ msgstr ""
-
-#~ msgid "API TITLE"
-#~ msgstr ""

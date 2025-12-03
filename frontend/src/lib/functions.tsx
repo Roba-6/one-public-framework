@@ -24,6 +24,7 @@ import {
   FormMessage,
 } from '@/common/components/ui/form'
 import { Input } from '@/common/components/ui/input'
+import { Switch } from '@/common/components/ui/switch'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/common/components/ui/tooltip'
 import { CONSTANT } from '@/common/constants'
 import type { Action, BaseType, FormFieldItem } from '@/common/types/data'
@@ -262,13 +263,35 @@ export const convertFormItems = (
               <div className="grid grid-cols-6 gap-3">
                 <FormLabel>{item.label as string}</FormLabel>
                 <FormControl className="col-span-3">
-                  <Input
-                    type={item.type as string}
-                    placeholder={item?.placeholder as string}
-                    {...field}
-                    value={field.value as string}
-                    autoComplete={item?.autoComplete as string}
-                  />
+                  {(() => {
+                    switch (item.type) {
+                      case 'text':
+                      case 'password':
+                      case 'email':
+                        return (
+                          <Input
+                            type={item.type as string}
+                            placeholder={item?.placeholder as string}
+                            {...field}
+                            value={field.value as string}
+                            autoComplete={item?.autoComplete as string}
+                          />
+                        )
+                      case 'switch':
+                        return (
+                          <Switch
+                            checked={form.watch(item.name) as boolean}
+                            onCheckedChange={(checked) => {
+                              form.setValue(item.name, checked, {
+                                shouldValidate: true,
+                              })
+                            }}
+                          />
+                        )
+                      default:
+                        return null
+                    }
+                  })()}
                 </FormControl>
                 <FormMessage />
               </div>

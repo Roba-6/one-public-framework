@@ -44,14 +44,14 @@
     "createdAt": "作成日時",
     "forgetPassword": "パスワードをお忘れですか？",
     "id": "ID",
+    "isDisabled": "無効化",
+    "isLocked": "ロック",
     "user": {
       "email": "メールアドレス",
-      "enabled": "有効",
       "failedAttempts": "ログイン失敗",
       "firstname": "名前",
       "fullname": "氏名",
       "lastname": "苗字",
-      "lock": "ロック",
       "name": "ユーザー名",
       "nickname": "表示名",
       "password": "パスワード"
