@@ -6,7 +6,7 @@ import { useAppDispatch } from '@/common/hooks/use-store'
 import Header from '@/features/sample/components/block/header'
 import { completed } from '@/lib/functions'
 
-const SamplePage = (): React.ReactNode => {
+const SamplePage = (): React.JSX.Element => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {

@@ -1,14 +1,16 @@
 from enum import IntEnum
-from typing import Any, Dict, Optional
-from uuid import UUID
+from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
 from sqlalchemy import Enum as SQLEnum
 from sqlmodel import JSON, Column, Field, Relationship, SQLModel
 
 from one_public_api.common import constants
 from one_public_api.core.i18n import translate as _
+from one_public_api.models.links import UserConfigurationLink
 from one_public_api.models.mixins import IdMixin, MaintenanceMixin, TimestampMixin
-from one_public_api.models.system.user_model import User
+
+if TYPE_CHECKING:
+    from one_public_api.models import User
 
 
 class ConfigurationType(IntEnum):
@@ -55,7 +57,6 @@ class ConfigurationBase(SQLModel):
         default=None,
         description=_("Configuration type"),
     )
-
     description: Optional[str] = Field(
         default=None,
         max_length=constants.MAX_LENGTH_1000,
@@ -68,6 +69,10 @@ class ConfigurationOption(SQLModel):
         default_factory=dict,
         sa_column=Column(JSON),
         description=_("Configuration options"),
+    )
+    requires_auth: Optional[bool] = Field(
+        default=None,
+        description=_("Whether auth is required"),
     )
 
 
@@ -97,7 +102,8 @@ class Configuration(
         description=_("Configuration key"),
     )
     value: str = Field(
-        nullable=False,
+        default=None,
+        nullable=True,
         max_length=constants.MAX_LENGTH_500,
         description=_("Configuration value"),
     )
@@ -106,26 +112,19 @@ class Configuration(
         sa_column=Column(SQLEnum(ConfigurationType, name="configuration_type")),
         description=_("Configuration type"),
     )
+    requires_auth: bool = Field(
+        default=True,
+        nullable=False,
+        sa_column_kwargs={"server_default": "true", "nullable": False},
+        description=_("Whether auth is required"),
+    )
     description: str = Field(
         default=None,
         nullable=True,
         max_length=constants.MAX_LENGTH_1000,
         description=_("Configuration description"),
     )
-    user_id: Optional[UUID] = Field(
-        default=None,
-        nullable=True,
-        foreign_key=constants.DB_PREFIX_SYS + "users.id",
-        description=_("Owner of configuration item"),
-    )
 
-    user: Optional["User"] = Relationship(
-        sa_relationship_kwargs={
-            "foreign_keys": "[Configuration.user_id]",
-            "primaryjoin": "Configuration.user_id==User.id",
-            "remote_side": "[User.id]",
-        }
-    )
     creator: Optional["User"] = Relationship(
         sa_relationship_kwargs={
             "foreign_keys": "[Configuration.created_by]",
@@ -139,4 +138,7 @@ class Configuration(
             "primaryjoin": "Configuration.updated_by==User.id",
             "remote_side": "[User.id]",
         }
+    )
+    users: List["User"] = Relationship(
+        back_populates="configurations", link_model=UserConfigurationLink
     )

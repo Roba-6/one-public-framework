@@ -20,11 +20,11 @@ class Settings(BaseSettings):
     Attributes
     ----------
     APP_TYPE : str
-        The type of the API.
+        Application type.
     DEBUG : bool
         Determines whether the application runs in debug mode.
-    TITLE : str
-        The title of the API.
+    NAME : str
+        API name.
     JSON_URL: str = "openapi.json"
         URL of the OpenAPI JSON
     LANGUAGE : str
@@ -35,7 +35,7 @@ class Settings(BaseSettings):
         The path to the locale files used by the application.
     FEATURE_CONTROL : bool
         Indicates whether the feature availability check is enabled.
-    CORS_ORIGINS : list of str
+    CORS_ORIGINS: list of str
         List of allowed origins for Cross-Origin Resource Sharing (CORS).
     SECRET_KEY : str
         The application's secret key used for security.
@@ -43,9 +43,9 @@ class Settings(BaseSettings):
         Expiration time (in minutes) for access tokens.
     REFRESH_TOKEN_EXPIRE : int
         Expiration time (in minutes) for refresh tokens.
-    REFRESH_SAME_SITE : Literal["lax", "strict", "none"] | None
+    REFRESH_SAME_SITE: Literal["lax", "strict", "none"] | None
         Controls whether the SameSite attribute is applied to authentication cookies.
-    REFRESH_TOKEN_SECURE : bool = False
+    REFRESH_TOKEN_SECURE: bool = False
         Controls whether the refresh token cookie requires HTTPS
     DB_ENGINE : str
         The database engine type, e.g., 'sqlite3' or 'postgresql'.
@@ -91,12 +91,12 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    # API type
+    # Application type
     APP_TYPE: str = ""
     # Debug mode
     DEBUG: bool = False
-    # Title of API
-    TITLE: str = ""
+    # API name
+    NAME: str = ""
     # URL of the OpenAPI JSON
     JSON_URL: str = "/openapi.json"
     # Language used for logs and database comments
@@ -150,6 +150,13 @@ class Settings(BaseSettings):
     LOG_FORMAT: str = constants.LOG_DEFAULT_FORMAT
     LOG_CONSOLE: bool = False
     LOG_ECHO_SQL: bool = False
+
+    # Username of Administrator
+    ADMIN_USER: str = "admin"
+    # E-mail of Administrator
+    ADMIN_MAIL: str = "admin@one-coder.com"
+    # Initial Password of Administrator
+    ADMIN_PASSWORD: str = "admin"
 
     @computed_field
     def log_file_path(self) -> str:

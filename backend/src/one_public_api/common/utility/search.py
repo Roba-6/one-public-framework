@@ -1,4 +1,4 @@
-from typing import Any, List, TypeVar
+from typing import Any, Dict, List, TypeVar
 
 from sqlmodel import SQLModel
 
@@ -35,3 +35,15 @@ def find_in_model_list(target_list: List[T], key: str, value: Any) -> T | None:
             return item
     else:
         return None
+
+
+def add_maintenance(
+    target_list: List[Dict[str, Any]], user: SQLModel
+) -> List[Dict[str, Any]]:
+    return [{**item, "creator": user, "updater": user} for item in target_list]
+
+
+def add_updater(
+    target_list: List[Dict[str, Any]], user: SQLModel
+) -> List[Dict[str, Any]]:
+    return [{**item, "updater": user} for item in target_list]

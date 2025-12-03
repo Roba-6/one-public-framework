@@ -12,9 +12,16 @@
     "warning": "警告"
   },
   "menus": {
+    "system": "システム",
     "dashboard": "ダッシュボード",
     "configurations": "システム設定",
-    "users": "ユーザー"
+    "users": "ユーザー",
+    "add": "新規追加",
+    "update": "情報編集"
+  },
+  "format": {
+    "datetime": "YYYY年M月D日 HH:mm",
+    "shortDatetime": "M月D日 HH:mm"
   },
   "buttons": {
     "add": "新規",
@@ -22,26 +29,41 @@
     "create": "作成",
     "close": "閉じる",
     "column": "カラム",
+    "copyId": "ID をコピー",
     "delete": "削除",
+    "details": "詳細確認",
     "edit": "編集",
     "login": "ログイン",
     "logout": "ログアウト",
     "nextPage": "次へ",
+    "openMenu": "メニューを開く",
     "previousPage": "前へ"
   },
   "labels": {
+    "actions": "操作",
+    "createdAt": "作成日時",
+    "forgetPassword": "パスワードをお忘れですか？",
+    "id": "ID",
+    "isDisabled": "無効化",
+    "isLocked": "ロック",
     "user": {
-      "name": "ユーザー名",
-      "password": "パスワード",
       "email": "メールアドレス",
+      "failedAttempts": "ログイン失敗",
       "firstname": "名前",
-      "lastname": "苗字"
+      "fullname": "氏名",
+      "lastname": "苗字",
+      "name": "ユーザー名",
+      "nickname": "表示名",
+      "password": "パスワード"
     },
-    "username": "ユーザー名",
-    "forgetPassword": "パスワードをお忘れですか？"
+    "updatedAt": "最終変更日時",
+    "username": "ユーザー名"
   },
   "messages": {
     "pleaseLogin": "ユーザー名をご入力してログインしてください。",
-    "welcome": "One Public Framework へようこそ！"
+    "welcome": "One Public Framework へようこそ！",
+    "notices": {
+      "I00100001": "ユーザー「{}」が削除されました。"
+    }
   }
 }

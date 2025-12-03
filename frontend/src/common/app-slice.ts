@@ -1,12 +1,15 @@
 import { createSlice, nanoid, type PayloadAction } from '@reduxjs/toolkit'
 import i18n from 'i18next'
 import type { WritableDraft } from 'immer'
+import type { Location } from 'react-router'
 
 import { CONSTANT } from '@/common/constants'
 import type { Configuration } from '@/common/types/configuration'
+import type { Menu } from '@/common/types/data'
 import type { Message } from '@/common/types/response'
-import { getEnv } from '@/lib/utils'
+import { getEnv, getValueFromObjectArray } from '@/lib/utils'
 import type { RootState } from '@/store'
+import menu from '@/templates/menu'
 
 export type AppType = 'cms' | 'admin'
 
@@ -29,28 +32,40 @@ export interface AppMessage {
   sticky?: boolean
 }
 
+export interface Bread {
+  url: string
+  name: string
+}
+
 /**
  * Interface of Application Status.
  */
 export interface AppState {
   settings: Setting
+  menu: Menu
   accessToken: string
+  breadcrumb: Bread[]
   messages: AppMessage[]
   isLoading: boolean
+  // Current Page URL
+  location: Location | null
 }
 
 const initialState: AppState = {
   settings: {
-    name: getEnv('UI_TITLE') as string,
+    name: getEnv('UI_NAME') as string,
     language: (localStorage.getItem(CONSTANT.STORAGE_KEY.LANGUAGE) ||
       getEnv('UI_LANGUAGE')) as string,
     url: getEnv('UI_URL') as string,
     api: getEnv('UI_API') as string,
     type: getEnv('UI_TYPE') as AppType,
   },
+  menu: menu,
   accessToken: localStorage.getItem(CONSTANT.STORAGE_KEY.ACCESS_TOKEN) as string,
+  breadcrumb: [],
   messages: [],
   isLoading: true,
+  location: null,
 }
 
 export const appSlice = createSlice({
@@ -74,21 +89,35 @@ export const appSlice = createSlice({
       action.payload.forEach((item: Configuration) => {
         switch (item.key) {
           case 'app_name':
-            if (item.value !== '') state.settings.name = item.value
+            if (item.value && item.value !== '') state.settings.name = item.value
             break
           case 'language':
-            state.settings.language =
-              (localStorage.getItem(CONSTANT.STORAGE_KEY.LANGUAGE) as string) ||
-              item.value
+            if (localStorage.getItem(CONSTANT.STORAGE_KEY.LANGUAGE)) {
+              state.settings.language = localStorage.getItem(
+                CONSTANT.STORAGE_KEY.LANGUAGE
+              ) as string
+            } else if (item.value && item.value !== '') {
+              state.settings.language = item.value
+            }
             if (i18n.isInitialized) {
               void i18n.changeLanguage(state.settings.language)
             }
             break
           case 'url':
-            state.settings.url = item.value
+            if (item.value && item.value !== '') state.settings.url = item.value
             break
         }
       })
+    },
+    setMenu: (state: WritableDraft<AppState>, action: PayloadAction<Menu>) => {
+      state.menu = { ...state.menu, ...action.payload }
+    },
+    toggleMenu: (state: WritableDraft<AppState>, action: PayloadAction<string>) => {
+      console.log(!state.menu[action.payload].isOpened)
+      state.menu[action.payload].isOpened = !state.menu[action.payload].isOpened
+    },
+    openMenu: (state: WritableDraft<AppState>, action: PayloadAction<string>) => {
+      state.menu[action.payload].isOpened = true
     },
     changeLanguage: (state: WritableDraft<AppState>, action: PayloadAction<string>) => {
       localStorage.setItem(CONSTANT.STORAGE_KEY.LANGUAGE, action.payload)
@@ -124,22 +153,52 @@ export const appSlice = createSlice({
       }
       state.accessToken = action.payload
     },
+    setLocation: (state: WritableDraft<AppState>, action: PayloadAction<Location>) => {
+      let temp = action.payload.pathname
+      const breadPath: string[] = []
+      const bread: Bread[] = []
+
+      while (temp.lastIndexOf('/') >= 0) {
+        breadPath.unshift(temp)
+        temp = temp.substring(0, temp.lastIndexOf('/'))
+      }
+      breadPath.forEach((item: string) => {
+        const menu = JSON.parse(JSON.stringify(state.menu))
+        Object.entries(menu).forEach(([_, value]: [string, any]) => {
+          const b = getValueFromObjectArray(value.items, item, 'url') as Bread
+          if (b) {
+            bread.push(b)
+          }
+        })
+      })
+
+      state.breadcrumb = bread
+      state.location = action.payload
+    },
   },
 })
 
 export const selectAppName = (state: RootState) => state.app.settings.name
+export const selectAppSettings = (state: RootState) => state.app.settings
+export const selectMenu = (state: RootState) => state.app.menu
 export const selectLanguage = (state: RootState) => state.app.settings.language
+export const selectBreadcrumb = (state: RootState) => state.app.breadcrumb
 export const selectIsLoading = (state: RootState) => state.app.isLoading
 export const selectAccessToken = (state: RootState) => state.app.accessToken
 export const selectAppType = (state: RootState) => state.app.settings.type
 export const selectMessages = (state: RootState) => state.app.messages
+export const selectLocation = (state: RootState) => state.app.location
 export const {
   initState,
+  setMenu,
+  toggleMenu,
+  openMenu,
   enqueueMessage,
   changeLanguage,
   dequeueMessage,
   loading,
   loadComplete,
   setAccessToken,
+  setLocation,
 } = appSlice.actions
 export default appSlice.reducer

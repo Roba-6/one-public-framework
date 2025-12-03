@@ -33,6 +33,6 @@ class ResponseSchema(BaseModel, Generic[T]):
         default=None, description=_("Results of the request")
     )
     count: int | None = Field(default=None, description=_("Count of the results"))
-    detail: List[MessageSchema] | None = Field(
+    detail: MessageSchema | None = Field(
         default=None, description=_("Details of the results")
     )
