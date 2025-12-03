@@ -6,7 +6,7 @@ import Logo from '@/common/components/atoms/logo'
 import Footer from '@/common/components/modules/footer'
 import { Separator } from '@/common/components/ui/separator'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
-import { completed } from '@/lib/functions'
+import { completed } from '@/lib/utils'
 import { getLocalMessage } from '@/lib/utils'
 
 const HomePage = (): React.JSX.Element => {

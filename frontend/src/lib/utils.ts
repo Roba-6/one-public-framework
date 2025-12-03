@@ -1,10 +1,14 @@
 import { type ClassValue, clsx } from 'clsx'
+import dayjs from 'dayjs'
 import i18next from 'i18next'
 import qs from 'qs'
 import { twMerge } from 'tailwind-merge'
 import { z } from 'zod/v4'
 
+import { loadComplete } from '@/common/app-slice'
 import { CONSTANT } from '@/common/constants'
+import type { DatetimeType } from '@/common/types/data'
+import { store } from '@/store'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -109,3 +113,17 @@ export const createFormSchema = (formItems: any[]): { [key: string]: z.ZodString
 
   return rst
 }
+
+/**
+ * Complete the loading process
+ */
+export const completed = (): void => {
+  setTimeout(() => {
+    store.dispatch(loadComplete())
+  }, CONSTANT.LOADING_DURATION)
+}
+
+export const formatDay = (
+  datetimeStr: string,
+  type: DatetimeType = 'datetime'
+): string => dayjs(datetimeStr).format(getLocalMessage(`format.${type}`))

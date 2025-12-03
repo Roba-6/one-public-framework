@@ -13,8 +13,8 @@ import {
 import { CONSTANT } from '@/common/constants'
 import { useUrlChange } from '@/common/hooks/use-current-url'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
-import { completed } from '@/lib/functions'
 import { getApi } from '@/lib/http'
+import { completed } from '@/lib/utils'
 import { getAdminPath } from '@/lib/utils'
 
 const AdminPage = (): React.JSX.Element => {
