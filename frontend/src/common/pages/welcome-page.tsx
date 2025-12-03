@@ -7,8 +7,9 @@ import { Button } from '@/common/components/ui/button'
 import { CONSTANT } from '@/common/constants'
 import { useAppDispatch } from '@/common/hooks/use-store'
 import { completed } from '@/lib/functions'
+import { getAdminPath } from '@/lib/utils'
 
-const WelcomePage = (): React.ReactNode => {
+const WelcomePage = (): React.JSX.Element => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const WelcomePage = (): React.ReactNode => {
             <NavLink to={CONSTANT.ROUTE_URL.HOME}>Site Page</NavLink>
           </Button>
           <Button>
-            <NavLink to={CONSTANT.ROUTE_URL.ADMIN}>Admin Page</NavLink>
+            <NavLink to={getAdminPath()}>Admin Page</NavLink>
           </Button>
           <Button>
             <NavLink to={CONSTANT.ROUTE_URL.SAMPLE}>Sample Page</NavLink>

@@ -28,7 +28,7 @@ import { getApi } from '@/lib/http'
  * Note:
  * Each input field is initialized with the corresponding configuration's default value.
  */
-const ConfigurationEditPage = (): React.ReactNode => {
+const ConfigurationEditPage = (): React.JSX.Element => {
   const [configurations, setConfigurations] = React.useState<Configuration[]>([])
 
   useEffect(() => {

@@ -1,9 +1,9 @@
 from typing import Annotated, Any, Dict, List, Tuple, Type, TypeVar
 from uuid import UUID
 
-from fastapi import HTTPException
 from fastapi.params import Depends
 from sqlalchemy import func
+from sqlalchemy.exc import NoResultFound
 from sqlmodel import Session, SQLModel, col, or_, select
 
 from one_public_api.common.query_param import QueryParam
@@ -31,7 +31,7 @@ class DataReader:
         statement = statement.where(getattr(model, "id") == target_id)
         result: T | None = self.session.exec(statement).one_or_none()
         if result is None:
-            raise HTTPException(status_code=404, detail="Not found")
+            raise NoResultFound()
 
         return result
 
@@ -41,7 +41,7 @@ class DataReader:
             statement = statement.where(getattr(model, k) == v)
         result: T | None = self.session.exec(statement).one_or_none()
         if result is None:
-            raise HTTPException(status_code=404, detail="Not found")
+            raise NoResultFound()
 
         return result
 

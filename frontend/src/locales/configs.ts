@@ -7,7 +7,7 @@ import { store } from '@/store'
 
 void i18n.use(initReactI18next).init({
   // Logs info level to console output
-  debug: getEnv('APP_DEBUG') as boolean,
+  debug: getEnv('UI_DEBUG') as boolean,
   // Language to use
   lng: store.getState().app.settings.language,
   // Default Language

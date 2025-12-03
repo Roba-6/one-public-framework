@@ -12,9 +12,16 @@
     "warning": "Warning"
   },
   "menus": {
+    "system": "SYSTEM",
     "dashboard": "Dashboards",
     "configurations": "Configurations",
-    "users": "Users"
+    "users": "Users",
+    "add": "Add",
+    "update": "Update"
+  },
+  "format": {
+    "datetime": "D/M/YYYY HH:mm",
+    "shortDatetime": "D/M HH:mm"
   },
   "buttons": {
     "add": "Add",
@@ -22,26 +29,41 @@
     "create": "Create",
     "close": "Close",
     "column": "Columns",
+    "copyId": "copy ID to clipboard",
     "delete": "Delete",
+    "details": "Details",
     "edit": "Edit",
     "login": "Login",
     "logout": "Log out",
     "nextPage": "Next",
+    "openMenu": "Open Menu",
     "previousPage": "Previous"
   },
   "labels": {
+    "actions": "Actions",
+    "createdAt": "Created At",
+    "forgetPassword": "Forgot your password?",
+    "id": "ID",
+    "isDisabled": "Disabled",
+    "isLocked": "Locked",
     "user": {
-      "name": "User Name",
-      "password": "Password",
       "email": "E-mail",
+      "failedAttempts": "Failed Attempts",
       "firstname": "Firstname",
-      "lastname": "Lastname"
+      "fullname": "Full Name",
+      "lastname": "Lastname",
+      "name": "User Name",
+      "nickname": "Nick Name",
+      "password": "Password"
     },
-    "username": "User Name",
-    "forgetPassword": "Forgot your password?"
+    "updatedAt": "Updated At",
+    "username": "User Name"
   },
   "messages": {
     "pleaseLogin": "Enter user name below to login to your account",
-    "welcome": "Welcome to One Public Framework!"
+    "welcome": "Welcome to One Public Framework!",
+    "notices": {
+      "I00100001": "The user '{}' has been deleted."
+    }
   }
 }

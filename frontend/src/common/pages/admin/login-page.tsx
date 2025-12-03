@@ -4,7 +4,7 @@ import LoginForm from '@/common/components/modules/login-form'
 import { useAppDispatch } from '@/common/hooks/use-store'
 import { completed } from '@/lib/functions'
 
-const LoginPage = (): React.ReactNode => {
+const LoginPage = (): React.JSX.Element => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {

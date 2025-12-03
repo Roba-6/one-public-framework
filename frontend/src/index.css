@@ -3,15 +3,50 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: "Sense";
+  src: url("assets/fonts/DESIGNER.otf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "tommy";
+  src: url("assets/fonts/MADE-TOMMY-Regular_PERSONAL-USE.otf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "tommy";
+  src: url("assets/fonts/MADE-TOMMY-Medium_PERSONAL-USE.otf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Rounded X m+";
+  src: url("assets/fonts/rounded-x-mplus-2m-light.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Rounded X m+";
+  src: url("assets/fonts/rounded-x-mplus-2m-medium.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
 @theme {
   --font-sans:
-    "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    tommy, "Rounded X m+", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
 }
 
 html,
 body {
-  @apply bg-white dark:bg-black;
+  @apply bg-[rgba(240,240,240,1.0)] dark:bg-[rgba(15,15,15,1.0)];
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -58,9 +93,9 @@ body {
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
-  --card: oklch(1 0 0);
+  --background: rgba(240, 240, 240, 1);
+  --foreground: rgba(25, 25, 25, 1);
+  --card: oklch(0.981 0 0);
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.141 0.005 285.823);
@@ -73,28 +108,28 @@ body {
   --accent: oklch(0.967 0.001 286.375);
   --accent-foreground: oklch(0.21 0.006 285.885);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.705 0.015 286.067);
+  --border: rgba(195, 195, 195, 1);
+  --input: rgba(195, 195, 195, 1);
+  --ring: oklch(70.5% 0.253 47.604);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
+  --sidebar: oklch(0.915 0 0);
   --sidebar-foreground: oklch(0.141 0.005 285.823);
   --sidebar-primary: oklch(0.21 0.006 285.885);
   --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
+  --sidebar-accent: oklch(0.867 0.001 286.375);
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
 }
 
 .dark {
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.21 0.006 285.885);
+  --background: rgba(25, 25, 25, 1);
+  --foreground: rgba(245, 245, 245, 1);
+  --card: rgba(35, 35, 35, 1);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.21 0.006 285.885);
   --popover-foreground: oklch(0.985 0 0);
@@ -107,19 +142,19 @@ body {
   --accent: oklch(0.274 0.006 286.033);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
+  --border: rgba(45, 45, 45, 1);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.552 0.016 285.938);
+  --ring: oklch(70.5% 0.253 47.604);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.21 0.006 285.885);
+  --sidebar: rgba(35, 35, 35, 1);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
   --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
+  --sidebar-accent: rgba(0, 0, 0, 0.25);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
@@ -159,8 +194,72 @@ body {
     shadow-sm shadow-gray-200 dark:shadow-gray-800;
 }
 
+.leading {
+}
+.leading:before {
+  @apply me-2 mb-0.25 w-2 h-2 inline-block content-['']
+    rounded-full bg-[oklch(70.5%_0.273_47.604)];
+  box-shadow: 0 0 5px oklch(70.5% 0.273 47.604);
+  animation: blink-anime 10s step-start infinite;
+}
+
+.sticky-start {
+  @apply sticky left-0 bg-[var(--background)];
+}
+
+.sticky-end {
+  @apply sticky right-0 bg-[var(--background)];
+}
+
+@keyframes blink-anime {
+  0%,
+  23%,
+  25%,
+  27%,
+  76%,
+  80%,
+  100% {
+    background-color: oklch(70.5% 0.273 47.604);
+  }
+  24%,
+  26%,
+  78% {
+    background-color: oklch(70.5% 0.273 47.604 / 0.25);
+    box-shadow: 0 0 3px oklch(70.5% 0.273 47.604 / 0.5);
+  }
+}
+
 button {
-  @apply cursor-pointer;
+  @apply cursor-pointer font-bold;
+}
+
+table.data-list thead {
+  tr th {
+    @apply font-bold;
+  }
+
+  button {
+    @apply px-0;
+  }
+}
+
+/*button:hover {*/
+/*  @apply text-[var(--foreground)] transition-all;*/
+/*  !*background-color: #fe447c;*!*/
+/*  border: solid 1px var(--primary);*/
+/*  background: linear-gradient(45deg,var(--input) 25%, var(--background) 25%,var(--background) 50%, var(--input) 50%,var(--input) 75%, var(--background) 75%,var(--background));*/
+/*  !*background: linear-gradient(45deg,#ffeca8 25%, #fce38a 25%,#fce38a 50%, #ffeca8 50%,#ffeca8 75%, #fce38a 75%,#fce38a);*!*/
+/*  background-size: 10px 10px;*/
+/*  animation: anime_btn_animation_1 .8s infinite linear;*/
+/*}*/
+
+/*@keyframes anime_btn_animation_1 {*/
+/*  0% {  background-position-y: 0;}*/
+/*  100% {  background-position-y: -20px;}*/
+/*}*/
+
+input:focus-visible {
+  box-shadow: 0 0 5px oklch(70.5% 0.273 47.604);
 }
 
 /* Sub Page Styles */
@@ -189,11 +288,15 @@ button {
       content-[''] origin-bottom-right;
   }
   &:before {
-    @apply w-full h-[1px] animate-[leftWing_8s_linear_infinite];
+    @apply w-full h-[1px] animate-[left-wing_8s_linear_infinite];
   }
   &:after {
-    @apply w-[1px] h-full animate-[rightWing_8s_linear_infinite];
+    @apply w-[1px] h-full animate-[right-wing_8s_linear_infinite];
   }
+}
+
+.fade-out {
+  @apply opacity-0 transition-all duration-750;
 }
 
 /*　bird fling anime */
@@ -220,7 +323,7 @@ button {
   }
 }
 
-@keyframes leftWing {
+@keyframes left-wing {
   0% {
     transform: rotate(-30deg);
   }
@@ -295,7 +398,7 @@ button {
   }
 }
 
-@keyframes rightWing {
+@keyframes right-wing {
   0% {
     transform: rotate(30deg);
   }
@@ -367,5 +470,73 @@ button {
   }
   100% {
     transform: rotate(30deg);
+  }
+}
+
+/* LOGO */
+.logo-text {
+  @apply flex cursor-pointer;
+}
+
+.logo-text:hover .logo-letter {
+  @apply [animation:glitch_0.7s_calc(0.01s_*_var(--index))]
+    text-white transition-all
+    text-shadow-[-1px_-1px_0_oklch(0.577_0.245_27.325),1px_1px_0_oklch(0.769_0.188_70.08)];
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    text-shadow:
+      -1px -1px 0 oklch(0.577 0.245 27.325),
+      1px 1px 0 oklch(0.769 0.188 70.08);
+  }
+  10% {
+    transform: translate(-1px, 1px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(1px, -1px) rotate(1deg);
+    text-shadow:
+      1px 2px 0 oklch(0.577 0.245 27.325),
+      1px 1px 0 oklch(0.769 0.188 70.08);
+  }
+  30% {
+    transform: translate(-1px, 1px) rotate(0deg);
+    text-shadow:
+      -1px -1px 0 oklch(0.577 0.245 27.325),
+      1px 1px 0 oklch(0.769 0.188 70.08);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(-1deg);
+  }
+  50% {
+    transform: translate(-1px, 1px) rotate(1deg);
+    text-shadow:
+      1px 1px 0 oklch(0.577 0.245 27.325),
+      1px 1px 0 oklch(0.769 0.188 70.08);
+  }
+  60% {
+    transform: translate(1px, -1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(-1px, 1px) rotate(-1deg);
+    text-shadow:
+      -1px -1px 0 oklch(0.577 0.245 27.325),
+      1px 1px 0 oklch(0.769 0.188 70.08);
+  }
+  80% {
+    transform: translate(1px, -1px) rotate(1deg);
+    text-shadow:
+      1px 1px 0 oklch(0.577 0.245 27.325),
+      1px 2px 0 oklch(0.769 0.188 70.08);
+  }
+  90% {
+    transform: translate(-1px, 1px) rotate(0deg);
+  }
+  100% {
+    transform: translate(0.5px, -0.5px) rotate(-0.5deg);
+    text-shadow:
+      -1px -1px 0 oklch(0.577 0.245 27.325),
+      1px 1px 0 oklch(0.769 0.188 70.08);
   }
 }

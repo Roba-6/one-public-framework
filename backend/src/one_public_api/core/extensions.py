@@ -76,9 +76,9 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, Any]:
 
     tables: List[str] = inspect(engine).get_table_names()
     logger.debug(_("D0010002") % {"tables": tables, "number": len(tables)})
-    init_configurations(session)
-    init_features(app, session)
-    init_users(session)
+    admin_user = init_users(session)
+    init_configurations(session, admin_user)
+    init_features(app, session, admin_user)
 
     yield
 

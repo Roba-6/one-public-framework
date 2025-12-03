@@ -10,10 +10,9 @@ import {
 } from '@/common/components/ui/dropdown-menu'
 import { Input } from '@/common/components/ui/input'
 import { CONSTANT } from '@/common/constants'
-import type { DataProps } from '@/common/types/props'
-import { getLocalMessage } from '@/lib/utils'
+import { getAdminPath, getLocalMessage } from '@/lib/utils'
 
-const DataToolBar = (props: DataProps) => {
+const DataToolBar = (props: any) => {
   return (
     <div className="flex items-center py-4">
       <Input
@@ -25,7 +24,7 @@ const DataToolBar = (props: DataProps) => {
         className="max-w-sm"
       />
       <div className="ml-auto flex items-center gap-2">
-        <DropdownMenu>
+        <DropdownMenu modal={false}>
           <DropdownMenuTrigger asChild>
             <Button variant="outline">
               {getLocalMessage('buttons.column')}
@@ -35,16 +34,17 @@ const DataToolBar = (props: DataProps) => {
           <DropdownMenuContent align="end">
             {props.table
               .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
+              .filter((column: any) => column.getCanHide())
+              .map((column: any, idx: number) => {
                 return (
                   <DropdownMenuCheckboxItem
                     key={column.id}
                     className="capitalize"
                     checked={column.getIsVisible()}
-                    onCheckedChange={(value) => column.toggleVisibility(!!value)}
+                    onSelect={(e) => e.preventDefault()}
+                    onCheckedChange={(value) => column.toggleVisibility(value)}
                   >
-                    {column.id}
+                    {props.columns[idx]?.name}
                   </DropdownMenuCheckboxItem>
                 )
               })}
@@ -53,7 +53,7 @@ const DataToolBar = (props: DataProps) => {
         <NaviButton
           messageId="add"
           icon={<Plus />}
-          url={CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.ADMIN_USER_EDIT}
+          url={getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER_ADD}
         />
       </div>
     </div>

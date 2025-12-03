@@ -27,7 +27,7 @@ import { CONSTANT } from '@/common/constants'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import type { Login, LoginRequest, Token } from '@/common/types/authenticate'
 import { postApi } from '@/lib/http'
-import { cn } from '@/lib/utils'
+import { cn, getAdminPath } from '@/lib/utils'
 import { getLocalMessage } from '@/lib/utils'
 
 const LoginFormSchema = z.object({
@@ -49,14 +49,14 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
     postApi<Token>(CONSTANT.API_URL.LOGIN, values as LoginRequest).then(
       (res: Token) => {
         dispatch(setAccessToken(res.accessToken))
-        nav('/admin')
+        nav(getAdminPath())
       }
     )
   }
 
   useEffect(() => {
     if (accessToken) {
-      nav(CONSTANT.ROUTE_URL.ADMIN)
+      nav(getAdminPath())
     } else {
       setIsAuthenticated(!!accessToken)
     }
@@ -67,7 +67,9 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
       <div className={cn('flex flex-col gap-6', className)} {...props}>
         <Card>
           <CardHeader>
-            <CardTitle>{getLocalMessage('title.login')}</CardTitle>
+            <CardTitle className={cn('leading')}>
+              {getLocalMessage('title.login')}
+            </CardTitle>
             <CardDescription>{getLocalMessage('messages.pleaseLogin')}</CardDescription>
           </CardHeader>
           <CardContent>
@@ -80,7 +82,7 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
                     render={({ field }) => (
                       <div className="grid gap-3">
                         <FormItem>
-                          <FormLabel>{getLocalMessage('labels.username')}</FormLabel>
+                          <FormLabel>{getLocalMessage('labels.user.name')}</FormLabel>
                           <FormControl>
                             <Input
                               placeholder="example"
@@ -101,7 +103,9 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
                       <div className="grid gap-3">
                         <FormItem>
                           <div className="flex items-center">
-                            <FormLabel>{getLocalMessage('labels.password')}</FormLabel>
+                            <FormLabel>
+                              {getLocalMessage('labels.user.password')}
+                            </FormLabel>
                             <a
                               href="#"
                               className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
@@ -121,16 +125,7 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
                     <Button type="submit" className="w-full">
                       {getLocalMessage('buttons.login')}
                     </Button>
-                    <Button variant="outline" className="w-full">
-                      Login with Google
-                    </Button>
                   </div>
-                </div>
-                <div className="mt-4 text-center text-sm">
-                  Don&apos;t have an account?{' '}
-                  <a href="#" className="underline underline-offset-4">
-                    Sign up
-                  </a>
                 </div>
               </form>
             </Form>

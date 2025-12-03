@@ -1,8 +1,7 @@
 import { Button } from '@/common/components/ui/button'
-import type { DataProps } from '@/common/types/props'
 import { getLocalMessage } from '@/lib/utils'
 
-const DataPagination = (props: DataProps) => {
+const DataPagination = (props: any) => {
   return (
     <div className="flex items-center justify-end space-x-2 py-4">
       <div className="text-muted-foreground flex-1 text-sm">

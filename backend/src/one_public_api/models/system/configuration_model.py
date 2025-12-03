@@ -102,7 +102,8 @@ class Configuration(
         description=_("Configuration key"),
     )
     value: str = Field(
-        nullable=False,
+        default=None,
+        nullable=True,
         max_length=constants.MAX_LENGTH_500,
         description=_("Configuration value"),
     )
