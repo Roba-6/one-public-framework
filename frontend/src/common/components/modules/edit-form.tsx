@@ -11,7 +11,9 @@ import type { EditFormProps } from '@/common/types/props'
 import { convertFormItems } from '@/lib/functions'
 import { arrayToObject, createFormSchema, getLocalMessage } from '@/lib/utils'
 
-const EditForm = <T,>(props: EditFormProps<T>): React.ReactNode => {
+const EditForm = <T extends Record<string, any>>(
+  props: EditFormProps<T>
+): React.ReactNode => {
   const UserFormSchema = z.object(createFormSchema(props.items))
 
   const nav = useNavigate()
