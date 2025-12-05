@@ -6,7 +6,7 @@ from one_public_api.common import constants
 
 
 class UserConfigurationLink(SQLModel, table=True):
-    __tablename__ = constants.DB_PREFIX_SYS + "user_configuration_link"
+    __tablename__ = constants.DB_PREFIX_SYS + "user_configuration_links"
 
     user_id: UUID = Field(
         nullable=False,
