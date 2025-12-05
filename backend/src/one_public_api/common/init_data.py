@@ -1,6 +1,7 @@
 from typing import Any, Dict, List, Optional
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
+from sqlalchemy.exc import NoResultFound
 from sqlmodel import Session
 
 from one_public_api.common.utility.search import add_maintenance
@@ -19,7 +20,7 @@ def init_users(session: Session) -> User:
     try:
         dr = DataReader(session)
         user = dr.one(User, {"name": settings.ADMIN_USER})
-    except HTTPException:
+    except NoResultFound:
         users: List[Dict[str, Any]] = [
             {
                 "name": settings.ADMIN_USER,
