@@ -1,3 +1,4 @@
-from one_public_api.models.links.user_configuration_link import UserConfigurationLink
+from one_public_api.models.links.configuration_user_link import ConfigurationUserLink
+from one_public_api.models.links.organization_user_link import OrganizationUserLink
 
-__all__ = ["UserConfigurationLink"]
+__all__ = ["ConfigurationUserLink", "OrganizationUserLink"]

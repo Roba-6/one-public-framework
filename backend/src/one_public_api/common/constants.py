@@ -141,8 +141,10 @@ HEADER_NAME_AUTHENTICATE = "WWW-Authenticate"
 HEADER_NAME_LANGUAGE = "Accept-Language"
 
 # ----- Various Numeric Values ---------------------------------------------------------
+MAX_LENGTH_1: int = 1
 MAX_LENGTH_3: int = 3
 MAX_LENGTH_6: int = 6
+MAX_LENGTH_9: int = 9
 MAX_LENGTH_13: int = 13
 MAX_LENGTH_55: int = 55
 MAX_LENGTH_64: int = 64

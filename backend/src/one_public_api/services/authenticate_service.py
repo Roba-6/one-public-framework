@@ -175,7 +175,7 @@ class AuthenticateService(BaseService[User]):
         )
 
     def is_activate_user(self, user: User) -> None:
-        if user.is_disabled:
+        if not user.is_enabled:
             raise ForbiddenError(self._("user disabled"), user.name, "E40300001")
         elif user.is_locked:
             raise ForbiddenError(self._("user locked"), user.name, "E40300002")
@@ -214,7 +214,7 @@ def get_current_user(
             )
         else:
             user: User = us.get_one(
-                {"name": username, "is_disabled": False, "is_locked": False}
+                {"name": username, "is_enabled": True, "is_locked": False}
             )
 
             if len(user.tokens) == 0:

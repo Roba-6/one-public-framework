@@ -6,7 +6,8 @@ from sqlmodel import JSON, Column, Field, Relationship, SQLModel
 
 from one_public_api.common import constants
 from one_public_api.core.i18n import translate as _
-from one_public_api.models.links import UserConfigurationLink
+from one_public_api.core.settings import settings
+from one_public_api.models.links import ConfigurationUserLink
 from one_public_api.models.mixins import IdMixin, MaintenanceMixin, TimestampMixin
 
 if TYPE_CHECKING:
@@ -60,7 +61,7 @@ class ConfigurationBase(SQLModel):
     description: Optional[str] = Field(
         default=None,
         max_length=constants.MAX_LENGTH_1000,
-        description=_("Configuration description"),
+        description=_("Description"),
     )
 
 
@@ -86,7 +87,7 @@ class Configuration(
 ):
     """Represents a configuration model within the database."""
 
-    __tablename__ = constants.DB_PREFIX_SYS + "configurations"
+    __tablename__ = settings.DB_TABLE_PRE + "configurations"
 
     name: str = Field(
         default=None,
@@ -122,7 +123,7 @@ class Configuration(
         default=None,
         nullable=True,
         max_length=constants.MAX_LENGTH_1000,
-        description=_("Configuration description"),
+        description=_("Description"),
     )
 
     creator: Optional["User"] = Relationship(
@@ -140,5 +141,5 @@ class Configuration(
         }
     )
     users: List["User"] = Relationship(
-        back_populates="configurations", link_model=UserConfigurationLink
+        back_populates="configurations", link_model=ConfigurationUserLink
     )

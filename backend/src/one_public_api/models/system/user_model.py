@@ -5,13 +5,14 @@ from sqlmodel import Field, Relationship, SQLModel
 
 from one_public_api.common import constants
 from one_public_api.core.i18n import translate as _
-from one_public_api.models.links.user_configuration_link import UserConfigurationLink
+from one_public_api.core.settings import settings
+from one_public_api.models.links import ConfigurationUserLink, OrganizationUserLink
 from one_public_api.models.mixins import MaintenanceMixin, PasswordMixin, TimestampMixin
 from one_public_api.models.mixins.id_mixin import IdMixin
 from one_public_api.models.system.token_model import Token
 
 if TYPE_CHECKING:
-    from one_public_api.models import Configuration
+    from one_public_api.models import Configuration, Organization
 
 
 class UserBase(SQLModel):
@@ -44,9 +45,9 @@ class UserBase(SQLModel):
 
 
 class UserStatus(SQLModel):
-    is_disabled: Optional[bool] = Field(
+    is_enabled: Optional[bool] = Field(
         default=None,
-        description=_("Whether the account is disabled"),
+        description=_("Whether the account is enabled"),
     )
     is_locked: Optional[bool] = Field(
         default=None,
@@ -69,7 +70,7 @@ class User(
 ):
     """Represents a model within the database."""
 
-    __tablename__ = constants.DB_PREFIX_SYS + "users"
+    __tablename__ = settings.DB_TABLE_PRE + "users"
 
     name: str = Field(
         nullable=False,
@@ -102,10 +103,10 @@ class User(
         max_length=constants.MAX_LENGTH_55,
         description=_("Display nickname"),
     )
-    is_disabled: bool = Field(
-        default=False,
+    is_enabled: bool = Field(
+        default=True,
         nullable=False,
-        description=_("Whether the account is disabled"),
+        description=_("Whether the account is enabled"),
     )
     is_locked: bool = Field(
         default=False,
@@ -136,5 +137,8 @@ class User(
         back_populates="user", sa_relationship_kwargs={"cascade": "all, delete-orphan"}
     )
     configurations: List["Configuration"] = Relationship(
-        back_populates="users", link_model=UserConfigurationLink
+        back_populates="users", link_model=ConfigurationUserLink
+    )
+    organizations: List["Organization"] = Relationship(
+        back_populates="users", link_model=OrganizationUserLink
     )

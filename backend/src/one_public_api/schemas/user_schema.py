@@ -1,4 +1,4 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 
 from pydantic import EmailStr, computed_field
 from sqlmodel import Field
@@ -10,6 +10,10 @@ from one_public_api.models.mixins.id_mixin import IdMixin
 from one_public_api.models.mixins.password_mixin import PasswordMixin
 from one_public_api.models.mixins.timestamp_mixin import TimestampMixin
 from one_public_api.models.system.user_model import UserBase, UserStatus
+from one_public_api.schemas.organization_schema import OrganizationPublicResponse
+from one_public_api.schemas.organization_schema import (
+    example_base as organization_example,
+)
 from one_public_api.schemas.response_schema import example_id
 
 example_base: Dict[str, Any] = {
@@ -19,6 +23,7 @@ example_base: Dict[str, Any] = {
     "nickname": "Roba",
     "email": "test@test.com",
     "password": "password123",
+    "organizations": [organization_example],
 }
 
 example_fullname: Dict[str, Any] = {
@@ -98,6 +103,10 @@ class UserResponse(UserPublicResponse, UserStatus):
     updater: Optional[UserPublicResponse] = Field(
         default=None,
         description=_("Updater"),
+    )
+    organizations: Optional[List[OrganizationPublicResponse]] = Field(
+        default=None,
+        description=_("Organization"),
     )
 
     model_config = {

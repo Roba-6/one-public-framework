@@ -6,6 +6,7 @@ from sqlmodel import Field, Relationship, SQLModel
 
 from one_public_api.common import constants
 from one_public_api.core.i18n import translate as _
+from one_public_api.core.settings import settings
 from one_public_api.models.mixins import IdMixin
 
 if TYPE_CHECKING:
@@ -28,7 +29,7 @@ class TokenBase(SQLModel):
     )
     user_id: UUID = Field(
         nullable=False,
-        foreign_key=constants.DB_PREFIX_SYS + "users.id",
+        foreign_key=settings.DB_TABLE_PRE + "users.id",
         ondelete="CASCADE",
         description=_("Owner of token"),
     )
@@ -37,7 +38,7 @@ class TokenBase(SQLModel):
 class Token(TokenBase, IdMixin, table=True):
     """Represents a token model within the database."""
 
-    __tablename__ = constants.DB_PREFIX_SYS + "tokens"
+    __tablename__ = settings.DB_TABLE_PRE + "tokens"
 
     user: "User" = Relationship(
         back_populates="tokens",

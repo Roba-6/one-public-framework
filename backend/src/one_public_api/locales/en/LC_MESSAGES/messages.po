@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.9\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-12-03 16:07+0900\n"
+"POT-Creation-Date: 2025-12-08 18:49+0800\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -75,116 +75,167 @@ msgstr ""
 msgid "Last update time (auto-updated on modification)"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:43
-#: src/one_public_api/models/system/configuration_model.py:96
-msgid "Configuration name"
+#: src/one_public_api/models/system/action_model.py:17
+#: src/one_public_api/models/system/action_model.py:76
+msgid "Action name"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:49
-#: src/one_public_api/models/system/configuration_model.py:102
-#: src/one_public_api/schemas/configuration_schema.py:57
-msgid "Configuration key"
+#: src/one_public_api/models/system/action_model.py:22
+msgid "Message ID of label"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:54
-#: src/one_public_api/models/system/configuration_model.py:108
-#: src/one_public_api/schemas/configuration_schema.py:61
-msgid "Configuration value"
+#: src/one_public_api/models/system/action_model.py:27
+msgid "Action URL"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:58
-#: src/one_public_api/models/system/configuration_model.py:113
-#: src/one_public_api/schemas/configuration_schema.py:64
-msgid "Configuration type"
+#: src/one_public_api/models/system/action_model.py:32
+msgid "Action icon"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:63
-#: src/one_public_api/models/system/configuration_model.py:125
-msgid "Configuration description"
+#: src/one_public_api/models/system/action_model.py:42
+#: src/one_public_api/models/system/configuration_model.py:64
+#: src/one_public_api/models/system/configuration_model.py:126
+#: src/one_public_api/models/system/feature_model.py:24
+#: src/one_public_api/models/system/feature_model.py:62
+#: src/one_public_api/models/system/organization_model.py:31
+#: src/one_public_api/models/system/permission_model.py:21
+#, fuzzy
+msgid "Description"
 msgstr ""
+"**SYS-ATH-P-LGN**<br />Validates the provided username and password "
+"against the records stored in the database.<br />If the credentials are "
+"correct, the system issues an access token and a refresh token. If "
+"authentication fails and the username exists, the system increments the "
+"login failure count. Once the count reaches the limit defined by "
+"`MAX_FAILED_ATTEMPTS`, the system locks the account. If the username does"
+" not exist, an error is returned.<br />When the `rememberMe` field is set"
+" to `true`, the refresh token cookie remains valid until the period "
+"specified by the `REFRESH_TOKEN_EXPIRE` setting expires.<br />If set to "
+"`false`, the cookie is deleted when the browser session ends."
 
-#: src/one_public_api/models/system/configuration_model.py:71
-msgid "Configuration options"
-msgstr ""
-
-#: src/one_public_api/models/system/configuration_model.py:75
-#: src/one_public_api/models/system/configuration_model.py:119
-#: src/one_public_api/models/system/feature_model.py:34
-#: src/one_public_api/models/system/feature_model.py:70
-#: src/one_public_api/schemas/feature_schema.py:58
-msgid "Whether auth is required"
-msgstr ""
-
-#: src/one_public_api/models/system/feature_model.py:18
-#: src/one_public_api/models/system/feature_model.py:54
-#: src/one_public_api/schemas/feature_schema.py:52
-msgid "Feature name"
-msgstr ""
-
-#: src/one_public_api/models/system/feature_model.py:23
-#: src/one_public_api/models/system/feature_model.py:60
-msgid "Feature description"
-msgstr ""
-
-#: src/one_public_api/models/system/feature_model.py:30
-#: src/one_public_api/models/system/feature_model.py:65
+#: src/one_public_api/models/system/action_model.py:49
+#: src/one_public_api/models/system/action_model.py:81
+#: src/one_public_api/models/system/feature_model.py:31
+#: src/one_public_api/models/system/feature_model.py:67
 #: src/one_public_api/schemas/feature_schema.py:55
 msgid "Whether the feature is enabled"
 msgstr ""
 
-#: src/one_public_api/models/system/token_model.py:23
+#: src/one_public_api/models/system/action_model.py:53
+#: src/one_public_api/models/system/action_model.py:86
+#: src/one_public_api/models/system/configuration_model.py:76
+#: src/one_public_api/models/system/configuration_model.py:120
+#: src/one_public_api/models/system/feature_model.py:35
+#: src/one_public_api/models/system/feature_model.py:72
+#: src/one_public_api/schemas/feature_schema.py:58
+msgid "Whether auth is required"
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:57
+#: src/one_public_api/models/system/action_model.py:91
+msgid "Show or hide"
+msgstr ""
+
+#: src/one_public_api/models/system/configuration_model.py:44
+#: src/one_public_api/models/system/configuration_model.py:97
+msgid "Configuration name"
+msgstr ""
+
+#: src/one_public_api/models/system/configuration_model.py:50
+#: src/one_public_api/models/system/configuration_model.py:103
+#: src/one_public_api/schemas/configuration_schema.py:57
+msgid "Configuration key"
+msgstr ""
+
+#: src/one_public_api/models/system/configuration_model.py:55
+#: src/one_public_api/models/system/configuration_model.py:109
+#: src/one_public_api/schemas/configuration_schema.py:61
+msgid "Configuration value"
+msgstr ""
+
+#: src/one_public_api/models/system/configuration_model.py:59
+#: src/one_public_api/models/system/configuration_model.py:114
+#: src/one_public_api/schemas/configuration_schema.py:64
+msgid "Configuration type"
+msgstr ""
+
+#: src/one_public_api/models/system/configuration_model.py:72
+msgid "Configuration options"
+msgstr ""
+
+#: src/one_public_api/models/system/feature_model.py:19
+#: src/one_public_api/models/system/feature_model.py:56
+#: src/one_public_api/models/system/permission_model.py:16
+#: src/one_public_api/schemas/feature_schema.py:52
+msgid "Feature name"
+msgstr ""
+
+#: src/one_public_api/models/system/organization_model.py:21
+msgid "Organization name"
+msgstr ""
+
+#: src/one_public_api/models/system/organization_model.py:26
+msgid "Nickname"
+msgstr ""
+
+#: src/one_public_api/models/system/organization_model.py:38
+msgid "Whether the organization is enabled"
+msgstr ""
+
+#: src/one_public_api/models/system/organization_model.py:58
+#: src/one_public_api/models/system/user_model.py:23
+#: src/one_public_api/models/system/user_model.py:80
+#: src/one_public_api/schemas/authenticate_schema.py:29
+#: src/one_public_api/schemas/user_schema.py:76
+msgid "User name"
+msgstr ""
+
+#: src/one_public_api/models/system/token_model.py:24
 msgid "Token"
 msgstr ""
 
-#: src/one_public_api/models/system/token_model.py:27
+#: src/one_public_api/models/system/token_model.py:28
 #: src/one_public_api/schemas/authenticate_schema.py:54
 msgid "Token type"
 msgstr ""
 
-#: src/one_public_api/models/system/token_model.py:33
+#: src/one_public_api/models/system/token_model.py:34
 msgid "Owner of token"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:22
-#: src/one_public_api/models/system/user_model.py:79
-#: src/one_public_api/schemas/authenticate_schema.py:29
-#: src/one_public_api/schemas/user_schema.py:71
-msgid "User name"
-msgstr ""
-
-#: src/one_public_api/models/system/user_model.py:27
-#: src/one_public_api/models/system/user_model.py:85
-#: src/one_public_api/schemas/user_schema.py:75
+#: src/one_public_api/models/system/user_model.py:28
+#: src/one_public_api/models/system/user_model.py:86
+#: src/one_public_api/schemas/user_schema.py:80
 msgid "User's email address"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:32
-#: src/one_public_api/models/system/user_model.py:91
+#: src/one_public_api/models/system/user_model.py:33
+#: src/one_public_api/models/system/user_model.py:92
 msgid "First name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:37
-#: src/one_public_api/models/system/user_model.py:97
+#: src/one_public_api/models/system/user_model.py:38
+#: src/one_public_api/models/system/user_model.py:98
 msgid "Last name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:42
-#: src/one_public_api/models/system/user_model.py:103
+#: src/one_public_api/models/system/user_model.py:43
+#: src/one_public_api/models/system/user_model.py:104
 msgid "Display nickname"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:49
-#: src/one_public_api/models/system/user_model.py:108
-msgid "Whether the account is disabled"
+#: src/one_public_api/models/system/user_model.py:50
+#: src/one_public_api/models/system/user_model.py:109
+msgid "Whether the account is enabled"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:53
-#: src/one_public_api/models/system/user_model.py:113
+#: src/one_public_api/models/system/user_model.py:54
+#: src/one_public_api/models/system/user_model.py:114
 msgid "Whether the account is locked"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:57
-#: src/one_public_api/models/system/user_model.py:118
+#: src/one_public_api/models/system/user_model.py:58
+#: src/one_public_api/models/system/user_model.py:119
 msgid "Number of failed login attempts"
 msgstr ""
 
@@ -419,12 +470,12 @@ msgid "Access token"
 msgstr ""
 
 #: src/one_public_api/schemas/base_schema.py:12
-#: src/one_public_api/schemas/user_schema.py:96
+#: src/one_public_api/schemas/user_schema.py:101
 msgid "Creator"
 msgstr ""
 
 #: src/one_public_api/schemas/base_schema.py:16
-#: src/one_public_api/schemas/user_schema.py:100
+#: src/one_public_api/schemas/user_schema.py:105
 msgid "Updater"
 msgstr ""
 
@@ -456,8 +507,12 @@ msgstr ""
 msgid "Details of the results"
 msgstr ""
 
-#: src/one_public_api/schemas/user_schema.py:46
+#: src/one_public_api/schemas/user_schema.py:51
 msgid "Full name"
+msgstr ""
+
+#: src/one_public_api/schemas/user_schema.py:109
+msgid "Organization"
 msgstr ""
 
 #: src/one_public_api/services/authenticate_service.py:54
@@ -517,3 +572,15 @@ msgstr ""
 #: src/one_public_api/services/base_service.py:159
 msgid "This record might be referenced by other data."
 msgstr ""
+
+#~ msgid "Configuration description"
+#~ msgstr ""
+
+#~ msgid "Feature description"
+#~ msgstr ""
+
+#~ msgid "Whether the organization is disabled"
+#~ msgstr ""
+
+#~ msgid "Whether the account is disabled"
+#~ msgstr ""

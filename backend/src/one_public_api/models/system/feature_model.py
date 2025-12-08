@@ -4,6 +4,7 @@ from sqlmodel import Field, Relationship, SQLModel
 
 from one_public_api.common import constants
 from one_public_api.core.i18n import translate as _
+from one_public_api.core.settings import settings
 from one_public_api.models.mixins.id_mixin import IdMixin
 from one_public_api.models.mixins.maintenance_mixin import MaintenanceMixin
 from one_public_api.models.mixins.timestamp_mixin import TimestampMixin
@@ -20,7 +21,7 @@ class FeatureBase(SQLModel):
     description: Optional[str] = Field(
         default=None,
         max_length=constants.MAX_LENGTH_1000,
-        description=_("Feature description"),
+        description=_("Description"),
     )
 
 
@@ -45,10 +46,11 @@ class Feature(
 ):
     """Represents a feature model within the database."""
 
-    __tablename__ = constants.DB_PREFIX_SYS + "features"
+    __tablename__ = settings.DB_TABLE_PRE + "features"
 
     name: str = Field(
         nullable=False,
+        unique=True,
         min_length=constants.MAX_LENGTH_13,
         max_length=constants.MAX_LENGTH_13,
         description=_("Feature name"),
@@ -57,7 +59,7 @@ class Feature(
         default=None,
         nullable=True,
         max_length=constants.MAX_LENGTH_1000,
-        description=_("Feature description"),
+        description=_("Description"),
     )
     is_enabled: bool = Field(
         default=False,
