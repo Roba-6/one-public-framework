@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-08 18:49+0800\n"
+"POT-Creation-Date: 2025-12-09 14:56+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,7 +96,8 @@ msgstr ""
 #: src/one_public_api/models/system/feature_model.py:24
 #: src/one_public_api/models/system/feature_model.py:62
 #: src/one_public_api/models/system/organization_model.py:31
-#: src/one_public_api/models/system/permission_model.py:21
+#: src/one_public_api/models/system/permission_model.py:23
+#: src/one_public_api/models/system/role_model.py:26
 msgid "Description"
 msgstr ""
 
@@ -152,7 +153,7 @@ msgstr ""
 
 #: src/one_public_api/models/system/feature_model.py:19
 #: src/one_public_api/models/system/feature_model.py:56
-#: src/one_public_api/models/system/permission_model.py:16
+#: src/one_public_api/models/system/permission_model.py:18
 #: src/one_public_api/schemas/feature_schema.py:52
 msgid "Feature name"
 msgstr ""
@@ -175,6 +176,10 @@ msgstr ""
 #: src/one_public_api/schemas/authenticate_schema.py:29
 #: src/one_public_api/schemas/user_schema.py:76
 msgid "User name"
+msgstr ""
+
+#: src/one_public_api/models/system/role_model.py:21
+msgid "Role name"
 msgstr ""
 
 #: src/one_public_api/models/system/token_model.py:24
