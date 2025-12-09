@@ -23,7 +23,7 @@ class ActionBase(SQLModel):
     label: Optional[str] = Field(
         default=None,
         max_length=constants.LENGTH_100,
-        description=_("Message ID of label"),
+        description=_("Action label"),
     )
     url: Optional[str] = Field(
         default=None,

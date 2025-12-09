@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.9\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-12-09 16:18+0900\n"
+"POT-Creation-Date: 2025-12-09 19:06+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -110,7 +110,7 @@ msgid "Action name"
 msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:26
-msgid "Message ID of label"
+msgid "Action label"
 msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:31
@@ -501,38 +501,101 @@ msgstr ""
 msgid "Creator"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:16
+#: src/one_public_api/schemas/base_schema.py:13
+#, fuzzy
+msgid "Creator Description"
+msgstr ""
+"A text-based search parameter used to filter results by matching one or "
+"more fields. The API will return only records that contain the provided "
+"keyword(s)."
+
+#: src/one_public_api/schemas/base_schema.py:17
 #: src/one_public_api/schemas/user_schema.py:105
 msgid "Updater"
 msgstr ""
+
+#: src/one_public_api/schemas/base_schema.py:18
+#, fuzzy
+msgid "Updater Description"
+msgstr ""
+"Determines the sorting rule applied to the result set. Sorting rules are "
+"defined by providing field names along with their sort directions. When "
+"multiple fields are specified, they are processed in the order listed, "
+"which determines their priority. To indicate descending order, append "
+"`_desc` to the field name."
 
 #: src/one_public_api/schemas/feature_schema.py:29
 msgid "Feature Category"
 msgstr ""
 
-#: src/one_public_api/schemas/response_schema.py:26
+#: src/one_public_api/schemas/response_schema.py:46
 msgid "Message Code"
-msgstr ""
+msgstr "Message Code"
 
-#: src/one_public_api/schemas/response_schema.py:27
-msgid "Message of the response"
-msgstr ""
+#: src/one_public_api/schemas/response_schema.py:47
+msgid "Message Code Description"
+msgstr "A machine-readable code identifying the type of message or error."
 
-#: src/one_public_api/schemas/response_schema.py:28
-msgid "Detail of the response"
-msgstr ""
+#: src/one_public_api/schemas/response_schema.py:50
+msgid "Message"
+msgstr "Message"
 
-#: src/one_public_api/schemas/response_schema.py:33
-msgid "Results of the request"
+#: src/one_public_api/schemas/response_schema.py:51
+msgid "Message Description"
 msgstr ""
+"Human-readable message describing the result or error. May be localized "
+"and can change between versions. Do not parse this field programmatically"
+" — use the `code` field instead."
 
-#: src/one_public_api/schemas/response_schema.py:35
-msgid "Count of the results"
-msgstr ""
+#: src/one_public_api/schemas/response_schema.py:55
+msgid "Message Detail"
+msgstr "Message Detail"
 
-#: src/one_public_api/schemas/response_schema.py:37
-msgid "Details of the results"
+#: src/one_public_api/schemas/response_schema.py:56
+msgid "Message Detail Description"
 msgstr ""
+"Optional supplementary information beyond what is expressed by the `code`"
+" and `message` fields. This field is intended for developer use and "
+"should not be shown directly to end users — process it accordingly when "
+"necessary."
+
+#: src/one_public_api/schemas/response_schema.py:83
+msgid "Result"
+msgstr "The results of the response"
+
+#: src/one_public_api/schemas/response_schema.py:84
+msgid "Result Description"
+msgstr ""
+"The primary result data of the API response. Can be a single object, a "
+"list of objects, or `None` when there are no results."
+
+#: src/one_public_api/schemas/response_schema.py:88
+msgid "Count of Items"
+msgstr "Count"
+
+#: src/one_public_api/schemas/response_schema.py:89
+msgid "Count of Items Description"
+msgstr ""
+"Total number of items available in the result set. Particularly useful "
+"with paginated endpoints, this indicates the overall count. Will be null "
+"when counting is not applicable (e.g., single object retrieval)."
+
+#: src/one_public_api/schemas/response_schema.py:93
+#, fuzzy
+msgid "Detail of Result"
+msgstr ""
+"This field is used to convey advisory or warning information when the "
+"request is processed successfully (HTTP 2xx), but potentially undesirable"
+" conditions, deprecated behavior, or non-critical issues were detected "
+"during processing."
+
+#: src/one_public_api/schemas/response_schema.py:94
+msgid "Detail of Result Description"
+msgstr ""
+"This field is used to convey advisory or warning information when the "
+"request is processed successfully (HTTP 2xx), but potentially undesirable"
+" conditions, deprecated behavior, or non-critical issues were detected "
+"during processing."
 
 #: src/one_public_api/schemas/user_schema.py:51
 msgid "Full name"
@@ -547,12 +610,12 @@ msgid "user not verified"
 msgstr ""
 
 #: src/one_public_api/services/authenticate_service.py:102
-#: src/one_public_api/services/authenticate_service.py:140
+#: src/one_public_api/services/authenticate_service.py:139
 msgid "user not found"
 msgstr ""
 
 #: src/one_public_api/services/authenticate_service.py:132
-#: src/one_public_api/services/authenticate_service.py:235
+#: src/one_public_api/services/authenticate_service.py:233
 msgid "The token has expired"
 msgstr ""
 
@@ -560,27 +623,27 @@ msgstr ""
 msgid "Invalid refresh token"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:179
+#: src/one_public_api/services/authenticate_service.py:177
 msgid "user disabled"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:181
+#: src/one_public_api/services/authenticate_service.py:179
 msgid "user locked"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:213
+#: src/one_public_api/services/authenticate_service.py:211
 msgid "No user information found in the token"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:223
+#: src/one_public_api/services/authenticate_service.py:221
 msgid "Your account has been logged out."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:228
+#: src/one_public_api/services/authenticate_service.py:226
 msgid "Your account has been logged in from another location."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:237
+#: src/one_public_api/services/authenticate_service.py:235
 msgid "Invalid access token"
 msgstr ""
 
@@ -614,3 +677,24 @@ msgstr ""
 
 #~ msgid "Offset from where to start"
 #~ msgstr ""
+
+#~ msgid "Message of the response"
+#~ msgstr ""
+
+#~ msgid "Detail of the response"
+#~ msgstr ""
+
+#~ msgid "Results of the request"
+#~ msgstr ""
+
+#~ msgid "Count of the results"
+#~ msgstr ""
+
+#~ msgid "Details of the results"
+#~ msgstr ""
+
+#~ msgid "Message ID of label"
+#~ msgstr ""
+
+#~ msgid "Detail of Result (Warning/Advisory)"
+#~ msgstr "Details of Result"

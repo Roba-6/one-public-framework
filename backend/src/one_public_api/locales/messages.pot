@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-09 16:18+0900\n"
+"POT-Creation-Date: 2025-12-09 19:06+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,7 +95,7 @@ msgid "Action name"
 msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:26
-msgid "Message ID of label"
+msgid "Action label"
 msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:31
@@ -466,37 +466,69 @@ msgstr ""
 msgid "Creator"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:16
+#: src/one_public_api/schemas/base_schema.py:13
+msgid "Creator Description"
+msgstr ""
+
+#: src/one_public_api/schemas/base_schema.py:17
 #: src/one_public_api/schemas/user_schema.py:105
 msgid "Updater"
+msgstr ""
+
+#: src/one_public_api/schemas/base_schema.py:18
+msgid "Updater Description"
 msgstr ""
 
 #: src/one_public_api/schemas/feature_schema.py:29
 msgid "Feature Category"
 msgstr ""
 
-#: src/one_public_api/schemas/response_schema.py:26
+#: src/one_public_api/schemas/response_schema.py:46
 msgid "Message Code"
 msgstr ""
 
-#: src/one_public_api/schemas/response_schema.py:27
-msgid "Message of the response"
+#: src/one_public_api/schemas/response_schema.py:47
+msgid "Message Code Description"
 msgstr ""
 
-#: src/one_public_api/schemas/response_schema.py:28
-msgid "Detail of the response"
+#: src/one_public_api/schemas/response_schema.py:50
+msgid "Message"
 msgstr ""
 
-#: src/one_public_api/schemas/response_schema.py:33
-msgid "Results of the request"
+#: src/one_public_api/schemas/response_schema.py:51
+msgid "Message Description"
 msgstr ""
 
-#: src/one_public_api/schemas/response_schema.py:35
-msgid "Count of the results"
+#: src/one_public_api/schemas/response_schema.py:55
+msgid "Message Detail"
 msgstr ""
 
-#: src/one_public_api/schemas/response_schema.py:37
-msgid "Details of the results"
+#: src/one_public_api/schemas/response_schema.py:56
+msgid "Message Detail Description"
+msgstr ""
+
+#: src/one_public_api/schemas/response_schema.py:83
+msgid "Result"
+msgstr ""
+
+#: src/one_public_api/schemas/response_schema.py:84
+msgid "Result Description"
+msgstr ""
+
+#: src/one_public_api/schemas/response_schema.py:88
+msgid "Count of Items"
+msgstr ""
+
+#: src/one_public_api/schemas/response_schema.py:89
+msgid "Count of Items Description"
+msgstr ""
+
+#: src/one_public_api/schemas/response_schema.py:93
+msgid "Detail of Result"
+msgstr ""
+
+#: src/one_public_api/schemas/response_schema.py:94
+msgid "Detail of Result Description"
 msgstr ""
 
 #: src/one_public_api/schemas/user_schema.py:51
@@ -512,12 +544,12 @@ msgid "user not verified"
 msgstr ""
 
 #: src/one_public_api/services/authenticate_service.py:102
-#: src/one_public_api/services/authenticate_service.py:140
+#: src/one_public_api/services/authenticate_service.py:139
 msgid "user not found"
 msgstr ""
 
 #: src/one_public_api/services/authenticate_service.py:132
-#: src/one_public_api/services/authenticate_service.py:235
+#: src/one_public_api/services/authenticate_service.py:233
 msgid "The token has expired"
 msgstr ""
 
@@ -525,27 +557,27 @@ msgstr ""
 msgid "Invalid refresh token"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:179
+#: src/one_public_api/services/authenticate_service.py:177
 msgid "user disabled"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:181
+#: src/one_public_api/services/authenticate_service.py:179
 msgid "user locked"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:213
+#: src/one_public_api/services/authenticate_service.py:211
 msgid "No user information found in the token"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:223
+#: src/one_public_api/services/authenticate_service.py:221
 msgid "Your account has been logged out."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:228
+#: src/one_public_api/services/authenticate_service.py:226
 msgid "Your account has been logged in from another location."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:237
+#: src/one_public_api/services/authenticate_service.py:235
 msgid "Invalid access token"
 msgstr ""
 

@@ -33,5 +33,5 @@ class UserService(BaseService[User]):
         except DataError:
             del data.password
             raise DataError(
-                self._("Data already exists."), data.model_dump_json(), "E40900003"
+                self._("Data already exists."), data.model_dump_json(), "E4090003"
             )

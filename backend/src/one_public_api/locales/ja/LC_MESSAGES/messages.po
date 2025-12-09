@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.9\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-12-09 16:18+0900\n"
+"POT-Creation-Date: 2025-12-09 19:06+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -101,8 +101,8 @@ msgstr "One Public Framework"
 
 #: src/one_public_api/models/system/action_model.py:26
 #, fuzzy
-msgid "Message ID of label"
-msgstr "メッセージコード"
+msgid "Action label"
+msgstr "One Public Framework"
 
 #: src/one_public_api/models/system/action_model.py:31
 msgid "Action URL"
@@ -499,38 +499,79 @@ msgstr "アクセストークン"
 msgid "Creator"
 msgstr "作成者"
 
-#: src/one_public_api/schemas/base_schema.py:16
+#: src/one_public_api/schemas/base_schema.py:13
+msgid "Creator Description"
+msgstr "レコードを新規作成したユーザー情報．"
+
+#: src/one_public_api/schemas/base_schema.py:17
 #: src/one_public_api/schemas/user_schema.py:105
 msgid "Updater"
-msgstr "更新者"
+msgstr "最終変更者"
+
+#: src/one_public_api/schemas/base_schema.py:18
+#, fuzzy
+msgid "Updater Description"
+msgstr "レコードを最後に変更したユーザーの情報．"
 
 #: src/one_public_api/schemas/feature_schema.py:29
 msgid "Feature Category"
 msgstr "機能カテゴリー"
 
-#: src/one_public_api/schemas/response_schema.py:26
+#: src/one_public_api/schemas/response_schema.py:46
 msgid "Message Code"
 msgstr "メッセージコード"
 
-#: src/one_public_api/schemas/response_schema.py:27
-msgid "Message of the response"
-msgstr "メッセージ内容"
+#: src/one_public_api/schemas/response_schema.py:47
+msgid "Message Code Description"
+msgstr "メッセージの種類を一意に識別するための機械判読可能なコード．"
 
-#: src/one_public_api/schemas/response_schema.py:28
-msgid "Detail of the response"
-msgstr "詳細情報"
+#: src/one_public_api/schemas/response_schema.py:50
+msgid "Message"
+msgstr "メッセージ"
 
-#: src/one_public_api/schemas/response_schema.py:33
-msgid "Results of the request"
-msgstr "リクエストの応答内容"
+#: src/one_public_api/schemas/response_schema.py:51
+msgid "Message Description"
+msgstr ""
+"ユーザーに直接表示するための，人間が読みやすいメッセージ．言語切り替えによって内容が変わる．プログラムでの条件分岐には絶対に使用せず，`code`"
+" フィールドを使用すること．"
 
-#: src/one_public_api/schemas/response_schema.py:35
-msgid "Count of the results"
-msgstr "応答内容のデータの件数"
+#: src/one_public_api/schemas/response_schema.py:55
+msgid "Message Detail"
+msgstr "メッセージ詳細"
 
-#: src/one_public_api/schemas/response_schema.py:37
-msgid "Details of the results"
-msgstr "応答内容に関する詳細情報"
+#: src/one_public_api/schemas/response_schema.py:56
+msgid "Message Detail Description"
+msgstr ""
+"`code` と `message` "
+"では伝えきれない，追加の詳細情報．開発者向けに設計され，エンドユーザーへの直接表示は想定ではないため，必要に応じて適切に処理すること．"
+
+#: src/one_public_api/schemas/response_schema.py:83
+msgid "Result"
+msgstr "処理結果"
+
+#: src/one_public_api/schemas/response_schema.py:84
+msgid "Result Description"
+msgstr "API 処理の主な結果データ．単一オブジェクト，複数オブジェクトのリスト，または結果がない場合は `None` となる．"
+
+#: src/one_public_api/schemas/response_schema.py:88
+msgid "Count of Items"
+msgstr "結果アイテムの総数"
+
+#: src/one_public_api/schemas/response_schema.py:89
+msgid "Count of Items Description"
+msgstr ""
+"ページネーション対応エンドポイントで特に使用され，全体の件数を知りたい場合に便利である．単一オブジェクト取得時など，件数が意味を持たない場合は "
+"`None` になります．"
+
+#: src/one_public_api/schemas/response_schema.py:93
+msgid "Detail of Result"
+msgstr "処理詳細（警告・注意喚起）"
+
+#: src/one_public_api/schemas/response_schema.py:94
+msgid "Detail of Result Description"
+msgstr ""
+"処理自体は成功（HTTP "
+"2xx）したが，処理の過程で“望ましくない状態”や“将来的に問題となりうる設定”，または“軽微な警告”が検出された場合に，このフィールドに情報を格納し，クライアントに対して注意を促すために使用する．"
 
 #: src/one_public_api/schemas/user_schema.py:51
 msgid "Full name"
@@ -545,12 +586,12 @@ msgid "user not verified"
 msgstr "ユーザーが確認されていません。"
 
 #: src/one_public_api/services/authenticate_service.py:102
-#: src/one_public_api/services/authenticate_service.py:140
+#: src/one_public_api/services/authenticate_service.py:139
 msgid "user not found"
 msgstr "ユーザーが見つかりません。"
 
 #: src/one_public_api/services/authenticate_service.py:132
-#: src/one_public_api/services/authenticate_service.py:235
+#: src/one_public_api/services/authenticate_service.py:233
 msgid "The token has expired"
 msgstr "トークンの有効期限が切れました。"
 
@@ -558,27 +599,27 @@ msgstr "トークンの有効期限が切れました。"
 msgid "Invalid refresh token"
 msgstr "リフレッシュトークンが無効です。"
 
-#: src/one_public_api/services/authenticate_service.py:179
+#: src/one_public_api/services/authenticate_service.py:177
 msgid "user disabled"
 msgstr "ユーザーが無効になっています。"
 
-#: src/one_public_api/services/authenticate_service.py:181
+#: src/one_public_api/services/authenticate_service.py:179
 msgid "user locked"
 msgstr "ユーザーがロックされています。"
 
-#: src/one_public_api/services/authenticate_service.py:213
+#: src/one_public_api/services/authenticate_service.py:211
 msgid "No user information found in the token"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:223
+#: src/one_public_api/services/authenticate_service.py:221
 msgid "Your account has been logged out."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:228
+#: src/one_public_api/services/authenticate_service.py:226
 msgid "Your account has been logged in from another location."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:237
+#: src/one_public_api/services/authenticate_service.py:235
 msgid "Invalid access token"
 msgstr "アクセストークンが無効です。"
 
@@ -606,3 +647,15 @@ msgstr "このデータが参照されているため、削除できません。
 
 #~ msgid "Offset from where to start"
 #~ msgstr "開始位置からのオフセット"
+
+#~ msgid "Message of the response"
+#~ msgstr "メッセージ内容"
+
+#~ msgid "Detail of the response"
+#~ msgstr "詳細情報"
+
+#~ msgid "Results of the request"
+#~ msgstr "リクエストの応答内容"
+
+#~ msgid "Message ID of label"
+#~ msgstr "メッセージコード"

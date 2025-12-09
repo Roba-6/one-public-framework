@@ -9,9 +9,11 @@ from one_public_api.schemas.user_schema import UserPublicResponse
 class UserReferenceResponse:
     creator: Optional[UserPublicResponse] = Field(
         default=None,
-        description=_("Creator"),
+        title=_("Creator"),
+        description=_("Creator Description"),
     )
     updater: Optional[UserPublicResponse] = Field(
         default=None,
-        description=_("Updater"),
+        title=_("Updater"),
+        description=_("Updater Description"),
     )

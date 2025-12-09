@@ -72,7 +72,7 @@ axiosInstance.interceptors.response.use(
 
     switch (status) {
       case 401:
-        if (errorInfo.code === 'E40100004') {
+        if (errorInfo.code === 'E4010004') {
           // Add to the pending queue (to be retried after refresh completed)
           const retryOriginalRequest = new Promise((resolve, reject) => {
             failedQueue.push({
