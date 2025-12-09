@@ -71,12 +71,12 @@ class UserPublicResponse(UserBase, TimestampMixin, IdMixin):
 
 class UserCreateRequest(UserBase, PasswordMixin):
     name: str = Field(
-        min_length=constants.MAX_LENGTH_3,
-        max_length=constants.MAX_LENGTH_55,
+        min_length=constants.LENGTH_3,
+        max_length=constants.LENGTH_55,
         description=_("User name"),
     )
     email: EmailStr = Field(
-        max_length=constants.MAX_LENGTH_128,
+        max_length=constants.LENGTH_128,
         description=_("User's email address"),
     )
 

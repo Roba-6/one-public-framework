@@ -39,19 +39,19 @@ class ConfigurationType(IntEnum):
 class ConfigurationBase(SQLModel):
     name: Optional[str] = Field(
         default=None,
-        min_length=constants.MAX_LENGTH_6,
-        max_length=constants.MAX_LENGTH_100,
+        min_length=constants.LENGTH_6,
+        max_length=constants.LENGTH_100,
         description=_("Configuration name"),
     )
     key: Optional[str] = Field(
         default=None,
-        min_length=constants.MAX_LENGTH_3,
-        max_length=constants.MAX_LENGTH_100,
+        min_length=constants.LENGTH_3,
+        max_length=constants.LENGTH_100,
         description=_("Configuration key"),
     )
     value: Optional[str] = Field(
         default=None,
-        max_length=constants.MAX_LENGTH_500,
+        max_length=constants.LENGTH_500,
         description=_("Configuration value"),
     )
     type: Optional[ConfigurationType] = Field(
@@ -60,7 +60,7 @@ class ConfigurationBase(SQLModel):
     )
     description: Optional[str] = Field(
         default=None,
-        max_length=constants.MAX_LENGTH_1000,
+        max_length=constants.LENGTH_1000,
         description=_("Description"),
     )
 
@@ -92,20 +92,20 @@ class Configuration(
     name: str = Field(
         default=None,
         nullable=True,
-        min_length=constants.MAX_LENGTH_6,
-        max_length=constants.MAX_LENGTH_100,
+        min_length=constants.LENGTH_6,
+        max_length=constants.LENGTH_100,
         description=_("Configuration name"),
     )
     key: str = Field(
         nullable=False,
-        min_length=constants.MAX_LENGTH_3,
-        max_length=constants.MAX_LENGTH_100,
+        min_length=constants.LENGTH_3,
+        max_length=constants.LENGTH_100,
         description=_("Configuration key"),
     )
     value: str = Field(
         default=None,
         nullable=True,
-        max_length=constants.MAX_LENGTH_500,
+        max_length=constants.LENGTH_500,
         description=_("Configuration value"),
     )
     type: ConfigurationType = Field(
@@ -122,7 +122,7 @@ class Configuration(
     description: str = Field(
         default=None,
         nullable=True,
-        max_length=constants.MAX_LENGTH_1000,
+        max_length=constants.LENGTH_1000,
         description=_("Description"),
     )
 

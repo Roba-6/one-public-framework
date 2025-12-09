@@ -13,13 +13,13 @@ from one_public_api.models.mixins import IdMixin, MaintenanceMixin, TimestampMix
 class PermissionBase(SQLModel):
     name: Optional[str] = Field(
         default=None,
-        min_length=constants.MAX_LENGTH_3,
-        max_length=constants.MAX_LENGTH_100,
+        min_length=constants.LENGTH_3,
+        max_length=constants.LENGTH_100,
         description=_("Feature name"),
     )
     description: Optional[str] = Field(
         default=None,
-        max_length=constants.MAX_LENGTH_1000,
+        max_length=constants.LENGTH_1000,
         description=_("Description"),
     )
 

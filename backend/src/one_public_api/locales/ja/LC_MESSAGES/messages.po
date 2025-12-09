@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.9\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-12-09 14:56+0900\n"
+"POT-Creation-Date: 2025-12-09 16:18+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -24,20 +24,38 @@ msgid "API NAME"
 msgstr "One Public Framework"
 
 #: src/one_public_api/common/query_param.py:36
-msgid "Offset from where to start"
-msgstr "開始位置からのオフセット"
+msgid "Offset"
+msgstr "オフセット値"
 
-#: src/one_public_api/common/query_param.py:42
+#: src/one_public_api/common/query_param.py:37
+msgid "Offset Description"
+msgstr "検索結果の取得開始位置を指定するパラメータ．ページネーションに利用し，先頭から何件分スキップして結果を返却するかを定義する．"
+
+#: src/one_public_api/common/query_param.py:43
 msgid "Limit"
-msgstr "取得するデータの件数"
+msgstr "取得件数"
 
 #: src/one_public_api/common/query_param.py:44
+msgid "Limit Description"
+msgstr "検索結果として返却する最大件数を指定するパラメータ．1リクエストあたりの返却件数を制御し，過剰なデータ取得を防止する．"
+
+#: src/one_public_api/common/query_param.py:48
 msgid "Order by"
 msgstr "ソート用の列名"
 
-#: src/one_public_api/common/query_param.py:45
+#: src/one_public_api/common/query_param.py:49
+msgid "Order by Description"
+msgstr ""
+"検索結果に適用する並び順を指定するパラメータ．フィールド名および並び順を用いてソート条件を設定する．複数フィールドを指定した場合は，記載順を優先順として処理する．降順を指定する場合は，フィールド名の末尾に"
+" `_desc` を付与する．"
+
+#: src/one_public_api/common/query_param.py:53
 msgid "Keywords"
 msgstr "検索用のキーワード"
+
+#: src/one_public_api/common/query_param.py:54
+msgid "Keywords Description"
+msgstr "キーワード検索用のパラメータ．指定したキーワードを含むレコードを対象として検索結果に含める．"
 
 #: src/one_public_api/core/exceptions.py:32
 msgid "API_ERROR_OCCURRED"
@@ -75,33 +93,38 @@ msgstr "作成日時"
 msgid "Last update time (auto-updated on modification)"
 msgstr "最終変更日時（変更時に自動更新）"
 
-#: src/one_public_api/models/system/action_model.py:17
-#: src/one_public_api/models/system/action_model.py:76
+#: src/one_public_api/models/system/action_model.py:21
+#: src/one_public_api/models/system/action_model.py:86
 #, fuzzy
 msgid "Action name"
 msgstr "One Public Framework"
 
-#: src/one_public_api/models/system/action_model.py:22
+#: src/one_public_api/models/system/action_model.py:26
 #, fuzzy
 msgid "Message ID of label"
 msgstr "メッセージコード"
 
-#: src/one_public_api/models/system/action_model.py:27
+#: src/one_public_api/models/system/action_model.py:31
 msgid "Action URL"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:32
+#: src/one_public_api/models/system/action_model.py:36
 msgid "Action icon"
 msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:42
+#, fuzzy
+msgid "Component name"
+msgstr "One Public Framework"
+
+#: src/one_public_api/models/system/action_model.py:52
 #: src/one_public_api/models/system/configuration_model.py:64
 #: src/one_public_api/models/system/configuration_model.py:126
-#: src/one_public_api/models/system/feature_model.py:24
-#: src/one_public_api/models/system/feature_model.py:62
+#: src/one_public_api/models/system/feature_model.py:28
+#: src/one_public_api/models/system/feature_model.py:66
 #: src/one_public_api/models/system/organization_model.py:31
 #: src/one_public_api/models/system/permission_model.py:23
-#: src/one_public_api/models/system/role_model.py:26
+#: src/one_public_api/models/system/role_model.py:30
 #, fuzzy
 msgid "Description"
 msgstr ""
@@ -113,26 +136,26 @@ msgstr ""
 "に設定された有効期間内でリフレッシュトークンのクッキーが保持されます。`false` "
 "の場合は、ブラウザ終了時にリフレッシュトークンのクッキーが削除されます。"
 
-#: src/one_public_api/models/system/action_model.py:49
-#: src/one_public_api/models/system/action_model.py:81
-#: src/one_public_api/models/system/feature_model.py:31
-#: src/one_public_api/models/system/feature_model.py:67
+#: src/one_public_api/models/system/action_model.py:59
+#: src/one_public_api/models/system/action_model.py:91
+#: src/one_public_api/models/system/feature_model.py:35
+#: src/one_public_api/models/system/feature_model.py:71
 #: src/one_public_api/schemas/feature_schema.py:55
 msgid "Whether the feature is enabled"
 msgstr "有効化"
 
-#: src/one_public_api/models/system/action_model.py:53
-#: src/one_public_api/models/system/action_model.py:86
+#: src/one_public_api/models/system/action_model.py:63
+#: src/one_public_api/models/system/action_model.py:96
 #: src/one_public_api/models/system/configuration_model.py:76
 #: src/one_public_api/models/system/configuration_model.py:120
-#: src/one_public_api/models/system/feature_model.py:35
-#: src/one_public_api/models/system/feature_model.py:72
+#: src/one_public_api/models/system/feature_model.py:39
+#: src/one_public_api/models/system/feature_model.py:76
 #: src/one_public_api/schemas/feature_schema.py:58
 msgid "Whether auth is required"
 msgstr "認証が必要か"
 
-#: src/one_public_api/models/system/action_model.py:57
-#: src/one_public_api/models/system/action_model.py:91
+#: src/one_public_api/models/system/action_model.py:67
+#: src/one_public_api/models/system/action_model.py:101
 msgid "Show or hide"
 msgstr ""
 
@@ -163,8 +186,8 @@ msgstr "設定タイプ"
 msgid "Configuration options"
 msgstr "設定項目オプション"
 
-#: src/one_public_api/models/system/feature_model.py:19
-#: src/one_public_api/models/system/feature_model.py:56
+#: src/one_public_api/models/system/feature_model.py:23
+#: src/one_public_api/models/system/feature_model.py:60
 #: src/one_public_api/models/system/permission_model.py:18
 #: src/one_public_api/schemas/feature_schema.py:52
 msgid "Feature name"
@@ -186,14 +209,14 @@ msgid "Whether the organization is enabled"
 msgstr "無効化"
 
 #: src/one_public_api/models/system/organization_model.py:58
-#: src/one_public_api/models/system/user_model.py:23
-#: src/one_public_api/models/system/user_model.py:80
+#: src/one_public_api/models/system/user_model.py:25
+#: src/one_public_api/models/system/user_model.py:82
 #: src/one_public_api/schemas/authenticate_schema.py:29
 #: src/one_public_api/schemas/user_schema.py:76
 msgid "User name"
 msgstr "ユーザー名"
 
-#: src/one_public_api/models/system/role_model.py:21
+#: src/one_public_api/models/system/role_model.py:25
 #, fuzzy
 msgid "Role name"
 msgstr "ユーザー名"
@@ -211,40 +234,40 @@ msgstr "トークンタイプ"
 msgid "Owner of token"
 msgstr "トークン所有者"
 
-#: src/one_public_api/models/system/user_model.py:28
-#: src/one_public_api/models/system/user_model.py:86
+#: src/one_public_api/models/system/user_model.py:30
+#: src/one_public_api/models/system/user_model.py:88
 #: src/one_public_api/schemas/user_schema.py:80
 msgid "User's email address"
 msgstr "メールアドレス"
 
-#: src/one_public_api/models/system/user_model.py:33
-#: src/one_public_api/models/system/user_model.py:92
+#: src/one_public_api/models/system/user_model.py:35
+#: src/one_public_api/models/system/user_model.py:94
 msgid "First name"
 msgstr "名"
 
-#: src/one_public_api/models/system/user_model.py:38
-#: src/one_public_api/models/system/user_model.py:98
+#: src/one_public_api/models/system/user_model.py:40
+#: src/one_public_api/models/system/user_model.py:100
 msgid "Last name"
 msgstr "姓"
 
-#: src/one_public_api/models/system/user_model.py:43
-#: src/one_public_api/models/system/user_model.py:104
+#: src/one_public_api/models/system/user_model.py:45
+#: src/one_public_api/models/system/user_model.py:106
 msgid "Display nickname"
 msgstr "表示名"
 
-#: src/one_public_api/models/system/user_model.py:50
-#: src/one_public_api/models/system/user_model.py:109
+#: src/one_public_api/models/system/user_model.py:52
+#: src/one_public_api/models/system/user_model.py:111
 #, fuzzy
 msgid "Whether the account is enabled"
 msgstr "無効化"
 
-#: src/one_public_api/models/system/user_model.py:54
-#: src/one_public_api/models/system/user_model.py:114
+#: src/one_public_api/models/system/user_model.py:56
+#: src/one_public_api/models/system/user_model.py:116
 msgid "Whether the account is locked"
 msgstr "ロック"
 
-#: src/one_public_api/models/system/user_model.py:58
-#: src/one_public_api/models/system/user_model.py:119
+#: src/one_public_api/models/system/user_model.py:60
+#: src/one_public_api/models/system/user_model.py:121
 msgid "Number of failed login attempts"
 msgstr "ログイン失敗回数"
 
@@ -514,9 +537,8 @@ msgid "Full name"
 msgstr "氏名"
 
 #: src/one_public_api/schemas/user_schema.py:109
-#, fuzzy
 msgid "Organization"
-msgstr "設定項目名"
+msgstr "組織"
 
 #: src/one_public_api/services/authenticate_service.py:54
 msgid "user not verified"
@@ -581,3 +603,6 @@ msgstr "このデータが参照されているため、削除できません。
 
 #~ msgid "Feature description"
 #~ msgstr "機能説明"
+
+#~ msgid "Offset from where to start"
+#~ msgstr "開始位置からのオフセット"

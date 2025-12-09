@@ -47,8 +47,8 @@ class FeaturePublicResponse(FeatureBase, IdMixin):
 
 class FeatureCreateRequest(FeatureBase):
     name: str = Field(
-        min_length=constants.MAX_LENGTH_13,
-        max_length=constants.MAX_LENGTH_13,
+        min_length=constants.LENGTH_13,
+        max_length=constants.LENGTH_13,
         description=_("Feature name"),
     )
     is_enabled: bool = Field(

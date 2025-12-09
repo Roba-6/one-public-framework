@@ -20,6 +20,6 @@ class PasswordMixin:
 
     password: str = Field(
         nullable=False,
-        max_length=constants.MAX_LENGTH_64,
+        max_length=constants.LENGTH_64,
         description=_("Password provided by the user"),
     )

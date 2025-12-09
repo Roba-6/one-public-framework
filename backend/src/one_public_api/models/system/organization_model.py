@@ -16,18 +16,18 @@ if TYPE_CHECKING:
 class OrganizationBase(SQLModel):
     name: Optional[str] = Field(
         default=None,
-        min_length=constants.MAX_LENGTH_1,
-        max_length=constants.MAX_LENGTH_100,
+        min_length=constants.LENGTH_1,
+        max_length=constants.LENGTH_100,
         description=_("Organization name"),
     )
     nickname: Optional[str] = Field(
         default=None,
-        max_length=constants.MAX_LENGTH_100,
+        max_length=constants.LENGTH_100,
         description=_("Nickname"),
     )
     description: Optional[str] = Field(
         default=None,
-        max_length=constants.MAX_LENGTH_1000,
+        max_length=constants.LENGTH_1000,
         description=_("Description"),
     )
 
@@ -53,8 +53,8 @@ class Organization(
     name: str = Field(
         nullable=False,
         unique=True,
-        min_length=constants.MAX_LENGTH_1,
-        max_length=constants.MAX_LENGTH_100,
+        min_length=constants.LENGTH_1,
+        max_length=constants.LENGTH_100,
         description=_("User name"),
     )
     users: List["User"] = Relationship(

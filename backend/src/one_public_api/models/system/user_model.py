@@ -7,8 +7,10 @@ from one_public_api.common import constants
 from one_public_api.core.i18n import translate as _
 from one_public_api.core.settings import settings
 from one_public_api.models.links import ConfigurationUserLink, OrganizationUserLink
+from one_public_api.models.links.role_user_link import RoleUserLink
 from one_public_api.models.mixins import MaintenanceMixin, PasswordMixin, TimestampMixin
 from one_public_api.models.mixins.id_mixin import IdMixin
+from one_public_api.models.system.role_model import Role
 from one_public_api.models.system.token_model import Token
 
 if TYPE_CHECKING:
@@ -18,28 +20,28 @@ if TYPE_CHECKING:
 class UserBase(SQLModel):
     name: Optional[str] = Field(
         default=None,
-        min_length=constants.MAX_LENGTH_3,
-        max_length=constants.MAX_LENGTH_55,
+        min_length=constants.LENGTH_3,
+        max_length=constants.LENGTH_55,
         description=_("User name"),
     )
     email: Optional[EmailStr] = Field(
         default=None,
-        max_length=constants.MAX_LENGTH_128,
+        max_length=constants.LENGTH_128,
         description=_("User's email address"),
     )
     firstname: Optional[str] = Field(
         default=None,
-        max_length=constants.MAX_LENGTH_100,
+        max_length=constants.LENGTH_100,
         description=_("First name"),
     )
     lastname: Optional[str] = Field(
         default=None,
-        max_length=constants.MAX_LENGTH_100,
+        max_length=constants.LENGTH_100,
         description=_("Last name"),
     )
     nickname: Optional[str] = Field(
         default=None,
-        max_length=constants.MAX_LENGTH_55,
+        max_length=constants.LENGTH_55,
         description=_("Display nickname"),
     )
 
@@ -75,32 +77,32 @@ class User(
     name: str = Field(
         nullable=False,
         unique=True,
-        min_length=constants.MAX_LENGTH_3,
-        max_length=constants.MAX_LENGTH_55,
+        min_length=constants.LENGTH_3,
+        max_length=constants.LENGTH_55,
         description=_("User name"),
     )
     email: EmailStr = Field(
         nullable=False,
         unique=True,
-        max_length=constants.MAX_LENGTH_128,
+        max_length=constants.LENGTH_128,
         description=_("User's email address"),
     )
     firstname: str = Field(
         default=None,
         nullable=True,
-        max_length=constants.MAX_LENGTH_100,
+        max_length=constants.LENGTH_100,
         description=_("First name"),
     )
     lastname: str = Field(
         default=None,
         nullable=True,
-        max_length=constants.MAX_LENGTH_100,
+        max_length=constants.LENGTH_100,
         description=_("Last name"),
     )
     nickname: str = Field(
         default=None,
         nullable=True,
-        max_length=constants.MAX_LENGTH_55,
+        max_length=constants.LENGTH_55,
         description=_("Display nickname"),
     )
     is_enabled: bool = Field(
@@ -142,3 +144,5 @@ class User(
     organizations: List["Organization"] = Relationship(
         back_populates="users", link_model=OrganizationUserLink
     )
+
+    roles: List["Role"] = Relationship(link_model=RoleUserLink)

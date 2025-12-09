@@ -52,12 +52,12 @@ class ConfigurationPublicResponse(ConfigurationBase, IdMixin):
 
 class ConfigurationCreateRequest(ConfigurationBase, ConfigurationOption):
     key: str = Field(
-        min_length=constants.MAX_LENGTH_3,
-        max_length=constants.MAX_LENGTH_100,
+        min_length=constants.LENGTH_3,
+        max_length=constants.LENGTH_100,
         description=_("Configuration key"),
     )
     value: str = Field(
-        max_length=constants.MAX_LENGTH_500,
+        max_length=constants.LENGTH_500,
         description=_("Configuration value"),
     )
     type: ConfigurationType = Field(

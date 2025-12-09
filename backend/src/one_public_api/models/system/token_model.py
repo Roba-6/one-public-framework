@@ -20,7 +20,7 @@ class TokenType(IntEnum):
 
 class TokenBase(SQLModel):
     token: str = Field(
-        max_length=constants.MAX_LENGTH_500,
+        max_length=constants.LENGTH_500,
         description=_("Token"),
     )
     type: TokenType = Field(

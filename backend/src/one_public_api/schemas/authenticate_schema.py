@@ -24,8 +24,8 @@ example_base: Dict[str, Any] = {
 
 class LoginRequest(PasswordMixin, SQLModel):
     username: str = Field(
-        min_length=constants.MAX_LENGTH_3,
-        max_length=constants.MAX_LENGTH_55,
+        min_length=constants.LENGTH_3,
+        max_length=constants.LENGTH_55,
         description=_("User name"),
     )
     remember_me: bool = Field(
