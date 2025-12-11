@@ -1,4 +1,4 @@
-from typing import Any, Dict
+from typing import Any, Dict, List, Optional
 
 from sqlmodel import Field, SQLModel
 
@@ -6,14 +6,14 @@ from one_public_api.common import constants
 from one_public_api.common.utility.str import to_camel
 from one_public_api.core.i18n import translate as _
 from one_public_api.models.mixins.password_mixin import PasswordMixin
-from one_public_api.schemas.response_schema import example_id
-from one_public_api.schemas.user_schema import (
+from one_public_api.schemas import (
+    ConfigurationPublicResponse,
     UserPublicResponse,
     example_datetime,
+    example_user_base,
 )
-from one_public_api.schemas.user_schema import (
-    example_base as user_example_base,
-)
+from one_public_api.schemas.response_schema import example_id
+from one_public_api.schemas.role_schema import RolePublicResponse
 
 example_base: Dict[str, Any] = {
     "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIs"
@@ -71,10 +71,19 @@ class TokenResponse(LoginFormResponse):
 
 
 class ProfileResponse(UserPublicResponse):
+    roles: Optional[List[RolePublicResponse]] = Field(
+        default=None,
+        description=_("Role"),
+    )
+    configurations: Optional[List[ConfigurationPublicResponse]] = Field(
+        default=None,
+        description=_("Configuration"),
+    )
+
     model_config = {
         "alias_generator": to_camel,
         "populate_by_name": True,
         "json_schema_extra": {
-            "examples": [{**example_id, **user_example_base, **example_datetime}],
+            "examples": [{**example_id, **example_user_base, **example_datetime}],
         },
     }

@@ -2,12 +2,17 @@ from typing import Any, Dict
 
 from one_public_api.common.utility.str import to_camel
 from one_public_api.models.mixins import IdMixin
-from one_public_api.models.system.organization_model import OrganizationBase
+from one_public_api.models.system.action_model import ActionBase
 from one_public_api.schemas.response_schema import example_id
 
 example_base: Dict[str, Any] = {
-    "name": "One Public Framework",
-    "nickname": "OPF",
+    "name": "system",
+    "label": "System",
+    "url": "/system",
+    "icon": "fas fa-cogs",
+    "component": "System",
+    "parent_id": None,
+    "description": "Super Admin Role.",
 }
 
 example_datetime: Dict[str, Any] = {
@@ -19,7 +24,7 @@ example_datetime: Dict[str, Any] = {
 # ----- Public Schemas -----------------------------------------------------------------
 
 
-class OrganizationPublicResponse(OrganizationBase, IdMixin):
+class ActionPublicResponse(ActionBase, IdMixin):
     model_config = {
         "alias_generator": to_camel,
         "populate_by_name": True,

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.9\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-12-09 19:06+0900\n"
+"POT-Creation-Date: 2025-12-11 17:07+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -166,19 +166,19 @@ msgstr "設定項目名"
 
 #: src/one_public_api/models/system/configuration_model.py:50
 #: src/one_public_api/models/system/configuration_model.py:103
-#: src/one_public_api/schemas/configuration_schema.py:57
+#: src/one_public_api/schemas/base_schema.py:215
 msgid "Configuration key"
 msgstr "設定項目キー"
 
 #: src/one_public_api/models/system/configuration_model.py:55
 #: src/one_public_api/models/system/configuration_model.py:109
-#: src/one_public_api/schemas/configuration_schema.py:61
+#: src/one_public_api/schemas/base_schema.py:219
 msgid "Configuration value"
 msgstr "設定項目値"
 
 #: src/one_public_api/models/system/configuration_model.py:59
 #: src/one_public_api/models/system/configuration_model.py:114
-#: src/one_public_api/schemas/configuration_schema.py:64
+#: src/one_public_api/schemas/base_schema.py:222
 msgid "Configuration type"
 msgstr "設定タイプ"
 
@@ -212,7 +212,7 @@ msgstr "無効化"
 #: src/one_public_api/models/system/user_model.py:25
 #: src/one_public_api/models/system/user_model.py:82
 #: src/one_public_api/schemas/authenticate_schema.py:29
-#: src/one_public_api/schemas/user_schema.py:76
+#: src/one_public_api/schemas/base_schema.py:94
 msgid "User name"
 msgstr "ユーザー名"
 
@@ -236,7 +236,7 @@ msgstr "トークン所有者"
 
 #: src/one_public_api/models/system/user_model.py:30
 #: src/one_public_api/models/system/user_model.py:88
-#: src/one_public_api/schemas/user_schema.py:80
+#: src/one_public_api/schemas/base_schema.py:98
 msgid "User's email address"
 msgstr "メールアドレス"
 
@@ -494,21 +494,45 @@ msgstr "ログイン状態を記憶しますか"
 msgid "Access token"
 msgstr "アクセストークン"
 
-#: src/one_public_api/schemas/base_schema.py:12
-#: src/one_public_api/schemas/user_schema.py:101
+#: src/one_public_api/schemas/authenticate_schema.py:76
+#: src/one_public_api/schemas/base_schema.py:133
+#: src/one_public_api/schemas/permission_schema.py:30
+#: src/one_public_api/schemas/permission_schema.py:34
+#: src/one_public_api/schemas/role_schema.py:29
+#, fuzzy
+msgid "Role"
+msgstr "ユーザー名"
+
+#: src/one_public_api/schemas/authenticate_schema.py:80
+#: src/one_public_api/schemas/base_schema.py:137
+#, fuzzy
+msgid "Configuration"
+msgstr "設定"
+
+#: src/one_public_api/schemas/base_schema.py:61
+#: src/one_public_api/schemas/base_schema.py:129
+msgid "Organization"
+msgstr "組織"
+
+#: src/one_public_api/schemas/base_schema.py:64
+msgid "Full name"
+msgstr "氏名"
+
+#: src/one_public_api/schemas/base_schema.py:121
+#: src/one_public_api/schemas/base_schema.py:164
 msgid "Creator"
 msgstr "作成者"
 
-#: src/one_public_api/schemas/base_schema.py:13
-msgid "Creator Description"
-msgstr "レコードを新規作成したユーザー情報．"
-
-#: src/one_public_api/schemas/base_schema.py:17
-#: src/one_public_api/schemas/user_schema.py:105
+#: src/one_public_api/schemas/base_schema.py:125
+#: src/one_public_api/schemas/base_schema.py:169
 msgid "Updater"
 msgstr "最終変更者"
 
-#: src/one_public_api/schemas/base_schema.py:18
+#: src/one_public_api/schemas/base_schema.py:165
+msgid "Creator Description"
+msgstr "レコードを新規作成したユーザー情報．"
+
+#: src/one_public_api/schemas/base_schema.py:170
 #, fuzzy
 msgid "Updater Description"
 msgstr "レコードを最後に変更したユーザーの情報．"
@@ -551,7 +575,7 @@ msgstr "処理結果"
 
 #: src/one_public_api/schemas/response_schema.py:84
 msgid "Result Description"
-msgstr "API 処理の主な結果データ．単一オブジェクト，複数オブジェクトのリスト，または結果がない場合は `None` となる．"
+msgstr "API 処理の主な結果データ．単一オブジェクト，複数オブジェクトのリスト，または結果がない場合は `null` となる．"
 
 #: src/one_public_api/schemas/response_schema.py:88
 msgid "Count of Items"
@@ -561,7 +585,7 @@ msgstr "結果アイテムの総数"
 msgid "Count of Items Description"
 msgstr ""
 "ページネーション対応エンドポイントで特に使用され，全体の件数を知りたい場合に便利である．単一オブジェクト取得時など，件数が意味を持たない場合は "
-"`None` になります．"
+"`null` になります．"
 
 #: src/one_public_api/schemas/response_schema.py:93
 msgid "Detail of Result"
@@ -572,14 +596,6 @@ msgid "Detail of Result Description"
 msgstr ""
 "処理自体は成功（HTTP "
 "2xx）したが，処理の過程で“望ましくない状態”や“将来的に問題となりうる設定”，または“軽微な警告”が検出された場合に，このフィールドに情報を格納し，クライアントに対して注意を促すために使用する．"
-
-#: src/one_public_api/schemas/user_schema.py:51
-msgid "Full name"
-msgstr "氏名"
-
-#: src/one_public_api/schemas/user_schema.py:109
-msgid "Organization"
-msgstr "組織"
 
 #: src/one_public_api/services/authenticate_service.py:54
 msgid "user not verified"

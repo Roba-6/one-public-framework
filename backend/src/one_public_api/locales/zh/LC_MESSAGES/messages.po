@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.9\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-12-09 19:06+0900\n"
+"POT-Creation-Date: 2025-12-11 17:07+0900\n"
 "PO-Revision-Date: 2025-10-03 18:52+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: zh\n"
@@ -158,19 +158,19 @@ msgstr ""
 
 #: src/one_public_api/models/system/configuration_model.py:50
 #: src/one_public_api/models/system/configuration_model.py:103
-#: src/one_public_api/schemas/configuration_schema.py:57
+#: src/one_public_api/schemas/base_schema.py:215
 msgid "Configuration key"
 msgstr ""
 
 #: src/one_public_api/models/system/configuration_model.py:55
 #: src/one_public_api/models/system/configuration_model.py:109
-#: src/one_public_api/schemas/configuration_schema.py:61
+#: src/one_public_api/schemas/base_schema.py:219
 msgid "Configuration value"
 msgstr ""
 
 #: src/one_public_api/models/system/configuration_model.py:59
 #: src/one_public_api/models/system/configuration_model.py:114
-#: src/one_public_api/schemas/configuration_schema.py:64
+#: src/one_public_api/schemas/base_schema.py:222
 msgid "Configuration type"
 msgstr ""
 
@@ -201,7 +201,7 @@ msgstr ""
 #: src/one_public_api/models/system/user_model.py:25
 #: src/one_public_api/models/system/user_model.py:82
 #: src/one_public_api/schemas/authenticate_schema.py:29
-#: src/one_public_api/schemas/user_schema.py:76
+#: src/one_public_api/schemas/base_schema.py:94
 msgid "User name"
 msgstr ""
 
@@ -224,7 +224,7 @@ msgstr ""
 
 #: src/one_public_api/models/system/user_model.py:30
 #: src/one_public_api/models/system/user_model.py:88
-#: src/one_public_api/schemas/user_schema.py:80
+#: src/one_public_api/schemas/base_schema.py:98
 msgid "User's email address"
 msgstr ""
 
@@ -468,22 +468,44 @@ msgstr ""
 msgid "Access token"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:12
-#: src/one_public_api/schemas/user_schema.py:101
+#: src/one_public_api/schemas/authenticate_schema.py:76
+#: src/one_public_api/schemas/base_schema.py:133
+#: src/one_public_api/schemas/permission_schema.py:30
+#: src/one_public_api/schemas/permission_schema.py:34
+#: src/one_public_api/schemas/role_schema.py:29
+msgid "Role"
+msgstr ""
+
+#: src/one_public_api/schemas/authenticate_schema.py:80
+#: src/one_public_api/schemas/base_schema.py:137
+msgid "Configuration"
+msgstr ""
+
+#: src/one_public_api/schemas/base_schema.py:61
+#: src/one_public_api/schemas/base_schema.py:129
+msgid "Organization"
+msgstr ""
+
+#: src/one_public_api/schemas/base_schema.py:64
+msgid "Full name"
+msgstr ""
+
+#: src/one_public_api/schemas/base_schema.py:121
+#: src/one_public_api/schemas/base_schema.py:164
 msgid "Creator"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:13
+#: src/one_public_api/schemas/base_schema.py:125
+#: src/one_public_api/schemas/base_schema.py:169
+msgid "Updater"
+msgstr ""
+
+#: src/one_public_api/schemas/base_schema.py:165
 #, fuzzy
 msgid "Creator Description"
 msgstr "登录表单功能。"
 
-#: src/one_public_api/schemas/base_schema.py:17
-#: src/one_public_api/schemas/user_schema.py:105
-msgid "Updater"
-msgstr ""
-
-#: src/one_public_api/schemas/base_schema.py:18
+#: src/one_public_api/schemas/base_schema.py:170
 #, fuzzy
 msgid "Updater Description"
 msgstr "强制登出功能。"
@@ -545,14 +567,6 @@ msgstr ""
 #, fuzzy
 msgid "Detail of Result Description"
 msgstr "登录表单功能。"
-
-#: src/one_public_api/schemas/user_schema.py:51
-msgid "Full name"
-msgstr ""
-
-#: src/one_public_api/schemas/user_schema.py:109
-msgid "Organization"
-msgstr ""
 
 #: src/one_public_api/services/authenticate_service.py:54
 msgid "user not verified"
