@@ -150,7 +150,7 @@ class User(
     organization: Optional["Organization"] = Relationship(
         back_populates="users", link_model=OrganizationUserLink
     )
-    roles: List["Role"] = Relationship(link_model=RoleUserLink)
+    role: Optional["Role"] = Relationship(link_model=RoleUserLink)
     attachment: "Attachment" = Relationship(link_model=AttachmentUserLink)
     notifications: List["Notification"] = Relationship(
         back_populates="users", link_model=NotificationUserLink

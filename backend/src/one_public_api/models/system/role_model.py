@@ -14,7 +14,7 @@ from one_public_api.models.mixins import (
 )
 
 if TYPE_CHECKING:
-    from one_public_api.models import Permission
+    from one_public_api.models import Organization, Permission, User
 
 
 class RoleBase(SQLModel):
@@ -41,4 +41,25 @@ class Role(
 ):
     __tablename__ = settings.DB_TABLE_PRE + "roles"
 
+    creator: Optional["User"] = Relationship(
+        sa_relationship_kwargs={
+            "foreign_keys": "[Role.created_by]",
+            "primaryjoin": "Role.created_by==User.id",
+            "remote_side": "[User.id]",
+        }
+    )
+    updater: Optional["User"] = Relationship(
+        sa_relationship_kwargs={
+            "foreign_keys": "[Role.updated_by]",
+            "primaryjoin": "Role.updated_by==User.id",
+            "remote_side": "[User.id]",
+        }
+    )
+    organization: Optional["Organization"] = Relationship(
+        sa_relationship_kwargs={
+            "foreign_keys": "[Role.organization_id]",
+            "primaryjoin": "Role.organization_id==Organization.id",
+            "remote_side": "[Organization.id]",
+        }
+    )
     permissions: List["Permission"] = Relationship(link_model=RolePermissionLink)
