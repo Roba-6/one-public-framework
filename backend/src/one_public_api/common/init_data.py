@@ -10,7 +10,7 @@ from one_public_api.core.settings import settings
 from one_public_api.crud.data_creator import DataCreator
 from one_public_api.crud.data_reader import DataReader
 from one_public_api.crud.data_updater import DataUpdater
-from one_public_api.models import Configuration, Feature, User
+from one_public_api.models import Category, Configuration, Feature, User
 from one_public_api.models.system.configuration_model import ConfigurationType
 from one_public_api.routers.base_route import BaseRoute
 
@@ -66,4 +66,39 @@ def init_features(app: FastAPI, session: Session, user: User) -> None:
     for feature in features_list:
         feature.description = feature_descriptions[feature.name]
         du.one(feature)
+    session.commit()
+
+
+def init_categories(session: Session, user: User) -> None:
+    categories: List[Dict[str, Any]] = [
+        {
+            "name": "管理者",
+            "value": "ADM",
+            "options": {"type": "OrganizationType"},
+        },
+        {
+            "name": "倉庫運営会社",
+            "value": "COY",
+            "options": {"type": "OrganizationType"},
+        },
+        {
+            "name": "エリア倉庫",
+            "value": "WHS",
+            "options": {"type": "OrganizationType"},
+        },
+        {
+            "name": "店舗グループ",
+            "value": "SGP",
+            "options": {"type": "OrganizationType"},
+        },
+        {
+            "name": "店舗",
+            "value": "SHP",
+            "options": {"type": "OrganizationType"},
+        },
+    ]
+    categories = add_maintenance(categories, user)
+
+    dc = DataCreator(session)
+    dc.all_if_not_exists(Category, categories)
     session.commit()

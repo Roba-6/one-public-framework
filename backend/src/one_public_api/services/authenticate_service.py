@@ -45,7 +45,11 @@ class AuthenticateService(BaseService[User]):
         try:
             user: User = self.get_one({"name": request.username})
             self.is_activate_user(user)
-            if not self.verify_password(request.password, user.password):
+            if not (
+                request.password
+                and user.password
+                and self.verify_password(request.password, user.password)
+            ):
                 user.failed_attempts += 1
                 if user.failed_attempts >= constants.MAX_FAILED_ATTEMPTS:
                     user.is_locked = True

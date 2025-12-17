@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, List, Optional
+from typing import List, Optional
 
 from pydantic import EmailStr
 from sqlmodel import Field, Relationship, SQLModel
@@ -6,15 +6,21 @@ from sqlmodel import Field, Relationship, SQLModel
 from one_public_api.common import constants
 from one_public_api.core.i18n import translate as _
 from one_public_api.core.settings import settings
-from one_public_api.models.links import ConfigurationUserLink, OrganizationUserLink
+from one_public_api.models.links import (
+    AttachmentUserLink,
+    ConfigurationUserLink,
+    NotificationUserLink,
+    OrganizationUserLink,
+)
 from one_public_api.models.links.role_user_link import RoleUserLink
 from one_public_api.models.mixins import MaintenanceMixin, PasswordMixin, TimestampMixin
 from one_public_api.models.mixins.id_mixin import IdMixin
+from one_public_api.models.system.attachment_model import Attachment
+from one_public_api.models.system.configuration_model import Configuration
+from one_public_api.models.system.notification_model import Notification
+from one_public_api.models.system.organization_model import Organization
 from one_public_api.models.system.role_model import Role
 from one_public_api.models.system.token_model import Token
-
-if TYPE_CHECKING:
-    from one_public_api.models import Configuration, Organization
 
 
 class UserBase(SQLModel):
@@ -141,8 +147,11 @@ class User(
     configurations: List["Configuration"] = Relationship(
         back_populates="users", link_model=ConfigurationUserLink
     )
-    organizations: List["Organization"] = Relationship(
+    organization: Optional["Organization"] = Relationship(
         back_populates="users", link_model=OrganizationUserLink
     )
-
     roles: List["Role"] = Relationship(link_model=RoleUserLink)
+    attachment: "Attachment" = Relationship(link_model=AttachmentUserLink)
+    notifications: List["Notification"] = Relationship(
+        back_populates="users", link_model=NotificationUserLink
+    )

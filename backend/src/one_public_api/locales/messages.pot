@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-11 17:07+0900\n"
+"POT-Creation-Date: 2025-12-17 14:21+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,6 +65,38 @@ msgstr ""
 msgid "D0010002"
 msgstr ""
 
+#: src/one_public_api/models/links/notification_user_link.py:21
+msgid "Is Read Flag"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:14
+msgid "Postal Code"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:19
+msgid "Country"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:24
+msgid "Prefecture"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:29
+msgid "Municipality"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:34
+msgid "Address Detail 1"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:39
+msgid "Address Detail 2"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:44
+msgid "Telephone Number"
+msgstr ""
+
 #: src/one_public_api/models/mixins/id_mixin.py:26
 msgid "Auto-generated unique ID for the record"
 msgstr ""
@@ -77,7 +109,7 @@ msgstr ""
 msgid "Updater ID"
 msgstr ""
 
-#: src/one_public_api/models/mixins/password_mixin.py:24
+#: src/one_public_api/models/mixins/password_mixin.py:27
 msgid "Password provided by the user"
 msgstr ""
 
@@ -111,12 +143,13 @@ msgid "Component name"
 msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:52
+#: src/one_public_api/models/system/category_model.py:34
 #: src/one_public_api/models/system/configuration_model.py:64
 #: src/one_public_api/models/system/configuration_model.py:126
 #: src/one_public_api/models/system/feature_model.py:28
 #: src/one_public_api/models/system/feature_model.py:66
-#: src/one_public_api/models/system/organization_model.py:31
-#: src/one_public_api/models/system/permission_model.py:23
+#: src/one_public_api/models/system/organization_model.py:36
+#: src/one_public_api/models/system/permission_model.py:26
 #: src/one_public_api/models/system/role_model.py:30
 msgid "Description"
 msgstr ""
@@ -144,6 +177,42 @@ msgstr ""
 msgid "Show or hide"
 msgstr ""
 
+#: src/one_public_api/models/system/attachment_model.py:28
+msgid "Attachment name"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:36
+msgid "MIME type"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:41
+msgid "save path"
+msgstr ""
+
+#: src/one_public_api/models/system/category_model.py:19
+#: src/one_public_api/models/system/category_model.py:64
+msgid "Category name"
+msgstr ""
+
+#: src/one_public_api/models/system/category_model.py:24
+msgid "Category alias"
+msgstr ""
+
+#: src/one_public_api/models/system/category_model.py:29
+msgid "Category value"
+msgstr ""
+
+#: src/one_public_api/models/system/category_model.py:42
+#: src/one_public_api/models/system/configuration_model.py:72
+msgid "Configuration options"
+msgstr ""
+
+#: src/one_public_api/models/system/category_model.py:46
+#: src/one_public_api/models/system/category_model.py:69
+#: src/one_public_api/models/system/organization_model.py:43
+msgid "Whether the organization is enabled"
+msgstr ""
+
 #: src/one_public_api/models/system/configuration_model.py:44
 #: src/one_public_api/models/system/configuration_model.py:97
 msgid "Configuration name"
@@ -167,32 +236,42 @@ msgstr ""
 msgid "Configuration type"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:72
-msgid "Configuration options"
-msgstr ""
-
 #: src/one_public_api/models/system/feature_model.py:23
 #: src/one_public_api/models/system/feature_model.py:60
-#: src/one_public_api/models/system/permission_model.py:18
+#: src/one_public_api/models/system/permission_model.py:21
 #: src/one_public_api/schemas/feature_schema.py:52
 msgid "Feature name"
 msgstr ""
 
-#: src/one_public_api/models/system/organization_model.py:21
-msgid "Organization name"
+#: src/one_public_api/models/system/notification_model.py:22
+#: src/one_public_api/models/system/notification_model.py:57
+msgid "Notification Title"
+msgstr ""
+
+#: src/one_public_api/models/system/notification_model.py:26
+msgid "Notification Content"
+msgstr ""
+
+#: src/one_public_api/models/system/notification_model.py:31
+msgid "Notification Published Time"
+msgstr ""
+
+#: src/one_public_api/models/system/notification_model.py:38
+#: src/one_public_api/models/system/notification_model.py:62
+msgid "Is Scheduled"
 msgstr ""
 
 #: src/one_public_api/models/system/organization_model.py:26
+msgid "Organization name"
+msgstr ""
+
+#: src/one_public_api/models/system/organization_model.py:31
 msgid "Nickname"
 msgstr ""
 
-#: src/one_public_api/models/system/organization_model.py:38
-msgid "Whether the organization is enabled"
-msgstr ""
-
-#: src/one_public_api/models/system/organization_model.py:58
-#: src/one_public_api/models/system/user_model.py:25
-#: src/one_public_api/models/system/user_model.py:82
+#: src/one_public_api/models/system/organization_model.py:64
+#: src/one_public_api/models/system/user_model.py:31
+#: src/one_public_api/models/system/user_model.py:88
 #: src/one_public_api/schemas/authenticate_schema.py:29
 #: src/one_public_api/schemas/base_schema.py:94
 msgid "User name"
@@ -215,39 +294,39 @@ msgstr ""
 msgid "Owner of token"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:30
-#: src/one_public_api/models/system/user_model.py:88
+#: src/one_public_api/models/system/user_model.py:36
+#: src/one_public_api/models/system/user_model.py:94
 #: src/one_public_api/schemas/base_schema.py:98
 msgid "User's email address"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:35
-#: src/one_public_api/models/system/user_model.py:94
+#: src/one_public_api/models/system/user_model.py:41
+#: src/one_public_api/models/system/user_model.py:100
 msgid "First name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:40
-#: src/one_public_api/models/system/user_model.py:100
+#: src/one_public_api/models/system/user_model.py:46
+#: src/one_public_api/models/system/user_model.py:106
 msgid "Last name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:45
-#: src/one_public_api/models/system/user_model.py:106
+#: src/one_public_api/models/system/user_model.py:51
+#: src/one_public_api/models/system/user_model.py:112
 msgid "Display nickname"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:52
-#: src/one_public_api/models/system/user_model.py:111
+#: src/one_public_api/models/system/user_model.py:58
+#: src/one_public_api/models/system/user_model.py:117
 msgid "Whether the account is enabled"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:56
-#: src/one_public_api/models/system/user_model.py:116
+#: src/one_public_api/models/system/user_model.py:62
+#: src/one_public_api/models/system/user_model.py:122
 msgid "Whether the account is locked"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:60
-#: src/one_public_api/models/system/user_model.py:121
+#: src/one_public_api/models/system/user_model.py:66
+#: src/one_public_api/models/system/user_model.py:127
 msgid "Number of failed login attempts"
 msgstr ""
 

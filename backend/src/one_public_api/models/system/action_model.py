@@ -10,13 +10,13 @@ from one_public_api.models.links import PermissionActionLink
 from one_public_api.models.mixins import IdMixin, MaintenanceMixin, TimestampMixin
 
 if TYPE_CHECKING:
-    from one_public_api.models import Permission
+    from one_public_api.models import Permission, User
 
 
 class ActionBase(SQLModel):
     name: Optional[str] = Field(
         default=None,
-        min_length=constants.LENGTH_9,
+        min_length=constants.LENGTH_3,
         max_length=constants.LENGTH_13,
         description=_("Action name"),
     )
@@ -101,6 +101,27 @@ class Action(
         description=_("Show or hide"),
     )
 
+    creator: Optional["User"] = Relationship(
+        sa_relationship_kwargs={
+            "foreign_keys": "[Action.created_by]",
+            "primaryjoin": "Action.created_by==User.id",
+            "remote_side": "[User.id]",
+        }
+    )
+    updater: Optional["User"] = Relationship(
+        sa_relationship_kwargs={
+            "foreign_keys": "[Action.updated_by]",
+            "primaryjoin": "Action.updated_by==User.id",
+            "remote_side": "[User.id]",
+        }
+    )
+    parent: Optional["Action"] = Relationship(
+        sa_relationship_kwargs={
+            "foreign_keys": "[Action.parent_id]",
+            "primaryjoin": "Action.parent_id==Action.id",
+            "remote_side": "[Action.id]",
+        }
+    )
     permissions: List["Permission"] = Relationship(
         back_populates="actions", link_model=PermissionActionLink
     )

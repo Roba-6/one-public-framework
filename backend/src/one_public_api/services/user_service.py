@@ -25,7 +25,7 @@ class UserService(BaseService[User]):
 
     def add_user(self, data: User, current_user: User) -> User:
         try:
-            data.password = get_hashed_password(data.password)
+            data.password = get_hashed_password(str(data.password))
             data.created_by = current_user.id
             data.updated_by = current_user.id
 
