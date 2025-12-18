@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.9\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-12-17 23:44+0900\n"
+"POT-Creation-Date: 2025-12-18 18:08+0900\n"
 "PO-Revision-Date: 2025-10-03 18:52+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: zh\n"
@@ -393,11 +393,11 @@ msgstr ""
 msgid "Get Profile Description"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:135
+#: src/one_public_api/routers/authenticate_router.py:132
 msgid "Logout"
 msgstr "登出"
 
-#: src/one_public_api/routers/authenticate_router.py:136
+#: src/one_public_api/routers/authenticate_router.py:133
 msgid "Logout Description"
 msgstr ""
 

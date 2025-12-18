@@ -31,7 +31,7 @@ example_user_base: Dict[str, Any] = {
     "nickname": "Roba",
     "email": "test@test.com",
     "password": "password123",
-    "organizations": [organization_example],
+    "organization": organization_example,
 }
 
 example_fullname: Dict[str, Any] = {
@@ -56,7 +56,7 @@ example_user: Dict[str, Any] = {**example_id, **example_user_base, **example_dat
 
 
 class UserPublicResponse(UserBase, TimestampMixin, IdMixin):
-    organizations: Optional[List[OrganizationPublicResponse]] = Field(
+    organization: Optional[OrganizationPublicResponse] = Field(
         default=None,
         description=_("Organization"),
     )
@@ -124,7 +124,7 @@ class UserResponse(UserPublicResponse, UserStatus):
         default=None,
         description=_("Updater"),
     )
-    organizations: Optional[List[OrganizationPublicResponse]] = Field(
+    organization: Optional[OrganizationPublicResponse] = Field(
         default=None,
         description=_("Organization"),
     )

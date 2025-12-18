@@ -71,7 +71,7 @@ class TokenResponse(LoginFormResponse):
 
 
 class ProfileResponse(UserPublicResponse):
-    roles: Optional[List[RolePublicResponse]] = Field(
+    role: Optional[RolePublicResponse] = Field(
         default=None,
         description=_("Role"),
     )

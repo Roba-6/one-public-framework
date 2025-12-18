@@ -123,10 +123,7 @@ def login_form(
 def profile_api(
     current_user: Annotated[User, Depends(get_current_user)],
 ) -> ResponseSchema[ProfileResponse]:
-    return create_response_data(
-        ProfileResponse,
-        current_user.model_dump(),
-    )
+    return create_response_data(ProfileResponse, current_user)
 
 
 @admin_router.get(
