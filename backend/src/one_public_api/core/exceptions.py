@@ -40,7 +40,7 @@ class DataError(APIError):
         self,
         message: str = "",
         detail: Any | None = None,
-        code: str = "E40900000",
+        code: str = "E4090000",
         status_code: int = status.HTTP_409_CONFLICT,
     ):
         super().__init__(code, message, detail, status_code)
@@ -51,7 +51,7 @@ class UnauthorizedError(APIError):
         self,
         message: str = "",
         detail: Any | None = None,
-        code: str = "E40100000",
+        code: str = "E4010000",
     ):
         super().__init__(code, message, detail, status.HTTP_401_UNAUTHORIZED)
 
@@ -61,6 +61,6 @@ class ForbiddenError(APIError):
         self,
         message: str = "",
         detail: Any | None = None,
-        code: str = "E40300000",
+        code: str = "E4030000",
     ):
         super().__init__(code, message, detail, status.HTTP_403_FORBIDDEN)

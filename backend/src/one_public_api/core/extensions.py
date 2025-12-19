@@ -79,6 +79,7 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, Any]:
     admin_user = init_users(session)
     init_configurations(session, admin_user)
     init_features(app, session, admin_user)
+    # init_categories(session, admin_user)
 
     yield
 

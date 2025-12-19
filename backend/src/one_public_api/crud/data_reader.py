@@ -2,8 +2,11 @@ from typing import Annotated, Any, Dict, List, Tuple, Type, TypeVar
 from uuid import UUID
 
 from fastapi.params import Depends
-from sqlalchemy import func
+from sqlalchemy import JSON, cast, func
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.exc import NoResultFound
+
+# from sqlalchemy.inspection import inspect
 from sqlmodel import Session, SQLModel, col, or_, select
 
 from one_public_api.common.query_param import QueryParam
@@ -103,8 +106,15 @@ class DataReader:
         statement: Any = select(model)
         count_statement: Any = select(func.count()).select_from(model)
         for k, v in conditions.items():
-            statement = statement.where(getattr(model, k) == v)
-            count_statement = count_statement.where(getattr(model, k) == v)
+            # inspect(model)
+            if getattr(model, k) and isinstance(
+                getattr(getattr(model, k), "type", None), JSON
+            ):
+                cond = cast(getattr(model, k), JSONB) == cast(v, JSONB)
+            else:
+                cond = getattr(model, k) == v
+            statement = statement.where(cond)
+            count_statement = count_statement.where(cond)
 
         results: List[T] = list(self.session.exec(statement).all())
         count: int = self.session.exec(count_statement).one()
