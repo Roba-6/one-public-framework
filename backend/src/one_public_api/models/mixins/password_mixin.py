@@ -1,3 +1,5 @@
+from typing import Optional
+
 from sqlmodel import Field
 
 from one_public_api.common import constants
@@ -14,12 +16,13 @@ class PasswordMixin:
 
     Attributes
     ----------
-    password : str
+    password : Optional[str]
         Password provided by the user.
     """
 
-    password: str = Field(
-        nullable=False,
-        max_length=constants.MAX_LENGTH_64,
+    password: Optional[str] = Field(
+        default=None,
+        nullable=True,
+        max_length=constants.LENGTH_64,
         description=_("Password provided by the user"),
     )

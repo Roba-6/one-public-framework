@@ -45,13 +45,17 @@ class AuthenticateService(BaseService[User]):
         try:
             user: User = self.get_one({"name": request.username})
             self.is_activate_user(user)
-            if not self.verify_password(request.password, user.password):
+            if not (
+                request.password
+                and user.password
+                and self.verify_password(request.password, user.password)
+            ):
                 user.failed_attempts += 1
                 if user.failed_attempts >= constants.MAX_FAILED_ATTEMPTS:
                     user.is_locked = True
                 self.update_one(user)
                 raise UnauthorizedError(
-                    self._("user not verified"), request.username, "E40100001"
+                    self._("user not verified"), request.username, "E4010001"
                 )
             else:
                 # When authentication is successful
@@ -99,7 +103,7 @@ class AuthenticateService(BaseService[User]):
             raise
         except HTTPException:
             raise UnauthorizedError(
-                self._("user not found"), request.username, "E40100002"
+                self._("user not found"), request.username, "E4010002"
             )
 
     def refresh(self, refresh_token: str) -> Dict[str, str]:
@@ -129,16 +133,14 @@ class AuthenticateService(BaseService[User]):
             return {to_camel("access_token"): access_token}
         except ExpiredSignatureError:
             raise UnauthorizedError(
-                self._("The token has expired"), refresh_token, "E40100007"
+                self._("The token has expired"), refresh_token, "E4010007"
             )
         except InvalidTokenError:
             raise UnauthorizedError(
-                self._("Invalid refresh token"), refresh_token, "E40100008"
+                self._("Invalid refresh token"), refresh_token, "E4010008"
             )
         except HTTPException:
-            raise UnauthorizedError(
-                self._("user not found"), refresh_token, "E40100009"
-            )
+            raise UnauthorizedError(self._("user not found"), refresh_token, "E4010009")
 
     def logout(self, response: Response, current_user: User | None = None) -> None:
         """
@@ -175,10 +177,10 @@ class AuthenticateService(BaseService[User]):
         )
 
     def is_activate_user(self, user: User) -> None:
-        if user.is_disabled:
-            raise ForbiddenError(self._("user disabled"), user.name, "E40300001")
+        if not user.is_enabled:
+            raise ForbiddenError(self._("user disabled"), user.name, "E4030001")
         elif user.is_locked:
-            raise ForbiddenError(self._("user locked"), user.name, "E40300002")
+            raise ForbiddenError(self._("user locked"), user.name, "E4030002")
 
     @staticmethod
     def create_token(
@@ -210,30 +212,30 @@ def get_current_user(
         username = get_username_from_token(token)
         if username is None:
             raise UnauthorizedError(
-                _("No user information found in the token"), token, "E40100003"
+                _("No user information found in the token"), token, "E4010003"
             )
         else:
             user: User = us.get_one(
-                {"name": username, "is_disabled": False, "is_locked": False}
+                {"name": username, "is_enabled": True, "is_locked": False}
             )
 
             if len(user.tokens) == 0:
                 """Forced logout is required."""
                 raise UnauthorizedError(
-                    _("Your account has been logged out."), token, "E40100007"
+                    _("Your account has been logged out."), token, "E4010007"
                 )
             elif find_in_model_list(user.tokens, "token", token) is None:
                 """Forced logout is required."""
                 raise UnauthorizedError(
                     _("Your account has been logged in from another location."),
                     token,
-                    "E40100006",
+                    "E4010006",
                 )
 
             return user
     except ExpiredSignatureError:
-        raise UnauthorizedError(_("The token has expired"), token, "E40100004")
+        raise UnauthorizedError(_("The token has expired"), token, "E4010004")
     except InvalidTokenError:
-        raise UnauthorizedError(_("Invalid access token"), token, "E40100005")
+        raise UnauthorizedError(_("Invalid access token"), token, "E4010005")
     except HTTPException:
         raise

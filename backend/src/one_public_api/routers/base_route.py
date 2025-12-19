@@ -53,13 +53,13 @@ class BaseRoute(APIRoute):
             fs = FeatureService(session, get_language_from_request_header(request))
             feature: Feature = fs.get_one({"name": self.name})
             if not feature.is_enabled:
-                raise ForbiddenError(_("Feature is disabled"), self.name, "E40300003")
+                raise ForbiddenError(_("Feature is disabled"), self.name, "E4030003")
         except ForbiddenError:
             raise
         except HTTPException:
             raise DataError(
                 _("Feature not found."),
                 self.name,
-                "E40400001",
+                "E4040001",
                 status.HTTP_404_NOT_FOUND,
             )
