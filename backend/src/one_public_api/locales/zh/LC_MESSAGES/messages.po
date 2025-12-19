@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: One Public API 0.1.0-alpha.9\n"
+"Project-Id-Version: One Public API 0.1.0-alpha.11\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-12-18 18:08+0900\n"
+"POT-Creation-Date: 2025-12-19 22:26+0900\n"
 "PO-Revision-Date: 2025-10-03 18:52+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: zh\n"
