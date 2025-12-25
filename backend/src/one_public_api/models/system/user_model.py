@@ -26,7 +26,6 @@ from one_public_api.models.system.token_model import Token
 class UserBase(SQLModel):
     name: Optional[str] = Field(
         default=None,
-        min_length=constants.LENGTH_3,
         max_length=constants.LENGTH_55,
         description=_("User name"),
     )

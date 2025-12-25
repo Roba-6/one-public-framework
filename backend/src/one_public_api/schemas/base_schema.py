@@ -21,6 +21,9 @@ from one_public_api.schemas.organization_schema import (
 )
 from one_public_api.schemas.response_schema import example_audit, example_id
 from one_public_api.schemas.role_schema import RolePublicResponse
+from one_public_api.schemas.role_schema import (
+    example_base as role_example,
+)
 
 # ===== User Schemas ===================================================================
 
@@ -31,7 +34,9 @@ example_user_base: Dict[str, Any] = {
     "nickname": "Roba",
     "email": "test@test.com",
     "password": "password123",
+    "configuration": [],
     "organization": organization_example,
+    "role": role_example,
 }
 
 example_fullname: Dict[str, Any] = {
