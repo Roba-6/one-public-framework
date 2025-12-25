@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.11\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-12-19 22:26+0900\n"
+"POT-Creation-Date: 2025-12-25 12:25+0900\n"
 "PO-Revision-Date: 2025-10-03 18:52+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: zh\n"
@@ -28,36 +28,32 @@ msgid "Offset"
 msgstr ""
 
 #: src/one_public_api/common/query_param.py:37
-#, fuzzy
 msgid "Offset Description"
-msgstr "登录表单功能。"
+msgstr ""
 
 #: src/one_public_api/common/query_param.py:43
 msgid "Limit"
 msgstr ""
 
 #: src/one_public_api/common/query_param.py:44
-#, fuzzy
 msgid "Limit Description"
-msgstr "登录表单功能。"
+msgstr ""
 
 #: src/one_public_api/common/query_param.py:48
 msgid "Order by"
 msgstr ""
 
 #: src/one_public_api/common/query_param.py:49
-#, fuzzy
 msgid "Order by Description"
-msgstr "强制登出功能。"
+msgstr ""
 
 #: src/one_public_api/common/query_param.py:53
 msgid "Keywords"
 msgstr ""
 
 #: src/one_public_api/common/query_param.py:54
-#, fuzzy
 msgid "Keywords Description"
-msgstr "登录表单功能。"
+msgstr ""
 
 #: src/one_public_api/core/exceptions.py:32
 msgid "API_ERROR_OCCURRED"
@@ -75,35 +71,67 @@ msgstr ""
 msgid "Is Read Flag"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:14
+#: src/one_public_api/models/mixins/address_mixin.py:47
 msgid "Postal Code"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:19
+#: src/one_public_api/models/mixins/address_mixin.py:48
+msgid "Postal Code Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:53
 msgid "Country"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:24
+#: src/one_public_api/models/mixins/address_mixin.py:54
+msgid "Country Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:59
 msgid "Prefecture"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:29
+#: src/one_public_api/models/mixins/address_mixin.py:60
+msgid "Prefecture Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:65
 msgid "Municipality"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:34
+#: src/one_public_api/models/mixins/address_mixin.py:66
+msgid "Municipality Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:71
 msgid "Address Detail 1"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:39
+#: src/one_public_api/models/mixins/address_mixin.py:72
+msgid "Address Detail 1 Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:77
 msgid "Address Detail 2"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:44
+#: src/one_public_api/models/mixins/address_mixin.py:78
+msgid "Address Detail 2 Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:83
 msgid "Telephone Number"
 msgstr ""
 
+#: src/one_public_api/models/mixins/address_mixin.py:84
+msgid "Telephone Number Description"
+msgstr ""
+
 #: src/one_public_api/models/mixins/id_mixin.py:26
+msgid "Record ID"
+msgstr ""
+
+#: src/one_public_api/models/mixins/id_mixin.py:27
 msgid "Auto-generated unique ID for the record"
 msgstr ""
 
@@ -111,11 +139,23 @@ msgstr ""
 msgid "Creator ID"
 msgstr ""
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:37
+#: src/one_public_api/models/mixins/maintenance_mixin.py:32
+msgid "Creator ID Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/maintenance_mixin.py:38
 msgid "Updater ID"
 msgstr ""
 
+#: src/one_public_api/models/mixins/maintenance_mixin.py:39
+msgid "Updater ID Description"
+msgstr ""
+
 #: src/one_public_api/models/mixins/password_mixin.py:27
+msgid "Password"
+msgstr ""
+
+#: src/one_public_api/models/mixins/password_mixin.py:28
 msgid "Password provided by the user"
 msgstr ""
 
@@ -123,8 +163,16 @@ msgstr ""
 msgid "Record creation time"
 msgstr ""
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:34
-msgid "Last update time (auto-updated on modification)"
+#: src/one_public_api/models/mixins/timestamp_mixin.py:29
+msgid "Record creation time Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/timestamp_mixin.py:35
+msgid "Last update time"
+msgstr ""
+
+#: src/one_public_api/models/mixins/timestamp_mixin.py:36
+msgid "Last update time Description"
 msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:21
@@ -157,9 +205,8 @@ msgstr ""
 #: src/one_public_api/models/system/organization_model.py:36
 #: src/one_public_api/models/system/permission_model.py:26
 #: src/one_public_api/models/system/role_model.py:30
-#, fuzzy
 msgid "Description"
-msgstr "登录表单功能。"
+msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:59
 #: src/one_public_api/models/system/action_model.py:91
@@ -580,17 +627,19 @@ msgid "Updater"
 msgstr ""
 
 #: src/one_public_api/schemas/base_schema.py:165
-#, fuzzy
 msgid "Creator Description"
-msgstr "登录表单功能。"
+msgstr ""
 
 #: src/one_public_api/schemas/base_schema.py:170
-#, fuzzy
 msgid "Updater Description"
-msgstr "强制登出功能。"
+msgstr ""
 
 #: src/one_public_api/schemas/feature_schema.py:29
 msgid "Feature Category"
+msgstr ""
+
+#: src/one_public_api/schemas/organization_schema.py:29
+msgid "Category"
 msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:46
@@ -598,54 +647,48 @@ msgid "Message Code"
 msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:47
-#, fuzzy
 msgid "Message Code Description"
-msgstr "强制登出功能。"
+msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:50
 msgid "Message"
 msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:51
-#, fuzzy
 msgid "Message Description"
-msgstr "登录表单功能。"
+msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:55
 msgid "Message Detail"
 msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:56
-#, fuzzy
 msgid "Message Detail Description"
-msgstr "登录表单功能。"
+msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:83
 msgid "Result"
 msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:84
-#, fuzzy
 msgid "Result Description"
-msgstr "登录表单功能。"
+msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:88
 msgid "Count of Items"
 msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:89
-#, fuzzy
 msgid "Count of Items Description"
-msgstr "登录表单功能。"
+msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:93
 msgid "Detail of Result"
 msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:94
-#, fuzzy
 msgid "Detail of Result Description"
-msgstr "登录表单功能。"
+msgstr ""
 
 #: src/one_public_api/services/authenticate_service.py:58
 msgid "user not verified"
@@ -736,4 +779,7 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Message ID of label"
+#~ msgstr ""
+
+#~ msgid "Last update time (auto-updated on modification)"
 #~ msgstr ""

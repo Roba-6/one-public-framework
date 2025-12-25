@@ -23,5 +23,6 @@ class IdMixin:
     id: UUID = Field(
         default_factory=uuid4,
         primary_key=True,
+        title=_("Record ID"),
         description=_("Auto-generated unique ID for the record"),
     )

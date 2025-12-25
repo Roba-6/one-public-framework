@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.11\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-12-19 22:26+0900\n"
+"POT-Creation-Date: 2025-12-25 12:25+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -84,38 +84,70 @@ msgstr "[D0010002] Tables: [(%(number)d): %(tables)s]"
 msgid "Is Read Flag"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:14
-#, fuzzy
+#: src/one_public_api/models/mixins/address_mixin.py:47
 msgid "Postal Code"
-msgstr "Message Code"
+msgstr "Postal Code"
 
-#: src/one_public_api/models/mixins/address_mixin.py:19
+#: src/one_public_api/models/mixins/address_mixin.py:48
+msgid "Postal Code Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:53
 msgid "Country"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:24
+#: src/one_public_api/models/mixins/address_mixin.py:54
+msgid "Country Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:59
 msgid "Prefecture"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:29
+#: src/one_public_api/models/mixins/address_mixin.py:60
+msgid "Prefecture Description"
+msgstr ""
+"A text-based search parameter used to filter results by matching one or "
+"more fields. The API will return only records that contain the provided "
+"keyword(s)."
+
+#: src/one_public_api/models/mixins/address_mixin.py:65
 msgid "Municipality"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:34
-#, fuzzy
+#: src/one_public_api/models/mixins/address_mixin.py:66
+msgid "Municipality Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:71
 msgid "Address Detail 1"
-msgstr "Message Detail"
+msgstr "Address Detail 1"
 
-#: src/one_public_api/models/mixins/address_mixin.py:39
-#, fuzzy
+#: src/one_public_api/models/mixins/address_mixin.py:72
+msgid "Address Detail 1 Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:77
 msgid "Address Detail 2"
-msgstr "Message Detail"
+msgstr "Address Detail 2"
 
-#: src/one_public_api/models/mixins/address_mixin.py:44
+#: src/one_public_api/models/mixins/address_mixin.py:78
+msgid "Address Detail 2 Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:83
 msgid "Telephone Number"
 msgstr ""
 
+#: src/one_public_api/models/mixins/address_mixin.py:84
+msgid "Telephone Number Description"
+msgstr ""
+
 #: src/one_public_api/models/mixins/id_mixin.py:26
+msgid "Record ID"
+msgstr ""
+
+#: src/one_public_api/models/mixins/id_mixin.py:27
 msgid "Auto-generated unique ID for the record"
 msgstr ""
 
@@ -123,11 +155,23 @@ msgstr ""
 msgid "Creator ID"
 msgstr ""
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:37
+#: src/one_public_api/models/mixins/maintenance_mixin.py:32
+msgid "Creator ID Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/maintenance_mixin.py:38
 msgid "Updater ID"
 msgstr ""
 
+#: src/one_public_api/models/mixins/maintenance_mixin.py:39
+msgid "Updater ID Description"
+msgstr ""
+
 #: src/one_public_api/models/mixins/password_mixin.py:27
+msgid "Password"
+msgstr ""
+
+#: src/one_public_api/models/mixins/password_mixin.py:28
 msgid "Password provided by the user"
 msgstr ""
 
@@ -135,8 +179,16 @@ msgstr ""
 msgid "Record creation time"
 msgstr ""
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:34
-msgid "Last update time (auto-updated on modification)"
+#: src/one_public_api/models/mixins/timestamp_mixin.py:29
+msgid "Record creation time Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/timestamp_mixin.py:35
+msgid "Last update time"
+msgstr ""
+
+#: src/one_public_api/models/mixins/timestamp_mixin.py:36
+msgid "Last update time Description"
 msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:21
@@ -611,25 +663,19 @@ msgid "Updater"
 msgstr ""
 
 #: src/one_public_api/schemas/base_schema.py:165
-#, fuzzy
 msgid "Creator Description"
 msgstr ""
-"A text-based search parameter used to filter results by matching one or "
-"more fields. The API will return only records that contain the provided "
-"keyword(s)."
 
 #: src/one_public_api/schemas/base_schema.py:170
-#, fuzzy
 msgid "Updater Description"
 msgstr ""
-"Determines the sorting rule applied to the result set. Sorting rules are "
-"defined by providing field names along with their sort directions. When "
-"multiple fields are specified, they are processed in the order listed, "
-"which determines their priority. To indicate descending order, append "
-"`_desc` to the field name."
 
 #: src/one_public_api/schemas/feature_schema.py:29
 msgid "Feature Category"
+msgstr ""
+
+#: src/one_public_api/schemas/organization_schema.py:29
+msgid "Category"
 msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:46
@@ -685,13 +731,8 @@ msgstr ""
 "`null` when counting is not applicable (e.g., single object retrieval)."
 
 #: src/one_public_api/schemas/response_schema.py:93
-#, fuzzy
 msgid "Detail of Result"
 msgstr ""
-"This field is used to convey advisory or warning information when the "
-"request is processed successfully (HTTP 2xx), but potentially undesirable"
-" conditions, deprecated behavior, or non-critical issues were detected "
-"during processing."
 
 #: src/one_public_api/schemas/response_schema.py:94
 msgid "Detail of Result Description"
@@ -758,39 +799,3 @@ msgstr ""
 #: src/one_public_api/services/base_service.py:159
 msgid "This record might be referenced by other data."
 msgstr ""
-
-#~ msgid "Configuration description"
-#~ msgstr ""
-
-#~ msgid "Feature description"
-#~ msgstr ""
-
-#~ msgid "Whether the organization is disabled"
-#~ msgstr ""
-
-#~ msgid "Whether the account is disabled"
-#~ msgstr ""
-
-#~ msgid "Offset from where to start"
-#~ msgstr ""
-
-#~ msgid "Message of the response"
-#~ msgstr ""
-
-#~ msgid "Detail of the response"
-#~ msgstr ""
-
-#~ msgid "Results of the request"
-#~ msgstr ""
-
-#~ msgid "Count of the results"
-#~ msgstr ""
-
-#~ msgid "Details of the results"
-#~ msgstr ""
-
-#~ msgid "Message ID of label"
-#~ msgstr ""
-
-#~ msgid "Detail of Result (Warning/Advisory)"
-#~ msgstr "Details of Result"

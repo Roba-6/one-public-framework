@@ -33,6 +33,7 @@ class PermissionPublicResponse(PermissionBase, IdMixin):
         default=None,
         description=_("Role"),
     )
+
     model_config = {
         "alias_generator": to_camel,
         "populate_by_name": True,

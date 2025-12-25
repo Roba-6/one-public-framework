@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.11\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-12-19 22:26+0900\n"
+"POT-Creation-Date: 2025-12-25 12:25+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -73,51 +73,91 @@ msgstr "【D0010002】 テーブル一覧：[(%(number)d)： %(tables)s]"
 msgid "Is Read Flag"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:14
-#, fuzzy
+#: src/one_public_api/models/mixins/address_mixin.py:47
 msgid "Postal Code"
-msgstr "メッセージコード"
+msgstr "郵便番号"
 
-#: src/one_public_api/models/mixins/address_mixin.py:19
+#: src/one_public_api/models/mixins/address_mixin.py:48
+msgid "Postal Code Description"
+msgstr "全て半角数値（ハイフン「-」可）で構成されるフォーマットが望ましい．"
+
+#: src/one_public_api/models/mixins/address_mixin.py:53
 msgid "Country"
-msgstr ""
+msgstr "国"
 
-#: src/one_public_api/models/mixins/address_mixin.py:24
-#, fuzzy
+#: src/one_public_api/models/mixins/address_mixin.py:54
+msgid "Country Description"
+msgstr "住所の最上位いで，所属国名（例：日本）"
+
+#: src/one_public_api/models/mixins/address_mixin.py:59
 msgid "Prefecture"
-msgstr "機能変更"
+msgstr "住所（都道府県）"
 
-#: src/one_public_api/models/mixins/address_mixin.py:29
+#: src/one_public_api/models/mixins/address_mixin.py:60
+msgid "Prefecture Description"
+msgstr "日本の行政区画の第一レベル（例：東京都，神奈川県）"
+
+#: src/one_public_api/models/mixins/address_mixin.py:65
 msgid "Municipality"
-msgstr ""
+msgstr "住所（市区町村）"
 
-#: src/one_public_api/models/mixins/address_mixin.py:34
-#, fuzzy
+#: src/one_public_api/models/mixins/address_mixin.py:66
+msgid "Municipality Description"
+msgstr "都道府県の下位区画（例：渋谷区，横浜市）"
+
+#: src/one_public_api/models/mixins/address_mixin.py:71
 msgid "Address Detail 1"
-msgstr "メッセージ詳細"
+msgstr "住所（番地以降）"
 
-#: src/one_public_api/models/mixins/address_mixin.py:39
-#, fuzzy
+#: src/one_public_api/models/mixins/address_mixin.py:72
+msgid "Address Detail 1 Description"
+msgstr "町域内の具体的な位置を示す番号（例：1-2-3，丁目・番・号）"
+
+#: src/one_public_api/models/mixins/address_mixin.py:77
 msgid "Address Detail 2"
-msgstr "メッセージ詳細"
+msgstr "住所（詳細）"
 
-#: src/one_public_api/models/mixins/address_mixin.py:44
+#: src/one_public_api/models/mixins/address_mixin.py:78
+msgid "Address Detail 2 Description"
+msgstr "建物名，部屋番号など番地以降の補足情報（例：渋谷マンション101号室）"
+
+#: src/one_public_api/models/mixins/address_mixin.py:83
 msgid "Telephone Number"
-msgstr ""
+msgstr "電話番号"
+
+#: src/one_public_api/models/mixins/address_mixin.py:84
+msgid "Telephone Number Description"
+msgstr "半角数値・ハイフン「-」・プラス「+」・括弧「()」のみ望ましい．"
 
 #: src/one_public_api/models/mixins/id_mixin.py:26
+msgid "Record ID"
+msgstr "レコード ID"
+
+#: src/one_public_api/models/mixins/id_mixin.py:27
 msgid "Auto-generated unique ID for the record"
-msgstr "レコード ID（自動採番）"
+msgstr "自動採番される．"
 
 #: src/one_public_api/models/mixins/maintenance_mixin.py:31
 msgid "Creator ID"
 msgstr "作成者 ID"
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:37
+#: src/one_public_api/models/mixins/maintenance_mixin.py:32
+msgid "Creator ID Description"
+msgstr "外部キーで，本レコードを作成したユーザーの ID．"
+
+#: src/one_public_api/models/mixins/maintenance_mixin.py:38
 msgid "Updater ID"
 msgstr "更新者 ID"
 
+#: src/one_public_api/models/mixins/maintenance_mixin.py:39
+msgid "Updater ID Description"
+msgstr "外部キーで，本レコードを最後に変更したユーザーの ID．"
+
 #: src/one_public_api/models/mixins/password_mixin.py:27
+msgid "Password"
+msgstr "パスワード"
+
+#: src/one_public_api/models/mixins/password_mixin.py:28
 msgid "Password provided by the user"
 msgstr "ユーザーが提供したパスワード"
 
@@ -125,33 +165,38 @@ msgstr "ユーザーが提供したパスワード"
 msgid "Record creation time"
 msgstr "作成日時"
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:34
-msgid "Last update time (auto-updated on modification)"
-msgstr "最終変更日時（変更時に自動更新）"
+#: src/one_public_api/models/mixins/timestamp_mixin.py:29
+msgid "Record creation time Description"
+msgstr "レコードが作成された日時で，自動生成される．"
+
+#: src/one_public_api/models/mixins/timestamp_mixin.py:35
+msgid "Last update time"
+msgstr "最終変更日時"
+
+#: src/one_public_api/models/mixins/timestamp_mixin.py:36
+msgid "Last update time Description"
+msgstr "レコードが最後に変更された日時で，自動生成される．"
 
 #: src/one_public_api/models/system/action_model.py:21
 #: src/one_public_api/models/system/action_model.py:86
-#, fuzzy
 msgid "Action name"
-msgstr "One Public Framework"
+msgstr "アクション名"
 
 #: src/one_public_api/models/system/action_model.py:26
-#, fuzzy
 msgid "Action label"
-msgstr "One Public Framework"
+msgstr "アクションラベル"
 
 #: src/one_public_api/models/system/action_model.py:31
 msgid "Action URL"
-msgstr ""
+msgstr "画面 URL"
 
 #: src/one_public_api/models/system/action_model.py:36
 msgid "Action icon"
-msgstr ""
+msgstr "メニューアイコン"
 
 #: src/one_public_api/models/system/action_model.py:42
-#, fuzzy
 msgid "Component name"
-msgstr "One Public Framework"
+msgstr "画面コンポーネント名"
 
 #: src/one_public_api/models/system/action_model.py:52
 #: src/one_public_api/models/system/category_model.py:34
@@ -162,16 +207,8 @@ msgstr "One Public Framework"
 #: src/one_public_api/models/system/organization_model.py:36
 #: src/one_public_api/models/system/permission_model.py:26
 #: src/one_public_api/models/system/role_model.py:30
-#, fuzzy
 msgid "Description"
 msgstr ""
-"**SYS-ATH-P-LGN**<br "
-"/>ユーザー名とパスワードを受け取り、データベース上の情報と照合します。認証に成功した場合は、アクセストークンおよびリフレッシュトークンを発行します。<br"
-" />認証に失敗した場合、ユーザー名が存在する場合はログイン失敗回数をカウントし、環境設定値 `MAX_FAILED_ATTEMPTS` "
-"に設定された上限に達するとアカウントをロックします。ユーザー名が存在しない場合はエラーを返します。<br />また、`rememberMe` "
-"フィールドが `true` の場合は、環境設定項目 `REFRESH_TOKEN_EXPIRE` "
-"に設定された有効期間内でリフレッシュトークンのクッキーが保持されます。`false` "
-"の場合は、ブラウザ終了時にリフレッシュトークンのクッキーが削除されます。"
 
 #: src/one_public_api/models/system/action_model.py:59
 #: src/one_public_api/models/system/action_model.py:91
@@ -179,7 +216,7 @@ msgstr ""
 #: src/one_public_api/models/system/feature_model.py:71
 #: src/one_public_api/schemas/feature_schema.py:55
 msgid "Whether the feature is enabled"
-msgstr "有効化"
+msgstr "有効な機能か"
 
 #: src/one_public_api/models/system/action_model.py:63
 #: src/one_public_api/models/system/action_model.py:96
@@ -197,14 +234,12 @@ msgid "Show or hide"
 msgstr ""
 
 #: src/one_public_api/models/system/attachment_model.py:28
-#, fuzzy
 msgid "Attachment name"
-msgstr "One Public Framework"
+msgstr "添付ファイル名"
 
 #: src/one_public_api/models/system/attachment_model.py:36
-#, fuzzy
 msgid "MIME type"
-msgstr "トークンタイプ"
+msgstr "MIME タイプ"
 
 #: src/one_public_api/models/system/attachment_model.py:41
 msgid "save path"
@@ -212,18 +247,16 @@ msgstr ""
 
 #: src/one_public_api/models/system/category_model.py:19
 #: src/one_public_api/models/system/category_model.py:64
-#, fuzzy
 msgid "Category name"
-msgstr "One Public Framework"
+msgstr "カテゴリー名"
 
 #: src/one_public_api/models/system/category_model.py:24
 msgid "Category alias"
-msgstr ""
+msgstr "カテゴリー別名"
 
 #: src/one_public_api/models/system/category_model.py:29
-#, fuzzy
 msgid "Category value"
-msgstr "One Public Framework"
+msgstr "カテゴリー値"
 
 #: src/one_public_api/models/system/category_model.py:42
 #: src/one_public_api/models/system/configuration_model.py:72
@@ -233,9 +266,8 @@ msgstr "設定項目オプション"
 #: src/one_public_api/models/system/category_model.py:46
 #: src/one_public_api/models/system/category_model.py:69
 #: src/one_public_api/models/system/organization_model.py:43
-#, fuzzy
 msgid "Whether the organization is enabled"
-msgstr "無効化"
+msgstr "有効な組織か"
 
 #: src/one_public_api/models/system/configuration_model.py:44
 #: src/one_public_api/models/system/configuration_model.py:97
@@ -269,17 +301,16 @@ msgstr "機能名"
 
 #: src/one_public_api/models/system/notification_model.py:22
 #: src/one_public_api/models/system/notification_model.py:57
-#, fuzzy
 msgid "Notification Title"
-msgstr "設定タイプ"
+msgstr "通知タイトル"
 
 #: src/one_public_api/models/system/notification_model.py:26
 msgid "Notification Content"
-msgstr ""
+msgstr "通知内容"
 
 #: src/one_public_api/models/system/notification_model.py:31
 msgid "Notification Published Time"
-msgstr ""
+msgstr "通知の公開時間"
 
 #: src/one_public_api/models/system/notification_model.py:38
 #: src/one_public_api/models/system/notification_model.py:62
@@ -287,12 +318,10 @@ msgid "Is Scheduled"
 msgstr ""
 
 #: src/one_public_api/models/system/organization_model.py:26
-#, fuzzy
 msgid "Organization name"
-msgstr "設定項目名"
+msgstr "組織名"
 
 #: src/one_public_api/models/system/organization_model.py:31
-#, fuzzy
 msgid "Nickname"
 msgstr "表示名"
 
@@ -305,9 +334,8 @@ msgid "User name"
 msgstr "ユーザー名"
 
 #: src/one_public_api/models/system/role_model.py:25
-#, fuzzy
 msgid "Role name"
-msgstr "ユーザー名"
+msgstr "ロール名"
 
 #: src/one_public_api/models/system/token_model.py:24
 msgid "Token"
@@ -345,9 +373,8 @@ msgstr "表示名"
 
 #: src/one_public_api/models/system/user_model.py:58
 #: src/one_public_api/models/system/user_model.py:117
-#, fuzzy
 msgid "Whether the account is enabled"
-msgstr "無効化"
+msgstr "有効なアカウントか"
 
 #: src/one_public_api/models/system/user_model.py:62
 #: src/one_public_api/models/system/user_model.py:122
@@ -587,13 +614,11 @@ msgstr "アクセストークン"
 #: src/one_public_api/schemas/permission_schema.py:30
 #: src/one_public_api/schemas/permission_schema.py:34
 #: src/one_public_api/schemas/role_schema.py:29
-#, fuzzy
 msgid "Role"
-msgstr "ユーザー名"
+msgstr "ロール"
 
 #: src/one_public_api/schemas/authenticate_schema.py:80
 #: src/one_public_api/schemas/base_schema.py:137
-#, fuzzy
 msgid "Configuration"
 msgstr "設定"
 
@@ -621,13 +646,16 @@ msgid "Creator Description"
 msgstr "レコードを新規作成したユーザー情報．"
 
 #: src/one_public_api/schemas/base_schema.py:170
-#, fuzzy
 msgid "Updater Description"
-msgstr "レコードを最後に変更したユーザーの情報．"
+msgstr "本データを最後に変更したユーザーの情報．"
 
 #: src/one_public_api/schemas/feature_schema.py:29
 msgid "Feature Category"
 msgstr "機能カテゴリー"
+
+#: src/one_public_api/schemas/organization_schema.py:29
+msgid "Category"
+msgstr "カテゴリー"
 
 #: src/one_public_api/schemas/response_schema.py:46
 msgid "Message Code"
@@ -763,3 +791,6 @@ msgstr "このデータが参照されているため、削除できません。
 
 #~ msgid "Message ID of label"
 #~ msgstr "メッセージコード"
+
+#~ msgid "Last update time (auto-updated on modification)"
+#~ msgstr "最終変更日時（変更時に自動更新）"
