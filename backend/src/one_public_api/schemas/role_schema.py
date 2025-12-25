@@ -7,11 +7,13 @@ from one_public_api.core.i18n import translate as _
 from one_public_api.models.mixins import IdMixin
 from one_public_api.models.system.role_model import RoleBase
 from one_public_api.schemas.permission_schema import PermissionPublicResponse
+from one_public_api.schemas.permission_schema import example_base as permission_example
 from one_public_api.schemas.response_schema import example_id
 
 example_base: Dict[str, Any] = {
     "name": "Super Admin",
     "description": "Super Admin Role.",
+    "permissions": [permission_example],
 }
 
 example_datetime: Dict[str, Any] = {

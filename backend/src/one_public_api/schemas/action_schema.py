@@ -7,11 +7,11 @@ from one_public_api.schemas.response_schema import example_id
 
 example_base: Dict[str, Any] = {
     "name": "system",
-    "label": "System",
+    "label": "menu.system",
     "url": "/system",
-    "icon": "fas fa-cogs",
-    "component": "System",
-    "parent_id": None,
+    "icon": "MonitorCog",
+    "component": "SystemPage",
+    "show": True,
     "description": "Super Admin Role.",
 }
 

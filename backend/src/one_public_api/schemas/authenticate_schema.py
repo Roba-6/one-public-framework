@@ -73,11 +73,12 @@ class TokenResponse(LoginFormResponse):
 class ProfileResponse(UserPublicResponse):
     role: Optional[RolePublicResponse] = Field(
         default=None,
-        description=_("Role"),
+        title=_("Role"),
+        description=_("Role Description"),
     )
-    configurations: Optional[List[ConfigurationPublicResponse]] = Field(
-        default=None,
-        description=_("Configuration"),
+    configurations: List[ConfigurationPublicResponse] = Field(
+        title=_("Configuration"),
+        description=_("Configuration Description"),
     )
 
     model_config = {

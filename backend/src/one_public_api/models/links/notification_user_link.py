@@ -17,5 +17,8 @@ class NotificationUserLink(SQLModel, table=True):
         foreign_key=settings.DB_TABLE_PRE + "users.id",
         primary_key=True,
     )
-
-    is_read: bool = Field(default=False, description=_("Is Read Flag"))
+    is_read: bool = Field(
+        default=False,
+        title=_("Is Read Flag"),
+        description=_("Is Read Flag Description"),
+    )

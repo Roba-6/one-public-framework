@@ -13,7 +13,8 @@ from one_public_api.schemas.response_schema import example_audit, example_id
 
 example_base: Dict[str, Any] = {
     "name": "SYS-COF-P-LST",
-    "description": "List Public Configurations.",
+    "description": "List Public Features.",
+    "classification": "SYS-COF",
 }
 
 example_status: Dict[str, Any] = {
@@ -26,8 +27,12 @@ example_status: Dict[str, Any] = {
 
 
 class FeaturePublicResponse(FeatureBase, IdMixin):
-    @computed_field(return_type=str, description=_("Feature Category"))
-    def category(self) -> str | None:
+    @computed_field(
+        return_type=str,
+        title=_("Classification"),
+        description=_("Classification Description"),
+    )
+    def classification(self) -> str | None:
         if self.name is None:
             return None
         else:

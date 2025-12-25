@@ -41,10 +41,9 @@ class ActionBase(SQLModel):
         max_length=constants.LENGTH_100,
         description=_("Component name"),
     )
-    parent_id: Optional[UUID] = Field(
+    show: Optional[bool] = Field(
         default=None,
-        foreign_key=settings.DB_TABLE_PRE + "actions.id",
-        ondelete="RESTRICT",
+        description=_("Show or hide"),
     )
     description: Optional[str] = Field(
         default=None,
@@ -62,9 +61,10 @@ class ActionStatus(SQLModel):
         default=None,
         description=_("Whether auth is required"),
     )
-    show: Optional[bool] = Field(
+    parent_id: Optional[UUID] = Field(
         default=None,
-        description=_("Show or hide"),
+        foreign_key=settings.DB_TABLE_PRE + "actions.id",
+        ondelete="RESTRICT",
     )
 
 

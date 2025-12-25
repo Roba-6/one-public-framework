@@ -7,11 +7,14 @@ from one_public_api.core.i18n import translate as _
 from one_public_api.models.mixins import IdMixin
 from one_public_api.models.system.organization_model import OrganizationBase
 from one_public_api.schemas.category_schema import CategoryPublicResponse
+from one_public_api.schemas.category_schema import example_base as category_example
 from one_public_api.schemas.response_schema import example_id
 
 example_base: Dict[str, Any] = {
     "name": "One Public Framework",
     "nickname": "OPF",
+    "description": "One Public Framework.",
+    "category": category_example,
 }
 
 example_datetime: Dict[str, Any] = {
