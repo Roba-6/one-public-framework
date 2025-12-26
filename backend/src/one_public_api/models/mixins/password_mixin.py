@@ -24,5 +24,6 @@ class PasswordMixin:
         default=None,
         nullable=True,
         max_length=constants.LENGTH_64,
+        title=_("Password"),
         description=_("Password provided by the user"),
     )
