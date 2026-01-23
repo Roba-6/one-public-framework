@@ -47,3 +47,7 @@ def add_updater(
     target_list: List[Dict[str, Any]], user: SQLModel
 ) -> List[Dict[str, Any]]:
     return [{**item, "updater": user} for item in target_list]
+
+
+def convert_list_to_dict(target_list: List[T], key: str) -> Dict[str, T]:
+    return {str(getattr(data, key)): data for data in target_list}

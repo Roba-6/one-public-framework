@@ -59,6 +59,8 @@ class Settings(BaseSettings):
         The username for database authentication.
     DB_PASS : str
         The password for database authentication.
+    DB_TABLE_PRE : str
+        The table name prefix for database.
     DB_POOL_SIZE : int
         Number of connections to keep open in the connection pool.
     DB_MAX_OVERFLOW_SIZE : int
@@ -126,6 +128,8 @@ class Settings(BaseSettings):
     DB_NAME: str = "opf_db" + constants.EXT_SQLITE
     DB_USER: str = ""
     DB_PASS: str = ""
+    # Table name prefix
+    DB_TABLE_PRE: str = constants.DB_PREFIX_SYS
     # The number of connections to keep open inside the connection pool
     DB_POOL_SIZE: int = constants.DB_DEFAULT_POOL_SIZE
     # The number of connections to allow in connection pool "overflow"

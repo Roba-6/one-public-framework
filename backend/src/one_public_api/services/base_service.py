@@ -63,7 +63,7 @@ class BaseService(Generic[T]):
             return self.dr.get(self.model, target_id)
         except NoResultFound:
             raise DataError(
-                self._("Data not found."), detail=str(target_id), code="E40400001"
+                self._("Data not found."), detail=str(target_id), code="E4040001"
             )
 
     def get_all(self, query: QueryParam) -> List[T]:
@@ -80,7 +80,7 @@ class BaseService(Generic[T]):
             return result
         except IntegrityError:
             raise DataError(
-                self._("Data already exists."), data.model_dump_json(), "E40900001"
+                self._("Data already exists."), data.model_dump_json(), "E4090001"
             )
 
     def add_one_with_user(self, data: T, current_user: User) -> T:
@@ -91,7 +91,7 @@ class BaseService(Generic[T]):
             return self.add_one(data)
         except DataError:
             raise DataError(
-                self._("Data already exists."), data.model_dump_json(), "E40900004"
+                self._("Data already exists."), data.model_dump_json(), "E4090004"
             )
 
     def update_one_by_id(self, target_id: UUID, data: T) -> T:
@@ -128,7 +128,7 @@ class BaseService(Generic[T]):
         except IntegrityError:
             raise DataError(
                 self._("This record might be referenced by other data."),
-                code="E40900002",
+                code="E4090002",
             )
 
     def delete_all(self, data: List[T]) -> List[T]:
@@ -143,7 +143,7 @@ class BaseService(Generic[T]):
         except IntegrityError:
             raise DataError(
                 self._("This record might be referenced by other data."),
-                code="E40900002",
+                code="E4090002",
             )
 
     def delete_one_by_id(self, target_id: UUID) -> T:
@@ -157,5 +157,5 @@ class BaseService(Generic[T]):
         except IntegrityError:
             raise DataError(
                 self._("This record might be referenced by other data."),
-                code="E40900002",
+                code="E4090002",
             )

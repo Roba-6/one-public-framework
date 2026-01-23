@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import List, Tuple
 
 # Version of the One Public API
-VERSION: str = "0.1.0-alpha.10"
+VERSION: str = "0.1.0-alpha.12"
 # Default Language
 DEFAULT_LANGUAGE: str = "en"
 # Default path for locale files
@@ -141,16 +141,20 @@ HEADER_NAME_AUTHENTICATE = "WWW-Authenticate"
 HEADER_NAME_LANGUAGE = "Accept-Language"
 
 # ----- Various Numeric Values ---------------------------------------------------------
-MAX_LENGTH_3: int = 3
-MAX_LENGTH_6: int = 6
-MAX_LENGTH_13: int = 13
-MAX_LENGTH_55: int = 55
-MAX_LENGTH_64: int = 64
-MAX_LENGTH_100: int = 100
-MAX_LENGTH_128: int = 128
-MAX_LENGTH_255: int = 255
-MAX_LENGTH_500: int = 500
-MAX_LENGTH_1000: int = 1000
+LENGTH_1: int = 1
+LENGTH_3: int = 3
+LENGTH_6: int = 6
+LENGTH_9: int = 9
+LENGTH_10: int = 10
+LENGTH_13: int = 13
+LENGTH_20: int = 20
+LENGTH_55: int = 55
+LENGTH_64: int = 64
+LENGTH_100: int = 100
+LENGTH_128: int = 128
+LENGTH_255: int = 255
+LENGTH_500: int = 500
+LENGTH_1000: int = 1000
 
 # Maximum number of allowed failed login attempts before locking the account
 MAX_FAILED_ATTEMPTS: int = 5
