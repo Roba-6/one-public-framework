@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 
 import { enqueueMessage } from '@/common/app-slice'
 import EditForm from '@/common/components/modules/edit-form'
@@ -17,9 +17,8 @@ import { getAdminPath, setUrlParams } from '@/lib/utils'
 const UpdateUserPage = (): React.JSX.Element => {
   const nav = useNavigate()
   const dispatch = useAppDispatch()
+  const { id } = useParams()
 
-  const { search } = useLocation()
-  const id = new URLSearchParams(search).get('id')
   const [loadingData, setLoadingData] = React.useState<boolean>(true)
   const [data, setData] = React.useState<User | null>(null)
 

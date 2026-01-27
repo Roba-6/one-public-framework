@@ -37,11 +37,7 @@ const UserListPage = (): React.JSX.Element => {
    * @param {string} id - The unique identifier of the user to be updated.
    */
   const navToUpdate = (id: string): void => {
-    nav(
-      setUrlParams(getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER_UPDATE, undefined, {
-        id: id,
-      })
-    )
+    nav(setUrlParams(getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER_UPDATE, id))
   }
 
   const deleteData = (id: string): void => {

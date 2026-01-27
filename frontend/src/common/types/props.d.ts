@@ -14,3 +14,9 @@ interface EditFormProps<T> {
   loadingData?: boolean
   submitForm: any
 }
+
+interface DataDetailProps<T> {
+  columns: DataColumn<T>[]
+  data: T
+  loadingData?: boolean
+}

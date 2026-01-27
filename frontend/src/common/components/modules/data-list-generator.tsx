@@ -18,8 +18,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/common/components/ui/
 import { CONSTANT } from '@/common/constants'
 import type { Action, BaseType } from '@/common/types/data'
 import type { DataColumn } from '@/common/types/data'
-import { formatDay, getLocalMessage } from '@/lib/utils'
-import { store } from '@/store'
+import { formatDay, formatNumber, getLocalMessage } from '@/lib/utils'
 
 /**
  * Converts a list of `DataColumn` objects into a list of `ColumnDef` objects,
@@ -111,11 +110,9 @@ export const convertTableColumns = <T,>(objColumns: DataColumn[]): ColumnDef<T>[
         break
       case 'number':
         cell = ({ row }: CellContext<T, any>) => {
-          const failedAttempts = parseFloat(row.getValue(dataColumn.key!))
-          const formatted = new Intl.NumberFormat(
-            store.getState().app.settings.language
-          ).format(failedAttempts)
-          return <div className={align}>{formatted}</div>
+          return (
+            <div className={align}>{formatNumber(row.getValue(dataColumn.key!))}</div>
+          )
         }
         break
       case 'booleanIcon':

@@ -33,6 +33,11 @@ const menu: Menu = {
         icon: 'User2',
         show: false,
       },
+      {
+        name: 'menus.detail',
+        url: getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER_DETAIL,
+        show: false,
+      },
     ],
   },
 }

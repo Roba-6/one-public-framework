@@ -44,7 +44,7 @@
     "createdAt": "Created At",
     "forgetPassword": "Forgot your password?",
     "id": "ID",
-    "isDisabled": "Disabled",
+    "isEnabled": "Enabled",
     "isLocked": "Locked",
     "user": {
       "email": "E-mail",

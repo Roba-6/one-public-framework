@@ -44,7 +44,7 @@
     "createdAt": "作成日時",
     "forgetPassword": "パスワードをお忘れですか？",
     "id": "ID",
-    "isDisabled": "無効化",
+    "isEnabled": "有効",
     "isLocked": "ロック",
     "user": {
       "email": "メールアドレス",

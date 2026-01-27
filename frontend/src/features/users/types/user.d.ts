@@ -12,7 +12,7 @@ export interface User extends UserBase {
   id?: string
   fullname?: string
   failedAttempts?: number
-  isDisabled?: boolean
+  isEnabled?: boolean
   isLocked?: boolean
 }
 

@@ -29,7 +29,13 @@ export type DatetimeType =
   | 'time'
   | 'defaultDatetime'
 
-export type ColumnType = 'badge' | 'label' | 'number' | 'datetime' | 'booleanIcon'
+export type ColumnType =
+  | 'title'
+  | 'badge'
+  | 'label'
+  | 'number'
+  | 'datetime'
+  | 'booleanIcon'
 
 export type ColumnAlign = 'left' | 'center' | 'right'
 

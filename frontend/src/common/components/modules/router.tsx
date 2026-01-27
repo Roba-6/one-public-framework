@@ -14,6 +14,7 @@ import SamplePage from '@/common/pages/sample/sample-page'
 import WelcomePage from '@/common/pages/welcome-page'
 import type { Menu } from '@/common/types/data'
 import AddUserPage from '@/features/users/add-page'
+import DetailUserPage from '@/features/users/detail-page'
 import UserListPage from '@/features/users/list-page'
 import UpdateUserPage from '@/features/users/update-page'
 import { getAdminPath } from '@/lib/utils'
@@ -81,6 +82,10 @@ const Router = ({ children, menu }: RouterProps): React.ReactNode => {
             <Route
               path={CONSTANT.ROUTE_URL.ADMIN_USER_UPDATE.slice(1)}
               element={<UpdateUserPage />}
+            />
+            <Route
+              path={CONSTANT.ROUTE_URL.ADMIN_USER_DETAIL.slice(1)}
+              element={<DetailUserPage />}
             />
             {children.adminRouter}
           </Route>
