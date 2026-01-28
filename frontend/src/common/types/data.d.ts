@@ -33,6 +33,7 @@ export type ColumnType =
   | 'title'
   | 'badge'
   | 'label'
+  | 'paragraph'
   | 'number'
   | 'datetime'
   | 'booleanIcon'
@@ -76,4 +77,5 @@ interface FormFieldItem {
   options?: { label: string; value: string }[]
   defaultValue?: string | boolean
   validate?: z.ZodString | z.ZodBoolean
+  className?: string
 }

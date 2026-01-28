@@ -258,7 +258,8 @@ table.data-list thead {
 /*  100% {  background-position-y: -20px;}*/
 /*}*/
 
-input:focus-visible {
+input:focus-visible,
+textarea:focus-visible {
   box-shadow: 0 0 5px oklch(70.5% 0.273 47.604);
 }
 

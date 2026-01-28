@@ -9,6 +9,7 @@ import {
 } from '@/common/components/ui/form'
 import { Input } from '@/common/components/ui/input'
 import { Switch } from '@/common/components/ui/switch'
+import { Textarea } from '@/common/components/ui/textarea.tsx'
 import type { FormFieldItem } from '@/common/types/data'
 import type { TestType } from '@/features/users/types/user'
 
@@ -39,42 +40,51 @@ export const convertFormItems = (
           control={form.control}
           name={item.name as TestType}
           render={({ field }) => (
-            <FormItem>
-              <div className="grid grid-cols-6 gap-3">
-                <FormLabel>{item.label as string}</FormLabel>
-                <FormControl className="col-span-3">
-                  {(() => {
-                    switch (item.type) {
-                      case 'text':
-                      case 'password':
-                      case 'email':
-                        return (
-                          <Input
-                            type={item.type as string}
-                            placeholder={item?.placeholder as string}
-                            {...field}
-                            value={field.value as string}
-                            autoComplete={item?.autoComplete as string}
-                          />
-                        )
-                      case 'switch':
-                        return (
-                          <Switch
-                            checked={form.watch(item.name) as boolean}
-                            onCheckedChange={(checked) => {
-                              form.setValue(item.name, checked, {
-                                shouldValidate: true,
-                              })
-                            }}
-                          />
-                        )
-                      default:
-                        return null
-                    }
-                  })()}
-                </FormControl>
-                <FormMessage />
-              </div>
+            <FormItem className="grid grid-cols-6 gap-3">
+              <FormLabel>{item.label as string}</FormLabel>
+              <FormControl className="col-span-3">
+                {(() => {
+                  switch (item.type) {
+                    case 'text':
+                    case 'password':
+                    case 'email':
+                      return (
+                        <Input
+                          type={item.type as string}
+                          placeholder={item?.placeholder as string}
+                          {...field}
+                          value={field.value as string}
+                          autoComplete={item?.autoComplete as string}
+                          className={item.className}
+                        />
+                      )
+                    case 'textarea':
+                      return (
+                        <Textarea
+                          placeholder={item?.placeholder as string}
+                          {...field}
+                          value={field.value as string}
+                          className={item.className}
+                        />
+                      )
+                    case 'switch':
+                      return (
+                        <Switch
+                          checked={form.watch(item.name) as boolean}
+                          onCheckedChange={(checked) => {
+                            form.setValue(item.name, checked, {
+                              shouldValidate: true,
+                            })
+                          }}
+                          className={item.className}
+                        />
+                      )
+                    default:
+                      return null
+                  }
+                })()}
+              </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />

@@ -17,18 +17,27 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
             console.log('item', item)
             if (item.type === 'title') {
               return (
-                <div key={idx} className="mb-8 col-span-3 text-2xl">
+                <div key={idx} className="mb-8 col-span-6 text-2xl">
                   {(props.data as any)[item.key]}
                   <small className="ps-2 text-sm text-neutral-500">
                     {(props.data as any).id}
                   </small>
                 </div>
               )
+            } else if (item.type === 'paragraph') {
+              return (
+                <React.Fragment key={idx}>
+                  <div className="">{item.name}</div>
+                  <div className="col-span-5">
+                    <p>{(props.data as any)[item.key]}</p>
+                  </div>
+                </React.Fragment>
+              )
             } else if (item.type === 'datetime') {
               return (
                 <React.Fragment key={idx}>
                   <div className="">{item.name}</div>
-                  <div className="col-span-2">
+                  <div className="col-span-5">
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <span>
@@ -46,7 +55,7 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
               return (
                 <React.Fragment key={idx}>
                   <div className="">{item.name}</div>
-                  <div className="col-span-2">
+                  <div className="col-span-5">
                     {formatNumber((props.data as any)[item.key])}
                   </div>
                 </React.Fragment>
@@ -67,7 +76,7 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
               return (
                 <React.Fragment key={idx}>
                   <div className="">{item.name}</div>
-                  <div className="col-span-2">
+                  <div className="col-span-5">
                     {ItemIcon && <ItemIcon size={16} className={color} />}
                   </div>
                 </React.Fragment>
@@ -76,7 +85,7 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
               return (
                 <React.Fragment key={idx}>
                   <div className="">{item.name}</div>
-                  <div className="col-span-2">{(props.data as any)[item.key]}</div>
+                  <div className="col-span-5">{(props.data as any)[item.key]}</div>
                 </React.Fragment>
               )
             }
@@ -86,7 +95,7 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
   }
 
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-6 gap-4">
       {props.loadingData
         ? Array(3)
             .fill(null)
@@ -95,7 +104,7 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
                 <div className="">
                   <Skeleton className="my-2 h-4 w-auto" />
                 </div>
-                <div className="col-span-2">
+                <div className="col-span-5">
                   <Skeleton className="my-2 h-4 w-auto col-span-3" />
                 </div>
               </React.Fragment>
