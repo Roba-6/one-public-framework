@@ -9,7 +9,7 @@ import {
 } from '@/common/components/ui/form'
 import { Input } from '@/common/components/ui/input'
 import { Switch } from '@/common/components/ui/switch'
-import { Textarea } from '@/common/components/ui/textarea.tsx'
+import { Textarea } from '@/common/components/ui/textarea'
 import type { FormFieldItem } from '@/common/types/data'
 import type { TestType } from '@/features/users/types/user'
 
