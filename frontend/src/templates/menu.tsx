@@ -1,6 +1,6 @@
 import { CONSTANT } from '@/common/constants'
 import type { Menu } from '@/common/types/data'
-import { getAdminPath } from '@/lib/utils'
+import { getAdminPath } from '@/lib/functions'
 
 const menu: Menu = {
   system: {

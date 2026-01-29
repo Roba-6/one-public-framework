@@ -17,7 +17,7 @@ import AddUserPage from '@/features/users/add-page'
 import DetailUserPage from '@/features/users/detail-page'
 import UserListPage from '@/features/users/list-page'
 import UpdateUserPage from '@/features/users/update-page'
-import { getAdminPath } from '@/lib/utils'
+import { getAdminPath } from '@/lib/functions'
 
 export type RouterProps = {
   children: {

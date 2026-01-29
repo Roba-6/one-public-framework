@@ -9,14 +9,9 @@ import type { Action } from '@/common/types/data'
 import type { CommonResponse } from '@/common/types/response'
 import { listColumns } from '@/features/users/list-columns'
 import type { User } from '@/features/users/types/user'
+import { getAdminPath } from '@/lib/functions'
 import { deleteApi, getApi } from '@/lib/http'
-import {
-  copyToClipboard,
-  getAdminPath,
-  getLocalMessage,
-  setUrlParams,
-} from '@/lib/utils'
-// import { setUrlParams } from '@/lib/utils'
+import { copyToClipboard, getLocalMessage, setUrlParams } from '@/lib/utils'
 
 const UserListPage = (): React.JSX.Element => {
   const dispatch = useAppDispatch()

@@ -9,8 +9,8 @@ import { useAppDispatch } from '@/common/hooks/use-store'
 import type { CommonResponse } from '@/common/types/response'
 import { newUserItems } from '@/features/users/form-items'
 import type { CreateUserRequest, User } from '@/features/users/types/user'
+import { getAdminPath } from '@/lib/functions'
 import { postApi } from '@/lib/http'
-import { getAdminPath } from '@/lib/utils'
 
 // const UserFormSchema = z.object(arrayToObject(testData, 'name', 'validate'))
 

@@ -10,7 +10,8 @@ import {
 } from '@/common/components/ui/dropdown-menu'
 import { Input } from '@/common/components/ui/input'
 import { CONSTANT } from '@/common/constants'
-import { getAdminPath, getLocalMessage } from '@/lib/utils'
+import { getAdminPath } from '@/lib/functions'
+import { getLocalMessage } from '@/lib/utils'
 
 const DataToolBar = (props: any) => {
   return (
