@@ -101,26 +101,6 @@ const UserListPage = (): React.JSX.Element => {
     )
   }
 
-  // const deleteData = (id: string): void => {
-  //   deleteApi<CommonResponse>(setUrlParams(CONSTANT.API_URL.USER_ADMIN_ID, id)).then(
-  //     (res: CommonResponse) => {
-  //       console.debug(res)
-  //       getData()
-  //       dispatch(
-  //         enqueueMessage({
-  //           message: {
-  //             code: 'S2000000',
-  //             message: 'Deleted Successfully',
-  //             detail: null,
-  //           },
-  //           status: 200,
-  //           type: 'success',
-  //         })
-  //       )
-  //     }
-  //   )
-  // }
-
   return (
     <div className="w-full">
       <DataList<User> columns={listColumns} data={data} actions={actions} selectable />
