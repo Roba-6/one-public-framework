@@ -5,6 +5,7 @@ interface DataListProps<T> {
   data: T[]
   selectable?: boolean
   actions?: Action[]
+  addUrl?: string
 }
 
 interface EditFormProps<T> {

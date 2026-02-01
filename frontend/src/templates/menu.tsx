@@ -17,6 +17,11 @@ const menu: Menu = {
         icon: 'Settings',
       },
       {
+        name: 'menus.features',
+        url: getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_FEATURE,
+        icon: 'AppWindow',
+      },
+      {
         name: 'menus.users',
         url: getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER,
         icon: 'User2',

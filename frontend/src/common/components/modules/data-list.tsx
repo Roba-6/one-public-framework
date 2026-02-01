@@ -79,7 +79,7 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.ReactNode 
 
   return (
     <React.Fragment>
-      <DataToolBar table={table} columns={props.columns} />
+      <DataToolBar table={table} columns={props.columns} addUrl={props.addUrl} />
       <div className="overflow-hidden rounded-md border">
         <Table className="data-list">
           <TableHeader>

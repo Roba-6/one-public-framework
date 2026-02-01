@@ -11,7 +11,6 @@ import { Input } from '@/common/components/ui/input'
 import { Switch } from '@/common/components/ui/switch'
 import { Textarea } from '@/common/components/ui/textarea'
 import type { FormFieldItem } from '@/common/types/data'
-import type { TestType } from '@/features/users/types/user'
 
 /**
  * Converts an array of form field items into corresponding JSX elements.
@@ -38,7 +37,7 @@ export const convertFormItems = (
         <FormField
           key={idx}
           control={form.control}
-          name={item.name as TestType}
+          name={item.name as any}
           render={({ field }) => (
             <FormItem className="grid grid-cols-6 gap-3">
               <FormLabel>{item.label as string}</FormLabel>

@@ -1,5 +1,3 @@
-type TestType = 'name' | 'email' | 'password'
-
 interface UserBase {
   name: string
   email: string
@@ -17,5 +15,4 @@ export interface User extends UserBase {
 }
 
 export type CreateUserRequest = UserBase
-
 export type UpdateUserRequest = UserBase
