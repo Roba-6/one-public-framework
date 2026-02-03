@@ -7,7 +7,6 @@ import Footer from '@/common/components/modules/footer'
 import { Separator } from '@/common/components/ui/separator'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import { completed } from '@/lib/utils'
-import { getLocalMessage } from '@/lib/utils'
 
 const HomePage = (): React.JSX.Element => {
   const appName: string = useAppSelector(selectAppName)
@@ -26,7 +25,6 @@ const HomePage = (): React.JSX.Element => {
         <Separator />
         <main className="pt-4 pb-36 px-4 sm:px-0">
           <Outlet />
-          <h1>{getLocalMessage('messages.welcome')}</h1>
         </main>
         <Footer appName={appName} />
       </div>
