@@ -16,6 +16,7 @@
     "dashboard": "ダッシュボード",
     "configurations": "システム設定",
     "users": "ユーザー",
+    "features": "機能",
     "add": "新規追加",
     "update": "情報編集"
   },
@@ -42,13 +43,11 @@
   "labels": {
     "actions": "操作",
     "createdAt": "作成日時",
+    "enabled": "有効",
     "forgetPassword": "パスワードをお忘れですか？",
     "id": "ID",
-    "isEnabled": "有効",
-    "isLocked": "ロック",
     "user": {
       "email": "メールアドレス",
-      "enabled": "有効",
       "failedAttempts": "ログイン失敗",
       "firstname": "名前",
       "fullname": "氏名",
@@ -57,6 +56,9 @@
       "name": "ユーザー名",
       "nickname": "表示名",
       "password": "パスワード"
+    },
+    "feature": {
+      "name": "機能名"
     },
     "updatedAt": "最終変更日時",
     "username": "ユーザー名"

@@ -16,6 +16,7 @@
     "dashboard": "Dashboards",
     "configurations": "Configurations",
     "users": "Users",
+    "features": "Features",
     "add": "Add",
     "update": "Update"
   },
@@ -42,19 +43,22 @@
   "labels": {
     "actions": "Actions",
     "createdAt": "Created At",
+    "enabled": "Enabled",
     "forgetPassword": "Forgot your password?",
     "id": "ID",
-    "isEnabled": "Enabled",
-    "isLocked": "Locked",
     "user": {
       "email": "E-mail",
       "failedAttempts": "Failed Attempts",
       "firstname": "Firstname",
       "fullname": "Full Name",
       "lastname": "Lastname",
+      "lock": "Locked",
       "name": "User Name",
       "nickname": "Nick Name",
       "password": "Password"
+    },
+    "feature": {
+      "name": "Name"
     },
     "updatedAt": "Updated At",
     "username": "User Name"
@@ -63,7 +67,8 @@
     "pleaseLogin": "Enter user name below to login to your account",
     "welcome": "Welcome to One Public Framework!",
     "notices": {
-      "I00100001": "The user '{}' has been deleted."
+      "I00100001": "The user '{}' has been deleted.",
+      "I00100002": "The feature '{}' has been deleted."
     }
   }
 }

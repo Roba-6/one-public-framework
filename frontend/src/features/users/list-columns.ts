@@ -13,7 +13,7 @@ export const listColumns: DataColumn[] = [
   { key: 'email', name: getLocalMessage('labels.user.email') },
   {
     key: 'isEnabled',
-    name: getLocalMessage('labels.user.enabled'),
+    name: getLocalMessage('labels.enabled'),
     type: 'booleanIcon',
     values: ['UserRoundCheck', 'UserRoundX'],
     colors: ['text-green-500 dark:text-yellow-500', 'text-orange-500'],
@@ -39,6 +39,5 @@ export const listColumns: DataColumn[] = [
     type: 'datetime',
   },
   { key: 'updatedAt', name: getLocalMessage('labels.updatedAt'), type: 'datetime' },
-
   { key: 'id', name: getLocalMessage('labels.id'), type: 'badge', align: 'center' },
 ]

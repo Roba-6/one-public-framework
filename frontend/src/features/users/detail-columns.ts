@@ -21,7 +21,7 @@ export const detailColumns: DataColumn[] = [
   { key: 'updatedAt', name: getLocalMessage('labels.updatedAt'), type: 'datetime' },
   {
     key: 'isEnabled',
-    name: getLocalMessage('labels.user.enabled'),
+    name: getLocalMessage('labels.enabled'),
     type: 'booleanIcon',
     values: ['UserRoundCheck', 'UserRoundX'],
     colors: ['text-green-500 dark:text-yellow-500', 'text-orange-500'],

@@ -107,14 +107,14 @@ export const userItems: FormFieldItem[] = [
   },
   {
     name: 'isEnabled',
-    label: getLocalMessage('labels.isEnabled'),
+    label: getLocalMessage('labels.enabled'),
     type: 'switch',
     defaultValue: true,
     validate: z.boolean(),
   },
   {
     name: 'isLocked',
-    label: getLocalMessage('labels.isLocked'),
+    label: getLocalMessage('labels.user.lock'),
     type: 'switch',
     defaultValue: false,
     validate: z.boolean(),
