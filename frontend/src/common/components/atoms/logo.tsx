@@ -42,7 +42,7 @@ const Logo = (props: { size?: LogoSize }): React.ReactNode => {
       default:
         setStyles(['', 'w-[30px] max-w-[100vw]', 'px-3 pb-2 pt-2.5 text-2xl'])
     }
-  }, [props])
+  }, [props, appSettings])
 
   return (
     <NavLink
@@ -70,17 +70,12 @@ const Logo = (props: { size?: LogoSize }): React.ReactNode => {
           styles[2]
         )}
       >
-        {Array.from(appSettings.name?.toUpperCase()).map(
-          (letter: string, idx: number) => (
-            <span
-              key={idx}
-              className="logo-letter"
-              style={{ '--index': idx + 1 } as React.CSSProperties}
-            >
-              {letter === ' ' ? <React.Fragment>&nbsp;</React.Fragment> : letter}
-            </span>
-          )
-        )}
+        <div className="relative">
+          <div className="autoTyping" data-text={appSettings.name}>
+            {appSettings.name}
+          </div>
+          <div className="invisible">&nbsp;</div>
+        </div>
       </h1>
     </NavLink>
   )

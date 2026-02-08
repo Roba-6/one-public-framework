@@ -20,7 +20,7 @@ const DataToolBar = (props: any) => {
         // onChange={(event) =>
         //   props.table.getColumn('email')?.setFilterValue(event.target.value)
         // }
-        className="max-w-sm"
+        className="me-2 max-w-sm"
       />
       <div className="ml-auto flex items-center gap-2">
         <DropdownMenu modal={false}>

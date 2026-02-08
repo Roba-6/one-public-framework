@@ -110,7 +110,12 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.ReactNode 
             {loadingData ? (
               Array(3)
                 .fill(null)
-                .map((_, idx: number) => <DataSkeleton key={idx} index={idx} />)
+                .map((_, idx: number) => (
+                  <DataSkeleton
+                    key={idx}
+                    num={table.getHeaderGroups()[0].headers.length}
+                  />
+                ))
             ) : table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>

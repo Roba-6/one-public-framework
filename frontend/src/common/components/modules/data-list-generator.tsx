@@ -210,6 +210,7 @@ export const createActionColumn = <T extends BaseType>(
   return {
     id: 'actions',
     // header: () => <div className="text-end">Actions</div>,
+    size: 20,
     cell: ({ row }) => {
       const data = row.original
       return (
