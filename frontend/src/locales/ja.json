@@ -58,6 +58,7 @@
       "password": "パスワード"
     },
     "feature": {
+      "description": "機能説明",
       "name": "機能名"
     },
     "updatedAt": "最終変更日時",

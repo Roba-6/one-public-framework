@@ -58,6 +58,7 @@
       "password": "Password"
     },
     "feature": {
+      "description": "Description",
       "name": "Name"
     },
     "updatedAt": "Updated At",

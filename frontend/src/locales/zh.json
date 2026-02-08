@@ -58,6 +58,7 @@
       "password": "密码"
     },
     "feature": {
+      "description": "说明",
       "name": "功能名称"
     },
     "updatedAt": "修改时间",

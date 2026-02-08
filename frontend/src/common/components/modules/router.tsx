@@ -13,6 +13,7 @@ import HomePage from '@/common/pages/home-page'
 import SamplePage from '@/common/pages/sample/sample-page'
 import WelcomePage from '@/common/pages/welcome-page'
 import type { Menu } from '@/common/types/data'
+import DetailFeaturePage from '@/features/features/detail-page.tsx'
 import FeatureListPage from '@/features/features/list-page'
 import AddUserPage from '@/features/users/add-page'
 import DetailUserPage from '@/features/users/detail-page'
@@ -91,6 +92,10 @@ const Router = ({ children, menu }: RouterProps): React.ReactNode => {
             <Route
               path={CONSTANT.ROUTE_URL.ADMIN_FEATURE.slice(1)}
               element={<FeatureListPage />}
+            />
+            <Route
+              path={CONSTANT.ROUTE_URL.ADMIN_FEATURE_DETAIL.slice(1)}
+              element={<DetailFeaturePage />}
             />
             {children.adminRouter}
           </Route>

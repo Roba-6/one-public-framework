@@ -76,7 +76,7 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
               return (
                 <React.Fragment key={idx}>
                   <div className="">{item.name}</div>
-                  <div className="col-span-5">
+                  <div className="py-1 col-span-5">
                     {ItemIcon && <ItemIcon size={16} className={color} />}
                   </div>
                 </React.Fragment>
