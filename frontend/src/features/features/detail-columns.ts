@@ -10,7 +10,7 @@ export const detailColumns: DataColumn[] = [
   {
     key: 'description',
     name: getLocalMessage('labels.feature.description'),
-    type: 'paragraph',
+    type: 'markdown',
   },
   {
     key: 'createdAt',

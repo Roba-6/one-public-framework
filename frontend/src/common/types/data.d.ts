@@ -34,6 +34,7 @@ export type ColumnType =
   | 'badge'
   | 'label'
   | 'paragraph'
+  | 'markdown'
   | 'number'
   | 'datetime'
   | 'booleanIcon'
