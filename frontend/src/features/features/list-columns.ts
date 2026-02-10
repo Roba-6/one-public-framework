@@ -1,4 +1,4 @@
-import type { DataColumn } from '@/common/types/data'
+import type { Action, DataColumn } from '@/common/types/data'
 import { getLocalMessage } from '@/lib/utils'
 
 export const listColumns: DataColumn[] = [
@@ -23,4 +23,34 @@ export const listColumns: DataColumn[] = [
   },
   { key: 'updatedAt', name: getLocalMessage('labels.updatedAt'), type: 'datetime' },
   { key: 'id', name: getLocalMessage('labels.id'), type: 'badge', align: 'center' },
+]
+
+export const actions: Action[] = [
+  {
+    name: getLocalMessage('buttons.copyId'),
+    events: {
+      handleClick: 'copyToClipboard',
+    },
+  },
+  {
+    type: 'separator',
+  },
+  {
+    name: getLocalMessage('buttons.details'),
+    events: {
+      handleClick: 'navToDetail',
+    },
+  },
+  {
+    name: getLocalMessage('buttons.edit'),
+    events: {
+      handleClick: 'navToUpdate',
+    },
+  },
+  {
+    name: getLocalMessage('buttons.delete'),
+    events: {
+      handleClick: 'deleteData',
+    },
+  },
 ]

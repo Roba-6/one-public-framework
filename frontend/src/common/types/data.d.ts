@@ -4,6 +4,7 @@ import { z } from 'zod/v4'
 
 interface BaseType {
   id?: string
+  name?: string
 }
 
 interface MenuItem {
@@ -66,7 +67,8 @@ interface DataColumn {
 interface Action {
   name?: string
   type?: 'item' | 'separator'
-  events?: Partial<Record<EventType, React.EventHandler<any>>> | null
+  events?: Partial<Record<EventType, React.EventHandler<any> | string>> | null
+  // events?: Partial<Record<EventType, React.EventHandler<any>>> | null
 }
 
 interface FormFieldItem {
