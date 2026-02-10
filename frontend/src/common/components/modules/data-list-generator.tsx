@@ -227,7 +227,8 @@ export const createActionColumn = <T extends BaseType>(
               {actions.map((act: Action, idx: number) => {
                 const properties: { [key: string]: any } = {}
                 if (act.events && 'handleClick' in act.events) {
-                  properties.onClick = () => act.events?.handleClick!(data.id!)
+                  properties.onClick = () =>
+                    (act.events?.handleClick as React.EventHandler<any>)!(data.id!)
                 }
                 if (act.type === 'separator') {
                   return <DropdownMenuSeparator key={idx} />
