@@ -30,8 +30,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/common/components/ui/table'
-import { CONSTANT } from '@/common/constants.ts'
-import { useAppDispatch } from '@/common/hooks/use-store.ts'
+import { useAppDispatch } from '@/common/hooks/use-store'
 import type { Action, BaseType } from '@/common/types/data'
 import type { DataListProps } from '@/common/types/props'
 import type { CommonResponse } from '@/common/types/response'
@@ -58,7 +57,7 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
   }
 
   const deleteData = (id: string): void => {
-    deleteApi<CommonResponse>(setUrlParams(CONSTANT.API_URL.USER_ADMIN_ID, id))
+    deleteApi<CommonResponse>(setUrlParams(props.deleteUrl!, id))
       .then((res: CommonResponse) => {
         const data: T = res.results as T
         console.debug(res.results as T)

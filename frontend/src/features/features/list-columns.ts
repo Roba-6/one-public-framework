@@ -17,6 +17,14 @@ export const listColumns: DataColumn[] = [
     align: 'center',
   },
   {
+    key: 'requiresAuth',
+    name: getLocalMessage('labels.requiresAuth'),
+    type: 'booleanIcon',
+    values: ['CircleCheck', 'Ban'],
+    colors: ['text-green-500 dark:text-yellow-500', 'text-orange-500'],
+    align: 'center',
+  },
+  {
     key: 'createdAt',
     name: getLocalMessage('labels.createdAt'),
     type: 'datetime',

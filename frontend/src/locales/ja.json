@@ -46,6 +46,7 @@
     "enabled": "有効",
     "forgetPassword": "パスワードをお忘れですか？",
     "id": "ID",
+    "requiresAuth": "要認証",
     "user": {
       "email": "メールアドレス",
       "failedAttempts": "ログイン失敗",

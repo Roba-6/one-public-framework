@@ -46,6 +46,7 @@
     "enabled": "Enabled",
     "forgetPassword": "Forgot your password?",
     "id": "ID",
+    "requiresAuth": "Auth Required",
     "user": {
       "email": "E-mail",
       "failedAttempts": "Failed Attempts",

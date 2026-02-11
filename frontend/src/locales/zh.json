@@ -46,6 +46,7 @@
     "enabled": "可用",
     "forgetPassword": "忘记密码？",
     "id": "ID",
+    "requiresAuth": "需要认证",
     "user": {
       "email": "邮箱",
       "failedAttempts": "登陆失败次数",

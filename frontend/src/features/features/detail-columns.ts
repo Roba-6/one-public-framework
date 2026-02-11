@@ -13,16 +13,23 @@ export const detailColumns: DataColumn[] = [
     type: 'markdown',
   },
   {
-    key: 'createdAt',
-    name: getLocalMessage('labels.createdAt'),
-    type: 'datetime',
-  },
-  { key: 'updatedAt', name: getLocalMessage('labels.updatedAt'), type: 'datetime' },
-  {
     key: 'isEnabled',
     name: getLocalMessage('labels.enabled'),
     type: 'booleanIcon',
     values: ['CircleCheck', 'Ban'],
     colors: ['text-green-500 dark:text-yellow-500', 'text-orange-500'],
   },
+  {
+    key: 'requiresAuth',
+    name: getLocalMessage('labels.requiresAuth'),
+    type: 'booleanIcon',
+    values: ['CircleCheck', 'Ban'],
+    colors: ['text-green-500 dark:text-yellow-500', 'text-orange-500'],
+  },
+  {
+    key: 'createdAt',
+    name: getLocalMessage('labels.createdAt'),
+    type: 'datetime',
+  },
+  { key: 'updatedAt', name: getLocalMessage('labels.updatedAt'), type: 'datetime' },
 ]

@@ -24,7 +24,13 @@ const UserListPage = (): React.JSX.Element => {
 
   return (
     <div className="w-full">
-      <DataList<User> columns={listColumns} data={data} actions={actions} selectable />
+      <DataList<User>
+        columns={listColumns}
+        data={data}
+        actions={actions}
+        selectable
+        deleteUrl={CONSTANT.API_URL.USER_ADMIN_ID}
+      />
     </div>
   )
 }
