@@ -2,6 +2,7 @@ import './index.css'
 import '@/locales/configs'
 
 import React, { useEffect } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 
 import { initState } from '@/common/app-slice'
 import Spinner from '@/common/components/atoms/spinner'
@@ -10,6 +11,7 @@ import Router, { type RouterProps } from '@/common/components/modules/router'
 import { ThemeProvider } from '@/common/components/theme-provider'
 import { CONSTANT } from '@/common/constants'
 import { useAppDispatch } from '@/common/hooks/use-store'
+import ErrorPage from '@/common/pages/error-page'
 import type { Configuration } from '@/common/types/configuration'
 import type { CommonResponse } from '@/common/types/response'
 import { getApi } from '@/lib/http'
@@ -35,7 +37,9 @@ const App = ({ children, menu }: RouterProps): React.ReactNode => {
 
   return (
     <ThemeProvider storageKey={CONSTANT.STORAGE_KEY.THEME}>
-      {isFinished && <Router children={children} menu={menu} />}
+      <ErrorBoundary FallbackComponent={ErrorPage}>
+        {isFinished && <Router children={children} menu={menu} />}
+      </ErrorBoundary>
       <Spinner className="z-50" />
       <Messenger />
     </ThemeProvider>

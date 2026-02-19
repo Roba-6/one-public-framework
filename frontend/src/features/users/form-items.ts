@@ -106,15 +106,15 @@ export const userItems: FormFieldItem[] = [
     validate: z.string().min(1, { message: getLocalMessage('nickname is required') }),
   },
   {
-    name: 'isDisabled',
-    label: getLocalMessage('labels.isDisabled'),
+    name: 'isEnabled',
+    label: getLocalMessage('labels.enabled'),
     type: 'switch',
     defaultValue: true,
     validate: z.boolean(),
   },
   {
     name: 'isLocked',
-    label: getLocalMessage('labels.isLocked'),
+    label: getLocalMessage('labels.user.lock'),
     type: 'switch',
     defaultValue: false,
     validate: z.boolean(),

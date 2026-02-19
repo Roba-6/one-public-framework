@@ -1,10 +1,8 @@
 import type { CellContext, ColumnDef, HeaderContext } from '@tanstack/react-table'
-import dayjs from 'dayjs'
 import * as Icon from 'lucide-react'
 import { MoreHorizontal } from 'lucide-react'
 import React from 'react'
 
-import { loadComplete } from '@/common/app-slice'
 import { Badge } from '@/common/components/ui/badge'
 import { Button } from '@/common/components/ui/button'
 import { Checkbox } from '@/common/components/ui/checkbox'
@@ -16,41 +14,25 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/common/components/ui/dropdown-menu'
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/common/components/ui/form'
-import { Input } from '@/common/components/ui/input'
-import { Switch } from '@/common/components/ui/switch'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/common/components/ui/tooltip'
 import { CONSTANT } from '@/common/constants'
-import type { Action, BaseType, FormFieldItem } from '@/common/types/data'
-import type { DataColumn, DatetimeType } from '@/common/types/data'
-import type { TestType } from '@/features/users/types/user'
-import { getLocalMessage } from '@/lib/utils'
-import { store } from '@/store'
+import type { Action, BaseType } from '@/common/types/data'
+import type { DataColumn } from '@/common/types/data'
+import { formatDay, formatNumber, getLocalMessage } from '@/lib/utils'
 
 /**
- * Complete the loading process
- */
-export const completed = (): void => {
-  setTimeout(() => {
-    store.dispatch(loadComplete())
-  }, CONSTANT.LOADING_DURATION)
-}
-
-export const formatDay = (
-  datetimeStr: string,
-  type: DatetimeType = 'datetime'
-): string => dayjs(datetimeStr).format(getLocalMessage(`format.${type}`))
-
-/**
- * Convert column metadata into the @tanstack/react-table format
+ * Converts a list of `DataColumn` objects into a list of `ColumnDef` objects,
+ * which define the structure and behavior of columns in a data table. Handles
+ * column alignment, sorting, and rendering options based on the properties of
+ * the input `DataColumn` objects.
  *
- * @param objColumns
+ * @template T - The type of the data row associated with the table columns.
+ * @param {DataColumn[]} objColumns - An array of objects representing the column
+ * definitions for a data table, including
+ * properties for alignment, type, sortability, and other rendering details.
+ * @returns {ColumnDef<T>[]} An array of objects defining the transformed table
+ * columns, including custom rendering
+ * for column headers and cells based on the `DataColumn` properties.
  */
 export const convertTableColumns = <T,>(objColumns: DataColumn[]): ColumnDef<T>[] => {
   const columns: ColumnDef<T>[] = []
@@ -128,11 +110,9 @@ export const convertTableColumns = <T,>(objColumns: DataColumn[]): ColumnDef<T>[
         break
       case 'number':
         cell = ({ row }: CellContext<T, any>) => {
-          const failedAttempts = parseFloat(row.getValue(dataColumn.key!))
-          const formatted = new Intl.NumberFormat(
-            store.getState().app.settings.language
-          ).format(failedAttempts)
-          return <div className={align}>{formatted}</div>
+          return (
+            <div className={align}>{formatNumber(row.getValue(dataColumn.key!))}</div>
+          )
         }
         break
       case 'booleanIcon':
@@ -146,9 +126,7 @@ export const convertTableColumns = <T,>(objColumns: DataColumn[]): ColumnDef<T>[
 
           let color: string = ''
           if (dataColumn.colors && dataColumn.colors.length == 2) {
-            color = value
-              ? `text-${dataColumn.colors[0]}-500`
-              : `text-${dataColumn.colors[1]}-500`
+            color = dataColumn.colors[value ? 0 : 1]
           }
 
           const ItemIcon = Icon[iconName] as React.FC<any>
@@ -177,6 +155,28 @@ export const convertTableColumns = <T,>(objColumns: DataColumn[]): ColumnDef<T>[
   return columns
 }
 
+/**
+ * A utility function for creating a select column definition.
+ *
+ * This function generates a column definition for selecting rows in a table. It
+ * includes a header cell with a checkbox that allows selecting or deselecting all
+ * rows, and individual checkboxes in each cell for selecting or deselecting
+ * specific rows.
+ *
+ * @template T - The type of row data for the table.
+ *
+ * @returns {ColumnDef<T>} A column definition object for handling row selection.
+ *
+ * The returned column has the following characteristics:
+ * - `id`: A unique identifier for the column, set to 'select'.
+ * - `header`: A checkbox element used for selecting or deselecting all rows on the
+ * page.
+ *   It reflects the selection state of rows (all selected, some selected, or none).
+ * - `cell`: A checkbox element rendered for each row, allowing selection or deselection
+ *   of the individual row. The checkbox reflects the row’s selection state.
+ * - `enableSorting`: Sorting is disabled for this column.
+ * - `enableHiding`: Hiding the column is disabled.
+ */
 export const createSelectColumn = <T,>(): ColumnDef<T> => {
   return {
     id: 'select',
@@ -210,6 +210,7 @@ export const createActionColumn = <T extends BaseType>(
   return {
     id: 'actions',
     // header: () => <div className="text-end">Actions</div>,
+    size: 20,
     cell: ({ row }) => {
       const data = row.original
       return (
@@ -226,7 +227,8 @@ export const createActionColumn = <T extends BaseType>(
               {actions.map((act: Action, idx: number) => {
                 const properties: { [key: string]: any } = {}
                 if (act.events && 'handleClick' in act.events) {
-                  properties.onClick = () => act.events?.handleClick!(data.id!)
+                  properties.onClick = () =>
+                    (act.events?.handleClick as React.EventHandler<any>)!(data.id!)
                 }
                 if (act.type === 'separator') {
                   return <DropdownMenuSeparator key={idx} />
@@ -245,60 +247,4 @@ export const createActionColumn = <T extends BaseType>(
     },
     enableHiding: false,
   }
-}
-
-export const convertFormItems = (
-  items: FormFieldItem[],
-  form: any
-): React.JSX.Element => {
-  return (
-    <React.Fragment>
-      {items.map((item: FormFieldItem, idx: number) => (
-        <FormField
-          key={idx}
-          control={form.control}
-          name={item.name as TestType}
-          render={({ field }) => (
-            <FormItem>
-              <div className="grid grid-cols-6 gap-3">
-                <FormLabel>{item.label as string}</FormLabel>
-                <FormControl className="col-span-3">
-                  {(() => {
-                    switch (item.type) {
-                      case 'text':
-                      case 'password':
-                      case 'email':
-                        return (
-                          <Input
-                            type={item.type as string}
-                            placeholder={item?.placeholder as string}
-                            {...field}
-                            value={field.value as string}
-                            autoComplete={item?.autoComplete as string}
-                          />
-                        )
-                      case 'switch':
-                        return (
-                          <Switch
-                            checked={form.watch(item.name) as boolean}
-                            onCheckedChange={(checked) => {
-                              form.setValue(item.name, checked, {
-                                shouldValidate: true,
-                              })
-                            }}
-                          />
-                        )
-                      default:
-                        return null
-                    }
-                  })()}
-                </FormControl>
-                <FormMessage />
-              </div>
-            </FormItem>
-          )}
-        />
-      ))}
-    </React.Fragment>
-  )
 }

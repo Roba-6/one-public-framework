@@ -70,7 +70,7 @@ class FeatureCreateRequest(FeatureBase):
     }
 
 
-class FeatureUpdateRequest(FeatureBase):
+class FeatureUpdateRequest(FeatureBase, FeatureStatus):
     model_config = {
         "alias_generator": to_camel,
         "populate_by_name": True,

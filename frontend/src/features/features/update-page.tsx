@@ -7,42 +7,40 @@ import { Card, CardContent } from '@/common/components/ui/card'
 import { CONSTANT } from '@/common/constants'
 import { useAppDispatch } from '@/common/hooks/use-store'
 import type { CommonResponse } from '@/common/types/response'
-import { userItems } from '@/features/users/form-items'
-import type { UpdateUserRequest, User } from '@/features/users/types/user'
+import { featureItems } from '@/features/features/form-items'
+import type { Feature, UpdateFeatureRequest } from '@/features/features/types/feature'
 import { getAdminPath } from '@/lib/functions'
 import { getApi, putApi } from '@/lib/http'
 import { setUrlParams } from '@/lib/utils'
 
-// const UserFormSchema = z.object(arrayToObject(testData, 'name', 'validate'))
-
-const UpdateUserPage = (): React.JSX.Element => {
+const UpdateFeaturePage = (): React.JSX.Element => {
   const nav = useNavigate()
   const dispatch = useAppDispatch()
   const { id } = useParams()
 
   const [loadingData, setLoadingData] = React.useState<boolean>(true)
-  const [data, setData] = React.useState<User | null>(null)
+  const [data, setData] = React.useState<Feature | null>(null)
 
   useEffect(() => {
     if (id) {
-      getApi<CommonResponse>(setUrlParams(CONSTANT.API_URL.USER_ADMIN_ID, id)).then(
+      getApi<CommonResponse>(setUrlParams(CONSTANT.API_URL.FEATURE_ADMIN_ID, id)).then(
         (res: CommonResponse) => {
-          setData(res.results! as User)
+          setData(res.results! as Feature)
           setLoadingData(false)
-          console.log('Update Page:', res.results! as User)
+          console.log('Update Page:', res.results! as Feature)
         }
       )
     }
   }, [id])
 
-  const submitForm = (values: User) => {
-    console.debug('Update User:', values)
+  const submitForm = (values: Feature) => {
+    console.debug('Update Feature:', values)
     if (id) {
       putApi<CommonResponse>(
-        setUrlParams(CONSTANT.API_URL.USER_ADMIN_ID, id),
-        values as UpdateUserRequest
+        setUrlParams(CONSTANT.API_URL.FEATURE_ADMIN_ID, id),
+        values as UpdateFeatureRequest
       ).then((res: CommonResponse) => {
-        console.log(res.results! as User)
+        console.log(res.results! as Feature)
         dispatch(
           enqueueMessage({
             message: {
@@ -54,7 +52,7 @@ const UpdateUserPage = (): React.JSX.Element => {
             type: 'success',
           })
         )
-        nav(getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER)
+        nav(getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_FEATURE)
       })
     }
   }
@@ -62,11 +60,11 @@ const UpdateUserPage = (): React.JSX.Element => {
   return (
     <Card>
       <CardContent>
-        <EditForm<User>
+        <EditForm<Feature>
           id={id as string}
           data={data!}
           loadingData={loadingData}
-          items={userItems}
+          items={featureItems}
           submitForm={submitForm}
         />
       </CardContent>
@@ -74,4 +72,4 @@ const UpdateUserPage = (): React.JSX.Element => {
   )
 }
 
-export default UpdateUserPage
+export default UpdateFeaturePage

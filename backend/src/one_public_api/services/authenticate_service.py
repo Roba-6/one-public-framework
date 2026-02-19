@@ -8,6 +8,7 @@ from fastapi import HTTPException, Response
 from fastapi.params import Depends
 from fastapi.security import OAuth2PasswordRequestForm
 from jwt import ExpiredSignatureError, InvalidTokenError
+from sqlalchemy.exc import NoResultFound
 from sqlmodel import Session
 
 from one_public_api.common import constants
@@ -101,7 +102,7 @@ class AuthenticateService(BaseService[User]):
                     return {"access_token": access_token}
         except APIError:
             raise
-        except HTTPException:
+        except NoResultFound:
             raise UnauthorizedError(
                 self._("user not found"), request.username, "E4010002"
             )

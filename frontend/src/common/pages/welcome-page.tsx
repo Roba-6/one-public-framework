@@ -6,8 +6,8 @@ import TextImage from '@/common/components/atoms/text-image'
 import { Button } from '@/common/components/ui/button'
 import { CONSTANT } from '@/common/constants'
 import { useAppDispatch } from '@/common/hooks/use-store'
-import { completed } from '@/lib/functions'
-import { getAdminPath } from '@/lib/utils'
+import { getAdminPath } from '@/lib/functions'
+import { completed } from '@/lib/utils'
 
 const WelcomePage = (): React.JSX.Element => {
   const dispatch = useAppDispatch()

@@ -13,10 +13,15 @@ import HomePage from '@/common/pages/home-page'
 import SamplePage from '@/common/pages/sample/sample-page'
 import WelcomePage from '@/common/pages/welcome-page'
 import type { Menu } from '@/common/types/data'
+import AddFeaturePage from '@/features/features/add-page'
+import DetailFeaturePage from '@/features/features/detail-page'
+import FeatureListPage from '@/features/features/list-page'
+import UpdateFeaturePage from '@/features/features/update-page'
 import AddUserPage from '@/features/users/add-page'
+import DetailUserPage from '@/features/users/detail-page'
 import UserListPage from '@/features/users/list-page'
 import UpdateUserPage from '@/features/users/update-page'
-import { getAdminPath } from '@/lib/utils'
+import { getAdminPath } from '@/lib/functions'
 
 export type RouterProps = {
   children: {
@@ -70,9 +75,14 @@ const Router = ({ children, menu }: RouterProps): React.ReactNode => {
               path={CONSTANT.ROUTE_URL.ADMIN_CONFIGURATION.slice(1)}
               element={<ConfigurationEditPage />}
             />
+            {/* --------------- User Management --------------- */}
             <Route
               path={CONSTANT.ROUTE_URL.ADMIN_USER.slice(1)}
               element={<UserListPage />}
+            />
+            <Route
+              path={CONSTANT.ROUTE_URL.ADMIN_USER_DETAIL.slice(1)}
+              element={<DetailUserPage />}
             />
             <Route
               path={CONSTANT.ROUTE_URL.ADMIN_USER_ADD.slice(1)}
@@ -81,6 +91,23 @@ const Router = ({ children, menu }: RouterProps): React.ReactNode => {
             <Route
               path={CONSTANT.ROUTE_URL.ADMIN_USER_UPDATE.slice(1)}
               element={<UpdateUserPage />}
+            />
+            {/* --------------- Feature Management --------------- */}
+            <Route
+              path={CONSTANT.ROUTE_URL.ADMIN_FEATURE.slice(1)}
+              element={<FeatureListPage />}
+            />
+            <Route
+              path={CONSTANT.ROUTE_URL.ADMIN_FEATURE_DETAIL.slice(1)}
+              element={<DetailFeaturePage />}
+            />
+            <Route
+              path={CONSTANT.ROUTE_URL.ADMIN_FEATURE_ADD.slice(1)}
+              element={<AddFeaturePage />}
+            />
+            <Route
+              path={CONSTANT.ROUTE_URL.ADMIN_FEATURE_UPDATE.slice(1)}
+              element={<UpdateFeaturePage />}
             />
             {children.adminRouter}
           </Route>

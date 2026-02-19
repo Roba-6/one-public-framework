@@ -7,24 +7,22 @@ import { Card, CardContent } from '@/common/components/ui/card'
 import { CONSTANT } from '@/common/constants'
 import { useAppDispatch } from '@/common/hooks/use-store'
 import type { CommonResponse } from '@/common/types/response'
-import { newUserItems } from '@/features/users/form-items'
-import type { CreateUserRequest, User } from '@/features/users/types/user'
+import { newFeatureItems } from '@/features/features/form-items'
+import type { CreateFeatureRequest, Feature } from '@/features/features/types/feature'
 import { getAdminPath } from '@/lib/functions'
 import { postApi } from '@/lib/http'
 
-// const UserFormSchema = z.object(arrayToObject(testData, 'name', 'validate'))
-
-const AddUserPage = (): React.JSX.Element => {
+const AddFeaturePage = (): React.JSX.Element => {
   const nav = useNavigate()
   const dispatch = useAppDispatch()
 
-  const submitForm = (data: User) => {
-    console.debug('New User:', data)
+  const submitForm = (data: Feature) => {
+    console.debug('New Feature:', data)
     postApi<CommonResponse>(
-      CONSTANT.API_URL.USER_ADMIN,
-      data as CreateUserRequest
+      CONSTANT.API_URL.FEATURE_ADMIN,
+      data as CreateFeatureRequest
     ).then((res: CommonResponse) => {
-      console.debug('Add User:', res.results! as User)
+      console.debug('Add Feature:', res.results! as Feature)
       dispatch(
         enqueueMessage({
           message: {
@@ -36,17 +34,17 @@ const AddUserPage = (): React.JSX.Element => {
           type: 'success',
         })
       )
-      nav(getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER)
+      nav(getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_FEATURE)
     })
   }
 
   return (
     <Card>
       <CardContent>
-        <EditForm items={newUserItems} submitForm={submitForm} />
+        <EditForm items={newFeatureItems} submitForm={submitForm} />
       </CardContent>
     </Card>
   )
 }
 
-export default AddUserPage
+export default AddFeaturePage

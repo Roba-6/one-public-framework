@@ -4,11 +4,11 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 import { z } from 'zod/v4'
 
+import { convertFormItems } from '@/common/components/modules/edit-form-generator'
 import { Button } from '@/common/components/ui/button'
 import { Form } from '@/common/components/ui/form'
 import { Skeleton } from '@/common/components/ui/skeleton'
 import type { EditFormProps } from '@/common/types/props'
-import { convertFormItems } from '@/lib/functions'
 import { arrayToObject, createFormSchema, getLocalMessage } from '@/lib/utils'
 
 const EditForm = <T extends Record<string, any>>(
