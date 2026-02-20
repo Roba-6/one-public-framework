@@ -16,7 +16,13 @@
     "dashboard": "仪表盘",
     "configurations": "设置",
     "users": "用户",
-    "add": "添加"
+    "features": "功能",
+    "add": "添加",
+    "update": "更改信息"
+  },
+  "format": {
+    "datetime": "YYYY年M月D日 HH:mm",
+    "shortDatetime": "M月D日 HH:mm"
   },
   "buttons": {
     "add": "新建",
@@ -24,26 +30,47 @@
     "create": "创建",
     "close": "关闭",
     "column": "列",
+    "copyId": "复制 ID",
     "delete": "删除",
+    "details": "详细信息",
     "edit": "编辑",
     "login": "登陆",
     "logout": "登出",
     "nextPage": "下一页",
-    "previousPage": "前一页"
+    "openMenu": "打开菜单",
+    "previousPage": "上一页"
   },
   "labels": {
+    "actions": "操作",
+    "createdAt": "创建时间",
+    "enabled": "可用",
+    "forgetPassword": "忘记密码？",
+    "id": "ID",
+    "requiresAuth": "需要认证",
     "user": {
-      "name": "用户名",
-      "password": "密码",
       "email": "邮箱",
+      "failedAttempts": "登陆失败次数",
       "firstname": "名",
-      "lastname": "姓"
+      "fullname": "姓名",
+      "lastname": "姓",
+      "lock": "锁定",
+      "name": "用户名",
+      "nickname": "昵称",
+      "password": "密码"
     },
-    "username": "用户名",
-    "forgetPassword": "忘记密码？"
+    "feature": {
+      "description": "说明",
+      "name": "功能名称"
+    },
+    "updatedAt": "修改时间",
+    "username": "用户名"
   },
   "messages": {
     "pleaseLogin": "请输入用户名登陆系统。",
-    "welcome": "欢迎来到 One Public Framework！"
+    "welcome": "欢迎来到 One Public Framework！",
+    "notices": {
+      "I00100001": "用户“{}”已被删除。",
+      "I00100002": "功能“{}”已被删除。"
+    }
   }
 }

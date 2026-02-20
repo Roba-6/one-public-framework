@@ -9,19 +9,18 @@ import {
   DropdownMenuTrigger,
 } from '@/common/components/ui/dropdown-menu'
 import { Input } from '@/common/components/ui/input'
-import { CONSTANT } from '@/common/constants'
-import { getAdminPath, getLocalMessage } from '@/lib/utils'
+import { getLocalMessage } from '@/lib/utils'
 
 const DataToolBar = (props: any) => {
   return (
     <div className="flex items-center py-4">
       <Input
         placeholder="Filter emails..."
-        value={(props.table.getColumn('email')?.getFilterValue() as string) ?? ''}
-        onChange={(event) =>
-          props.table.getColumn('email')?.setFilterValue(event.target.value)
-        }
-        className="max-w-sm"
+        // value={(props.table.getColumn('email')?.getFilterValue() as string) ?? ''}
+        // onChange={(event) =>
+        //   props.table.getColumn('email')?.setFilterValue(event.target.value)
+        // }
+        className="me-2 max-w-sm"
       />
       <div className="ml-auto flex items-center gap-2">
         <DropdownMenu modal={false}>
@@ -50,11 +49,7 @@ const DataToolBar = (props: any) => {
               })}
           </DropdownMenuContent>
         </DropdownMenu>
-        <NaviButton
-          messageId="add"
-          icon={<Plus />}
-          url={getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER_ADD}
-        />
+        <NaviButton messageId="add" icon={<Plus />} url={props.addUrl || './new'} />
       </div>
     </div>
   )

@@ -26,8 +26,9 @@ import { Input } from '@/common/components/ui/input'
 import { CONSTANT } from '@/common/constants'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import type { Login, LoginRequest, Token } from '@/common/types/authenticate'
+import { getAdminPath } from '@/lib/functions'
 import { postApi } from '@/lib/http'
-import { cn, getAdminPath } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import { getLocalMessage } from '@/lib/utils'
 
 const LoginFormSchema = z.object({

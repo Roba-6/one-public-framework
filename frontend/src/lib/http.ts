@@ -17,7 +17,7 @@ import type {
   ResponseData,
   ResponseError,
 } from '@/common/types/response'
-import { getEnv } from '@/lib/utils'
+import { getEnv } from '@/lib/functions'
 import { store } from '@/store'
 
 // Track whether a refresh operation is in progress

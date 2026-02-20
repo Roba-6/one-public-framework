@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: One Public API 0.1.0-alpha.12\n"
+"Project-Id-Version: One Public API 0.1.0-alpha.13\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-12-25 23:25+0900\n"
+"POT-Creation-Date: 2026-02-19 10:23+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -287,6 +287,7 @@ msgstr ""
 #: src/one_public_api/models/system/category_model.py:46
 #: src/one_public_api/models/system/category_model.py:69
 #: src/one_public_api/models/system/organization_model.py:43
+#: src/one_public_api/models/system/organization_model.py:69
 msgid "Whether the organization is enabled"
 msgstr ""
 
@@ -297,19 +298,19 @@ msgstr ""
 
 #: src/one_public_api/models/system/configuration_model.py:50
 #: src/one_public_api/models/system/configuration_model.py:103
-#: src/one_public_api/schemas/base_schema.py:220
+#: src/one_public_api/schemas/base_schema.py:224
 msgid "Configuration key"
 msgstr ""
 
 #: src/one_public_api/models/system/configuration_model.py:55
 #: src/one_public_api/models/system/configuration_model.py:109
-#: src/one_public_api/schemas/base_schema.py:224
+#: src/one_public_api/schemas/base_schema.py:228
 msgid "Configuration value"
 msgstr ""
 
 #: src/one_public_api/models/system/configuration_model.py:59
 #: src/one_public_api/models/system/configuration_model.py:114
-#: src/one_public_api/schemas/base_schema.py:227
+#: src/one_public_api/schemas/base_schema.py:231
 msgid "Configuration type"
 msgstr ""
 
@@ -350,7 +351,7 @@ msgstr ""
 #: src/one_public_api/models/system/user_model.py:30
 #: src/one_public_api/models/system/user_model.py:87
 #: src/one_public_api/schemas/authenticate_schema.py:29
-#: src/one_public_api/schemas/base_schema.py:99
+#: src/one_public_api/schemas/base_schema.py:102
 msgid "User name"
 msgstr ""
 
@@ -373,7 +374,7 @@ msgstr ""
 
 #: src/one_public_api/models/system/user_model.py:35
 #: src/one_public_api/models/system/user_model.py:93
-#: src/one_public_api/schemas/base_schema.py:103
+#: src/one_public_api/schemas/base_schema.py:106
 msgid "User's email address"
 msgstr ""
 
@@ -639,7 +640,7 @@ msgid "Access token"
 msgstr ""
 
 #: src/one_public_api/schemas/authenticate_schema.py:76
-#: src/one_public_api/schemas/base_schema.py:138
+#: src/one_public_api/schemas/base_schema.py:141
 #: src/one_public_api/schemas/role_schema.py:31
 msgid "Role"
 msgstr ""
@@ -652,7 +653,7 @@ msgstr ""
 "list of objects, or `null` when there are no results."
 
 #: src/one_public_api/schemas/authenticate_schema.py:80
-#: src/one_public_api/schemas/base_schema.py:142
+#: src/one_public_api/schemas/base_schema.py:145
 msgid "Configuration"
 msgstr ""
 
@@ -663,30 +664,30 @@ msgstr ""
 "Functions sharing the same first seven characters (e.g. SYS-COF)belong to"
 " the same functional category."
 
-#: src/one_public_api/schemas/base_schema.py:66
-#: src/one_public_api/schemas/base_schema.py:134
+#: src/one_public_api/schemas/base_schema.py:69
+#: src/one_public_api/schemas/base_schema.py:137
 msgid "Organization"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:69
+#: src/one_public_api/schemas/base_schema.py:72
 msgid "Full name"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:126
-#: src/one_public_api/schemas/base_schema.py:169
+#: src/one_public_api/schemas/base_schema.py:129
+#: src/one_public_api/schemas/base_schema.py:173
 msgid "Creator"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:130
-#: src/one_public_api/schemas/base_schema.py:174
+#: src/one_public_api/schemas/base_schema.py:133
+#: src/one_public_api/schemas/base_schema.py:178
 msgid "Updater"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:170
+#: src/one_public_api/schemas/base_schema.py:174
 msgid "Creator Description"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:175
+#: src/one_public_api/schemas/base_schema.py:179
 msgid "Updater Description"
 msgstr ""
 
@@ -795,45 +796,45 @@ msgstr ""
 " conditions, deprecated behavior, or non-critical issues were detected "
 "during processing."
 
-#: src/one_public_api/services/authenticate_service.py:58
+#: src/one_public_api/services/authenticate_service.py:59
 msgid "user not verified"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:106
-#: src/one_public_api/services/authenticate_service.py:143
+#: src/one_public_api/services/authenticate_service.py:107
+#: src/one_public_api/services/authenticate_service.py:144
 msgid "user not found"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:136
-#: src/one_public_api/services/authenticate_service.py:237
+#: src/one_public_api/services/authenticate_service.py:137
+#: src/one_public_api/services/authenticate_service.py:238
 msgid "The token has expired"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:140
+#: src/one_public_api/services/authenticate_service.py:141
 msgid "Invalid refresh token"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:181
+#: src/one_public_api/services/authenticate_service.py:182
 msgid "user disabled"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:183
+#: src/one_public_api/services/authenticate_service.py:184
 msgid "user locked"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:215
+#: src/one_public_api/services/authenticate_service.py:216
 msgid "No user information found in the token"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:225
+#: src/one_public_api/services/authenticate_service.py:226
 msgid "Your account has been logged out."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:230
+#: src/one_public_api/services/authenticate_service.py:231
 msgid "Your account has been logged in from another location."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:239
+#: src/one_public_api/services/authenticate_service.py:240
 msgid "Invalid access token"
 msgstr ""
 

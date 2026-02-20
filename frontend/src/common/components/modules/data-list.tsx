@@ -11,7 +11,14 @@ import {
   type VisibilityState,
 } from '@tanstack/react-table'
 import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router'
 
+import { enqueueMessage } from '@/common/app-slice'
+import {
+  convertTableColumns,
+  createActionColumn,
+  createSelectColumn,
+} from '@/common/components/modules/data-list-generator'
 import DataPagination from '@/common/components/modules/data-pagination'
 import DataSkeleton from '@/common/components/modules/data-skeleton'
 import DataToolBar from '@/common/components/modules/data-tool-bar'
@@ -23,16 +30,16 @@ import {
   TableHeader,
   TableRow,
 } from '@/common/components/ui/table'
-import type { BaseType } from '@/common/types/data'
+import { useAppDispatch } from '@/common/hooks/use-store'
+import type { Action, BaseType } from '@/common/types/data'
 import type { DataListProps } from '@/common/types/props'
-import {
-  convertTableColumns,
-  createActionColumn,
-  createSelectColumn,
-} from '@/lib/functions'
+import type { CommonResponse } from '@/common/types/response'
+import { deleteApi } from '@/lib/http'
+import { copyToClipboard, getLocalMessage, setUrlParams } from '@/lib/utils'
 
-const DataList = <T extends BaseType>(props: DataListProps<T>): React.ReactNode => {
-  // const nav = useNavigate()
+const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Element => {
+  const dispatch = useAppDispatch()
+  const nav = useNavigate()
   const [loadingData, setLoadingData] = React.useState<boolean>(true)
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
@@ -41,11 +48,56 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.ReactNode 
 
   const columns: ColumnDef<T>[] = convertTableColumns(props.columns)
 
+  const navToDetail = (id: string): void => {
+    nav(setUrlParams(props.detailUrl || './:id', id))
+  }
+
+  const navToUpdate = (id: string): void => {
+    nav(setUrlParams(props.updateUrl || './:id/edit', id))
+  }
+
+  const deleteData = (id: string): void => {
+    deleteApi<CommonResponse>(setUrlParams(props.deleteUrl!, id))
+      .then((res: CommonResponse) => {
+        const data: T = res.results as T
+        console.debug(res.results as T)
+        dispatch(
+          enqueueMessage({
+            message: {
+              code: 'I00100001',
+              message: getLocalMessage('messages.notices.I00100001', [data.name!]),
+              detail: null,
+            },
+            status: 200,
+            type: 'success',
+          })
+        )
+
+        // getData()
+      })
+      .catch((err: CommonResponse) => {
+        console.error(err)
+      })
+  }
+
   if (props.selectable) {
     columns.unshift(createSelectColumn<T>())
   }
   if (props.actions) {
-    columns.push(createActionColumn(props.actions))
+    const actions: Action[] = props.actions.map((action) => {
+      if (action.events?.handleClick === 'copyToClipboard') {
+        return { ...action, events: { handleClick: copyToClipboard } }
+      } else if (action.events?.handleClick === 'navToDetail') {
+        return { ...action, events: { handleClick: navToDetail } }
+      } else if (action.events?.handleClick === 'navToUpdate') {
+        return { ...action, events: { handleClick: navToUpdate } }
+      } else if (action.events?.handleClick === 'deleteData') {
+        return { ...action, events: { handleClick: deleteData } }
+      } else {
+        return action
+      }
+    })
+    columns.push(createActionColumn(actions))
   }
 
   const table = useReactTable({
@@ -79,7 +131,7 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.ReactNode 
 
   return (
     <React.Fragment>
-      <DataToolBar table={table} columns={props.columns} />
+      <DataToolBar table={table} columns={props.columns} addUrl={props.addUrl} />
       <div className="overflow-hidden rounded-md border">
         <Table className="data-list">
           <TableHeader>
@@ -110,7 +162,12 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.ReactNode 
             {loadingData ? (
               Array(3)
                 .fill(null)
-                .map((_, idx: number) => <DataSkeleton key={idx} index={idx} />)
+                .map((_, idx: number) => (
+                  <DataSkeleton
+                    key={idx}
+                    num={table.getHeaderGroups()[0].headers.length}
+                  />
+                ))
             ) : table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>

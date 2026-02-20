@@ -63,6 +63,11 @@ class Organization(
         max_length=constants.LENGTH_100,
         description=_("User name"),
     )
+    is_enabled: bool = Field(
+        default=True,
+        nullable=False,
+        description=_("Whether the organization is enabled"),
+    )
 
     creator: Optional["User"] = Relationship(
         sa_relationship_kwargs={

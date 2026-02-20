@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import List, Tuple
 
 # Version of the One Public API
-VERSION: str = "0.1.0-alpha.12"
+VERSION: str = "0.1.0-alpha.13"
 # Default Language
 DEFAULT_LANGUAGE: str = "en"
 # Default path for locale files
@@ -70,7 +70,7 @@ DB_DEFAULT_TIMEOUT: int = 30
 # The default number of rows to return in a query result
 DB_DEFAULT_LIMIT: int = 10
 # The maximum number of rows to return in a query result
-DB_MAX_LIMIT: int = 100
+DB_MAX_LIMIT: int = 1000
 
 # Table name prefix for system tables
 DB_PREFIX_SYS: str = "sys_"

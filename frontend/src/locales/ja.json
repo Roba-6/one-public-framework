@@ -16,6 +16,7 @@
     "dashboard": "ダッシュボード",
     "configurations": "システム設定",
     "users": "ユーザー",
+    "features": "機能",
     "add": "新規追加",
     "update": "情報編集"
   },
@@ -42,19 +43,24 @@
   "labels": {
     "actions": "操作",
     "createdAt": "作成日時",
+    "enabled": "有効",
     "forgetPassword": "パスワードをお忘れですか？",
     "id": "ID",
-    "isDisabled": "無効化",
-    "isLocked": "ロック",
+    "requiresAuth": "要認証",
     "user": {
       "email": "メールアドレス",
       "failedAttempts": "ログイン失敗",
       "firstname": "名前",
       "fullname": "氏名",
       "lastname": "苗字",
+      "lock": "ロック",
       "name": "ユーザー名",
       "nickname": "表示名",
       "password": "パスワード"
+    },
+    "feature": {
+      "description": "機能説明",
+      "name": "機能名"
     },
     "updatedAt": "最終変更日時",
     "username": "ユーザー名"
@@ -63,7 +69,8 @@
     "pleaseLogin": "ユーザー名をご入力してログインしてください。",
     "welcome": "One Public Framework へようこそ！",
     "notices": {
-      "I00100001": "ユーザー「{}」が削除されました。"
+      "I00100001": "ユーザー「{}」が削除されました。",
+      "I00100002": "機能「{}」が削除されました。"
     }
   }
 }

@@ -2,7 +2,7 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
 import { CONSTANT } from '@/common/constants'
-import { getEnv } from '@/lib/utils'
+import { getEnv } from '@/lib/functions'
 import { store } from '@/store'
 
 void i18n.use(initReactI18next).init({

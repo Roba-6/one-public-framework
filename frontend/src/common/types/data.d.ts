@@ -4,6 +4,7 @@ import { z } from 'zod/v4'
 
 interface BaseType {
   id?: string
+  name?: string
 }
 
 interface MenuItem {
@@ -29,7 +30,15 @@ export type DatetimeType =
   | 'time'
   | 'defaultDatetime'
 
-export type ColumnType = 'badge' | 'label' | 'number' | 'datetime' | 'booleanIcon'
+export type ColumnType =
+  | 'title'
+  | 'badge'
+  | 'label'
+  | 'paragraph'
+  | 'markdown'
+  | 'number'
+  | 'datetime'
+  | 'booleanIcon'
 
 export type ColumnAlign = 'left' | 'center' | 'right'
 
@@ -58,7 +67,8 @@ interface DataColumn {
 interface Action {
   name?: string
   type?: 'item' | 'separator'
-  events?: Partial<Record<EventType, React.EventHandler<any>>> | null
+  events?: Partial<Record<EventType, React.EventHandler<any> | string>> | null
+  // events?: Partial<Record<EventType, React.EventHandler<any>>> | null
 }
 
 interface FormFieldItem {
@@ -70,4 +80,5 @@ interface FormFieldItem {
   options?: { label: string; value: string }[]
   defaultValue?: string | boolean
   validate?: z.ZodString | z.ZodBoolean
+  className?: string
 }

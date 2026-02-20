@@ -5,6 +5,10 @@ interface DataListProps<T> {
   data: T[]
   selectable?: boolean
   actions?: Action[]
+  addUrl?: string
+  updateUrl?: string
+  deleteUrl?: string
+  detailUrl?: string
 }
 
 interface EditFormProps<T> {
@@ -13,4 +17,10 @@ interface EditFormProps<T> {
   data?: T
   loadingData?: boolean
   submitForm: any
+}
+
+interface DataDetailProps<T> {
+  columns: DataColumn<T>[]
+  data: T
+  loadingData?: boolean
 }

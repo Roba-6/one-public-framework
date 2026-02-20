@@ -34,6 +34,9 @@ example_user_base: Dict[str, Any] = {
     "nickname": "Roba",
     "email": "test@test.com",
     "password": "password123",
+}
+
+example_user_options: Dict[str, Any] = {
     "configuration": [],
     "organization": organization_example,
     "role": role_example,
@@ -44,7 +47,7 @@ example_fullname: Dict[str, Any] = {
 }
 
 example_user_status: Dict[str, Any] = {
-    "isDisabled": False,
+    "isEnabled": False,
     "isLocked": False,
     "failedAttempts": 0,
 }
@@ -153,6 +156,7 @@ class UserResponse(UserPublicResponse, UserStatus):
                     **example_user_base,
                     **example_fullname,
                     **example_user_status,
+                    **example_user_options,
                     **example_id,
                 }
             ],
