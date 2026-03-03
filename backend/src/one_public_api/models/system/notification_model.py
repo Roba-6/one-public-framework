@@ -11,7 +11,7 @@ from one_public_api.models.mixins import BelongToMixin, IdMixin, TimestampMixin
 from one_public_api.models.mixins.maintenance_mixin import MaintenanceMixin
 
 if TYPE_CHECKING:
-    from one_public_api.models.system.user_model import User
+    pass
 
 
 class NotificationBase(SQLModel):
@@ -62,6 +62,6 @@ class Notification(
         description=_("Is Scheduled"),
     )
 
-    users: List["User"] = Relationship(
-        back_populates="notifications", link_model=NotificationUserLink
+    user_links: List["NotificationUserLink"] = Relationship(
+        back_populates="notification"
     )
