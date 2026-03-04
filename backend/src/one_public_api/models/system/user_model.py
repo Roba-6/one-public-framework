@@ -17,7 +17,6 @@ from one_public_api.models.mixins import MaintenanceMixin, PasswordMixin, Timest
 from one_public_api.models.mixins.id_mixin import IdMixin
 from one_public_api.models.system.attachment_model import Attachment
 from one_public_api.models.system.configuration_model import Configuration
-from one_public_api.models.system.notification_model import Notification
 from one_public_api.models.system.organization_model import Organization
 from one_public_api.models.system.role_model import Role
 from one_public_api.models.system.token_model import Token
@@ -151,6 +150,6 @@ class User(
     )
     role: Optional["Role"] = Relationship(link_model=RoleUserLink)
     attachment: "Attachment" = Relationship(link_model=AttachmentUserLink)
-    notifications: List["Notification"] = Relationship(
-        back_populates="users", link_model=NotificationUserLink
+    notification_links: List["NotificationUserLink"] = Relationship(
+        back_populates="user"
     )

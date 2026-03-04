@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: One Public API 0.1.0-alpha.13\n"
+"Project-Id-Version: One Public API 0.1.0-alpha.14\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-02-19 10:23+0900\n"
+"POT-Creation-Date: 2026-03-03 16:20+0900\n"
 "PO-Revision-Date: 2025-10-03 18:52+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: zh\n"
@@ -67,14 +67,13 @@ msgstr ""
 msgid "D0010002"
 msgstr ""
 
-#: src/one_public_api/models/links/notification_user_link.py:22
+#: src/one_public_api/models/links/notification_user_link.py:26
 msgid "Is Read Flag"
 msgstr ""
 
-#: src/one_public_api/models/links/notification_user_link.py:23
-#, fuzzy
+#: src/one_public_api/models/links/notification_user_link.py:27
 msgid "Is Read Flag Description"
-msgstr "登录表单功能。"
+msgstr "已读标记。"
 
 #: src/one_public_api/models/mixins/address_mixin.py:47
 msgid "Postal Code"
@@ -330,8 +329,8 @@ msgid "Nickname"
 msgstr ""
 
 #: src/one_public_api/models/system/organization_model.py:64
-#: src/one_public_api/models/system/user_model.py:30
-#: src/one_public_api/models/system/user_model.py:87
+#: src/one_public_api/models/system/user_model.py:29
+#: src/one_public_api/models/system/user_model.py:86
 #: src/one_public_api/schemas/authenticate_schema.py:29
 #: src/one_public_api/schemas/base_schema.py:102
 msgid "User name"
@@ -354,39 +353,39 @@ msgstr ""
 msgid "Owner of token"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:35
-#: src/one_public_api/models/system/user_model.py:93
+#: src/one_public_api/models/system/user_model.py:34
+#: src/one_public_api/models/system/user_model.py:92
 #: src/one_public_api/schemas/base_schema.py:106
 msgid "User's email address"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:40
-#: src/one_public_api/models/system/user_model.py:99
+#: src/one_public_api/models/system/user_model.py:39
+#: src/one_public_api/models/system/user_model.py:98
 msgid "First name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:45
-#: src/one_public_api/models/system/user_model.py:105
+#: src/one_public_api/models/system/user_model.py:44
+#: src/one_public_api/models/system/user_model.py:104
 msgid "Last name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:50
-#: src/one_public_api/models/system/user_model.py:111
+#: src/one_public_api/models/system/user_model.py:49
+#: src/one_public_api/models/system/user_model.py:110
 msgid "Display nickname"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:57
-#: src/one_public_api/models/system/user_model.py:116
+#: src/one_public_api/models/system/user_model.py:56
+#: src/one_public_api/models/system/user_model.py:115
 msgid "Whether the account is enabled"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:61
-#: src/one_public_api/models/system/user_model.py:121
+#: src/one_public_api/models/system/user_model.py:60
+#: src/one_public_api/models/system/user_model.py:120
 msgid "Whether the account is locked"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:65
-#: src/one_public_api/models/system/user_model.py:126
+#: src/one_public_api/models/system/user_model.py:64
+#: src/one_public_api/models/system/user_model.py:125
 msgid "Number of failed login attempts"
 msgstr ""
 
@@ -608,9 +607,8 @@ msgid "Role"
 msgstr ""
 
 #: src/one_public_api/schemas/authenticate_schema.py:77
-#, fuzzy
 msgid "Role Description"
-msgstr "登录表单功能。"
+msgstr ""
 
 #: src/one_public_api/schemas/authenticate_schema.py:80
 #: src/one_public_api/schemas/base_schema.py:145
@@ -618,9 +616,8 @@ msgid "Configuration"
 msgstr ""
 
 #: src/one_public_api/schemas/authenticate_schema.py:81
-#, fuzzy
 msgid "Configuration Description"
-msgstr "登录表单功能。"
+msgstr ""
 
 #: src/one_public_api/schemas/base_schema.py:69
 #: src/one_public_api/schemas/base_schema.py:137
@@ -654,9 +651,8 @@ msgid "Classification"
 msgstr ""
 
 #: src/one_public_api/schemas/feature_schema.py:33
-#, fuzzy
 msgid "Classification Description"
-msgstr "登录表单功能。"
+msgstr ""
 
 #: src/one_public_api/schemas/organization_schema.py:32
 msgid "Category"
@@ -667,14 +663,12 @@ msgid "Actions"
 msgstr ""
 
 #: src/one_public_api/schemas/permission_schema.py:34
-#, fuzzy
 msgid "Actions Description"
-msgstr "登录表单功能。"
+msgstr ""
 
 #: src/one_public_api/schemas/permission_schema.py:38
-#, fuzzy
 msgid "Features Description"
-msgstr "强制登出功能。"
+msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:46
 msgid "Message Code"
