@@ -4,12 +4,12 @@ from typing import Annotated, Any, Dict, Generic, List, Optional, Type, TypeVar
 from uuid import UUID
 
 from fastapi.params import Depends
-from sqlalchemy.exc import IntegrityError, NoResultFound
+from sqlalchemy.exc import IntegrityError, NoResultFound, NoSuchColumnError
 from sqlmodel import Session, SQLModel
 
 from one_public_api.common.query_param import QueryParam
 from one_public_api.core import get_session
-from one_public_api.core.exceptions import DataError
+from one_public_api.core.exceptions import DataError, RequestError
 from one_public_api.core.i18n import get_translator
 from one_public_api.core.log import logger
 from one_public_api.crud.data_creator import DataCreator
@@ -67,9 +67,16 @@ class BaseService(Generic[T]):
             )
 
     def get_all(self, query: QueryParam) -> List[T]:
-        (data, self.count) = self.dr.all(self.model, query, self.search_columns)
+        try:
+            (data, self.count) = self.dr.all(self.model, query, self.search_columns)
 
-        return data
+            return data
+        except NoSuchColumnError as e:
+            raise RequestError(
+                self._("Invalid search column specified."),
+                code="E4000001",
+                detail=str(e),
+            )
 
     def add_one(self, data: T) -> T:
         try:

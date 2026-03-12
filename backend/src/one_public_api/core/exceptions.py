@@ -35,6 +35,17 @@ class APIError(HTTPException):
         super().__init__(status_code=status_code, detail=msg_rsp, headers=self.headers)
 
 
+class RequestError(APIError):
+    def __init__(
+        self,
+        message: str = "",
+        detail: Any | None = None,
+        code: str = "E4000000",
+        status_code: int = status.HTTP_400_BAD_REQUEST,
+    ):
+        super().__init__(code, message, detail, status_code)
+
+
 class DataError(APIError):
     def __init__(
         self,

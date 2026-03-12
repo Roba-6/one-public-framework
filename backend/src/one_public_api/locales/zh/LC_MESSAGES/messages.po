@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: One Public API 0.1.0-alpha.14\n"
+"Project-Id-Version: One Public API 0.1.0-alpha.15\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-03-03 16:20+0900\n"
+"POT-Creation-Date: 2026-03-13 00:33+0900\n"
 "PO-Revision-Date: 2025-10-03 18:52+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: zh\n"
@@ -23,37 +23,46 @@ msgstr ""
 msgid "API NAME"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:36
+#: src/one_public_api/common/query_param.py:38
 msgid "Offset"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:37
+#: src/one_public_api/common/query_param.py:39
 msgid "Offset Description"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:43
+#: src/one_public_api/common/query_param.py:45
 msgid "Limit"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:44
+#: src/one_public_api/common/query_param.py:46
 msgid "Limit Description"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:48
+#: src/one_public_api/common/query_param.py:50
 msgid "Order by"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:49
+#: src/one_public_api/common/query_param.py:51
 msgid "Order by Description"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:53
+#: src/one_public_api/common/query_param.py:55
 msgid "Keywords"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:54
+#: src/one_public_api/common/query_param.py:56
 msgid "Keywords Description"
 msgstr ""
+
+#: src/one_public_api/common/query_param.py:60
+msgid "Filters"
+msgstr ""
+
+#: src/one_public_api/common/query_param.py:61
+#, fuzzy
+msgid "Filters Description"
+msgstr "登录表单功能。"
 
 #: src/one_public_api/core/exceptions.py:32
 msgid "API_ERROR_OCCURRED"
@@ -720,7 +729,7 @@ msgstr ""
 
 #: src/one_public_api/services/authenticate_service.py:59
 msgid "user not verified"
-msgstr ""
+msgstr "用户名或密码错误。"
 
 #: src/one_public_api/services/authenticate_service.py:107
 #: src/one_public_api/services/authenticate_service.py:144
@@ -730,19 +739,19 @@ msgstr "此用户不存在。"
 #: src/one_public_api/services/authenticate_service.py:137
 #: src/one_public_api/services/authenticate_service.py:238
 msgid "The token has expired"
-msgstr ""
+msgstr "令牌已过期。"
 
 #: src/one_public_api/services/authenticate_service.py:141
 msgid "Invalid refresh token"
-msgstr ""
+msgstr "无效的刷新令牌。"
 
 #: src/one_public_api/services/authenticate_service.py:182
 msgid "user disabled"
-msgstr ""
+msgstr "无效的用户。"
 
 #: src/one_public_api/services/authenticate_service.py:184
 msgid "user locked"
-msgstr ""
+msgstr "用户已被锁定。"
 
 #: src/one_public_api/services/authenticate_service.py:216
 msgid "No user information found in the token"
@@ -764,56 +773,18 @@ msgstr ""
 msgid "Data not found."
 msgstr "找不到数据。"
 
-#: src/one_public_api/services/base_service.py:83
-#: src/one_public_api/services/base_service.py:94
+#: src/one_public_api/services/base_service.py:76
+msgid "Invalid search column specified."
+msgstr "被指定的字段不正确。"
+
+#: src/one_public_api/services/base_service.py:90
+#: src/one_public_api/services/base_service.py:101
 #: src/one_public_api/services/user_service.py:36
 msgid "Data already exists."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:130
-#: src/one_public_api/services/base_service.py:145
-#: src/one_public_api/services/base_service.py:159
+#: src/one_public_api/services/base_service.py:137
+#: src/one_public_api/services/base_service.py:152
+#: src/one_public_api/services/base_service.py:166
 msgid "This record might be referenced by other data."
 msgstr ""
-
-#~ msgid "Configuration description"
-#~ msgstr ""
-
-#~ msgid "Feature description"
-#~ msgstr ""
-
-#~ msgid "Whether the organization is disabled"
-#~ msgstr ""
-
-#~ msgid "Whether the account is disabled"
-#~ msgstr ""
-
-#~ msgid "Offset from where to start"
-#~ msgstr ""
-
-#~ msgid "Message of the response"
-#~ msgstr ""
-
-#~ msgid "Detail of the response"
-#~ msgstr ""
-
-#~ msgid "Results of the request"
-#~ msgstr ""
-
-#~ msgid "Count of the results"
-#~ msgstr ""
-
-#~ msgid "Details of the results"
-#~ msgstr ""
-
-#~ msgid "Message ID of label"
-#~ msgstr ""
-
-#~ msgid "Last update time (auto-updated on modification)"
-#~ msgstr ""
-
-#~ msgid "Feature Category"
-#~ msgstr ""
-
-#~ msgid "Feature Name"
-#~ msgstr "该功能未被起用。"
