@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: One Public API 0.1.0-alpha.14\n"
+"Project-Id-Version: One Public API 0.1.0-alpha.15\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-03-03 16:20+0900\n"
+"POT-Creation-Date: 2026-03-13 00:33+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -23,39 +23,48 @@ msgstr ""
 msgid "API NAME"
 msgstr "One Public Framework"
 
-#: src/one_public_api/common/query_param.py:36
+#: src/one_public_api/common/query_param.py:38
 msgid "Offset"
 msgstr "オフセット値"
 
-#: src/one_public_api/common/query_param.py:37
+#: src/one_public_api/common/query_param.py:39
 msgid "Offset Description"
 msgstr "検索結果の取得開始位置を指定するパラメータ．ページネーションに利用し，先頭から何件分スキップして結果を返却するかを定義する．"
 
-#: src/one_public_api/common/query_param.py:43
+#: src/one_public_api/common/query_param.py:45
 msgid "Limit"
 msgstr "取得件数"
 
-#: src/one_public_api/common/query_param.py:44
+#: src/one_public_api/common/query_param.py:46
 msgid "Limit Description"
 msgstr "検索結果として返却する最大件数を指定するパラメータ．1リクエストあたりの返却件数を制御し，過剰なデータ取得を防止する．"
 
-#: src/one_public_api/common/query_param.py:48
+#: src/one_public_api/common/query_param.py:50
 msgid "Order by"
 msgstr "ソート用の列名"
 
-#: src/one_public_api/common/query_param.py:49
+#: src/one_public_api/common/query_param.py:51
 msgid "Order by Description"
 msgstr ""
 "検索結果に適用する並び順を指定するパラメータ．フィールド名および並び順を用いてソート条件を設定する．複数フィールドを指定した場合は，記載順を優先順として処理する．降順を指定する場合は，フィールド名の末尾に"
 " `_desc` を付与する．"
 
-#: src/one_public_api/common/query_param.py:53
+#: src/one_public_api/common/query_param.py:55
 msgid "Keywords"
 msgstr "検索用のキーワード"
 
-#: src/one_public_api/common/query_param.py:54
+#: src/one_public_api/common/query_param.py:56
 msgid "Keywords Description"
 msgstr "キーワード検索用のパラメータ．指定したキーワードを含むレコードを対象として検索結果に含める．"
+
+#: src/one_public_api/common/query_param.py:60
+msgid "Filters"
+msgstr ""
+
+#: src/one_public_api/common/query_param.py:61
+#, fuzzy
+msgid "Filters Description"
+msgstr "本データを最後に変更したユーザーの情報．"
 
 #: src/one_public_api/core/exceptions.py:32
 msgid "API_ERROR_OCCURRED"
@@ -773,11 +782,11 @@ msgstr ""
 
 #: src/one_public_api/services/authenticate_service.py:226
 msgid "Your account has been logged out."
-msgstr ""
+msgstr "アカウントはログアウトされました。"
 
 #: src/one_public_api/services/authenticate_service.py:231
 msgid "Your account has been logged in from another location."
-msgstr ""
+msgstr "このアカウントは別の場所からログインされました。"
 
 #: src/one_public_api/services/authenticate_service.py:240
 msgid "Invalid access token"
@@ -787,14 +796,18 @@ msgstr "アクセストークンが無効です。"
 msgid "Data not found."
 msgstr "データが見つかりません。"
 
-#: src/one_public_api/services/base_service.py:83
-#: src/one_public_api/services/base_service.py:94
+#: src/one_public_api/services/base_service.py:76
+msgid "Invalid search column specified."
+msgstr "指定されたカラム名は不正です。"
+
+#: src/one_public_api/services/base_service.py:90
+#: src/one_public_api/services/base_service.py:101
 #: src/one_public_api/services/user_service.py:36
 msgid "Data already exists."
 msgstr "データは既に存在します。"
 
-#: src/one_public_api/services/base_service.py:130
-#: src/one_public_api/services/base_service.py:145
-#: src/one_public_api/services/base_service.py:159
+#: src/one_public_api/services/base_service.py:137
+#: src/one_public_api/services/base_service.py:152
+#: src/one_public_api/services/base_service.py:166
 msgid "This record might be referenced by other data."
 msgstr "このデータが参照されているため、削除できません。"

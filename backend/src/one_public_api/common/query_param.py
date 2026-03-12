@@ -27,7 +27,9 @@ class QueryParam(BaseModel):
     order_by : List[str]
         Specifies fields to order results by with a default of an empty list.
     keywords : List[str]
-        List of keywords to be used for filtering or search.
+        List of keywords to be used for search.
+    filters : List[str]
+        List of filters to be used for filtering.
     """
 
     offset: int = Field(
@@ -53,7 +55,11 @@ class QueryParam(BaseModel):
         title=_("Keywords"),
         description=_("Keywords Description"),
     )
-    # filtering: Dict[str, Any] = Field()
+    filters: List[str] = Field(
+        default=[],
+        title=_("Filters"),
+        description=_("Filters Description"),
+    )
 
     model_config = ConfigDict(
         alias_generator=to_camel,
