@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-03-03 16:20+0900\n"
+"POT-Creation-Date: 2026-03-13 00:33+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,36 +21,44 @@ msgstr ""
 msgid "API NAME"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:36
+#: src/one_public_api/common/query_param.py:38
 msgid "Offset"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:37
+#: src/one_public_api/common/query_param.py:39
 msgid "Offset Description"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:43
+#: src/one_public_api/common/query_param.py:45
 msgid "Limit"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:44
+#: src/one_public_api/common/query_param.py:46
 msgid "Limit Description"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:48
+#: src/one_public_api/common/query_param.py:50
 msgid "Order by"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:49
+#: src/one_public_api/common/query_param.py:51
 msgid "Order by Description"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:53
+#: src/one_public_api/common/query_param.py:55
 msgid "Keywords"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:54
+#: src/one_public_api/common/query_param.py:56
 msgid "Keywords Description"
+msgstr ""
+
+#: src/one_public_api/common/query_param.py:60
+msgid "Filters"
+msgstr ""
+
+#: src/one_public_api/common/query_param.py:61
+msgid "Filters Description"
 msgstr ""
 
 #: src/one_public_api/core/exceptions.py:32
@@ -762,14 +770,18 @@ msgstr ""
 msgid "Data not found."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:83
-#: src/one_public_api/services/base_service.py:94
+#: src/one_public_api/services/base_service.py:76
+msgid "Invalid search column specified."
+msgstr ""
+
+#: src/one_public_api/services/base_service.py:90
+#: src/one_public_api/services/base_service.py:101
 #: src/one_public_api/services/user_service.py:36
 msgid "Data already exists."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:130
-#: src/one_public_api/services/base_service.py:145
-#: src/one_public_api/services/base_service.py:159
+#: src/one_public_api/services/base_service.py:137
+#: src/one_public_api/services/base_service.py:152
+#: src/one_public_api/services/base_service.py:166
 msgid "This record might be referenced by other data."
 msgstr ""

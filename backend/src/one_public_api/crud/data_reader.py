@@ -4,7 +4,7 @@ from uuid import UUID
 from fastapi.params import Depends
 from sqlalchemy import JSON, cast, func
 from sqlalchemy.dialects.postgresql import JSONB
-from sqlalchemy.exc import NoResultFound
+from sqlalchemy.exc import NoResultFound, NoSuchColumnError
 
 # from sqlalchemy.inspection import inspect
 from sqlmodel import Session, SQLModel, col, or_, select
@@ -70,6 +70,16 @@ class DataReader:
                     kw_col_list.append(col(getattr(model, column)).like(f"%{keyword}%"))
             statement = statement.where(or_(*kw_col_list))
             count_statement = count_statement.where(or_(*kw_col_list))
+        if query and query.filters is not None and len(query.filters) > 0:
+            for f in query.filters:
+                if f.find(":") == -1:
+                    continue
+                k, v = f.split(":")
+                try:
+                    statement = statement.where(getattr(model, k) == v)
+                    count_statement = count_statement.where(getattr(model, k) == v)
+                except AttributeError:
+                    raise NoSuchColumnError(k)
         if conditions is not None and len(conditions) > 0:
             for k, v in conditions.items():
                 if isinstance(v, list):

@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: One Public API 0.1.0-alpha.14\n"
+"Project-Id-Version: One Public API 0.1.0-alpha.15\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-03-03 16:20+0900\n"
+"POT-Creation-Date: 2026-03-13 00:33+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -23,32 +23,32 @@ msgstr ""
 msgid "API NAME"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:36
+#: src/one_public_api/common/query_param.py:38
 msgid "Offset"
 msgstr "Offset"
 
-#: src/one_public_api/common/query_param.py:37
+#: src/one_public_api/common/query_param.py:39
 msgid "Offset Description"
 msgstr ""
 "Specifies the starting position of the result set. It is used for "
 "pagination and indicates how many records should be skipped before "
 "returning data."
 
-#: src/one_public_api/common/query_param.py:43
+#: src/one_public_api/common/query_param.py:45
 msgid "Limit"
 msgstr "Limit"
 
-#: src/one_public_api/common/query_param.py:44
+#: src/one_public_api/common/query_param.py:46
 msgid "Limit Description"
 msgstr ""
 "Defines the maximum number of records to return in a single request. Used"
 " to control page size and prevent large data loads."
 
-#: src/one_public_api/common/query_param.py:48
+#: src/one_public_api/common/query_param.py:50
 msgid "Order by"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:49
+#: src/one_public_api/common/query_param.py:51
 msgid "Order by Description"
 msgstr ""
 "Determines the sorting rule applied to the result set. Sorting rules are "
@@ -57,12 +57,24 @@ msgstr ""
 "which determines their priority. To indicate descending order, append "
 "`_desc` to the field name."
 
-#: src/one_public_api/common/query_param.py:53
+#: src/one_public_api/common/query_param.py:55
 msgid "Keywords"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:54
+#: src/one_public_api/common/query_param.py:56
 msgid "Keywords Description"
+msgstr ""
+"A text-based search parameter used to filter results by matching one or "
+"more fields. The API will return only records that contain the provided "
+"keyword(s)."
+
+#: src/one_public_api/common/query_param.py:60
+msgid "Filters"
+msgstr ""
+
+#: src/one_public_api/common/query_param.py:61
+#, fuzzy
+msgid "Filters Description"
 msgstr ""
 "A text-based search parameter used to filter results by matching one or "
 "more fields. The API will return only records that contain the provided "
@@ -842,14 +854,18 @@ msgstr ""
 msgid "Data not found."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:83
-#: src/one_public_api/services/base_service.py:94
+#: src/one_public_api/services/base_service.py:76
+msgid "Invalid search column specified."
+msgstr ""
+
+#: src/one_public_api/services/base_service.py:90
+#: src/one_public_api/services/base_service.py:101
 #: src/one_public_api/services/user_service.py:36
 msgid "Data already exists."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:130
-#: src/one_public_api/services/base_service.py:145
-#: src/one_public_api/services/base_service.py:159
+#: src/one_public_api/services/base_service.py:137
+#: src/one_public_api/services/base_service.py:152
+#: src/one_public_api/services/base_service.py:166
 msgid "This record might be referenced by other data."
 msgstr ""
