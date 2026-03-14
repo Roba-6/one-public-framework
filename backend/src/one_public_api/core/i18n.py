@@ -13,7 +13,7 @@ def get_language_from_request_header(request: Request) -> GNUTranslations:
     lang = request.headers.get(
         constants.HEADER_NAME_LANGUAGE, settings.RESPONSE_LANGUAGE
     )
-    lang = re.split(r"[;,]", lang)[0]
+    lang = re.split(r"[-;,]", lang)[0]
     translator = gettext.translation(
         domain="messages",
         localedir=str(constants.PATH_LOCALES),
