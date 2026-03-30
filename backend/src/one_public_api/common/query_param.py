@@ -47,8 +47,8 @@ class QueryParam(BaseModel):
     )
     order_by: List[str] = Field(
         default=[],
-        title=_("Order by"),
-        description=_("Order by Description"),
+        title=_("Sort by"),
+        description=_("Sort by Description"),
     )
     keywords: List[str] = Field(
         default=[],
