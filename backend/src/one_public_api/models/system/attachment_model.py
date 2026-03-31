@@ -33,12 +33,12 @@ class AttachmentOption(SQLModel):
     mime_type: str = Field(
         nullable=False,
         max_length=constants.LENGTH_55,
-        description=_("MIME type"),
+        description=_("MIME Type"),
     )
     path: str = Field(
         nullable=False,
         max_length=constants.LENGTH_255,
-        description=_("save path"),
+        description=_("Save Path"),
     )
 
 

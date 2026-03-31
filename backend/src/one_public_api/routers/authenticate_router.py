@@ -28,7 +28,7 @@ admin_router = APIRouter(
     route_class=BaseRoute, dependencies=[Depends(get_current_user)]
 )
 prefix = constants.ROUTER_PREFIX_AUTHENTICATION
-tags = [_("Authentications")]
+tags = [_("Authentication")]
 
 
 # ----- Public APIs --------------------------------------------------------------------
