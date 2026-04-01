@@ -25,7 +25,7 @@ admin_router = APIRouter(
     route_class=BaseRoute, dependencies=[Depends(get_current_user)]
 )
 prefix = constants.ROUTER_PREFIX_CONFIGURATION
-tags = [_("Configurations")]
+tags = [_("Configuration")]
 
 # ----- Public APIs --------------------------------------------------------------------
 

@@ -85,8 +85,8 @@ class ResponseSchema(BaseModel, Generic[T]):
     )
     count: int | None = Field(
         default=None,
-        title=_("Count of Items"),
-        description=_("Count of Items Description"),
+        title=_("Item Count"),
+        description=_("Item Count Description"),
     )
     detail: MessageSchema | None = Field(
         default=None,

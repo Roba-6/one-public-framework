@@ -6,7 +6,7 @@ from one_public_api.core import translate as _
 from one_public_api.core.settings import settings
 
 app = FastAPI(
-    title=settings.NAME if settings.NAME else _("API NAME"),
+    title=settings.NAME if settings.NAME else _("API Name"),
     version=constants.VERSION,
     docs_url="/docs" if settings.DEBUG else None,
     redoc_url="/ref" if settings.DEBUG else None,
