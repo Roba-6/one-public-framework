@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router'
 
 import DataList from '@/common/components/modules/data-list'
 import { CONSTANT } from '@/common/constants'
@@ -8,17 +9,26 @@ import type { Feature } from '@/features/features/types/feature'
 import { getApi } from '@/lib/http'
 
 const FeatureListPage = (): React.JSX.Element => {
-  const [data, setData] = React.useState<Feature[]>([])
+  const [data, setData] = useState<Feature[]>([])
+  const [total, setTotal] = useState<number>(0)
+  const [searchParams] = useSearchParams()
 
   useEffect(() => {
     getData()
-  }, [])
+  }, [searchParams])
 
   const getData = () => {
     getApi<CommonResponse>(CONSTANT.API_URL.FEATURE_ADMIN, {
-      orderBy: 'created_at_desc',
+      limit: searchParams.get('size') || '10',
+      offset:
+        (parseInt(searchParams.get('page') || '1') - 1) *
+        parseInt(searchParams.get('size') || '10'),
+      orderBy: searchParams.getAll('orderBy'),
+      keywords: searchParams.get('keywords') || '',
+      filters: searchParams.getAll('filters') || [],
     }).then((res: CommonResponse) => {
       setData(res.results as Feature[])
+      setTotal(res.count!)
     })
   }
 
@@ -27,6 +37,7 @@ const FeatureListPage = (): React.JSX.Element => {
       <DataList<Feature>
         columns={listColumns}
         data={data}
+        total={total}
         actions={actions}
         selectable
         deleteUrl={CONSTANT.API_URL.FEATURE_ADMIN_ID}

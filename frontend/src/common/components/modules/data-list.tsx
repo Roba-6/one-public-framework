@@ -3,15 +3,14 @@ import {
   type ColumnFiltersState,
   flexRender,
   getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
   type SortingState,
   useReactTable,
   type VisibilityState,
 } from '@tanstack/react-table'
 import React, { useEffect } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router'
+import { useSearchParams } from 'react-router'
 
 import { enqueueMessage } from '@/common/app-slice'
 import {
@@ -39,12 +38,18 @@ import { copyToClipboard, getLocalMessage, setUrlParams } from '@/lib/utils'
 
 const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Element => {
   const dispatch = useAppDispatch()
+  const [searchParams, setSearchParams] = useSearchParams()
   const nav = useNavigate()
-  const [loadingData, setLoadingData] = React.useState<boolean>(true)
-  const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
+  const [loadingData, setLoadingData] = useState<boolean>(true)
+  const [sorting, setSorting] = useState<SortingState>([])
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
+  const [rowSelection, setRowSelection] = useState({})
+
+  const [pagination, setPagination] = useState({
+    pageIndex: searchParams.get('page') ? Number(searchParams.get('page')) - 1 : 0,
+    pageSize: searchParams.get('size') ? Number(searchParams.get('size')) : 10,
+  })
 
   const columns: ColumnDef<T>[] = convertTableColumns(props.columns)
 
@@ -54,6 +59,144 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
 
   const navToUpdate = (id: string): void => {
     nav(setUrlParams(props.updateUrl || './:id/edit', id))
+  }
+
+  useEffect(() => {
+    const orderBy = searchParams.get('orderBy')
+    const orderByName = orderBy?.split('_desc')[0] || ''
+
+    if (orderBy) {
+      const isDesc = orderBy.endsWith('_desc')
+      const id = orderByName.replace(/_([a-z])/g, (_, c) => c.toUpperCase())
+
+      setSorting([{ id, desc: isDesc }])
+    }
+
+    const filters = searchParams.getAll('filters')
+
+    if (!filters.length) {
+      setColumnFilters([])
+      return
+    }
+
+    const parsed = filters.map((f) => {
+      const [id, value] = f.split(':')
+      const camelId = id.replace(/_([a-z])/g, (_, c) => c.toUpperCase())
+      return { id: camelId, value }
+    })
+
+    setColumnFilters(parsed)
+  }, [])
+
+  useEffect(() => {
+    const page = Number(searchParams.get('page') || 1) - 1
+    const size = Number(searchParams.get('size') || 10)
+
+    setPagination((prev) => {
+      if (prev.pageIndex === page && prev.pageSize === size) {
+        return prev
+      }
+
+      return { pageIndex: page, pageSize: size }
+    })
+  }, [searchParams])
+
+  useEffect(() => {
+    const currentPage = Number(searchParams.get('page') || 1)
+    const currentSize = Number(searchParams.get('size') || 10)
+
+    const isSame =
+      currentPage === pagination.pageIndex + 1 && currentSize === pagination.pageSize
+    if (!isSame) {
+      setParams({
+        page: String(pagination.pageIndex + 1),
+        size: String(pagination.pageSize),
+        // orderBy: searchParams.getAll('orderBy') || ['created_at_desc'],
+      })
+    }
+  }, [pagination])
+
+  useEffect(() => {
+    const nextSort =
+      sorting[0]?.id.replace(
+        /[A-Z]/g,
+        (letter: string) => `_${letter.toLowerCase()}`
+      ) || ''
+    const nextOrder = sorting[0]?.desc ? 'desc' : 'asc'
+
+    // Current URL sort (no suffix for ascending)
+    // TODO: Support multi-column sorting: get() → getAll()
+    const orderBy = searchParams.get('orderBy') || ''
+
+    let currentSort = ''
+    let currentOrder: 'asc' | 'desc' = 'asc'
+
+    if (orderBy.endsWith('_desc')) {
+      currentSort = orderBy.replace('_desc', '')
+      currentOrder = 'desc'
+    } else {
+      currentSort = orderBy
+      currentOrder = 'asc'
+    }
+
+    const isSame = currentSort === nextSort && currentOrder === nextOrder
+
+    if (sorting.length > 0 && !isSame) {
+      const nextOrderBy = nextOrder === 'desc' ? `${nextSort}_desc` : nextSort
+
+      setParams({ orderBy: nextOrderBy })
+    }
+  }, [sorting])
+
+  useEffect(() => {
+    const t = setTimeout(() => {
+      const nextFilters = columnFilters.map((f: any) => {
+        const id = f.id.replace(
+          /[A-Z]/g,
+          (letter: string) => `_${letter.toLowerCase()}`
+        )
+        return `${id}:${f.value}`
+      })
+
+      const currentFilters = searchParams.getAll('filters')
+
+      const isSame =
+        currentFilters.length === nextFilters.length &&
+        currentFilters.every((val, idx) => val === nextFilters[idx])
+      if (nextFilters.length > 0 && !isSame) {
+        setParams({ page: '1', filters: nextFilters })
+      }
+      return () => clearTimeout(t)
+    }, 200)
+  }, [columnFilters])
+
+  const setParams = (params: any) => {
+    const paramsObj: any = {
+      page: searchParams.get('page') || '1',
+      size: searchParams.get('size') || '10',
+    }
+
+    const orderBy = searchParams.getAll('orderBy')
+    const filters = searchParams.getAll('filters')
+
+    if (orderBy.length) paramsObj.orderBy = orderBy
+    if (filters.length) paramsObj.filters = filters
+
+    setSearchParams({ ...paramsObj, ...params })
+  }
+
+  const handlePaginationChange = (updater: any) => {
+    setPagination((prev) => (typeof updater === 'function' ? updater(prev) : updater))
+  }
+
+  const handleSortingChange = (updater: any) => {
+    setSorting((prev) => (typeof updater === 'function' ? updater(prev) : updater))
+  }
+
+  const handleColumnFiltersChange = (updater: any) => {
+    setColumnFilters((prev) =>
+      typeof updater === 'function' ? updater(prev) : updater
+    )
   }
 
   const deleteData = (id: string): void => {
@@ -103,35 +246,40 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
   const table = useReactTable({
     data: props.data,
     columns: columns,
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
+    manualPagination: true,
+    manualFiltering: true,
+    pageCount: Math.ceil(props.total! / pagination.pageSize),
     state: {
+      pagination,
       sorting,
       columnFilters,
       columnVisibility,
       rowSelection,
     },
+    onPaginationChange: handlePaginationChange,
+    onSortingChange: handleSortingChange,
+    onColumnFiltersChange: handleColumnFiltersChange,
+    onColumnVisibilityChange: setColumnVisibility,
+    onRowSelectionChange: setRowSelection,
   })
 
   useEffect(() => {
-    if (table.getRowModel().rows?.length) {
+    if (table.getRowModel().rows?.length >= 0) {
       setLoadingData(false)
     } else {
       setLoadingData(true)
     }
-    console.debug('sorting:', sorting)
-    console.debug('filters:', columnFilters)
   }, [props, sorting, columnFilters])
 
   return (
     <React.Fragment>
-      <DataToolBar table={table} columns={props.columns} addUrl={props.addUrl} />
+      <DataToolBar
+        table={table}
+        columns={props.columns}
+        searchKey={'name'}
+        addUrl={props.addUrl}
+      />
       <div className="overflow-hidden rounded-md border">
         <Table className="data-list">
           <TableHeader>

@@ -44,9 +44,11 @@
     "actions": "操作",
     "createdAt": "创建时间",
     "enabled": "可用",
+    "disabled": "不可用",
     "forgetPassword": "忘记密码？",
     "id": "ID",
     "requiresAuth": "需要认证",
+    "noAuthRequired": "无需认证",
     "user": {
       "email": "邮箱",
       "failedAttempts": "登陆失败次数",

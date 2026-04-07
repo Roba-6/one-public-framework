@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-03-13 00:33+0900\n"
+"POT-Creation-Date: 2026-03-31 12:58+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 #: src/one_public_api/main.py:9
-msgid "API NAME"
+msgid "API Name"
 msgstr ""
 
 #: src/one_public_api/common/query_param.py:38
@@ -38,11 +38,11 @@ msgid "Limit Description"
 msgstr ""
 
 #: src/one_public_api/common/query_param.py:50
-msgid "Order by"
+msgid "Sort by"
 msgstr ""
 
 #: src/one_public_api/common/query_param.py:51
-msgid "Order by Description"
+msgid "Sort by Description"
 msgstr ""
 
 #: src/one_public_api/common/query_param.py:55
@@ -174,7 +174,7 @@ msgid "Record creation time"
 msgstr ""
 
 #: src/one_public_api/models/mixins/timestamp_mixin.py:29
-msgid "Record creation time Description"
+msgid "Record Creation Time Description"
 msgstr ""
 
 #: src/one_public_api/models/mixins/timestamp_mixin.py:35
@@ -182,7 +182,7 @@ msgid "Last update time"
 msgstr ""
 
 #: src/one_public_api/models/mixins/timestamp_mixin.py:36
-msgid "Last update time Description"
+msgid "Last Update Time Description"
 msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:21
@@ -246,11 +246,11 @@ msgid "Attachment name"
 msgstr ""
 
 #: src/one_public_api/models/system/attachment_model.py:36
-msgid "MIME type"
+msgid "MIME Type"
 msgstr ""
 
 #: src/one_public_api/models/system/attachment_model.py:41
-msgid "save path"
+msgid "Save Path"
 msgstr ""
 
 #: src/one_public_api/models/system/category_model.py:19
@@ -396,7 +396,7 @@ msgid "Number of failed login attempts"
 msgstr ""
 
 #: src/one_public_api/routers/authenticate_router.py:31
-msgid "Authentications"
+msgid "Authentication"
 msgstr ""
 
 #: src/one_public_api/routers/authenticate_router.py:40
@@ -476,7 +476,9 @@ msgid "Feature not found."
 msgstr ""
 
 #: src/one_public_api/routers/configuration_router.py:28
-msgid "Configurations"
+#: src/one_public_api/schemas/authenticate_schema.py:80
+#: src/one_public_api/schemas/base_schema.py:145
+msgid "Configuration"
 msgstr ""
 
 #: src/one_public_api/routers/configuration_router.py:36
@@ -616,11 +618,6 @@ msgstr ""
 msgid "Role Description"
 msgstr ""
 
-#: src/one_public_api/schemas/authenticate_schema.py:80
-#: src/one_public_api/schemas/base_schema.py:145
-msgid "Configuration"
-msgstr ""
-
 #: src/one_public_api/schemas/authenticate_schema.py:81
 msgid "Configuration Description"
 msgstr ""
@@ -709,11 +706,11 @@ msgid "Result Description"
 msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:88
-msgid "Count of Items"
+msgid "Item Count"
 msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:89
-msgid "Count of Items Description"
+msgid "Item Count Description"
 msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:93

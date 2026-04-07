@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.15\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-03-13 00:33+0900\n"
+"POT-Creation-Date: 2026-03-31 12:58+0900\n"
 "PO-Revision-Date: 2025-10-03 18:52+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: zh\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 #: src/one_public_api/main.py:9
-msgid "API NAME"
+msgid "API Name"
 msgstr ""
 
 #: src/one_public_api/common/query_param.py:38
@@ -40,12 +40,13 @@ msgid "Limit Description"
 msgstr ""
 
 #: src/one_public_api/common/query_param.py:50
-msgid "Order by"
+msgid "Sort by"
 msgstr ""
 
 #: src/one_public_api/common/query_param.py:51
-msgid "Order by Description"
-msgstr ""
+#, fuzzy
+msgid "Sort by Description"
+msgstr "强制登出功能。"
 
 #: src/one_public_api/common/query_param.py:55
 msgid "Keywords"
@@ -177,16 +178,18 @@ msgid "Record creation time"
 msgstr ""
 
 #: src/one_public_api/models/mixins/timestamp_mixin.py:29
-msgid "Record creation time Description"
-msgstr ""
+#, fuzzy
+msgid "Record Creation Time Description"
+msgstr "强制登出功能。"
 
 #: src/one_public_api/models/mixins/timestamp_mixin.py:35
 msgid "Last update time"
 msgstr ""
 
 #: src/one_public_api/models/mixins/timestamp_mixin.py:36
-msgid "Last update time Description"
-msgstr ""
+#, fuzzy
+msgid "Last Update Time Description"
+msgstr "登录表单功能。"
 
 #: src/one_public_api/models/system/action_model.py:21
 #: src/one_public_api/models/system/action_model.py:86
@@ -249,11 +252,11 @@ msgid "Attachment name"
 msgstr ""
 
 #: src/one_public_api/models/system/attachment_model.py:36
-msgid "MIME type"
+msgid "MIME Type"
 msgstr ""
 
 #: src/one_public_api/models/system/attachment_model.py:41
-msgid "save path"
+msgid "Save Path"
 msgstr ""
 
 #: src/one_public_api/models/system/category_model.py:19
@@ -399,7 +402,7 @@ msgid "Number of failed login attempts"
 msgstr ""
 
 #: src/one_public_api/routers/authenticate_router.py:31
-msgid "Authentications"
+msgid "Authentication"
 msgstr ""
 
 #: src/one_public_api/routers/authenticate_router.py:40
@@ -479,7 +482,9 @@ msgid "Feature not found."
 msgstr "找不到该功能。"
 
 #: src/one_public_api/routers/configuration_router.py:28
-msgid "Configurations"
+#: src/one_public_api/schemas/authenticate_schema.py:80
+#: src/one_public_api/schemas/base_schema.py:145
+msgid "Configuration"
 msgstr ""
 
 #: src/one_public_api/routers/configuration_router.py:36
@@ -619,11 +624,6 @@ msgstr ""
 msgid "Role Description"
 msgstr ""
 
-#: src/one_public_api/schemas/authenticate_schema.py:80
-#: src/one_public_api/schemas/base_schema.py:145
-msgid "Configuration"
-msgstr ""
-
 #: src/one_public_api/schemas/authenticate_schema.py:81
 msgid "Configuration Description"
 msgstr ""
@@ -712,12 +712,13 @@ msgid "Result Description"
 msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:88
-msgid "Count of Items"
+msgid "Item Count"
 msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:89
-msgid "Count of Items Description"
-msgstr ""
+#, fuzzy
+msgid "Item Count Description"
+msgstr "登录表单功能。"
 
 #: src/one_public_api/schemas/response_schema.py:93
 msgid "Detail of Result"
@@ -788,3 +789,36 @@ msgstr ""
 #: src/one_public_api/services/base_service.py:166
 msgid "This record might be referenced by other data."
 msgstr ""
+
+#~ msgid "API NAME"
+#~ msgstr ""
+
+#~ msgid "Order by"
+#~ msgstr ""
+
+#~ msgid "Order by Description"
+#~ msgstr ""
+
+#~ msgid "Record creation time Description"
+#~ msgstr ""
+
+#~ msgid "Last update time Description"
+#~ msgstr ""
+
+#~ msgid "MIME type"
+#~ msgstr ""
+
+#~ msgid "save path"
+#~ msgstr ""
+
+#~ msgid "Authentications"
+#~ msgstr ""
+
+#~ msgid "Configurations"
+#~ msgstr ""
+
+#~ msgid "Count of Items"
+#~ msgstr ""
+
+#~ msgid "Count of Items Description"
+#~ msgstr ""

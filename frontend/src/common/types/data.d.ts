@@ -54,6 +54,11 @@ export type FormType =
 
 export type EventType = 'handleClick'
 
+interface Filter {
+  label: string
+  value: string
+}
+
 interface DataColumn {
   key?: string
   name?: string
@@ -61,6 +66,8 @@ interface DataColumn {
   values?: (keyof typeof Icon)[]
   colors?: string[]
   isSortable?: boolean
+  isFilterable?: boolean
+  filters?: Filter[]
   align?: ColumnAlign
 }
 

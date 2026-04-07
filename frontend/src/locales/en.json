@@ -44,9 +44,11 @@
     "actions": "Actions",
     "createdAt": "Created At",
     "enabled": "Enabled",
+    "disabled": "Disabled",
     "forgetPassword": "Forgot your password?",
     "id": "ID",
     "requiresAuth": "Auth Required",
+    "noAuthRequired": "No Auth Required",
     "user": {
       "email": "E-mail",
       "failedAttempts": "Failed Attempts",

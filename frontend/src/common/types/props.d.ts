@@ -4,6 +4,7 @@ interface DataListProps<T> {
   columns: DataColumn<T>[]
   data: T[]
   selectable?: boolean
+  total?: number
   actions?: Action[]
   addUrl?: string
   updateUrl?: string

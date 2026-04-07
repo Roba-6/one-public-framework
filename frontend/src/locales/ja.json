@@ -44,9 +44,11 @@
     "actions": "操作",
     "createdAt": "作成日時",
     "enabled": "有効",
+    "disabled": "無効",
     "forgetPassword": "パスワードをお忘れですか？",
     "id": "ID",
     "requiresAuth": "要認証",
+    "noAuthRequired": "認証不要",
     "user": {
       "email": "メールアドレス",
       "failedAttempts": "ログイン失敗",

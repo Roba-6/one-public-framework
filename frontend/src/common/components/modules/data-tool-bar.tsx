@@ -1,4 +1,6 @@
 import { ChevronDown, Plus } from 'lucide-react'
+import React, { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router'
 
 import NaviButton from '@/common/components/atoms/navi-button'
 import { Button } from '@/common/components/ui/button'
@@ -11,15 +13,41 @@ import {
 import { Input } from '@/common/components/ui/input'
 import { getLocalMessage } from '@/lib/utils'
 
-const DataToolBar = (props: any) => {
+const DataToolBar = (props: any): React.JSX.Element => {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [keywords, setKeywords] = useState('')
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleSearchChange(keywords)
+    }, 500)
+
+    return () => clearTimeout(timer)
+  }, [keywords])
+
+  const handleSearchChange = (value: string) => {
+    const currentKeywords = searchParams.get('keywords') || ''
+
+    if (currentKeywords !== value) {
+      const params = new URLSearchParams(searchParams)
+
+      if (value) {
+        params.set('keywords', value)
+        params.set('page', '1')
+      } else {
+        params.delete('keywords')
+      }
+
+      setSearchParams(params)
+    }
+  }
+
   return (
     <div className="flex items-center py-4">
       <Input
-        placeholder="Filter emails..."
-        // value={(props.table.getColumn('email')?.getFilterValue() as string) ?? ''}
-        // onChange={(event) =>
-        //   props.table.getColumn('email')?.setFilterValue(event.target.value)
-        // }
+        placeholder="Any Keywords ..."
+        value={keywords}
+        onChange={(e) => setKeywords(e.target.value)}
         className="me-2 max-w-sm"
       />
       <div className="ml-auto flex items-center gap-2">
