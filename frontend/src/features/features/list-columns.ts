@@ -13,7 +13,7 @@ export const listColumns: DataColumn[] = [
     name: getLocalMessage('labels.enabled'),
     type: 'booleanIcon',
     values: ['CircleCheck', 'CircleX'],
-    colors: ['text-green-500 dark:text-yellow-500', 'text-orange-500'],
+    colors: ['text-orange-500', 'text-red-700'],
     align: 'center',
     isFilterable: true,
     filters: [
@@ -26,7 +26,7 @@ export const listColumns: DataColumn[] = [
     name: getLocalMessage('labels.requiresAuth'),
     type: 'booleanIcon',
     values: ['ShieldCheck', 'ShieldX'],
-    colors: ['text-green-500 dark:text-yellow-500', 'text-orange-500'],
+    colors: ['text-orange-500', 'text-red-700'],
     align: 'center',
     isFilterable: true,
     filters: [
