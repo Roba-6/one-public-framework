@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.15\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-03-31 12:58+0900\n"
+"POT-Creation-Date: 2026-04-08 23:11+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -871,39 +871,3 @@ msgstr ""
 #: src/one_public_api/services/base_service.py:166
 msgid "This record might be referenced by other data."
 msgstr ""
-
-#~ msgid "API NAME"
-#~ msgstr ""
-
-#~ msgid "Order by"
-#~ msgstr ""
-
-#~ msgid "Record creation time Description"
-#~ msgstr ""
-
-#~ msgid "Last update time Description"
-#~ msgstr ""
-
-#~ msgid "MIME type"
-#~ msgstr ""
-
-#~ msgid "save path"
-#~ msgstr ""
-
-#~ msgid "Authentications"
-#~ msgstr ""
-
-#~ msgid "Configurations"
-#~ msgstr ""
-
-#~ msgid "Count of Items"
-#~ msgstr "Count"
-
-#~ msgid "Count of Items Description"
-#~ msgstr ""
-#~ "Total number of items available in "
-#~ "the result set. Particularly useful with"
-#~ " paginated endpoints, this indicates the"
-#~ " overall count. Will be `null` when"
-#~ " counting is not applicable (e.g., "
-#~ "single object retrieval)."
