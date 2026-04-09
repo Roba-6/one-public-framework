@@ -56,7 +56,7 @@ const initialState: AppState = {
   settings: {
     name: getEnv('UI_NAME') as string,
     language: (localStorage.getItem(CONSTANT.STORAGE_KEY.LANGUAGE) ||
-      getEnv('UI_LANGUAGE')) as string,
+      getBrowserLanguage()) as string,
     url: getEnv('UI_URL') as string,
     api: getEnv('UI_API') as string,
     type: getEnv('UI_TYPE') as AppType,

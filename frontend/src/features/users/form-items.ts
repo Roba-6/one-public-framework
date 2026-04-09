@@ -11,7 +11,9 @@ export const newUserItems: FormFieldItem[] = [
     placeholder: 'yamada_taro',
     autoComplete: 'username',
     defaultValue: '',
-    validate: z.string().min(1, { message: getLocalMessage('Username is required') }),
+    validate: z
+      .string()
+      .min(1, { message: getLocalMessage('messages.validations.username.required') }),
   },
   {
     name: 'password',
@@ -19,7 +21,9 @@ export const newUserItems: FormFieldItem[] = [
     type: 'password',
     autoComplete: 'new-password',
     defaultValue: '',
-    validate: z.string().min(1, { message: getLocalMessage('Password is required') }),
+    validate: z
+      .string()
+      .min(1, { message: getLocalMessage('messages.validations.password.required') }),
   },
   {
     name: 'email',
@@ -63,7 +67,9 @@ export const userItems: FormFieldItem[] = [
     placeholder: 'yamada_taro',
     autoComplete: 'username',
     defaultValue: '',
-    validate: z.string().min(1, { message: getLocalMessage('Username is required') }),
+    validate: z
+      .string()
+      .min(1, { message: getLocalMessage('messages.validations.username.required') }),
   },
   {
     name: 'password',
@@ -71,7 +77,9 @@ export const userItems: FormFieldItem[] = [
     type: 'password',
     autoComplete: 'new-password',
     defaultValue: '',
-    validate: z.string().min(1, { message: getLocalMessage('Password is required') }),
+    validate: z
+      .string()
+      .min(1, { message: getLocalMessage('messages.validations.password.required') }),
   },
   {
     name: 'email',
