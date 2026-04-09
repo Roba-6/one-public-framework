@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.15\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-04-08 23:11+0900\n"
+"POT-Creation-Date: 2026-04-09 11:29+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -58,22 +58,22 @@ msgstr ""
 "which determines their priority. To indicate descending order, append "
 "`_desc` to the field name."
 
-#: src/one_public_api/common/query_param.py:55
+#: src/one_public_api/common/query_param.py:56
 msgid "Keywords"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:56
+#: src/one_public_api/common/query_param.py:57
 msgid "Keywords Description"
 msgstr ""
 "A text-based search parameter used to filter results by matching one or "
 "more fields. The API will return only records that contain the provided "
 "keyword(s)."
 
-#: src/one_public_api/common/query_param.py:60
+#: src/one_public_api/common/query_param.py:61
 msgid "Filters"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:61
+#: src/one_public_api/common/query_param.py:62
 #, fuzzy
 msgid "Filters Description"
 msgstr ""

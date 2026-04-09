@@ -68,11 +68,19 @@
     "username": "User Name"
   },
   "messages": {
-    "pleaseLogin": "Enter user name below to login to your account",
+    "pleaseLogin": "Enter User Name below to login to your account",
     "welcome": "Welcome to One Public Framework!",
     "notices": {
       "I00100001": "The user '{}' has been deleted.",
       "I00100002": "The feature '{}' has been deleted."
+    },
+    "validations": {
+      "username": {
+        "required": "User Name is required."
+      },
+      "password": {
+        "required": "Password is required."
+      }
     }
   }
 }
