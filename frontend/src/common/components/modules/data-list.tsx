@@ -344,7 +344,7 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
           </TableBody>
         </Table>
       </div>
-      <DataPagination table={table} />
+      <DataPagination table={table} total={props.total} />
     </React.Fragment>
   )
 }

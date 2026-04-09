@@ -49,6 +49,9 @@
     "id": "ID",
     "requiresAuth": "需要认证",
     "noAuthRequired": "无需认证",
+    "dataPagination": {
+      "itemsPerPage": "显示数量"
+    },
     "user": {
       "email": "邮箱",
       "failedAttempts": "登陆失败次数",

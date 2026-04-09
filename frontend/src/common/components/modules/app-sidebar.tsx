@@ -13,7 +13,7 @@ import { NavUser } from './nav-user'
 
 const AppSidebar = (): React.ReactNode => {
   return (
-    <Sidebar variant="inset">
+    <Sidebar variant="inset" className="select-none">
       <SidebarHeader>
         <Logo size="sm" />
       </SidebarHeader>

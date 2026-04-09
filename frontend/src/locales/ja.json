@@ -49,6 +49,9 @@
     "id": "ID",
     "requiresAuth": "要認証",
     "noAuthRequired": "認証不要",
+    "dataPagination": {
+      "itemsPerPage": "表示件数"
+    },
     "user": {
       "email": "メールアドレス",
       "failedAttempts": "ログイン失敗",
