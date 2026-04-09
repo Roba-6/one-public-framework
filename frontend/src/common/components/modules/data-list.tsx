@@ -28,7 +28,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from '@/common/components/ui/empty.tsx'
+} from '@/common/components/ui/empty'
 import {
   Table,
   TableBody,
@@ -279,12 +279,7 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
 
   return (
     <React.Fragment>
-      <DataToolBar
-        table={table}
-        columns={props.columns}
-        searchKey={'name'}
-        addUrl={props.addUrl}
-      />
+      <DataToolBar table={table} columns={props.columns} addUrl={props.addUrl} />
       <div className="overflow-hidden rounded-md border">
         <Table className="data-list">
           <TableHeader>

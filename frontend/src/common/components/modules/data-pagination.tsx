@@ -6,7 +6,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/common/components/ui/select.tsx'
+} from '@/common/components/ui/select'
 import { formatNumber, getLocalMessage } from '@/lib/utils'
 
 const DataPagination = (props: any) => {

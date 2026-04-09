@@ -30,7 +30,7 @@
     "cancel": "キャンセル",
     "create": "作成",
     "close": "閉じる",
-    "column": "カラム",
+    "column": "表示項目",
     "copyId": "ID をコピー",
     "delete": "削除",
     "details": "詳細確認",
@@ -72,6 +72,9 @@
     },
     "updatedAt": "最終変更日時",
     "username": "ユーザー名"
+  },
+  "placeholder": {
+    "anyKeywords": "キーワードを入力してください"
   },
   "messages": {
     "pleaseLogin": "ユーザー名をご入力してログインしてください。",

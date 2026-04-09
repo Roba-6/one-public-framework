@@ -45,7 +45,7 @@ const DataToolBar = (props: any): React.JSX.Element => {
   return (
     <div className="flex items-center py-4">
       <Input
-        placeholder="Any Keywords ..."
+        placeholder={getLocalMessage('placeholder.anyKeywords')}
         value={keywords}
         onChange={(e) => setKeywords(e.target.value)}
         className="me-2 max-w-sm"
