@@ -9,7 +9,8 @@
     "error": "错误",
     "success": "操作完成",
     "info": "信息",
-    "warning": "警告"
+    "warning": "警告",
+    "noData": "无数据"
   },
   "menus": {
     "system": "系统",
@@ -50,7 +51,9 @@
     "requiresAuth": "需要认证",
     "noAuthRequired": "无需认证",
     "dataPagination": {
-      "itemsPerPage": "显示数量"
+      "itemsPerPage": "每页显示数据数",
+      "totalResults": "总数据数",
+      "selectedResults": "选中数据数"
     },
     "user": {
       "email": "邮箱",
@@ -73,6 +76,7 @@
   "messages": {
     "pleaseLogin": "请输入用户名登录系统。",
     "welcome": "欢迎来到 One Public Framework！",
+    "noData": "您尚未创建任何数据或无数据能匹配您的检索条件。",
     "notices": {
       "I00100001": "用户“{}”已被删除。",
       "I00100002": "功能“{}”已被删除。"

@@ -12,8 +12,10 @@ const FeatureListPage = (): React.JSX.Element => {
   const [data, setData] = useState<Feature[]>([])
   const [total, setTotal] = useState<number>(0)
   const [searchParams] = useSearchParams()
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
+    setLoading(true)
     getData()
   }, [searchParams])
 
@@ -29,6 +31,7 @@ const FeatureListPage = (): React.JSX.Element => {
     }).then((res: CommonResponse) => {
       setData(res.results as Feature[])
       setTotal(res.count!)
+      setLoading(false)
     })
   }
 
@@ -39,6 +42,7 @@ const FeatureListPage = (): React.JSX.Element => {
         data={data}
         total={total}
         actions={actions}
+        loading={loading}
         selectable
         deleteUrl={CONSTANT.API_URL.FEATURE_ADMIN_ID}
       />

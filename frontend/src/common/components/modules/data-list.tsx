@@ -7,6 +7,7 @@ import {
   useReactTable,
   type VisibilityState,
 } from '@tanstack/react-table'
+import { FileSearchIcon } from 'lucide-react'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
@@ -21,6 +22,13 @@ import {
 import DataPagination from '@/common/components/modules/data-pagination'
 import DataSkeleton from '@/common/components/modules/data-skeleton'
 import DataToolBar from '@/common/components/modules/data-tool-bar'
+import {
+  Empty,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from '@/common/components/ui/empty.tsx'
 import {
   Table,
   TableBody,
@@ -37,14 +45,15 @@ import { deleteApi } from '@/lib/http'
 import { copyToClipboard, getLocalMessage, setUrlParams } from '@/lib/utils'
 
 const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Element => {
+  const SKELETON_ROWS = 3
   const dispatch = useAppDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
   const nav = useNavigate()
-  const [loadingData, setLoadingData] = useState<boolean>(true)
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = useState({})
+  const [skeletonRows, setSkeletonRows] = useState<number>(SKELETON_ROWS)
 
   const [pagination, setPagination] = useState({
     pageIndex: searchParams.get('page') ? Number(searchParams.get('page')) - 1 : 0,
@@ -87,7 +96,6 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
 
     setColumnFilters(parsed)
   }, [])
-
   useEffect(() => {
     const page = Number(searchParams.get('page') || 1) - 1
     const size = Number(searchParams.get('size') || 10)
@@ -265,12 +273,9 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
   })
 
   useEffect(() => {
-    if (table.getRowModel().rows?.length >= 0) {
-      setLoadingData(false)
-    } else {
-      setLoadingData(true)
-    }
-  }, [props, sorting, columnFilters])
+    const dataRow: number = table.getRowModel().rows?.length
+    setSkeletonRows(dataRow > SKELETON_ROWS ? dataRow : SKELETON_ROWS)
+  }, [table.getRowModel().rows?.length])
 
   return (
     <React.Fragment>
@@ -307,8 +312,8 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
             ))}
           </TableHeader>
           <TableBody>
-            {loadingData ? (
-              Array(3)
+            {props.loading ? (
+              Array(skeletonRows)
                 .fill(null)
                 .map((_, idx: number) => (
                   <DataSkeleton
@@ -337,7 +342,17 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
             ) : (
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                  No results.
+                  <Empty className="h-full">
+                    <EmptyHeader>
+                      <EmptyMedia>
+                        <FileSearchIcon />
+                      </EmptyMedia>
+                      <EmptyTitle>{getLocalMessage('title.noData')}</EmptyTitle>
+                      <EmptyDescription className="max-w-md text-pretty">
+                        {getLocalMessage('messages.noData')}
+                      </EmptyDescription>
+                    </EmptyHeader>
+                  </Empty>
                 </TableCell>
               </TableRow>
             )}

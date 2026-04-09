@@ -9,7 +9,8 @@
     "error": "エラー",
     "success": "処理完了",
     "info": "情報",
-    "warning": "警告"
+    "warning": "警告",
+    "noData": "データが見つかりません"
   },
   "menus": {
     "system": "システム",
@@ -50,7 +51,9 @@
     "requiresAuth": "要認証",
     "noAuthRequired": "認証不要",
     "dataPagination": {
-      "itemsPerPage": "表示件数"
+      "itemsPerPage": "表示件数",
+      "totalResults": "総件数",
+      "selectedResults": "選択件数"
     },
     "user": {
       "email": "メールアドレス",
@@ -73,6 +76,7 @@
   "messages": {
     "pleaseLogin": "ユーザー名をご入力してログインしてください。",
     "welcome": "One Public Framework へようこそ！",
+    "noData": "データが登録されていないか、検索条件に一致する結果がありません。",
     "notices": {
       "I00100001": "ユーザー「{}」が削除されました。",
       "I00100002": "機能「{}」が削除されました。"

@@ -10,6 +10,7 @@ interface DataListProps<T> {
   updateUrl?: string
   deleteUrl?: string
   detailUrl?: string
+  loading?: boolean
 }
 
 interface EditFormProps<T> {
