@@ -77,7 +77,6 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
   }
 
   useEffect(() => {
-    console.debug('[0]', location.href)
     const orderBy = searchParams.get('orderBy')
     const orderByName = orderBy?.split('_desc')[0] || ''
 
@@ -96,7 +95,6 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
         const camelId = toCamelCase(id)
         return { id: camelId, value }
       })
-      console.debug('**********: ', parsed)
       setColumnFilters(parsed)
     }
 
@@ -104,8 +102,6 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
   }, [])
 
   useEffect(() => {
-    console.debug('[1]', location.href)
-
     setPagination((prev) => {
       const page = Number(searchParams.get('page') || 1) - 1
       const size = Number(searchParams.get('size') || DEFAULT_PAGE_SIZE)
@@ -127,8 +123,6 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
     setColumnFilters((prev) => {
       const filters = searchParams.getAll('filters')
       const nextFilters = prev.map((f: any) => `${toSnakeCase(f.id)}:${f.value}`)
-      console.debug('BEFORE:', filters)
-      console.debug('AFTER :', nextFilters)
       if (nextFilters === filters) {
         return prev
       }
@@ -139,7 +133,6 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
   }, [searchParams])
 
   useEffect(() => {
-    console.debug('[2]', location.href)
     const currentPage = Number(searchParams.get('page') || 1)
     const currentSize = Number(searchParams.get('size') || DEFAULT_PAGE_SIZE)
 
@@ -156,8 +149,6 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
 
   useEffect(() => {
     if (!initialized) return
-    console.debug('[3]', location.href)
-    console.log('sorting', sorting)
 
     // if (sorting.length === 0) {
     //   setParams({ orderBy: [] })
@@ -169,9 +160,6 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
     // Current URL sort (no suffix for ascending)
     // TODO: Support multi-column sorting: get() → getAll()
     const orderBy = searchParams.get('orderBy') || ''
-
-    console.debug('orderBy: ', orderBy)
-    console.debug('sorting: ', sorting)
 
     let currentSort = ''
     let currentOrder: 'asc' | 'desc' = 'asc'
@@ -201,7 +189,6 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
   }, [sorting, initialized])
 
   useEffect(() => {
-    console.debug('[4]', location.href)
     if (!initialized) return
 
     const t = setTimeout(() => {
@@ -210,9 +197,6 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
       )
 
       const currentFilters = searchParams.getAll('filters')
-      console.debug('Current FFF: ', currentFilters)
-      console.debug('Next    FFF: ', nextFilters)
-
       const isSame =
         currentFilters.length === nextFilters.length &&
         currentFilters.every((val, idx) => val === nextFilters[idx])
@@ -227,6 +211,7 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
     const paramsObj: any = {
       page: searchParams.get('page') || '1',
       size: searchParams.get('size') || DEFAULT_PAGE_SIZE.toString(),
+      keywords: searchParams.get('keywords') || '',
     }
 
     const orderBy = searchParams.getAll('orderBy')
@@ -272,7 +257,6 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
     deleteApi<CommonResponse>(setUrlParams(props.deleteUrl!, id))
       .then((res: CommonResponse) => {
         const data: T = res.results as T
-        console.debug(res.results as T)
         dispatch(
           enqueueMessage({
             message: {

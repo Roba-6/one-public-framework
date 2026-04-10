@@ -22,11 +22,24 @@ const DataToolBar = (props: any): React.JSX.Element => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
+      setKeywords(searchParams.get('keywords') || '')
+    }, DEBOUNCE)
+
+    return () => clearTimeout(timer)
+  }, [searchParams])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
       handleSearchChange(keywords)
     }, DEBOUNCE)
 
     return () => clearTimeout(timer)
   }, [keywords])
+
+  const handleClearAll = () => {
+    props.clearAll()
+    setKeywords('')
+  }
 
   const handleSearchChange = (value: string) => {
     const currentKeywords = searchParams.get('keywords') || ''
@@ -50,7 +63,9 @@ const DataToolBar = (props: any): React.JSX.Element => {
         onChange={(e) => setKeywords(e.target.value)}
         className="me-2 max-w-sm"
       />
-      <Button onClick={() => props.clearAll()}>Clear</Button>
+      <Button variant="outline" onClick={handleClearAll}>
+        {getLocalMessage('buttons.clear')}
+      </Button>
       <div className="ml-auto flex items-center gap-2">
         <DropdownMenu modal={false}>
           <DropdownMenuTrigger asChild>
