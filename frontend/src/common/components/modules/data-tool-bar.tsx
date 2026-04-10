@@ -14,30 +14,30 @@ import { Input } from '@/common/components/ui/input'
 import { getLocalMessage } from '@/lib/utils'
 
 const DataToolBar = (props: any): React.JSX.Element => {
+  const DEBOUNCE: number = 500
+
   const [searchParams, setSearchParams] = useSearchParams()
+
   const [keywords, setKeywords] = useState('')
 
   useEffect(() => {
     const timer = setTimeout(() => {
       handleSearchChange(keywords)
-    }, 500)
+    }, DEBOUNCE)
 
     return () => clearTimeout(timer)
   }, [keywords])
 
   const handleSearchChange = (value: string) => {
     const currentKeywords = searchParams.get('keywords') || ''
-
     if (currentKeywords !== value) {
       const params = new URLSearchParams(searchParams)
-
       if (value) {
         params.set('keywords', value)
         params.set('page', '1')
       } else {
         params.delete('keywords')
       }
-
       setSearchParams(params)
     }
   }
@@ -50,6 +50,7 @@ const DataToolBar = (props: any): React.JSX.Element => {
         onChange={(e) => setKeywords(e.target.value)}
         className="me-2 max-w-sm"
       />
+      <Button onClick={() => props.clearAll()}>Clear</Button>
       <div className="ml-auto flex items-center gap-2">
         <DropdownMenu modal={false}>
           <DropdownMenuTrigger asChild>

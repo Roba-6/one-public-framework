@@ -81,7 +81,7 @@
     "welcome": "Welcome to One Public Framework!",
     "noData": "There is no data available, or no results match your search criteria.",
     "notices": {
-      "I00100001": "The user '{}' has been deleted.",
+      "I00100001": "The recorder '{}' has been deleted.",
       "I00100002": "The feature '{}' has been deleted."
     },
     "validations": {

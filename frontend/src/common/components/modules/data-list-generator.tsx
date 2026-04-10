@@ -1,6 +1,5 @@
 import type { CellContext, ColumnDef, HeaderContext } from '@tanstack/react-table'
 import * as Icon from 'lucide-react'
-import { MoreHorizontal } from 'lucide-react'
 import React from 'react'
 
 import { Badge } from '@/common/components/ui/badge'
@@ -66,10 +65,14 @@ export const convertTableColumns = <T,>(objColumns: DataColumn[]): ColumnDef<T>[
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => column.toggleSorting(column.getIsSorted() !== 'desc')}
+              onClick={() => column.toggleSorting(undefined, false)}
             >
               {dataColumn.name}
-              <Icon.ArrowUpDown />
+              {column.getIsSorted() === 'asc' && <Icon.ArrowUpNarrowWide />}
+              {column.getIsSorted() === 'desc' && <Icon.ArrowDownWideNarrow />}
+              {['asc', 'desc'].includes(column.getIsSorted() as string) || (
+                <Icon.ArrowUpDown />
+              )}
             </Button>
           </div>
         )
@@ -286,7 +289,7 @@ export const createActionColumn = <T extends BaseType>(
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="h-8 w-8 p-0">
                 <span className="sr-only">{getLocalMessage('buttons.openMenu')}</span>
-                <MoreHorizontal />
+                <Icon.MoreHorizontal />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">

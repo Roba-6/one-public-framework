@@ -41,3 +41,9 @@ export const getBrowserLanguage = (): string => {
 
   return lang.split('-')[0] // ja-JP → ja
 }
+
+export const toCamelCase = (str: string): string =>
+  str.replace(/_./g, (x) => x[1].toUpperCase())
+
+export const toSnakeCase = (str: string): string =>
+  str.replace(/[A-Z]/g, (x) => `_${x.toLowerCase()}`)

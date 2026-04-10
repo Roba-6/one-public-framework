@@ -41,24 +41,30 @@ import { useAppDispatch } from '@/common/hooks/use-store'
 import type { Action, BaseType } from '@/common/types/data'
 import type { DataListProps } from '@/common/types/props'
 import type { CommonResponse } from '@/common/types/response'
+import { toCamelCase, toSnakeCase } from '@/lib/functions.ts'
 import { deleteApi } from '@/lib/http'
 import { copyToClipboard, getLocalMessage, setUrlParams } from '@/lib/utils'
 
 const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Element => {
-  const SKELETON_ROWS = 3
-  const dispatch = useAppDispatch()
-  const [searchParams, setSearchParams] = useSearchParams()
+  const SKELETON_ROWS: number = 3
+  const DEFAULT_PAGE_SIZE: number = 10
+
   const nav = useNavigate()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const dispatch = useAppDispatch()
+
+  const [initialized, setInitialized] = useState(false)
+  const [skeletonRows, setSkeletonRows] = useState<number>(SKELETON_ROWS)
+  const [pagination, setPagination] = useState({
+    pageIndex: searchParams.get('page') ? Number(searchParams.get('page')) - 1 : 0,
+    pageSize: searchParams.get('size')
+      ? Number(searchParams.get('size'))
+      : DEFAULT_PAGE_SIZE,
+  })
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = useState({})
-  const [skeletonRows, setSkeletonRows] = useState<number>(SKELETON_ROWS)
-
-  const [pagination, setPagination] = useState({
-    pageIndex: searchParams.get('page') ? Number(searchParams.get('page')) - 1 : 0,
-    pageSize: searchParams.get('size') ? Number(searchParams.get('size')) : 10,
-  })
 
   const columns: ColumnDef<T>[] = convertTableColumns(props.columns)
 
@@ -71,47 +77,71 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
   }
 
   useEffect(() => {
+    console.debug('[0]', location.href)
     const orderBy = searchParams.get('orderBy')
     const orderByName = orderBy?.split('_desc')[0] || ''
 
     if (orderBy) {
       const isDesc = orderBy.endsWith('_desc')
-      const id = orderByName.replace(/_([a-z])/g, (_, c) => c.toUpperCase())
-
+      const id = toCamelCase(orderByName)
       setSorting([{ id, desc: isDesc }])
     }
 
     const filters = searchParams.getAll('filters')
-
     if (!filters.length) {
       setColumnFilters([])
-      return
+    } else {
+      const parsed = filters.map((f) => {
+        const [id, value] = f.split(':')
+        const camelId = toCamelCase(id)
+        return { id: camelId, value }
+      })
+      console.debug('**********: ', parsed)
+      setColumnFilters(parsed)
     }
 
-    const parsed = filters.map((f) => {
-      const [id, value] = f.split(':')
-      const camelId = id.replace(/_([a-z])/g, (_, c) => c.toUpperCase())
-      return { id: camelId, value }
-    })
-
-    setColumnFilters(parsed)
+    setInitialized(true)
   }, [])
+
   useEffect(() => {
-    const page = Number(searchParams.get('page') || 1) - 1
-    const size = Number(searchParams.get('size') || 10)
+    console.debug('[1]', location.href)
 
     setPagination((prev) => {
+      const page = Number(searchParams.get('page') || 1) - 1
+      const size = Number(searchParams.get('size') || DEFAULT_PAGE_SIZE)
       if (prev.pageIndex === page && prev.pageSize === size) {
         return prev
       }
 
       return { pageIndex: page, pageSize: size }
     })
+
+    setSorting((prev) => {
+      const orderBy = searchParams.get('orderBy')
+      if (prev[0]?.id === orderBy?.split('_desc')[0]) {
+        return prev
+      }
+      return []
+    })
+
+    setColumnFilters((prev) => {
+      const filters = searchParams.getAll('filters')
+      const nextFilters = prev.map((f: any) => `${toSnakeCase(f.id)}:${f.value}`)
+      console.debug('BEFORE:', filters)
+      console.debug('AFTER :', nextFilters)
+      if (nextFilters === filters) {
+        return prev
+      }
+      return filters.map((f: any) => {
+        return { id: toCamelCase(f.split(':')[0]), value: f.split(':')[1] }
+      })
+    })
   }, [searchParams])
 
   useEffect(() => {
+    console.debug('[2]', location.href)
     const currentPage = Number(searchParams.get('page') || 1)
-    const currentSize = Number(searchParams.get('size') || 10)
+    const currentSize = Number(searchParams.get('size') || DEFAULT_PAGE_SIZE)
 
     const isSame =
       currentPage === pagination.pageIndex + 1 && currentSize === pagination.pageSize
@@ -125,63 +155,78 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
   }, [pagination])
 
   useEffect(() => {
-    const nextSort =
-      sorting[0]?.id.replace(
-        /[A-Z]/g,
-        (letter: string) => `_${letter.toLowerCase()}`
-      ) || ''
-    const nextOrder = sorting[0]?.desc ? 'desc' : 'asc'
+    if (!initialized) return
+    console.debug('[3]', location.href)
+    console.log('sorting', sorting)
+
+    // if (sorting.length === 0) {
+    //   setParams({ orderBy: [] })
+    //   return
+    // }
+    const nextSort = toSnakeCase(sorting[0]?.id || '')
+    const nextOrder = sorting.length === 0 ? '' : sorting[0]?.desc ? 'desc' : 'asc'
 
     // Current URL sort (no suffix for ascending)
     // TODO: Support multi-column sorting: get() → getAll()
     const orderBy = searchParams.get('orderBy') || ''
 
+    console.debug('orderBy: ', orderBy)
+    console.debug('sorting: ', sorting)
+
     let currentSort = ''
     let currentOrder: 'asc' | 'desc' = 'asc'
 
-    if (orderBy.endsWith('_desc')) {
-      currentSort = orderBy.replace('_desc', '')
-      currentOrder = 'desc'
+    if (orderBy !== '') {
+      if (orderBy.endsWith('_desc')) {
+        currentSort = orderBy.replace('_desc', '')
+        currentOrder = 'desc'
+      } else {
+        currentSort = orderBy
+        currentOrder = 'asc'
+      }
     } else {
-      currentSort = orderBy
-      currentOrder = 'asc'
+      currentSort = ''
     }
 
     const isSame = currentSort === nextSort && currentOrder === nextOrder
 
-    if (sorting.length > 0 && !isSame) {
-      const nextOrderBy = nextOrder === 'desc' ? `${nextSort}_desc` : nextSort
-
-      setParams({ orderBy: nextOrderBy })
+    if (!isSame) {
+      if (sorting.length > 0) {
+        const nextOrderBy = nextOrder === 'desc' ? `${nextSort}_desc` : nextSort
+        setParams({ orderBy: nextOrderBy })
+      } else {
+        setParams({ orderBy: [] })
+      }
     }
-  }, [sorting])
+  }, [sorting, initialized])
 
   useEffect(() => {
+    console.debug('[4]', location.href)
+    if (!initialized) return
+
     const t = setTimeout(() => {
-      const nextFilters = columnFilters.map((f: any) => {
-        const id = f.id.replace(
-          /[A-Z]/g,
-          (letter: string) => `_${letter.toLowerCase()}`
-        )
-        return `${id}:${f.value}`
-      })
+      const nextFilters = columnFilters.map(
+        (f: any) => `${toSnakeCase(f.id)}:${f.value}`
+      )
 
       const currentFilters = searchParams.getAll('filters')
+      console.debug('Current FFF: ', currentFilters)
+      console.debug('Next    FFF: ', nextFilters)
 
       const isSame =
         currentFilters.length === nextFilters.length &&
         currentFilters.every((val, idx) => val === nextFilters[idx])
-      if (nextFilters.length > 0 && !isSame) {
+      if (!isSame) {
         setParams({ page: '1', filters: nextFilters })
       }
       return () => clearTimeout(t)
     }, 200)
-  }, [columnFilters])
+  }, [columnFilters, initialized])
 
   const setParams = (params: any) => {
     const paramsObj: any = {
       page: searchParams.get('page') || '1',
-      size: searchParams.get('size') || '10',
+      size: searchParams.get('size') || DEFAULT_PAGE_SIZE.toString(),
     }
 
     const orderBy = searchParams.getAll('orderBy')
@@ -205,6 +250,22 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
     setColumnFilters((prev) =>
       typeof updater === 'function' ? updater(prev) : updater
     )
+  }
+
+  const handleClearAll = () => {
+    setSorting([])
+    setColumnFilters([])
+    setPagination({
+      pageIndex: 0,
+      pageSize: DEFAULT_PAGE_SIZE,
+    })
+
+    // setParams({
+    //   page: '1',
+    //   size: DEFAULT_PAGE_SIZE.toString(),
+    //   orderBy: [],
+    //   filters: [],
+    // })
   }
 
   const deleteData = (id: string): void => {
@@ -272,6 +333,7 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
     onRowSelectionChange: setRowSelection,
   })
 
+  // Loading skeleton size calculation
   useEffect(() => {
     const dataRow: number = table.getRowModel().rows?.length
     setSkeletonRows(dataRow > SKELETON_ROWS ? dataRow : SKELETON_ROWS)
@@ -279,7 +341,12 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
 
   return (
     <React.Fragment>
-      <DataToolBar table={table} columns={props.columns} addUrl={props.addUrl} />
+      <DataToolBar
+        table={table}
+        columns={props.columns}
+        clearAll={handleClearAll}
+        addUrl={props.addUrl}
+      />
       <div className="overflow-hidden rounded-md border">
         <Table className="data-list">
           <TableHeader>
