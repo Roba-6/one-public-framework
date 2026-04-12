@@ -40,7 +40,8 @@
     "logout": "登出",
     "nextPage": "下一页",
     "openMenu": "打开菜单",
-    "previousPage": "上一页"
+    "previousPage": "上一页",
+    "unselectAll": "解除选择"
   },
   "labels": {
     "actions": "操作",
@@ -76,7 +77,12 @@
     "username": "用户名"
   },
   "placeholder": {
-    "anyKeywords": "请输入任意检索关键字"
+    "anyKeywords": "请输入任意检索关键字",
+    "username": "taro-yamada",
+    "firstname": "一山",
+    "lastname": "王",
+    "nickname": "巧克力",
+    "email": "yishan.wang@example.com"
   },
   "messages": {
     "pleaseLogin": "请输入用户名登录系统。",

@@ -19,7 +19,7 @@ const DataPagination = (props: any) => {
         <span className="px-2">|</span>
         {getLocalMessage('labels.dataPagination.selectedResults')}
         <span className="ps-2">
-          {formatNumber(props.table.getFilteredSelectedRowModel().rows.length)}
+          {formatNumber(Object.keys(props.table.getState().rowSelection).length)}
         </span>
       </div>
       <div className="text-sm">

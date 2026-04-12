@@ -40,7 +40,8 @@
     "logout": "ログアウト",
     "nextPage": "次へ",
     "openMenu": "メニューを開く",
-    "previousPage": "前へ"
+    "previousPage": "前へ",
+    "unselectAll": "選択解除"
   },
   "labels": {
     "actions": "操作",

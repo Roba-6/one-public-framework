@@ -63,8 +63,11 @@ const DataToolBar = (props: any): React.JSX.Element => {
         onChange={(e) => setKeywords(e.target.value)}
         className="me-2 max-w-sm"
       />
-      <Button variant="outline" onClick={handleClearAll}>
+      <Button variant="outline" onClick={handleClearAll} className="me-2">
         {getLocalMessage('buttons.clear')}
+      </Button>
+      <Button variant="outline" onClick={props.unselectAll}>
+        {getLocalMessage('buttons.unselectAll')}
       </Button>
       <div className="ml-auto flex items-center gap-2">
         <DropdownMenu modal={false}>

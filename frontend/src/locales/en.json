@@ -40,7 +40,8 @@
     "logout": "Log out",
     "nextPage": "Next",
     "openMenu": "Open Menu",
-    "previousPage": "Previous"
+    "previousPage": "Previous",
+    "unselectAll": "Unselect All"
   },
   "labels": {
     "actions": "Actions",

@@ -64,8 +64,7 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = useState({})
-
+  const [rowSelection, setRowSelection] = useState<Record<string, boolean>>({})
   const columns: ColumnDef<T>[] = convertTableColumns(props.columns)
 
   const navToDetail = (id: string): void => {
@@ -75,6 +74,10 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
   const navToUpdate = (id: string): void => {
     nav(setUrlParams(props.updateUrl || './:id/edit', id))
   }
+
+  useEffect(() => {
+    console.log('Row selection:', rowSelection)
+  }, [rowSelection])
 
   useEffect(() => {
     const orderBy = searchParams.get('orderBy')
@@ -242,6 +245,10 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
     })
   }
 
+  const handleUnselectAll = () => {
+    setRowSelection({})
+  }
+
   const deleteData = (id: string): void => {
     deleteApi<CommonResponse>(setUrlParams(props.deleteUrl!, id))
       .then((res: CommonResponse) => {
@@ -304,6 +311,7 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
     onColumnFiltersChange: handleColumnFiltersChange,
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
+    getRowId: (row: T) => row.id!,
   })
 
   // Loading skeleton size calculation
@@ -318,6 +326,7 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
         table={table}
         columns={props.columns}
         clearAll={handleClearAll}
+        unselectAll={handleUnselectAll}
         addUrl={props.addUrl}
       />
       <div className="overflow-hidden rounded-md border">
