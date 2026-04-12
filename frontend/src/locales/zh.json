@@ -82,7 +82,11 @@
     "firstname": "一山",
     "lastname": "王",
     "nickname": "巧克力",
-    "email": "yishan.wang@example.com"
+    "email": "yishan.wang@example.com",
+    "description": "请在此输入说明。",
+    "features": {
+      "name": "ABC-XYZ-P-XXX"
+    }
   },
   "messages": {
     "pleaseLogin": "请输入用户名登录系统。",
@@ -95,6 +99,7 @@
     "validations": {
       "min": "至少需要输入{}个字符。",
       "max": "最多不能超过{}个字符。",
+      "length": "只能输入{}个字符。",
       "username": {
         "required": "用户名为必填项。"
       },

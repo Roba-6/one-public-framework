@@ -108,10 +108,13 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
     setPagination((prev) => {
       const page = Number(searchParams.get('page') || 1) - 1
       const size = Number(searchParams.get('size') || DEFAULT_PAGE_SIZE)
+      console.debug('prev:', prev)
       if (prev.pageIndex === page && prev.pageSize === size) {
+        console.debug('X')
         return prev
       }
 
+      console.debug('Y')
       return { pageIndex: page, pageSize: size }
     })
 
@@ -139,6 +142,8 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
     const currentPage = Number(searchParams.get('page') || 1)
     const currentSize = Number(searchParams.get('size') || DEFAULT_PAGE_SIZE)
 
+    console.debug('currentPage, currentSize:', currentPage, currentSize)
+    console.debug('pagination.page:', pagination.pageIndex + 1)
     const isSame =
       currentPage === pagination.pageIndex + 1 && currentSize === pagination.pageSize
     if (!isSame) {
@@ -239,10 +244,6 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
   const handleClearAll = () => {
     setSorting([])
     setColumnFilters([])
-    setPagination({
-      pageIndex: 0,
-      pageSize: DEFAULT_PAGE_SIZE,
-    })
   }
 
   const handleUnselectAll = () => {

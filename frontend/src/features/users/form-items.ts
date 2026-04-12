@@ -24,7 +24,7 @@ export const newUserItems: FormFieldItem[] = [
     defaultValue: '',
     validate: z
       .string()
-      .min(1, { message: getLocalMessage('messages.validations.password.required') }),
+      .max(128, { message: getLocalMessage('messages.validations.max', [128]) }),
   },
   {
     name: 'email',
@@ -58,7 +58,6 @@ export const newUserItems: FormFieldItem[] = [
     type: 'text',
     placeholder: getLocalMessage('placeholder.nickname'),
     defaultValue: '',
-    // validate: z.string().min(1, { message: getLocalMessage('nickname is required') }),
   },
 ]
 
@@ -67,7 +66,7 @@ export const userItems: FormFieldItem[] = [
     name: 'name',
     label: getLocalMessage('labels.user.name'),
     type: 'text',
-    placeholder: 'yamada_taro',
+    placeholder: getLocalMessage('placeholder.username'),
     autoComplete: 'username',
     defaultValue: '',
     validate: z
@@ -82,38 +81,39 @@ export const userItems: FormFieldItem[] = [
     defaultValue: '',
     validate: z
       .string()
-      .min(1, { message: getLocalMessage('messages.validations.password.required') }),
+      .max(128, { message: getLocalMessage('messages.validations.max', [128]) }),
   },
   {
     name: 'email',
     label: getLocalMessage('labels.user.email'),
     type: 'text',
-    placeholder: 'test@test.com',
+    placeholder: getLocalMessage('placeholder.email'),
     defaultValue: '',
     validate: z
-      .string()
-      .min(1, { message: getLocalMessage('messages.validations.email.format') }),
+      .email({
+        message: getLocalMessage('messages.validations.email.format'),
+      })
+      .max(128, { message: getLocalMessage('messages.validations.max', [128]) }),
   },
   {
     name: 'lastname',
     label: getLocalMessage('labels.user.lastname'),
     type: 'text',
-    placeholder: 'Yamada',
+    placeholder: getLocalMessage('placeholder.lastname'),
     defaultValue: '',
-    validate: z.string().max(1, { message: getLocalMessage('lastname is required') }),
   },
   {
     name: 'firstname',
     label: getLocalMessage('labels.user.firstname'),
     type: 'text',
-    placeholder: 'Yamada',
+    placeholder: getLocalMessage('placeholder.firstname'),
     defaultValue: '',
   },
   {
     name: 'nickname',
     label: getLocalMessage('labels.user.nickname'),
     type: 'text',
-    placeholder: 'Yamada',
+    placeholder: getLocalMessage('placeholder.nickname'),
     defaultValue: '',
   },
   {

@@ -82,7 +82,11 @@
     "firstname": "Sum",
     "lastname": "Winchester",
     "nickname": "Sammy",
-    "email": "sum.w@example.com"
+    "email": "sum.w@example.com",
+    "description": "Enter description here.",
+    "features": {
+      "name": "ABC-XYZ-P-XXX"
+    }
   },
   "messages": {
     "pleaseLogin": "Enter User Name below to login to your account",
@@ -95,6 +99,7 @@
     "validations": {
       "min": "Must be at least {} characters.",
       "max": "Must be at most {} characters.",
+      "length": "Must be {} characters.",
       "username": {
         "required": "User Name is required."
       },
