@@ -86,6 +86,13 @@ interface FormFieldItem {
   autoComplete?: string
   options?: { label: string; value: string }[]
   defaultValue?: string | boolean
-  validate?: z.ZodString | z.ZodBoolean
+  validate?:
+    | z.ZodString
+    | z.ZodBoolean
+    | z.ZodNumber
+    | z.ZodDate
+    | z.ZodObject
+    | z.ZodArray
+    | z.ZodEmail
   className?: string
 }

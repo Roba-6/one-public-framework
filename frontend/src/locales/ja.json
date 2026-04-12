@@ -63,6 +63,7 @@
       "fullname": "氏名",
       "lastname": "苗字",
       "lock": "ロック",
+      "unlock": "アンロック",
       "name": "ユーザー名",
       "nickname": "表示名",
       "password": "パスワード"
@@ -75,7 +76,12 @@
     "username": "ユーザー名"
   },
   "placeholder": {
-    "anyKeywords": "キーワードを入力してください"
+    "anyKeywords": "キーワードを入力してください",
+    "username": "taro-yamada",
+    "firstname": "太郎",
+    "lastname": "山田",
+    "nickname": "やまちゃん",
+    "email": "yamada.taro@example.com"
   },
   "messages": {
     "pleaseLogin": "ユーザー名をご入力してログインしてください。",
@@ -86,11 +92,16 @@
       "I00100002": "機能「{}」が削除されました。"
     },
     "validations": {
+      "min": "{}文字以上で入力してください。",
+      "max": "{}文字以内で入力してください。",
       "username": {
         "required": "ユーザー名は必須項目です。"
       },
       "password": {
         "required": "パスワードは必須項目です。"
+      },
+      "email": {
+        "format": "メールアドレスの形式が正しくありません。"
       }
     }
   }

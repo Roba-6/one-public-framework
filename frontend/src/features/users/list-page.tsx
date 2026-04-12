@@ -15,8 +15,9 @@ const UserListPage = (): React.JSX.Element => {
   const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
+    setLoading(true)
     getData()
-  }, [])
+  }, [searchParams])
 
   const getData = () => {
     getApi<CommonResponse>(CONSTANT.API_URL.USER_ADMIN, {

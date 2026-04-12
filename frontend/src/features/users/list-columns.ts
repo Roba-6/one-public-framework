@@ -8,9 +8,9 @@ export const listColumns: DataColumn[] = [
     isSortable: true,
     align: 'left',
   },
-  { key: 'nickname', name: getLocalMessage('labels.user.nickname') },
+  { key: 'nickname', name: getLocalMessage('labels.user.nickname'), isSortable: true },
   { key: 'fullname', name: getLocalMessage('labels.user.fullname') },
-  { key: 'email', name: getLocalMessage('labels.user.email') },
+  { key: 'email', name: getLocalMessage('labels.user.email'), isSortable: true },
   {
     key: 'isEnabled',
     name: getLocalMessage('labels.enabled'),
@@ -18,6 +18,11 @@ export const listColumns: DataColumn[] = [
     values: ['UserRoundCheck', 'UserRoundX'],
     colors: ['text-orange-500', 'text-red-700'],
     align: 'center',
+    isFilterable: true,
+    filters: [
+      { label: getLocalMessage('labels.enabled'), value: 'true' },
+      { label: getLocalMessage('labels.disabled'), value: 'false' },
+    ],
   },
   {
     key: 'isLocked',
@@ -26,19 +31,31 @@ export const listColumns: DataColumn[] = [
     values: ['Lock', 'LockOpen'],
     colors: ['text-red-700', 'text-orange-500'],
     align: 'center',
+    isFilterable: true,
+    filters: [
+      { label: getLocalMessage('labels.user.unlock'), value: 'false' },
+      { label: getLocalMessage('labels.user.lock'), value: 'true' },
+    ],
   },
   {
     key: 'failedAttempts',
     name: getLocalMessage('labels.user.failedAttempts'),
     type: 'number',
     align: 'right',
+    isSortable: true,
   },
   {
     key: 'createdAt',
     name: getLocalMessage('labels.createdAt'),
     type: 'datetime',
+    isSortable: true,
   },
-  { key: 'updatedAt', name: getLocalMessage('labels.updatedAt'), type: 'datetime' },
+  {
+    key: 'updatedAt',
+    name: getLocalMessage('labels.updatedAt'),
+    type: 'datetime',
+    isSortable: true,
+  },
   { key: 'id', name: getLocalMessage('labels.id'), type: 'badge', align: 'center' },
 ]
 

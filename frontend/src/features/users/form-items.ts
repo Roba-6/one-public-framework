@@ -8,12 +8,13 @@ export const newUserItems: FormFieldItem[] = [
     name: 'name',
     label: getLocalMessage('labels.user.name'),
     type: 'text',
-    placeholder: 'yamada_taro',
+    placeholder: getLocalMessage('placeholder.username'),
     autoComplete: 'username',
     defaultValue: '',
     validate: z
       .string()
-      .min(1, { message: getLocalMessage('messages.validations.username.required') }),
+      .min(3, { message: getLocalMessage('messages.validations.min', [3]) })
+      .max(55, { message: getLocalMessage('messages.validations.max', [55]) }),
   },
   {
     name: 'password',
@@ -29,33 +30,35 @@ export const newUserItems: FormFieldItem[] = [
     name: 'email',
     label: getLocalMessage('labels.user.email'),
     type: 'text',
-    placeholder: 'test@test.com',
+    placeholder: getLocalMessage('placeholder.email'),
     defaultValue: '',
-    validate: z.string().min(1, { message: getLocalMessage('Email is required') }),
+    validate: z
+      .email({
+        message: getLocalMessage('messages.validations.email.format'),
+      })
+      .max(128, { message: getLocalMessage('messages.validations.max', [128]) }),
   },
   {
     name: 'lastname',
     label: getLocalMessage('labels.user.lastname'),
     type: 'text',
-    placeholder: 'Yamada',
+    placeholder: getLocalMessage('placeholder.lastname'),
     defaultValue: '',
-    validate: z.string().min(1, { message: getLocalMessage('lastname is required') }),
   },
   {
     name: 'firstname',
     label: getLocalMessage('labels.user.firstname'),
     type: 'text',
-    placeholder: 'Taro',
+    placeholder: getLocalMessage('placeholder.firstname'),
     defaultValue: '',
-    validate: z.string().min(1, { message: getLocalMessage('firstname is required') }),
   },
   {
     name: 'nickname',
     label: getLocalMessage('labels.user.nickname'),
     type: 'text',
-    placeholder: 'yama',
+    placeholder: getLocalMessage('placeholder.nickname'),
     defaultValue: '',
-    validate: z.string().min(1, { message: getLocalMessage('nickname is required') }),
+    // validate: z.string().min(1, { message: getLocalMessage('nickname is required') }),
   },
 ]
 
@@ -87,7 +90,9 @@ export const userItems: FormFieldItem[] = [
     type: 'text',
     placeholder: 'test@test.com',
     defaultValue: '',
-    validate: z.string().min(1, { message: getLocalMessage('Email is required') }),
+    validate: z
+      .string()
+      .min(1, { message: getLocalMessage('messages.validations.email.format') }),
   },
   {
     name: 'lastname',
@@ -95,7 +100,7 @@ export const userItems: FormFieldItem[] = [
     type: 'text',
     placeholder: 'Yamada',
     defaultValue: '',
-    validate: z.string().min(1, { message: getLocalMessage('lastname is required') }),
+    validate: z.string().max(1, { message: getLocalMessage('lastname is required') }),
   },
   {
     name: 'firstname',
@@ -103,7 +108,6 @@ export const userItems: FormFieldItem[] = [
     type: 'text',
     placeholder: 'Yamada',
     defaultValue: '',
-    validate: z.string().min(1, { message: getLocalMessage('firstname is required') }),
   },
   {
     name: 'nickname',
@@ -111,7 +115,6 @@ export const userItems: FormFieldItem[] = [
     type: 'text',
     placeholder: 'Yamada',
     defaultValue: '',
-    validate: z.string().min(1, { message: getLocalMessage('nickname is required') }),
   },
   {
     name: 'isEnabled',

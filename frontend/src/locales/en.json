@@ -63,6 +63,7 @@
       "fullname": "Full Name",
       "lastname": "Lastname",
       "lock": "Locked",
+      "unlock": "Unlocked",
       "name": "User Name",
       "nickname": "Nick Name",
       "password": "Password"
@@ -75,7 +76,12 @@
     "username": "User Name"
   },
   "placeholder": {
-    "anyKeywords": "Enter keywords"
+    "anyKeywords": "Enter keywords",
+    "username": "sum-w",
+    "firstname": "Sum",
+    "lastname": "Winchester",
+    "nickname": "Sammy",
+    "email": "sum.w@example.com"
   },
   "messages": {
     "pleaseLogin": "Enter User Name below to login to your account",
@@ -86,11 +92,16 @@
       "I00100002": "The feature '{}' has been deleted."
     },
     "validations": {
+      "min": "Must be at least {} characters.",
+      "max": "Must be at most {} characters.",
       "username": {
         "required": "User Name is required."
       },
       "password": {
         "required": "Password is required."
+      },
+      "email": {
+        "format": "Invalid format."
       }
     }
   }
