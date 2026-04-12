@@ -113,8 +113,8 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
     })
 
     setSorting((prev) => {
-      const orderBy = searchParams.get('orderBy')
-      if (prev[0]?.id === orderBy?.split('_desc')[0]) {
+      const orderBy = searchParams.get('orderBy') || ''
+      if (prev[0]?.id === toCamelCase(orderBy?.split('_desc')[0])) {
         return prev
       }
       return []
@@ -150,10 +150,6 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
   useEffect(() => {
     if (!initialized) return
 
-    // if (sorting.length === 0) {
-    //   setParams({ orderBy: [] })
-    //   return
-    // }
     const nextSort = toSnakeCase(sorting[0]?.id || '')
     const nextOrder = sorting.length === 0 ? '' : sorting[0]?.desc ? 'desc' : 'asc'
 
@@ -244,13 +240,6 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
       pageIndex: 0,
       pageSize: DEFAULT_PAGE_SIZE,
     })
-
-    // setParams({
-    //   page: '1',
-    //   size: DEFAULT_PAGE_SIZE.toString(),
-    //   orderBy: [],
-    //   filters: [],
-    // })
   }
 
   const deleteData = (id: string): void => {
