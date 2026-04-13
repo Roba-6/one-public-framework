@@ -32,8 +32,12 @@ import { cn } from '@/lib/utils'
 import { getLocalMessage } from '@/lib/utils'
 
 const LoginFormSchema = z.object({
-  username: z.string().min(1, { message: getLocalMessage('Username is required') }),
-  password: z.string().min(1, { message: getLocalMessage('Password is required') }),
+  username: z
+    .string()
+    .min(1, { message: getLocalMessage('messages.validations.username.required') }),
+  password: z
+    .string()
+    .min(1, { message: getLocalMessage('messages.validations.password.required') }),
 })
 
 const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
@@ -90,6 +94,7 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
                               {...field}
                               value={field.value as string}
                               autoComplete="username"
+                              tabIndex={0}
                             />
                           </FormControl>
                           <FormMessage />
@@ -110,12 +115,13 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
                             <a
                               href="#"
                               className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                              tabIndex={1}
                             >
                               {getLocalMessage('labels.forgetPassword')}
                             </a>
                           </div>
                           <FormControl>
-                            <Password field={field} />
+                            <Password field={field} tabIndex={0} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>

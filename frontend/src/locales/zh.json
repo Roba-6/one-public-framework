@@ -5,11 +5,12 @@
     "zh": "简体中文"
   },
   "title": {
-    "login": "登陆",
+    "login": "登录",
     "error": "错误",
     "success": "操作完成",
     "info": "信息",
-    "warning": "警告"
+    "warning": "警告",
+    "noData": "无数据"
   },
   "menus": {
     "system": "系统",
@@ -28,32 +29,42 @@
     "add": "新建",
     "cancel": "取消",
     "create": "创建",
+    "clear": "清空",
     "close": "关闭",
-    "column": "列",
+    "column": "显示列",
     "copyId": "复制 ID",
     "delete": "删除",
     "details": "详细信息",
     "edit": "编辑",
-    "login": "登陆",
+    "login": "登录",
     "logout": "登出",
     "nextPage": "下一页",
     "openMenu": "打开菜单",
-    "previousPage": "上一页"
+    "previousPage": "上一页",
+    "unselectAll": "解除选择"
   },
   "labels": {
     "actions": "操作",
     "createdAt": "创建时间",
     "enabled": "可用",
+    "disabled": "不可用",
     "forgetPassword": "忘记密码？",
     "id": "ID",
     "requiresAuth": "需要认证",
+    "noAuthRequired": "无需认证",
+    "dataPagination": {
+      "itemsPerPage": "每页显示数据数",
+      "totalResults": "总数据数",
+      "selectedResults": "选中数据数"
+    },
     "user": {
       "email": "邮箱",
-      "failedAttempts": "登陆失败次数",
+      "failedAttempts": "登录失败次数",
       "firstname": "名",
       "fullname": "姓名",
       "lastname": "姓",
       "lock": "锁定",
+      "unlock": "未锁定",
       "name": "用户名",
       "nickname": "昵称",
       "password": "密码"
@@ -65,12 +76,39 @@
     "updatedAt": "修改时间",
     "username": "用户名"
   },
+  "placeholder": {
+    "anyKeywords": "请输入任意检索关键字",
+    "username": "taro-yamada",
+    "firstname": "一山",
+    "lastname": "王",
+    "nickname": "巧克力",
+    "email": "yishan.wang@example.com",
+    "description": "请在此输入说明。",
+    "features": {
+      "name": "ABC-XYZ-P-XXX"
+    }
+  },
   "messages": {
-    "pleaseLogin": "请输入用户名登陆系统。",
+    "pleaseLogin": "请输入用户名登录系统。",
     "welcome": "欢迎来到 One Public Framework！",
+    "noData": "您尚未创建任何数据或无数据能匹配您的检索条件。",
     "notices": {
-      "I00100001": "用户“{}”已被删除。",
+      "I00100001": "数据“{}”已被删除。",
       "I00100002": "功能“{}”已被删除。"
+    },
+    "validations": {
+      "min": "至少需要输入{}个字符。",
+      "max": "最多不能超过{}个字符。",
+      "length": "只能输入{}个字符。",
+      "username": {
+        "required": "用户名为必填项。"
+      },
+      "password": {
+        "required": "密码为必填项。"
+      },
+      "email": {
+        "format": "请输入正确的电子邮件地址。"
+      }
     }
   }
 }

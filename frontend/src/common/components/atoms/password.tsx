@@ -13,6 +13,7 @@ const Password = (props: {
     },
     'password'
   >
+  tabIndex?: number
 }): React.ReactNode => {
   const [showPassword, setShowPassword] = useState<boolean>(false)
   return (
@@ -23,6 +24,7 @@ const Password = (props: {
         value={props.field.value as string}
         autoComplete="current-password"
         className="pr-10"
+        tabIndex={props.tabIndex}
       />
       <Button
         type="button"

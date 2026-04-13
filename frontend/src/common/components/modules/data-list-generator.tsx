@@ -1,6 +1,5 @@
 import type { CellContext, ColumnDef, HeaderContext } from '@tanstack/react-table'
 import * as Icon from 'lucide-react'
-import { MoreHorizontal } from 'lucide-react'
 import React from 'react'
 
 import { Badge } from '@/common/components/ui/badge'
@@ -9,8 +8,11 @@ import { Checkbox } from '@/common/components/ui/checkbox'
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/common/components/ui/dropdown-menu'
@@ -62,11 +64,79 @@ export const convertTableColumns = <T,>(objColumns: DataColumn[]): ColumnDef<T>[
           <div className={align}>
             <Button
               variant="ghost"
-              onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+              size="sm"
+              onClick={() => column.toggleSorting(undefined, false)}
             >
               {dataColumn.name}
-              <Icon.ArrowUpDown />
+              {column.getIsSorted() === 'asc' && <Icon.ArrowUpNarrowWide />}
+              {column.getIsSorted() === 'desc' && <Icon.ArrowDownWideNarrow />}
+              {['asc', 'desc'].includes(column.getIsSorted() as string) || (
+                <Icon.ArrowUpDown />
+              )}
             </Button>
+          </div>
+        )
+      }
+    } else if (dataColumn.isFilterable) {
+      header = ({ column }: HeaderContext<T, any>) => {
+        const value: string = column.getFilterValue() as string
+        return (
+          <div className={align}>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost">
+                  {dataColumn.name}
+                  {value ? (
+                    <Icon.Funnel fill="currentColor" stroke="none" />
+                  ) : (
+                    <Icon.Funnel />
+                  )}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                className={'min-w-[var(--radix-dropdown-menu-trigger-width)]'}
+              >
+                <DropdownMenuGroup>
+                  <DropdownMenuRadioGroup
+                    value={value}
+                    onValueChange={(value) => {
+                      if (column.getFilterValue() === value) {
+                        column.setFilterValue(undefined)
+                      } else {
+                        column.setFilterValue(value)
+                      }
+                    }}
+                  >
+                    {dataColumn.filters?.map((option) => (
+                      <DropdownMenuRadioItem key={option.value} value={option.value}>
+                        {option.label}
+                      </DropdownMenuRadioItem>
+                      // <DropdownMenuCheckboxItem
+                      //   key={option.value}
+                      //   checked={
+                      //     ((column.getFilterValue() || []) as string[]).indexOf(
+                      //       option.value
+                      //     ) !== -1
+                      //   }
+                      //   onCheckedChange={() => {
+                      //     const currentValue = (column.getFilterValue() ||
+                      //       []) as string[]
+                      //     const currentIdx = currentValue.indexOf(option.value)
+                      //     if (currentIdx !== -1) {
+                      //       currentValue.splice(currentIdx, 1)
+                      //       column.setFilterValue(currentValue)
+                      //     } else {
+                      //       column.setFilterValue([...currentValue, option.value])
+                      //     }
+                      //   }}
+                      // >
+                      //   {option.label}
+                      // </DropdownMenuCheckboxItem>
+                    ))}
+                  </DropdownMenuRadioGroup>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         )
       }
@@ -219,7 +289,7 @@ export const createActionColumn = <T extends BaseType>(
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="h-8 w-8 p-0">
                 <span className="sr-only">{getLocalMessage('buttons.openMenu')}</span>
-                <MoreHorizontal />
+                <Icon.MoreHorizontal />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">

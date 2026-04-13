@@ -7,7 +7,7 @@ import { CONSTANT } from '@/common/constants'
 import type { Configuration } from '@/common/types/configuration'
 import type { Menu } from '@/common/types/data'
 import type { Message } from '@/common/types/response'
-import { getEnv } from '@/lib/functions'
+import { getBrowserLanguage, getEnv } from '@/lib/functions'
 import { getValueFromObjectArray } from '@/lib/utils'
 import type { RootState } from '@/store'
 import menu from '@/templates/menu'
@@ -56,7 +56,7 @@ const initialState: AppState = {
   settings: {
     name: getEnv('UI_NAME') as string,
     language: (localStorage.getItem(CONSTANT.STORAGE_KEY.LANGUAGE) ||
-      getEnv('UI_LANGUAGE')) as string,
+      getBrowserLanguage()) as string,
     url: getEnv('UI_URL') as string,
     api: getEnv('UI_API') as string,
     type: getEnv('UI_TYPE') as AppType,
@@ -99,6 +99,8 @@ export const appSlice = createSlice({
               ) as string
             } else if (item.value && item.value !== '') {
               state.settings.language = item.value
+            } else {
+              state.settings.language = getBrowserLanguage()
             }
             if (i18n.isInitialized) {
               void i18n.changeLanguage(state.settings.language)

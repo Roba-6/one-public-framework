@@ -100,6 +100,8 @@ class DataReader:
                 if column.endswith("_desc"):
                     ob_col_list.append(col(getattr(model, column[:-5])).desc())
                 else:
+                    if column.endswith("_asc"):
+                        column = column[:-4]
                     ob_col_list.append(col(getattr(model, column)))
             statement = statement.order_by(*ob_col_list)
 

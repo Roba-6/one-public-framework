@@ -115,8 +115,7 @@ export const formatDay = (
 ): string => dayjs(datetimeStr).format(getLocalMessage(`format.${type}`))
 
 export const formatNumber = (num: string | number): string => {
-  const failedAttempts = parseFloat(num.toString())
   return new Intl.NumberFormat(store.getState().app.settings.language).format(
-    failedAttempts
+    parseFloat(num.toString())
   )
 }
