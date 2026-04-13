@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: One Public API 0.1.0-alpha.15\n"
+"Project-Id-Version: One Public API 0.1.0-alpha.16\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-03-13 00:33+0900\n"
+"POT-Creation-Date: 2026-04-13 23:39+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -46,8 +46,8 @@ msgstr "ソート用の列名"
 #: src/one_public_api/common/query_param.py:51
 msgid "Sort by Description"
 msgstr ""
-"検索結果に適用する並び順を指定するパラメータ。フィールド名および並び順を用いてソート条件を設定する。複数フィールドを指定した場合は、記載順を優先順として処理する。降順を指定する場合は、フィールド名の末尾に"
-" `_desc` を付与する。"
+"検索結果に適用する並び順を指定するパラメータ。フィールド名および並び順を用いてソート条件を設定する。複数フィールドを指定した場合は、記載順を優先順として処理する。昇順を指定する場合は、フィールド名をそのままか末尾に"
+" `_asc` を付与し、降順を指定する場合は、フィールド名の末尾に `_desc` を付与する。"
 
 #: src/one_public_api/common/query_param.py:55
 msgid "Keywords"
@@ -63,7 +63,8 @@ msgstr "フィルター"
 
 #: src/one_public_api/common/query_param.py:61
 msgid "Filters Description"
-msgstr "検索条件を指定するためのパラメータです。指定した条件に一致するレコードのみを検索結果に含めます。フォーマットは `<カラム名>:<値>` "
+msgstr ""
+"検索条件を指定するためのパラメータです。指定した条件に一致するレコードのみを検索結果に含めます。フォーマットは `<カラム名>:<値>` "
 "です。（例：`name:Lucy`）"
 
 #: src/one_public_api/core/exceptions.py:32
@@ -179,7 +180,7 @@ msgid "Record creation time"
 msgstr "作成日時"
 
 #: src/one_public_api/models/mixins/timestamp_mixin.py:29
-msgid "Record creation time Description"
+msgid "Record Creation Time Description"
 msgstr "レコードが作成された日時で、自動生成される。"
 
 #: src/one_public_api/models/mixins/timestamp_mixin.py:35
@@ -187,7 +188,7 @@ msgid "Last update time"
 msgstr "最終変更日時"
 
 #: src/one_public_api/models/mixins/timestamp_mixin.py:36
-msgid "Last update time Description"
+msgid "Last Update Time Description"
 msgstr "レコードが最後に変更された日時で、自動生成される。"
 
 #: src/one_public_api/models/system/action_model.py:21
@@ -251,11 +252,11 @@ msgid "Attachment name"
 msgstr "添付ファイル名"
 
 #: src/one_public_api/models/system/attachment_model.py:36
-msgid "MIME type"
+msgid "MIME Type"
 msgstr "MIME タイプ"
 
 #: src/one_public_api/models/system/attachment_model.py:41
-msgid "save path"
+msgid "Save Path"
 msgstr "保存先パス"
 
 #: src/one_public_api/models/system/category_model.py:19
@@ -401,7 +402,7 @@ msgid "Number of failed login attempts"
 msgstr "ログイン失敗回数"
 
 #: src/one_public_api/routers/authenticate_router.py:31
-msgid "Authentications"
+msgid "Authentication"
 msgstr "認証"
 
 #: src/one_public_api/routers/authenticate_router.py:40
@@ -494,7 +495,9 @@ msgid "Feature not found."
 msgstr "機能が見つかりません。"
 
 #: src/one_public_api/routers/configuration_router.py:28
-msgid "Configurations"
+#: src/one_public_api/schemas/authenticate_schema.py:80
+#: src/one_public_api/schemas/base_schema.py:145
+msgid "Configuration"
 msgstr "設定"
 
 #: src/one_public_api/routers/configuration_router.py:36
@@ -634,11 +637,6 @@ msgstr "ロール"
 msgid "Role Description"
 msgstr "ユーザーに付与されているロール情報です。"
 
-#: src/one_public_api/schemas/authenticate_schema.py:80
-#: src/one_public_api/schemas/base_schema.py:145
-msgid "Configuration"
-msgstr "設定"
-
 #: src/one_public_api/schemas/authenticate_schema.py:81
 msgid "Configuration Description"
 msgstr "ユーザーに適用される設定情報です。"
@@ -731,14 +729,12 @@ msgid "Result Description"
 msgstr "API 処理の主な結果データ。単一オブジェクト、複数オブジェクトのリスト、または結果がない場合は `null` となる。"
 
 #: src/one_public_api/schemas/response_schema.py:88
-msgid "Count of Items"
-msgstr "結果アイテムの総数"
+msgid "Item Count"
+msgstr "処理結果のデータ数"
 
 #: src/one_public_api/schemas/response_schema.py:89
-msgid "Count of Items Description"
-msgstr ""
-"ページネーション対応エンドポイントで特に使用され、全体の件数を知りたい場合に便利である。単一オブジェクト取得時など、件数が意味を持たない場合は "
-"`null` になります。"
+msgid "Item Count Description"
+msgstr "検索条件と一致したすべてのデータの件数。"
 
 #: src/one_public_api/schemas/response_schema.py:93
 msgid "Detail of Result"

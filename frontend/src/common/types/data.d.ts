@@ -54,6 +54,11 @@ export type FormType =
 
 export type EventType = 'handleClick'
 
+interface Filter {
+  label: string
+  value: string
+}
+
 interface DataColumn {
   key?: string
   name?: string
@@ -61,6 +66,8 @@ interface DataColumn {
   values?: (keyof typeof Icon)[]
   colors?: string[]
   isSortable?: boolean
+  isFilterable?: boolean
+  filters?: Filter[]
   align?: ColumnAlign
 }
 
@@ -79,6 +86,13 @@ interface FormFieldItem {
   autoComplete?: string
   options?: { label: string; value: string }[]
   defaultValue?: string | boolean
-  validate?: z.ZodString | z.ZodBoolean
+  validate?:
+    | z.ZodString
+    | z.ZodBoolean
+    | z.ZodNumber
+    | z.ZodDate
+    | z.ZodObject
+    | z.ZodArray
+    | z.ZodEmail
   className?: string
 }

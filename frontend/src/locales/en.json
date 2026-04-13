@@ -9,7 +9,8 @@
     "error": "Error",
     "success": "Success",
     "info": "Info",
-    "warning": "Warning"
+    "warning": "Warning",
+    "noData": "No data found"
   },
   "menus": {
     "system": "SYSTEM",
@@ -21,13 +22,14 @@
     "update": "Update"
   },
   "format": {
-    "datetime": "D/M/YYYY HH:mm",
-    "shortDatetime": "D/M HH:mm"
+    "datetime": "D MMM YYYY HH:mm",
+    "shortDatetime": "D MMM HH:mm"
   },
   "buttons": {
     "add": "Add",
     "cancel": "Cancel",
     "create": "Create",
+    "clear": "Clear",
     "close": "Close",
     "column": "Columns",
     "copyId": "copy ID to clipboard",
@@ -38,15 +40,23 @@
     "logout": "Log out",
     "nextPage": "Next",
     "openMenu": "Open Menu",
-    "previousPage": "Previous"
+    "previousPage": "Previous",
+    "unselectAll": "Unselect All"
   },
   "labels": {
     "actions": "Actions",
     "createdAt": "Created At",
     "enabled": "Enabled",
+    "disabled": "Disabled",
     "forgetPassword": "Forgot your password?",
     "id": "ID",
     "requiresAuth": "Auth Required",
+    "noAuthRequired": "No Auth Required",
+    "dataPagination": {
+      "itemsPerPage": "Items per page",
+      "totalResults": "Total Results",
+      "selectedResults": "Selected Results"
+    },
     "user": {
       "email": "E-mail",
       "failedAttempts": "Failed Attempts",
@@ -54,6 +64,7 @@
       "fullname": "Full Name",
       "lastname": "Lastname",
       "lock": "Locked",
+      "unlock": "Unlocked",
       "name": "User Name",
       "nickname": "Nick Name",
       "password": "Password"
@@ -65,12 +76,39 @@
     "updatedAt": "Updated At",
     "username": "User Name"
   },
+  "placeholder": {
+    "anyKeywords": "Enter keywords",
+    "username": "sum-w",
+    "firstname": "Sum",
+    "lastname": "Winchester",
+    "nickname": "Sammy",
+    "email": "sum.w@example.com",
+    "description": "Enter description here.",
+    "features": {
+      "name": "ABC-XYZ-P-XXX"
+    }
+  },
   "messages": {
-    "pleaseLogin": "Enter user name below to login to your account",
+    "pleaseLogin": "Enter User Name below to login to your account",
     "welcome": "Welcome to One Public Framework!",
+    "noData": "There is no data available, or no results match your search criteria.",
     "notices": {
-      "I00100001": "The user '{}' has been deleted.",
+      "I00100001": "The recorder '{}' has been deleted.",
       "I00100002": "The feature '{}' has been deleted."
+    },
+    "validations": {
+      "min": "Must be at least {} characters.",
+      "max": "Must be at most {} characters.",
+      "length": "Must be {} characters.",
+      "username": {
+        "required": "User Name is required."
+      },
+      "password": {
+        "required": "Password is required."
+      },
+      "email": {
+        "format": "Invalid format."
+      }
     }
   }
 }

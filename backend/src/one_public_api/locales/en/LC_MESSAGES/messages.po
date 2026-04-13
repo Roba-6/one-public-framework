@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: One Public API 0.1.0-alpha.15\n"
+"Project-Id-Version: One Public API 0.1.0-alpha.16\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-03-13 00:33+0900\n"
+"POT-Creation-Date: 2026-04-13 23:39+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 #: src/one_public_api/main.py:9
-msgid "API NAME"
+msgid "API Name"
 msgstr ""
 
 #: src/one_public_api/common/query_param.py:38
@@ -45,11 +45,12 @@ msgstr ""
 " to control page size and prevent large data loads."
 
 #: src/one_public_api/common/query_param.py:50
-msgid "Order by"
+msgid "Sort by"
 msgstr ""
 
 #: src/one_public_api/common/query_param.py:51
-msgid "Order by Description"
+#, fuzzy
+msgid "Sort by Description"
 msgstr ""
 "Determines the sorting rule applied to the result set. Sorting rules are "
 "defined by providing field names along with their sort directions. When "
@@ -199,16 +200,20 @@ msgid "Record creation time"
 msgstr ""
 
 #: src/one_public_api/models/mixins/timestamp_mixin.py:29
-msgid "Record creation time Description"
+#, fuzzy
+msgid "Record Creation Time Description"
 msgstr ""
+"Functions sharing the same first seven characters (e.g. SYS-COF)belong to"
+" the same functional category."
 
 #: src/one_public_api/models/mixins/timestamp_mixin.py:35
 msgid "Last update time"
 msgstr ""
 
 #: src/one_public_api/models/mixins/timestamp_mixin.py:36
-msgid "Last update time Description"
-msgstr ""
+#, fuzzy
+msgid "Last Update Time Description"
+msgstr "**SYS-ATH-P-SUP**<br />Registers a new user account."
 
 #: src/one_public_api/models/system/action_model.py:21
 #: src/one_public_api/models/system/action_model.py:86
@@ -271,11 +276,11 @@ msgid "Attachment name"
 msgstr ""
 
 #: src/one_public_api/models/system/attachment_model.py:36
-msgid "MIME type"
+msgid "MIME Type"
 msgstr ""
 
 #: src/one_public_api/models/system/attachment_model.py:41
-msgid "save path"
+msgid "Save Path"
 msgstr ""
 
 #: src/one_public_api/models/system/category_model.py:19
@@ -421,7 +426,7 @@ msgid "Number of failed login attempts"
 msgstr ""
 
 #: src/one_public_api/routers/authenticate_router.py:31
-msgid "Authentications"
+msgid "Authentication"
 msgstr ""
 
 #: src/one_public_api/routers/authenticate_router.py:40
@@ -521,7 +526,9 @@ msgid "Feature not found."
 msgstr ""
 
 #: src/one_public_api/routers/configuration_router.py:28
-msgid "Configurations"
+#: src/one_public_api/schemas/authenticate_schema.py:80
+#: src/one_public_api/schemas/base_schema.py:145
+msgid "Configuration"
 msgstr ""
 
 #: src/one_public_api/routers/configuration_router.py:36
@@ -664,11 +671,6 @@ msgstr ""
 "The primary result data of the API response. Can be a single object, a "
 "list of objects, or `null` when there are no results."
 
-#: src/one_public_api/schemas/authenticate_schema.py:80
-#: src/one_public_api/schemas/base_schema.py:145
-msgid "Configuration"
-msgstr ""
-
 #: src/one_public_api/schemas/authenticate_schema.py:81
 #, fuzzy
 msgid "Configuration Description"
@@ -786,15 +788,15 @@ msgstr ""
 "list of objects, or `null` when there are no results."
 
 #: src/one_public_api/schemas/response_schema.py:88
-msgid "Count of Items"
-msgstr "Count"
+msgid "Item Count"
+msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:89
-msgid "Count of Items Description"
+#, fuzzy
+msgid "Item Count Description"
 msgstr ""
-"Total number of items available in the result set. Particularly useful "
-"with paginated endpoints, this indicates the overall count. Will be "
-"`null` when counting is not applicable (e.g., single object retrieval)."
+"Defines the maximum number of records to return in a single request. Used"
+" to control page size and prevent large data loads."
 
 #: src/one_public_api/schemas/response_schema.py:93
 msgid "Detail of Result"

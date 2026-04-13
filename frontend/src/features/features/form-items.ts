@@ -8,20 +8,17 @@ export const newFeatureItems: FormFieldItem[] = [
     name: 'name',
     label: getLocalMessage('labels.feature.name'),
     type: 'text',
-    placeholder: 'ABC-MNO-P-XYZ',
+    placeholder: getLocalMessage('placeholder.features.name'),
     defaultValue: '',
     validate: z
       .string()
-      .min(1, { message: getLocalMessage('Feature name is required') }),
+      .length(13, { message: getLocalMessage('messages.validations.length', [13]) }),
   },
   {
     name: 'description',
     label: getLocalMessage('labels.feature.description'),
     type: 'textarea',
-    defaultValue: '',
-    validate: z
-      .string()
-      .min(1, { message: getLocalMessage('Description is required') }),
+    placeholder: getLocalMessage('placeholder.description'),
   },
   {
     name: 'isEnabled',

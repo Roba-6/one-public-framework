@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: "tommy";
-  src: url("assets/fonts/MADE-TOMMY-Regular_PERSONAL-USE.otf") format("truetype");
+  src: url("assets/fonts/MADE-TOMMY-Light_PERSONAL-USE.otf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
@@ -167,6 +167,9 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+  *::selection {
+    @apply bg-orange-400;
+  }
   body {
     @apply bg-background text-foreground;
   }
@@ -253,6 +256,12 @@ table.data-list {
   tbody {
     tr td {
       @apply bg-[var(--card)];
+    }
+    tr:nth-child(even) td {
+      @apply bg-neutral-100 dark:bg-neutral-900;
+    }
+    tr:hover td {
+      @apply bg-neutral-200 dark:bg-neutral-800 transition-all duration-300;
     }
   }
 }

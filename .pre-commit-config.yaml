@@ -74,7 +74,7 @@ repos:
         entry: |
           bash -c '
           cd frontend &&
-          yarn exec prettier . --write'
+          npx prettier . --write'
         language: system
         files: \.(ts|tsx|mjs|html|json)$
 
