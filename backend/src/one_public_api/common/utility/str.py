@@ -51,8 +51,46 @@ def convert_text_logo(text: str, with_version: bool = True) -> str:
 
 
 def to_camel(string: str) -> str:
+    """
+    Converts a given string in snake_case to camelCase.
+
+    This function takes a string formatted in snake_case (words separated by
+    underscores) and converts it to camelCase. The first word of the string is fully
+    in lowercase, while later words are capitalized.
+
+    Parameters
+    ----------
+    string : str
+        The input string, formatted in snake_case.
+
+    Returns
+    -------
+    str
+        A converted string in camelCase.
+        If the input string contains only underscores or is empty,
+        the function returns an empty string. If the input string starts
+        or ends with underscores, they are ignored during conversion.
+
+    Examples
+    --------
+    >>> to_camel("hello_world")
+    'helloWorld'
+    >>> to_camel("convert_to_camel_case")
+    'convertToCamelCase'
+    >>> to_camel("_leading_underscore")
+    'LeadingUnderscore'
+    >>> to_camel("trailing_underscore_")
+    'trailingUnderscore'
+    >>> to_camel("__only__underscores__")
+    'OnlyUnderscores'
+    >>> to_camel("")
+    ''
+    >>> to_camel("alreadyCamelCase")
+    'alreadycamelcase'
+    """
+
     parts = string.split("_")
-    return parts[0] + "".join(word.capitalize() for word in parts[1:])
+    return parts[0].lower() + "".join(word.capitalize() for word in parts[1:])
 
 
 def get_hashed_password(password: str) -> str:

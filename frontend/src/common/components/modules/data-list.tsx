@@ -41,7 +41,7 @@ import { useAppDispatch } from '@/common/hooks/use-store'
 import type { Action, BaseType } from '@/common/types/data'
 import type { DataListProps } from '@/common/types/props'
 import type { CommonResponse } from '@/common/types/response'
-import { toCamelCase, toSnakeCase } from '@/lib/functions.ts'
+import { toCamelCase, toSnakeCase } from '@/lib/functions'
 import { deleteApi } from '@/lib/http'
 import { copyToClipboard, getLocalMessage, setUrlParams } from '@/lib/utils'
 
