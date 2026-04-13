@@ -11,7 +11,7 @@ import {
   CardTitle,
 } from '@/common/components/ui/card'
 
-const DashboardPage = (): React.ReactNode => {
+const DashboardPage = (): React.JSX.Element => {
   return (
     <div className="flex flex-1 flex-col gap-4 pt-0">
       <div className="grid auto-rows-min gap-4 md:grid-cols-3">

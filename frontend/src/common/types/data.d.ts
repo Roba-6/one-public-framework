@@ -1,0 +1,98 @@
+import * as Icon from 'lucide-react'
+import React from 'react'
+import { z } from 'zod/v4'
+
+interface BaseType {
+  id?: string
+  name?: string
+}
+
+interface MenuItem {
+  name: string
+  url?: string
+  icon?: keyof typeof Icon
+  items?: MenuItem[]
+  show?: boolean
+}
+
+interface Menu {
+  [key: string]: {
+    isOpened: boolean
+    items?: MenuItem[]
+  }
+}
+
+export type DatetimeType =
+  | 'datetime'
+  | 'shortDatetime'
+  | 'date'
+  | 'dateForApi'
+  | 'time'
+  | 'defaultDatetime'
+
+export type ColumnType =
+  | 'title'
+  | 'badge'
+  | 'label'
+  | 'paragraph'
+  | 'markdown'
+  | 'number'
+  | 'datetime'
+  | 'booleanIcon'
+
+export type ColumnAlign = 'left' | 'center' | 'right'
+
+export type FormType =
+  | 'text'
+  | 'email'
+  | 'password'
+  | 'textarea'
+  | 'select'
+  | 'checkbox'
+  | 'radio'
+  | 'switch'
+
+export type EventType = 'handleClick'
+
+interface Filter {
+  label: string
+  value: string
+}
+
+interface DataColumn {
+  key?: string
+  name?: string
+  type?: ColumnType
+  values?: (keyof typeof Icon)[]
+  colors?: string[]
+  isSortable?: boolean
+  isFilterable?: boolean
+  filters?: Filter[]
+  align?: ColumnAlign
+}
+
+interface Action {
+  name?: string
+  type?: 'item' | 'separator'
+  events?: Partial<Record<EventType, React.EventHandler<any> | string>> | null
+  // events?: Partial<Record<EventType, React.EventHandler<any>>> | null
+}
+
+interface FormFieldItem {
+  name: string
+  label?: string
+  type: FormType
+  placeholder?: string
+  autoComplete?: string
+  options?: { label: string; value: string }[]
+  defaultValue?: string | boolean
+  validate?:
+    | z.ZodString
+    | z.ZodBoolean
+    | z.ZodNumber
+    | z.ZodDate
+    | z.ZodObject
+    | z.ZodArray
+    | z.ZodEmail
+  className?: string
+}

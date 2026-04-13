@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: One Public API 0.1.0-alpha.9\n"
+"Project-Id-Version: One Public API 0.1.0-alpha.16\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2025-10-29 23:28+0900\n"
+"POT-Creation-Date: 2026-04-13 23:39+0900\n"
 "PO-Revision-Date: 2025-10-03 18:52+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: zh\n"
@@ -20,24 +20,50 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 #: src/one_public_api/main.py:9
-msgid "API TITLE"
+msgid "API Name"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:36
-msgid "Offset from where to start"
+#: src/one_public_api/common/query_param.py:38
+msgid "Offset"
 msgstr ""
 
-#: src/one_public_api/common/query_param.py:42
-msgid "Limit"
-msgstr ""
-
-#: src/one_public_api/common/query_param.py:44
-msgid "Order by"
+#: src/one_public_api/common/query_param.py:39
+msgid "Offset Description"
 msgstr ""
 
 #: src/one_public_api/common/query_param.py:45
+msgid "Limit"
+msgstr ""
+
+#: src/one_public_api/common/query_param.py:46
+msgid "Limit Description"
+msgstr ""
+
+#: src/one_public_api/common/query_param.py:50
+msgid "Sort by"
+msgstr ""
+
+#: src/one_public_api/common/query_param.py:51
+#, fuzzy
+msgid "Sort by Description"
+msgstr "强制登出功能。"
+
+#: src/one_public_api/common/query_param.py:55
 msgid "Keywords"
 msgstr ""
+
+#: src/one_public_api/common/query_param.py:56
+msgid "Keywords Description"
+msgstr ""
+
+#: src/one_public_api/common/query_param.py:60
+msgid "Filters"
+msgstr ""
+
+#: src/one_public_api/common/query_param.py:61
+#, fuzzy
+msgid "Filters Description"
+msgstr "登录表单功能。"
 
 #: src/one_public_api/core/exceptions.py:32
 msgid "API_ERROR_OCCURRED"
@@ -51,7 +77,75 @@ msgstr ""
 msgid "D0010002"
 msgstr ""
 
+#: src/one_public_api/models/links/notification_user_link.py:26
+msgid "Is Read Flag"
+msgstr ""
+
+#: src/one_public_api/models/links/notification_user_link.py:27
+msgid "Is Read Flag Description"
+msgstr "已读标记。"
+
+#: src/one_public_api/models/mixins/address_mixin.py:47
+msgid "Postal Code"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:48
+msgid "Postal Code Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:53
+msgid "Country"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:54
+msgid "Country Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:59
+msgid "Prefecture"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:60
+msgid "Prefecture Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:65
+msgid "Municipality"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:66
+msgid "Municipality Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:71
+msgid "Address Detail 1"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:72
+msgid "Address Detail 1 Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:77
+msgid "Address Detail 2"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:78
+msgid "Address Detail 2 Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:83
+msgid "Telephone Number"
+msgstr ""
+
+#: src/one_public_api/models/mixins/address_mixin.py:84
+msgid "Telephone Number Description"
+msgstr ""
+
 #: src/one_public_api/models/mixins/id_mixin.py:26
+msgid "Record ID"
+msgstr ""
+
+#: src/one_public_api/models/mixins/id_mixin.py:27
 msgid "Auto-generated unique ID for the record"
 msgstr ""
 
@@ -59,11 +153,23 @@ msgstr ""
 msgid "Creator ID"
 msgstr ""
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:37
+#: src/one_public_api/models/mixins/maintenance_mixin.py:32
+msgid "Creator ID Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/maintenance_mixin.py:38
 msgid "Updater ID"
 msgstr ""
 
-#: src/one_public_api/models/mixins/password_mixin.py:24
+#: src/one_public_api/models/mixins/maintenance_mixin.py:39
+msgid "Updater ID Description"
+msgstr ""
+
+#: src/one_public_api/models/mixins/password_mixin.py:27
+msgid "Password"
+msgstr ""
+
+#: src/one_public_api/models/mixins/password_mixin.py:28
 msgid "Password provided by the user"
 msgstr ""
 
@@ -71,127 +177,232 @@ msgstr ""
 msgid "Record creation time"
 msgstr ""
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:34
-msgid "Last update time (auto-updated on modification)"
+#: src/one_public_api/models/mixins/timestamp_mixin.py:29
+#, fuzzy
+msgid "Record Creation Time Description"
+msgstr "强制登出功能。"
+
+#: src/one_public_api/models/mixins/timestamp_mixin.py:35
+msgid "Last update time"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:41
-#: src/one_public_api/models/system/configuration_model.py:91
-msgid "Configuration name"
+#: src/one_public_api/models/mixins/timestamp_mixin.py:36
+#, fuzzy
+msgid "Last Update Time Description"
+msgstr "登录表单功能。"
+
+#: src/one_public_api/models/system/action_model.py:21
+#: src/one_public_api/models/system/action_model.py:86
+msgid "Action name"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:47
-#: src/one_public_api/models/system/configuration_model.py:97
-#: src/one_public_api/schemas/configuration_schema.py:56
-msgid "Configuration key"
+#: src/one_public_api/models/system/action_model.py:26
+msgid "Action label"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:52
-#: src/one_public_api/models/system/configuration_model.py:102
-#: src/one_public_api/schemas/configuration_schema.py:60
-msgid "Configuration value"
+#: src/one_public_api/models/system/action_model.py:31
+msgid "Action URL"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:56
-#: src/one_public_api/models/system/configuration_model.py:107
-#: src/one_public_api/schemas/configuration_schema.py:63
-msgid "Configuration type"
+#: src/one_public_api/models/system/action_model.py:36
+msgid "Action icon"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:62
-#: src/one_public_api/models/system/configuration_model.py:113
-msgid "Configuration description"
+#: src/one_public_api/models/system/action_model.py:42
+msgid "Component name"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:70
+#: src/one_public_api/models/system/action_model.py:46
+#: src/one_public_api/models/system/action_model.py:101
+msgid "Show or hide"
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:51
+#: src/one_public_api/models/system/category_model.py:34
+#: src/one_public_api/models/system/configuration_model.py:64
+#: src/one_public_api/models/system/configuration_model.py:126
+#: src/one_public_api/models/system/feature_model.py:28
+#: src/one_public_api/models/system/feature_model.py:66
+#: src/one_public_api/models/system/organization_model.py:36
+#: src/one_public_api/models/system/permission_model.py:26
+#: src/one_public_api/models/system/role_model.py:30
+msgid "Description"
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:58
+#: src/one_public_api/models/system/action_model.py:91
+#: src/one_public_api/models/system/feature_model.py:35
+#: src/one_public_api/models/system/feature_model.py:71
+#: src/one_public_api/schemas/feature_schema.py:60
+msgid "Whether the feature is enabled"
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:62
+#: src/one_public_api/models/system/action_model.py:96
+#: src/one_public_api/models/system/configuration_model.py:76
+#: src/one_public_api/models/system/configuration_model.py:120
+#: src/one_public_api/models/system/feature_model.py:39
+#: src/one_public_api/models/system/feature_model.py:76
+#: src/one_public_api/schemas/feature_schema.py:63
+msgid "Whether auth is required"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:28
+msgid "Attachment name"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:36
+msgid "MIME Type"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:41
+msgid "Save Path"
+msgstr ""
+
+#: src/one_public_api/models/system/category_model.py:19
+#: src/one_public_api/models/system/category_model.py:64
+msgid "Category name"
+msgstr ""
+
+#: src/one_public_api/models/system/category_model.py:24
+msgid "Category alias"
+msgstr ""
+
+#: src/one_public_api/models/system/category_model.py:29
+msgid "Category value"
+msgstr ""
+
+#: src/one_public_api/models/system/category_model.py:42
+#: src/one_public_api/models/system/configuration_model.py:72
 msgid "Configuration options"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:119
-msgid "Owner of configuration item"
+#: src/one_public_api/models/system/category_model.py:46
+#: src/one_public_api/models/system/category_model.py:69
+#: src/one_public_api/models/system/organization_model.py:43
+#: src/one_public_api/models/system/organization_model.py:69
+msgid "Whether the organization is enabled"
 msgstr ""
 
-#: src/one_public_api/models/system/feature_model.py:18
-#: src/one_public_api/models/system/feature_model.py:54
-#: src/one_public_api/schemas/feature_schema.py:52
-msgid "Feature name"
+#: src/one_public_api/models/system/configuration_model.py:44
+#: src/one_public_api/models/system/configuration_model.py:97
+msgid "Configuration name"
+msgstr ""
+
+#: src/one_public_api/models/system/configuration_model.py:50
+#: src/one_public_api/models/system/configuration_model.py:103
+#: src/one_public_api/schemas/base_schema.py:224
+msgid "Configuration key"
+msgstr ""
+
+#: src/one_public_api/models/system/configuration_model.py:55
+#: src/one_public_api/models/system/configuration_model.py:109
+#: src/one_public_api/schemas/base_schema.py:228
+msgid "Configuration value"
+msgstr ""
+
+#: src/one_public_api/models/system/configuration_model.py:59
+#: src/one_public_api/models/system/configuration_model.py:114
+#: src/one_public_api/schemas/base_schema.py:231
+msgid "Configuration type"
 msgstr ""
 
 #: src/one_public_api/models/system/feature_model.py:23
 #: src/one_public_api/models/system/feature_model.py:60
-msgid "Feature description"
+#: src/one_public_api/models/system/permission_model.py:21
+#: src/one_public_api/schemas/feature_schema.py:57
+msgid "Feature name"
 msgstr ""
 
-#: src/one_public_api/models/system/feature_model.py:30
-#: src/one_public_api/models/system/feature_model.py:65
-#: src/one_public_api/schemas/feature_schema.py:55
-msgid "Whether the feature is enabled"
+#: src/one_public_api/models/system/notification_model.py:22
+#: src/one_public_api/models/system/notification_model.py:57
+msgid "Notification Title"
 msgstr ""
 
-#: src/one_public_api/models/system/feature_model.py:34
-#: src/one_public_api/models/system/feature_model.py:70
-#: src/one_public_api/schemas/feature_schema.py:58
-msgid "Whether auth is required"
+#: src/one_public_api/models/system/notification_model.py:26
+msgid "Notification Content"
 msgstr ""
 
-#: src/one_public_api/models/system/token_model.py:23
+#: src/one_public_api/models/system/notification_model.py:31
+msgid "Notification Published Time"
+msgstr ""
+
+#: src/one_public_api/models/system/notification_model.py:38
+#: src/one_public_api/models/system/notification_model.py:62
+msgid "Is Scheduled"
+msgstr ""
+
+#: src/one_public_api/models/system/organization_model.py:26
+msgid "Organization name"
+msgstr ""
+
+#: src/one_public_api/models/system/organization_model.py:31
+msgid "Nickname"
+msgstr ""
+
+#: src/one_public_api/models/system/organization_model.py:64
+#: src/one_public_api/models/system/user_model.py:29
+#: src/one_public_api/models/system/user_model.py:86
+#: src/one_public_api/schemas/authenticate_schema.py:29
+#: src/one_public_api/schemas/base_schema.py:102
+msgid "User name"
+msgstr ""
+
+#: src/one_public_api/models/system/role_model.py:25
+msgid "Role name"
+msgstr ""
+
+#: src/one_public_api/models/system/token_model.py:24
 msgid "Token"
 msgstr ""
 
-#: src/one_public_api/models/system/token_model.py:27
+#: src/one_public_api/models/system/token_model.py:28
 #: src/one_public_api/schemas/authenticate_schema.py:54
 msgid "Token type"
 msgstr ""
 
-#: src/one_public_api/models/system/token_model.py:33
+#: src/one_public_api/models/system/token_model.py:34
 msgid "Owner of token"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:18
-#: src/one_public_api/models/system/user_model.py:75
-#: src/one_public_api/schemas/authenticate_schema.py:29
-#: src/one_public_api/schemas/user_schema.py:71
-msgid "User name"
-msgstr ""
-
-#: src/one_public_api/models/system/user_model.py:23
-#: src/one_public_api/models/system/user_model.py:81
-#: src/one_public_api/schemas/user_schema.py:75
+#: src/one_public_api/models/system/user_model.py:34
+#: src/one_public_api/models/system/user_model.py:92
+#: src/one_public_api/schemas/base_schema.py:106
 msgid "User's email address"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:28
-#: src/one_public_api/models/system/user_model.py:87
+#: src/one_public_api/models/system/user_model.py:39
+#: src/one_public_api/models/system/user_model.py:98
 msgid "First name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:33
-#: src/one_public_api/models/system/user_model.py:93
+#: src/one_public_api/models/system/user_model.py:44
+#: src/one_public_api/models/system/user_model.py:104
 msgid "Last name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:38
-#: src/one_public_api/models/system/user_model.py:99
+#: src/one_public_api/models/system/user_model.py:49
+#: src/one_public_api/models/system/user_model.py:110
 msgid "Display nickname"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:45
-#: src/one_public_api/models/system/user_model.py:104
-msgid "Whether the account is disabled"
+#: src/one_public_api/models/system/user_model.py:56
+#: src/one_public_api/models/system/user_model.py:115
+msgid "Whether the account is enabled"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:49
-#: src/one_public_api/models/system/user_model.py:109
+#: src/one_public_api/models/system/user_model.py:60
+#: src/one_public_api/models/system/user_model.py:120
 msgid "Whether the account is locked"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:53
-#: src/one_public_api/models/system/user_model.py:114
+#: src/one_public_api/models/system/user_model.py:64
+#: src/one_public_api/models/system/user_model.py:125
 msgid "Number of failed login attempts"
 msgstr ""
 
 #: src/one_public_api/routers/authenticate_router.py:31
-msgid "Authentications"
+msgid "Authentication"
 msgstr ""
 
 #: src/one_public_api/routers/authenticate_router.py:40
@@ -246,11 +457,11 @@ msgstr ""
 msgid "Get Profile Description"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:135
+#: src/one_public_api/routers/authenticate_router.py:132
 msgid "Logout"
 msgstr "登出"
 
-#: src/one_public_api/routers/authenticate_router.py:136
+#: src/one_public_api/routers/authenticate_router.py:133
 msgid "Logout Description"
 msgstr ""
 
@@ -271,7 +482,9 @@ msgid "Feature not found."
 msgstr "找不到该功能。"
 
 #: src/one_public_api/routers/configuration_router.py:28
-msgid "Configurations"
+#: src/one_public_api/schemas/authenticate_schema.py:80
+#: src/one_public_api/schemas/base_schema.py:145
+msgid "Configuration"
 msgstr ""
 
 #: src/one_public_api/routers/configuration_router.py:36
@@ -312,6 +525,7 @@ msgid "The ID of the configuration item to be deleted"
 msgstr ""
 
 #: src/one_public_api/routers/feature_router.py:28
+#: src/one_public_api/schemas/permission_schema.py:37
 msgid "Features"
 msgstr ""
 
@@ -400,102 +614,178 @@ msgstr ""
 msgid "Access token"
 msgstr ""
 
-#: src/one_public_api/schemas/configuration_schema.py:86
-msgid "User"
+#: src/one_public_api/schemas/authenticate_schema.py:76
+#: src/one_public_api/schemas/base_schema.py:141
+#: src/one_public_api/schemas/role_schema.py:31
+msgid "Role"
 msgstr ""
 
-#: src/one_public_api/schemas/configuration_schema.py:90
-#: src/one_public_api/schemas/user_schema.py:96
-msgid "Creator"
+#: src/one_public_api/schemas/authenticate_schema.py:77
+msgid "Role Description"
 msgstr ""
 
-#: src/one_public_api/schemas/configuration_schema.py:94
-#: src/one_public_api/schemas/user_schema.py:100
-msgid "Updater"
+#: src/one_public_api/schemas/authenticate_schema.py:81
+msgid "Configuration Description"
 msgstr ""
 
-#: src/one_public_api/schemas/feature_schema.py:29
-msgid "Feature Category"
+#: src/one_public_api/schemas/base_schema.py:69
+#: src/one_public_api/schemas/base_schema.py:137
+msgid "Organization"
 msgstr ""
 
-#: src/one_public_api/schemas/response_schema.py:26
-msgid "Message Code"
-msgstr ""
-
-#: src/one_public_api/schemas/response_schema.py:27
-msgid "Message of the response"
-msgstr ""
-
-#: src/one_public_api/schemas/response_schema.py:28
-msgid "Detail of the response"
-msgstr ""
-
-#: src/one_public_api/schemas/response_schema.py:33
-msgid "Results of the request"
-msgstr ""
-
-#: src/one_public_api/schemas/response_schema.py:35
-msgid "Count of the results"
-msgstr ""
-
-#: src/one_public_api/schemas/response_schema.py:37
-msgid "Details of the results"
-msgstr ""
-
-#: src/one_public_api/schemas/user_schema.py:46
+#: src/one_public_api/schemas/base_schema.py:72
 msgid "Full name"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:54
-msgid "user not verified"
+#: src/one_public_api/schemas/base_schema.py:129
+#: src/one_public_api/schemas/base_schema.py:173
+msgid "Creator"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:102
-#: src/one_public_api/services/authenticate_service.py:140
+#: src/one_public_api/schemas/base_schema.py:133
+#: src/one_public_api/schemas/base_schema.py:178
+msgid "Updater"
+msgstr ""
+
+#: src/one_public_api/schemas/base_schema.py:174
+msgid "Creator Description"
+msgstr ""
+
+#: src/one_public_api/schemas/base_schema.py:179
+msgid "Updater Description"
+msgstr ""
+
+#: src/one_public_api/schemas/feature_schema.py:32
+msgid "Classification"
+msgstr ""
+
+#: src/one_public_api/schemas/feature_schema.py:33
+msgid "Classification Description"
+msgstr ""
+
+#: src/one_public_api/schemas/organization_schema.py:32
+msgid "Category"
+msgstr ""
+
+#: src/one_public_api/schemas/permission_schema.py:33
+msgid "Actions"
+msgstr ""
+
+#: src/one_public_api/schemas/permission_schema.py:34
+msgid "Actions Description"
+msgstr ""
+
+#: src/one_public_api/schemas/permission_schema.py:38
+msgid "Features Description"
+msgstr ""
+
+#: src/one_public_api/schemas/response_schema.py:46
+msgid "Message Code"
+msgstr ""
+
+#: src/one_public_api/schemas/response_schema.py:47
+msgid "Message Code Description"
+msgstr ""
+
+#: src/one_public_api/schemas/response_schema.py:50
+msgid "Message"
+msgstr ""
+
+#: src/one_public_api/schemas/response_schema.py:51
+msgid "Message Description"
+msgstr ""
+
+#: src/one_public_api/schemas/response_schema.py:55
+msgid "Message Detail"
+msgstr ""
+
+#: src/one_public_api/schemas/response_schema.py:56
+msgid "Message Detail Description"
+msgstr ""
+
+#: src/one_public_api/schemas/response_schema.py:83
+msgid "Result"
+msgstr ""
+
+#: src/one_public_api/schemas/response_schema.py:84
+msgid "Result Description"
+msgstr ""
+
+#: src/one_public_api/schemas/response_schema.py:88
+msgid "Item Count"
+msgstr ""
+
+#: src/one_public_api/schemas/response_schema.py:89
+#, fuzzy
+msgid "Item Count Description"
+msgstr "登录表单功能。"
+
+#: src/one_public_api/schemas/response_schema.py:93
+msgid "Detail of Result"
+msgstr ""
+
+#: src/one_public_api/schemas/response_schema.py:94
+msgid "Detail of Result Description"
+msgstr ""
+
+#: src/one_public_api/services/authenticate_service.py:59
+msgid "user not verified"
+msgstr "用户名或密码错误。"
+
+#: src/one_public_api/services/authenticate_service.py:107
+#: src/one_public_api/services/authenticate_service.py:144
 msgid "user not found"
 msgstr "此用户不存在。"
 
-#: src/one_public_api/services/authenticate_service.py:132
-#: src/one_public_api/services/authenticate_service.py:235
+#: src/one_public_api/services/authenticate_service.py:137
+#: src/one_public_api/services/authenticate_service.py:238
 msgid "The token has expired"
-msgstr ""
+msgstr "令牌已过期。"
 
-#: src/one_public_api/services/authenticate_service.py:136
+#: src/one_public_api/services/authenticate_service.py:141
 msgid "Invalid refresh token"
-msgstr ""
+msgstr "无效的刷新令牌。"
 
-#: src/one_public_api/services/authenticate_service.py:179
+#: src/one_public_api/services/authenticate_service.py:182
 msgid "user disabled"
-msgstr ""
+msgstr "无效的用户。"
 
-#: src/one_public_api/services/authenticate_service.py:181
+#: src/one_public_api/services/authenticate_service.py:184
 msgid "user locked"
-msgstr ""
+msgstr "用户已被锁定。"
 
-#: src/one_public_api/services/authenticate_service.py:213
+#: src/one_public_api/services/authenticate_service.py:216
 msgid "No user information found in the token"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:223
+#: src/one_public_api/services/authenticate_service.py:226
 msgid "Your account has been logged out."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:228
+#: src/one_public_api/services/authenticate_service.py:231
 msgid "Your account has been logged in from another location."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:237
+#: src/one_public_api/services/authenticate_service.py:240
 msgid "Invalid access token"
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:78
-#: src/one_public_api/services/base_service.py:89
+#: src/one_public_api/services/base_service.py:66
+msgid "Data not found."
+msgstr "找不到数据。"
+
+#: src/one_public_api/services/base_service.py:76
+msgid "Invalid search column specified."
+msgstr "被指定的字段不正确。"
+
+#: src/one_public_api/services/base_service.py:90
+#: src/one_public_api/services/base_service.py:101
 #: src/one_public_api/services/user_service.py:36
 msgid "Data already exists."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:125
-#: src/one_public_api/services/base_service.py:140
-#: src/one_public_api/services/base_service.py:154
+#: src/one_public_api/services/base_service.py:137
+#: src/one_public_api/services/base_service.py:152
+#: src/one_public_api/services/base_service.py:166
 msgid "This record might be referenced by other data."
 msgstr ""

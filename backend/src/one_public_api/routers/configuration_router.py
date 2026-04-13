@@ -10,7 +10,7 @@ from one_public_api.common.tools import create_response_data
 from one_public_api.core import translate as _
 from one_public_api.models import Configuration, User
 from one_public_api.routers.base_route import BaseRoute
-from one_public_api.schemas.configuration_schema import (
+from one_public_api.schemas import (
     ConfigurationCreateRequest,
     ConfigurationPublicResponse,
     ConfigurationResponse,
@@ -25,7 +25,7 @@ admin_router = APIRouter(
     route_class=BaseRoute, dependencies=[Depends(get_current_user)]
 )
 prefix = constants.ROUTER_PREFIX_CONFIGURATION
-tags = [_("Configurations")]
+tags = [_("Configuration")]
 
 # ----- Public APIs --------------------------------------------------------------------
 

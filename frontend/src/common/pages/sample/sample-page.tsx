@@ -4,9 +4,9 @@ import { NavLink } from 'react-router'
 import { Button } from '@/common/components/ui/button'
 import { useAppDispatch } from '@/common/hooks/use-store'
 import Header from '@/features/sample/components/block/header'
-import { completed } from '@/lib/functions'
+import { completed } from '@/lib/utils'
 
-const SamplePage = (): React.ReactNode => {
+const SamplePage = (): React.JSX.Element => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {

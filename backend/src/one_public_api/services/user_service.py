@@ -25,7 +25,7 @@ class UserService(BaseService[User]):
 
     def add_user(self, data: User, current_user: User) -> User:
         try:
-            data.password = get_hashed_password(data.password)
+            data.password = get_hashed_password(str(data.password))
             data.created_by = current_user.id
             data.updated_by = current_user.id
 
@@ -33,5 +33,5 @@ class UserService(BaseService[User]):
         except DataError:
             del data.password
             raise DataError(
-                self._("Data already exists."), data.model_dump_json(), "E40900003"
+                self._("Data already exists."), data.model_dump_json(), "E4090003"
             )

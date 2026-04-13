@@ -30,6 +30,8 @@ export const CONSTANT = {
   COPYRIGHT: '© 2025 Roba All Rights Reserved',
   // Key name for data stored in Web Storage
   STORAGE_KEY: { THEME: 'theme', LANGUAGE: 'language', ACCESS_TOKEN: 'accessToken' },
+  // The display length of the UUID
+  UUID_DISPLAY_LENGTH: 4,
 
   ENUM_CONFIGURATION_TYPE: { OTHER: 0, SYS: 1, API: 2, UI: 3 },
 
@@ -37,10 +39,17 @@ export const CONSTANT = {
     ADMIN: '/admin',
     ADMIN_CONFIGURATION: '/configurations',
     ADMIN_USER: '/users',
-    ADMIN_USER_EDIT: '/users/edit',
+    ADMIN_USER_ADD: '/users/new',
+    ADMIN_USER_UPDATE: '/users/:id/edit',
+    ADMIN_USER_DETAIL: '/users/:id',
+    ADMIN_FEATURE: '/features',
+    ADMIN_FEATURE_ADD: '/features/new',
+    ADMIN_FEATURE_UPDATE: '/features/:id/edit',
+    ADMIN_FEATURE_DETAIL: '/features/:id',
     ADMIN_ROLE: '/roles',
     ADMIN_PERMISSION: '/permissions',
     HOME: '/home',
+    INDEX: '',
     LOGIN: '/login',
     SAMPLE: '/sample',
     ADMIN_DASHBOARD: '/dashboard',
@@ -56,5 +65,8 @@ export const CONSTANT = {
     USER: '/users',
     USER_ADMIN: '/users/admin',
     USER_ADMIN_ID: '/users/admin/:id',
+    FEATURE: '/features',
+    FEATURE_ADMIN: '/features/admin',
+    FEATURE_ADMIN_ID: '/features/admin/:id',
   },
 } as const

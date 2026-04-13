@@ -1,26 +1,31 @@
-from typing import Optional
+from typing import TYPE_CHECKING, List, Optional
 
 from sqlmodel import Field, Relationship, SQLModel
 
 from one_public_api.common import constants
 from one_public_api.core.i18n import translate as _
+from one_public_api.core.settings import settings
+from one_public_api.models.links import PermissionFeatureLink
 from one_public_api.models.mixins.id_mixin import IdMixin
 from one_public_api.models.mixins.maintenance_mixin import MaintenanceMixin
 from one_public_api.models.mixins.timestamp_mixin import TimestampMixin
 from one_public_api.models.system.user_model import User
 
+if TYPE_CHECKING:
+    from one_public_api.models import Permission
+
 
 class FeatureBase(SQLModel):
     name: Optional[str] = Field(
         default=None,
-        min_length=constants.MAX_LENGTH_13,
-        max_length=constants.MAX_LENGTH_13,
+        min_length=constants.LENGTH_13,
+        max_length=constants.LENGTH_13,
         description=_("Feature name"),
     )
     description: Optional[str] = Field(
         default=None,
-        max_length=constants.MAX_LENGTH_1000,
-        description=_("Feature description"),
+        max_length=constants.LENGTH_1000,
+        description=_("Description"),
     )
 
 
@@ -45,19 +50,20 @@ class Feature(
 ):
     """Represents a feature model within the database."""
 
-    __tablename__ = constants.DB_PREFIX_SYS + "features"
+    __tablename__ = settings.DB_TABLE_PRE + "features"
 
     name: str = Field(
         nullable=False,
-        min_length=constants.MAX_LENGTH_13,
-        max_length=constants.MAX_LENGTH_13,
+        unique=True,
+        min_length=constants.LENGTH_13,
+        max_length=constants.LENGTH_13,
         description=_("Feature name"),
     )
     description: str = Field(
         default=None,
         nullable=True,
-        max_length=constants.MAX_LENGTH_1000,
-        description=_("Feature description"),
+        max_length=constants.LENGTH_1000,
+        description=_("Description"),
     )
     is_enabled: bool = Field(
         default=False,
@@ -83,4 +89,8 @@ class Feature(
             "primaryjoin": "Feature.updated_by==User.id",
             "remote_side": "[User.id]",
         }
+    )
+
+    permissions: List["Permission"] = Relationship(
+        back_populates="features", link_model=PermissionFeatureLink
     )

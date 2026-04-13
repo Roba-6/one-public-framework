@@ -9,39 +9,106 @@
     "error": "Error",
     "success": "Success",
     "info": "Info",
-    "warning": "Warning"
+    "warning": "Warning",
+    "noData": "No data found"
   },
   "menus": {
+    "system": "SYSTEM",
     "dashboard": "Dashboards",
     "configurations": "Configurations",
-    "users": "Users"
+    "users": "Users",
+    "features": "Features",
+    "add": "Add",
+    "update": "Update"
+  },
+  "format": {
+    "datetime": "D MMM YYYY HH:mm",
+    "shortDatetime": "D MMM HH:mm"
   },
   "buttons": {
     "add": "Add",
     "cancel": "Cancel",
     "create": "Create",
+    "clear": "Clear",
     "close": "Close",
     "column": "Columns",
+    "copyId": "copy ID to clipboard",
     "delete": "Delete",
+    "details": "Details",
     "edit": "Edit",
     "login": "Login",
     "logout": "Log out",
     "nextPage": "Next",
-    "previousPage": "Previous"
+    "openMenu": "Open Menu",
+    "previousPage": "Previous",
+    "unselectAll": "Unselect All"
   },
   "labels": {
-    "user": {
-      "name": "User Name",
-      "password": "Password",
-      "email": "E-mail",
-      "firstname": "Firstname",
-      "lastname": "Lastname"
+    "actions": "Actions",
+    "createdAt": "Created At",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "forgetPassword": "Forgot your password?",
+    "id": "ID",
+    "requiresAuth": "Auth Required",
+    "noAuthRequired": "No Auth Required",
+    "dataPagination": {
+      "itemsPerPage": "Items per page",
+      "totalResults": "Total Results",
+      "selectedResults": "Selected Results"
     },
-    "username": "User Name",
-    "forgetPassword": "Forgot your password?"
+    "user": {
+      "email": "E-mail",
+      "failedAttempts": "Failed Attempts",
+      "firstname": "Firstname",
+      "fullname": "Full Name",
+      "lastname": "Lastname",
+      "lock": "Locked",
+      "unlock": "Unlocked",
+      "name": "User Name",
+      "nickname": "Nick Name",
+      "password": "Password"
+    },
+    "feature": {
+      "description": "Description",
+      "name": "Name"
+    },
+    "updatedAt": "Updated At",
+    "username": "User Name"
+  },
+  "placeholder": {
+    "anyKeywords": "Enter keywords",
+    "username": "sum-w",
+    "firstname": "Sum",
+    "lastname": "Winchester",
+    "nickname": "Sammy",
+    "email": "sum.w@example.com",
+    "description": "Enter description here.",
+    "features": {
+      "name": "ABC-XYZ-P-XXX"
+    }
   },
   "messages": {
-    "pleaseLogin": "Enter user name below to login to your account",
-    "welcome": "Welcome to One Public Framework!"
+    "pleaseLogin": "Enter User Name below to login to your account",
+    "welcome": "Welcome to One Public Framework!",
+    "noData": "There is no data available, or no results match your search criteria.",
+    "notices": {
+      "I00100001": "The recorder '{}' has been deleted.",
+      "I00100002": "The feature '{}' has been deleted."
+    },
+    "validations": {
+      "min": "Must be at least {} characters.",
+      "max": "Must be at most {} characters.",
+      "length": "Must be {} characters.",
+      "username": {
+        "required": "User Name is required."
+      },
+      "password": {
+        "required": "Password is required."
+      },
+      "email": {
+        "format": "Invalid format."
+      }
+    }
   }
 }

@@ -17,7 +17,7 @@ def create_response_data(
     schema: Type[T],
     results: Any | List[Any] | None = None,
     count: int | None = None,
-    detail: List[MessageSchema] | None = None,
+    detail: MessageSchema | None = None,
 ) -> ResponseSchema[T]:
     """
     Creates a response data object compliant with the `ResponseSchema[T]`
@@ -42,9 +42,9 @@ def create_response_data(
     count : int or None, optional
         The count metadata is typically used to indicate the total number of items in a
         paginated context, or can be None if not applicable.
-    detail : List[MessageSchema] or None, optional
-        A list of detail messages that provide additional information regarding the
-        response or process, or can be None if no details are provided.
+    detail : MessageSchema or None, optional
+        A detail message that provides additional information regarding the response
+        or process, or can be None if no details are provided.
 
     Returns
     -------

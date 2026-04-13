@@ -1,4 +1,6 @@
 import { ChevronDown, Plus } from 'lucide-react'
+import React, { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router'
 
 import NaviButton from '@/common/components/atoms/navi-button'
 import { Button } from '@/common/components/ui/button'
@@ -9,23 +11,66 @@ import {
   DropdownMenuTrigger,
 } from '@/common/components/ui/dropdown-menu'
 import { Input } from '@/common/components/ui/input'
-import { CONSTANT } from '@/common/constants'
-import type { DataProps } from '@/common/types/props'
 import { getLocalMessage } from '@/lib/utils'
 
-const DataToolBar = (props: DataProps) => {
+const DataToolBar = (props: any): React.JSX.Element => {
+  const DEBOUNCE: number = 500
+
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const [keywords, setKeywords] = useState('')
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setKeywords(searchParams.get('keywords') || '')
+    }, DEBOUNCE)
+
+    return () => clearTimeout(timer)
+  }, [searchParams])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleSearchChange(keywords)
+    }, DEBOUNCE)
+
+    return () => clearTimeout(timer)
+  }, [keywords])
+
+  const handleClearAll = () => {
+    props.clearAll()
+    setKeywords('')
+  }
+
+  const handleSearchChange = (value: string) => {
+    const currentKeywords = searchParams.get('keywords') || ''
+    if (currentKeywords !== value) {
+      const params = new URLSearchParams(searchParams)
+      if (value) {
+        params.set('keywords', value)
+        params.set('page', '1')
+      } else {
+        params.delete('keywords')
+      }
+      setSearchParams(params)
+    }
+  }
+
   return (
     <div className="flex items-center py-4">
       <Input
-        placeholder="Filter emails..."
-        value={(props.table.getColumn('email')?.getFilterValue() as string) ?? ''}
-        onChange={(event) =>
-          props.table.getColumn('email')?.setFilterValue(event.target.value)
-        }
-        className="max-w-sm"
+        placeholder={getLocalMessage('placeholder.anyKeywords')}
+        value={keywords}
+        onChange={(e) => setKeywords(e.target.value)}
+        className="me-2 max-w-sm"
       />
+      <Button variant="outline" onClick={handleClearAll} className="me-2">
+        {getLocalMessage('buttons.clear')}
+      </Button>
+      <Button variant="outline" onClick={props.unselectAll}>
+        {getLocalMessage('buttons.unselectAll')}
+      </Button>
       <div className="ml-auto flex items-center gap-2">
-        <DropdownMenu>
+        <DropdownMenu modal={false}>
           <DropdownMenuTrigger asChild>
             <Button variant="outline">
               {getLocalMessage('buttons.column')}
@@ -35,26 +80,23 @@ const DataToolBar = (props: DataProps) => {
           <DropdownMenuContent align="end">
             {props.table
               .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
+              .filter((column: any) => column.getCanHide())
+              .map((column: any, idx: number) => {
                 return (
                   <DropdownMenuCheckboxItem
                     key={column.id}
                     className="capitalize"
                     checked={column.getIsVisible()}
-                    onCheckedChange={(value) => column.toggleVisibility(!!value)}
+                    onSelect={(e) => e.preventDefault()}
+                    onCheckedChange={(value) => column.toggleVisibility(value)}
                   >
-                    {column.id}
+                    {props.columns[idx]?.name}
                   </DropdownMenuCheckboxItem>
                 )
               })}
           </DropdownMenuContent>
         </DropdownMenu>
-        <NaviButton
-          messageId="add"
-          icon={<Plus />}
-          url={CONSTANT.ROUTE_URL.ADMIN + CONSTANT.ROUTE_URL.ADMIN_USER_EDIT}
-        />
+        <NaviButton messageId="add" icon={<Plus />} url={props.addUrl || './new'} />
       </div>
     </div>
   )

@@ -1,9 +1,12 @@
 from typing import Annotated, Any, Dict, List, Tuple, Type, TypeVar
 from uuid import UUID
 
-from fastapi import HTTPException
 from fastapi.params import Depends
-from sqlalchemy import func
+from sqlalchemy import JSON, cast, func
+from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy.exc import NoResultFound, NoSuchColumnError
+
+# from sqlalchemy.inspection import inspect
 from sqlmodel import Session, SQLModel, col, or_, select
 
 from one_public_api.common.query_param import QueryParam
@@ -31,7 +34,7 @@ class DataReader:
         statement = statement.where(getattr(model, "id") == target_id)
         result: T | None = self.session.exec(statement).one_or_none()
         if result is None:
-            raise HTTPException(status_code=404, detail="Not found")
+            raise NoResultFound()
 
         return result
 
@@ -41,7 +44,7 @@ class DataReader:
             statement = statement.where(getattr(model, k) == v)
         result: T | None = self.session.exec(statement).one_or_none()
         if result is None:
-            raise HTTPException(status_code=404, detail="Not found")
+            raise NoResultFound()
 
         return result
 
@@ -67,6 +70,16 @@ class DataReader:
                     kw_col_list.append(col(getattr(model, column)).like(f"%{keyword}%"))
             statement = statement.where(or_(*kw_col_list))
             count_statement = count_statement.where(or_(*kw_col_list))
+        if query and query.filters is not None and len(query.filters) > 0:
+            for f in query.filters:
+                if f.find(":") == -1:
+                    continue
+                k, v = f.split(":")
+                try:
+                    statement = statement.where(getattr(model, k) == v)
+                    count_statement = count_statement.where(getattr(model, k) == v)
+                except AttributeError:
+                    raise NoSuchColumnError(k)
         if conditions is not None and len(conditions) > 0:
             for k, v in conditions.items():
                 if isinstance(v, list):
@@ -87,6 +100,8 @@ class DataReader:
                 if column.endswith("_desc"):
                     ob_col_list.append(col(getattr(model, column[:-5])).desc())
                 else:
+                    if column.endswith("_asc"):
+                        column = column[:-4]
                     ob_col_list.append(col(getattr(model, column)))
             statement = statement.order_by(*ob_col_list)
 
@@ -103,8 +118,15 @@ class DataReader:
         statement: Any = select(model)
         count_statement: Any = select(func.count()).select_from(model)
         for k, v in conditions.items():
-            statement = statement.where(getattr(model, k) == v)
-            count_statement = count_statement.where(getattr(model, k) == v)
+            # inspect(model)
+            if getattr(model, k) and isinstance(
+                getattr(getattr(model, k), "type", None), JSON
+            ):
+                cond = cast(getattr(model, k), JSONB) == cast(v, JSONB)
+            else:
+                cond = getattr(model, k) == v
+            statement = statement.where(cond)
+            count_statement = count_statement.where(cond)
 
         results: List[T] = list(self.session.exec(statement).all())
         count: int = self.session.exec(count_statement).one()
