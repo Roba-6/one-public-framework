@@ -1,6 +1,7 @@
 from one_public_api.models.system.action_model import Action
 from one_public_api.models.system.attachment_model import Attachment
 from one_public_api.models.system.category_model import Category
+from one_public_api.models.system.comment_model import Comment
 from one_public_api.models.system.configuration_model import Configuration
 from one_public_api.models.system.feature_model import Feature
 from one_public_api.models.system.notification_model import Notification
@@ -14,6 +15,7 @@ __all__ = [
     "Action",
     "Attachment",
     "Category",
+    "Comment",
     "Configuration",
     "Feature",
     "Notification",

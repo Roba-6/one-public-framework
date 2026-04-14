@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-04-13 23:39+0900\n"
+"POT-Creation-Date: 2026-04-14 22:32+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -276,6 +276,14 @@ msgstr ""
 #: src/one_public_api/models/system/organization_model.py:43
 #: src/one_public_api/models/system/organization_model.py:69
 msgid "Whether the organization is enabled"
+msgstr ""
+
+#: src/one_public_api/models/system/comment_model.py:21
+msgid "Comment Content"
+msgstr ""
+
+#: src/one_public_api/models/system/comment_model.py:28
+msgid "Owner of comment"
 msgstr ""
 
 #: src/one_public_api/models/system/configuration_model.py:44
@@ -647,6 +655,14 @@ msgstr ""
 
 #: src/one_public_api/schemas/base_schema.py:179
 msgid "Updater Description"
+msgstr ""
+
+#: src/one_public_api/schemas/comment_schema.py:23
+msgid "User"
+msgstr ""
+
+#: src/one_public_api/schemas/comment_schema.py:24
+msgid "User Description"
 msgstr ""
 
 #: src/one_public_api/schemas/feature_schema.py:32
