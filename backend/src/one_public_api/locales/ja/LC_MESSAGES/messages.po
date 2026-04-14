@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: One Public API 0.1.0-alpha.16\n"
+"Project-Id-Version: One Public API 0.1.0-alpha.17\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-04-13 23:39+0900\n"
+"POT-Creation-Date: 2026-04-14 22:34+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -283,6 +283,16 @@ msgstr "設定項目オプション"
 #: src/one_public_api/models/system/organization_model.py:69
 msgid "Whether the organization is enabled"
 msgstr "有効な組織か"
+
+#: src/one_public_api/models/system/comment_model.py:21
+#, fuzzy
+msgid "Comment Content"
+msgstr "画面コンポーネント名"
+
+#: src/one_public_api/models/system/comment_model.py:28
+#, fuzzy
+msgid "Owner of comment"
+msgstr "トークン所有者"
 
 #: src/one_public_api/models/system/configuration_model.py:44
 #: src/one_public_api/models/system/configuration_model.py:97
@@ -666,6 +676,16 @@ msgstr "レコードを新規作成したユーザー情報。"
 
 #: src/one_public_api/schemas/base_schema.py:179
 msgid "Updater Description"
+msgstr "本データを最後に変更したユーザーの情報。"
+
+#: src/one_public_api/schemas/comment_schema.py:23
+#, fuzzy
+msgid "User"
+msgstr "ユーザー"
+
+#: src/one_public_api/schemas/comment_schema.py:24
+#, fuzzy
+msgid "User Description"
 msgstr "本データを最後に変更したユーザーの情報。"
 
 #: src/one_public_api/schemas/feature_schema.py:32

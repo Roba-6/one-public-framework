@@ -10,8 +10,10 @@ from one_public_api.schemas.base_schema import (
     example_datetime,
     example_user_base,
 )
+from one_public_api.schemas.comment_schema import CommentPublicResponse
 
 __all__ = [
+    "CommentPublicResponse",
     "ConfigurationCreateRequest",
     "ConfigurationPublicResponse",
     "ConfigurationResponse",
