@@ -22,7 +22,8 @@ class CommentBase(SQLModel):
     )
 
     user_id: UUID = Field(
-        nullable=False,
+        default=None,
+        nullable=True,
         foreign_key=settings.DB_TABLE_PRE + "users.id",
         ondelete="CASCADE",
         description=_("Owner of comment"),
@@ -40,9 +41,5 @@ class Comment(
 
     user: "User" = Relationship(
         back_populates="comments",
-        sa_relationship_kwargs={
-            "foreign_keys": "[Comment.user_id]",
-            "primaryjoin": "Comment.user_id==User.id",
-            "remote_side": "[User.id]",
-        },
+        sa_relationship_kwargs={"foreign_keys": "[Comment.user_id]"},
     )
