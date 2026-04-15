@@ -1,4 +1,4 @@
-from typing import Annotated, Any, Dict, List, Tuple, Type, TypeVar
+from typing import Annotated, Any, Callable, Dict, List, Optional, Tuple, Type, TypeVar
 from uuid import UUID
 
 from fastapi.params import Depends
@@ -54,9 +54,13 @@ class DataReader:
         query: QueryParam | None = None,
         search_target: List[str] | None = None,
         conditions: Dict[str, Any] | None = None,
+        builder: Optional[Callable[[Any], Any]] = None,
     ) -> Tuple[List[T], int]:
         statement: Any = select(model)
         count_statement: Any = select(func.count()).select_from(model)
+        if builder is not None:
+            statement = builder(statement)
+            count_statement = builder(count_statement)
         if (
             query
             and query.keywords is not None
