@@ -6,6 +6,7 @@ from sqlmodel import Field, Relationship, SQLModel
 from one_public_api.common import constants
 from one_public_api.core.i18n import translate as _
 from one_public_api.core.settings import settings
+from one_public_api.models import Comment
 from one_public_api.models.links import (
     AttachmentUserLink,
     ConfigurationUserLink,
@@ -152,4 +153,8 @@ class User(
     attachment: "Attachment" = Relationship(link_model=AttachmentUserLink)
     notification_links: List["NotificationUserLink"] = Relationship(
         back_populates="user"
+    )
+    comments: List["Comment"] = Relationship(
+        back_populates="user",
+        sa_relationship_kwargs={"foreign_keys": "[Comment.user_id]"},
     )
