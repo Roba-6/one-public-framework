@@ -76,7 +76,7 @@ class DataReader:
             count_statement = count_statement.where(or_(*kw_col_list))
         if query and query.filters is not None and len(query.filters) > 0:
             for f in query.filters:
-                if f.find(":") == -1:
+                if f.find(":") == -1 or f.find(".") != -1:
                     continue
                 k, v = f.split(":")
                 try:
