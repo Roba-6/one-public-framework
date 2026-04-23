@@ -51,7 +51,7 @@ const AdminPage = (): React.JSX.Element => {
       {accessToken && isAuthenticated && (
         <SidebarProvider>
           <AppSidebar />
-          <SidebarInset>
+          <SidebarInset className="h-[calc(100vh-1rem)] overflow-hidden">
             <header className="group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 flex h-12 shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear">
               <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
                 <SidebarTrigger />
@@ -62,7 +62,7 @@ const AdminPage = (): React.JSX.Element => {
                 <BreadcrumbBar />
               </div>
             </header>
-            <main className="flex flex-1 flex-col">
+            <main className="flex flex-1 flex-col overflow-auto">
               <div className="@container/main flex flex-1 flex-col gap-2">
                 <div className="flex flex-col gap-4 px-4 lg:px-6 py-4 md:gap-6 md:py-6">
                   <Outlet />
