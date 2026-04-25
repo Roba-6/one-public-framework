@@ -55,7 +55,7 @@ class ActionBase(SQLModel):
 class ActionStatus(SQLModel):
     is_enabled: Optional[bool] = Field(
         default=None,
-        description=_("Whether the feature is enabled"),
+        description=_("Whether the action is enabled"),
     )
     requires_auth: Optional[bool] = Field(
         default=None,

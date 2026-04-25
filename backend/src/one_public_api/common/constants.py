@@ -100,6 +100,8 @@ ROUTER_AUTH_FORCE_LOGOUT = "/force_logout"
 
 # Path prefix for the authentication API router
 ROUTER_PREFIX_AUTHENTICATION = "/auth"
+# Path prefix for the action API router
+ROUTER_PREFIX_ACTION = "/actions"
 # Path prefix for the feature API router
 ROUTER_PREFIX_FEATURE = "/features"
 # Path prefix for the permission API router

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.19\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-04-16 00:29+0900\n"
+"POT-Creation-Date: 2026-04-25 13:42+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -193,6 +193,7 @@ msgstr "レコードが最後に変更された日時で、自動生成される
 
 #: src/one_public_api/models/system/action_model.py:21
 #: src/one_public_api/models/system/action_model.py:86
+#: src/one_public_api/schemas/action_schema.py:59
 msgid "Action name"
 msgstr "アクション名"
 
@@ -230,12 +231,9 @@ msgid "Description"
 msgstr "説明"
 
 #: src/one_public_api/models/system/action_model.py:58
-#: src/one_public_api/models/system/action_model.py:91
-#: src/one_public_api/models/system/feature_model.py:35
-#: src/one_public_api/models/system/feature_model.py:71
-#: src/one_public_api/schemas/feature_schema.py:60
-msgid "Whether the feature is enabled"
-msgstr "有効な機能か"
+#, fuzzy
+msgid "Whether the action is enabled"
+msgstr "有効なアカウントか"
 
 #: src/one_public_api/models/system/action_model.py:62
 #: src/one_public_api/models/system/action_model.py:96
@@ -246,6 +244,13 @@ msgstr "有効な機能か"
 #: src/one_public_api/schemas/feature_schema.py:63
 msgid "Whether auth is required"
 msgstr "認証が必要か"
+
+#: src/one_public_api/models/system/action_model.py:91
+#: src/one_public_api/models/system/feature_model.py:35
+#: src/one_public_api/models/system/feature_model.py:71
+#: src/one_public_api/schemas/feature_schema.py:60
+msgid "Whether the feature is enabled"
+msgstr "有効な機能か"
 
 #: src/one_public_api/models/system/attachment_model.py:28
 msgid "Attachment name"
@@ -410,6 +415,56 @@ msgstr "アカウントがロックされているか"
 #: src/one_public_api/models/system/user_model.py:126
 msgid "Number of failed login attempts"
 msgstr "ログイン失敗回数"
+
+#: src/one_public_api/routers/action_router.py:28
+#: src/one_public_api/schemas/permission_schema.py:33
+msgid "Actions"
+msgstr "アクション"
+
+#: src/one_public_api/routers/action_router.py:36
+#, fuzzy
+msgid "List Public Actions"
+msgstr "公開設定一覧"
+
+#: src/one_public_api/routers/action_router.py:54
+#, fuzzy
+msgid "List Actions"
+msgstr "アクション"
+
+#: src/one_public_api/routers/action_router.py:69
+#, fuzzy
+msgid "Create Action"
+msgstr "設定作成"
+
+#: src/one_public_api/routers/action_router.py:84
+#, fuzzy
+msgid "Get Action"
+msgstr "アクション"
+
+#: src/one_public_api/routers/action_router.py:89
+#, fuzzy
+msgid "The ID of the action item to be retrieved"
+msgstr "確認対象の設定項目の ID"
+
+#: src/one_public_api/routers/action_router.py:99
+#, fuzzy
+msgid "Update Action"
+msgstr "本データを最後に変更したユーザーの情報。"
+
+#: src/one_public_api/routers/action_router.py:105
+#, fuzzy
+msgid "The ID of the action item to be updated"
+msgstr "変更対象の設定項目の ID"
+
+#: src/one_public_api/routers/action_router.py:117
+#, fuzzy
+msgid "Delete Action"
+msgstr "設定削除"
+
+#: src/one_public_api/routers/action_router.py:122
+#, fuzzy
+msgid "The ID of the action item to be deleted"
+msgstr "削除対象の設定項目の ID"
 
 #: src/one_public_api/routers/authenticate_router.py:31
 msgid "Authentication"
@@ -588,6 +643,10 @@ msgstr "機能削除"
 msgid "The ID of the feature item to be deleted"
 msgstr "削除対象の機能の ID"
 
+#: src/one_public_api/routers/permission_router.py:14
+msgid "Permissions"
+msgstr ""
+
 #: src/one_public_api/routers/user_router.py:28
 msgid "Users"
 msgstr "ユーザー"
@@ -628,6 +687,18 @@ msgstr "変更対象のユーザーの ID"
 #: src/one_public_api/routers/user_router.py:136
 msgid "Delete User"
 msgstr "ユーザー削除"
+
+#: src/one_public_api/schemas/action_schema.py:39
+#: src/one_public_api/schemas/action_schema.py:80
+#, fuzzy
+msgid "Parent Action"
+msgstr "認証"
+
+#: src/one_public_api/schemas/action_schema.py:40
+#: src/one_public_api/schemas/action_schema.py:81
+#, fuzzy
+msgid "Parent Action Description"
+msgstr "この権限に紐づくアクションの一覧です。"
 
 #: src/one_public_api/schemas/authenticate_schema.py:34
 msgid "A Boolean flag indicating whether the user should be remembered."
@@ -699,10 +770,6 @@ msgstr "機能名の先頭の7桁（ハイフンを含む）は同一の業務�
 #: src/one_public_api/schemas/organization_schema.py:32
 msgid "Category"
 msgstr "カテゴリー"
-
-#: src/one_public_api/schemas/permission_schema.py:33
-msgid "Actions"
-msgstr "アクション"
 
 #: src/one_public_api/schemas/permission_schema.py:34
 msgid "Actions Description"

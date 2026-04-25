@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-04-16 00:29+0900\n"
+"POT-Creation-Date: 2026-04-25 13:42+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -187,6 +187,7 @@ msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:21
 #: src/one_public_api/models/system/action_model.py:86
+#: src/one_public_api/schemas/action_schema.py:59
 msgid "Action name"
 msgstr ""
 
@@ -224,11 +225,7 @@ msgid "Description"
 msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:58
-#: src/one_public_api/models/system/action_model.py:91
-#: src/one_public_api/models/system/feature_model.py:35
-#: src/one_public_api/models/system/feature_model.py:71
-#: src/one_public_api/schemas/feature_schema.py:60
-msgid "Whether the feature is enabled"
+msgid "Whether the action is enabled"
 msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:62
@@ -239,6 +236,13 @@ msgstr ""
 #: src/one_public_api/models/system/feature_model.py:76
 #: src/one_public_api/schemas/feature_schema.py:63
 msgid "Whether auth is required"
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:91
+#: src/one_public_api/models/system/feature_model.py:35
+#: src/one_public_api/models/system/feature_model.py:71
+#: src/one_public_api/schemas/feature_schema.py:60
+msgid "Whether the feature is enabled"
 msgstr ""
 
 #: src/one_public_api/models/system/attachment_model.py:28
@@ -401,6 +405,47 @@ msgstr ""
 #: src/one_public_api/models/system/user_model.py:65
 #: src/one_public_api/models/system/user_model.py:126
 msgid "Number of failed login attempts"
+msgstr ""
+
+#: src/one_public_api/routers/action_router.py:28
+#: src/one_public_api/schemas/permission_schema.py:33
+msgid "Actions"
+msgstr ""
+
+#: src/one_public_api/routers/action_router.py:36
+msgid "List Public Actions"
+msgstr ""
+
+#: src/one_public_api/routers/action_router.py:54
+msgid "List Actions"
+msgstr ""
+
+#: src/one_public_api/routers/action_router.py:69
+msgid "Create Action"
+msgstr ""
+
+#: src/one_public_api/routers/action_router.py:84
+msgid "Get Action"
+msgstr ""
+
+#: src/one_public_api/routers/action_router.py:89
+msgid "The ID of the action item to be retrieved"
+msgstr ""
+
+#: src/one_public_api/routers/action_router.py:99
+msgid "Update Action"
+msgstr ""
+
+#: src/one_public_api/routers/action_router.py:105
+msgid "The ID of the action item to be updated"
+msgstr ""
+
+#: src/one_public_api/routers/action_router.py:117
+msgid "Delete Action"
+msgstr ""
+
+#: src/one_public_api/routers/action_router.py:122
+msgid "The ID of the action item to be deleted"
 msgstr ""
 
 #: src/one_public_api/routers/authenticate_router.py:31
@@ -567,6 +612,10 @@ msgstr ""
 msgid "The ID of the feature item to be deleted"
 msgstr ""
 
+#: src/one_public_api/routers/permission_router.py:14
+msgid "Permissions"
+msgstr ""
+
 #: src/one_public_api/routers/user_router.py:28
 msgid "Users"
 msgstr ""
@@ -606,6 +655,16 @@ msgstr ""
 
 #: src/one_public_api/routers/user_router.py:136
 msgid "Delete User"
+msgstr ""
+
+#: src/one_public_api/schemas/action_schema.py:39
+#: src/one_public_api/schemas/action_schema.py:80
+msgid "Parent Action"
+msgstr ""
+
+#: src/one_public_api/schemas/action_schema.py:40
+#: src/one_public_api/schemas/action_schema.py:81
+msgid "Parent Action Description"
 msgstr ""
 
 #: src/one_public_api/schemas/authenticate_schema.py:34
@@ -675,10 +734,6 @@ msgstr ""
 
 #: src/one_public_api/schemas/organization_schema.py:32
 msgid "Category"
-msgstr ""
-
-#: src/one_public_api/schemas/permission_schema.py:33
-msgid "Actions"
 msgstr ""
 
 #: src/one_public_api/schemas/permission_schema.py:34
