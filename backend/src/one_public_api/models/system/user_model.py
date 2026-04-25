@@ -23,7 +23,6 @@ from one_public_api.models.system.role_model import Role
 from one_public_api.models.system.token_model import Token
 
 USER_NAME_FIELD_KWARGS: Dict[str, Any] = {
-    "min_length": constants.LENGTH_3,
     "max_length": constants.LENGTH_55,
     "description": _("User name"),
 }
@@ -108,6 +107,7 @@ class User(
     name: str = Field(
         nullable=False,
         unique=True,
+        min_length=constants.LENGTH_3,
         **USER_NAME_FIELD_KWARGS,
     )
     email: EmailStr = Field(
@@ -128,6 +128,7 @@ class User(
     failed_attempts: int = Field(
         default=0,
         nullable=False,
+        ge=0,
         **USER_FAILED_ATTEMPTS_FIELD_KWARGS,
     )
 
