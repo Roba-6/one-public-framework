@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-04-25 13:42+0900\n"
+"POT-Creation-Date: 2026-04-25 16:30+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -347,8 +347,7 @@ msgid "Nickname"
 msgstr ""
 
 #: src/one_public_api/models/system/organization_model.py:64
-#: src/one_public_api/models/system/user_model.py:30
-#: src/one_public_api/models/system/user_model.py:87
+#: src/one_public_api/models/system/user_model.py:28
 #: src/one_public_api/schemas/authenticate_schema.py:29
 #: src/one_public_api/schemas/base_schema.py:102
 msgid "User name"
@@ -371,39 +370,32 @@ msgstr ""
 msgid "Owner of token"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:35
-#: src/one_public_api/models/system/user_model.py:93
+#: src/one_public_api/models/system/user_model.py:32
 #: src/one_public_api/schemas/base_schema.py:106
 msgid "User's email address"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:40
-#: src/one_public_api/models/system/user_model.py:99
+#: src/one_public_api/models/system/user_model.py:36
 msgid "First name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:45
-#: src/one_public_api/models/system/user_model.py:105
+#: src/one_public_api/models/system/user_model.py:40
 msgid "Last name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:50
-#: src/one_public_api/models/system/user_model.py:111
+#: src/one_public_api/models/system/user_model.py:44
 msgid "Display nickname"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:57
-#: src/one_public_api/models/system/user_model.py:116
+#: src/one_public_api/models/system/user_model.py:47
 msgid "Whether the account is enabled"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:61
-#: src/one_public_api/models/system/user_model.py:121
+#: src/one_public_api/models/system/user_model.py:50
 msgid "Whether the account is locked"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:65
-#: src/one_public_api/models/system/user_model.py:126
+#: src/one_public_api/models/system/user_model.py:53
 msgid "Number of failed login attempts"
 msgstr ""
 
