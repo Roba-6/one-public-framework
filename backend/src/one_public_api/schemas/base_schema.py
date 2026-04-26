@@ -102,7 +102,7 @@ class UserCreateRequest(UserBase, PasswordMixin):
         description=_("User name"),
     )
     email: EmailStr = Field(
-        max_length=constants.LENGTH_128,
+        max_length=constants.LENGTH_100,
         description=_("User's email address"),
     )
 

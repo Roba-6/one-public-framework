@@ -53,6 +53,10 @@ python_version = "3.11"
 strict = true
 exclude = [".venv", "migrations/versions", "tests"]
 
+[[tool.mypy.overrides]]
+module = ["parameterized"]
+ignore_missing_imports = true
+
 [tool.black]
 line-length = 88
 target-version = ["py311"]

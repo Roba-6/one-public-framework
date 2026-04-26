@@ -27,7 +27,7 @@ USER_NAME_FIELD_KWARGS: Dict[str, Any] = {
     "description": _("User name"),
 }
 USER_EMAIL_FIELD_KWARGS: Dict[str, Any] = {
-    "max_length": constants.LENGTH_128,
+    "max_length": constants.LENGTH_100,
     "description": _("User's email address"),
 }
 USER_FIRSTNAME_FIELD_KWARGS: Dict[str, Any] = {
@@ -39,7 +39,7 @@ USER_LASTNAME_FIELD_KWARGS: Dict[str, Any] = {
     "description": _("Last name"),
 }
 USER_NICKNAME_FIELD_KWARGS: Dict[str, Any] = {
-    "max_length": constants.LENGTH_55,
+    "max_length": constants.LENGTH_100,
     "description": _("Display nickname"),
 }
 USER_IS_ENABLED_FIELD_KWARGS: Dict[str, Any] = {
