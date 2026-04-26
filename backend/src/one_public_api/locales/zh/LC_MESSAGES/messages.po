@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.19\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-04-25 16:30+0900\n"
+"POT-Creation-Date: 2026-04-26 23:49+0900\n"
 "PO-Revision-Date: 2025-10-03 18:52+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: zh\n"
@@ -353,7 +353,7 @@ msgid "Nickname"
 msgstr ""
 
 #: src/one_public_api/models/system/organization_model.py:64
-#: src/one_public_api/models/system/user_model.py:28
+#: src/one_public_api/models/system/user_model.py:27
 #: src/one_public_api/schemas/authenticate_schema.py:29
 #: src/one_public_api/schemas/base_schema.py:102
 msgid "User name"
@@ -376,32 +376,32 @@ msgstr ""
 msgid "Owner of token"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:32
+#: src/one_public_api/models/system/user_model.py:31
 #: src/one_public_api/schemas/base_schema.py:106
 msgid "User's email address"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:36
+#: src/one_public_api/models/system/user_model.py:35
 msgid "First name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:40
+#: src/one_public_api/models/system/user_model.py:39
 msgid "Last name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:44
+#: src/one_public_api/models/system/user_model.py:43
 msgid "Display nickname"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:47
+#: src/one_public_api/models/system/user_model.py:46
 msgid "Whether the account is enabled"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:50
+#: src/one_public_api/models/system/user_model.py:49
 msgid "Whether the account is locked"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:53
+#: src/one_public_api/models/system/user_model.py:52
 msgid "Number of failed login attempts"
 msgstr ""
 
