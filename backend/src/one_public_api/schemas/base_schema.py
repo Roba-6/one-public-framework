@@ -1,7 +1,6 @@
 from typing import Any, Dict, List, Optional
 
-from pydantic import EmailStr, computed_field
-from sqlmodel import Field
+from pydantic import Field, computed_field
 
 from one_public_api.common import constants
 from one_public_api.common.utility.str import to_camel
@@ -14,7 +13,11 @@ from one_public_api.models.system.configuration_model import (
     ConfigurationOption,
     ConfigurationType,
 )
-from one_public_api.models.system.user_model import UserBase, UserStatus
+from one_public_api.models.system.user_model import (
+    USER_NAME_FIELD_KWARGS,
+    UserBase,
+    UserStatus,
+)
 from one_public_api.schemas.organization_schema import OrganizationPublicResponse
 from one_public_api.schemas.organization_schema import (
     example_base as organization_example,
@@ -98,12 +101,8 @@ class UserPublicResponse(UserBase, TimestampMixin, IdMixin):
 class UserCreateRequest(UserBase, PasswordMixin):
     name: str = Field(
         min_length=constants.LENGTH_3,
-        max_length=constants.LENGTH_55,
-        description=_("User name"),
-    )
-    email: EmailStr = Field(
-        max_length=constants.LENGTH_100,
-        description=_("User's email address"),
+        pattern=r"^[A-Za-z0-9_-]+$",
+        **USER_NAME_FIELD_KWARGS,
     )
 
     model_config = {

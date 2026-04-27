@@ -2,6 +2,7 @@ from uuid import UUID
 
 from sqlmodel import Field
 
+from one_public_api.core.i18n import translate as _
 from one_public_api.core.settings import settings
 
 
@@ -26,4 +27,6 @@ class BelongToMixin:
         default=None,
         foreign_key=settings.DB_TABLE_PRE + "organizations.id",
         ondelete="RESTRICT",
+        title=_("Organization ID"),
+        description=_("Organization ID Description"),
     )

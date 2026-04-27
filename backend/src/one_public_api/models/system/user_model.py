@@ -24,7 +24,8 @@ from one_public_api.models.system.token_model import Token
 
 USER_NAME_FIELD_KWARGS: Dict[str, Any] = {
     "max_length": constants.LENGTH_55,
-    "description": _("User name"),
+    "title": _("User name"),
+    "description": _("User name Description"),
 }
 USER_EMAIL_FIELD_KWARGS: Dict[str, Any] = {
     "max_length": constants.LENGTH_100,

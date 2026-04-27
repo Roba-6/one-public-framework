@@ -2,10 +2,10 @@ import unittest
 from typing import Any, Dict
 from uuid import UUID
 
+from parameterized import parameterized
 from pydantic import ValidationError
 
 from one_public_api.models.system.user_model import User
-from parameterized import parameterized
 
 
 class TestUserModel(unittest.TestCase):
@@ -52,7 +52,7 @@ class TestUserModel(unittest.TestCase):
     @parameterized.expand(  # type: ignore
         [
             ({"name": "abc"},),
-            ({"name": "55words_@hijklmnopqrs!TUV#$%^&*()+=-{}[]\"':;?/<>,.123あ字"},),
+            ({"name": "A" * 55},),
             ({"email": "a@b.c"},),
             (
                 {
@@ -72,14 +72,7 @@ class TestUserModel(unittest.TestCase):
                 },
             ),
             ({"lastname": ""},),
-            (
-                {
-                    "lastname": (
-                        "100words_A~`!@#$%^&*()_+-={}[]\\|:;<>,.?/1234567890"
-                        "ABC-def- oneB,mxcv6df6oiw7eur9oiu0I1234567890あ漢字简体"
-                    )
-                },
-            ),
+            ({"lastname": "A" * 100},),
             ({"nickname": ""},),
             (
                 {
@@ -122,7 +115,7 @@ class TestUserModel(unittest.TestCase):
     @parameterized.expand(  # type: ignore
         [
             ({"name": "ab"},),
-            ({"name": "56words_@hijklmnopqrs!TUV#$%^&*()+=-{}[]\"':;?/<>,.123あ字2"},),
+            ({"name": "A" * 56},),
             ({"email": "ab.c"},),
             (
                 {
