@@ -104,41 +104,13 @@ class TestUserModel(unittest.TestCase):
                     )
                 },
             ),
-            (
-                {
-                    "firstname": (
-                        "101words_AB~`!@#$%^&*()_+-={}[]\\|:;<>,.?/1234567890"
-                        "ABC-def- oneB,mxcv6df6oiw7eur9oiu0I1234567890あ漢字简体"
-                    )
-                },
-            ),
-            (
-                {
-                    "lastname": (
-                        "101words_AB~`!@#$%^&*()_+-={}[]\\|:;<>,.?/1234567890"
-                        "ABC-def- oneB,mxcv6df6oiw7eur9oiu0I1234567890あ漢字简体"
-                    )
-                },
-            ),
-            (
-                {
-                    "nickname": (
-                        "101words_AB~`!@#$%^&*()_+-={}[]\\|:;<>,.?/1234567890"
-                        "ABC-def- oneB,mxcv6df6oiw7eur9oiu0I1234567890あ漢字简体"
-                    )
-                },
-            ),
+            ({"firstname": ("A" * 101)},),
+            ({"lastname": ("A" * 101)},),
+            ({"nickname": ("A" * 101)},),
             ({"is_enabled": "str"},),
             ({"is_locked": 123},),
             ({"failed_attempts": -1},),
-            (
-                {
-                    "password": (
-                        "65words_Ab~`!@#$%^&*()_+-={}[]\\|"
-                        "1:;<>,.?/1234567890abc-def-ghijkl"
-                    )
-                },
-            ),
+            ({"password": ("A" * 65)},),
         ]
     )
     def test_validation_failed(self, field: Dict[str, Any]) -> None:
