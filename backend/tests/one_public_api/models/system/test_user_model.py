@@ -5,7 +5,7 @@ from uuid import UUID
 from parameterized import parameterized
 from pydantic import ValidationError
 
-from one_public_api.models.system.user_model import User
+from one_public_api.models import User
 
 
 class TestUserModel(unittest.TestCase):
