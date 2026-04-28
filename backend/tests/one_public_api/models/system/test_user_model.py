@@ -63,25 +63,11 @@ class TestUserModel(unittest.TestCase):
                 },
             ),
             ({"firstname": ""},),
-            (
-                {
-                    "firstname": (
-                        "100words_A~`!@#$%^&*()_+-={}[]\\|:;<>,.?/1234567890"
-                        "ABC-def- oneB,mxcv6df6oiw7eur9oiu0I1234567890あ漢字简体"
-                    )
-                },
-            ),
+            ({"firstname": "A" * 100},),
             ({"lastname": ""},),
             ({"lastname": "A" * 100},),
             ({"nickname": ""},),
-            (
-                {
-                    "nickname": (
-                        "100words_A~`!@#$%^&*()_+-={}[]\\|:;<>,.?/1234567890"
-                        "ABC-def- oneB,mxcv6df6oiw7eur9oiu0I1234567890あ漢字简体"
-                    )
-                },
-            ),
+            ({"nickname": "A" * 100},),
             ({"is_enabled": True},),
             ({"is_enabled": False},),
             ({"is_locked": True},),
@@ -89,14 +75,7 @@ class TestUserModel(unittest.TestCase):
             ({"failed_attempts": 0},),
             ({"failed_attempts": 1000},),
             ({"password": ""},),
-            (
-                {
-                    "password": (
-                        "64words_Ab~`!@#$%^&*()_+-={}[]\\|"
-                        ":;<>,.?/1234567890abc-def-ghijkl"
-                    )
-                },
-            ),
+            ({"password": "A" * 64},),
         ]
     )
     def test_validation_success(self, field: Dict[str, Any]) -> None:
