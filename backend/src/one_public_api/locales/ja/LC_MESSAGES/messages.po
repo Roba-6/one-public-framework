@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.19\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-04-26 23:49+0900\n"
+"POT-Creation-Date: 2026-04-29 22:43+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -143,6 +143,16 @@ msgstr "電話番号"
 msgid "Telephone Number Description"
 msgstr "半角数値・ハイフン「-」・プラス「+」・括弧「()」のみ望ましい。"
 
+#: src/one_public_api/models/mixins/belong_to_mixin.py:30
+#, fuzzy
+msgid "Organization ID"
+msgstr "組織"
+
+#: src/one_public_api/models/mixins/belong_to_mixin.py:31
+#, fuzzy
+msgid "Organization ID Description"
+msgstr "外部キーで、本レコードを作成したユーザーの ID。"
+
 #: src/one_public_api/models/mixins/id_mixin.py:26
 msgid "Record ID"
 msgstr "レコード ID"
@@ -167,13 +177,13 @@ msgstr "更新者 ID"
 msgid "Updater ID Description"
 msgstr "外部キーで、本レコードを最後に変更したユーザーの ID。"
 
-#: src/one_public_api/models/mixins/password_mixin.py:27
+#: src/one_public_api/models/mixins/password_mixin.py:11
 msgid "Password"
 msgstr "パスワード"
 
-#: src/one_public_api/models/mixins/password_mixin.py:28
+#: src/one_public_api/models/mixins/password_mixin.py:12
 msgid "Password provided by the user"
-msgstr "ユーザーが提供したパスワード"
+msgstr "ユーザーが提供したパスワードです。"
 
 #: src/one_public_api/models/mixins/timestamp_mixin.py:28
 msgid "Record creation time"
@@ -191,34 +201,57 @@ msgstr "最終変更日時"
 msgid "Last Update Time Description"
 msgstr "レコードが最後に変更された日時で、自動生成される。"
 
-#: src/one_public_api/models/system/action_model.py:21
-#: src/one_public_api/models/system/action_model.py:86
-#: src/one_public_api/schemas/action_schema.py:59
+#: src/one_public_api/models/system/action_model.py:17
 msgid "Action name"
 msgstr "アクション名"
 
-#: src/one_public_api/models/system/action_model.py:26
+#: src/one_public_api/models/system/action_model.py:19
+msgid ""
+"Unique identifier for the action. Used internally for referencing and "
+"routing."
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:25
 msgid "Action label"
 msgstr "アクションラベル"
+
+#: src/one_public_api/models/system/action_model.py:26
+msgid "Display name of the action shown in the user interface."
+msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:31
 msgid "Action URL"
 msgstr "画面 URL"
 
-#: src/one_public_api/models/system/action_model.py:36
+#: src/one_public_api/models/system/action_model.py:33
+msgid "URL path associated with the action. Used for navigation or routing."
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:39
 msgid "Action icon"
 msgstr "メニューアイコン"
 
-#: src/one_public_api/models/system/action_model.py:42
+#: src/one_public_api/models/system/action_model.py:41
+msgid "Icon name or identifier used to visually represent the action in the UI."
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:47
 msgid "Component name"
 msgstr "画面コンポーネント名"
 
-#: src/one_public_api/models/system/action_model.py:46
-#: src/one_public_api/models/system/action_model.py:101
-msgid "Show or hide"
-msgstr "表示 / 非表示"
+#: src/one_public_api/models/system/action_model.py:49
+msgid "Frontend component name responsible for rendering the action view."
+msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:51
+#: src/one_public_api/models/system/action_model.py:54
+msgid "Visible"
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:55
+msgid "Determines whether the action is visible in the user interface."
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:60
 #: src/one_public_api/models/system/category_model.py:34
 #: src/one_public_api/models/system/configuration_model.py:64
 #: src/one_public_api/models/system/configuration_model.py:126
@@ -230,27 +263,40 @@ msgstr "表示 / 非表示"
 msgid "Description"
 msgstr "説明"
 
-#: src/one_public_api/models/system/action_model.py:58
+#: src/one_public_api/models/system/action_model.py:61
+msgid "Detailed description of the action and its purpose."
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:65
+#: src/one_public_api/models/system/user_model.py:58
 #, fuzzy
-msgid "Whether the action is enabled"
+msgid "Enabled"
+msgstr "ユーザーが無効になっています。"
+
+#: src/one_public_api/models/system/action_model.py:66
+#, fuzzy
+msgid "Indicates whether the action is active and can be used."
 msgstr "有効なアカウントか"
 
-#: src/one_public_api/models/system/action_model.py:62
-#: src/one_public_api/models/system/action_model.py:96
-#: src/one_public_api/models/system/configuration_model.py:76
-#: src/one_public_api/models/system/configuration_model.py:120
-#: src/one_public_api/models/system/feature_model.py:39
-#: src/one_public_api/models/system/feature_model.py:76
-#: src/one_public_api/schemas/feature_schema.py:63
-msgid "Whether auth is required"
-msgstr "認証が必要か"
+#: src/one_public_api/models/system/action_model.py:70
+#, fuzzy
+msgid "Requires authentication"
+msgstr "認証"
 
-#: src/one_public_api/models/system/action_model.py:91
-#: src/one_public_api/models/system/feature_model.py:35
-#: src/one_public_api/models/system/feature_model.py:71
-#: src/one_public_api/schemas/feature_schema.py:60
-msgid "Whether the feature is enabled"
-msgstr "有効な機能か"
+#: src/one_public_api/models/system/action_model.py:72
+msgid "Specifies whether authentication is required to access this action."
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:77
+#, fuzzy
+msgid "Parent action ID"
+msgstr "認証"
+
+#: src/one_public_api/models/system/action_model.py:79
+msgid ""
+"Identifier of the parent action. Used to define hierarchical "
+"relationships between actions (e.g., menu and sub-menu structure)."
+msgstr ""
 
 #: src/one_public_api/models/system/attachment_model.py:28
 msgid "Attachment name"
@@ -306,21 +352,29 @@ msgstr "設定項目名"
 
 #: src/one_public_api/models/system/configuration_model.py:50
 #: src/one_public_api/models/system/configuration_model.py:103
-#: src/one_public_api/schemas/base_schema.py:224
+#: src/one_public_api/schemas/base_schema.py:223
 msgid "Configuration key"
 msgstr "設定項目キー"
 
 #: src/one_public_api/models/system/configuration_model.py:55
 #: src/one_public_api/models/system/configuration_model.py:109
-#: src/one_public_api/schemas/base_schema.py:228
+#: src/one_public_api/schemas/base_schema.py:227
 msgid "Configuration value"
 msgstr "設定項目値"
 
 #: src/one_public_api/models/system/configuration_model.py:59
 #: src/one_public_api/models/system/configuration_model.py:114
-#: src/one_public_api/schemas/base_schema.py:231
+#: src/one_public_api/schemas/base_schema.py:230
 msgid "Configuration type"
 msgstr "設定タイプ"
+
+#: src/one_public_api/models/system/configuration_model.py:76
+#: src/one_public_api/models/system/configuration_model.py:120
+#: src/one_public_api/models/system/feature_model.py:39
+#: src/one_public_api/models/system/feature_model.py:76
+#: src/one_public_api/schemas/feature_schema.py:63
+msgid "Whether auth is required"
+msgstr "認証が必要か"
 
 #: src/one_public_api/models/system/feature_model.py:23
 #: src/one_public_api/models/system/feature_model.py:60
@@ -328,6 +382,12 @@ msgstr "設定タイプ"
 #: src/one_public_api/schemas/feature_schema.py:57
 msgid "Feature name"
 msgstr "機能名"
+
+#: src/one_public_api/models/system/feature_model.py:35
+#: src/one_public_api/models/system/feature_model.py:71
+#: src/one_public_api/schemas/feature_schema.py:60
+msgid "Whether the feature is enabled"
+msgstr "有効な機能か"
 
 #: src/one_public_api/models/system/notification_model.py:22
 #: src/one_public_api/models/system/notification_model.py:57
@@ -357,8 +417,6 @@ msgstr "表示名"
 
 #: src/one_public_api/models/system/organization_model.py:64
 #: src/one_public_api/models/system/user_model.py:27
-#: src/one_public_api/schemas/authenticate_schema.py:29
-#: src/one_public_api/schemas/base_schema.py:102
 msgid "User name"
 msgstr "ユーザー名"
 
@@ -371,7 +429,6 @@ msgid "Token"
 msgstr "トークン"
 
 #: src/one_public_api/models/system/token_model.py:28
-#: src/one_public_api/schemas/authenticate_schema.py:54
 msgid "Token type"
 msgstr "トークンタイプ"
 
@@ -379,33 +436,70 @@ msgstr "トークンタイプ"
 msgid "Owner of token"
 msgstr "トークン所有者"
 
-#: src/one_public_api/models/system/user_model.py:31
-#: src/one_public_api/schemas/base_schema.py:106
-msgid "User's email address"
+#: src/one_public_api/models/system/user_model.py:28
+msgid "Unique username used for login and system identification."
+msgstr ""
+
+#: src/one_public_api/models/system/user_model.py:33
+#, fuzzy
+msgid "Email address"
 msgstr "メールアドレス"
 
-#: src/one_public_api/models/system/user_model.py:35
+#: src/one_public_api/models/system/user_model.py:34
+msgid "User's email address used for authentication and communication."
+msgstr ""
+
+#: src/one_public_api/models/system/user_model.py:39
 msgid "First name"
 msgstr "名"
 
-#: src/one_public_api/models/system/user_model.py:39
+#: src/one_public_api/models/system/user_model.py:40
+#, fuzzy
+msgid "User's given name."
+msgstr "ユーザー名"
+
+#: src/one_public_api/models/system/user_model.py:45
 msgid "Last name"
 msgstr "姓"
 
-#: src/one_public_api/models/system/user_model.py:43
+#: src/one_public_api/models/system/user_model.py:46
+#, fuzzy
+msgid "User's family name."
+msgstr "メールアドレス"
+
+#: src/one_public_api/models/system/user_model.py:51
 msgid "Display nickname"
 msgstr "表示名"
 
-#: src/one_public_api/models/system/user_model.py:46
-msgid "Whether the account is enabled"
-msgstr "有効なアカウントか"
+#: src/one_public_api/models/system/user_model.py:53
+msgid "Nickname displayed in the user interface instead of the full name."
+msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:49
-msgid "Whether the account is locked"
-msgstr "アカウントがロックされているか"
+#: src/one_public_api/models/system/user_model.py:60
+msgid ""
+"Indicates whether the user account is active and allowed to access the "
+"system."
+msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:52
-msgid "Number of failed login attempts"
+#: src/one_public_api/models/system/user_model.py:65
+#, fuzzy
+msgid "Locked"
+msgstr "ユーザーがロックされています。"
+
+#: src/one_public_api/models/system/user_model.py:67
+msgid ""
+"Indicates whether the account is locked due to security reasons (e.g., "
+"too many failed login attempts)."
+msgstr ""
+
+#: src/one_public_api/models/system/user_model.py:73
+#, fuzzy
+msgid "Failed login attempts"
+msgstr "ログイン失敗回数"
+
+#: src/one_public_api/models/system/user_model.py:75
+#, fuzzy
+msgid "Number of consecutive failed login attempts recorded for the account."
 msgstr "ログイン失敗回数"
 
 #: src/one_public_api/routers/action_router.py:28
@@ -495,41 +589,45 @@ msgstr ""
 "**SYS-ATH-P-RFS**<br />アクセストークンを再発行するための API です。<br "
 "/>有効なリフレッシュトークンが存在する場合に新しいアクセストークンを返却します。"
 
-#: src/one_public_api/routers/authenticate_router.py:77
+#: src/one_public_api/routers/authenticate_router.py:79
 msgid "Refresh token"
 msgstr "リフレッシュトークン"
 
-#: src/one_public_api/routers/authenticate_router.py:85
+#: src/one_public_api/routers/authenticate_router.py:80
+msgid "Refresh token Description"
+msgstr "ログイン状態を維持するために、新しいアクセストークンを発行するためのトークンです。"
+
+#: src/one_public_api/routers/authenticate_router.py:89
 msgid "Force Logout"
 msgstr "強制ログアウト"
 
-#: src/one_public_api/routers/authenticate_router.py:86
+#: src/one_public_api/routers/authenticate_router.py:90
 msgid "Force Logout Description"
 msgstr "**SYS-ATH-P-FLT**<br />リフレッシュトークンのクッキーを強制的に削除し、ユーザーをログアウト状態にします。"
 
-#: src/one_public_api/routers/authenticate_router.py:101
+#: src/one_public_api/routers/authenticate_router.py:105
 msgid "Login Form"
 msgstr "ログインフォーム"
 
-#: src/one_public_api/routers/authenticate_router.py:102
+#: src/one_public_api/routers/authenticate_router.py:106
 msgid "Login Form Description"
 msgstr ""
 "**SYS-ATH-P-LGF**<br />[Swagger UI](./docs) "
 "上でログイン動作を確認するためのフォームです。開発・検証用のエンドポイントとして使用します。"
 
-#: src/one_public_api/routers/authenticate_router.py:119
+#: src/one_public_api/routers/authenticate_router.py:123
 msgid "Get Profile"
 msgstr "プロフィール取得"
 
-#: src/one_public_api/routers/authenticate_router.py:120
+#: src/one_public_api/routers/authenticate_router.py:124
 msgid "Get Profile Description"
 msgstr "**SYS-ATH-A-PRF**<br />現在ログイン中のユーザーのプロフィール情報を取得します。"
 
-#: src/one_public_api/routers/authenticate_router.py:132
+#: src/one_public_api/routers/authenticate_router.py:136
 msgid "Logout"
 msgstr "ログアウト"
 
-#: src/one_public_api/routers/authenticate_router.py:133
+#: src/one_public_api/routers/authenticate_router.py:137
 msgid "Logout Description"
 msgstr ""
 "**SYS-ATH-A-LGT**<br "
@@ -552,8 +650,8 @@ msgid "Feature not found."
 msgstr "機能が見つかりません。"
 
 #: src/one_public_api/routers/configuration_router.py:28
-#: src/one_public_api/schemas/authenticate_schema.py:80
-#: src/one_public_api/schemas/base_schema.py:145
+#: src/one_public_api/schemas/authenticate_schema.py:93
+#: src/one_public_api/schemas/base_schema.py:144
 msgid "Configuration"
 msgstr "設定"
 
@@ -680,69 +778,82 @@ msgstr "変更対象のユーザーの ID"
 msgid "Delete User"
 msgstr "ユーザー削除"
 
-#: src/one_public_api/schemas/action_schema.py:39
-#: src/one_public_api/schemas/action_schema.py:80
+#: src/one_public_api/schemas/action_schema.py:43
 #, fuzzy
 msgid "Parent Action"
 msgstr "認証"
 
-#: src/one_public_api/schemas/action_schema.py:40
-#: src/one_public_api/schemas/action_schema.py:81
+#: src/one_public_api/schemas/action_schema.py:44
 #, fuzzy
 msgid "Parent Action Description"
 msgstr "この権限に紐づくアクションの一覧です。"
 
-#: src/one_public_api/schemas/authenticate_schema.py:34
+#: src/one_public_api/schemas/authenticate_schema.py:41
+msgid "Remember me"
+msgstr "ログイン状態を保持"
+
+#: src/one_public_api/schemas/authenticate_schema.py:43
 msgid "A Boolean flag indicating whether the user should be remembered."
 msgstr "ログイン状態を保持するかどうかを示す真偽値です。"
 
-#: src/one_public_api/schemas/authenticate_schema.py:53
-msgid "Access token"
+#: src/one_public_api/schemas/authenticate_schema.py:63
+msgid "Access Token"
 msgstr "アクセストークン"
 
-#: src/one_public_api/schemas/authenticate_schema.py:76
-#: src/one_public_api/schemas/base_schema.py:141
+#: src/one_public_api/schemas/authenticate_schema.py:63
+msgid "Access Token Description"
+msgstr "ログイン済みであることを証明して、APIやサービスにアクセスするためのトークン（認証証明）です。"
+
+#: src/one_public_api/schemas/authenticate_schema.py:66
+msgid "Token Type"
+msgstr "トークンタイプ"
+
+#: src/one_public_api/schemas/authenticate_schema.py:66
+msgid "Token Type Description"
+msgstr "トークンを「どう扱うか・どう送るか」を示す種類（方式）です。"
+
+#: src/one_public_api/schemas/authenticate_schema.py:89
+#: src/one_public_api/schemas/base_schema.py:140
 #: src/one_public_api/schemas/role_schema.py:31
 msgid "Role"
 msgstr "ロール"
 
-#: src/one_public_api/schemas/authenticate_schema.py:77
+#: src/one_public_api/schemas/authenticate_schema.py:90
 msgid "Role Description"
 msgstr "ユーザーに付与されているロール情報です。"
 
-#: src/one_public_api/schemas/authenticate_schema.py:81
+#: src/one_public_api/schemas/authenticate_schema.py:94
 msgid "Configuration Description"
 msgstr "ユーザーに適用される設定情報です。"
 
-#: src/one_public_api/schemas/base_schema.py:69
-#: src/one_public_api/schemas/base_schema.py:137
+#: src/one_public_api/schemas/base_schema.py:72
+#: src/one_public_api/schemas/base_schema.py:136
 msgid "Organization"
 msgstr "組織"
 
-#: src/one_public_api/schemas/base_schema.py:72
+#: src/one_public_api/schemas/base_schema.py:75
 msgid "Full name"
 msgstr "氏名"
 
-#: src/one_public_api/schemas/base_schema.py:129
-#: src/one_public_api/schemas/base_schema.py:173
+#: src/one_public_api/schemas/base_schema.py:128
+#: src/one_public_api/schemas/base_schema.py:172
 msgid "Creator"
 msgstr "作成者"
 
-#: src/one_public_api/schemas/base_schema.py:133
-#: src/one_public_api/schemas/base_schema.py:178
+#: src/one_public_api/schemas/base_schema.py:132
+#: src/one_public_api/schemas/base_schema.py:177
 msgid "Updater"
 msgstr "最終変更者"
 
-#: src/one_public_api/schemas/base_schema.py:174
+#: src/one_public_api/schemas/base_schema.py:173
 msgid "Creator Description"
 msgstr "レコードを新規作成したユーザー情報。"
 
-#: src/one_public_api/schemas/base_schema.py:179
+#: src/one_public_api/schemas/base_schema.py:178
 msgid "Updater Description"
 msgstr "本データを最後に変更したユーザーの情報。"
 
 #: src/one_public_api/schemas/comment_schema.py:23
-#, fuzzy
 msgid "User"
 msgstr "ユーザー"
 
@@ -805,7 +916,7 @@ msgstr "処理結果"
 
 #: src/one_public_api/schemas/response_schema.py:84
 msgid "Result Description"
-msgstr "API 処理の主な結果データ。単一オブジェクト、複数オブジェクトのリスト、または結果がない場合は `null` となる。"
+msgstr "API 処理の主な結果データです。単一オブジェクト、複数オブジェクトのリスト、または結果がない場合は `null` となります。"
 
 #: src/one_public_api/schemas/response_schema.py:88
 msgid "Item Count"
@@ -813,7 +924,7 @@ msgstr "処理結果のデータ数"
 
 #: src/one_public_api/schemas/response_schema.py:89
 msgid "Item Count Description"
-msgstr "検索条件と一致したすべてのデータの件数。"
+msgstr "検索条件と一致したすべてのデータの件数です。一覧 API 以外の場合には `null` となります。"
 
 #: src/one_public_api/schemas/response_schema.py:93
 msgid "Detail of Result"
@@ -823,7 +934,7 @@ msgstr "処理詳細（警告・注意喚起）"
 msgid "Detail of Result Description"
 msgstr ""
 "処理自体は成功（HTTP "
-"2xx）したが、処理の過程で“望ましくない状態”や“将来的に問題となりうる設定”、または“軽微な警告”が検出された場合に、このフィールドに情報を格納し、クライアントに対して注意を促すために使用する。"
+"2xx）したが、処理の過程で“望ましくない状態”や“将来的に問題となりうる設定”、または“軽微な警告”が検出された場合に、このフィールドに情報を格納し、クライアントに対して注意を促すために使用します。"
 
 #: src/one_public_api/services/authenticate_service.py:59
 msgid "user not verified"
@@ -886,3 +997,15 @@ msgstr "データは既に存在します。"
 #: src/one_public_api/services/base_service.py:166
 msgid "This record might be referenced by other data."
 msgstr "このデータが参照されているため、削除できません。"
+
+#~ msgid "Show or hide"
+#~ msgstr "表示 / 非表示"
+
+#~ msgid "User name Description"
+#~ msgstr "利用者を識別する名前です。"
+
+#~ msgid "Whether the account is enabled"
+#~ msgstr "有効なアカウントか"
+
+#~ msgid "Whether the account is locked"
+#~ msgstr "アカウントがロックされているか"

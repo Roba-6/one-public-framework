@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-04-26 23:49+0900\n"
+"POT-Creation-Date: 2026-04-29 22:43+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,6 +137,14 @@ msgstr ""
 msgid "Telephone Number Description"
 msgstr ""
 
+#: src/one_public_api/models/mixins/belong_to_mixin.py:30
+msgid "Organization ID"
+msgstr ""
+
+#: src/one_public_api/models/mixins/belong_to_mixin.py:31
+msgid "Organization ID Description"
+msgstr ""
+
 #: src/one_public_api/models/mixins/id_mixin.py:26
 msgid "Record ID"
 msgstr ""
@@ -161,11 +169,11 @@ msgstr ""
 msgid "Updater ID Description"
 msgstr ""
 
-#: src/one_public_api/models/mixins/password_mixin.py:27
+#: src/one_public_api/models/mixins/password_mixin.py:11
 msgid "Password"
 msgstr ""
 
-#: src/one_public_api/models/mixins/password_mixin.py:28
+#: src/one_public_api/models/mixins/password_mixin.py:12
 msgid "Password provided by the user"
 msgstr ""
 
@@ -185,34 +193,57 @@ msgstr ""
 msgid "Last Update Time Description"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:21
-#: src/one_public_api/models/system/action_model.py:86
-#: src/one_public_api/schemas/action_schema.py:59
+#: src/one_public_api/models/system/action_model.py:17
 msgid "Action name"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:26
+#: src/one_public_api/models/system/action_model.py:19
+msgid ""
+"Unique identifier for the action. Used internally for referencing and "
+"routing."
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:25
 msgid "Action label"
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:26
+msgid "Display name of the action shown in the user interface."
 msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:31
 msgid "Action URL"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:36
+#: src/one_public_api/models/system/action_model.py:33
+msgid "URL path associated with the action. Used for navigation or routing."
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:39
 msgid "Action icon"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:42
+#: src/one_public_api/models/system/action_model.py:41
+msgid "Icon name or identifier used to visually represent the action in the UI."
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:47
 msgid "Component name"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:46
-#: src/one_public_api/models/system/action_model.py:101
-msgid "Show or hide"
+#: src/one_public_api/models/system/action_model.py:49
+msgid "Frontend component name responsible for rendering the action view."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:51
+#: src/one_public_api/models/system/action_model.py:54
+msgid "Visible"
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:55
+msgid "Determines whether the action is visible in the user interface."
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:60
 #: src/one_public_api/models/system/category_model.py:34
 #: src/one_public_api/models/system/configuration_model.py:64
 #: src/one_public_api/models/system/configuration_model.py:126
@@ -224,25 +255,35 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:58
-msgid "Whether the action is enabled"
+#: src/one_public_api/models/system/action_model.py:61
+msgid "Detailed description of the action and its purpose."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:62
-#: src/one_public_api/models/system/action_model.py:96
-#: src/one_public_api/models/system/configuration_model.py:76
-#: src/one_public_api/models/system/configuration_model.py:120
-#: src/one_public_api/models/system/feature_model.py:39
-#: src/one_public_api/models/system/feature_model.py:76
-#: src/one_public_api/schemas/feature_schema.py:63
-msgid "Whether auth is required"
+#: src/one_public_api/models/system/action_model.py:65
+#: src/one_public_api/models/system/user_model.py:58
+msgid "Enabled"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:91
-#: src/one_public_api/models/system/feature_model.py:35
-#: src/one_public_api/models/system/feature_model.py:71
-#: src/one_public_api/schemas/feature_schema.py:60
-msgid "Whether the feature is enabled"
+#: src/one_public_api/models/system/action_model.py:66
+msgid "Indicates whether the action is active and can be used."
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:70
+msgid "Requires authentication"
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:72
+msgid "Specifies whether authentication is required to access this action."
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:77
+msgid "Parent action ID"
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:79
+msgid ""
+"Identifier of the parent action. Used to define hierarchical "
+"relationships between actions (e.g., menu and sub-menu structure)."
 msgstr ""
 
 #: src/one_public_api/models/system/attachment_model.py:28
@@ -297,20 +338,28 @@ msgstr ""
 
 #: src/one_public_api/models/system/configuration_model.py:50
 #: src/one_public_api/models/system/configuration_model.py:103
-#: src/one_public_api/schemas/base_schema.py:224
+#: src/one_public_api/schemas/base_schema.py:223
 msgid "Configuration key"
 msgstr ""
 
 #: src/one_public_api/models/system/configuration_model.py:55
 #: src/one_public_api/models/system/configuration_model.py:109
-#: src/one_public_api/schemas/base_schema.py:228
+#: src/one_public_api/schemas/base_schema.py:227
 msgid "Configuration value"
 msgstr ""
 
 #: src/one_public_api/models/system/configuration_model.py:59
 #: src/one_public_api/models/system/configuration_model.py:114
-#: src/one_public_api/schemas/base_schema.py:231
+#: src/one_public_api/schemas/base_schema.py:230
 msgid "Configuration type"
+msgstr ""
+
+#: src/one_public_api/models/system/configuration_model.py:76
+#: src/one_public_api/models/system/configuration_model.py:120
+#: src/one_public_api/models/system/feature_model.py:39
+#: src/one_public_api/models/system/feature_model.py:76
+#: src/one_public_api/schemas/feature_schema.py:63
+msgid "Whether auth is required"
 msgstr ""
 
 #: src/one_public_api/models/system/feature_model.py:23
@@ -318,6 +367,12 @@ msgstr ""
 #: src/one_public_api/models/system/permission_model.py:21
 #: src/one_public_api/schemas/feature_schema.py:57
 msgid "Feature name"
+msgstr ""
+
+#: src/one_public_api/models/system/feature_model.py:35
+#: src/one_public_api/models/system/feature_model.py:71
+#: src/one_public_api/schemas/feature_schema.py:60
+msgid "Whether the feature is enabled"
 msgstr ""
 
 #: src/one_public_api/models/system/notification_model.py:22
@@ -348,8 +403,6 @@ msgstr ""
 
 #: src/one_public_api/models/system/organization_model.py:64
 #: src/one_public_api/models/system/user_model.py:27
-#: src/one_public_api/schemas/authenticate_schema.py:29
-#: src/one_public_api/schemas/base_schema.py:102
 msgid "User name"
 msgstr ""
 
@@ -362,7 +415,6 @@ msgid "Token"
 msgstr ""
 
 #: src/one_public_api/models/system/token_model.py:28
-#: src/one_public_api/schemas/authenticate_schema.py:54
 msgid "Token type"
 msgstr ""
 
@@ -370,33 +422,64 @@ msgstr ""
 msgid "Owner of token"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:31
-#: src/one_public_api/schemas/base_schema.py:106
-msgid "User's email address"
+#: src/one_public_api/models/system/user_model.py:28
+msgid "Unique username used for login and system identification."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:35
-msgid "First name"
+#: src/one_public_api/models/system/user_model.py:33
+msgid "Email address"
+msgstr ""
+
+#: src/one_public_api/models/system/user_model.py:34
+msgid "User's email address used for authentication and communication."
 msgstr ""
 
 #: src/one_public_api/models/system/user_model.py:39
+msgid "First name"
+msgstr ""
+
+#: src/one_public_api/models/system/user_model.py:40
+msgid "User's given name."
+msgstr ""
+
+#: src/one_public_api/models/system/user_model.py:45
 msgid "Last name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:43
+#: src/one_public_api/models/system/user_model.py:46
+msgid "User's family name."
+msgstr ""
+
+#: src/one_public_api/models/system/user_model.py:51
 msgid "Display nickname"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:46
-msgid "Whether the account is enabled"
+#: src/one_public_api/models/system/user_model.py:53
+msgid "Nickname displayed in the user interface instead of the full name."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:49
-msgid "Whether the account is locked"
+#: src/one_public_api/models/system/user_model.py:60
+msgid ""
+"Indicates whether the user account is active and allowed to access the "
+"system."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:52
-msgid "Number of failed login attempts"
+#: src/one_public_api/models/system/user_model.py:65
+msgid "Locked"
+msgstr ""
+
+#: src/one_public_api/models/system/user_model.py:67
+msgid ""
+"Indicates whether the account is locked due to security reasons (e.g., "
+"too many failed login attempts)."
+msgstr ""
+
+#: src/one_public_api/models/system/user_model.py:73
+msgid "Failed login attempts"
+msgstr ""
+
+#: src/one_public_api/models/system/user_model.py:75
+msgid "Number of consecutive failed login attempts recorded for the account."
 msgstr ""
 
 #: src/one_public_api/routers/action_router.py:28
@@ -468,39 +551,43 @@ msgstr ""
 msgid "Refresh Token Description"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:77
+#: src/one_public_api/routers/authenticate_router.py:79
 msgid "Refresh token"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:85
+#: src/one_public_api/routers/authenticate_router.py:80
+msgid "Refresh token Description"
+msgstr ""
+
+#: src/one_public_api/routers/authenticate_router.py:89
 msgid "Force Logout"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:86
+#: src/one_public_api/routers/authenticate_router.py:90
 msgid "Force Logout Description"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:101
+#: src/one_public_api/routers/authenticate_router.py:105
 msgid "Login Form"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:102
+#: src/one_public_api/routers/authenticate_router.py:106
 msgid "Login Form Description"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:119
+#: src/one_public_api/routers/authenticate_router.py:123
 msgid "Get Profile"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:120
+#: src/one_public_api/routers/authenticate_router.py:124
 msgid "Get Profile Description"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:132
+#: src/one_public_api/routers/authenticate_router.py:136
 msgid "Logout"
 msgstr ""
 
-#: src/one_public_api/routers/authenticate_router.py:133
+#: src/one_public_api/routers/authenticate_router.py:137
 msgid "Logout Description"
 msgstr ""
 
@@ -521,8 +608,8 @@ msgid "Feature not found."
 msgstr ""
 
 #: src/one_public_api/routers/configuration_router.py:28
-#: src/one_public_api/schemas/authenticate_schema.py:80
-#: src/one_public_api/schemas/base_schema.py:145
+#: src/one_public_api/schemas/authenticate_schema.py:93
+#: src/one_public_api/schemas/base_schema.py:144
 msgid "Configuration"
 msgstr ""
 
@@ -649,62 +736,76 @@ msgstr ""
 msgid "Delete User"
 msgstr ""
 
-#: src/one_public_api/schemas/action_schema.py:39
-#: src/one_public_api/schemas/action_schema.py:80
+#: src/one_public_api/schemas/action_schema.py:43
 msgid "Parent Action"
 msgstr ""
 
-#: src/one_public_api/schemas/action_schema.py:40
-#: src/one_public_api/schemas/action_schema.py:81
+#: src/one_public_api/schemas/action_schema.py:44
 msgid "Parent Action Description"
 msgstr ""
 
-#: src/one_public_api/schemas/authenticate_schema.py:34
+#: src/one_public_api/schemas/authenticate_schema.py:41
+msgid "Remember me"
+msgstr ""
+
+#: src/one_public_api/schemas/authenticate_schema.py:43
 msgid "A Boolean flag indicating whether the user should be remembered."
 msgstr ""
 
-#: src/one_public_api/schemas/authenticate_schema.py:53
-msgid "Access token"
+#: src/one_public_api/schemas/authenticate_schema.py:63
+msgid "Access Token"
 msgstr ""
 
-#: src/one_public_api/schemas/authenticate_schema.py:76
-#: src/one_public_api/schemas/base_schema.py:141
+#: src/one_public_api/schemas/authenticate_schema.py:63
+msgid "Access Token Description"
+msgstr ""
+
+#: src/one_public_api/schemas/authenticate_schema.py:66
+msgid "Token Type"
+msgstr ""
+
+#: src/one_public_api/schemas/authenticate_schema.py:66
+msgid "Token Type Description"
+msgstr ""
+
+#: src/one_public_api/schemas/authenticate_schema.py:89
+#: src/one_public_api/schemas/base_schema.py:140
 #: src/one_public_api/schemas/role_schema.py:31
 msgid "Role"
 msgstr ""
 
-#: src/one_public_api/schemas/authenticate_schema.py:77
+#: src/one_public_api/schemas/authenticate_schema.py:90
 msgid "Role Description"
 msgstr ""
 
-#: src/one_public_api/schemas/authenticate_schema.py:81
+#: src/one_public_api/schemas/authenticate_schema.py:94
 msgid "Configuration Description"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:69
-#: src/one_public_api/schemas/base_schema.py:137
+#: src/one_public_api/schemas/base_schema.py:72
+#: src/one_public_api/schemas/base_schema.py:136
 msgid "Organization"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:72
+#: src/one_public_api/schemas/base_schema.py:75
 msgid "Full name"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:129
-#: src/one_public_api/schemas/base_schema.py:173
+#: src/one_public_api/schemas/base_schema.py:128
+#: src/one_public_api/schemas/base_schema.py:172
 msgid "Creator"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:133
-#: src/one_public_api/schemas/base_schema.py:178
+#: src/one_public_api/schemas/base_schema.py:132
+#: src/one_public_api/schemas/base_schema.py:177
 msgid "Updater"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:174
+#: src/one_public_api/schemas/base_schema.py:173
 msgid "Creator Description"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:179
+#: src/one_public_api/schemas/base_schema.py:178
 msgid "Updater Description"
 msgstr ""
 

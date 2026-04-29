@@ -25,32 +25,55 @@ from one_public_api.models.system.token_model import Token
 USER_NAME_FIELD_KWARGS: Dict[str, Any] = {
     "max_length": constants.LENGTH_55,
     "title": _("User name"),
-    "description": _("User name Description"),
+    "description": _("Unique username used for login and system identification."),
 }
+
 USER_EMAIL_FIELD_KWARGS: Dict[str, Any] = {
     "max_length": constants.LENGTH_100,
-    "description": _("User's email address"),
+    "title": _("Email address"),
+    "description": _("User's email address used for authentication and communication."),
 }
+
 USER_FIRSTNAME_FIELD_KWARGS: Dict[str, Any] = {
     "max_length": constants.LENGTH_100,
-    "description": _("First name"),
+    "title": _("First name"),
+    "description": _("User's given name."),
 }
+
 USER_LASTNAME_FIELD_KWARGS: Dict[str, Any] = {
     "max_length": constants.LENGTH_100,
-    "description": _("Last name"),
+    "title": _("Last name"),
+    "description": _("User's family name."),
 }
+
 USER_NICKNAME_FIELD_KWARGS: Dict[str, Any] = {
     "max_length": constants.LENGTH_100,
-    "description": _("Display nickname"),
+    "title": _("Display nickname"),
+    "description": _(
+        "Nickname displayed in the user interface instead of the full name."
+    ),
 }
+
 USER_IS_ENABLED_FIELD_KWARGS: Dict[str, Any] = {
-    "description": _("Whether the account is enabled"),
+    "title": _("Enabled"),
+    "description": _(
+        "Indicates whether the user account is active and allowed to access the system."
+    ),
 }
+
 USER_IS_LOCKED_FIELD_KWARGS: Dict[str, Any] = {
-    "description": _("Whether the account is locked"),
+    "title": _("Locked"),
+    "description": _(
+        "Indicates whether the account is locked due to security reasons "
+        "(e.g., too many failed login attempts)."
+    ),
 }
+
 USER_FAILED_ATTEMPTS_FIELD_KWARGS: Dict[str, Any] = {
-    "description": _("Number of failed login attempts"),
+    "title": _("Failed login attempts"),
+    "description": _(
+        "Number of consecutive failed login attempts recorded for the account."
+    ),
 }
 
 

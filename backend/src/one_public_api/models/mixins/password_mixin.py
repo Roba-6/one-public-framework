@@ -1,9 +1,16 @@
-from typing import Optional
+from typing import Any, Dict, Optional
 
 from sqlmodel import Field
 
 from one_public_api.common import constants
 from one_public_api.core.i18n import translate as _
+
+PASSWORD_FIELD_KWARGS: Dict[str, Any] = {
+    "min_length": constants.LENGTH_6,
+    "max_length": constants.LENGTH_64,
+    "title": _("Password"),
+    "description": _("Password provided by the user"),
+}
 
 
 class PasswordMixin:
@@ -23,7 +30,5 @@ class PasswordMixin:
     password: Optional[str] = Field(
         default=None,
         nullable=True,
-        max_length=constants.LENGTH_64,
-        title=_("Password"),
-        description=_("Password provided by the user"),
+        **PASSWORD_FIELD_KWARGS,
     )

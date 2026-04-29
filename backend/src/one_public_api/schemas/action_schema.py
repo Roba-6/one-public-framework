@@ -2,11 +2,15 @@ from typing import Any, Dict, Optional, Self
 
 from sqlmodel import Field
 
-from one_public_api.common import constants
 from one_public_api.common.utility.str import to_camel
 from one_public_api.core.i18n import translate as _
 from one_public_api.models.mixins import IdMixin
-from one_public_api.models.system.action_model import ActionBase, ActionStatus
+from one_public_api.models.system.action_model import (
+    ACTION_NAME_FIELD_KWARGS,
+    ActionBase,
+    ActionForeignIds,
+    ActionStatus,
+)
 from one_public_api.schemas.response_schema import example_id
 
 example_base: Dict[str, Any] = {
@@ -52,12 +56,8 @@ class ActionPublicResponse(ActionBase, IdMixin):
 # ----- Admin Schemas ------------------------------------------------------------------
 
 
-class ActionCreateRequest(ActionBase, ActionStatus):
-    name: str = Field(
-        min_length=constants.LENGTH_13,
-        max_length=constants.LENGTH_13,
-        description=_("Action name"),
-    )
+class ActionCreateRequest(ActionBase, ActionStatus, ActionForeignIds):
+    name: str = Field(**ACTION_NAME_FIELD_KWARGS)
 
     model_config = {
         "alias_generator": to_camel,
@@ -66,7 +66,7 @@ class ActionCreateRequest(ActionBase, ActionStatus):
     }
 
 
-class ActionUpdateRequest(ActionBase, ActionStatus):
+class ActionUpdateRequest(ActionBase, ActionStatus, ActionForeignIds):
     model_config = {
         "alias_generator": to_camel,
         "populate_by_name": True,
@@ -74,13 +74,7 @@ class ActionUpdateRequest(ActionBase, ActionStatus):
     }
 
 
-class ActionResponse(ActionBase, ActionStatus, IdMixin):
-    parent: Optional[ActionPublicResponse] = Field(
-        default=None,
-        title=_("Parent Action"),
-        description=_("Parent Action Description"),
-    )
-
+class ActionResponse(ActionPublicResponse, ActionStatus):
     model_config = {
         "alias_generator": to_camel,
         "populate_by_name": True,
