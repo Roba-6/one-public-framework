@@ -1,6 +1,6 @@
 from typing import Any, Dict, Optional
 
-from sqlmodel import Field
+from sqlmodel import Field, SQLModel
 
 from one_public_api.common import constants
 from one_public_api.core.i18n import translate as _
@@ -13,7 +13,7 @@ PASSWORD_FIELD_KWARGS: Dict[str, Any] = {
 }
 
 
-class PasswordMixin:
+class PasswordMixin(SQLModel):
     """
     Mixin class for handling password-related functionality.
 

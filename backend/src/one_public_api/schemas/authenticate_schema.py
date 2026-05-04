@@ -27,7 +27,7 @@ example_base: Dict[str, Any] = {
 }
 
 
-class LoginRequest(PasswordMixin, SQLModel):
+class LoginRequest(PasswordMixin):
     username: str = Field(
         min_length=constants.LENGTH_3,
         **USER_NAME_FIELD_KWARGS,

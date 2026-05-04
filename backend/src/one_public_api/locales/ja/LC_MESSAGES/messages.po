@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.19\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-04-29 22:43+0900\n"
+"POT-Creation-Date: 2026-05-03 15:24+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -269,28 +269,24 @@ msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:65
 #: src/one_public_api/models/system/user_model.py:58
-#, fuzzy
 msgid "Enabled"
-msgstr "ユーザーが無効になっています。"
+msgstr "有効"
 
 #: src/one_public_api/models/system/action_model.py:66
-#, fuzzy
 msgid "Indicates whether the action is active and can be used."
-msgstr "有効なアカウントか"
+msgstr "そのアクションが有効で使用可能かどうかを示します。"
 
 #: src/one_public_api/models/system/action_model.py:70
-#, fuzzy
 msgid "Requires authentication"
-msgstr "認証"
+msgstr "要認証"
 
 #: src/one_public_api/models/system/action_model.py:72
 msgid "Specifies whether authentication is required to access this action."
-msgstr ""
+msgstr "このアクションにアクセスするために認証が必要かどうかを指定します。"
 
 #: src/one_public_api/models/system/action_model.py:77
-#, fuzzy
 msgid "Parent action ID"
-msgstr "認証"
+msgstr "親アクション ID"
 
 #: src/one_public_api/models/system/action_model.py:79
 msgid ""
@@ -441,7 +437,6 @@ msgid "Unique username used for login and system identification."
 msgstr ""
 
 #: src/one_public_api/models/system/user_model.py:33
-#, fuzzy
 msgid "Email address"
 msgstr "メールアドレス"
 
@@ -454,18 +449,16 @@ msgid "First name"
 msgstr "名"
 
 #: src/one_public_api/models/system/user_model.py:40
-#, fuzzy
 msgid "User's given name."
-msgstr "ユーザー名"
+msgstr "下名前です。"
 
 #: src/one_public_api/models/system/user_model.py:45
 msgid "Last name"
 msgstr "姓"
 
 #: src/one_public_api/models/system/user_model.py:46
-#, fuzzy
 msgid "User's family name."
-msgstr "メールアドレス"
+msgstr "苗字です。"
 
 #: src/one_public_api/models/system/user_model.py:51
 msgid "Display nickname"
@@ -482,9 +475,8 @@ msgid ""
 msgstr ""
 
 #: src/one_public_api/models/system/user_model.py:65
-#, fuzzy
 msgid "Locked"
-msgstr "ユーザーがロックされています。"
+msgstr "ロック"
 
 #: src/one_public_api/models/system/user_model.py:67
 msgid ""
@@ -493,14 +485,12 @@ msgid ""
 msgstr ""
 
 #: src/one_public_api/models/system/user_model.py:73
-#, fuzzy
 msgid "Failed login attempts"
 msgstr "ログイン失敗回数"
 
 #: src/one_public_api/models/system/user_model.py:75
-#, fuzzy
 msgid "Number of consecutive failed login attempts recorded for the account."
-msgstr "ログイン失敗回数"
+msgstr "アカウントに記録されている連続ログイン失敗回数です。"
 
 #: src/one_public_api/routers/action_router.py:28
 #: src/one_public_api/schemas/permission_schema.py:33
@@ -508,49 +498,40 @@ msgid "Actions"
 msgstr "アクション"
 
 #: src/one_public_api/routers/action_router.py:36
-#, fuzzy
 msgid "List Public Actions"
-msgstr "公開設定一覧"
+msgstr "公開アクション一覧"
 
 #: src/one_public_api/routers/action_router.py:54
-#, fuzzy
 msgid "List Actions"
-msgstr "アクション"
+msgstr "アクション一覧"
 
 #: src/one_public_api/routers/action_router.py:69
-#, fuzzy
 msgid "Create Action"
-msgstr "設定作成"
+msgstr "アクション作成"
 
 #: src/one_public_api/routers/action_router.py:84
-#, fuzzy
 msgid "Get Action"
-msgstr "アクション"
+msgstr "アクション確認"
 
 #: src/one_public_api/routers/action_router.py:89
-#, fuzzy
 msgid "The ID of the action item to be retrieved"
-msgstr "確認対象の設定項目の ID"
+msgstr "確認対象のアクションの ID"
 
 #: src/one_public_api/routers/action_router.py:99
-#, fuzzy
 msgid "Update Action"
-msgstr "本データを最後に変更したユーザーの情報。"
+msgstr "アクション変更"
 
 #: src/one_public_api/routers/action_router.py:105
-#, fuzzy
 msgid "The ID of the action item to be updated"
-msgstr "変更対象の設定項目の ID"
+msgstr "変更対象のアクションの ID"
 
 #: src/one_public_api/routers/action_router.py:117
-#, fuzzy
 msgid "Delete Action"
-msgstr "設定削除"
+msgstr "アクション削除"
 
 #: src/one_public_api/routers/action_router.py:122
-#, fuzzy
 msgid "The ID of the action item to be deleted"
-msgstr "削除対象の設定項目の ID"
+msgstr "削除対象のアクションの ID"
 
 #: src/one_public_api/routers/authenticate_router.py:31
 msgid "Authentication"
@@ -997,15 +978,3 @@ msgstr "データは既に存在します。"
 #: src/one_public_api/services/base_service.py:166
 msgid "This record might be referenced by other data."
 msgstr "このデータが参照されているため、削除できません。"
-
-#~ msgid "Show or hide"
-#~ msgstr "表示 / 非表示"
-
-#~ msgid "User name Description"
-#~ msgstr "利用者を識別する名前です。"
-
-#~ msgid "Whether the account is enabled"
-#~ msgstr "有効なアカウントか"
-
-#~ msgid "Whether the account is locked"
-#~ msgstr "アカウントがロックされているか"
