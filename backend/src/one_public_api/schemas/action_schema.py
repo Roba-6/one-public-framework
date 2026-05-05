@@ -24,8 +24,8 @@ example_base: Dict[str, Any] = {
 }
 
 example_status: Dict[str, Any] = {
-    "is_enabled": True,
-    "requires_auth": False,
+    "isEnabled": True,
+    "requiresAuth": False,
 }
 
 example_datetime: Dict[str, Any] = {
