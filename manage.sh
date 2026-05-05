@@ -143,7 +143,7 @@ case $1 in
 
   # Compile Process
   "${PROCESS[2]}" )
-    printp "Updating Application"
+    printp "Compiling Application"
 
     # Update for backend
     if [ "$IS_BACK" != "" ] || [ "$IS_NOT_ALL" = "" ]; then
