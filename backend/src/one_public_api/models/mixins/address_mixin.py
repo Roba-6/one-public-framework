@@ -1,12 +1,12 @@
 from typing import Optional
 
-from sqlmodel import Field
+from sqlmodel import Field, SQLModel
 
 from one_public_api.common import constants
 from one_public_api.core.i18n import translate as _
 
 
-class AddressMixin:
+class AddressMixin(SQLModel):
     """
     Provides a mixin for managing address-related attributes.
 

@@ -1,11 +1,11 @@
 from datetime import datetime
 
-from sqlmodel import Field
+from sqlmodel import Field, SQLModel
 
 from one_public_api.core.i18n import translate as _
 
 
-class TimestampMixin:
+class TimestampMixin(SQLModel):
     """
     Mixin class to add timestamp functionality for creation and modification.
 

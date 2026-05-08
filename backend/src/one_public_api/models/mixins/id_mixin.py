@@ -1,11 +1,11 @@
 from uuid import UUID, uuid4
 
-from sqlmodel import Field
+from sqlmodel import Field, SQLModel
 
 from one_public_api.core.i18n import translate as _
 
 
-class IdMixin:
+class IdMixin(SQLModel):
     """
     Mixin class for providing an auto-generated unique identifier to records.
 

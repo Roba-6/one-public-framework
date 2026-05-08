@@ -10,7 +10,7 @@ const Footer = (props: { appName: string }): React.ReactNode => {
       <div className="container mx-auto p-4 text-center flex justify-between sm:rounded-2xl bg-[var(--card)]">
         <div className="w-[25%] md:w-[50%] transition-all">
           <Avatar>
-            <AvatarImage src="/assets/roba-small.png" alt="Roba" />
+            <AvatarImage src="/assets/images/roba-small.png" alt="Roba" />
             <AvatarFallback>OPF</AvatarFallback>
           </Avatar>
         </div>

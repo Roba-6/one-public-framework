@@ -71,9 +71,13 @@ class DataReader:
             kw_col_list: List[Any] = []
             for column in search_target:
                 for keyword in query.keywords:
-                    kw_col_list.append(col(getattr(model, column)).like(f"%{keyword}%"))
-            statement = statement.where(or_(*kw_col_list))
-            count_statement = count_statement.where(or_(*kw_col_list))
+                    if keyword != "":
+                        kw_col_list.append(
+                            col(getattr(model, column)).like(f"%{keyword}%")
+                        )
+            if len(kw_col_list) > 0:
+                statement = statement.where(or_(*kw_col_list))
+                count_statement = count_statement.where(or_(*kw_col_list))
         if query and query.filters is not None and len(query.filters) > 0:
             for f in query.filters:
                 if f.find(":") == -1 or f.find(".") != -1:

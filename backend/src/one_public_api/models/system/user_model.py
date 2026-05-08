@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 
 from pydantic import EmailStr
 from sqlmodel import Field, Relationship, SQLModel
@@ -22,47 +22,96 @@ from one_public_api.models.system.organization_model import Organization
 from one_public_api.models.system.role_model import Role
 from one_public_api.models.system.token_model import Token
 
+USER_NAME_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_55,
+    "title": _("User name"),
+    "description": _("Unique username used for login and system identification."),
+}
+
+USER_EMAIL_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_100,
+    "title": _("Email address"),
+    "description": _("User's email address used for authentication and communication."),
+}
+
+USER_FIRSTNAME_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_100,
+    "title": _("First name"),
+    "description": _("User's given name."),
+}
+
+USER_LASTNAME_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_100,
+    "title": _("Last name"),
+    "description": _("User's family name."),
+}
+
+USER_NICKNAME_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_100,
+    "title": _("Display nickname"),
+    "description": _(
+        "Nickname displayed in the user interface instead of the full name."
+    ),
+}
+
+USER_IS_ENABLED_FIELD_KWARGS: Dict[str, Any] = {
+    "title": _("Enabled"),
+    "description": _(
+        "Indicates whether the user account is active and allowed to access the system."
+    ),
+}
+
+USER_IS_LOCKED_FIELD_KWARGS: Dict[str, Any] = {
+    "title": _("Locked"),
+    "description": _(
+        "Indicates whether the account is locked due to security reasons "
+        "(e.g., too many failed login attempts)."
+    ),
+}
+
+USER_FAILED_ATTEMPTS_FIELD_KWARGS: Dict[str, Any] = {
+    "title": _("Failed login attempts"),
+    "description": _(
+        "Number of consecutive failed login attempts recorded for the account."
+    ),
+}
+
 
 class UserBase(SQLModel):
     name: Optional[str] = Field(
         default=None,
-        max_length=constants.LENGTH_55,
-        description=_("User name"),
+        **USER_NAME_FIELD_KWARGS,
     )
     email: Optional[EmailStr] = Field(
         default=None,
-        max_length=constants.LENGTH_128,
-        description=_("User's email address"),
+        **USER_EMAIL_FIELD_KWARGS,
     )
     firstname: Optional[str] = Field(
         default=None,
-        max_length=constants.LENGTH_100,
-        description=_("First name"),
+        **USER_FIRSTNAME_FIELD_KWARGS,
     )
     lastname: Optional[str] = Field(
         default=None,
-        max_length=constants.LENGTH_100,
-        description=_("Last name"),
+        **USER_LASTNAME_FIELD_KWARGS,
     )
     nickname: Optional[str] = Field(
         default=None,
-        max_length=constants.LENGTH_55,
-        description=_("Display nickname"),
+        **USER_NICKNAME_FIELD_KWARGS,
     )
 
 
 class UserStatus(SQLModel):
     is_enabled: Optional[bool] = Field(
         default=None,
-        description=_("Whether the account is enabled"),
+        **USER_IS_ENABLED_FIELD_KWARGS,
     )
     is_locked: Optional[bool] = Field(
         default=None,
-        description=_("Whether the account is locked"),
+        **USER_IS_LOCKED_FIELD_KWARGS,
     )
     failed_attempts: Optional[int] = Field(
         default=None,
-        description=_("Number of failed login attempts"),
+        **USER_FAILED_ATTEMPTS_FIELD_KWARGS,
     )
 
 
@@ -83,47 +132,28 @@ class User(
         nullable=False,
         unique=True,
         min_length=constants.LENGTH_3,
-        max_length=constants.LENGTH_55,
-        description=_("User name"),
+        **USER_NAME_FIELD_KWARGS,
     )
     email: EmailStr = Field(
         nullable=False,
         unique=True,
-        max_length=constants.LENGTH_128,
-        description=_("User's email address"),
-    )
-    firstname: str = Field(
-        default=None,
-        nullable=True,
-        max_length=constants.LENGTH_100,
-        description=_("First name"),
-    )
-    lastname: str = Field(
-        default=None,
-        nullable=True,
-        max_length=constants.LENGTH_100,
-        description=_("Last name"),
-    )
-    nickname: str = Field(
-        default=None,
-        nullable=True,
-        max_length=constants.LENGTH_55,
-        description=_("Display nickname"),
+        **USER_EMAIL_FIELD_KWARGS,
     )
     is_enabled: bool = Field(
         default=True,
         nullable=False,
-        description=_("Whether the account is enabled"),
+        **USER_IS_ENABLED_FIELD_KWARGS,
     )
     is_locked: bool = Field(
         default=False,
         nullable=False,
-        description=_("Whether the account is locked"),
+        **USER_IS_LOCKED_FIELD_KWARGS,
     )
     failed_attempts: int = Field(
         default=0,
         nullable=False,
-        description=_("Number of failed login attempts"),
+        ge=0,
+        **USER_FAILED_ATTEMPTS_FIELD_KWARGS,
     )
 
     creator: Optional["User"] = Relationship(
@@ -143,18 +173,16 @@ class User(
     tokens: List[Token] = Relationship(
         back_populates="user", sa_relationship_kwargs={"cascade": "all, delete-orphan"}
     )
-    configurations: List["Configuration"] = Relationship(
+    configurations: List[Configuration] = Relationship(
         back_populates="users", link_model=ConfigurationUserLink
     )
-    organization: Optional["Organization"] = Relationship(
+    organization: Optional[Organization] = Relationship(
         back_populates="users", link_model=OrganizationUserLink
     )
-    role: Optional["Role"] = Relationship(link_model=RoleUserLink)
-    attachment: "Attachment" = Relationship(link_model=AttachmentUserLink)
-    notification_links: List["NotificationUserLink"] = Relationship(
-        back_populates="user"
-    )
-    comments: List["Comment"] = Relationship(
+    role: Optional[Role] = Relationship(link_model=RoleUserLink)
+    attachment: Optional[Attachment] = Relationship(link_model=AttachmentUserLink)
+    notification_links: List[NotificationUserLink] = Relationship(back_populates="user")
+    comments: List[Comment] = Relationship(
         back_populates="user",
         sa_relationship_kwargs={"foreign_keys": "[Comment.user_id]"},
     )

@@ -133,7 +133,7 @@ body {
   --foreground: rgba(245, 245, 245, 1);
   --card: rgba(20, 20, 20, 1);
   --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.21 0.006 285.885);
+  --popover: rgba(25, 25, 25, 1);
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.92 0.004 286.32);
   --primary-foreground: oklch(0.21 0.006 285.885);

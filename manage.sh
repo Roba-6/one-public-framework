@@ -143,7 +143,7 @@ case $1 in
 
   # Compile Process
   "${PROCESS[2]}" )
-    printp "Updating Application"
+    printp "Compiling Application"
 
     # Update for backend
     if [ "$IS_BACK" != "" ] || [ "$IS_NOT_ALL" = "" ]; then
@@ -221,13 +221,33 @@ case $1 in
 
   "${PROCESS[5]}" )
     printp "Test Application"
+    rst=0
 
     # Test backend
     if [ "$IS_BACK" != "" ] || [ "$IS_NOT_ALL" = "" ]; then
 
       process="coverage run --source=backend --data-file=backend/.coverage -m pytest >> $LOG_FILE"
       run_process "Running unit tests for backend" "$process"
+      run_status=$?
+      if [ "$run_status" -ne 0 ]; then rst=1; fi
+      detail_str="See flowing log file for more details.\n"
+      detail_str="${detail_str}file://$LOG_FILE"
+      print_details "$detail_str"
 
+      # Output coverage information to the console.
+      process="coverage report --data-file=backend/.coverage --show-missing"
+      run_process "Checking coverage of tests for backend" "$process" "$LOG_FILE"
+      run_status=$?
+      if [ "$run_status" -ne 0 ]; then rst=1; fi
+
+      # Create an html coverage report.
+      process="coverage html --title '${APP_NAME} API' --data-file=backend/.coverage --directory=backend/htmlcov/ >> $LOG_FILE"
+      run_process "Generating Code Coverage HTML Report for backend" "$process"
+      run_status=$?
+      if [ "$run_status" -ne 0 ]; then rst=1; fi
+      detail_str="See flowing file to review the code coverage HTML report.\n"
+      detail_str="${detail_str}file://$PROJECT_DIR/backend/htmlcov/index.html"
+      print_details "$detail_str"
     fi
 
     exit 0
