@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { NavLink } from 'react-router'
 
-import logoDark from '@/assets/logo-dark.svg'
-import logoLight from '@/assets/logo-light.svg'
+import logoDark from '@/assets/images/logo-dark.svg'
+import logoLight from '@/assets/images/logo-light.svg'
 import { selectAppSettings, type Setting } from '@/common/app-slice'
 import { useAppSelector } from '@/common/hooks/use-store'
 import { cn } from '@/lib/utils'

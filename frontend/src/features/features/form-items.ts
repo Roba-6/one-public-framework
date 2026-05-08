@@ -19,6 +19,7 @@ export const newFeatureItems: FormFieldItem[] = [
     label: getLocalMessage('labels.feature.description'),
     type: 'textarea',
     placeholder: getLocalMessage('placeholder.description'),
+    className: 'min-h-30',
   },
   {
     name: 'isEnabled',

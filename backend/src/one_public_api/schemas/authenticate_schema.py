@@ -1,11 +1,16 @@
 from typing import Any, Dict, List, Optional
 
-from sqlmodel import Field, SQLModel
+from pydantic import Field
+from sqlmodel import SQLModel
 
 from one_public_api.common import constants
 from one_public_api.common.utility.str import to_camel
 from one_public_api.core.i18n import translate as _
-from one_public_api.models.mixins.password_mixin import PasswordMixin
+from one_public_api.models.mixins.password_mixin import (
+    PASSWORD_FIELD_KWARGS,
+    PasswordMixin,
+)
+from one_public_api.models.system.user_model import USER_NAME_FIELD_KWARGS
 from one_public_api.schemas import (
     ConfigurationPublicResponse,
     UserPublicResponse,
@@ -22,14 +27,18 @@ example_base: Dict[str, Any] = {
 }
 
 
-class LoginRequest(PasswordMixin, SQLModel):
+class LoginRequest(PasswordMixin):
     username: str = Field(
         min_length=constants.LENGTH_3,
-        max_length=constants.LENGTH_55,
-        description=_("User name"),
+        **USER_NAME_FIELD_KWARGS,
+    )
+    password: str = Field(
+        pattern=r"^[\x21-\x7E]+$",
+        **PASSWORD_FIELD_KWARGS,
     )
     remember_me: bool = Field(
         default=False,
+        title=_("Remember me"),
         description=_(
             "A Boolean flag indicating whether the user should be remembered."
         ),
@@ -50,8 +59,12 @@ class LoginRequest(PasswordMixin, SQLModel):
 
 
 class LoginFormResponse(SQLModel):
-    access_token: str = Field(description=_("Access token"))
-    token_type: str = Field(default="Bearer", description=_("Token type"))
+    access_token: str = Field(
+        title=_("Access Token"), description=_("Access Token Description")
+    )
+    token_type: str = Field(
+        default="Bearer", title=_("Token Type"), description=_("Token Type Description")
+    )
 
     model_config = {
         "json_schema_extra": {

@@ -18,7 +18,7 @@ class PermissionBase(SQLModel):
         default=None,
         min_length=constants.LENGTH_3,
         max_length=constants.LENGTH_100,
-        description=_("Feature name"),
+        description=_("Permission name"),
     )
     description: Optional[str] = Field(
         default=None,

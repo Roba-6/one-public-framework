@@ -1,11 +1,12 @@
 from uuid import UUID
 
-from sqlmodel import Field
+from sqlmodel import Field, SQLModel
 
+from one_public_api.core.i18n import translate as _
 from one_public_api.core.settings import settings
 
 
-class BelongToMixin:
+class BelongToMixin(SQLModel):
     """
     Mixin class for associating an object with an organization.
 
@@ -26,4 +27,6 @@ class BelongToMixin:
         default=None,
         foreign_key=settings.DB_TABLE_PRE + "organizations.id",
         ondelete="RESTRICT",
+        title=_("Organization ID"),
+        description=_("Organization ID Description"),
     )

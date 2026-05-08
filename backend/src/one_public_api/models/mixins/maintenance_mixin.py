@@ -1,12 +1,12 @@
 from uuid import UUID
 
-from sqlmodel import Field
+from sqlmodel import Field, SQLModel
 
 from one_public_api.core.i18n import translate as _
 from one_public_api.core.settings import settings
 
 
-class MaintenanceMixin:
+class MaintenanceMixin(SQLModel):
     """
     Mixin class for maintaining information regarding creation and updates of
     database records.
