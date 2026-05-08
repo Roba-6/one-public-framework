@@ -30,6 +30,18 @@ class AttachmentBase(
 
 
 class AttachmentOption(SQLModel):
+    is_public: bool = Field(
+        default=False,
+        description=_("Whether the attachment is public"),
+    )
+
+
+class AttachmentMeta(SQLModel):
+    original_name: str = Field(
+        default=None,
+        max_length=constants.LENGTH_255,
+        description=_("Original file name"),
+    )
     mime_type: str = Field(
         nullable=False,
         max_length=constants.LENGTH_55,
@@ -40,11 +52,17 @@ class AttachmentOption(SQLModel):
         max_length=constants.LENGTH_255,
         description=_("Save Path"),
     )
+    download_count: int = Field(
+        default=0,
+        nullable=False,
+        description=_("Download count"),
+    )
 
 
 class Attachment(
     AttachmentBase,
     AttachmentOption,
+    AttachmentMeta,
     BelongToMixin,
     TimestampMixin,
     MaintenanceMixin,
