@@ -30,6 +30,11 @@ class AttachmentBase(
 
 
 class AttachmentOption(SQLModel):
+    description: str = Field(
+        default=None,
+        max_length=constants.LENGTH_500,
+        description=_("Description of the attachment"),
+    )
     is_public: bool = Field(
         default=False,
         description=_("Whether the attachment is public"),
@@ -46,6 +51,10 @@ class AttachmentMeta(SQLModel):
         nullable=False,
         max_length=constants.LENGTH_55,
         description=_("MIME Type"),
+    )
+    size: int = Field(
+        nullable=False,
+        description=_("File size in bytes"),
     )
     path: str = Field(
         nullable=False,

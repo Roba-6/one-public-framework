@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.19\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-05-08 23:46+0900\n"
+"POT-Creation-Date: 2026-05-08 23:56+0900\n"
 "PO-Revision-Date: 2025-10-03 18:52+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: zh\n"
@@ -299,23 +299,31 @@ msgstr ""
 msgid "Attachment name"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:35
+#: src/one_public_api/models/system/attachment_model.py:36
+msgid "Description of the attachment"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:40
 msgid "Whether the attachment is public"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:43
+#: src/one_public_api/models/system/attachment_model.py:48
 msgid "Original file name"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:48
+#: src/one_public_api/models/system/attachment_model.py:53
 msgid "MIME Type"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:53
+#: src/one_public_api/models/system/attachment_model.py:57
+msgid "File size in bytes"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:62
 msgid "Save Path"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:58
+#: src/one_public_api/models/system/attachment_model.py:67
 msgid "Download count"
 msgstr ""
 
