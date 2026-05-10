@@ -51,6 +51,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-error-boundary": "^6.1.0",
+    "react-ga4": "^3.0.1",
     "react-hook-form": "^7.61.1",
     "react-i18next": "^15.6.1",
     "react-markdown": "^10.1.0",

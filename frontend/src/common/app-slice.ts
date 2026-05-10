@@ -18,6 +18,7 @@ export interface Setting {
   name: string
   language: string
   url: string
+  ga4Id: string
   api: string
   type: AppType
 }
@@ -59,6 +60,7 @@ const initialState: AppState = {
       getBrowserLanguage()) as string,
     url: getEnv('UI_URL') as string,
     api: getEnv('UI_API') as string,
+    ga4Id: '',
     type: getEnv('UI_TYPE') as AppType,
   },
   menu: menu,
@@ -108,6 +110,9 @@ export const appSlice = createSlice({
             break
           case 'url':
             if (item.value && item.value !== '') state.settings.url = item.value
+            break
+          case 'ga4_id':
+            if (item.value && item.value !== '') state.settings.ga4Id = item.value
             break
         }
       })
