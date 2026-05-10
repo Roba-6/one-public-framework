@@ -60,9 +60,11 @@ const Router = ({ children, menu }: RouterProps): React.ReactNode => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={CONSTANT.ROUTE_URL.INDEX} element={defaultRoute}>
-          {children.publicOutlet}
-        </Route>
+        {defaultRoute && (
+          <Route path={CONSTANT.ROUTE_URL.INDEX} element={defaultRoute}>
+            {children.publicOutlet}
+          </Route>
+        )}
         {!appType && <Route path={CONSTANT.ROUTE_URL.HOME} element={<HomePage />} />}
         <Route path={getAdminPath()}>
           <Route element={<AdminPage />}>

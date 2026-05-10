@@ -41,6 +41,7 @@ def init_configurations(session: Session, user: User) -> None:
         {"name": "Application URL", "key": "app_url", "type": ConfigurationType.SYS},
         {"name": "Time Zone", "key": "time_zone", "type": ConfigurationType.SYS},
         {"name": "Language", "key": "language", "type": ConfigurationType.SYS},
+        {"name": "GA4 Measurement ID", "key": "ga4_id", "type": ConfigurationType.SYS},
     ]
     configurations = add_maintenance(configurations, user)
 

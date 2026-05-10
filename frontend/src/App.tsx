@@ -7,6 +7,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { initState } from '@/common/app-slice'
 import Spinner from '@/common/components/atoms/spinner'
 import Messenger from '@/common/components/modules/messenger'
+import MouseStalker from '@/common/components/modules/mouse-stalker.tsx'
 import Router, { type RouterProps } from '@/common/components/modules/router'
 import { ThemeProvider } from '@/common/components/theme-provider'
 import { CONSTANT } from '@/common/constants'
@@ -42,6 +43,7 @@ const App = ({ children, menu }: RouterProps): React.ReactNode => {
       </ErrorBoundary>
       <Spinner className="z-50" />
       <Messenger />
+      <MouseStalker />
     </ThemeProvider>
   )
 }
