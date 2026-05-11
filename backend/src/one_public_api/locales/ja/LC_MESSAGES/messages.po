@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: One Public API 0.1.0-alpha.19\n"
+"Project-Id-Version: One Public API 0.1.0-alpha.21\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-05-03 15:24+0900\n"
+"POT-Creation-Date: 2026-05-10 23:07+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -299,12 +299,34 @@ msgid "Attachment name"
 msgstr "添付ファイル名"
 
 #: src/one_public_api/models/system/attachment_model.py:36
+msgid "Description of the attachment"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:40
+#, fuzzy
+msgid "Whether the attachment is public"
+msgstr "有効な機能か"
+
+#: src/one_public_api/models/system/attachment_model.py:48
+msgid "Original file name"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:53
 msgid "MIME Type"
 msgstr "MIME タイプ"
 
-#: src/one_public_api/models/system/attachment_model.py:41
+#: src/one_public_api/models/system/attachment_model.py:57
+msgid "File size in bytes"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:62
 msgid "Save Path"
 msgstr "保存先パス"
+
+#: src/one_public_api/models/system/attachment_model.py:67
+#, fuzzy
+msgid "Download count"
+msgstr "トークン所有者"
 
 #: src/one_public_api/models/system/category_model.py:19
 #: src/one_public_api/models/system/category_model.py:64
@@ -374,7 +396,6 @@ msgstr "認証が必要か"
 
 #: src/one_public_api/models/system/feature_model.py:23
 #: src/one_public_api/models/system/feature_model.py:60
-#: src/one_public_api/models/system/permission_model.py:21
 #: src/one_public_api/schemas/feature_schema.py:57
 msgid "Feature name"
 msgstr "機能名"
@@ -415,6 +436,12 @@ msgstr "表示名"
 #: src/one_public_api/models/system/user_model.py:27
 msgid "User name"
 msgstr "ユーザー名"
+
+#: src/one_public_api/models/system/permission_model.py:21
+#: src/one_public_api/schemas/permission_schema.py:76
+#, fuzzy
+msgid "Permission name"
+msgstr "組織名"
 
 #: src/one_public_api/models/system/role_model.py:25
 msgid "Role name"
@@ -493,7 +520,7 @@ msgid "Number of consecutive failed login attempts recorded for the account."
 msgstr "アカウントに記録されている連続ログイン失敗回数です。"
 
 #: src/one_public_api/routers/action_router.py:28
-#: src/one_public_api/schemas/permission_schema.py:33
+#: src/one_public_api/schemas/permission_schema.py:51
 msgid "Actions"
 msgstr "アクション"
 
@@ -674,7 +701,7 @@ msgid "The ID of the configuration item to be deleted"
 msgstr "削除対象の設定項目の ID"
 
 #: src/one_public_api/routers/feature_router.py:28
-#: src/one_public_api/schemas/permission_schema.py:37
+#: src/one_public_api/schemas/permission_schema.py:56
 msgid "Features"
 msgstr "機能"
 
@@ -714,9 +741,53 @@ msgstr "機能削除"
 msgid "The ID of the feature item to be deleted"
 msgstr "削除対象の機能の ID"
 
-#: src/one_public_api/routers/permission_router.py:14
+#: src/one_public_api/routers/permission_router.py:27
 msgid "Permissions"
 msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:35
+#, fuzzy
+msgid "List Public Permissions"
+msgstr "公開アクション一覧"
+
+#: src/one_public_api/routers/permission_router.py:53
+#, fuzzy
+msgid "List Permissions"
+msgstr "アクション一覧"
+
+#: src/one_public_api/routers/permission_router.py:68
+#, fuzzy
+msgid "Create Permission"
+msgstr "アクション作成"
+
+#: src/one_public_api/routers/permission_router.py:85
+msgid "Get Permission"
+msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:91
+#, fuzzy
+msgid "The ID of the permission item to be retrieved"
+msgstr "確認対象のアクションの ID"
+
+#: src/one_public_api/routers/permission_router.py:102
+#, fuzzy
+msgid "Update Permission"
+msgstr "アクション変更"
+
+#: src/one_public_api/routers/permission_router.py:109
+#, fuzzy
+msgid "The ID of the permission item to be updated"
+msgstr "変更対象のアクションの ID"
+
+#: src/one_public_api/routers/permission_router.py:122
+#, fuzzy
+msgid "Delete Permission"
+msgstr "アクション削除"
+
+#: src/one_public_api/routers/permission_router.py:128
+#, fuzzy
+msgid "The ID of the permission item to be deleted"
+msgstr "削除対象のアクションの ID"
 
 #: src/one_public_api/routers/user_router.py:28
 msgid "Users"
@@ -855,13 +926,35 @@ msgstr "機能名の先頭の7桁（ハイフンを含む）は同一の業務�
 msgid "Category"
 msgstr "カテゴリー"
 
-#: src/one_public_api/schemas/permission_schema.py:34
+#: src/one_public_api/schemas/permission_schema.py:52
 msgid "Actions Description"
 msgstr "この権限に紐づくアクションの一覧です。"
 
-#: src/one_public_api/schemas/permission_schema.py:38
+#: src/one_public_api/schemas/permission_schema.py:57
 msgid "Features Description"
 msgstr "この権限に紐づく機能の一覧です。"
+
+#: src/one_public_api/schemas/permission_schema.py:81
+#: src/one_public_api/schemas/permission_schema.py:101
+#, fuzzy
+msgid "Action IDs"
+msgstr "アクション"
+
+#: src/one_public_api/schemas/permission_schema.py:82
+#: src/one_public_api/schemas/permission_schema.py:102
+msgid "List of action IDs associated with the permission"
+msgstr ""
+
+#: src/one_public_api/schemas/permission_schema.py:87
+#: src/one_public_api/schemas/permission_schema.py:107
+#, fuzzy
+msgid "Feature IDs"
+msgstr "機能"
+
+#: src/one_public_api/schemas/permission_schema.py:88
+#: src/one_public_api/schemas/permission_schema.py:108
+msgid "List of feature IDs associated with the permission"
+msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:46
 msgid "Message Code"

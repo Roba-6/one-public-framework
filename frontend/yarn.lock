@@ -6495,6 +6495,7 @@ __metadata:
     react: "npm:^19.1.0"
     react-dom: "npm:^19.1.0"
     react-error-boundary: "npm:^6.1.0"
+    react-ga4: "npm:^3.0.1"
     react-hook-form: "npm:^7.61.1"
     react-i18next: "npm:^15.6.1"
     react-markdown: "npm:^10.1.0"
@@ -6855,6 +6856,13 @@ __metadata:
   peerDependencies:
     react: ^18.0.0 || ^19.0.0
   checksum: 10c0/943eda25fef9bb70400861506be679d3025fa291ac1665b789d6af886cfb8d8af6c155d1fa6649b19ff45aa40ec9fd88592f169da07beeb74e08e674452932a9
+  languageName: node
+  linkType: hard
+
+"react-ga4@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "react-ga4@npm:3.0.1"
+  checksum: 10c0/b50437101057faf3ba1dff3e5646f0f5111731f7b752a6031b7ac4088306e6afa2629397fa208370e6c0d108cb42a7925c17a924354f9556e5d278b96f3617dc
   languageName: node
   linkType: hard
 

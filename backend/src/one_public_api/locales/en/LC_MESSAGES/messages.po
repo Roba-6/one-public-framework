@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: One Public API 0.1.0-alpha.19\n"
+"Project-Id-Version: One Public API 0.1.0-alpha.21\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-05-03 15:24+0900\n"
+"POT-Creation-Date: 2026-05-10 23:07+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -335,11 +335,31 @@ msgid "Attachment name"
 msgstr ""
 
 #: src/one_public_api/models/system/attachment_model.py:36
+msgid "Description of the attachment"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:40
+msgid "Whether the attachment is public"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:48
+msgid "Original file name"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:53
 msgid "MIME Type"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:41
+#: src/one_public_api/models/system/attachment_model.py:57
+msgid "File size in bytes"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:62
 msgid "Save Path"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:67
+msgid "Download count"
 msgstr ""
 
 #: src/one_public_api/models/system/category_model.py:19
@@ -408,7 +428,6 @@ msgstr ""
 
 #: src/one_public_api/models/system/feature_model.py:23
 #: src/one_public_api/models/system/feature_model.py:60
-#: src/one_public_api/models/system/permission_model.py:21
 #: src/one_public_api/schemas/feature_schema.py:57
 msgid "Feature name"
 msgstr ""
@@ -448,6 +467,11 @@ msgstr ""
 #: src/one_public_api/models/system/organization_model.py:64
 #: src/one_public_api/models/system/user_model.py:27
 msgid "User name"
+msgstr ""
+
+#: src/one_public_api/models/system/permission_model.py:21
+#: src/one_public_api/schemas/permission_schema.py:76
+msgid "Permission name"
 msgstr ""
 
 #: src/one_public_api/models/system/role_model.py:25
@@ -527,7 +551,7 @@ msgid "Number of consecutive failed login attempts recorded for the account."
 msgstr ""
 
 #: src/one_public_api/routers/action_router.py:28
-#: src/one_public_api/schemas/permission_schema.py:33
+#: src/one_public_api/schemas/permission_schema.py:51
 msgid "Actions"
 msgstr ""
 
@@ -725,7 +749,7 @@ msgid "The ID of the configuration item to be deleted"
 msgstr ""
 
 #: src/one_public_api/routers/feature_router.py:28
-#: src/one_public_api/schemas/permission_schema.py:37
+#: src/one_public_api/schemas/permission_schema.py:56
 msgid "Features"
 msgstr ""
 
@@ -765,8 +789,51 @@ msgstr ""
 msgid "The ID of the feature item to be deleted"
 msgstr ""
 
-#: src/one_public_api/routers/permission_router.py:14
+#: src/one_public_api/routers/permission_router.py:27
 msgid "Permissions"
+msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:35
+msgid "List Public Permissions"
+msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:53
+#, fuzzy
+msgid "List Permissions"
+msgstr ""
+"Defines the maximum number of records to return in a single request. Used"
+" to control page size and prevent large data loads."
+
+#: src/one_public_api/routers/permission_router.py:68
+#, fuzzy
+msgid "Create Permission"
+msgstr ""
+"A text-based search parameter used to filter results by matching one or "
+"more fields. The API will return only records that contain the provided "
+"keyword(s)."
+
+#: src/one_public_api/routers/permission_router.py:85
+msgid "Get Permission"
+msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:91
+msgid "The ID of the permission item to be retrieved"
+msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:102
+msgid "Update Permission"
+msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:109
+msgid "The ID of the permission item to be updated"
+msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:122
+msgid "Delete Permission"
+msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:128
+msgid "The ID of the permission item to be deleted"
 msgstr ""
 
 #: src/one_public_api/routers/user_router.py:28
@@ -934,7 +1001,7 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
-#: src/one_public_api/schemas/permission_schema.py:34
+#: src/one_public_api/schemas/permission_schema.py:52
 #, fuzzy
 msgid "Actions Description"
 msgstr ""
@@ -949,13 +1016,44 @@ msgstr ""
 "specified by the `REFRESH_TOKEN_EXPIRE` setting expires.<br />If set to "
 "`false`, the cookie is deleted when the browser session ends."
 
-#: src/one_public_api/schemas/permission_schema.py:38
+#: src/one_public_api/schemas/permission_schema.py:57
 #, fuzzy
 msgid "Features Description"
 msgstr ""
 "A text-based search parameter used to filter results by matching one or "
 "more fields. The API will return only records that contain the provided "
 "keyword(s)."
+
+#: src/one_public_api/schemas/permission_schema.py:81
+#: src/one_public_api/schemas/permission_schema.py:101
+#, fuzzy
+msgid "Action IDs"
+msgstr ""
+"**SYS-ATH-P-LGN**<br />Validates the provided username and password "
+"against the records stored in the database.<br />If the credentials are "
+"correct, the system issues an access token and a refresh token. If "
+"authentication fails and the username exists, the system increments the "
+"login failure count. Once the count reaches the limit defined by "
+"`MAX_FAILED_ATTEMPTS`, the system locks the account. If the username does"
+" not exist, an error is returned.<br />When the `rememberMe` field is set"
+" to `true`, the refresh token cookie remains valid until the period "
+"specified by the `REFRESH_TOKEN_EXPIRE` setting expires.<br />If set to "
+"`false`, the cookie is deleted when the browser session ends."
+
+#: src/one_public_api/schemas/permission_schema.py:82
+#: src/one_public_api/schemas/permission_schema.py:102
+msgid "List of action IDs associated with the permission"
+msgstr ""
+
+#: src/one_public_api/schemas/permission_schema.py:87
+#: src/one_public_api/schemas/permission_schema.py:107
+msgid "Feature IDs"
+msgstr ""
+
+#: src/one_public_api/schemas/permission_schema.py:88
+#: src/one_public_api/schemas/permission_schema.py:108
+msgid "List of feature IDs associated with the permission"
+msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:46
 msgid "Message Code"

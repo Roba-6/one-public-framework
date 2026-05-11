@@ -63,7 +63,7 @@ export const convertFormItems = (
                           placeholder={item?.placeholder as string}
                           {...field}
                           value={field.value as string}
-                          className={item.className}
+                          className={`min-h-30 max-h-[80vh] ${item.className}`}
                         />
                       )
                     case 'switch':

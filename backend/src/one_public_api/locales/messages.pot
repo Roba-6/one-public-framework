@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-05-03 15:24+0900\n"
+"POT-Creation-Date: 2026-05-10 23:07+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -291,11 +291,31 @@ msgid "Attachment name"
 msgstr ""
 
 #: src/one_public_api/models/system/attachment_model.py:36
+msgid "Description of the attachment"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:40
+msgid "Whether the attachment is public"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:48
+msgid "Original file name"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:53
 msgid "MIME Type"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:41
+#: src/one_public_api/models/system/attachment_model.py:57
+msgid "File size in bytes"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:62
 msgid "Save Path"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:67
+msgid "Download count"
 msgstr ""
 
 #: src/one_public_api/models/system/category_model.py:19
@@ -364,7 +384,6 @@ msgstr ""
 
 #: src/one_public_api/models/system/feature_model.py:23
 #: src/one_public_api/models/system/feature_model.py:60
-#: src/one_public_api/models/system/permission_model.py:21
 #: src/one_public_api/schemas/feature_schema.py:57
 msgid "Feature name"
 msgstr ""
@@ -404,6 +423,11 @@ msgstr ""
 #: src/one_public_api/models/system/organization_model.py:64
 #: src/one_public_api/models/system/user_model.py:27
 msgid "User name"
+msgstr ""
+
+#: src/one_public_api/models/system/permission_model.py:21
+#: src/one_public_api/schemas/permission_schema.py:76
+msgid "Permission name"
 msgstr ""
 
 #: src/one_public_api/models/system/role_model.py:25
@@ -483,7 +507,7 @@ msgid "Number of consecutive failed login attempts recorded for the account."
 msgstr ""
 
 #: src/one_public_api/routers/action_router.py:28
-#: src/one_public_api/schemas/permission_schema.py:33
+#: src/one_public_api/schemas/permission_schema.py:51
 msgid "Actions"
 msgstr ""
 
@@ -651,7 +675,7 @@ msgid "The ID of the configuration item to be deleted"
 msgstr ""
 
 #: src/one_public_api/routers/feature_router.py:28
-#: src/one_public_api/schemas/permission_schema.py:37
+#: src/one_public_api/schemas/permission_schema.py:56
 msgid "Features"
 msgstr ""
 
@@ -691,8 +715,44 @@ msgstr ""
 msgid "The ID of the feature item to be deleted"
 msgstr ""
 
-#: src/one_public_api/routers/permission_router.py:14
+#: src/one_public_api/routers/permission_router.py:27
 msgid "Permissions"
+msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:35
+msgid "List Public Permissions"
+msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:53
+msgid "List Permissions"
+msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:68
+msgid "Create Permission"
+msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:85
+msgid "Get Permission"
+msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:91
+msgid "The ID of the permission item to be retrieved"
+msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:102
+msgid "Update Permission"
+msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:109
+msgid "The ID of the permission item to be updated"
+msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:122
+msgid "Delete Permission"
+msgstr ""
+
+#: src/one_public_api/routers/permission_router.py:128
+msgid "The ID of the permission item to be deleted"
 msgstr ""
 
 #: src/one_public_api/routers/user_router.py:28
@@ -829,12 +889,32 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
-#: src/one_public_api/schemas/permission_schema.py:34
+#: src/one_public_api/schemas/permission_schema.py:52
 msgid "Actions Description"
 msgstr ""
 
-#: src/one_public_api/schemas/permission_schema.py:38
+#: src/one_public_api/schemas/permission_schema.py:57
 msgid "Features Description"
+msgstr ""
+
+#: src/one_public_api/schemas/permission_schema.py:81
+#: src/one_public_api/schemas/permission_schema.py:101
+msgid "Action IDs"
+msgstr ""
+
+#: src/one_public_api/schemas/permission_schema.py:82
+#: src/one_public_api/schemas/permission_schema.py:102
+msgid "List of action IDs associated with the permission"
+msgstr ""
+
+#: src/one_public_api/schemas/permission_schema.py:87
+#: src/one_public_api/schemas/permission_schema.py:107
+msgid "Feature IDs"
+msgstr ""
+
+#: src/one_public_api/schemas/permission_schema.py:88
+#: src/one_public_api/schemas/permission_schema.py:108
+msgid "List of feature IDs associated with the permission"
 msgstr ""
 
 #: src/one_public_api/schemas/response_schema.py:46
