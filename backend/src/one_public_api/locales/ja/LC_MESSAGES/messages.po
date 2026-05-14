@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: One Public API 0.1.0-alpha.23\n"
+"Project-Id-Version: One Public API 0.1.0-alpha.24\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-05-10 23:41+0900\n"
+"POT-Creation-Date: 2026-05-14 14:16+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -298,32 +298,33 @@ msgstr ""
 msgid "Attachment name"
 msgstr "添付ファイル名"
 
-#: src/one_public_api/models/system/attachment_model.py:36
+#: src/one_public_api/models/system/attachment_model.py:35
+#: src/one_public_api/models/system/attachment_model.py:88
 msgid "Description of the attachment"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:40
+#: src/one_public_api/models/system/attachment_model.py:39
 #, fuzzy
 msgid "Whether the attachment is public"
 msgstr "有効な機能か"
 
-#: src/one_public_api/models/system/attachment_model.py:48
+#: src/one_public_api/models/system/attachment_model.py:47
 msgid "Original file name"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:53
+#: src/one_public_api/models/system/attachment_model.py:52
 msgid "MIME Type"
 msgstr "MIME タイプ"
 
-#: src/one_public_api/models/system/attachment_model.py:57
+#: src/one_public_api/models/system/attachment_model.py:58
 msgid "File size in bytes"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:62
+#: src/one_public_api/models/system/attachment_model.py:63
 msgid "Save Path"
 msgstr "保存先パス"
 
-#: src/one_public_api/models/system/attachment_model.py:67
+#: src/one_public_api/models/system/attachment_model.py:68
 #, fuzzy
 msgid "Download count"
 msgstr "トークン所有者"
