@@ -30,8 +30,7 @@ class AttachmentBase(
 
 
 class AttachmentOption(SQLModel):
-    description: str = Field(
-        default=None,
+    description: Optional[str] = Field(
         max_length=constants.LENGTH_500,
         description=_("Description of the attachment"),
     )
@@ -53,7 +52,9 @@ class AttachmentMeta(SQLModel):
         description=_("MIME Type"),
     )
     size: int = Field(
+        default=0,
         nullable=False,
+        ge=0,
         description=_("File size in bytes"),
     )
     path: str = Field(
@@ -79,6 +80,13 @@ class Attachment(
     table=True,
 ):
     __tablename__ = settings.DB_TABLE_PRE + "attachments"
+
+    description: str = Field(
+        default=None,
+        nullable=True,
+        max_length=constants.LENGTH_500,
+        description=_("Description of the attachment"),
+    )
 
     category: Optional["Category"] = Relationship(link_model=CategoryAttachmentLink)
     organization: Optional["Organization"] = Relationship(
