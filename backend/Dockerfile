@@ -16,6 +16,5 @@ COPY scripts ./scripts
 COPY .env .
 COPY manage.sh .
 
-RUN apt-get update
 RUN pip install --upgrade pip && pip install poetry
 RUN chmod +x manage.sh && bash manage.sh init --back

@@ -25,6 +25,8 @@ class Settings(BaseSettings):
         Determines whether the application runs in debug mode.
     NAME : str
         API name.
+    ROOT_PATH: str = ""
+        Application root path.
     JSON_URL: str = "openapi.json"
         URL of the OpenAPI JSON
     LANGUAGE : str
@@ -99,6 +101,8 @@ class Settings(BaseSettings):
     DEBUG: bool = False
     # API name
     NAME: str = ""
+    # API root path
+    ROOT_PATH: str = ""
     # URL of the OpenAPI JSON
     JSON_URL: str = "/openapi.json"
     # Language used for logs and database comments

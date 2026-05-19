@@ -43,6 +43,7 @@ class AttachmentOption(SQLModel):
 class AttachmentMeta(SQLModel):
     original_name: str = Field(
         default=None,
+        nullable=True,
         max_length=constants.LENGTH_255,
         description=_("Original file name"),
     )
