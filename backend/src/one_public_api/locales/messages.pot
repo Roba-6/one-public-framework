@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-05-14 14:16+0900\n"
+"POT-Creation-Date: 2026-05-19 13:24+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -291,7 +291,7 @@ msgid "Attachment name"
 msgstr ""
 
 #: src/one_public_api/models/system/attachment_model.py:35
-#: src/one_public_api/models/system/attachment_model.py:88
+#: src/one_public_api/models/system/attachment_model.py:89
 msgid "Description of the attachment"
 msgstr ""
 
@@ -299,23 +299,23 @@ msgstr ""
 msgid "Whether the attachment is public"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:47
+#: src/one_public_api/models/system/attachment_model.py:48
 msgid "Original file name"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:52
+#: src/one_public_api/models/system/attachment_model.py:53
 msgid "MIME Type"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:58
+#: src/one_public_api/models/system/attachment_model.py:59
 msgid "File size in bytes"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:63
+#: src/one_public_api/models/system/attachment_model.py:64
 msgid "Save Path"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:68
+#: src/one_public_api/models/system/attachment_model.py:69
 msgid "Download count"
 msgstr ""
 
