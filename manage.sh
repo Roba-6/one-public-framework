@@ -2,7 +2,7 @@
 # ===== Management Script ==============================================================
 
 # Process
-PROCESS=("init" "update" "compile" "build" "start" "test")
+PROCESS=("init" "compile" "migrate" "build" "start" "test")
 # Options
 OPTIONS=("--dev" "--prod" "--back" "--front")
 # Current date time
@@ -73,8 +73,15 @@ case $1 in
         process="poetry config virtualenvs.in-project true"
         run_process "Creating Virtualenv of backend" "$process" "$LOG_FILE"
 
+      if [ "$IS_PROD" != "" ]; then
+        # Production Mode
+        process="poetry install --only main --no-root >> $LOG_FILE 2>&1"
+        run_process "Installing all dependencies of backend" "$process"
+      else
+        # Development Mode
         process="poetry install >> $LOG_FILE 2>&1"
         run_process "Installing all dependencies of backend" "$process"
+      fi
 
         process="source $(poetry env info --path)/bin/activate >/dev/null 2>&1"
         run_process "Activate Virtual environment" "$process" "$LOG_FILE"
@@ -87,10 +94,6 @@ case $1 in
 
       check_python_version
 
-      # cd "$PROJECT_DIR" || exit
-      process="poetry run pre-commit install >> $LOG_FILE"
-      run_process "Installing pre-commit hooks" "$process"
-
       if [ "$IS_PROD" != "" ]; then
         # Production Mode
         cd "$PROJECT_DIR/backend" || exit
@@ -99,6 +102,10 @@ case $1 in
 
         process="alembic upgrade head >/dev/null 2>&1"
         run_process "Migrating the database" "$process" "$LOG_FILE"
+      else
+        # Development Mode
+        process="poetry run pre-commit install >> $LOG_FILE"
+        run_process "Installing pre-commit hooks" "$process"
       fi
     fi
 
