@@ -5,7 +5,7 @@ from typing import Annotated, Dict
 import bcrypt
 import jwt
 from fastapi import HTTPException, Response
-from fastapi.params import Depends
+from fastapi.params import Depends, Query
 from fastapi.security import OAuth2PasswordRequestForm
 from jwt import ExpiredSignatureError, InvalidTokenError
 from sqlalchemy.exc import NoResultFound
@@ -205,9 +205,25 @@ class AuthenticateService(BaseService[User]):
         return encoded_jwt, expire
 
 
+def get_access_token(
+    header_token: Annotated[str | None, Depends(oauth2_scheme)],
+    query_token: Annotated[str | None, Query(alias="token")] = None,
+) -> str:
+    token = header_token or query_token
+
+    if token is None:
+        raise UnauthorizedError(
+            _("Authentication token is missing"),
+            None,
+            "E4010010",
+        )
+
+    return token
+
+
 def get_current_user(
     us: Annotated[UserService, Depends()],
-    token: Annotated[str, Depends(oauth2_scheme)],
+    token: Annotated[str, Depends(get_access_token)],
 ) -> User:
     try:
         username = get_username_from_token(token)
