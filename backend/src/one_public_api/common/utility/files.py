@@ -23,6 +23,16 @@ def is_path_exists(path: str) -> bool:
     return os.path.exists(path)
 
 
+def make_deep_dir(path: str) -> None:
+    if not is_path_exists(path):
+        os.makedirs(path)
+
+
+def remove_file(path: str) -> None:
+    if is_path_exists(path):
+        os.remove(path)
+
+
 def is_installed_package() -> bool:
     """
     Determine if the current script is running from an installed package.

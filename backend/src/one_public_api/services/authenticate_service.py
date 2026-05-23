@@ -5,11 +5,12 @@ from typing import Annotated, Dict
 import bcrypt
 import jwt
 from fastapi import HTTPException, Response
-from fastapi.params import Depends, Query
+from fastapi.params import Depends
 from fastapi.security import OAuth2PasswordRequestForm
 from jwt import ExpiredSignatureError, InvalidTokenError
 from sqlalchemy.exc import NoResultFound
 from sqlmodel import Session
+from starlette.requests import Request
 
 from one_public_api.common import constants
 from one_public_api.common.tools import get_username_from_token
@@ -206,10 +207,10 @@ class AuthenticateService(BaseService[User]):
 
 
 def get_access_token(
+    request: Request,
     header_token: Annotated[str | None, Depends(oauth2_scheme)],
-    query_token: Annotated[str | None, Query(alias="token")] = None,
 ) -> str:
-    token = header_token or query_token
+    token = header_token or request.query_params.get("token")
 
     if token is None:
         raise UnauthorizedError(

@@ -21,22 +21,31 @@ if TYPE_CHECKING:
 class AttachmentBase(
     SQLModel,
 ):
-    name: str = Field(
+    name: Optional[str] = Field(
         default=None,
-        min_length=constants.LENGTH_1,
         max_length=constants.LENGTH_255,
         description=_("Attachment name"),
     )
-
-
-class AttachmentOption(SQLModel):
     description: Optional[str] = Field(
         max_length=constants.LENGTH_500,
         description=_("Description of the attachment"),
     )
-    is_public: bool = Field(
-        default=False,
-        description=_("Whether the attachment is public"),
+
+
+class AttachmentStatus(SQLModel):
+    requires_auth: Optional[bool] = Field(
+        default=None,
+        description=_(
+            "Specifies whether authentication is required to access this attachment."
+        ),
+    )
+
+
+class AttachmentOption(SQLModel):
+    path: str = Field(
+        nullable=False,
+        max_length=constants.LENGTH_255,
+        description=_("Save Path"),
     )
 
 
@@ -58,11 +67,6 @@ class AttachmentMeta(SQLModel):
         ge=0,
         description=_("File size in bytes"),
     )
-    path: str = Field(
-        nullable=False,
-        max_length=constants.LENGTH_255,
-        description=_("Save Path"),
-    )
     download_count: int = Field(
         default=0,
         nullable=False,
@@ -72,6 +76,7 @@ class AttachmentMeta(SQLModel):
 
 class Attachment(
     AttachmentBase,
+    AttachmentStatus,
     AttachmentOption,
     AttachmentMeta,
     BelongToMixin,
@@ -87,6 +92,14 @@ class Attachment(
         nullable=True,
         max_length=constants.LENGTH_500,
         description=_("Description of the attachment"),
+    )
+
+    requires_auth: bool = Field(
+        default=True,
+        nullable=False,
+        description=_(
+            "Specifies whether authentication is required to access this attachment."
+        ),
     )
 
     category: Optional["Category"] = Relationship(link_model=CategoryAttachmentLink)
