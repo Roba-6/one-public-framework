@@ -5,7 +5,7 @@ import { selectAppName } from '@/common/app-slice'
 import Logo from '@/common/components/atoms/logo'
 import Footer from '@/common/components/modules/footer'
 import { Separator } from '@/common/components/ui/separator'
-import { useGoogleAnalytics4 } from '@/common/hooks/use-ga4.ts'
+import { useGoogleAnalytics4 } from '@/common/hooks/use-ga4'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import { completed } from '@/lib/utils'
 

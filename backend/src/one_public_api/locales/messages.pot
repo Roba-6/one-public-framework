@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-05-10 23:07+0900\n"
+"POT-Creation-Date: 2026-05-23 20:12+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -286,35 +286,37 @@ msgid ""
 "relationships between actions (e.g., menu and sub-menu structure)."
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:28
+#: src/one_public_api/models/system/attachment_model.py:27
 msgid "Attachment name"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:36
+#: src/one_public_api/models/system/attachment_model.py:31
+#: src/one_public_api/models/system/attachment_model.py:94
 msgid "Description of the attachment"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:40
-msgid "Whether the attachment is public"
+#: src/one_public_api/models/system/attachment_model.py:39
+#: src/one_public_api/models/system/attachment_model.py:101
+msgid "Specifies whether authentication is required to access this attachment."
 msgstr ""
 
 #: src/one_public_api/models/system/attachment_model.py:48
-msgid "Original file name"
-msgstr ""
-
-#: src/one_public_api/models/system/attachment_model.py:53
-msgid "MIME Type"
-msgstr ""
-
-#: src/one_public_api/models/system/attachment_model.py:57
-msgid "File size in bytes"
-msgstr ""
-
-#: src/one_public_api/models/system/attachment_model.py:62
 msgid "Save Path"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:67
+#: src/one_public_api/models/system/attachment_model.py:57
+msgid "Original file name"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:62
+msgid "MIME Type"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:68
+msgid "File size in bytes"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:73
 msgid "Download count"
 msgstr ""
 
@@ -540,11 +542,69 @@ msgid "The ID of the action item to be updated"
 msgstr ""
 
 #: src/one_public_api/routers/action_router.py:117
+#: src/one_public_api/routers/attachment_router.py:119
 msgid "Delete Action"
 msgstr ""
 
 #: src/one_public_api/routers/action_router.py:122
 msgid "The ID of the action item to be deleted"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:29
+msgid "Attachments"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:37
+msgid "Download Public Attachment"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:42
+#: src/one_public_api/routers/attachment_router.py:91
+msgid "The ID of the attachment to be retrieved"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:54
+msgid "List Attachments"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:69
+msgid "Create Attachment"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:86
+msgid "Get Attachment"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:101
+msgid "Update Attachment"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:107
+msgid "The ID of the attachment to be updated"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:124
+msgid "The ID of the attachment to be deleted"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:134
+msgid "Upload Attachment"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:142
+msgid "Upload Attachment Files"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:143
+msgid "Upload multiple attachment files"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:157
+msgid "Download Attachment"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:162
+msgid "The ID of the attachment to be downloaded"
 msgstr ""
 
 #: src/one_public_api/routers/authenticate_router.py:31
@@ -965,64 +1025,72 @@ msgstr ""
 msgid "Detail of Result Description"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:59
+#: src/one_public_api/services/authenticate_service.py:60
 msgid "user not verified"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:107
-#: src/one_public_api/services/authenticate_service.py:144
+#: src/one_public_api/services/authenticate_service.py:108
+#: src/one_public_api/services/authenticate_service.py:145
 msgid "user not found"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:137
-#: src/one_public_api/services/authenticate_service.py:238
+#: src/one_public_api/services/authenticate_service.py:138
+#: src/one_public_api/services/authenticate_service.py:255
 msgid "The token has expired"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:141
+#: src/one_public_api/services/authenticate_service.py:142
 msgid "Invalid refresh token"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:182
+#: src/one_public_api/services/authenticate_service.py:183
 msgid "user disabled"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:184
+#: src/one_public_api/services/authenticate_service.py:185
 msgid "user locked"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:216
+#: src/one_public_api/services/authenticate_service.py:217
+msgid "Authentication token is missing"
+msgstr ""
+
+#: src/one_public_api/services/authenticate_service.py:233
 msgid "No user information found in the token"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:226
+#: src/one_public_api/services/authenticate_service.py:243
 msgid "Your account has been logged out."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:231
+#: src/one_public_api/services/authenticate_service.py:248
 msgid "Your account has been logged in from another location."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:240
+#: src/one_public_api/services/authenticate_service.py:257
 msgid "Invalid access token"
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:66
+#: src/one_public_api/services/base_service.py:70
+msgid "Authentication is required"
+msgstr ""
+
+#: src/one_public_api/services/base_service.py:75
 msgid "Data not found."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:76
+#: src/one_public_api/services/base_service.py:87
 msgid "Invalid search column specified."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:90
 #: src/one_public_api/services/base_service.py:101
+#: src/one_public_api/services/base_service.py:112
 #: src/one_public_api/services/user_service.py:36
 msgid "Data already exists."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:137
-#: src/one_public_api/services/base_service.py:152
-#: src/one_public_api/services/base_service.py:166
+#: src/one_public_api/services/base_service.py:148
+#: src/one_public_api/services/base_service.py:163
+#: src/one_public_api/services/base_service.py:177
 msgid "This record might be referenced by other data."
 msgstr ""

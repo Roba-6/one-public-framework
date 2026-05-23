@@ -9,7 +9,7 @@ from sqlmodel import Session, SQLModel
 
 from one_public_api.common.query_param import QueryParam
 from one_public_api.core import get_session
-from one_public_api.core.exceptions import DataError, RequestError
+from one_public_api.core.exceptions import DataError, ForbiddenError, RequestError
 from one_public_api.core.i18n import get_translator
 from one_public_api.core.log import logger
 from one_public_api.crud.data_creator import DataCreator
@@ -58,13 +58,24 @@ class BaseService(Generic[T]):
     def get_one(self, conditions: Dict[str, Any]) -> T:
         return self.dr.one(self.model, conditions)
 
-    def get_one_by_id(self, target_id: UUID) -> T:
+    def get_one_by_id(self, target_id: UUID, with_auth: bool = True) -> T:
         try:
-            return self.dr.get(self.model, target_id)
+            rst: T = self.dr.get(self.model, target_id)
+            if (
+                with_auth
+                and hasattr(rst, "requires_auth")
+                and getattr(rst, "requires_auth")
+            ):
+                raise ForbiddenError(
+                    self._("Authentication is required"), getattr(rst, "id"), "E4030004"
+                )
+            return rst
         except NoResultFound:
             raise DataError(
                 self._("Data not found."), detail=str(target_id), code="E4040001"
             )
+        except ForbiddenError:
+            raise
 
     def get_all(self, query: QueryParam) -> List[T]:
         try:

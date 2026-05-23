@@ -10,6 +10,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from jwt import ExpiredSignatureError, InvalidTokenError
 from sqlalchemy.exc import NoResultFound
 from sqlmodel import Session
+from starlette.requests import Request
 
 from one_public_api.common import constants
 from one_public_api.common.tools import get_username_from_token
@@ -205,9 +206,25 @@ class AuthenticateService(BaseService[User]):
         return encoded_jwt, expire
 
 
+def get_access_token(
+    request: Request,
+    header_token: Annotated[str | None, Depends(oauth2_scheme)],
+) -> str:
+    token = header_token or request.query_params.get("token")
+
+    if token is None:
+        raise UnauthorizedError(
+            _("Authentication token is missing"),
+            None,
+            "E4010010",
+        )
+
+    return token
+
+
 def get_current_user(
     us: Annotated[UserService, Depends()],
-    token: Annotated[str, Depends(oauth2_scheme)],
+    token: Annotated[str, Depends(get_access_token)],
 ) -> User:
     try:
         username = get_username_from_token(token)

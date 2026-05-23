@@ -5,9 +5,11 @@ from typing import Any, Awaitable, Callable, List, Type, TypeVar, cast
 import jwt
 from fastapi import FastAPI, Request, Response
 from sqlmodel import SQLModel
+from starlette.responses import FileResponse
 
 from one_public_api.common import constants
 from one_public_api.core.settings import settings
+from one_public_api.models import Attachment
 from one_public_api.schemas.response_schema import MessageSchema, ResponseSchema
 
 T = TypeVar("T", bound=SQLModel)
@@ -63,6 +65,18 @@ def create_response_data(
     rsp: ResponseSchema[T] = ResponseSchema(results=rst, count=count, detail=detail)
 
     return rsp
+
+
+def create_attachment_response(
+    records: List[Attachment],
+    is_download: bool = False,
+    is_stream: bool = False,
+) -> Response:
+    return FileResponse(
+        path=records[0].path,
+        media_type=records[0].mime_type,
+        filename=records[0].original_name,
+    )
 
 
 def get_username_from_token(token: str) -> str | None:
