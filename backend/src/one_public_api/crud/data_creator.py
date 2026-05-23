@@ -1,4 +1,4 @@
-from typing import Annotated, Any, Callable, Dict, List, Type, TypeVar
+from typing import Annotated, Any, Callable, Dict, List, Tuple, Type, TypeVar
 
 from fastapi.params import Depends
 from sqlmodel import Session, SQLModel
@@ -56,7 +56,7 @@ class DataCreator:
         self,
         model: Callable[..., T],
         data: List[Dict[str, Any]],
-    ) -> List[T]:
+    ) -> Tuple[List[T], int]:
         """
         Creates and flushes a list of model instances to the database session.
 
@@ -80,7 +80,7 @@ class DataCreator:
 
         Returns
         -------
-        List[T]
+        Tuple[List[T], int]
             A list of created model objects after being added to the session. Each
             object is an instance of the provided model populated with the data from
             the input dictionaries.
@@ -90,7 +90,7 @@ class DataCreator:
         self.session.add_all(results)
         self.session.flush()
 
-        return results
+        return results, len(data)
 
     def all_if_not_exists(
         self,

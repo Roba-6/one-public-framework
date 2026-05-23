@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: One Public API 0.1.0-alpha.25\n"
+"Project-Id-Version: One Public API 0.1.0-alpha.24\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-05-19 13:24+0900\n"
+"POT-Creation-Date: 2026-05-23 20:12+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -294,37 +294,38 @@ msgid ""
 "relationships between actions (e.g., menu and sub-menu structure)."
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:28
+#: src/one_public_api/models/system/attachment_model.py:27
 msgid "Attachment name"
 msgstr "添付ファイル名"
 
-#: src/one_public_api/models/system/attachment_model.py:35
-#: src/one_public_api/models/system/attachment_model.py:89
+#: src/one_public_api/models/system/attachment_model.py:31
+#: src/one_public_api/models/system/attachment_model.py:94
 msgid "Description of the attachment"
 msgstr ""
 
 #: src/one_public_api/models/system/attachment_model.py:39
+#: src/one_public_api/models/system/attachment_model.py:101
 #, fuzzy
-msgid "Whether the attachment is public"
-msgstr "有効な機能か"
+msgid "Specifies whether authentication is required to access this attachment."
+msgstr "このアクションにアクセスするために認証が必要かどうかを指定します。"
 
 #: src/one_public_api/models/system/attachment_model.py:48
-msgid "Original file name"
-msgstr ""
-
-#: src/one_public_api/models/system/attachment_model.py:53
-msgid "MIME Type"
-msgstr "MIME タイプ"
-
-#: src/one_public_api/models/system/attachment_model.py:59
-msgid "File size in bytes"
-msgstr ""
-
-#: src/one_public_api/models/system/attachment_model.py:64
 msgid "Save Path"
 msgstr "保存先パス"
 
-#: src/one_public_api/models/system/attachment_model.py:69
+#: src/one_public_api/models/system/attachment_model.py:57
+msgid "Original file name"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:62
+msgid "MIME Type"
+msgstr "MIME タイプ"
+
+#: src/one_public_api/models/system/attachment_model.py:68
+msgid "File size in bytes"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:73
 #, fuzzy
 msgid "Download count"
 msgstr "トークン所有者"
@@ -554,12 +555,84 @@ msgid "The ID of the action item to be updated"
 msgstr "変更対象のアクションの ID"
 
 #: src/one_public_api/routers/action_router.py:117
+#: src/one_public_api/routers/attachment_router.py:119
 msgid "Delete Action"
 msgstr "アクション削除"
 
 #: src/one_public_api/routers/action_router.py:122
 msgid "The ID of the action item to be deleted"
 msgstr "削除対象のアクションの ID"
+
+#: src/one_public_api/routers/attachment_router.py:29
+#, fuzzy
+msgid "Attachments"
+msgstr "添付ファイル名"
+
+#: src/one_public_api/routers/attachment_router.py:37
+#, fuzzy
+msgid "Download Public Attachment"
+msgstr "トークン所有者"
+
+#: src/one_public_api/routers/attachment_router.py:42
+#: src/one_public_api/routers/attachment_router.py:91
+#, fuzzy
+msgid "The ID of the attachment to be retrieved"
+msgstr "確認対象の機能の ID"
+
+#: src/one_public_api/routers/attachment_router.py:54
+#, fuzzy
+msgid "List Attachments"
+msgstr "添付ファイル名"
+
+#: src/one_public_api/routers/attachment_router.py:69
+#, fuzzy
+msgid "Create Attachment"
+msgstr "添付ファイル名"
+
+#: src/one_public_api/routers/attachment_router.py:86
+#, fuzzy
+msgid "Get Attachment"
+msgstr "公開ユーザー取得"
+
+#: src/one_public_api/routers/attachment_router.py:101
+#, fuzzy
+msgid "Update Attachment"
+msgstr "添付ファイル名"
+
+#: src/one_public_api/routers/attachment_router.py:107
+#, fuzzy
+msgid "The ID of the attachment to be updated"
+msgstr "変更対象のユーザーの ID"
+
+#: src/one_public_api/routers/attachment_router.py:124
+#, fuzzy
+msgid "The ID of the attachment to be deleted"
+msgstr "確認対象の機能の ID"
+
+#: src/one_public_api/routers/attachment_router.py:134
+#, fuzzy
+msgid "Upload Attachment"
+msgstr "添付ファイル名"
+
+#: src/one_public_api/routers/attachment_router.py:142
+#, fuzzy
+msgid "Upload Attachment Files"
+msgstr "添付ファイル名"
+
+#: src/one_public_api/routers/attachment_router.py:143
+#, fuzzy
+msgid "Upload multiple attachment files"
+msgstr "トークン所有者"
+
+#: src/one_public_api/routers/attachment_router.py:157
+#, fuzzy
+msgid "Download Attachment"
+msgstr "トークン所有者"
+
+#: src/one_public_api/routers/attachment_router.py:162
+#, fuzzy
+msgid "The ID of the attachment to be downloaded"
+msgstr "確認対象の機能の ID"
 
 #: src/one_public_api/routers/authenticate_router.py:31
 msgid "Authentication"
@@ -1011,64 +1084,77 @@ msgstr ""
 "処理自体は成功（HTTP "
 "2xx）したが、処理の過程で“望ましくない状態”や“将来的に問題となりうる設定”、または“軽微な警告”が検出された場合に、このフィールドに情報を格納し、クライアントに対して注意を促すために使用します。"
 
-#: src/one_public_api/services/authenticate_service.py:59
+#: src/one_public_api/services/authenticate_service.py:60
 msgid "user not verified"
 msgstr "ユーザーが確認されていません。"
 
-#: src/one_public_api/services/authenticate_service.py:107
-#: src/one_public_api/services/authenticate_service.py:144
+#: src/one_public_api/services/authenticate_service.py:108
+#: src/one_public_api/services/authenticate_service.py:145
 msgid "user not found"
 msgstr "ユーザーが見つかりません。"
 
-#: src/one_public_api/services/authenticate_service.py:137
-#: src/one_public_api/services/authenticate_service.py:238
+#: src/one_public_api/services/authenticate_service.py:138
+#: src/one_public_api/services/authenticate_service.py:255
 msgid "The token has expired"
 msgstr "トークンの有効期限が切れました。"
 
-#: src/one_public_api/services/authenticate_service.py:141
+#: src/one_public_api/services/authenticate_service.py:142
 msgid "Invalid refresh token"
 msgstr "リフレッシュトークンが無効です。"
 
-#: src/one_public_api/services/authenticate_service.py:182
+#: src/one_public_api/services/authenticate_service.py:183
 msgid "user disabled"
 msgstr "ユーザーが無効になっています。"
 
-#: src/one_public_api/services/authenticate_service.py:184
+#: src/one_public_api/services/authenticate_service.py:185
 msgid "user locked"
 msgstr "ユーザーがロックされています。"
 
-#: src/one_public_api/services/authenticate_service.py:216
+#: src/one_public_api/services/authenticate_service.py:217
+#, fuzzy
+msgid "Authentication token is missing"
+msgstr "認証"
+
+#: src/one_public_api/services/authenticate_service.py:233
 msgid "No user information found in the token"
 msgstr "トークンにユーザー情報が含まれていません。"
 
-#: src/one_public_api/services/authenticate_service.py:226
+#: src/one_public_api/services/authenticate_service.py:243
 msgid "Your account has been logged out."
 msgstr "アカウントはログアウトされました。"
 
-#: src/one_public_api/services/authenticate_service.py:231
+#: src/one_public_api/services/authenticate_service.py:248
 msgid "Your account has been logged in from another location."
 msgstr "このアカウントは別の場所からログインされました。"
 
-#: src/one_public_api/services/authenticate_service.py:240
+#: src/one_public_api/services/authenticate_service.py:257
 msgid "Invalid access token"
 msgstr "アクセストークンが無効です。"
 
-#: src/one_public_api/services/base_service.py:66
+#: src/one_public_api/services/base_service.py:70
+#, fuzzy
+msgid "Authentication is required"
+msgstr "認証"
+
+#: src/one_public_api/services/base_service.py:75
 msgid "Data not found."
 msgstr "データが見つかりません。"
 
-#: src/one_public_api/services/base_service.py:76
+#: src/one_public_api/services/base_service.py:87
 msgid "Invalid search column specified."
 msgstr "指定されたカラム名は不正です。"
 
-#: src/one_public_api/services/base_service.py:90
 #: src/one_public_api/services/base_service.py:101
+#: src/one_public_api/services/base_service.py:112
 #: src/one_public_api/services/user_service.py:36
 msgid "Data already exists."
 msgstr "データは既に存在します。"
 
-#: src/one_public_api/services/base_service.py:137
-#: src/one_public_api/services/base_service.py:152
-#: src/one_public_api/services/base_service.py:166
+#: src/one_public_api/services/base_service.py:148
+#: src/one_public_api/services/base_service.py:163
+#: src/one_public_api/services/base_service.py:177
 msgid "This record might be referenced by other data."
 msgstr "このデータが参照されているため、削除できません。"
+
+#~ msgid "Whether the attachment is public"
+#~ msgstr "有効な機能か"
