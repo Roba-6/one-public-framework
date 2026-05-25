@@ -1,4 +1,4 @@
-from typing import Annotated, List
+from typing import Annotated, List, cast
 from uuid import UUID
 
 from fastapi import APIRouter, File, Path, UploadFile
@@ -7,7 +7,7 @@ from starlette.responses import FileResponse
 
 from one_public_api.common import constants
 from one_public_api.common.query_param import QueryParam
-from one_public_api.common.tools import create_response_data
+from one_public_api.common.tools import create_attachment_response, create_response_data
 from one_public_api.core import translate as _
 from one_public_api.models import Attachment, User
 from one_public_api.routers.base_route import BaseRoute
@@ -39,10 +39,28 @@ tags = [_("Attachments")]
 )
 def download_public_api(
     atts: Annotated[AttachmentService, Depends()],
-    target_id: UUID = Path(description=_("The ID of the attachment to be retrieved")),
+    target_id: UUID = Path(description=_("The ID of the attachment to be downloaded")),
 ) -> FileResponse:
-    file = atts.get_one_by_id(target_id)
+    file = atts.get_one_by_id(target_id, True)
     return FileResponse(path=file.path, filename=file.original_name)
+
+
+@public_router.get(
+    constants.ROUTER_PREVIEW_WITH_ID,
+    name="SYS-ATT-P-PRV",
+    summary=_("Preview Public Attachment"),
+    response_class=FileResponse,
+)
+def pview_public_api(
+    atts: Annotated[AttachmentService, Depends()],
+    target_id: UUID = Path(description=_("The ID of the attachment to be downloaded")),
+) -> FileResponse:
+    return cast(
+        FileResponse,
+        create_attachment_response(
+            [atts.get_one_by_id(target_id, True)], is_preview=True
+        ),
+    )
 
 
 # ----- Admin APIs ---------------------------------------------------------------------
@@ -163,3 +181,19 @@ def download_admin_api(
 ) -> FileResponse:
     file = atts.get_one_by_id(target_id)
     return FileResponse(path=file.path, filename=file.original_name)
+
+
+@admin_router.get(
+    constants.ROUTER_PREVIEW_ADMIN_WITH_ID,
+    name="SYS-ATT-A-PRV",
+    summary=_("Preview Attachment"),
+    response_class=FileResponse,
+)
+def preview_admin_api(
+    atts: Annotated[AttachmentService, Depends()],
+    target_id: UUID = Path(description=_("The ID of the attachment to be downloaded")),
+) -> FileResponse:
+    file = atts.get_one_by_id(target_id)
+    return FileResponse(
+        path=file.path, filename=file.original_name, content_disposition_type="inline"
+    )
