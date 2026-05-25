@@ -39,6 +39,7 @@ export type ColumnType =
   | 'number'
   | 'datetime'
   | 'booleanIcon'
+  | 'previewer'
 
 export type ColumnAlign = 'left' | 'center' | 'right'
 

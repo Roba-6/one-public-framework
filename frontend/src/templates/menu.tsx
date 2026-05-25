@@ -27,6 +27,11 @@ const menu: Menu = {
         icon: 'User2',
       },
       {
+        name: 'menus.attachments',
+        url: getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_ATTACHMENT,
+        icon: 'Dock',
+      },
+      {
         name: 'menus.add',
         url: getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER_ADD,
         icon: 'User2',

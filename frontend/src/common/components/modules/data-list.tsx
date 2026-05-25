@@ -37,12 +37,13 @@ import {
   TableHeader,
   TableRow,
 } from '@/common/components/ui/table'
+import { CONSTANT } from '@/common/constants'
 import { useAppDispatch } from '@/common/hooks/use-store'
 import type { Action, BaseType } from '@/common/types/data'
 import type { DataListProps } from '@/common/types/props'
 import type { CommonResponse } from '@/common/types/response'
 import { toCamelCase, toSnakeCase } from '@/lib/functions'
-import { deleteApi } from '@/lib/http'
+import { deleteApi, getNativeDownload } from '@/lib/http'
 import { copyToClipboard, getLocalMessage, setUrlParams } from '@/lib/utils'
 
 const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Element => {
@@ -73,6 +74,10 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
 
   const navToUpdate = (id: string): void => {
     nav(setUrlParams(props.updateUrl || './:id/edit', id))
+  }
+
+  const download = (id: string): void => {
+    getNativeDownload(setUrlParams(CONSTANT.API_URL.ATTACHMENT_ADMIN_DOWNLOAD, id))
   }
 
   useEffect(() => {
@@ -284,6 +289,8 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
         return { ...action, events: { handleClick: navToDetail } }
       } else if (action.events?.handleClick === 'navToUpdate') {
         return { ...action, events: { handleClick: navToUpdate } }
+      } else if (action.events?.handleClick === 'download') {
+        return { ...action, events: { handleClick: download } }
       } else if (action.events?.handleClick === 'deleteData') {
         return { ...action, events: { handleClick: deleteData } }
       } else {
