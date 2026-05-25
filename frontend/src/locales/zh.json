@@ -15,6 +15,7 @@
   "menus": {
     "system": "系统",
     "dashboard": "仪表盘",
+    "attachments": "附件",
     "configurations": "设置",
     "users": "用户",
     "features": "功能",
@@ -41,7 +42,8 @@
     "nextPage": "下一页",
     "openMenu": "打开菜单",
     "previousPage": "上一页",
-    "unselectAll": "解除选择"
+    "unselectAll": "解除选择",
+    "download": "下载"
   },
   "labels": {
     "actions": "操作",
