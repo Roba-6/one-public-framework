@@ -162,3 +162,11 @@ export const patchApi = <T = ResponseData>(
   data?: object,
   config?: AxiosRequestConfig
 ): Promise<T> => axiosInstance.patch(url, data, config)
+
+export const getNativeDownload = (url: string) => {
+  const a = document.createElement('a')
+  a.href = getEnv('UI_API') + url + `?token=${store.getState().app.accessToken}`
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+}

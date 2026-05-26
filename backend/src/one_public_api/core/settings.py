@@ -21,6 +21,8 @@ class Settings(BaseSettings):
     ----------
     APP_TYPE : str
         Application type.
+    BASE_URL: str
+        Base URL of the application.
     DEBUG : bool
         Determines whether the application runs in debug mode.
     NAME : str
@@ -97,6 +99,8 @@ class Settings(BaseSettings):
 
     # Application type
     APP_TYPE: str = ""
+    # Base URL of the application
+    BASE_URL: str = "http://localhost:8000"
     # Debug mode
     DEBUG: bool = False
     # API name

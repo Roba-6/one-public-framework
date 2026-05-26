@@ -49,11 +49,10 @@ class AttachmentService(BaseService[Attachment]):
             self.model,
             [
                 {
-                    "name": success["file"].filename,
+                    "name": success["file"].filename.rsplit(".", 1)[0],
                     "original_name": success["file"].filename,
                     "mime_type": success["file"].content_type,
                     "size": success["file"].size,
-                    "description": "",
                     "path": success["path"],
                     "created_by": current_user.id,
                     "updated_by": current_user.id,

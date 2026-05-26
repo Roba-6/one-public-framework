@@ -5,7 +5,7 @@ from typing import Any, Awaitable, Callable, List, Type, TypeVar, cast
 import jwt
 from fastapi import FastAPI, Request, Response
 from sqlmodel import SQLModel
-from starlette.responses import FileResponse
+from starlette.responses import FileResponse, StreamingResponse
 
 from one_public_api.common import constants
 from one_public_api.core.settings import settings
@@ -34,7 +34,7 @@ def create_response_data(
     Parameters
     ----------
     schema
-        The schema model used to validate the provided results data. This should be
+        is The schema model used to validate the provided results data. This should be
         callable with a
         `model_validate` method to perform validation.
     results : Any or List[Any] or None
@@ -55,7 +55,7 @@ def create_response_data(
         metadata, and optional detailed messages.
     """
 
-    if type(results) is list:
+    if isinstance(results, list):
         rst = [getattr(schema, "model_validate")(d) for d in results]
     elif results is None:
         rst = None
@@ -69,14 +69,24 @@ def create_response_data(
 
 def create_attachment_response(
     records: List[Attachment],
-    is_download: bool = False,
+    is_preview: bool = False,
     is_stream: bool = False,
-) -> Response:
-    return FileResponse(
-        path=records[0].path,
-        media_type=records[0].mime_type,
-        filename=records[0].original_name,
-    )
+) -> FileResponse | StreamingResponse:
+    if is_stream:
+        return StreamingResponse(
+            open(records[0].path, "rb"),
+            media_type=records[0].mime_type,
+            headers={
+                "Content-Disposition": f'inline; filename="{records[0].original_name}"'
+            },
+        )
+    else:
+        return FileResponse(
+            path=records[0].path,
+            media_type=records[0].mime_type,
+            filename=records[0].original_name,
+            content_disposition_type="inline" if is_preview else "attachment",
+        )
 
 
 def get_username_from_token(token: str) -> str | None:

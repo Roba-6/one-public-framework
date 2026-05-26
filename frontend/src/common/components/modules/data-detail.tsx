@@ -9,6 +9,8 @@ import remarkGfm from 'remark-gfm'
 import { Skeleton } from '@/common/components/ui/skeleton'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/common/components/ui/tooltip'
 import type { DataDetailProps } from '@/common/types/props'
+import type { Attachment } from '@/features/attachments/types/attachment'
+import { setDownloadUrl } from '@/lib/functions'
 import { formatDay, formatNumber } from '@/lib/utils'
 
 const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
@@ -116,6 +118,55 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
                     {ItemIcon && <ItemIcon size={16} className={color} />}
                   </div>
                 </React.Fragment>
+              )
+            } else if (item.type === 'previewer') {
+              const data: Attachment = props.data as Attachment
+              console.log('props.data:', props.data)
+              console.log('mimeType:', (props.data as Attachment).mimeType)
+              console.log('item:', item)
+              return (
+                <div key={idx} className="mb-8 col-span-6 text-2xl">
+                  {/* Images */}
+                  {data.mimeType.startsWith('image/') && (
+                    <div className="h-48 relative">
+                      <img
+                        src={setDownloadUrl((data as any)[item.key])}
+                        alt={data.name}
+                        className="max-w-[100%] max-h-[100%]"
+                      />
+                    </div>
+                  )}
+                  {/* Video */}
+                  {data.mimeType.startsWith('video/') && (
+                    <div className="h-48 relative">
+                      <video
+                        src={setDownloadUrl((data as any)[item.key])}
+                        controls
+                        className="max-w-[100%] max-h-[100%]"
+                      />
+                    </div>
+                  )}
+                  {/* Audio */}
+                  {data.mimeType.startsWith('audio/') && (
+                    <div className="h-12 relative">
+                      <audio
+                        src={setDownloadUrl((data as any)[item.key])}
+                        controls
+                        preload="metadata"
+                        className="w-[100%] max-h-[100%]"
+                      />
+                    </div>
+                  )}
+                  {/* PDF */}
+                  {data.mimeType === 'application/pdf' && (
+                    <div className=" h-48 relative">
+                      <iframe
+                        src={setDownloadUrl((data as any)[item.key])}
+                        className="w-[100%] h-[100%]"
+                      />
+                    </div>
+                  )}
+                </div>
               )
             } else {
               return (

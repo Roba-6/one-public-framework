@@ -130,9 +130,13 @@ ROUTER_UPLOAD = "/upload"
 # Attachment router path: admin upload
 ROUTER_UPLOAD_ADMIN = ROUTER_COMMON_ADMIN + "/upload"
 # Attachment router path: download
-ROUTER_DOWNLOAD_WITH_ID = "/{target_id}/download"
+ROUTER_DOWNLOAD_WITH_ID = ROUTER_COMMON_WITH_ID + "/download"
+# Attachment router path: preview
+ROUTER_PREVIEW_WITH_ID = ROUTER_COMMON_WITH_ID + "/preview"
 # Attachment router path: admin download
 ROUTER_DOWNLOAD_ADMIN_WITH_ID = ROUTER_COMMON_ADMIN_WITH_ID + "/download"
+# Attachment router path: admin preview
+ROUTER_PREVIEW_ADMIN_WITH_ID = ROUTER_COMMON_ADMIN_WITH_ID + "/preview"
 
 # ----- Log Settings -------------------------------------------------------------------
 # Default logging level for the API.

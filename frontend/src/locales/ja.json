@@ -15,6 +15,7 @@
   "menus": {
     "system": "システム",
     "dashboard": "ダッシュボード",
+    "attachments": "添付ファイル",
     "configurations": "システム設定",
     "users": "ユーザー",
     "features": "機能",
@@ -41,7 +42,8 @@
     "nextPage": "次へ",
     "openMenu": "メニューを開く",
     "previousPage": "前へ",
-    "unselectAll": "選択解除"
+    "unselectAll": "選択解除",
+    "download": "ダウンロード"
   },
   "labels": {
     "actions": "操作",

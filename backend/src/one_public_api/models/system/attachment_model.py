@@ -27,6 +27,7 @@ class AttachmentBase(
         description=_("Attachment name"),
     )
     description: Optional[str] = Field(
+        default=None,
         max_length=constants.LENGTH_500,
         description=_("Description of the attachment"),
     )
@@ -42,9 +43,9 @@ class AttachmentStatus(SQLModel):
 
 
 class AttachmentOption(SQLModel):
-    path: str = Field(
-        nullable=False,
-        max_length=constants.LENGTH_255,
+    path: Optional[str] = Field(
+        default=None,
+        max_length=constants.LENGTH_500,
         description=_("Save Path"),
     )
 
@@ -93,13 +94,17 @@ class Attachment(
         max_length=constants.LENGTH_500,
         description=_("Description of the attachment"),
     )
-
     requires_auth: bool = Field(
         default=True,
         nullable=False,
         description=_(
             "Specifies whether authentication is required to access this attachment."
         ),
+    )
+    path: str = Field(
+        nullable=False,
+        max_length=constants.LENGTH_500,
+        description=_("Save Path"),
     )
 
     category: Optional["Category"] = Relationship(link_model=CategoryAttachmentLink)

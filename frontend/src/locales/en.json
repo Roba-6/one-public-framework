@@ -15,6 +15,7 @@
   "menus": {
     "system": "SYSTEM",
     "dashboard": "Dashboards",
+    "attachments": "Attachments",
     "configurations": "Configurations",
     "users": "Users",
     "features": "Features",
@@ -41,7 +42,8 @@
     "nextPage": "Next",
     "openMenu": "Open Menu",
     "previousPage": "Previous",
-    "unselectAll": "Unselect All"
+    "unselectAll": "Unselect All",
+    "download": "Download"
   },
   "labels": {
     "actions": "Actions",

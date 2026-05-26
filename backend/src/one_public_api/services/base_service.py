@@ -55,27 +55,31 @@ class BaseService(Generic[T]):
         self.count: int = 0
         self.detail: Optional[MessageSchema] = None
 
+    @staticmethod
+    def _check_auth(data: T) -> bool:
+        if hasattr(data, "requires_auth") and data.requires_auth:
+            return False
+        else:
+            return True
+
     def get_one(self, conditions: Dict[str, Any]) -> T:
         return self.dr.one(self.model, conditions)
 
-    def get_one_by_id(self, target_id: UUID, with_auth: bool = True) -> T:
+    def get_one_by_id(self, target_id: UUID, requires_auth: bool = False) -> T:
         try:
             rst: T = self.dr.get(self.model, target_id)
-            if (
-                with_auth
-                and hasattr(rst, "requires_auth")
-                and getattr(rst, "requires_auth")
-            ):
+            if requires_auth and not self._check_auth(rst):
                 raise ForbiddenError(
-                    self._("Authentication is required"), getattr(rst, "id"), "E4030004"
+                    self._("Forbidden"), detail=str(target_id), code="E4030004"
                 )
+
             return rst
         except NoResultFound:
             raise DataError(
                 self._("Data not found."), detail=str(target_id), code="E4040001"
             )
-        except ForbiddenError:
-            raise
+        except ForbiddenError as e:
+            raise e
 
     def get_all(self, query: QueryParam) -> List[T]:
         try:
