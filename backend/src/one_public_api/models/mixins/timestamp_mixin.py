@@ -1,8 +1,19 @@
 from datetime import datetime
+from typing import Any, Dict
 
 from sqlmodel import Field, SQLModel
 
 from one_public_api.core.i18n import translate as _
+
+CREATED_AT_FIELD_KWARGS: Dict[str, Any] = {
+    "title": _("Record creation time"),
+    "description": _("Date and time when the record was created."),
+}
+UPDATED_AT_FIELD_KWARGS: Dict[str, Any] = {
+    "sa_column_kwargs": {"onupdate": datetime.now},
+    "title": _("Last update time"),
+    "description": _("Date and time when the record was last updated."),
+}
 
 
 class TimestampMixin(SQLModel):
@@ -25,13 +36,10 @@ class TimestampMixin(SQLModel):
     created_at: datetime = Field(
         default_factory=datetime.now,
         nullable=False,
-        title=_("Record creation time"),
-        description=_("Record Creation Time Description"),
+        **CREATED_AT_FIELD_KWARGS,
     )
     updated_at: datetime = Field(
         default_factory=datetime.now,
         nullable=False,
-        sa_column_kwargs={"onupdate": datetime.now},
-        title=_("Last update time"),
-        description=_("Last Update Time Description"),
+        **UPDATED_AT_FIELD_KWARGS,
     )

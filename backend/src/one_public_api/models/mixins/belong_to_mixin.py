@@ -1,9 +1,17 @@
+from typing import Any, Dict
 from uuid import UUID
 
 from sqlmodel import Field, SQLModel
 
 from one_public_api.core.i18n import translate as _
 from one_public_api.core.settings import settings
+
+ORGANIZATION_ID_FIELD_KWARGS: Dict[str, Any] = {
+    "foreign_key": settings.DB_TABLE_PRE + "organizations.id",
+    "ondelete": "RESTRICT",
+    "title": _("Organization ID"),
+    "description": _("Unique identifier of the associated organization."),
+}
 
 
 class BelongToMixin(SQLModel):
@@ -25,8 +33,5 @@ class BelongToMixin(SQLModel):
 
     organization_id: UUID | None = Field(
         default=None,
-        foreign_key=settings.DB_TABLE_PRE + "organizations.id",
-        ondelete="RESTRICT",
-        title=_("Organization ID"),
-        description=_("Organization ID Description"),
+        **ORGANIZATION_ID_FIELD_KWARGS,
     )

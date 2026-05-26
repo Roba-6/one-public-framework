@@ -1,9 +1,23 @@
+from typing import Any, Dict
 from uuid import UUID
 
 from sqlmodel import Field, SQLModel
 
 from one_public_api.core.i18n import translate as _
 from one_public_api.core.settings import settings
+
+CREATED_BY_FIELD_KWARGS: Dict[str, Any] = {
+    "foreign_key": settings.DB_TABLE_PRE + "users.id",
+    "ondelete": "RESTRICT",
+    "title": _("Creator ID"),
+    "description": _("ID of the user who created this record."),
+}
+UPDATED_BY_FIELD_KWARGS: Dict[str, Any] = {
+    "foreign_key": settings.DB_TABLE_PRE + "users.id",
+    "ondelete": "RESTRICT",
+    "title": _("Updater ID"),
+    "description": _("ID of the user who last updated this record."),
+}
 
 
 class MaintenanceMixin(SQLModel):
@@ -26,15 +40,9 @@ class MaintenanceMixin(SQLModel):
 
     created_by: UUID | None = Field(
         default=None,
-        foreign_key=settings.DB_TABLE_PRE + "users.id",
-        ondelete="RESTRICT",
-        title=_("Creator ID"),
-        description=_("Creator ID Description"),
+        **CREATED_BY_FIELD_KWARGS,
     )
     updated_by: UUID | None = Field(
         default=None,
-        foreign_key=settings.DB_TABLE_PRE + "users.id",
-        ondelete="RESTRICT",
-        title=_("Updater ID"),
-        description=_("Updater ID Description"),
+        **UPDATED_BY_FIELD_KWARGS,
     )

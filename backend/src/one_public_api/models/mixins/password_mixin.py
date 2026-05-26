@@ -9,7 +9,7 @@ PASSWORD_FIELD_KWARGS: Dict[str, Any] = {
     "min_length": constants.LENGTH_6,
     "max_length": constants.LENGTH_64,
     "title": _("Password"),
-    "description": _("Password provided by the user"),
+    "description": _("Hashed password used for authentication."),
 }
 
 
