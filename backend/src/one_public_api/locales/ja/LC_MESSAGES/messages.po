@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.24\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-05-23 20:12+0900\n"
+"POT-Creation-Date: 2026-05-26 23:08+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -87,119 +87,122 @@ msgstr "既読フラグ"
 msgid "Is Read Flag Description"
 msgstr "既読を示すフラグ。"
 
-#: src/one_public_api/models/mixins/address_mixin.py:47
+#: src/one_public_api/models/mixins/address_mixin.py:11
 msgid "Postal Code"
 msgstr "郵便番号"
 
-#: src/one_public_api/models/mixins/address_mixin.py:48
-msgid "Postal Code Description"
-msgstr "全て半角数値（ハイフン「-」可）で構成されるフォーマットが望ましい。"
+#: src/one_public_api/models/mixins/address_mixin.py:12
+msgid "Postal code used for the address."
+msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:53
+#: src/one_public_api/models/mixins/address_mixin.py:16
 msgid "Country"
 msgstr "国"
 
-#: src/one_public_api/models/mixins/address_mixin.py:54
-msgid "Country Description"
-msgstr "住所の最上位で、所属する国名を指定します（例：日本）。"
+#: src/one_public_api/models/mixins/address_mixin.py:17
+msgid "Country name of the address."
+msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:59
+#: src/one_public_api/models/mixins/address_mixin.py:21
 msgid "Prefecture"
 msgstr "住所（都道府県）"
 
-#: src/one_public_api/models/mixins/address_mixin.py:60
-msgid "Prefecture Description"
-msgstr "日本の行政区画の第一レベル（例：東京都、神奈川県）"
+#: src/one_public_api/models/mixins/address_mixin.py:22
+msgid "Prefecture or state of the address."
+msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:65
+#: src/one_public_api/models/mixins/address_mixin.py:26
 msgid "Municipality"
 msgstr "住所（市区町村）"
 
-#: src/one_public_api/models/mixins/address_mixin.py:66
-msgid "Municipality Description"
-msgstr "都道府県の下位区画（例：渋谷区、横浜市）"
+#: src/one_public_api/models/mixins/address_mixin.py:27
+msgid "City, ward, or municipality of the address."
+msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:71
+#: src/one_public_api/models/mixins/address_mixin.py:31
 msgid "Address Detail 1"
 msgstr "住所（番地以降）"
 
-#: src/one_public_api/models/mixins/address_mixin.py:72
-msgid "Address Detail 1 Description"
-msgstr "町域内の具体的な位置を示す番号（例：北幸1-2-3、丁目・番・号）"
+#: src/one_public_api/models/mixins/address_mixin.py:32
+msgid "Primary street address information."
+msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:77
+#: src/one_public_api/models/mixins/address_mixin.py:36
 msgid "Address Detail 2"
 msgstr "住所（詳細）"
 
-#: src/one_public_api/models/mixins/address_mixin.py:78
-msgid "Address Detail 2 Description"
-msgstr "建物名、部屋番号など番地以降の補足情報（例：渋谷マンション101号室）"
+#: src/one_public_api/models/mixins/address_mixin.py:38
+msgid "Additional address information such as building name or room number."
+msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:83
+#: src/one_public_api/models/mixins/address_mixin.py:43
 msgid "Telephone Number"
 msgstr "電話番号"
 
-#: src/one_public_api/models/mixins/address_mixin.py:84
-msgid "Telephone Number Description"
-msgstr "半角数値・ハイフン「-」・プラス「+」・括弧「()」のみ望ましい。"
+#: src/one_public_api/models/mixins/address_mixin.py:44
+#, fuzzy
+msgid "Contact telephone number."
+msgstr "電話番号"
 
-#: src/one_public_api/models/mixins/belong_to_mixin.py:30
+#: src/one_public_api/models/mixins/belong_to_mixin.py:12
 #, fuzzy
 msgid "Organization ID"
 msgstr "組織"
 
-#: src/one_public_api/models/mixins/belong_to_mixin.py:31
-#, fuzzy
-msgid "Organization ID Description"
-msgstr "外部キーで、本レコードを作成したユーザーの ID。"
+#: src/one_public_api/models/mixins/belong_to_mixin.py:13
+msgid "Unique identifier of the associated organization."
+msgstr ""
 
-#: src/one_public_api/models/mixins/id_mixin.py:26
+#: src/one_public_api/models/mixins/id_mixin.py:10
 msgid "Record ID"
 msgstr "レコード ID"
 
-#: src/one_public_api/models/mixins/id_mixin.py:27
-msgid "Auto-generated unique ID for the record"
+#: src/one_public_api/models/mixins/id_mixin.py:11
+#, fuzzy
+msgid "Auto-generated unique ID for the record."
 msgstr "自動採番される。"
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:31
+#: src/one_public_api/models/mixins/maintenance_mixin.py:12
 msgid "Creator ID"
 msgstr "作成者 ID"
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:32
-msgid "Creator ID Description"
-msgstr "外部キーで、本レコードを作成したユーザーの ID。"
+#: src/one_public_api/models/mixins/maintenance_mixin.py:13
+#, fuzzy
+msgid "ID of the user who created this record."
+msgstr "確認対象のユーザーの ID"
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:38
+#: src/one_public_api/models/mixins/maintenance_mixin.py:18
 msgid "Updater ID"
 msgstr "更新者 ID"
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:39
-msgid "Updater ID Description"
-msgstr "外部キーで、本レコードを最後に変更したユーザーの ID。"
+#: src/one_public_api/models/mixins/maintenance_mixin.py:19
+#, fuzzy
+msgid "ID of the user who last updated this record."
+msgstr "変更対象のユーザーの ID"
 
 #: src/one_public_api/models/mixins/password_mixin.py:11
 msgid "Password"
 msgstr "パスワード"
 
 #: src/one_public_api/models/mixins/password_mixin.py:12
-msgid "Password provided by the user"
-msgstr "ユーザーが提供したパスワードです。"
+msgid "Hashed password used for authentication."
+msgstr ""
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:28
+#: src/one_public_api/models/mixins/timestamp_mixin.py:9
 msgid "Record creation time"
 msgstr "作成日時"
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:29
-msgid "Record Creation Time Description"
-msgstr "レコードが作成された日時で、自動生成される。"
+#: src/one_public_api/models/mixins/timestamp_mixin.py:10
+msgid "Date and time when the record was created."
+msgstr ""
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:35
+#: src/one_public_api/models/mixins/timestamp_mixin.py:14
 msgid "Last update time"
 msgstr "最終変更日時"
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:36
-msgid "Last Update Time Description"
-msgstr "レコードが最後に変更された日時で、自動生成される。"
+#: src/one_public_api/models/mixins/timestamp_mixin.py:15
+msgid "Date and time when the record was last updated."
+msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:17
 msgid "Action name"
@@ -294,38 +297,39 @@ msgid ""
 "relationships between actions (e.g., menu and sub-menu structure)."
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:27
+#: src/one_public_api/models/system/attachment_model.py:28
 msgid "Attachment name"
 msgstr "添付ファイル名"
 
-#: src/one_public_api/models/system/attachment_model.py:31
-#: src/one_public_api/models/system/attachment_model.py:94
+#: src/one_public_api/models/system/attachment_model.py:33
+#: src/one_public_api/models/system/attachment_model.py:97
 msgid "Description of the attachment"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:39
-#: src/one_public_api/models/system/attachment_model.py:101
+#: src/one_public_api/models/system/attachment_model.py:41
+#: src/one_public_api/models/system/attachment_model.py:103
 #, fuzzy
 msgid "Specifies whether authentication is required to access this attachment."
 msgstr "このアクションにアクセスするために認証が必要かどうかを指定します。"
 
-#: src/one_public_api/models/system/attachment_model.py:48
+#: src/one_public_api/models/system/attachment_model.py:50
+#: src/one_public_api/models/system/attachment_model.py:109
 msgid "Save Path"
 msgstr "保存先パス"
 
-#: src/one_public_api/models/system/attachment_model.py:57
+#: src/one_public_api/models/system/attachment_model.py:59
 msgid "Original file name"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:62
+#: src/one_public_api/models/system/attachment_model.py:64
 msgid "MIME Type"
 msgstr "MIME タイプ"
 
-#: src/one_public_api/models/system/attachment_model.py:68
+#: src/one_public_api/models/system/attachment_model.py:71
 msgid "File size in bytes"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:73
+#: src/one_public_api/models/system/attachment_model.py:76
 #, fuzzy
 msgid "Download count"
 msgstr "トークン所有者"
@@ -555,7 +559,7 @@ msgid "The ID of the action item to be updated"
 msgstr "変更対象のアクションの ID"
 
 #: src/one_public_api/routers/action_router.py:117
-#: src/one_public_api/routers/attachment_router.py:119
+#: src/one_public_api/routers/attachment_router.py:141
 msgid "Delete Action"
 msgstr "アクション削除"
 
@@ -574,65 +578,77 @@ msgid "Download Public Attachment"
 msgstr "トークン所有者"
 
 #: src/one_public_api/routers/attachment_router.py:42
-#: src/one_public_api/routers/attachment_router.py:91
+#: src/one_public_api/routers/attachment_router.py:60
+#: src/one_public_api/routers/attachment_router.py:184
+#: src/one_public_api/routers/attachment_router.py:200
 #, fuzzy
-msgid "The ID of the attachment to be retrieved"
+msgid "The ID of the attachment to be downloaded"
 msgstr "確認対象の機能の ID"
 
-#: src/one_public_api/routers/attachment_router.py:54
+#: src/one_public_api/routers/attachment_router.py:55
+#, fuzzy
+msgid "Preview Public Attachment"
+msgstr "トークン所有者"
+
+#: src/one_public_api/routers/attachment_router.py:76
 #, fuzzy
 msgid "List Attachments"
 msgstr "添付ファイル名"
 
-#: src/one_public_api/routers/attachment_router.py:69
+#: src/one_public_api/routers/attachment_router.py:91
 #, fuzzy
 msgid "Create Attachment"
 msgstr "添付ファイル名"
 
-#: src/one_public_api/routers/attachment_router.py:86
+#: src/one_public_api/routers/attachment_router.py:108
 #, fuzzy
 msgid "Get Attachment"
 msgstr "公開ユーザー取得"
 
-#: src/one_public_api/routers/attachment_router.py:101
+#: src/one_public_api/routers/attachment_router.py:113
+#, fuzzy
+msgid "The ID of the attachment to be retrieved"
+msgstr "確認対象の機能の ID"
+
+#: src/one_public_api/routers/attachment_router.py:123
 #, fuzzy
 msgid "Update Attachment"
 msgstr "添付ファイル名"
 
-#: src/one_public_api/routers/attachment_router.py:107
+#: src/one_public_api/routers/attachment_router.py:129
 #, fuzzy
 msgid "The ID of the attachment to be updated"
 msgstr "変更対象のユーザーの ID"
 
-#: src/one_public_api/routers/attachment_router.py:124
+#: src/one_public_api/routers/attachment_router.py:146
 #, fuzzy
 msgid "The ID of the attachment to be deleted"
 msgstr "確認対象の機能の ID"
 
-#: src/one_public_api/routers/attachment_router.py:134
+#: src/one_public_api/routers/attachment_router.py:156
 #, fuzzy
 msgid "Upload Attachment"
 msgstr "添付ファイル名"
 
-#: src/one_public_api/routers/attachment_router.py:142
+#: src/one_public_api/routers/attachment_router.py:164
 #, fuzzy
 msgid "Upload Attachment Files"
 msgstr "添付ファイル名"
 
-#: src/one_public_api/routers/attachment_router.py:143
+#: src/one_public_api/routers/attachment_router.py:165
 #, fuzzy
 msgid "Upload multiple attachment files"
 msgstr "トークン所有者"
 
-#: src/one_public_api/routers/attachment_router.py:157
+#: src/one_public_api/routers/attachment_router.py:179
 #, fuzzy
 msgid "Download Attachment"
 msgstr "トークン所有者"
 
-#: src/one_public_api/routers/attachment_router.py:162
+#: src/one_public_api/routers/attachment_router.py:195
 #, fuzzy
-msgid "The ID of the attachment to be downloaded"
-msgstr "確認対象の機能の ID"
+msgid "Preview Attachment"
+msgstr "添付ファイル名"
 
 #: src/one_public_api/routers/authenticate_router.py:31
 msgid "Authentication"
@@ -914,6 +930,16 @@ msgstr "認証"
 msgid "Parent Action Description"
 msgstr "この権限に紐づくアクションの一覧です。"
 
+#: src/one_public_api/schemas/attachment_schema.py:41
+#: src/one_public_api/schemas/attachment_schema.py:55
+msgid "URL"
+msgstr ""
+
+#: src/one_public_api/schemas/attachment_schema.py:48
+#: src/one_public_api/schemas/attachment_schema.py:61
+msgid "PREVIEW"
+msgstr ""
+
 #: src/one_public_api/schemas/authenticate_schema.py:41
 msgid "Remember me"
 msgstr "ログイン状態を保持"
@@ -1084,6 +1110,10 @@ msgstr ""
 "処理自体は成功（HTTP "
 "2xx）したが、処理の過程で“望ましくない状態”や“将来的に問題となりうる設定”、または“軽微な警告”が検出された場合に、このフィールドに情報を格納し、クライアントに対して注意を促すために使用します。"
 
+#: src/one_public_api/services/attachment_service.py:76
+msgid "Failed to upload files."
+msgstr ""
+
 #: src/one_public_api/services/authenticate_service.py:60
 msgid "user not verified"
 msgstr "ユーザーが確認されていません。"
@@ -1131,30 +1161,71 @@ msgstr "このアカウントは別の場所からログインされました。
 msgid "Invalid access token"
 msgstr "アクセストークンが無効です。"
 
-#: src/one_public_api/services/base_service.py:70
-#, fuzzy
-msgid "Authentication is required"
-msgstr "認証"
+#: src/one_public_api/services/base_service.py:73
+msgid "Forbidden"
+msgstr ""
 
-#: src/one_public_api/services/base_service.py:75
+#: src/one_public_api/services/base_service.py:79
 msgid "Data not found."
 msgstr "データが見つかりません。"
 
-#: src/one_public_api/services/base_service.py:87
+#: src/one_public_api/services/base_service.py:91
 msgid "Invalid search column specified."
 msgstr "指定されたカラム名は不正です。"
 
-#: src/one_public_api/services/base_service.py:101
-#: src/one_public_api/services/base_service.py:112
+#: src/one_public_api/services/base_service.py:105
+#: src/one_public_api/services/base_service.py:116
 #: src/one_public_api/services/user_service.py:36
 msgid "Data already exists."
 msgstr "データは既に存在します。"
 
-#: src/one_public_api/services/base_service.py:148
-#: src/one_public_api/services/base_service.py:163
-#: src/one_public_api/services/base_service.py:177
+#: src/one_public_api/services/base_service.py:152
+#: src/one_public_api/services/base_service.py:167
+#: src/one_public_api/services/base_service.py:181
 msgid "This record might be referenced by other data."
 msgstr "このデータが参照されているため、削除できません。"
 
 #~ msgid "Whether the attachment is public"
 #~ msgstr "有効な機能か"
+
+#~ msgid "Authentication is required"
+#~ msgstr "認証"
+
+#~ msgid "Postal Code Description"
+#~ msgstr "全て半角数値（ハイフン「-」可）で構成されるフォーマットが望ましい。"
+
+#~ msgid "Country Description"
+#~ msgstr "住所の最上位で、所属する国名を指定します（例：日本）。"
+
+#~ msgid "Prefecture Description"
+#~ msgstr "日本の行政区画の第一レベル（例：東京都、神奈川県）"
+
+#~ msgid "Municipality Description"
+#~ msgstr "都道府県の下位区画（例：渋谷区、横浜市）"
+
+#~ msgid "Address Detail 1 Description"
+#~ msgstr "町域内の具体的な位置を示す番号（例：北幸1-2-3、丁目・番・号）"
+
+#~ msgid "Address Detail 2 Description"
+#~ msgstr "建物名、部屋番号など番地以降の補足情報（例：渋谷マンション101号室）"
+
+#~ msgid "Telephone Number Description"
+#~ msgstr "半角数値・ハイフン「-」・プラス「+」・括弧「()」のみ望ましい。"
+
+#~ msgid "Organization ID Description"
+#~ msgstr "外部キーで、本レコードを作成したユーザーの ID。"
+
+#~ msgid "Creator ID Description"
+#~ msgstr "外部キーで、本レコードを作成したユーザーの ID。"
+
+#~ msgid "Updater ID Description"
+#~ msgstr "外部キーで、本レコードを最後に変更したユーザーの ID。"
+
+#~ msgid "Password provided by the user"
+#~ msgstr "ユーザーが提供したパスワードです。"
+
+#~ msgid "Record Creation Time Description"
+#~ msgstr "レコードが作成された日時で、自動生成される。"
+
+#~ msgid "Last Update Time Description"
+#~ msgstr "レコードが最後に変更された日時で、自動生成される。"

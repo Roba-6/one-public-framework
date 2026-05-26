@@ -20,6 +20,8 @@ ENCODE_UTF8: str = "utf-8"
 EXT_LOG = ".log"
 # SQLite File Extension
 EXT_SQLITE = ".sqlite3"
+# ZIP file extension
+EXT_ZIP = ".zip"
 
 # ----- Security Settings --------------------------------------------------------------
 # Access token expiration time (in minutes)
@@ -45,6 +47,7 @@ FOLDER_OPA: str = "one_public_api"
 
 FOLDER_FORMAT: str = "%Y/%m/%d"
 
+FILE_FORMAT: str = "%Y%m%d%H%M%S"
 
 # Absolute Path of Application directory
 PATH_APP: str = str(Path(__file__).resolve().parent.parent.parent.parent.parent)

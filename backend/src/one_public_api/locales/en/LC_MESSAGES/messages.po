@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.24\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-05-23 20:12+0900\n"
+"POT-Creation-Date: 2026-05-26 23:08+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -104,98 +104,92 @@ msgstr ""
 "The primary result data of the API response. Can be a single object, a "
 "list of objects, or `null` when there are no results."
 
-#: src/one_public_api/models/mixins/address_mixin.py:47
+#: src/one_public_api/models/mixins/address_mixin.py:11
 msgid "Postal Code"
 msgstr "Postal Code"
 
-#: src/one_public_api/models/mixins/address_mixin.py:48
-msgid "Postal Code Description"
+#: src/one_public_api/models/mixins/address_mixin.py:12
+msgid "Postal code used for the address."
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:53
+#: src/one_public_api/models/mixins/address_mixin.py:16
 msgid "Country"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:54
-msgid "Country Description"
+#: src/one_public_api/models/mixins/address_mixin.py:17
+msgid "Country name of the address."
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:59
+#: src/one_public_api/models/mixins/address_mixin.py:21
 msgid "Prefecture"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:60
-msgid "Prefecture Description"
+#: src/one_public_api/models/mixins/address_mixin.py:22
+msgid "Prefecture or state of the address."
 msgstr ""
-"A text-based search parameter used to filter results by matching one or "
-"more fields. The API will return only records that contain the provided "
-"keyword(s)."
 
-#: src/one_public_api/models/mixins/address_mixin.py:65
+#: src/one_public_api/models/mixins/address_mixin.py:26
 msgid "Municipality"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:66
-msgid "Municipality Description"
+#: src/one_public_api/models/mixins/address_mixin.py:27
+msgid "City, ward, or municipality of the address."
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:71
+#: src/one_public_api/models/mixins/address_mixin.py:31
 msgid "Address Detail 1"
 msgstr "Address Detail 1"
 
-#: src/one_public_api/models/mixins/address_mixin.py:72
-msgid "Address Detail 1 Description"
+#: src/one_public_api/models/mixins/address_mixin.py:32
+msgid "Primary street address information."
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:77
+#: src/one_public_api/models/mixins/address_mixin.py:36
 msgid "Address Detail 2"
 msgstr "Address Detail 2"
 
-#: src/one_public_api/models/mixins/address_mixin.py:78
-msgid "Address Detail 2 Description"
+#: src/one_public_api/models/mixins/address_mixin.py:38
+msgid "Additional address information such as building name or room number."
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:83
+#: src/one_public_api/models/mixins/address_mixin.py:43
 msgid "Telephone Number"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:84
-msgid "Telephone Number Description"
+#: src/one_public_api/models/mixins/address_mixin.py:44
+msgid "Contact telephone number."
 msgstr ""
 
-#: src/one_public_api/models/mixins/belong_to_mixin.py:30
+#: src/one_public_api/models/mixins/belong_to_mixin.py:12
 msgid "Organization ID"
 msgstr ""
 
-#: src/one_public_api/models/mixins/belong_to_mixin.py:31
-#, fuzzy
-msgid "Organization ID Description"
+#: src/one_public_api/models/mixins/belong_to_mixin.py:13
+msgid "Unique identifier of the associated organization."
 msgstr ""
-"Functions sharing the same first seven characters (e.g. SYS-COF)belong to"
-" the same functional category."
 
-#: src/one_public_api/models/mixins/id_mixin.py:26
+#: src/one_public_api/models/mixins/id_mixin.py:10
 msgid "Record ID"
 msgstr ""
 
-#: src/one_public_api/models/mixins/id_mixin.py:27
-msgid "Auto-generated unique ID for the record"
+#: src/one_public_api/models/mixins/id_mixin.py:11
+msgid "Auto-generated unique ID for the record."
 msgstr ""
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:31
+#: src/one_public_api/models/mixins/maintenance_mixin.py:12
 msgid "Creator ID"
 msgstr ""
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:32
-msgid "Creator ID Description"
+#: src/one_public_api/models/mixins/maintenance_mixin.py:13
+msgid "ID of the user who created this record."
 msgstr ""
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:38
+#: src/one_public_api/models/mixins/maintenance_mixin.py:18
 msgid "Updater ID"
 msgstr ""
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:39
-msgid "Updater ID Description"
+#: src/one_public_api/models/mixins/maintenance_mixin.py:19
+msgid "ID of the user who last updated this record."
 msgstr ""
 
 #: src/one_public_api/models/mixins/password_mixin.py:11
@@ -203,28 +197,24 @@ msgid "Password"
 msgstr ""
 
 #: src/one_public_api/models/mixins/password_mixin.py:12
-msgid "Password provided by the user"
+msgid "Hashed password used for authentication."
 msgstr ""
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:28
+#: src/one_public_api/models/mixins/timestamp_mixin.py:9
 msgid "Record creation time"
 msgstr ""
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:29
-#, fuzzy
-msgid "Record Creation Time Description"
+#: src/one_public_api/models/mixins/timestamp_mixin.py:10
+msgid "Date and time when the record was created."
 msgstr ""
-"Functions sharing the same first seven characters (e.g. SYS-COF)belong to"
-" the same functional category."
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:35
+#: src/one_public_api/models/mixins/timestamp_mixin.py:14
 msgid "Last update time"
 msgstr ""
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:36
-#, fuzzy
-msgid "Last Update Time Description"
-msgstr "**SYS-ATH-P-SUP**<br />Registers a new user account."
+#: src/one_public_api/models/mixins/timestamp_mixin.py:15
+msgid "Date and time when the record was last updated."
+msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:17
 msgid "Action name"
@@ -330,37 +320,38 @@ msgid ""
 "relationships between actions (e.g., menu and sub-menu structure)."
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:27
+#: src/one_public_api/models/system/attachment_model.py:28
 msgid "Attachment name"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:31
-#: src/one_public_api/models/system/attachment_model.py:94
+#: src/one_public_api/models/system/attachment_model.py:33
+#: src/one_public_api/models/system/attachment_model.py:97
 msgid "Description of the attachment"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:39
-#: src/one_public_api/models/system/attachment_model.py:101
+#: src/one_public_api/models/system/attachment_model.py:41
+#: src/one_public_api/models/system/attachment_model.py:103
 msgid "Specifies whether authentication is required to access this attachment."
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:48
+#: src/one_public_api/models/system/attachment_model.py:50
+#: src/one_public_api/models/system/attachment_model.py:109
 msgid "Save Path"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:57
+#: src/one_public_api/models/system/attachment_model.py:59
 msgid "Original file name"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:62
+#: src/one_public_api/models/system/attachment_model.py:64
 msgid "MIME Type"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:68
+#: src/one_public_api/models/system/attachment_model.py:71
 msgid "File size in bytes"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:73
+#: src/one_public_api/models/system/attachment_model.py:76
 msgid "Download count"
 msgstr ""
 
@@ -593,7 +584,7 @@ msgid "The ID of the action item to be updated"
 msgstr ""
 
 #: src/one_public_api/routers/action_router.py:117
-#: src/one_public_api/routers/attachment_router.py:119
+#: src/one_public_api/routers/attachment_router.py:141
 msgid "Delete Action"
 msgstr ""
 
@@ -610,18 +601,28 @@ msgid "Download Public Attachment"
 msgstr ""
 
 #: src/one_public_api/routers/attachment_router.py:42
-#: src/one_public_api/routers/attachment_router.py:91
-msgid "The ID of the attachment to be retrieved"
+#: src/one_public_api/routers/attachment_router.py:60
+#: src/one_public_api/routers/attachment_router.py:184
+#: src/one_public_api/routers/attachment_router.py:200
+msgid "The ID of the attachment to be downloaded"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:54
+#: src/one_public_api/routers/attachment_router.py:55
+#, fuzzy
+msgid "Preview Public Attachment"
+msgstr ""
+"A text-based search parameter used to filter results by matching one or "
+"more fields. The API will return only records that contain the provided "
+"keyword(s)."
+
+#: src/one_public_api/routers/attachment_router.py:76
 #, fuzzy
 msgid "List Attachments"
 msgstr ""
 "Defines the maximum number of records to return in a single request. Used"
 " to control page size and prevent large data loads."
 
-#: src/one_public_api/routers/attachment_router.py:69
+#: src/one_public_api/routers/attachment_router.py:91
 #, fuzzy
 msgid "Create Attachment"
 msgstr ""
@@ -629,41 +630,49 @@ msgstr ""
 "more fields. The API will return only records that contain the provided "
 "keyword(s)."
 
-#: src/one_public_api/routers/attachment_router.py:86
+#: src/one_public_api/routers/attachment_router.py:108
 msgid "Get Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:101
+#: src/one_public_api/routers/attachment_router.py:113
+msgid "The ID of the attachment to be retrieved"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:123
 msgid "Update Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:107
+#: src/one_public_api/routers/attachment_router.py:129
 msgid "The ID of the attachment to be updated"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:124
+#: src/one_public_api/routers/attachment_router.py:146
 msgid "The ID of the attachment to be deleted"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:134
+#: src/one_public_api/routers/attachment_router.py:156
 msgid "Upload Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:142
+#: src/one_public_api/routers/attachment_router.py:164
 msgid "Upload Attachment Files"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:143
+#: src/one_public_api/routers/attachment_router.py:165
 msgid "Upload multiple attachment files"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:157
+#: src/one_public_api/routers/attachment_router.py:179
 msgid "Download Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:162
-msgid "The ID of the attachment to be downloaded"
+#: src/one_public_api/routers/attachment_router.py:195
+#, fuzzy
+msgid "Preview Attachment"
 msgstr ""
+"A text-based search parameter used to filter results by matching one or "
+"more fields. The API will return only records that contain the provided "
+"keyword(s)."
 
 #: src/one_public_api/routers/authenticate_router.py:31
 msgid "Authentication"
@@ -963,6 +972,16 @@ msgstr ""
 "specified by the `REFRESH_TOKEN_EXPIRE` setting expires.<br />If set to "
 "`false`, the cookie is deleted when the browser session ends."
 
+#: src/one_public_api/schemas/attachment_schema.py:41
+#: src/one_public_api/schemas/attachment_schema.py:55
+msgid "URL"
+msgstr ""
+
+#: src/one_public_api/schemas/attachment_schema.py:48
+#: src/one_public_api/schemas/attachment_schema.py:61
+msgid "PREVIEW"
+msgstr ""
+
 #: src/one_public_api/schemas/authenticate_schema.py:41
 msgid "Remember me"
 msgstr ""
@@ -1186,6 +1205,10 @@ msgstr ""
 " conditions, deprecated behavior, or non-critical issues were detected "
 "during processing."
 
+#: src/one_public_api/services/attachment_service.py:76
+msgid "Failed to upload files."
+msgstr ""
+
 #: src/one_public_api/services/authenticate_service.py:60
 msgid "user not verified"
 msgstr ""
@@ -1232,27 +1255,27 @@ msgstr ""
 msgid "Invalid access token"
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:70
-msgid "Authentication is required"
+#: src/one_public_api/services/base_service.py:73
+msgid "Forbidden"
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:75
+#: src/one_public_api/services/base_service.py:79
 msgid "Data not found."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:87
+#: src/one_public_api/services/base_service.py:91
 msgid "Invalid search column specified."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:101
-#: src/one_public_api/services/base_service.py:112
+#: src/one_public_api/services/base_service.py:105
+#: src/one_public_api/services/base_service.py:116
 #: src/one_public_api/services/user_service.py:36
 msgid "Data already exists."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:148
-#: src/one_public_api/services/base_service.py:163
-#: src/one_public_api/services/base_service.py:177
+#: src/one_public_api/services/base_service.py:152
+#: src/one_public_api/services/base_service.py:167
+#: src/one_public_api/services/base_service.py:181
 msgid "This record might be referenced by other data."
 msgstr ""
 
@@ -1293,3 +1316,59 @@ msgstr ""
 
 #~ msgid "The ID of the attachment file to be retrieved"
 #~ msgstr ""
+
+#~ msgid "Authentication is required"
+#~ msgstr ""
+
+#~ msgid "Postal Code Description"
+#~ msgstr ""
+
+#~ msgid "Country Description"
+#~ msgstr ""
+
+#~ msgid "Prefecture Description"
+#~ msgstr ""
+#~ "A text-based search parameter used "
+#~ "to filter results by matching one "
+#~ "or more fields. The API will "
+#~ "return only records that contain the "
+#~ "provided keyword(s)."
+
+#~ msgid "Municipality Description"
+#~ msgstr ""
+
+#~ msgid "Address Detail 1 Description"
+#~ msgstr ""
+
+#~ msgid "Address Detail 2 Description"
+#~ msgstr ""
+
+#~ msgid "Telephone Number Description"
+#~ msgstr ""
+
+#~ msgid "Organization ID Description"
+#~ msgstr ""
+#~ "Functions sharing the same first seven"
+#~ " characters (e.g. SYS-COF)belong to "
+#~ "the same functional category."
+
+#~ msgid "Auto-generated unique ID for the record"
+#~ msgstr ""
+
+#~ msgid "Creator ID Description"
+#~ msgstr ""
+
+#~ msgid "Updater ID Description"
+#~ msgstr ""
+
+#~ msgid "Password provided by the user"
+#~ msgstr ""
+
+#~ msgid "Record Creation Time Description"
+#~ msgstr ""
+#~ "Functions sharing the same first seven"
+#~ " characters (e.g. SYS-COF)belong to "
+#~ "the same functional category."
+
+#~ msgid "Last Update Time Description"
+#~ msgstr "**SYS-ATH-P-SUP**<br />Registers a new user account."

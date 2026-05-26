@@ -1,5 +1,6 @@
 from typing import TYPE_CHECKING, Optional
 
+from sqlalchemy import BigInteger
 from sqlmodel import Field, Relationship, SQLModel
 
 from one_public_api.common import constants
@@ -65,6 +66,7 @@ class AttachmentMeta(SQLModel):
     size: int = Field(
         default=0,
         nullable=False,
+        sa_type=BigInteger,
         ge=0,
         description=_("File size in bytes"),
     )

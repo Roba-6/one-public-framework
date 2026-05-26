@@ -1,4 +1,6 @@
 import os
+import shutil
+from pathlib import Path
 
 
 def is_path_exists(path: str) -> bool:
@@ -31,6 +33,32 @@ def make_deep_dir(path: str) -> None:
 def remove_file(path: str) -> None:
     if is_path_exists(path):
         os.remove(path)
+
+
+def clear_dir(path: str) -> None:
+    """
+    Delete all files and directories inside the specified directory.
+
+    Parameters
+    ----------
+    path : str
+        Target directory path.
+    """
+
+    target = Path(path)
+
+    if not target.exists():
+        return
+
+    if not target.is_dir():
+        raise NotADirectoryError(f"{path} is not a directory")
+
+    for item in target.iterdir():
+        if item.is_dir():
+            shutil.rmtree(item)
+
+        else:
+            item.unlink()
 
 
 def is_installed_package() -> bool:
