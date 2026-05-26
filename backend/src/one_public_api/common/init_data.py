@@ -55,7 +55,15 @@ def init_features(app: FastAPI, session: Session, user: User) -> None:
     feature_descriptions: Dict[str, str] = {}
     for route in app.routes:
         if isinstance(route, BaseRoute):
-            features.append({"name": getattr(route, "name")})
+            features.append(
+                {
+                    "name": getattr(route, "name"),
+                    "is_enabled": True,
+                    "requires_auth": False
+                    if getattr(route, "name")[8] == "P"
+                    else True,
+                }
+            )
             feature_descriptions[getattr(route, "name")] = getattr(route, "description")
 
     dc = DataCreator(session)
