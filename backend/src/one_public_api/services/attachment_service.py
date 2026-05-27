@@ -1,8 +1,10 @@
+import mimetypes
 import os
+import shutil
 from datetime import datetime
 from gettext import GNUTranslations
 from pathlib import Path
-from typing import Annotated, Any, Dict, List, cast
+from typing import Annotated, Any, Dict, Generator, List, Union, cast
 from uuid import UUID
 
 from fastapi import UploadFile
@@ -79,48 +81,63 @@ class AttachmentService(BaseService[Attachment]):
     def zip_files(
         files: List[str],
         exclude: List[str] | None = None,
-    ) -> ZipStream:
-        zs = ZipStream()
+        delete_after_zip: bool = False,
+    ) -> Generator[bytes, None, None]:
+        try:
+            zs = ZipStream()
 
-        exclude_set = {str(Path(path).resolve()) for path in (exclude or [])}
+            exclude_paths = [Path(path).resolve() for path in (exclude or [])]
 
-        for target in files:
-            target_path = Path(target).resolve()
-
-            # file
-            if target_path.is_file():
-                if str(target_path) in exclude_set:
-                    continue
-
-                zs.add_path(
-                    str(target_path),
-                    arcname=target_path.name,
+            def is_excluded(path: Path) -> bool:
+                resolved = path.resolve()
+                return any(
+                    resolved == exclude_path
+                    or (exclude_path.is_dir() and resolved.is_relative_to(exclude_path))
+                    for exclude_path in exclude_paths
                 )
 
-            # directory
-            elif target_path.is_dir():
-                for file_path in target_path.rglob("*"):
-                    # For files only
-                    if not file_path.is_file():
-                        continue
+            for target in files:
+                target_path = Path(target).resolve()
 
-                    resolved = str(file_path.resolve())
-
-                    # Skip if excluded
-                    if resolved in exclude_set:
+                # file
+                if target_path.is_file():
+                    if is_excluded(target_path):
                         continue
 
                     zs.add_path(
-                        str(file_path),
-                        arcname=str(file_path.relative_to(target_path.parent)),
+                        str(target_path),
+                        arcname=target_path.name,
                     )
 
-        return zs
+                # directory
+                elif target_path.is_dir():
+                    for file_path in target_path.rglob("*"):
+                        # For files only
+                        if not file_path.is_file():
+                            continue
+
+                        # Skip if excluded
+                        if is_excluded(file_path):
+                            continue
+
+                        zs.add_path(
+                            str(file_path),
+                            arcname=str(file_path.relative_to(target_path.parent)),
+                        )
+
+            yield from zs
+        finally:
+            if delete_after_zip:
+                for file in files:
+                    shutil.rmtree(file)
 
     @staticmethod
     def create_attachment_response(
-        data: Attachment | List[Attachment] | str | List[str] | ZipStream,
+        data: Union[
+            Attachment, List[Attachment], str, List[str], Generator[bytes, None, None]
+        ],
         is_preview: bool = False,
+        zip_file_name: str | None = None,
     ) -> FileResponse | StreamingResponse:
         is_stream = False
         dwl_file: Dict[str, Any] = {}
@@ -132,19 +149,40 @@ class AttachmentService(BaseService[Attachment]):
                 "media_type": data.mime_type,
                 "filename": data.original_name,
             }
-        elif isinstance(data, list) and all(isinstance(d, Attachment) for d in data):
-            file_name = datetime.now().strftime(constants.FILE_FORMAT)
+        elif isinstance(data, str):
             dwl_file = {
-                "content": AttachmentService.zip_files(
-                    [d.path for d in cast(list[Attachment], data)]
-                ),
+                "path": data,
+                "media_type": mimetypes.guess_type(data)[0],
+                "filename": Path(data).name,
+            }
+        elif isinstance(data, list) or isinstance(data, Generator):
+            is_stream = True
+            file_name = zip_file_name or datetime.now().strftime(constants.FILE_FORMAT)
+            dwl_file = {
                 "media_type": "application/zip",
                 "headers": {
                     "Content-Disposition": f"{content_disposition_type}; "
                     f"filename={file_name}.{constants.EXT_ZIP}"
                 },
             }
-            is_stream = True
+            if isinstance(data, list) and all(isinstance(d, Attachment) for d in data):
+                dwl_file.update(
+                    {
+                        "content": AttachmentService.zip_files(
+                            [d.path for d in cast(list[Attachment], data)]
+                        )
+                    }
+                )
+            elif isinstance(data, list) and all(isinstance(d, str) for d in data):
+                dwl_file.update(
+                    {
+                        "content": AttachmentService.zip_files(
+                            [d for d in cast(list[str], data)]
+                        )
+                    }
+                )
+            elif isinstance(data, Generator):
+                dwl_file.update({"content": data})
 
         if is_stream:
             return StreamingResponse(**dwl_file)

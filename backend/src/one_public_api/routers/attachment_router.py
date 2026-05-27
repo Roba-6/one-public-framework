@@ -185,7 +185,7 @@ def download_admin_api(
 ) -> FileResponse:
     return cast(
         FileResponse,
-        AttachmentService.create_attachment_response([atts.get_one_by_id(target_id)]),
+        AttachmentService.create_attachment_response(atts.get_one_by_id(target_id)),
     )
 
 
