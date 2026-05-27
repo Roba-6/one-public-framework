@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.24\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-05-26 23:08+0900\n"
+"POT-Creation-Date: 2026-05-28 00:12+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -1110,7 +1110,7 @@ msgstr ""
 "処理自体は成功（HTTP "
 "2xx）したが、処理の過程で“望ましくない状態”や“将来的に問題となりうる設定”、または“軽微な警告”が検出された場合に、このフィールドに情報を格納し、クライアントに対して注意を促すために使用します。"
 
-#: src/one_public_api/services/attachment_service.py:76
+#: src/one_public_api/services/attachment_service.py:78
 msgid "Failed to upload files."
 msgstr ""
 
