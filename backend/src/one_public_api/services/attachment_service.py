@@ -5,6 +5,7 @@ from datetime import datetime
 from gettext import GNUTranslations
 from pathlib import Path
 from typing import Annotated, Any, Dict, Generator, List, Union, cast
+from urllib.parse import quote
 from uuid import UUID
 
 from fastapi import UploadFile
@@ -122,7 +123,7 @@ class AttachmentService(BaseService[Attachment]):
 
                         zs.add_path(
                             str(file_path),
-                            arcname=str(file_path.relative_to(target_path.parent)),
+                            arcname=str(file_path.relative_to(target_path)),
                         )
 
             yield from zs
@@ -158,12 +159,16 @@ class AttachmentService(BaseService[Attachment]):
             }
         elif isinstance(data, list) or isinstance(data, Generator):
             is_stream = True
-            file_name = zip_file_name or datetime.now().strftime(constants.FILE_FORMAT)
+            file_name = (
+                quote(zip_file_name)
+                if zip_file_name
+                else datetime.now().strftime(constants.FILE_FORMAT)
+            )
             dwl_file = {
                 "media_type": "application/zip",
                 "headers": {
                     "Content-Disposition": f"{content_disposition_type}; "
-                    f"filename={file_name}.{constants.EXT_ZIP}"
+                    f"filename*=UTF-8''{file_name}{constants.EXT_ZIP}"
                 },
             }
             if isinstance(data, list) and all(isinstance(d, Attachment) for d in data):
