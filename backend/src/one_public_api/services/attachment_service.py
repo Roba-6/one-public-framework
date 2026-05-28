@@ -138,6 +138,7 @@ class AttachmentService(BaseService[Attachment]):
         ],
         is_preview: bool = False,
         zip_file_name: str | None = None,
+        delete_after_zip: bool = False,
     ) -> FileResponse | StreamingResponse:
         is_stream = False
         dwl_file: Dict[str, Any] = {}
@@ -169,7 +170,8 @@ class AttachmentService(BaseService[Attachment]):
                 dwl_file.update(
                     {
                         "content": AttachmentService.zip_files(
-                            [d.path for d in cast(list[Attachment], data)]
+                            [d.path for d in cast(list[Attachment], data)],
+                            delete_after_zip=delete_after_zip,
                         )
                     }
                 )
@@ -177,7 +179,8 @@ class AttachmentService(BaseService[Attachment]):
                 dwl_file.update(
                     {
                         "content": AttachmentService.zip_files(
-                            [d for d in cast(list[str], data)]
+                            [d for d in cast(list[str], data)],
+                            delete_after_zip=delete_after_zip,
                         )
                     }
                 )
