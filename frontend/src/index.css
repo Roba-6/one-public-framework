@@ -44,9 +44,13 @@
     "Noto Color Emoji";
 }
 
+* {
+  @apply cursor-none;
+}
+
 html,
 body {
-  @apply bg-[rgba(240,240,240,1.0)] dark:bg-[rgba(15,15,15,1.0)] overscroll-none;
+  @apply bg-[rgba(240,240,240,1.0)] dark:bg-[var(--color-background)] overscroll-none;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -127,26 +131,76 @@ body {
   --sidebar-ring: oklch(0.705 0.015 286.067);
   --typing-caret: black;
 }
+/* Define Basic Colors */
+:root {
+  /* Rose */
+  --color-rose-50: color-mix(in srgb, #f16b6f 10%, white);
+  --color-rose-100: color-mix(in srgb, #f16b6f 20%, white);
+  --color-rose-200: color-mix(in srgb, #f16b6f 40%, white);
+  --color-rose-300: color-mix(in srgb, #f16b6f 60%, white);
+  --color-rose-400: color-mix(in srgb, #f16b6f 80%, white);
+  --color-rose-500: #f16b6f;
+  --color-rose-600: color-mix(in srgb, #f16b6f 80%, black);
+  --color-rose-700: color-mix(in srgb, #f16b6f 60%, black);
+  --color-rose-800: color-mix(in srgb, #f16b6f 40%, black);
+  --color-rose-900: color-mix(in srgb, #f16b6f 20%, black);
+
+  /* Green */
+  --color-green-50: color-mix(in srgb, #aacd6e 10%, white);
+  --color-green-100: color-mix(in srgb, #aacd6e 20%, white);
+  --color-green-200: color-mix(in srgb, #aacd6e 40%, white);
+  --color-green-300: color-mix(in srgb, #aacd6e 60%, white);
+  --color-green-400: color-mix(in srgb, #aacd6e 80%, white);
+  --color-green-500: #aacd6e;
+  --color-green-600: color-mix(in srgb, #aacd6e 80%, black);
+  --color-green-700: color-mix(in srgb, #aacd6e 60%, black);
+  --color-green-800: color-mix(in srgb, #aacd6e 40%, black);
+  --color-green-900: color-mix(in srgb, #aacd6e 20%, black);
+
+  /* Gray */
+  --color-gray-50: color-mix(in srgb, #c5c6b6 10%, white);
+  --color-gray-100: color-mix(in srgb, #c5c6b6 20%, white);
+  --color-gray-200: color-mix(in srgb, #c5c6b6 40%, white);
+  --color-gray-300: color-mix(in srgb, #c5c6b6 60%, white);
+  --color-gray-400: color-mix(in srgb, #c5c6b6 80%, white);
+  --color-gray-500: #c5c6b6;
+  --color-gray-600: color-mix(in srgb, #c5c6b6 80%, black);
+  --color-gray-700: color-mix(in srgb, #c5c6b6 60%, black);
+  --color-gray-800: color-mix(in srgb, #c5c6b6 40%, black);
+  --color-gray-900: color-mix(in srgb, #c5c6b6 20%, black);
+
+  /* Brown */
+  --color-brown-50: color-mix(in srgb, #3c3530 10%, white);
+  --color-brown-100: color-mix(in srgb, #3c3530 20%, white);
+  --color-brown-200: color-mix(in srgb, #3c3530 40%, white);
+  --color-brown-300: color-mix(in srgb, #3c3530 60%, white);
+  --color-brown-400: color-mix(in srgb, #3c3530 80%, white);
+  --color-brown-500: #3c3530;
+  --color-brown-600: color-mix(in srgb, #3c3530 80%, black);
+  --color-brown-700: color-mix(in srgb, #3c3530 60%, black);
+  --color-brown-800: color-mix(in srgb, #3c3530 40%, black);
+  --color-brown-900: color-mix(in srgb, #3c3530 20%, black);
+}
 
 .dark {
-  --background: rgba(25, 25, 25, 1);
-  --foreground: rgba(245, 245, 245, 1);
-  --card: rgba(20, 20, 20, 1);
-  --card-foreground: oklch(0.985 0 0);
+  --background: var(--color-brown-800);
+  --foreground: var(--color-gray-500);
+  --card: color-mix(in srgb, var(--color-brown-700) 50%, transparent);
+  --card-foreground: var(--color-gray-500);
   --popover: rgba(25, 25, 25, 1);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.92 0.004 286.32);
-  --primary-foreground: oklch(0.21 0.006 285.885);
+  --primary: var(--color-green-500);
+  --primary-foreground: var(--color-brown-900);
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
+  --muted-foreground: var(--color-gray-700);
   --accent: oklch(0.304 0.006 286.033);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: rgba(45, 45, 45, 1);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(70.5% 0.253 47.604);
+  --border: var(--color-brown-500);
+  --input: var(--color-brown-500);
+  --ring: var(--color-green-500);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -201,11 +255,11 @@ body {
 }
 
 .leading {
+  @apply flex items-center;
 }
 .leading:before {
-  @apply me-2 mb-0.25 w-2 h-2 inline-block content-['']
-    rounded-full bg-[oklch(70.5%_0.273_47.604)];
-  box-shadow: 0 0 5px oklch(70.5% 0.273 47.604);
+  @apply me-2 w-4 h-4 inline-block content-['>\_'] text-[var(--color-green-500)];
+  text-shadow: 0 0 5px var(--color-green-500);
   animation: blink-anime 10s step-start infinite;
 }
 
@@ -219,24 +273,46 @@ body {
 
 @keyframes blink-anime {
   0%,
+  7%,
+  9%,
+  15%,
+  17%,
+  31%,
+  33%,
   23%,
   25%,
   27%,
+  63%,
+  65%,
   76%,
   80%,
+  87%,
+  89%,
   100% {
-    background-color: oklch(70.5% 0.273 47.604);
+    /*background-color: oklch(70.5% 0.273 47.604);*/
+    content: ">\_";
+    opacity: 100;
   }
   24%,
   26%,
   78% {
-    background-color: oklch(70.5% 0.273 47.604 / 0.25);
-    box-shadow: 0 0 3px oklch(70.5% 0.273 47.604 / 0.5);
+    /*background-color: oklch(70.5% 0.273 47.604 / 0.25);*/
+    /*box-shadow: 0 0 3px oklch(70.5% 0.273 47.604 / 0.5);*/
+    /*content: '';*/
+    opacity: 0;
+  }
+  8%,
+  16%,
+  32%,
+  64%,
+  88% {
+    content: ">";
+    opacity: 75;
   }
 }
 
 button {
-  @apply cursor-pointer font-bold;
+  @apply font-bold;
 }
 
 table.data-list {
@@ -272,7 +348,11 @@ input {
 
 input:focus-visible,
 textarea:focus-visible {
-  box-shadow: 0 0 5px oklch(70.5% 0.273 47.604);
+  box-shadow: 0 0 5px var(--color-green-500);
+
+  &[aria-invalid="true"] {
+    box-shadow: 0 0 5px var(--color-rose-500);
+  }
 }
 
 /* Sub Page Styles */
@@ -488,7 +568,7 @@ textarea:focus-visible {
 
 /* LOGO */
 .logo-text {
-  @apply flex cursor-pointer;
+  @apply flex;
 }
 
 /*****animated text start*****/
@@ -627,7 +707,7 @@ textarea:focus-visible {
 }
 
 .mouse-stalker {
-  @apply rounded-full bg-[#FF45009c];
+  @apply rounded-full bg-[var(--color-rose-500)] opacity-50;
   pointer-events: none;
   position: fixed;
   top: -10px;
@@ -638,4 +718,40 @@ textarea:focus-visible {
   transition: transform 0.2s;
   transition-timing-function: ease-out;
   z-index: 999;
+}
+
+.type-description {
+  @apply w-0 overflow-hidden;
+  border-right: 3px solid var(--color-gray-700);
+  white-space: nowrap;
+  animation:
+    typing 2s steps(25) 1s forwards,
+    blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+    border-right: none;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.panel {
+  @apply select-none;
+}
+.panel:hover {
+  @apply border-[var(--color-brown-400)] bg-[var(--color-brown-700)];
+}
+
+.link {
+  @apply text-[var(--color-green-500)] hover:text-[var(--color-green-400)] transition-all;
 }
