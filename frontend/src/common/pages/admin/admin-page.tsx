@@ -64,7 +64,7 @@ const AdminPage = (): React.JSX.Element => {
             </header>
             <main className="flex flex-1 flex-col overflow-auto">
               <div className="@container/main flex flex-1 flex-col gap-2">
-                <div className="flex flex-col gap-4 px-4 lg:px-6 py-4 md:gap-6 md:py-6">
+                <div className="flex flex-col gap-4 p-4">
                   <Outlet />
                 </div>
               </div>

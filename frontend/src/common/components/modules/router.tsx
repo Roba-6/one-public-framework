@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router'
 
 import { type AppType, selectAppType, setMenu } from '@/common/app-slice'
-import FileUpload from '@/common/components/modules/file-upload'
 import { CONSTANT } from '@/common/constants'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import AdminPage from '@/common/pages/admin/admin-page'
@@ -98,10 +97,6 @@ const Router = ({ children, menu }: RouterProps): React.ReactNode => {
             <Route
               path={CONSTANT.ROUTE_URL.ADMIN_ATTACHMENT_UPDATE.slice(1)}
               element={<UpdateAttachmentPage />}
-            />
-            <Route
-              path={CONSTANT.ROUTE_URL.ADMIN_ATTACHMENT_UPLOAD.slice(1)}
-              element={<FileUpload />}
             />
             {/* --------------- User Management --------------- */}
             <Route

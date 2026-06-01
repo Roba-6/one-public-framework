@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 @font-face {
   font-family: "Sense";
   src: url("assets/fonts/DESIGNER.otf") format("truetype");
@@ -37,6 +35,8 @@
   font-weight: 700;
   font-style: normal;
 }
+
+@custom-variant dark (&:is(.dark *));
 
 @theme {
   --font-sans:
@@ -187,16 +187,16 @@ body {
   --foreground: var(--color-gray-500);
   --card: color-mix(in srgb, var(--color-brown-700) 50%, transparent);
   --card-foreground: var(--color-gray-500);
-  --popover: rgba(25, 25, 25, 1);
-  --popover-foreground: oklch(0.985 0 0);
+  --popover: var(--color-brown-800);
+  --popover-foreground: var(--color-gray-500);
   --primary: var(--color-green-500);
   --primary-foreground: var(--color-brown-900);
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.274 0.006 286.033);
+  --muted: var(--color-brown-500);
   --muted-foreground: var(--color-gray-700);
-  --accent: oklch(0.304 0.006 286.033);
-  --accent-foreground: oklch(0.985 0 0);
+  --accent: var(--color-brown-600);
+  --accent-foreground: var(--color-gray-50);
   --destructive: oklch(0.704 0.191 22.216);
   --border: var(--color-brown-500);
   --input: var(--color-brown-500);
@@ -206,15 +206,15 @@ body {
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: rgba(35, 35, 35, 1);
-  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar: var(--color-brown-700);
+  --sidebar-foreground: var(--color-gray-500);
   --sidebar-primary: oklch(0.488 0.243 264.376);
   --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: rgba(205, 205, 205, 0.15);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-accent: var(--color-brown-600);
+  --sidebar-accent-foreground: var(--color-gray-50);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
-  --typing-caret: white;
+  --typing-caret: var(--color-gray-500);
 }
 
 @layer base {
@@ -315,13 +315,24 @@ button {
   @apply font-bold;
 }
 
+.data-list-panel {
+  @apply overflow-hidden rounded-md border;
+}
+.data-list-panel:hover {
+  @apply border-[var(--color-brown-400)];
+
+  tr:hover {
+    @apply text-[var(--color-gray-50)];
+  }
+}
+
 table.data-list {
   /*@apply w-full table-fixed;*/
 
   thead {
     tr th {
       @apply font-bold;
-      @apply bg-neutral-200 dark:bg-neutral-800;
+      @apply bg-neutral-200 dark:bg-[var(--color-brown-600)];
     }
 
     button {
@@ -334,16 +345,16 @@ table.data-list {
       @apply bg-[var(--card)];
     }
     tr:nth-child(even) td {
-      @apply bg-neutral-100 dark:bg-neutral-900;
+      @apply bg-neutral-100 dark:bg-[var(--color-brown-800)];
     }
     tr:hover td {
-      @apply bg-neutral-200 dark:bg-neutral-800 transition-all duration-300;
+      @apply bg-neutral-200 dark:bg-[var(--color-brown-700)] transition-all duration-300;
     }
   }
 }
 
 input {
-  @apply bg-neutral-50 dark:bg-neutral-900;
+  @apply bg-neutral-50 dark:bg-[var(--color-brown-900)];
 }
 
 input:focus-visible,
@@ -710,10 +721,10 @@ textarea:focus-visible {
   @apply rounded-full bg-[var(--color-rose-500)] opacity-50;
   pointer-events: none;
   position: fixed;
-  top: -10px;
-  left: -10px;
-  width: 20px;
-  height: 20px;
+  top: -8px;
+  left: -8px;
+  width: 16px;
+  height: 16px;
   transform: translate(0, 0);
   transition: transform 0.2s;
   transition-timing-function: ease-out;

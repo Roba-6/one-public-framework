@@ -42,7 +42,6 @@ export const CONSTANT = {
     ADMIN_ATTACHMENT_ADD: '/attachments/new',
     ADMIN_ATTACHMENT_UPDATE: '/attachments/:id/edit',
     ADMIN_ATTACHMENT_DETAIL: '/attachments/:id',
-    ADMIN_ATTACHMENT_UPLOAD: '/attachments/upload',
     ADMIN_USER: '/users',
     ADMIN_USER_ADD: '/users/new',
     ADMIN_USER_UPDATE: '/users/:id/edit',

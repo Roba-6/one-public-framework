@@ -16,7 +16,7 @@ export const listColumns: DataColumn[] = [
     name: getLocalMessage('labels.enabled'),
     type: 'booleanIcon',
     values: ['UserRoundCheck', 'UserRoundX'],
-    colors: ['text-orange-500', 'text-red-700'],
+    colors: ['text-[var(--color-green-500)]', 'text-[var(--color-gray-700)]'],
     align: 'center',
     isFilterable: true,
     filters: [
@@ -29,7 +29,7 @@ export const listColumns: DataColumn[] = [
     name: getLocalMessage('labels.user.lock'),
     type: 'booleanIcon',
     values: ['Lock', 'LockOpen'],
-    colors: ['text-red-700', 'text-orange-500'],
+    colors: ['text-[var(--color-green-500)]', 'text-[var(--color-green-500)]'],
     align: 'center',
     isFilterable: true,
     filters: [

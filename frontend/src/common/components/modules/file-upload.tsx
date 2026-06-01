@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 import { Input } from '@/common/components/ui/input'
+import { Progress } from '@/common/components/ui/progress'
 import { CONSTANT } from '@/common/constants'
 import type { CommonResponse } from '@/common/types/response'
 import { postApi } from '@/lib/http'
@@ -37,6 +38,7 @@ const FileUpload = () => {
   return (
     <div>
       <Input type="file" multiple={true} onChange={handleChange} />
+      <Progress value={progress} className="w-full" />
       <div>
         <div>Upload Progress: {progress}%</div>
       </div>

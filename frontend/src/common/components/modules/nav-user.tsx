@@ -29,7 +29,7 @@ import { CONSTANT } from '@/common/constants'
 import { useAppDispatch } from '@/common/hooks/use-store'
 import type { CommonResponse } from '@/common/types/response'
 import { getApi } from '@/lib/http'
-import { getLocalMessage } from '@/lib/utils'
+import { cn, getLocalMessage } from '@/lib/utils'
 
 export function NavUser({
   user,
@@ -55,7 +55,7 @@ export function NavUser({
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <Avatar className="h-8 w-8 rounded-lg grayscale">
+              <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={user.avatar} alt={user.name} />
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
               </Avatar>
@@ -69,7 +69,10 @@ export function NavUser({
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+            className={cn(
+              'w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg',
+              'hover:border-[var(--color-brown-400)] hover:bg-[var(--color-brown-700)]'
+            )}
             side={isMobile ? 'bottom' : 'right'}
             align="end"
             sideOffset={4}

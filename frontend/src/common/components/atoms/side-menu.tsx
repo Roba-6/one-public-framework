@@ -41,7 +41,7 @@ const SideMenu = (): React.ReactNode => {
     <React.Fragment>
       {Object.entries(menu).map(([key, value]) => (
         <Collapsible key={key} open={value.isOpened} className="group/collapsible">
-          <SidebarGroup>
+          <SidebarGroup className="p-1 border-[1px] rounded-lg bg-[var(--color-brown-800)]">
             <SidebarGroupLabel asChild>
               <CollapsibleTrigger onClick={() => dispatch(toggleMenu(key))}>
                 {getLocalMessage(`menus.${key}`)}
