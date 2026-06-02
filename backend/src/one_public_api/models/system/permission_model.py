@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, List, Optional
+from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
 from sqlmodel import Field, Relationship, SQLModel
 
@@ -12,18 +12,28 @@ from one_public_api.models.mixins import IdMixin, MaintenanceMixin, TimestampMix
 if TYPE_CHECKING:
     from one_public_api.models import User
 
+PERMISSION_NAME_FIELD_KWARGS: Dict[str, Any] = {
+    "min_length": constants.LENGTH_3,
+    "max_length": constants.LENGTH_100,
+    "title": _("Permission name"),
+    "description": _("Display name of the permission."),
+}
+
+PERMISSION_DESCRIPTION_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_1000,
+    "title": _("Description"),
+    "description": _("Detailed description of the permission."),
+}
+
 
 class PermissionBase(SQLModel):
     name: Optional[str] = Field(
         default=None,
-        min_length=constants.LENGTH_3,
-        max_length=constants.LENGTH_100,
-        description=_("Permission name"),
+        **PERMISSION_NAME_FIELD_KWARGS,
     )
     description: Optional[str] = Field(
         default=None,
-        max_length=constants.LENGTH_1000,
-        description=_("Description"),
+        **PERMISSION_DESCRIPTION_FIELD_KWARGS,
     )
 
 

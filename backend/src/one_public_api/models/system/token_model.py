@@ -1,5 +1,5 @@
 from enum import IntEnum
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any, Dict
 from uuid import UUID
 
 from sqlmodel import Field, Relationship, SQLModel
@@ -12,6 +12,22 @@ from one_public_api.models.mixins import IdMixin
 if TYPE_CHECKING:
     from one_public_api.models.system.user_model import User
 
+TOKEN_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_500,
+    "title": _("Token"),
+    "description": _("Token value used for authentication or authorization."),
+}
+
+TOKEN_TYPE_FIELD_KWARGS: Dict[str, Any] = {
+    "title": _("Token type"),
+    "description": _("Type of the token."),
+}
+
+TOKEN_USER_ID_FIELD_KWARGS: Dict[str, Any] = {
+    "title": _("Token owner"),
+    "description": _("User who owns the token."),
+}
+
 
 class TokenType(IntEnum):
     ACCESS = 1
@@ -20,18 +36,17 @@ class TokenType(IntEnum):
 
 class TokenBase(SQLModel):
     token: str = Field(
-        max_length=constants.LENGTH_500,
-        description=_("Token"),
+        **TOKEN_FIELD_KWARGS,
     )
     type: TokenType = Field(
         default=TokenType.ACCESS,
-        description=_("Token type"),
+        **TOKEN_TYPE_FIELD_KWARGS,
     )
     user_id: UUID = Field(
         nullable=False,
         foreign_key=settings.DB_TABLE_PRE + "users.id",
         ondelete="CASCADE",
-        description=_("Owner of token"),
+        **TOKEN_USER_ID_FIELD_KWARGS,
     )
 
 

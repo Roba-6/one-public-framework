@@ -16,7 +16,7 @@ ACTION_NAME_FIELD_KWARGS: Dict[str, Any] = {
     "max_length": constants.LENGTH_55,
     "title": _("Action name"),
     "description": _(
-        "Unique identifier for the action. Used internally for referencing and routing."
+        "Unique identifier for the action. Used internally for referencing."
     ),
 }
 

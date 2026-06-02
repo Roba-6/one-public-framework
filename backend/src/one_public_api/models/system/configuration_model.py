@@ -13,6 +13,47 @@ from one_public_api.models.mixins import IdMixin, MaintenanceMixin, TimestampMix
 if TYPE_CHECKING:
     from one_public_api.models import User
 
+CONFIGURATION_NAME_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_100,
+    "title": _("Configuration name"),
+    "description": _("Display name of the configuration."),
+}
+
+CONFIGURATION_KEY_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_100,
+    "title": _("Configuration key"),
+    "description": _("Unique key used to identify the configuration."),
+}
+
+CONFIGURATION_VALUE_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_500,
+    "title": _("Configuration value"),
+    "description": _("Value assigned to the configuration."),
+}
+
+CONFIGURATION_TYPE_FIELD_KWARGS: Dict[str, Any] = {
+    "title": _("Configuration type"),
+    "description": _("Data type of the configuration value."),
+}
+
+CONFIGURATION_DESCRIPTION_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_1000,
+    "title": _("Description"),
+    "description": _("Detailed description of the configuration."),
+}
+
+CONFIGURATION_OPTIONS_FIELD_KWARGS: Dict[str, Any] = {
+    "title": _("Configuration options"),
+    "description": _("Available options for the configuration."),
+}
+
+CONFIGURATION_REQUIRES_AUTH_FIELD_KWARGS: Dict[str, Any] = {
+    "title": _("Requires authentication"),
+    "description": _(
+        "Indicates whether authentication is required to access this configuration."
+    ),
+}
+
 
 class ConfigurationType(IntEnum):
     """
@@ -40,28 +81,24 @@ class ConfigurationBase(SQLModel):
     name: Optional[str] = Field(
         default=None,
         min_length=constants.LENGTH_6,
-        max_length=constants.LENGTH_100,
-        description=_("Configuration name"),
+        **CONFIGURATION_NAME_FIELD_KWARGS,
     )
     key: Optional[str] = Field(
         default=None,
         min_length=constants.LENGTH_3,
-        max_length=constants.LENGTH_100,
-        description=_("Configuration key"),
+        **CONFIGURATION_KEY_FIELD_KWARGS,
     )
     value: Optional[str] = Field(
         default=None,
-        max_length=constants.LENGTH_500,
-        description=_("Configuration value"),
+        **CONFIGURATION_VALUE_FIELD_KWARGS,
     )
     type: Optional[ConfigurationType] = Field(
         default=None,
-        description=_("Configuration type"),
+        **CONFIGURATION_TYPE_FIELD_KWARGS,
     )
     description: Optional[str] = Field(
         default=None,
-        max_length=constants.LENGTH_1000,
-        description=_("Description"),
+        **CONFIGURATION_DESCRIPTION_FIELD_KWARGS,
     )
 
 
@@ -69,11 +106,11 @@ class ConfigurationOption(SQLModel):
     options: Optional[Dict[str, Any]] = Field(
         default_factory=dict,
         sa_column=Column(JSON),
-        description=_("Configuration options"),
+        **CONFIGURATION_OPTIONS_FIELD_KWARGS,
     )
     requires_auth: Optional[bool] = Field(
         default=None,
-        description=_("Whether auth is required"),
+        **CONFIGURATION_REQUIRES_AUTH_FIELD_KWARGS,
     )
 
 
@@ -93,37 +130,33 @@ class Configuration(
         default=None,
         nullable=True,
         min_length=constants.LENGTH_6,
-        max_length=constants.LENGTH_100,
-        description=_("Configuration name"),
+        **CONFIGURATION_NAME_FIELD_KWARGS,
     )
     key: str = Field(
         nullable=False,
         min_length=constants.LENGTH_3,
-        max_length=constants.LENGTH_100,
-        description=_("Configuration key"),
+        **CONFIGURATION_KEY_FIELD_KWARGS,
     )
     value: str = Field(
         default=None,
         nullable=True,
-        max_length=constants.LENGTH_500,
-        description=_("Configuration value"),
+        **CONFIGURATION_VALUE_FIELD_KWARGS,
     )
     type: ConfigurationType = Field(
         default=ConfigurationType.OTHER,
         sa_column=Column(SQLEnum(ConfigurationType, name="configuration_type")),
-        description=_("Configuration type"),
+        **CONFIGURATION_TYPE_FIELD_KWARGS,
     )
     requires_auth: bool = Field(
         default=True,
         nullable=False,
         sa_column_kwargs={"server_default": "true", "nullable": False},
-        description=_("Whether auth is required"),
+        **CONFIGURATION_REQUIRES_AUTH_FIELD_KWARGS,
     )
     description: str = Field(
         default=None,
         nullable=True,
-        max_length=constants.LENGTH_1000,
-        description=_("Description"),
+        **CONFIGURATION_DESCRIPTION_FIELD_KWARGS,
     )
 
     creator: Optional["User"] = Relationship(

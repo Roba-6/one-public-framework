@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, List, Optional
+from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
 from sqlmodel import Field, Relationship, SQLModel
 
@@ -16,18 +16,28 @@ from one_public_api.models.mixins import (
 if TYPE_CHECKING:
     from one_public_api.models import Organization, Permission, User
 
+ROLE_NAME_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_100,
+    "title": _("Role name"),
+    "description": _("Display name of the role."),
+}
+
+ROLE_DESCRIPTION_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_1000,
+    "title": _("Description"),
+    "description": _("Detailed description of the role."),
+}
+
 
 class RoleBase(SQLModel):
     name: Optional[str] = Field(
         default=None,
         min_length=constants.LENGTH_1,
-        max_length=constants.LENGTH_100,
-        description=_("Role name"),
+        **ROLE_NAME_FIELD_KWARGS,
     )
     description: Optional[str] = Field(
         default=None,
-        max_length=constants.LENGTH_1000,
-        description=_("Description"),
+        **ROLE_DESCRIPTION_FIELD_KWARGS,
     )
 
 

@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, List, Optional
+from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
 from sqlmodel import Field, Relationship, SQLModel
 
@@ -14,29 +14,51 @@ from one_public_api.models.system.user_model import User
 if TYPE_CHECKING:
     from one_public_api.models import Permission
 
+FEATURE_NAME_FIELD_KWARGS: Dict[str, Any] = {
+    "min_length": constants.LENGTH_13,
+    "max_length": constants.LENGTH_13,
+    "title": _("Feature name"),
+    "description": _("Display name of the feature."),
+}
+
+FEATURE_DESCRIPTION_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_1000,
+    "title": _("Description"),
+    "description": _("Detailed description of the feature."),
+}
+
+FEATURE_IS_ENABLED_FIELD_KWARGS: Dict[str, Any] = {
+    "title": _("Enabled"),
+    "description": _("Indicates whether the feature is active and can be used."),
+}
+
+FEATURE_REQUIRES_AUTH_FIELD_KWARGS: Dict[str, Any] = {
+    "title": _("Requires authentication"),
+    "description": _(
+        "Indicates whether authentication is required to access this feature."
+    ),
+}
+
 
 class FeatureBase(SQLModel):
     name: Optional[str] = Field(
         default=None,
-        min_length=constants.LENGTH_13,
-        max_length=constants.LENGTH_13,
-        description=_("Feature name"),
+        **FEATURE_NAME_FIELD_KWARGS,
     )
     description: Optional[str] = Field(
         default=None,
-        max_length=constants.LENGTH_1000,
-        description=_("Description"),
+        **FEATURE_DESCRIPTION_FIELD_KWARGS,
     )
 
 
 class FeatureStatus(SQLModel):
     is_enabled: Optional[bool] = Field(
         default=None,
-        description=_("Whether the feature is enabled"),
+        **FEATURE_IS_ENABLED_FIELD_KWARGS,
     )
     requires_auth: Optional[bool] = Field(
         default=None,
-        description=_("Whether auth is required"),
+        **FEATURE_REQUIRES_AUTH_FIELD_KWARGS,
     )
 
 
@@ -55,25 +77,22 @@ class Feature(
     name: str = Field(
         nullable=False,
         unique=True,
-        min_length=constants.LENGTH_13,
-        max_length=constants.LENGTH_13,
-        description=_("Feature name"),
+        **FEATURE_NAME_FIELD_KWARGS,
     )
     description: str = Field(
         default=None,
         nullable=True,
-        max_length=constants.LENGTH_1000,
-        description=_("Description"),
+        **FEATURE_DESCRIPTION_FIELD_KWARGS,
     )
     is_enabled: bool = Field(
         default=False,
         nullable=False,
-        description=_("Whether the feature is enabled"),
+        **FEATURE_IS_ENABLED_FIELD_KWARGS,
     )
     requires_auth: bool = Field(
         default=True,
         nullable=False,
-        description=_("Whether auth is required"),
+        **FEATURE_REQUIRES_AUTH_FIELD_KWARGS,
     )
 
     creator: Optional["User"] = Relationship(

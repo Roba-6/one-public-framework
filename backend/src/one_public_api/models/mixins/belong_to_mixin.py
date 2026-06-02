@@ -10,7 +10,7 @@ ORGANIZATION_ID_FIELD_KWARGS: Dict[str, Any] = {
     "foreign_key": settings.DB_TABLE_PRE + "organizations.id",
     "ondelete": "RESTRICT",
     "title": _("Organization ID"),
-    "description": _("Unique identifier of the associated organization."),
+    "description": _("ID of the associated organization."),
 }
 
 
