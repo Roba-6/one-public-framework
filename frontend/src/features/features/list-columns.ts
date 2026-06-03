@@ -9,6 +9,12 @@ export const listColumns: DataColumn[] = [
     align: 'left',
   },
   {
+    key: 'key',
+    name: getLocalMessage('labels.feature.key'),
+    isSortable: true,
+    align: 'left',
+  },
+  {
     key: 'isEnabled',
     name: getLocalMessage('labels.enabled'),
     type: 'booleanIcon',

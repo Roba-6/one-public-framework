@@ -1,5 +1,3 @@
-@reference "../index.css";
-
 .develop-panel {
   .color-item {
     @apply flex items-center;
@@ -17,7 +15,3 @@
     }
   }
 }
-
-/*.develop-panel:hover {*/
-/*  @apply border-[var(--color-brown-400)];*/
-/*}*/

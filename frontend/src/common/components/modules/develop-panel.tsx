@@ -1,5 +1,3 @@
-import '@/styles/develop-panel.css'
-
 import { Wrench } from 'lucide-react'
 import { Fragment } from 'react'
 
