@@ -57,7 +57,7 @@ class ActionPublicResponse(ActionBase, IdMixin):
 
 
 class ActionCreateRequest(ActionBase, ActionStatus, ActionForeignIds):
-    name: str = Field(**ACTION_NAME_FIELD_KWARGS)
+    key: str = Field(**ACTION_NAME_FIELD_KWARGS)
 
     model_config = {
         "alias_generator": to_camel,

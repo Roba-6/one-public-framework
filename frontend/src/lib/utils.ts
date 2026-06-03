@@ -123,3 +123,7 @@ export const formatNumber = (num: string | number): string => {
     parseFloat(num.toString())
   )
 }
+
+export const setDownloadUrl = (url: string): string => {
+  return url + `?token=${store.getState().app.accessToken}`
+}

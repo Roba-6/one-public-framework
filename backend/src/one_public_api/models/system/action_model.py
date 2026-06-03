@@ -12,12 +12,19 @@ from one_public_api.models.mixins import IdMixin, MaintenanceMixin, TimestampMix
 if TYPE_CHECKING:
     from one_public_api.models import Permission, User
 
-ACTION_NAME_FIELD_KWARGS: Dict[str, Any] = {
+ACTION_KEY_FIELD_KWARGS: Dict[str, Any] = {
+    "min_length": constants.LENGTH_3,
     "max_length": constants.LENGTH_55,
-    "title": _("Action name"),
+    "title": _("Action key"),
     "description": _(
         "Unique identifier for the action. Used internally for referencing."
     ),
+}
+
+ACTION_NAME_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_100,
+    "title": _("Action name"),
+    "description": _("Action name that can be modified by the user."),
 }
 
 ACTION_LABEL_FIELD_KWARGS: Dict[str, Any] = {
@@ -83,9 +90,12 @@ ACTION_PARENT_ID_FIELD_KWARGS: Dict[str, Any] = {
 
 
 class ActionBase(SQLModel):
+    key: Optional[str] = Field(
+        default=None,
+        **ACTION_KEY_FIELD_KWARGS,
+    )
     name: Optional[str] = Field(
         default=None,
-        min_length=constants.LENGTH_3,
         **ACTION_NAME_FIELD_KWARGS,
     )
     label: Optional[str] = Field(
@@ -146,10 +156,9 @@ class Action(
 ):
     __tablename__ = settings.DB_TABLE_PRE + "actions"
 
-    name: str = Field(
+    key: str = Field(
         nullable=False,
         unique=True,
-        min_length=constants.LENGTH_9,
         **ACTION_NAME_FIELD_KWARGS,
     )
     is_enabled: bool = Field(

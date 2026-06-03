@@ -57,7 +57,7 @@ def init_features(app: FastAPI, session: Session, user: User) -> None:
         if isinstance(route, BaseRoute):
             features.append(
                 {
-                    "name": getattr(route, "name"),
+                    "key": getattr(route, "name"),
                     "is_enabled": True,
                     "requires_auth": False
                     if getattr(route, "name")[8] == "P"
@@ -73,7 +73,7 @@ def init_features(app: FastAPI, session: Session, user: User) -> None:
 
     features_list: List[Feature] = dc.all_if_not_exists(Feature, features)
     for feature in features_list:
-        feature.description = feature_descriptions[feature.name]
+        feature.description = feature_descriptions[feature.key]
         du.one(feature)
     session.commit()
 
@@ -81,29 +81,9 @@ def init_features(app: FastAPI, session: Session, user: User) -> None:
 def init_categories(session: Session, user: User) -> None:
     categories: List[Dict[str, Any]] = [
         {
-            "name": "管理者",
-            "value": "ADM",
-            "options": {"type": "OrganizationType"},
-        },
-        {
-            "name": "倉庫運営会社",
-            "value": "COY",
-            "options": {"type": "OrganizationType"},
-        },
-        {
-            "name": "エリア倉庫",
-            "value": "WHS",
-            "options": {"type": "OrganizationType"},
-        },
-        {
-            "name": "店舗グループ",
-            "value": "SGP",
-            "options": {"type": "OrganizationType"},
-        },
-        {
-            "name": "店舗",
-            "value": "SHP",
-            "options": {"type": "OrganizationType"},
+            "name": "xxx",
+            "value": "xxx",
+            "options": {"type": "xxx"},
         },
     ]
     categories = add_maintenance(categories, user)

@@ -3,12 +3,14 @@ from uuid import UUID
 
 from sqlmodel import Field
 
-from one_public_api.common import constants
 from one_public_api.common.utility.str import to_camel
 from one_public_api.core.i18n import translate as _
 from one_public_api.models.mixins import IdMixin
 from one_public_api.models.mixins.timestamp_mixin import TimestampMixin
-from one_public_api.models.system.permission_model import PermissionBase
+from one_public_api.models.system.permission_model import (
+    PERMISSION_KEY_FIELD_KWARGS,
+    PermissionBase,
+)
 from one_public_api.schemas.action_schema import ActionPublicResponse
 from one_public_api.schemas.action_schema import example_base as action_example
 from one_public_api.schemas.feature_schema import FeaturePublicResponse
@@ -70,11 +72,7 @@ class PermissionPublicResponse(PermissionBase, IdMixin):
 
 
 class PermissionCreateRequest(PermissionBase):
-    name: str = Field(
-        min_length=constants.LENGTH_3,
-        max_length=constants.LENGTH_100,
-        description=_("Permission name"),
-    )
+    key: str = Field(**PERMISSION_KEY_FIELD_KWARGS)
 
     action_ids: List[UUID] = Field(
         default_factory=list,

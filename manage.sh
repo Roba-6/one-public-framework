@@ -183,7 +183,7 @@ case $1 in
     if [ "$IS_FRONT" != "" ] || [ "$IS_NOT_ALL" = "" ]; then
       cd "$PROJECT_DIR/frontend" || exit
 
-      process="yarn build >/dev/null 2>&1 >> $LOG_FILE"
+      process="yarn build >> $LOG_FILE 2>&1"
       run_process "Building the frontend as a package" "$process"
     fi
 

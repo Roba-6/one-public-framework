@@ -10,8 +10,7 @@ import { Skeleton } from '@/common/components/ui/skeleton'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/common/components/ui/tooltip'
 import type { DataDetailProps } from '@/common/types/props'
 import type { Attachment } from '@/features/attachments/types/attachment'
-import { setDownloadUrl } from '@/lib/functions'
-import { formatDay, formatNumber } from '@/lib/utils'
+import { formatDay, formatNumber, setDownloadUrl } from '@/lib/utils'
 
 const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
   console.log('data', props.data)

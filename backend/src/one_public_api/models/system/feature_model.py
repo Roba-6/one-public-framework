@@ -14,11 +14,18 @@ from one_public_api.models.system.user_model import User
 if TYPE_CHECKING:
     from one_public_api.models import Permission
 
+FEATURE_KEY_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_20,
+    "title": _("Feature key"),
+    "description": _(
+        "Unique identifier for the feature. Used internally for referencing."
+    ),
+}
+
 FEATURE_NAME_FIELD_KWARGS: Dict[str, Any] = {
-    "min_length": constants.LENGTH_13,
-    "max_length": constants.LENGTH_13,
+    "max_length": constants.LENGTH_100,
     "title": _("Feature name"),
-    "description": _("Display name of the feature."),
+    "description": _("Feature name that can be modified by the user."),
 }
 
 FEATURE_DESCRIPTION_FIELD_KWARGS: Dict[str, Any] = {
@@ -41,6 +48,10 @@ FEATURE_REQUIRES_AUTH_FIELD_KWARGS: Dict[str, Any] = {
 
 
 class FeatureBase(SQLModel):
+    key: Optional[str] = Field(
+        default=None,
+        **FEATURE_KEY_FIELD_KWARGS,
+    )
     name: Optional[str] = Field(
         default=None,
         **FEATURE_NAME_FIELD_KWARGS,
@@ -74,10 +85,10 @@ class Feature(
 
     __tablename__ = settings.DB_TABLE_PRE + "features"
 
-    name: str = Field(
+    key: str = Field(
         nullable=False,
         unique=True,
-        **FEATURE_NAME_FIELD_KWARGS,
+        **FEATURE_KEY_FIELD_KWARGS,
     )
     description: str = Field(
         default=None,

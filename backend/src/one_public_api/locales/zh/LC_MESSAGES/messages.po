@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.24\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-06-02 18:50+0900\n"
+"POT-Creation-Date: 2026-06-03 17:30+0900\n"
 "PO-Revision-Date: 2025-10-03 18:52+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: zh\n"
@@ -197,100 +197,109 @@ msgstr ""
 msgid "Date and time when the record was last updated."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:17
-msgid "Action name"
-msgstr ""
+#: src/one_public_api/models/system/action_model.py:18
+#, fuzzy
+msgid "Action key"
+msgstr "强制登出功能。"
 
-#: src/one_public_api/models/system/action_model.py:19
+#: src/one_public_api/models/system/action_model.py:20
 msgid "Unique identifier for the action. Used internally for referencing."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:25
+#: src/one_public_api/models/system/action_model.py:26
+msgid "Action name"
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:27
+msgid "Action name that can be modified by the user."
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:32
 msgid "Action label"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:26
+#: src/one_public_api/models/system/action_model.py:33
 msgid "Display name of the action shown in the user interface."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:31
+#: src/one_public_api/models/system/action_model.py:38
 msgid "Action URL"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:33
+#: src/one_public_api/models/system/action_model.py:40
 msgid "URL path associated with the action. Used for navigation or routing."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:39
+#: src/one_public_api/models/system/action_model.py:46
 msgid "Action icon"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:41
+#: src/one_public_api/models/system/action_model.py:48
 msgid "Icon name or identifier used to visually represent the action in the UI."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:47
+#: src/one_public_api/models/system/action_model.py:54
 msgid "Component name"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:49
+#: src/one_public_api/models/system/action_model.py:56
 msgid "Frontend component name responsible for rendering the action view."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:54
+#: src/one_public_api/models/system/action_model.py:61
 msgid "Visible"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:55
+#: src/one_public_api/models/system/action_model.py:62
 msgid "Determines whether the action is visible in the user interface."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:60
+#: src/one_public_api/models/system/action_model.py:67
 #: src/one_public_api/models/system/attachment_model.py:29
 #: src/one_public_api/models/system/category_model.py:33
 #: src/one_public_api/models/system/configuration_model.py:41
-#: src/one_public_api/models/system/feature_model.py:26
+#: src/one_public_api/models/system/feature_model.py:33
 #: src/one_public_api/models/system/organization_model.py:35
-#: src/one_public_api/models/system/permission_model.py:24
-#: src/one_public_api/models/system/role_model.py:27
+#: src/one_public_api/models/system/permission_model.py:32
+#: src/one_public_api/models/system/role_model.py:34
 msgid "Description"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:61
+#: src/one_public_api/models/system/action_model.py:68
 msgid "Detailed description of the action and its purpose."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:65
+#: src/one_public_api/models/system/action_model.py:72
 #: src/one_public_api/models/system/category_model.py:43
-#: src/one_public_api/models/system/feature_model.py:31
+#: src/one_public_api/models/system/feature_model.py:38
 #: src/one_public_api/models/system/organization_model.py:40
 #: src/one_public_api/models/system/user_model.py:58
 #, fuzzy
 msgid "Enabled"
 msgstr "无效的用户。"
 
-#: src/one_public_api/models/system/action_model.py:66
+#: src/one_public_api/models/system/action_model.py:73
 msgid "Indicates whether the action is active and can be used."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:70
+#: src/one_public_api/models/system/action_model.py:77
 #: src/one_public_api/models/system/attachment_model.py:34
 #: src/one_public_api/models/system/configuration_model.py:51
-#: src/one_public_api/models/system/feature_model.py:36
+#: src/one_public_api/models/system/feature_model.py:43
 msgid "Requires authentication"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:72
+#: src/one_public_api/models/system/action_model.py:79
 #: src/one_public_api/models/system/attachment_model.py:36
 msgid "Specifies whether authentication is required to access this action."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:77
+#: src/one_public_api/models/system/action_model.py:84
 #, fuzzy
 msgid "Parent action ID"
 msgstr "强制登出功能。"
 
-#: src/one_public_api/models/system/action_model.py:79
+#: src/one_public_api/models/system/action_model.py:86
 msgid ""
 "Identifier of the parent action. Used to define hierarchical "
 "relationships between actions (e.g., menu and sub-menu structure)."
@@ -454,24 +463,33 @@ msgstr ""
 msgid "Indicates whether authentication is required to access this configuration."
 msgstr ""
 
-#: src/one_public_api/models/system/feature_model.py:20
+#: src/one_public_api/models/system/feature_model.py:19
+#, fuzzy
+msgid "Feature key"
+msgstr "该功能未被起用。"
+
+#: src/one_public_api/models/system/feature_model.py:21
+msgid "Unique identifier for the feature. Used internally for referencing."
+msgstr ""
+
+#: src/one_public_api/models/system/feature_model.py:27
 #: src/one_public_api/schemas/feature_schema.py:57
 msgid "Feature name"
 msgstr ""
 
-#: src/one_public_api/models/system/feature_model.py:21
-msgid "Display name of the feature."
+#: src/one_public_api/models/system/feature_model.py:28
+msgid "Feature name that can be modified by the user."
 msgstr ""
 
-#: src/one_public_api/models/system/feature_model.py:27
+#: src/one_public_api/models/system/feature_model.py:34
 msgid "Detailed description of the feature."
 msgstr ""
 
-#: src/one_public_api/models/system/feature_model.py:32
+#: src/one_public_api/models/system/feature_model.py:39
 msgid "Indicates whether the feature is active and can be used."
 msgstr ""
 
-#: src/one_public_api/models/system/feature_model.py:38
+#: src/one_public_api/models/system/feature_model.py:45
 msgid "Indicates whether authentication is required to access this feature."
 msgstr ""
 
@@ -529,27 +547,36 @@ msgid "Whether the organization is enabled"
 msgstr ""
 
 #: src/one_public_api/models/system/permission_model.py:18
-#: src/one_public_api/schemas/permission_schema.py:76
+msgid "Permission key"
+msgstr ""
+
+#: src/one_public_api/models/system/permission_model.py:20
+msgid "Unique identifier for the permission. Used internally for referencing."
+msgstr ""
+
+#: src/one_public_api/models/system/permission_model.py:26
 msgid "Permission name"
 msgstr ""
 
-#: src/one_public_api/models/system/permission_model.py:19
+#: src/one_public_api/models/system/permission_model.py:27
 msgid "Display name of the permission."
 msgstr ""
 
-#: src/one_public_api/models/system/permission_model.py:25
+#: src/one_public_api/models/system/permission_model.py:33
 msgid "Detailed description of the permission."
 msgstr ""
 
-#: src/one_public_api/models/system/role_model.py:21
+#: src/one_public_api/models/system/role_model.py:22
+#: src/one_public_api/models/system/role_model.py:28
 msgid "Role name"
 msgstr ""
 
-#: src/one_public_api/models/system/role_model.py:22
+#: src/one_public_api/models/system/role_model.py:23
+#: src/one_public_api/models/system/role_model.py:29
 msgid "Display name of the role."
 msgstr ""
 
-#: src/one_public_api/models/system/role_model.py:28
+#: src/one_public_api/models/system/role_model.py:35
 msgid "Detailed description of the role."
 msgstr ""
 
@@ -643,7 +670,7 @@ msgid "Number of consecutive failed login attempts recorded for the account."
 msgstr ""
 
 #: src/one_public_api/routers/action_router.py:28
-#: src/one_public_api/schemas/permission_schema.py:51
+#: src/one_public_api/schemas/permission_schema.py:53
 msgid "Actions"
 msgstr ""
 
@@ -880,7 +907,7 @@ msgid "The ID of the configuration item to be deleted"
 msgstr ""
 
 #: src/one_public_api/routers/feature_router.py:28
-#: src/one_public_api/schemas/permission_schema.py:56
+#: src/one_public_api/schemas/permission_schema.py:58
 msgid "Features"
 msgstr ""
 
@@ -1016,7 +1043,7 @@ msgid "URL"
 msgstr ""
 
 #: src/one_public_api/schemas/attachment_schema.py:48
-#: src/one_public_api/schemas/attachment_schema.py:61
+#: src/one_public_api/schemas/attachment_schema.py:62
 msgid "PREVIEW"
 msgstr ""
 
@@ -1116,33 +1143,33 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
-#: src/one_public_api/schemas/permission_schema.py:52
+#: src/one_public_api/schemas/permission_schema.py:54
 msgid "Actions Description"
 msgstr ""
 
-#: src/one_public_api/schemas/permission_schema.py:57
+#: src/one_public_api/schemas/permission_schema.py:59
 msgid "Features Description"
 msgstr ""
 
-#: src/one_public_api/schemas/permission_schema.py:81
-#: src/one_public_api/schemas/permission_schema.py:101
+#: src/one_public_api/schemas/permission_schema.py:79
+#: src/one_public_api/schemas/permission_schema.py:99
 #, fuzzy
 msgid "Action IDs"
 msgstr "强制登出功能。"
 
-#: src/one_public_api/schemas/permission_schema.py:82
-#: src/one_public_api/schemas/permission_schema.py:102
+#: src/one_public_api/schemas/permission_schema.py:80
+#: src/one_public_api/schemas/permission_schema.py:100
 msgid "List of action IDs associated with the permission"
 msgstr ""
 
-#: src/one_public_api/schemas/permission_schema.py:87
-#: src/one_public_api/schemas/permission_schema.py:107
+#: src/one_public_api/schemas/permission_schema.py:85
+#: src/one_public_api/schemas/permission_schema.py:105
 #, fuzzy
 msgid "Feature IDs"
 msgstr "该功能未被起用。"
 
-#: src/one_public_api/schemas/permission_schema.py:88
-#: src/one_public_api/schemas/permission_schema.py:108
+#: src/one_public_api/schemas/permission_schema.py:86
+#: src/one_public_api/schemas/permission_schema.py:106
 msgid "List of feature IDs associated with the permission"
 msgstr ""
 
@@ -1389,4 +1416,7 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Owner of token"
+#~ msgstr ""
+
+#~ msgid "Display name of the feature."
 #~ msgstr ""

@@ -55,13 +55,14 @@ class AttachmentPublicResponse(AttachmentBase, AttachmentMeta, IdMixin):
     @computed_field(return_type=str, description=_("URL"))
     def public_url(self) -> str:
         return (
-            f"{settings.BASE_URL}{constants.ROUTER_PREFIX_ATTACHMENT}{self.id}/download"
+            f"{settings.BASE_URL}{constants.ROUTER_PREFIX_ATTACHMENT}"
+            f"/{self.id}/download"
         )
 
     @computed_field(return_type=str, description=_("PREVIEW"))
     def public_preview(self) -> str:
         return (
-            f"{settings.BASE_URL}{constants.ROUTER_PREFIX_ATTACHMENT}{self.id}/preview"
+            f"{settings.BASE_URL}{constants.ROUTER_PREFIX_ATTACHMENT}/{self.id}/preview"
         )
 
     model_config = {

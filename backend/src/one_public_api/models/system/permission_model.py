@@ -12,8 +12,16 @@ from one_public_api.models.mixins import IdMixin, MaintenanceMixin, TimestampMix
 if TYPE_CHECKING:
     from one_public_api.models import User
 
-PERMISSION_NAME_FIELD_KWARGS: Dict[str, Any] = {
+PERMISSION_KEY_FIELD_KWARGS: Dict[str, Any] = {
     "min_length": constants.LENGTH_3,
+    "max_length": constants.LENGTH_100,
+    "title": _("Permission key"),
+    "description": _(
+        "Unique identifier for the permission. Used internally for referencing."
+    ),
+}
+
+PERMISSION_NAME_FIELD_KWARGS: Dict[str, Any] = {
     "max_length": constants.LENGTH_100,
     "title": _("Permission name"),
     "description": _("Display name of the permission."),
@@ -27,6 +35,10 @@ PERMISSION_DESCRIPTION_FIELD_KWARGS: Dict[str, Any] = {
 
 
 class PermissionBase(SQLModel):
+    key: Optional[str] = Field(
+        default=None,
+        **PERMISSION_KEY_FIELD_KWARGS,
+    )
     name: Optional[str] = Field(
         default=None,
         **PERMISSION_NAME_FIELD_KWARGS,
@@ -46,6 +58,11 @@ class Permission(
 ):
     __tablename__ = settings.DB_TABLE_PRE + "permissions"
 
+    key: str = Field(
+        nullable=False,
+        unique=True,
+        **PERMISSION_KEY_FIELD_KWARGS,
+    )
     creator: Optional["User"] = Relationship(
         sa_relationship_kwargs={
             "foreign_keys": "[Permission.created_by]",

@@ -21,6 +21,26 @@ export const detailColumns: DataColumn[] = [
     colors: ['text-[var(--color-green-500)]', 'text-[var(--color-gray-700)]'],
   },
   {
+    key: 'url',
+    name: getLocalMessage('labels.feature.name'),
+    type: 'label',
+  },
+  {
+    key: 'preview',
+    name: getLocalMessage('labels.feature.name'),
+    type: 'label',
+  },
+  {
+    key: 'publicUrl',
+    name: getLocalMessage('labels.feature.name'),
+    type: 'label',
+  },
+  {
+    key: 'publicPreview',
+    name: getLocalMessage('labels.feature.name'),
+    type: 'label',
+  },
+  {
     key: 'createdAt',
     name: getLocalMessage('labels.createdAt'),
     type: 'datetime',
