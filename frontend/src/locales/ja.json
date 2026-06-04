@@ -76,7 +76,8 @@
       "name": "機能名"
     },
     "updatedAt": "最終変更日時",
-    "username": "ユーザー名"
+    "username": "ユーザー名",
+    "key": "キー"
   },
   "placeholder": {
     "anyKeywords": "キーワードを入力してください",

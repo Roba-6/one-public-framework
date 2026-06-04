@@ -3,13 +3,13 @@ import { getLocalMessage } from '@/lib/utils'
 
 export const listColumns: DataColumn[] = [
   {
-    key: 'name',
+    key: 'username',
     name: getLocalMessage('labels.user.name'),
     isSortable: true,
     align: 'left',
   },
   { key: 'nickname', name: getLocalMessage('labels.user.nickname'), isSortable: true },
-  { key: 'fullname', name: getLocalMessage('labels.user.fullname') },
+  { key: 'fullName', name: getLocalMessage('labels.user.fullname') },
   { key: 'email', name: getLocalMessage('labels.user.email'), isSortable: true },
   {
     key: 'isEnabled',

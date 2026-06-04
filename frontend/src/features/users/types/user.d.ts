@@ -1,14 +1,14 @@
 interface UserBase {
-  name: string
+  username: string
   email: string
-  lastname?: string
-  firstname?: string
+  lastName?: string
+  firstName?: string
   nickname?: string
 }
 
 export interface User extends UserBase {
   id?: string
-  fullname?: string
+  fullName?: string
   failedAttempts?: number
   isEnabled?: boolean
   isLocked?: boolean

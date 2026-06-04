@@ -10,7 +10,7 @@ export const listColumns: DataColumn[] = [
   },
   {
     key: 'key',
-    name: getLocalMessage('labels.feature.key'),
+    name: getLocalMessage('labels.key'),
     isSortable: true,
     align: 'left',
   },

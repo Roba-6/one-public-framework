@@ -186,7 +186,7 @@ body {
 .dark {
   --background: var(--color-brown-800);
   --foreground: var(--color-gray-500);
-  --card: color-mix(in srgb, var(--color-brown-700) 50%, transparent);
+  --card: var(--color-brown-800);
   --card-foreground: var(--color-gray-500);
   --popover: var(--color-brown-800);
   --popover-foreground: var(--color-gray-500);
@@ -346,7 +346,7 @@ table.data-list {
       @apply bg-[var(--card)];
     }
     tr:nth-child(even) td {
-      @apply bg-neutral-100 dark:bg-[var(--color-brown-800)];
+      @apply bg-neutral-100 dark:bg-[color-mix(in_srgb,_#3c3530_50%,_black)];
     }
     tr:hover td {
       @apply bg-neutral-200 dark:bg-[var(--color-brown-700)] transition-all duration-300;

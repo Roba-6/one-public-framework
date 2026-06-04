@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Any, Dict
 
 from sqlmodel import Field, SQLModel
@@ -34,12 +34,12 @@ class TimestampMixin(SQLModel):
     """
 
     created_at: datetime = Field(
-        default_factory=datetime.now,
+        default_factory=lambda: datetime.now(UTC),
         nullable=False,
         **CREATED_AT_FIELD_KWARGS,
     )
     updated_at: datetime = Field(
-        default_factory=datetime.now,
+        default_factory=lambda: datetime.now(UTC),
         nullable=False,
         **UPDATED_AT_FIELD_KWARGS,
     )

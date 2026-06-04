@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from fastapi import FastAPI
 from sqlalchemy.exc import NoResultFound
@@ -16,16 +16,16 @@ from one_public_api.routers.base_route import BaseRoute
 
 
 def init_users(session: Session) -> User:
-    user: Optional[User]
+    user: User
     try:
         dr = DataReader(session)
-        user = dr.one(User, {"name": settings.ADMIN_USER})
+        user = dr.one(User, {"username": settings.ADMIN_USER})
     except NoResultFound:
         users: List[Dict[str, Any]] = [
             {
-                "name": settings.ADMIN_USER,
+                "username": settings.ADMIN_USER,
                 "email": settings.ADMIN_MAIL,
-                "password": get_hashed_password(settings.ADMIN_PASSWORD),
+                "hashed_password": get_hashed_password(settings.ADMIN_PASSWORD),
             }
         ]
         dc = DataCreator(session)
@@ -58,6 +58,7 @@ def init_features(app: FastAPI, session: Session, user: User) -> None:
             features.append(
                 {
                     "key": getattr(route, "name"),
+                    "name": getattr(route, "summary"),
                     "is_enabled": True,
                     "requires_auth": False
                     if getattr(route, "name")[8] == "P"

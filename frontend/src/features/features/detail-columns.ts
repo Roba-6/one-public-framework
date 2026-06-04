@@ -13,6 +13,10 @@ export const detailColumns: DataColumn[] = [
     type: 'markdown',
   },
   {
+    key: 'key',
+    name: getLocalMessage('labels.key'),
+  },
+  {
     key: 'isEnabled',
     name: getLocalMessage('labels.enabled'),
     type: 'booleanIcon',

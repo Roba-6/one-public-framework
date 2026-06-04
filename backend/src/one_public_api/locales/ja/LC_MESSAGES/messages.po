@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.24\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-06-03 23:09+0900\n"
+"POT-Creation-Date: 2026-06-04 16:59+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -143,11 +143,11 @@ msgstr "電話番号"
 msgid "Contact telephone number."
 msgstr "連絡先電話番号．"
 
-#: src/one_public_api/models/mixins/belong_to_mixin.py:12
+#: src/one_public_api/models/mixins/belong_to_mixin.py:10
 msgid "Organization ID"
 msgstr "組織 ID"
 
-#: src/one_public_api/models/mixins/belong_to_mixin.py:13
+#: src/one_public_api/models/mixins/belong_to_mixin.py:11
 msgid "ID of the associated organization."
 msgstr "所属された組織の ID．"
 
@@ -175,11 +175,12 @@ msgstr "更新者 ID"
 msgid "ID of the user who last updated this record."
 msgstr "レコードを最後に更新したユーザーの ID．"
 
-#: src/one_public_api/models/mixins/password_mixin.py:11
+#: src/one_public_api/models/mixins/password_mixin.py:10
+#: src/one_public_api/schemas/base_schema.py:108
 msgid "Password"
 msgstr "パスワード"
 
-#: src/one_public_api/models/mixins/password_mixin.py:12
+#: src/one_public_api/models/mixins/password_mixin.py:11
 msgid "Hashed password used for authentication."
 msgstr "認証時に使用されるハッシュ化済みのパスワード．"
 
@@ -274,7 +275,7 @@ msgstr "アクションの概要および目的を説明する詳細情報．"
 #: src/one_public_api/models/system/category_model.py:43
 #: src/one_public_api/models/system/feature_model.py:38
 #: src/one_public_api/models/system/organization_model.py:40
-#: src/one_public_api/models/system/user_model.py:58
+#: src/one_public_api/models/system/user_model.py:62
 msgid "Enabled"
 msgstr "有効"
 
@@ -424,7 +425,7 @@ msgid "Display name of the configuration."
 msgstr "設定の表示名．"
 
 #: src/one_public_api/models/system/configuration_model.py:24
-#: src/one_public_api/schemas/base_schema.py:223
+#: src/one_public_api/schemas/base_schema.py:227
 msgid "Configuration key"
 msgstr "設定項目キー"
 
@@ -433,7 +434,7 @@ msgid "Unique key used to identify the configuration."
 msgstr "設定を識別するための一意のキー．"
 
 #: src/one_public_api/models/system/configuration_model.py:30
-#: src/one_public_api/schemas/base_schema.py:227
+#: src/one_public_api/schemas/base_schema.py:231
 msgid "Configuration value"
 msgstr "設定項目値"
 
@@ -442,7 +443,7 @@ msgid "Value assigned to the configuration."
 msgstr "設定に割り当てられた値．"
 
 #: src/one_public_api/models/system/configuration_model.py:35
-#: src/one_public_api/schemas/base_schema.py:230
+#: src/one_public_api/schemas/base_schema.py:234
 msgid "Configuration type"
 msgstr "設定タイプ"
 
@@ -602,67 +603,68 @@ msgstr "トークン所有者"
 msgid "User who owns the token."
 msgstr "トークンに関連付けられたユーザー．"
 
-#: src/one_public_api/models/system/user_model.py:27
-msgid "User name"
+#: src/one_public_api/models/system/user_model.py:31
+#, fuzzy
+msgid "Username"
 msgstr "ユーザー名"
 
-#: src/one_public_api/models/system/user_model.py:28
+#: src/one_public_api/models/system/user_model.py:32
 msgid "Unique username used for login and system identification."
 msgstr "ログインおよびシステム識別に使用される一意のユーザー名．"
 
-#: src/one_public_api/models/system/user_model.py:33
+#: src/one_public_api/models/system/user_model.py:37
 msgid "Email address"
 msgstr "メールアドレス"
 
-#: src/one_public_api/models/system/user_model.py:34
+#: src/one_public_api/models/system/user_model.py:38
 msgid "User's email address used for authentication and communication."
 msgstr "認証および連絡に使用されるユーザーのメールアドレス．"
 
-#: src/one_public_api/models/system/user_model.py:39
+#: src/one_public_api/models/system/user_model.py:43
 msgid "First name"
 msgstr "名"
 
-#: src/one_public_api/models/system/user_model.py:40
+#: src/one_public_api/models/system/user_model.py:44
 msgid "User's given name."
 msgstr "下名前．"
 
-#: src/one_public_api/models/system/user_model.py:45
+#: src/one_public_api/models/system/user_model.py:49
 msgid "Last name"
 msgstr "姓"
 
-#: src/one_public_api/models/system/user_model.py:46
+#: src/one_public_api/models/system/user_model.py:50
 msgid "User's family name."
 msgstr "苗字．"
 
-#: src/one_public_api/models/system/user_model.py:51
+#: src/one_public_api/models/system/user_model.py:55
 msgid "Display nickname"
 msgstr "表示名"
 
-#: src/one_public_api/models/system/user_model.py:53
+#: src/one_public_api/models/system/user_model.py:57
 msgid "Nickname displayed in the user interface instead of the full name."
 msgstr "フルネームの代わりにユーザーインターフェースへ表示されるニックネーム．"
 
-#: src/one_public_api/models/system/user_model.py:60
+#: src/one_public_api/models/system/user_model.py:64
 msgid ""
 "Indicates whether the user account is active and allowed to access the "
 "system."
 msgstr "ユーザーアカウントが有効であり，システムへのアクセスが許可されているかどうかを示す．"
 
-#: src/one_public_api/models/system/user_model.py:65
+#: src/one_public_api/models/system/user_model.py:69
 msgid "Locked"
 msgstr "ロック"
 
-#: src/one_public_api/models/system/user_model.py:67
+#: src/one_public_api/models/system/user_model.py:71
 msgid ""
 "Indicates whether the account is locked due to security reasons (e.g., "
 "too many failed login attempts)."
 msgstr "セキュリティ上の理由（ログイン失敗回数超過など）により，アカウントがロックされているかどうかを示す．"
 
-#: src/one_public_api/models/system/user_model.py:73
+#: src/one_public_api/models/system/user_model.py:77
 msgid "Failed login attempts"
 msgstr "ログイン失敗回数"
 
-#: src/one_public_api/models/system/user_model.py:75
+#: src/one_public_api/models/system/user_model.py:79
 msgid "Number of consecutive failed login attempts recorded for the account."
 msgstr "アカウントに記録されている連続ログイン失敗回数です．"
 
@@ -874,7 +876,7 @@ msgstr "機能が見つかりません．"
 
 #: src/one_public_api/routers/configuration_router.py:28
 #: src/one_public_api/schemas/authenticate_schema.py:93
-#: src/one_public_api/schemas/base_schema.py:144
+#: src/one_public_api/schemas/base_schema.py:148
 msgid "Configuration"
 msgstr "設定"
 
@@ -1081,7 +1083,7 @@ msgid "Token Type Description"
 msgstr "トークンを「どう扱うか・どう送るか」を示す種類（方式）です．"
 
 #: src/one_public_api/schemas/authenticate_schema.py:89
-#: src/one_public_api/schemas/base_schema.py:140
+#: src/one_public_api/schemas/base_schema.py:144
 #: src/one_public_api/schemas/role_schema.py:31
 msgid "Role"
 msgstr "ロール"
@@ -1095,7 +1097,7 @@ msgid "Configuration Description"
 msgstr "ユーザーに適用される設定情報です．"
 
 #: src/one_public_api/schemas/base_schema.py:72
-#: src/one_public_api/schemas/base_schema.py:136
+#: src/one_public_api/schemas/base_schema.py:140
 msgid "Organization"
 msgstr "組織"
 
@@ -1103,21 +1105,26 @@ msgstr "組織"
 msgid "Full name"
 msgstr "氏名"
 
-#: src/one_public_api/schemas/base_schema.py:128
-#: src/one_public_api/schemas/base_schema.py:172
+#: src/one_public_api/schemas/base_schema.py:109
+#, fuzzy
+msgid "User password"
+msgstr "パスワード"
+
+#: src/one_public_api/schemas/base_schema.py:132
+#: src/one_public_api/schemas/base_schema.py:176
 msgid "Creator"
 msgstr "作成者"
 
-#: src/one_public_api/schemas/base_schema.py:132
-#: src/one_public_api/schemas/base_schema.py:177
+#: src/one_public_api/schemas/base_schema.py:136
+#: src/one_public_api/schemas/base_schema.py:181
 msgid "Updater"
 msgstr "最終変更者"
 
-#: src/one_public_api/schemas/base_schema.py:173
+#: src/one_public_api/schemas/base_schema.py:177
 msgid "Creator Description"
 msgstr "レコードを新規作成したユーザー情報．"
 
-#: src/one_public_api/schemas/base_schema.py:178
+#: src/one_public_api/schemas/base_schema.py:182
 msgid "Updater Description"
 msgstr "本データを最後に変更したユーザーの情報．"
 
@@ -1243,45 +1250,45 @@ msgid "user not verified"
 msgstr "ユーザーが確認されていません．"
 
 #: src/one_public_api/services/authenticate_service.py:108
-#: src/one_public_api/services/authenticate_service.py:145
+#: src/one_public_api/services/authenticate_service.py:147
 msgid "user not found"
 msgstr "ユーザーが見つかりません．"
 
-#: src/one_public_api/services/authenticate_service.py:138
-#: src/one_public_api/services/authenticate_service.py:255
+#: src/one_public_api/services/authenticate_service.py:140
+#: src/one_public_api/services/authenticate_service.py:257
 msgid "The token has expired"
 msgstr "トークンの有効期限が切れました．"
 
-#: src/one_public_api/services/authenticate_service.py:142
+#: src/one_public_api/services/authenticate_service.py:144
 msgid "Invalid refresh token"
 msgstr "リフレッシュトークンが無効です．"
 
-#: src/one_public_api/services/authenticate_service.py:183
+#: src/one_public_api/services/authenticate_service.py:185
 msgid "user disabled"
 msgstr "ユーザーが無効になっています．"
 
-#: src/one_public_api/services/authenticate_service.py:185
+#: src/one_public_api/services/authenticate_service.py:187
 msgid "user locked"
 msgstr "ユーザーがロックされています．"
 
-#: src/one_public_api/services/authenticate_service.py:217
+#: src/one_public_api/services/authenticate_service.py:219
 #, fuzzy
 msgid "Authentication token is missing"
 msgstr "認証"
 
-#: src/one_public_api/services/authenticate_service.py:233
+#: src/one_public_api/services/authenticate_service.py:235
 msgid "No user information found in the token"
 msgstr "トークンにユーザー情報が含まれていません．"
 
-#: src/one_public_api/services/authenticate_service.py:243
+#: src/one_public_api/services/authenticate_service.py:245
 msgid "Your account has been logged out."
 msgstr "アカウントはログアウトされました．"
 
-#: src/one_public_api/services/authenticate_service.py:248
+#: src/one_public_api/services/authenticate_service.py:250
 msgid "Your account has been logged in from another location."
 msgstr "このアカウントは別の場所からログインされました．"
 
-#: src/one_public_api/services/authenticate_service.py:257
+#: src/one_public_api/services/authenticate_service.py:259
 msgid "Invalid access token"
 msgstr "アクセストークンが無効です．"
 
@@ -1299,7 +1306,7 @@ msgstr "指定されたカラム名は不正です．"
 
 #: src/one_public_api/services/base_service.py:105
 #: src/one_public_api/services/base_service.py:116
-#: src/one_public_api/services/user_service.py:36
+#: src/one_public_api/services/user_service.py:37
 msgid "Data already exists."
 msgstr "データは既に存在します．"
 

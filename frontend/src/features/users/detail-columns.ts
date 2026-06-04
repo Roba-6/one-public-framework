@@ -3,12 +3,12 @@ import { getLocalMessage } from '@/lib/utils'
 
 export const detailColumns: DataColumn[] = [
   {
-    key: 'fullname',
+    key: 'fullName',
     name: getLocalMessage('labels.user.fullname'),
     type: 'title',
   },
   {
-    key: 'name',
+    key: 'username',
     name: getLocalMessage('labels.user.name'),
   },
   { key: 'email', name: getLocalMessage('labels.user.email') },
