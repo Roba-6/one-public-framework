@@ -18,7 +18,6 @@ if TYPE_CHECKING:
     from one_public_api.models import User
 
 ORGANIZATION_NAME_FIELD_KWARGS: Dict[str, Any] = {
-    "min_length": constants.LENGTH_1,
     "max_length": constants.LENGTH_100,
     "title": _("Organization name"),
     "description": _("Display name of the organization."),
@@ -67,7 +66,7 @@ class OrganizationStatus(SQLModel):
 class Organization(
     OrganizationBase,
     OrganizationStatus,
-    BelongToMixin,
+    BelongToMixin,  # For parent organization
     TimestampMixin,
     MaintenanceMixin,
     AddressMixin,
@@ -101,18 +100,21 @@ class Organization(
             "remote_side": "[User.id]",
         }
     )
-    organization: Optional["Organization"] = Relationship(
+    parent_organization: Optional["Organization"] = Relationship(
         sa_relationship_kwargs={
             "foreign_keys": "[Organization.organization_id]",
             "primaryjoin": "Organization.organization_id==Organization.id",
             "remote_side": "[Organization.id]",
         }
     )
-
+    # Users who belong to this organization.
     users: List["User"] = Relationship(
-        back_populates="organization", link_model=OrganizationUserLink
+        back_populates="organization",
+        link_model=OrganizationUserLink,
     )
-    category: Optional["Category"] = Relationship(link_model=CategoryOrganizationLink)
+    category: Optional["Category"] = Relationship(
+        link_model=CategoryOrganizationLink,
+    )
     configurations: List["Configuration"] = Relationship(
-        link_model=ConfigurationOrganizationLink
+        link_model=ConfigurationOrganizationLink,
     )

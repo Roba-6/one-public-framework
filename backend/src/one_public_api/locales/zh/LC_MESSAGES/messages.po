@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.24\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-06-04 16:59+0900\n"
+"POT-Creation-Date: 2026-06-05 19:07+0900\n"
 "PO-Revision-Date: 2025-10-03 18:52+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: zh\n"
@@ -260,7 +260,7 @@ msgstr ""
 #: src/one_public_api/models/system/category_model.py:33
 #: src/one_public_api/models/system/configuration_model.py:41
 #: src/one_public_api/models/system/feature_model.py:33
-#: src/one_public_api/models/system/organization_model.py:35
+#: src/one_public_api/models/system/organization_model.py:34
 #: src/one_public_api/models/system/permission_model.py:32
 #: src/one_public_api/models/system/role_model.py:34
 msgid "Description"
@@ -273,7 +273,7 @@ msgstr ""
 #: src/one_public_api/models/system/action_model.py:72
 #: src/one_public_api/models/system/category_model.py:43
 #: src/one_public_api/models/system/feature_model.py:38
-#: src/one_public_api/models/system/organization_model.py:40
+#: src/one_public_api/models/system/organization_model.py:39
 #: src/one_public_api/models/system/user_model.py:62
 #, fuzzy
 msgid "Enabled"
@@ -526,24 +526,24 @@ msgstr ""
 msgid "Indicates whether the notification is scheduled for publication."
 msgstr ""
 
-#: src/one_public_api/models/system/organization_model.py:23
+#: src/one_public_api/models/system/organization_model.py:22
 msgid "Organization name"
 msgstr ""
 
-#: src/one_public_api/models/system/organization_model.py:24
-#: src/one_public_api/models/system/organization_model.py:30
+#: src/one_public_api/models/system/organization_model.py:23
+#: src/one_public_api/models/system/organization_model.py:29
 msgid "Display name of the organization."
 msgstr ""
 
-#: src/one_public_api/models/system/organization_model.py:29
+#: src/one_public_api/models/system/organization_model.py:28
 msgid "Display name"
 msgstr ""
 
-#: src/one_public_api/models/system/organization_model.py:36
+#: src/one_public_api/models/system/organization_model.py:35
 msgid "Detailed description of the organization."
 msgstr ""
 
-#: src/one_public_api/models/system/organization_model.py:41
+#: src/one_public_api/models/system/organization_model.py:40
 msgid "Whether the organization is enabled"
 msgstr ""
 
