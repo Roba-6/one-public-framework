@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.24\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-06-05 19:07+0900\n"
+"POT-Creation-Date: 2026-06-08 13:06+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -258,7 +258,7 @@ msgstr "アクションをメニューに表示するかどうかを示す．"
 
 #: src/one_public_api/models/system/action_model.py:67
 #: src/one_public_api/models/system/attachment_model.py:29
-#: src/one_public_api/models/system/category_model.py:33
+#: src/one_public_api/models/system/category_model.py:35
 #: src/one_public_api/models/system/configuration_model.py:41
 #: src/one_public_api/models/system/feature_model.py:33
 #: src/one_public_api/models/system/organization_model.py:34
@@ -272,7 +272,7 @@ msgid "Detailed description of the action and its purpose."
 msgstr "アクションの概要および目的を説明する詳細情報．"
 
 #: src/one_public_api/models/system/action_model.py:72
-#: src/one_public_api/models/system/category_model.py:43
+#: src/one_public_api/models/system/category_model.py:50
 #: src/one_public_api/models/system/feature_model.py:38
 #: src/one_public_api/models/system/organization_model.py:39
 #: src/one_public_api/models/system/user_model.py:62
@@ -359,44 +359,54 @@ msgstr "ダウンロード回数"
 msgid "Total number of downloads for the attachment."
 msgstr "添付ファイルの総ダウンロード回数．"
 
-#: src/one_public_api/models/system/category_model.py:15
+#: src/one_public_api/models/system/category_model.py:17
 msgid "Category name"
 msgstr "カテゴリー名"
 
-#: src/one_public_api/models/system/category_model.py:16
+#: src/one_public_api/models/system/category_model.py:18
 msgid "Display name of the category."
 msgstr "カテゴリーの表示名．"
 
-#: src/one_public_api/models/system/category_model.py:21
+#: src/one_public_api/models/system/category_model.py:23
 msgid "Category alias"
 msgstr "カテゴリー別名"
 
-#: src/one_public_api/models/system/category_model.py:22
+#: src/one_public_api/models/system/category_model.py:24
 msgid "Alternative identifier used to reference the category."
 msgstr "カテゴリを参照するための別名識別子．"
 
-#: src/one_public_api/models/system/category_model.py:27
+#: src/one_public_api/models/system/category_model.py:29
 msgid "Category value"
 msgstr "カテゴリー値"
 
-#: src/one_public_api/models/system/category_model.py:28
+#: src/one_public_api/models/system/category_model.py:30
 msgid "Value associated with the category."
 msgstr "カテゴリに関連付けられた値．"
 
-#: src/one_public_api/models/system/category_model.py:34
+#: src/one_public_api/models/system/category_model.py:36
 msgid "Detailed description of the category."
 msgstr "カテゴリーの概要および目的を説明する詳細情報．"
 
-#: src/one_public_api/models/system/category_model.py:38
+#: src/one_public_api/models/system/category_model.py:40
+#, fuzzy
+msgid "Category ID"
+msgstr "カテゴリー"
+
+#: src/one_public_api/models/system/category_model.py:41
+#, fuzzy
+msgid "ID of the associated category."
+msgstr "所属された組織の ID．"
+
+#: src/one_public_api/models/system/category_model.py:45
 #: src/one_public_api/models/system/configuration_model.py:46
 msgid "Configuration options"
 msgstr "設定項目オプション"
 
-#: src/one_public_api/models/system/category_model.py:39
+#: src/one_public_api/models/system/category_model.py:46
 msgid "Optional settings associated with the category."
 msgstr "カテゴリに関連付けられたオプション設定情報．"
 
-#: src/one_public_api/models/system/category_model.py:44
+#: src/one_public_api/models/system/category_model.py:51
 msgid "Indicates whether the category is active and can be used."
 msgstr "このカテゴリーが有効で利用可能かどうかを示す．"
 
@@ -604,7 +614,6 @@ msgid "User who owns the token."
 msgstr "トークンに関連付けられたユーザー．"
 
 #: src/one_public_api/models/system/user_model.py:31
-#, fuzzy
 msgid "Username"
 msgstr "ユーザー名"
 
@@ -874,6 +883,51 @@ msgstr "機能が無効になっています．"
 msgid "Feature not found."
 msgstr "機能が見つかりません．"
 
+#: src/one_public_api/routers/category_router.py:28
+msgid "Categories"
+msgstr "カテゴリー"
+
+#: src/one_public_api/routers/category_router.py:35
+msgid "List Public Categories"
+msgstr "公開カテゴリー一覧"
+
+#: src/one_public_api/routers/category_router.py:50
+msgid "Get Public Category"
+msgstr "公開カテゴリー一覧"
+
+#: src/one_public_api/routers/category_router.py:56
+#: src/one_public_api/routers/category_router.py:108
+msgid "The ID of the category item to be retrieved"
+msgstr "確認対象のカテゴリーの ID"
+
+#: src/one_public_api/routers/category_router.py:70
+msgid "List Categories"
+msgstr "カテゴリー一覧"
+
+#: src/one_public_api/routers/category_router.py:85
+msgid "Create Category"
+msgstr "カテゴリー作成"
+
+#: src/one_public_api/routers/category_router.py:102
+msgid "Get Category"
+msgstr "カテゴリー確認"
+
+#: src/one_public_api/routers/category_router.py:119
+msgid "Update Category"
+msgstr "カテゴリー変更"
+
+#: src/one_public_api/routers/category_router.py:125
+msgid "The ID of the category item to be updated"
+msgstr "変更対象のカテゴリーの ID"
+
+#: src/one_public_api/routers/category_router.py:137
+msgid "Delete Category"
+msgstr "カテゴリー削除"
+
+#: src/one_public_api/routers/category_router.py:142
+msgid "The ID of the category item to be deleted"
+msgstr "削除対象のカテゴリーの ID"
+
 #: src/one_public_api/routers/configuration_router.py:28
 #: src/one_public_api/schemas/authenticate_schema.py:93
 #: src/one_public_api/schemas/base_schema.py:148
@@ -1106,9 +1160,8 @@ msgid "Full name"
 msgstr "氏名"
 
 #: src/one_public_api/schemas/base_schema.py:109
-#, fuzzy
 msgid "User password"
-msgstr "パスワード"
+msgstr "ユーザーパスワード"
 
 #: src/one_public_api/schemas/base_schema.py:132
 #: src/one_public_api/schemas/base_schema.py:176
@@ -1272,9 +1325,8 @@ msgid "user locked"
 msgstr "ユーザーがロックされています．"
 
 #: src/one_public_api/services/authenticate_service.py:219
-#, fuzzy
 msgid "Authentication token is missing"
-msgstr "認証"
+msgstr "認証トークンは検知できません．"
 
 #: src/one_public_api/services/authenticate_service.py:235
 msgid "No user information found in the token"
@@ -1304,15 +1356,15 @@ msgstr "データが見つかりません．"
 msgid "Invalid search column specified."
 msgstr "指定されたカラム名は不正です．"
 
-#: src/one_public_api/services/base_service.py:105
-#: src/one_public_api/services/base_service.py:116
+#: src/one_public_api/services/base_service.py:106
+#: src/one_public_api/services/base_service.py:117
 #: src/one_public_api/services/user_service.py:37
 msgid "Data already exists."
 msgstr "データは既に存在します．"
 
-#: src/one_public_api/services/base_service.py:152
-#: src/one_public_api/services/base_service.py:167
-#: src/one_public_api/services/base_service.py:181
+#: src/one_public_api/services/base_service.py:153
+#: src/one_public_api/services/base_service.py:168
+#: src/one_public_api/services/base_service.py:182
 msgid "This record might be referenced by other data."
 msgstr "このデータが参照されているため，削除できません．"
 

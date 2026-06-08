@@ -119,6 +119,8 @@ ROUTER_PREFIX_AUTHENTICATION = "/auth"
 ROUTER_PREFIX_ACTION = "/actions"
 # Path prefix for the attachment API router
 ROUTER_PREFIX_ATTACHMENT = "/attachments"
+# Path prefix for the category API router
+ROUTER_PREFIX_CATEGORY = "/categories"
 # Path prefix for the feature API router
 ROUTER_PREFIX_FEATURE = "/features"
 # Path prefix for the permission API router

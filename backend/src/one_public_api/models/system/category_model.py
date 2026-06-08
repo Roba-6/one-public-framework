@@ -1,4 +1,5 @@
 from typing import TYPE_CHECKING, Any, Dict, Optional
+from uuid import UUID
 
 from sqlmodel import JSON, Column, Field, Relationship, SQLModel
 
@@ -11,6 +12,7 @@ if TYPE_CHECKING:
     from one_public_api.models import User
 
 CATEGORY_NAME_FIELD_KWARGS: Dict[str, Any] = {
+    "min_length": constants.LENGTH_3,
     "max_length": constants.LENGTH_100,
     "title": _("Category name"),
     "description": _("Display name of the category."),
@@ -23,7 +25,7 @@ CATEGORY_ALIAS_FIELD_KWARGS: Dict[str, Any] = {
 }
 
 CATEGORY_VALUE_FIELD_KWARGS: Dict[str, Any] = {
-    "max_length": constants.LENGTH_500,
+    "max_length": constants.LENGTH_100,
     "title": _("Category value"),
     "description": _("Value associated with the category."),
 }
@@ -32,6 +34,11 @@ CATEGORY_DESCRIPTION_FIELD_KWARGS: Dict[str, Any] = {
     "max_length": constants.LENGTH_1000,
     "title": _("Description"),
     "description": _("Detailed description of the category."),
+}
+
+CATEGORY_ID_FIELD_KWARGS: Dict[str, Any] = {
+    "title": _("Category ID"),
+    "description": _("ID of the associated category."),
 }
 
 CATEGORY_OPTIONS_FIELD_KWARGS: Dict[str, Any] = {
@@ -48,15 +55,16 @@ CATEGORY_IS_ENABLED_FIELD_KWARGS: Dict[str, Any] = {
 class CategoryBase(SQLModel):
     name: Optional[str] = Field(
         default=None,
-        min_length=constants.LENGTH_1,
         **CATEGORY_NAME_FIELD_KWARGS,
     )
     alias: Optional[str] = Field(
         default=None,
+        unique=True,
         **CATEGORY_ALIAS_FIELD_KWARGS,
     )
     value: Optional[str] = Field(
         default=None,
+        unique=True,
         **CATEGORY_VALUE_FIELD_KWARGS,
     )
     description: Optional[str] = Field(
@@ -67,19 +75,33 @@ class CategoryBase(SQLModel):
 
 class CategoryOption(SQLModel):
     options: Optional[Dict[str, Any]] = Field(
-        default_factory=dict,
+        default=None,
         sa_column=Column(JSON),
         **CATEGORY_OPTIONS_FIELD_KWARGS,
     )
+
+
+class CategoryStatus(SQLModel):
     is_enabled: Optional[bool] = Field(
         default=None,
         **CATEGORY_IS_ENABLED_FIELD_KWARGS,
     )
 
 
+class CategoryForeignKey(SQLModel):
+    category_id: UUID | None = Field(
+        default=None,
+        foreign_key=settings.DB_TABLE_PRE + "categories.id",
+        ondelete="RESTRICT",
+        **CATEGORY_ID_FIELD_KWARGS,
+    )
+
+
 class Category(
     CategoryBase,
     CategoryOption,
+    CategoryStatus,
+    CategoryForeignKey,
     TimestampMixin,
     MaintenanceMixin,
     IdMixin,
@@ -89,8 +111,19 @@ class Category(
 
     name: str = Field(
         nullable=False,
-        min_length=constants.LENGTH_1,
         **CATEGORY_NAME_FIELD_KWARGS,
+    )
+    parent_category: Optional["Category"] = Relationship(
+        sa_relationship_kwargs={
+            "foreign_keys": "[Category.category_id]",
+            "primaryjoin": "Category.category_id==Category.id",
+            "remote_side": "[Category.id]",
+        }
+    )
+    options: Dict[str, Any] = Field(
+        default_factory=dict,
+        sa_column=Column(JSON),
+        **CATEGORY_OPTIONS_FIELD_KWARGS,
     )
     is_enabled: bool = Field(
         default=True,
