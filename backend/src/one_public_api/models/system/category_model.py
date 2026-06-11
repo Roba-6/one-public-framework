@@ -12,7 +12,6 @@ if TYPE_CHECKING:
     from one_public_api.models import User
 
 CATEGORY_NAME_FIELD_KWARGS: Dict[str, Any] = {
-    "min_length": constants.LENGTH_3,
     "max_length": constants.LENGTH_100,
     "title": _("Category name"),
     "description": _("Display name of the category."),
