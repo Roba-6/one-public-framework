@@ -4,35 +4,35 @@
 
 @font-face {
   font-family: "Sense";
-  src: url("assets/fonts/DESIGNER.otf") format("truetype");
+  src: url("assets/fonts/DESIGNER.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "tommy";
-  src: url("assets/fonts/MADE-TOMMY-Light_PERSONAL-USE.otf") format("truetype");
+  src: url("assets/fonts/MADE-TOMMY-Light_PERSONAL-USE.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "tommy";
-  src: url("assets/fonts/MADE-TOMMY-Medium_PERSONAL-USE.otf") format("truetype");
+  src: url("assets/fonts/MADE-TOMMY-Medium_PERSONAL-USE.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Rounded X m+";
-  src: url("assets/fonts/rounded-x-mplus-2m-light.ttf") format("truetype");
+  src: url("assets/fonts/rounded-x-mplus-2m-light.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Rounded X m+";
-  src: url("assets/fonts/rounded-x-mplus-2m-medium.ttf") format("truetype");
+  src: url("assets/fonts/rounded-x-mplus-2m-medium.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
 }
