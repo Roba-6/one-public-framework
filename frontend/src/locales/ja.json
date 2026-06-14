@@ -19,6 +19,7 @@
     "configurations": "システム設定",
     "users": "ユーザー",
     "features": "機能",
+    "categories": "カテゴリー",
     "add": "新規追加",
     "update": "情報編集"
   },
@@ -52,6 +53,7 @@
     "disabled": "無効",
     "forgetPassword": "パスワードをお忘れですか？",
     "id": "ID",
+    "options": "オプション",
     "requiresAuth": "要認証",
     "noAuthRequired": "認証不要",
     "dataPagination": {
@@ -75,6 +77,22 @@
       "description": "機能説明",
       "name": "機能名"
     },
+    "attachment": {
+      "name": "添付ファイル名",
+      "description": "添付ファイル説明",
+      "downloadUrl": "ダウンロード URL",
+      "previewUrl": "プレビュー URL",
+      "publicDownloadUrl": "公開ダウンロード URL",
+      "publicPreviewUrl": "公開プレビュー URL"
+    },
+    "category": {
+      "alias": "別名",
+      "description": "カテゴリー説明",
+      "name": "カテゴリー名",
+      "parentCategoryId": "親カテゴリーID",
+      "value": "値",
+      "parent": "親カテゴリー"
+    },
     "updatedAt": "最終変更日時",
     "username": "ユーザー名",
     "key": "キー"
@@ -88,7 +106,14 @@
     "email": "yamada.taro@example.com",
     "description": "説明文をここに入力してください。",
     "features": {
-      "name": "ABC-XYZ-P-XXX"
+      "key": "ABC-XYZ-P-XXX",
+      "name": "機能名"
+    },
+    "categories": {
+      "alias": "db",
+      "name": "データベース",
+      "parentCategoryId": "親カテゴリーのUUID",
+      "value": "database"
     }
   },
   "messages": {
@@ -111,6 +136,9 @@
       },
       "email": {
         "format": "メールアドレスの形式が正しくありません。"
+      },
+      "category": {
+        "name": "カテゴリー名は必須項目です。"
       }
     }
   }

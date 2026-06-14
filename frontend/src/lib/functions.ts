@@ -47,3 +47,7 @@ export const toCamelCase = (str: string): string =>
 
 export const toSnakeCase = (str: string): string =>
   str.replace(/[A-Z]/g, (x) => `_${x.toLowerCase()}`)
+
+export const getValue = (obj: any, path: string) => {
+  return path.split('.').reduce((current, key) => current?.[key], obj)
+}

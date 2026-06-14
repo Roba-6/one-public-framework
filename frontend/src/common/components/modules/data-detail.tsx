@@ -10,6 +10,7 @@ import { Skeleton } from '@/common/components/ui/skeleton'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/common/components/ui/tooltip'
 import type { DataDetailProps } from '@/common/types/props'
 import type { Attachment } from '@/features/attachments/types/attachment'
+import { getValue } from '@/lib/functions'
 import { formatDay, formatNumber, setDownloadUrl } from '@/lib/utils'
 
 const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
@@ -24,7 +25,7 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
             if (item.type === 'title') {
               return (
                 <div key={idx} className="mb-8 col-span-6 text-2xl">
-                  {(props.data as any)[item.key]}
+                  {getValue(props.data, item.key)}
                   <small className="ps-2 text-sm text-neutral-500">
                     {(props.data as any).id}
                   </small>
@@ -35,7 +36,7 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
                 <React.Fragment key={idx}>
                   <div className="">{item.name}</div>
                   <div className="col-span-5">
-                    <p>{(props.data as any)[item.key]}</p>
+                    <p>{getValue(props.data, item.key)}</p>
                   </div>
                 </React.Fragment>
               )
@@ -65,7 +66,7 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
                         },
                       }}
                     >
-                      {(props.data as any)[item.key]}
+                      {getValue(props.data, item.key)}
                     </Markdown>
                   </div>
                 </React.Fragment>
@@ -78,11 +79,11 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <span>
-                          {formatDay((props.data as any)[item.key], 'shortDatetime')}
+                          {formatDay(getValue(props.data, item.key), 'shortDatetime')}
                         </span>
                       </TooltipTrigger>
                       <TooltipContent>
-                        {formatDay((props.data as any)[item.key])}
+                        {formatDay(getValue(props.data, item.key))}
                       </TooltipContent>
                     </Tooltip>
                   </div>
@@ -93,12 +94,12 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
                 <React.Fragment key={idx}>
                   <div className="">{item.name}</div>
                   <div className="col-span-5">
-                    {formatNumber((props.data as any)[item.key])}
+                    {formatNumber(getValue(props.data, item.key))}
                   </div>
                 </React.Fragment>
               )
             } else if (item.type === 'booleanIcon') {
-              const value: boolean = (props.data as any)[item.key]
+              const value: boolean = getValue(props.data, item.key)
 
               let iconName: keyof typeof Icon = 'Check'
               if (item.values && item.values.length == 2) {
@@ -167,11 +168,21 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
                   )}
                 </div>
               )
+            } else if (item.type === 'json') {
+              return (
+                <React.Fragment key={idx}>
+                  <div className="">{item.name}</div>
+                  <div className="col-span-5">
+                    <p>{JSON.stringify(getValue(props.data, item.key))}</p>
+                  </div>
+                </React.Fragment>
+              )
             } else {
               return (
                 <React.Fragment key={idx}>
                   <div className="">{item.name}</div>
-                  <div className="col-span-5">{(props.data as any)[item.key]}</div>
+                  {/*<div className="col-span-5">{(props.data as any)[item.key]}</div>*/}
+                  <div className="col-span-5">{getValue(props.data, item.key)}</div>
                 </React.Fragment>
               )
             }

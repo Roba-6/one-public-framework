@@ -6,14 +6,14 @@ import { getLocalMessage } from '@/lib/utils'
 export const newAttachmentItems: FormFieldItem[] = [
   {
     name: 'name',
-    label: getLocalMessage('labels.feature.name'),
+    label: getLocalMessage('labels.attachment.name'),
     type: 'text',
     placeholder: getLocalMessage('placeholder.name'),
     defaultValue: '',
   },
   {
     name: 'description',
-    label: getLocalMessage('labels.feature.description'),
+    label: getLocalMessage('labels.attachment.description'),
     type: 'textarea',
     placeholder: getLocalMessage('placeholder.description'),
     className: 'min-h-30',

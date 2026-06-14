@@ -40,6 +40,7 @@ export type ColumnType =
   | 'datetime'
   | 'booleanIcon'
   | 'previewer'
+  | 'json'
 
 export type ColumnAlign = 'left' | 'center' | 'right'
 

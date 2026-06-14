@@ -19,6 +19,7 @@
     "configurations": "设置",
     "users": "用户",
     "features": "功能",
+    "categories": "分类",
     "add": "添加",
     "update": "更改信息"
   },
@@ -52,6 +53,7 @@
     "disabled": "不可用",
     "forgetPassword": "忘记密码？",
     "id": "ID",
+    "options": "可选参数",
     "requiresAuth": "需要认证",
     "noAuthRequired": "无需认证",
     "dataPagination": {
@@ -75,8 +77,25 @@
       "description": "说明",
       "name": "功能名称"
     },
+    "attachment": {
+      "name": "附件文件名",
+      "description": "说明",
+      "downloadUrl": "下载路径",
+      "previewUrl": "预览路径",
+      "publicDownloadUrl": "公开下载路径",
+      "publicPreviewUrl": "公开预览路径"
+    },
+    "category": {
+      "alias": "别名",
+      "description": "分类说明",
+      "name": "分类名称",
+      "parentCategoryId": "父分类 ID",
+      "value": "值",
+      "parent": "父分类"
+    },
     "updatedAt": "修改时间",
-    "username": "用户名"
+    "username": "用户名",
+    "key": "键"
   },
   "placeholder": {
     "anyKeywords": "请输入任意检索关键字",
@@ -87,7 +106,14 @@
     "email": "yishan.wang@example.com",
     "description": "请在此输入说明。",
     "features": {
-      "name": "ABC-XYZ-P-XXX"
+      "key": "ABC-XYZ-P-XXX",
+      "name": "功能名称"
+    },
+    "categories": {
+      "alias": "db",
+      "name": "数据库",
+      "parentCategoryId": "父分类 UUID",
+      "value": "database"
     }
   },
   "messages": {
@@ -110,6 +136,9 @@
       },
       "email": {
         "format": "请输入正确的电子邮件地址。"
+      },
+      "category": {
+        "name": "分类名称为必填项。"
       }
     }
   }

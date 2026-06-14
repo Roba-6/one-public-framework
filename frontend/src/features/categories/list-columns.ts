@@ -3,46 +3,35 @@ import { getLocalMessage } from '@/lib/utils'
 
 export const listColumns: DataColumn[] = [
   {
-    key: 'username',
-    name: getLocalMessage('labels.user.name'),
+    key: 'name',
+    name: getLocalMessage('labels.category.name'),
     isSortable: true,
     align: 'left',
   },
-  { key: 'nickname', name: getLocalMessage('labels.user.nickname'), isSortable: true },
-  { key: 'fullName', name: getLocalMessage('labels.user.fullname') },
-  { key: 'email', name: getLocalMessage('labels.user.email'), isSortable: true },
+  {
+    key: 'value',
+    name: getLocalMessage('labels.category.value'),
+    isSortable: true,
+    align: 'left',
+  },
+  {
+    key: 'alias',
+    name: getLocalMessage('labels.category.alias'),
+    isSortable: true,
+    align: 'left',
+  },
   {
     key: 'isEnabled',
     name: getLocalMessage('labels.enabled'),
     type: 'booleanIcon',
-    values: ['UserRoundCheck', 'UserRoundX'],
-    colors: ['text-[var(--color-green-500)]', 'text-[var(--color-gray-700)]'],
+    values: ['CircleCheck', 'CircleX'],
+    colors: ['text-[var(--color-green-500)]', 'text-[var(--color-gray-500)]'],
     align: 'center',
     isFilterable: true,
     filters: [
       { label: getLocalMessage('labels.enabled'), value: 'true' },
       { label: getLocalMessage('labels.disabled'), value: 'false' },
     ],
-  },
-  {
-    key: 'isLocked',
-    name: getLocalMessage('labels.user.lock'),
-    type: 'booleanIcon',
-    values: ['Lock', 'LockOpen'],
-    colors: ['text-[var(--color-gray-500)]', 'text-[var(--color-green-500)]'],
-    align: 'center',
-    isFilterable: true,
-    filters: [
-      { label: getLocalMessage('labels.user.unlock'), value: 'false' },
-      { label: getLocalMessage('labels.user.lock'), value: 'true' },
-    ],
-  },
-  {
-    key: 'failedAttempts',
-    name: getLocalMessage('labels.user.failedAttempts'),
-    type: 'number',
-    align: 'right',
-    isSortable: true,
   },
   {
     key: 'createdAt',

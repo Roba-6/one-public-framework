@@ -4,7 +4,7 @@ import { getLocalMessage } from '@/lib/utils'
 export const listColumns: DataColumn[] = [
   {
     key: 'name',
-    name: getLocalMessage('labels.feature.name'),
+    name: getLocalMessage('labels.attachment.name'),
     isSortable: true,
     align: 'left',
   },

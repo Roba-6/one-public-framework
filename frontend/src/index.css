@@ -51,7 +51,7 @@
 
 html,
 body {
-  @apply bg-[rgba(240,240,240,1.0)] dark:bg-[var(--color-background)] overscroll-none;
+  @apply bg-[var(--color-white-500)] dark:bg-[var(--color-background)] overscroll-none;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -99,39 +99,40 @@ body {
 
 :root {
   --radius: 0.625rem;
-  --background: #eee;
+  --background: var(--color-white-500);
   --foreground: rgba(25, 25, 25, 1);
-  --card: oklch(0.981 0 0);
-  --card-foreground: oklch(0.141 0.005 285.823);
+  --card: var(--color-white-300);
+  --card-foreground: var(--color-gray-800);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.21 0.006 285.885);
-  --primary-foreground: oklch(0.985 0 0);
+  --primary: var(--color-green-600);
+  --primary-foreground: var(--color-white-500);
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
   --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.937 0.001 286.375);
-  --accent-foreground: oklch(0.21 0.006 285.885);
+  --muted-foreground: var(--color-gray-700);
+  --accent: var(--color-white-700);
+  --accent-foreground: var(--color-gray-900);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: rgba(195, 195, 195, 1);
-  --input: rgba(195, 195, 195, 1);
-  --ring: oklch(70.5% 0.253 47.604);
+  --border: var(--color-white-800);
+  --input: var(--color-white-800);
+  --ring: var(--color-green-600);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.915 0 0);
-  --sidebar-foreground: oklch(0.141 0.005 285.823);
+  --sidebar: var(--color-white-700);
+  --sidebar-foreground: var(--color-gray-800);
   --sidebar-primary: oklch(0.21 0.006 285.885);
   --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.867 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
+  --sidebar-accent: var(--color-white-800);
+  --sidebar-accent-foreground: var(--color-gray-900);
   --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.705 0.015 286.067);
+  --sidebar-ring: var(--color-white-700);
   --typing-caret: black;
 }
+
 /* Define Basic Colors */
 :root {
   /* Rose */
@@ -181,6 +182,18 @@ body {
   --color-brown-700: color-mix(in srgb, #3c3530 60%, black);
   --color-brown-800: color-mix(in srgb, #3c3530 40%, black);
   --color-brown-900: color-mix(in srgb, #3c3530 20%, black);
+
+  /* White */
+  --color-white-50: color-mix(in srgb, #f4efe6 10%, white);
+  --color-white-100: color-mix(in srgb, #f4efe6 20%, white);
+  --color-white-200: color-mix(in srgb, #f4efe6 40%, white);
+  --color-white-300: color-mix(in srgb, #f4efe6 60%, white);
+  --color-white-400: color-mix(in srgb, #f4efe6 80%, white);
+  --color-white-500: #f4efe6;
+  --color-white-600: color-mix(in srgb, #f4efe6 80%, burlywood);
+  --color-white-700: color-mix(in srgb, #f4efe6 60%, burlywood);
+  --color-white-800: color-mix(in srgb, #f4efe6 40%, burlywood);
+  --color-white-900: color-mix(in srgb, #f4efe6 20%, burlywood);
 }
 
 .dark {
@@ -320,10 +333,10 @@ button {
   @apply overflow-hidden rounded-md border;
 }
 .data-list-panel:hover {
-  @apply border-[var(--color-brown-400)];
+  @apply border-[var(--color-white-900)] dark:border-[var(--color-brown-400)];
 
   tr:hover {
-    @apply text-[var(--color-gray-50)];
+    @apply text-[var(--color-gray-900)] dark:text-[var(--color-gray-50)];
   }
 }
 
@@ -333,7 +346,7 @@ table.data-list {
   thead {
     tr th {
       @apply font-bold;
-      @apply bg-neutral-200 dark:bg-[var(--color-brown-600)];
+      @apply bg-[var(--color-white-600)] dark:bg-[var(--color-brown-600)];
     }
 
     button {
@@ -346,16 +359,18 @@ table.data-list {
       @apply bg-[var(--card)];
     }
     tr:nth-child(even) td {
-      @apply bg-neutral-100 dark:bg-[color-mix(in_srgb,_#3c3530_50%,_black)];
+      @apply bg-[color-mix(in_srgb,_#f4efe6_90%,_burlywood)]
+        dark:bg-[color-mix(in_srgb,_#3c3530_50%,_black)];
     }
     tr:hover td {
-      @apply bg-neutral-200 dark:bg-[var(--color-brown-700)] transition-all duration-300;
+      @apply bg-[var(--color-white-300)] dark:bg-[var(--color-brown-700)]
+        transition-all duration-300;
     }
   }
 }
 
 input {
-  @apply bg-neutral-50 dark:bg-[var(--color-brown-900)];
+  @apply bg-[var(--color-white-300)] dark:bg-[var(--color-brown-900)];
 }
 
 input:focus-visible,
@@ -761,9 +776,12 @@ textarea:focus-visible {
   @apply select-none;
 }
 .panel:hover {
-  @apply border-[var(--color-brown-400)] bg-[var(--color-brown-700)];
+  @apply border-[var(--color-white-700)] bg-[var(--color-white-100)]
+    dark:border-[var(--color-brown-400)] dark:bg-[var(--color-brown-700)];
 }
 
 .link {
-  @apply text-[var(--color-green-500)] hover:text-[var(--color-green-400)] transition-all;
+  @apply text-[var(--color-green-600)] hover:text-[var(--color-green-500)]
+    dark:text-[var(--color-green-500)] dark:hover:text-[var(--color-green-400)]
+    transition-all;
 }
