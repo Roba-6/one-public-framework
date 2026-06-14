@@ -1,8 +1,9 @@
-from typing import Any, Dict
+from typing import Any, Dict, Optional, Self
 
 from pydantic import Field
 
 from one_public_api.common.utility.str import to_camel
+from one_public_api.core.i18n import translate as _
 from one_public_api.models.mixins import IdMixin
 from one_public_api.models.system.category_model import (
     CATEGORY_NAME_FIELD_KWARGS,
@@ -80,6 +81,11 @@ class CategoryUpdateRequest(CategoryCreateRequest):
 
 
 class CategoryResponse(CategoryPublicResponse, CategoryStatus):
+    parent: Optional[Self] = Field(
+        default=None,
+        title=_("Parent Category"),
+        description=_("Parent Category Description"),
+    )
     model_config = {
         "alias_generator": to_camel,
         "populate_by_name": True,

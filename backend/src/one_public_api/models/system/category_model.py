@@ -112,7 +112,7 @@ class Category(
         nullable=False,
         **CATEGORY_NAME_FIELD_KWARGS,
     )
-    parent_category: Optional["Category"] = Relationship(
+    parent: Optional["Category"] = Relationship(
         sa_relationship_kwargs={
             "foreign_keys": "[Category.category_id]",
             "primaryjoin": "Category.category_id==Category.id",

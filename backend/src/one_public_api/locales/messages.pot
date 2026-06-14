@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-06-08 13:06+0900\n"
+"POT-Creation-Date: 2026-06-14 12:41+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -252,7 +252,7 @@ msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:67
 #: src/one_public_api/models/system/attachment_model.py:29
-#: src/one_public_api/models/system/category_model.py:35
+#: src/one_public_api/models/system/category_model.py:34
 #: src/one_public_api/models/system/configuration_model.py:41
 #: src/one_public_api/models/system/feature_model.py:33
 #: src/one_public_api/models/system/organization_model.py:34
@@ -266,7 +266,7 @@ msgid "Detailed description of the action and its purpose."
 msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:72
-#: src/one_public_api/models/system/category_model.py:50
+#: src/one_public_api/models/system/category_model.py:49
 #: src/one_public_api/models/system/feature_model.py:38
 #: src/one_public_api/models/system/organization_model.py:39
 #: src/one_public_api/models/system/user_model.py:62
@@ -353,52 +353,52 @@ msgstr ""
 msgid "Total number of downloads for the attachment."
 msgstr ""
 
-#: src/one_public_api/models/system/category_model.py:17
+#: src/one_public_api/models/system/category_model.py:16
 msgid "Category name"
 msgstr ""
 
-#: src/one_public_api/models/system/category_model.py:18
+#: src/one_public_api/models/system/category_model.py:17
 msgid "Display name of the category."
 msgstr ""
 
-#: src/one_public_api/models/system/category_model.py:23
+#: src/one_public_api/models/system/category_model.py:22
 msgid "Category alias"
 msgstr ""
 
-#: src/one_public_api/models/system/category_model.py:24
+#: src/one_public_api/models/system/category_model.py:23
 msgid "Alternative identifier used to reference the category."
 msgstr ""
 
-#: src/one_public_api/models/system/category_model.py:29
+#: src/one_public_api/models/system/category_model.py:28
 msgid "Category value"
 msgstr ""
 
-#: src/one_public_api/models/system/category_model.py:30
+#: src/one_public_api/models/system/category_model.py:29
 msgid "Value associated with the category."
 msgstr ""
 
-#: src/one_public_api/models/system/category_model.py:36
+#: src/one_public_api/models/system/category_model.py:35
 msgid "Detailed description of the category."
 msgstr ""
 
-#: src/one_public_api/models/system/category_model.py:40
+#: src/one_public_api/models/system/category_model.py:39
 msgid "Category ID"
 msgstr ""
 
-#: src/one_public_api/models/system/category_model.py:41
+#: src/one_public_api/models/system/category_model.py:40
 msgid "ID of the associated category."
 msgstr ""
 
-#: src/one_public_api/models/system/category_model.py:45
+#: src/one_public_api/models/system/category_model.py:44
 #: src/one_public_api/models/system/configuration_model.py:46
 msgid "Configuration options"
 msgstr ""
 
-#: src/one_public_api/models/system/category_model.py:46
+#: src/one_public_api/models/system/category_model.py:45
 msgid "Optional settings associated with the category."
 msgstr ""
 
-#: src/one_public_api/models/system/category_model.py:51
+#: src/one_public_api/models/system/category_model.py:50
 msgid "Indicates whether the category is active and can be used."
 msgstr ""
 
@@ -1157,6 +1157,14 @@ msgstr ""
 
 #: src/one_public_api/schemas/base_schema.py:182
 msgid "Updater Description"
+msgstr ""
+
+#: src/one_public_api/schemas/category_schema.py:86
+msgid "Parent Category"
+msgstr ""
+
+#: src/one_public_api/schemas/category_schema.py:87
+msgid "Parent Category Description"
 msgstr ""
 
 #: src/one_public_api/schemas/comment_schema.py:23
