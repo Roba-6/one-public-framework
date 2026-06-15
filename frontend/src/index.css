@@ -236,7 +236,7 @@ body {
     @apply border-border outline-ring/50;
   }
   *::selection {
-    @apply bg-orange-400;
+    @apply text-[var(--color-gray-900)] bg-[var(--color-green-500)];
   }
   body {
     @apply bg-background text-foreground;
@@ -770,6 +770,15 @@ textarea:focus-visible {
   50% {
     border-color: transparent;
   }
+}
+
+.opf-container {
+  @apply container flex mx-auto p-4 transition-all
+    sm:rounded-2xl border-[1px] border-[var(--border)]
+    bg-[var(--card)]
+    hover:border-[var(--color-white-700)] hover:bg-[var(--color-white-100)]
+    dark:hover:border-[var(--color-brown-400)] dark:hover:bg-[var(--color-brown-700)]
+    justify-between;
 }
 
 .panel {
