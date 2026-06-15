@@ -15,9 +15,11 @@
   "menus": {
     "system": "SYSTEM",
     "dashboard": "Dashboards",
+    "attachments": "Attachments",
     "configurations": "Configurations",
     "users": "Users",
     "features": "Features",
+    "categories": "Categories",
     "add": "Add",
     "update": "Update"
   },
@@ -41,7 +43,8 @@
     "nextPage": "Next",
     "openMenu": "Open Menu",
     "previousPage": "Previous",
-    "unselectAll": "Unselect All"
+    "unselectAll": "Unselect All",
+    "download": "Download"
   },
   "labels": {
     "actions": "Actions",
@@ -50,6 +53,7 @@
     "disabled": "Disabled",
     "forgetPassword": "Forgot your password?",
     "id": "ID",
+    "options": "Options",
     "requiresAuth": "Auth Required",
     "noAuthRequired": "No Auth Required",
     "dataPagination": {
@@ -73,8 +77,25 @@
       "description": "Description",
       "name": "Name"
     },
+    "attachment": {
+      "name": "Attachment Name",
+      "description": "Description",
+      "downloadUrl": "URL for download",
+      "previewUrl": "URL for preview",
+      "publicDownloadUrl": "URL for public download",
+      "publicPreviewUrl": "URL for public preview"
+    },
+    "category": {
+      "alias": "Alias",
+      "description": "Description",
+      "name": "Name",
+      "parentCategoryId": "Parent Category ID",
+      "value": "Value",
+      "parent": "Parent Category"
+    },
     "updatedAt": "Updated At",
-    "username": "User Name"
+    "username": "User Name",
+    "key": "Key"
   },
   "placeholder": {
     "anyKeywords": "Enter keywords",
@@ -85,7 +106,14 @@
     "email": "sum.w@example.com",
     "description": "Enter description here.",
     "features": {
-      "name": "ABC-XYZ-P-XXX"
+      "key": "ABC-XYZ-P-XXX",
+      "name": "Feature Name"
+    },
+    "categories": {
+      "alias": "db",
+      "name": "Database",
+      "parentCategoryId": "Parent category UUID",
+      "value": "database"
     }
   },
   "messages": {
@@ -108,6 +136,9 @@
       },
       "email": {
         "format": "Invalid format."
+      },
+      "category": {
+        "name": "Category Name is required."
       }
     }
   }

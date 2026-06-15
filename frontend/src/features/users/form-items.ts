@@ -5,7 +5,7 @@ import { getLocalMessage } from '@/lib/utils'
 
 export const newUserItems: FormFieldItem[] = [
   {
-    name: 'name',
+    name: 'username',
     label: getLocalMessage('labels.user.name'),
     type: 'text',
     placeholder: getLocalMessage('placeholder.username'),
@@ -39,14 +39,14 @@ export const newUserItems: FormFieldItem[] = [
       .max(128, { message: getLocalMessage('messages.validations.max', [128]) }),
   },
   {
-    name: 'lastname',
+    name: 'lastName',
     label: getLocalMessage('labels.user.lastname'),
     type: 'text',
     placeholder: getLocalMessage('placeholder.lastname'),
     defaultValue: '',
   },
   {
-    name: 'firstname',
+    name: 'firstName',
     label: getLocalMessage('labels.user.firstname'),
     type: 'text',
     placeholder: getLocalMessage('placeholder.firstname'),
@@ -63,7 +63,7 @@ export const newUserItems: FormFieldItem[] = [
 
 export const userItems: FormFieldItem[] = [
   {
-    name: 'name',
+    name: 'username',
     label: getLocalMessage('labels.user.name'),
     type: 'text',
     placeholder: getLocalMessage('placeholder.username'),
@@ -96,14 +96,14 @@ export const userItems: FormFieldItem[] = [
       .max(128, { message: getLocalMessage('messages.validations.max', [128]) }),
   },
   {
-    name: 'lastname',
+    name: 'lastName',
     label: getLocalMessage('labels.user.lastname'),
     type: 'text',
     placeholder: getLocalMessage('placeholder.lastname'),
     defaultValue: '',
   },
   {
-    name: 'firstname',
+    name: 'firstName',
     label: getLocalMessage('labels.user.firstname'),
     type: 'text',
     placeholder: getLocalMessage('placeholder.firstname'),

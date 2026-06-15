@@ -1,8 +1,15 @@
+from typing import Any, Dict
 from uuid import UUID, uuid4
 
 from sqlmodel import Field, SQLModel
 
 from one_public_api.core.i18n import translate as _
+
+ID_FIELD_KWARGS: Dict[str, Any] = {
+    "primary_key": True,
+    "title": _("Record ID"),
+    "description": _("Auto-generated unique ID for the record."),
+}
 
 
 class IdMixin(SQLModel):
@@ -22,7 +29,5 @@ class IdMixin(SQLModel):
 
     id: UUID = Field(
         default_factory=uuid4,
-        primary_key=True,
-        title=_("Record ID"),
-        description=_("Auto-generated unique ID for the record"),
+        **ID_FIELD_KWARGS,
     )

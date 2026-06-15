@@ -9,7 +9,9 @@ import remarkGfm from 'remark-gfm'
 import { Skeleton } from '@/common/components/ui/skeleton'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/common/components/ui/tooltip'
 import type { DataDetailProps } from '@/common/types/props'
-import { formatDay, formatNumber } from '@/lib/utils'
+import type { Attachment } from '@/features/attachments/types/attachment'
+import { getValue } from '@/lib/functions'
+import { formatDay, formatNumber, setDownloadUrl } from '@/lib/utils'
 
 const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
   console.log('data', props.data)
@@ -23,7 +25,7 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
             if (item.type === 'title') {
               return (
                 <div key={idx} className="mb-8 col-span-6 text-2xl">
-                  {(props.data as any)[item.key]}
+                  {getValue(props.data, item.key)}
                   <small className="ps-2 text-sm text-neutral-500">
                     {(props.data as any).id}
                   </small>
@@ -34,7 +36,7 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
                 <React.Fragment key={idx}>
                   <div className="">{item.name}</div>
                   <div className="col-span-5">
-                    <p>{(props.data as any)[item.key]}</p>
+                    <p>{getValue(props.data, item.key)}</p>
                   </div>
                 </React.Fragment>
               )
@@ -64,7 +66,7 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
                         },
                       }}
                     >
-                      {(props.data as any)[item.key]}
+                      {getValue(props.data, item.key)}
                     </Markdown>
                   </div>
                 </React.Fragment>
@@ -77,11 +79,11 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <span>
-                          {formatDay((props.data as any)[item.key], 'shortDatetime')}
+                          {formatDay(getValue(props.data, item.key), 'shortDatetime')}
                         </span>
                       </TooltipTrigger>
                       <TooltipContent>
-                        {formatDay((props.data as any)[item.key])}
+                        {formatDay(getValue(props.data, item.key))}
                       </TooltipContent>
                     </Tooltip>
                   </div>
@@ -92,12 +94,12 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
                 <React.Fragment key={idx}>
                   <div className="">{item.name}</div>
                   <div className="col-span-5">
-                    {formatNumber((props.data as any)[item.key])}
+                    {formatNumber(getValue(props.data, item.key))}
                   </div>
                 </React.Fragment>
               )
             } else if (item.type === 'booleanIcon') {
-              const value: boolean = (props.data as any)[item.key]
+              const value: boolean = getValue(props.data, item.key)
 
               let iconName: keyof typeof Icon = 'Check'
               if (item.values && item.values.length == 2) {
@@ -117,11 +119,70 @@ const DataDetail = <T,>(props: DataDetailProps<T>): React.ReactNode => {
                   </div>
                 </React.Fragment>
               )
+            } else if (item.type === 'previewer') {
+              const data: Attachment = props.data as Attachment
+              console.log('props.data:', props.data)
+              console.log('mimeType:', (props.data as Attachment).mimeType)
+              console.log('item:', item)
+              return (
+                <div key={idx} className="mb-8 col-span-6 text-2xl">
+                  {/* Images */}
+                  {data.mimeType.startsWith('image/') && (
+                    <div className="h-48 relative">
+                      <img
+                        src={setDownloadUrl((data as any)[item.key])}
+                        alt={data.name}
+                        className="max-w-[100%] max-h-[100%]"
+                      />
+                    </div>
+                  )}
+                  {/* Video */}
+                  {data.mimeType.startsWith('video/') && (
+                    <div className="h-48 relative">
+                      <video
+                        src={setDownloadUrl((data as any)[item.key])}
+                        controls
+                        className="max-w-[100%] max-h-[100%]"
+                      />
+                    </div>
+                  )}
+                  {/* Audio */}
+                  {data.mimeType.startsWith('audio/') && (
+                    <div className="h-12 relative">
+                      <audio
+                        src={setDownloadUrl((data as any)[item.key])}
+                        controls
+                        preload="metadata"
+                        className="w-[100%] max-h-[100%]"
+                      />
+                    </div>
+                  )}
+                  {/* PDF */}
+                  {data.mimeType === 'application/pdf' && (
+                    <div className=" h-48 relative">
+                      <iframe
+                        src={setDownloadUrl((data as any)[item.key])}
+                        className="w-[100%] h-[100%]"
+                      />
+                    </div>
+                  )}
+                </div>
+              )
+            } else if (item.type === 'json') {
+              return (
+                <React.Fragment key={idx}>
+                  <div className="">{item.name}</div>
+                  <div className="col-span-5">
+                    <p>{JSON.stringify(getValue(props.data, item.key))}</p>
+                  </div>
+                </React.Fragment>
+              )
             } else {
               return (
                 <React.Fragment key={idx}>
                   <div className="">{item.name}</div>
-                  <div className="col-span-5">{(props.data as any)[item.key]}</div>
+                  {/*<div className="col-span-5">{(props.data as any)[item.key]}</div>*/}
+                  <div className="col-span-5">{getValue(props.data, item.key)}</div>
                 </React.Fragment>
               )
             }

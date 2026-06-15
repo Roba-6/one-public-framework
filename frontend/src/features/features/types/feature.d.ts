@@ -1,5 +1,6 @@
 interface FeatureBase {
-  name: string
+  key: string
+  name?: string
 }
 
 export interface Feature extends FeatureBase {

@@ -9,11 +9,17 @@ export const listColumns: DataColumn[] = [
     align: 'left',
   },
   {
+    key: 'key',
+    name: getLocalMessage('labels.key'),
+    isSortable: true,
+    align: 'left',
+  },
+  {
     key: 'isEnabled',
     name: getLocalMessage('labels.enabled'),
     type: 'booleanIcon',
     values: ['CircleCheck', 'CircleX'],
-    colors: ['text-orange-500', 'text-red-700'],
+    colors: ['text-[var(--color-green-500)]', 'text-[var(--color-gray-700)]'],
     align: 'center',
     isFilterable: true,
     filters: [
@@ -26,7 +32,7 @@ export const listColumns: DataColumn[] = [
     name: getLocalMessage('labels.requiresAuth'),
     type: 'booleanIcon',
     values: ['ShieldCheck', 'ShieldX'],
-    colors: ['text-orange-500', 'text-red-700'],
+    colors: ['text-[var(--color-green-500)]', 'text-[var(--color-gray-700)]'],
     align: 'center',
     isFilterable: true,
     filters: [

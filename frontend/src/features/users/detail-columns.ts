@@ -3,12 +3,12 @@ import { getLocalMessage } from '@/lib/utils'
 
 export const detailColumns: DataColumn[] = [
   {
-    key: 'fullname',
+    key: 'fullName',
     name: getLocalMessage('labels.user.fullname'),
     type: 'title',
   },
   {
-    key: 'name',
+    key: 'username',
     name: getLocalMessage('labels.user.name'),
   },
   { key: 'email', name: getLocalMessage('labels.user.email') },
@@ -24,14 +24,14 @@ export const detailColumns: DataColumn[] = [
     name: getLocalMessage('labels.enabled'),
     type: 'booleanIcon',
     values: ['UserRoundCheck', 'UserRoundX'],
-    colors: ['text-green-500 dark:text-yellow-500', 'text-orange-500'],
+    colors: ['text-[var(--color-green-500)]', 'text-[var(--color-gray-700)]'],
   },
   {
     key: 'isLocked',
     name: getLocalMessage('labels.user.lock'),
     type: 'booleanIcon',
     values: ['Lock', 'LockOpen'],
-    colors: ['text-orange-500', 'text-green-500 dark:text-yellow-500'],
+    colors: ['text-[var(--color-gray-700)]', 'text-[var(--color-green-500)]'],
   },
   {
     key: 'failedAttempts',

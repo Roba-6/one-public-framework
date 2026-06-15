@@ -14,7 +14,11 @@ from one_public_api.models.links import (
     OrganizationUserLink,
 )
 from one_public_api.models.links.role_user_link import RoleUserLink
-from one_public_api.models.mixins import MaintenanceMixin, PasswordMixin, TimestampMixin
+from one_public_api.models.mixins import (
+    MaintenanceMixin,
+    PasswordMixin,
+    TimestampMixin,
+)
 from one_public_api.models.mixins.id_mixin import IdMixin
 from one_public_api.models.system.attachment_model import Attachment
 from one_public_api.models.system.configuration_model import Configuration
@@ -22,9 +26,9 @@ from one_public_api.models.system.organization_model import Organization
 from one_public_api.models.system.role_model import Role
 from one_public_api.models.system.token_model import Token
 
-USER_NAME_FIELD_KWARGS: Dict[str, Any] = {
+USER_USERNAME_FIELD_KWARGS: Dict[str, Any] = {
     "max_length": constants.LENGTH_55,
-    "title": _("User name"),
+    "title": _("Username"),
     "description": _("Unique username used for login and system identification."),
 }
 
@@ -34,13 +38,13 @@ USER_EMAIL_FIELD_KWARGS: Dict[str, Any] = {
     "description": _("User's email address used for authentication and communication."),
 }
 
-USER_FIRSTNAME_FIELD_KWARGS: Dict[str, Any] = {
+USER_FIRST_NAME_FIELD_KWARGS: Dict[str, Any] = {
     "max_length": constants.LENGTH_100,
     "title": _("First name"),
     "description": _("User's given name."),
 }
 
-USER_LASTNAME_FIELD_KWARGS: Dict[str, Any] = {
+USER_LAST_NAME_FIELD_KWARGS: Dict[str, Any] = {
     "max_length": constants.LENGTH_100,
     "title": _("Last name"),
     "description": _("User's family name."),
@@ -78,21 +82,21 @@ USER_FAILED_ATTEMPTS_FIELD_KWARGS: Dict[str, Any] = {
 
 
 class UserBase(SQLModel):
-    name: Optional[str] = Field(
+    username: Optional[str] = Field(
         default=None,
-        **USER_NAME_FIELD_KWARGS,
+        **USER_USERNAME_FIELD_KWARGS,
     )
     email: Optional[EmailStr] = Field(
         default=None,
         **USER_EMAIL_FIELD_KWARGS,
     )
-    firstname: Optional[str] = Field(
+    first_name: Optional[str] = Field(
         default=None,
-        **USER_FIRSTNAME_FIELD_KWARGS,
+        **USER_FIRST_NAME_FIELD_KWARGS,
     )
-    lastname: Optional[str] = Field(
+    last_name: Optional[str] = Field(
         default=None,
-        **USER_LASTNAME_FIELD_KWARGS,
+        **USER_LAST_NAME_FIELD_KWARGS,
     )
     nickname: Optional[str] = Field(
         default=None,
@@ -109,6 +113,9 @@ class UserStatus(SQLModel):
         default=None,
         **USER_IS_LOCKED_FIELD_KWARGS,
     )
+
+
+class UserSecurity(SQLModel):
     failed_attempts: Optional[int] = Field(
         default=None,
         **USER_FAILED_ATTEMPTS_FIELD_KWARGS,
@@ -118,6 +125,7 @@ class UserStatus(SQLModel):
 class User(
     UserBase,
     UserStatus,
+    UserSecurity,
     PasswordMixin,
     TimestampMixin,
     MaintenanceMixin,
@@ -128,11 +136,11 @@ class User(
 
     __tablename__ = settings.DB_TABLE_PRE + "users"
 
-    name: str = Field(
+    username: str = Field(
         nullable=False,
         unique=True,
         min_length=constants.LENGTH_3,
-        **USER_NAME_FIELD_KWARGS,
+        **USER_USERNAME_FIELD_KWARGS,
     )
     email: EmailStr = Field(
         nullable=False,

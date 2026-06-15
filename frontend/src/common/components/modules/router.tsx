@@ -13,6 +13,14 @@ import HomePage from '@/common/pages/home-page'
 import SamplePage from '@/common/pages/sample/sample-page'
 import WelcomePage from '@/common/pages/welcome-page'
 import type { Menu } from '@/common/types/data'
+import AddAttachmentPage from '@/features/attachments/add-page'
+import DetailAttachmentPage from '@/features/attachments/detail-page'
+import AttachmentListPage from '@/features/attachments/list-page'
+import UpdateAttachmentPage from '@/features/attachments/update-page'
+import AddCategoryPage from '@/features/categories/add-page'
+import DetailCategoryPage from '@/features/categories/detail-page'
+import CategoryListPage from '@/features/categories/list-page'
+import UpdateCategoryPage from '@/features/categories/update-page'
 import AddFeaturePage from '@/features/features/add-page'
 import DetailFeaturePage from '@/features/features/detail-page'
 import FeatureListPage from '@/features/features/list-page'
@@ -77,6 +85,23 @@ const Router = ({ children, menu }: RouterProps): React.ReactNode => {
               path={CONSTANT.ROUTE_URL.ADMIN_CONFIGURATION.slice(1)}
               element={<ConfigurationEditPage />}
             />
+            {/* --------------- Attachment Management --------------- */}
+            <Route
+              path={CONSTANT.ROUTE_URL.ADMIN_ATTACHMENT.slice(1)}
+              element={<AttachmentListPage />}
+            />
+            <Route
+              path={CONSTANT.ROUTE_URL.ADMIN_ATTACHMENT_DETAIL.slice(1)}
+              element={<DetailAttachmentPage />}
+            />
+            <Route
+              path={CONSTANT.ROUTE_URL.ADMIN_ATTACHMENT_ADD.slice(1)}
+              element={<AddAttachmentPage />}
+            />
+            <Route
+              path={CONSTANT.ROUTE_URL.ADMIN_ATTACHMENT_UPDATE.slice(1)}
+              element={<UpdateAttachmentPage />}
+            />
             {/* --------------- User Management --------------- */}
             <Route
               path={CONSTANT.ROUTE_URL.ADMIN_USER.slice(1)}
@@ -110,6 +135,23 @@ const Router = ({ children, menu }: RouterProps): React.ReactNode => {
             <Route
               path={CONSTANT.ROUTE_URL.ADMIN_FEATURE_UPDATE.slice(1)}
               element={<UpdateFeaturePage />}
+            />
+            {/* --------------- Category Management --------------- */}
+            <Route
+              path={CONSTANT.ROUTE_URL.ADMIN_CATEGORY.slice(1)}
+              element={<CategoryListPage />}
+            />
+            <Route
+              path={CONSTANT.ROUTE_URL.ADMIN_CATEGORY_DETAIL.slice(1)}
+              element={<DetailCategoryPage />}
+            />
+            <Route
+              path={CONSTANT.ROUTE_URL.ADMIN_CATEGORY_ADD.slice(1)}
+              element={<AddCategoryPage />}
+            />
+            <Route
+              path={CONSTANT.ROUTE_URL.ADMIN_CATEGORY_UPDATE.slice(1)}
+              element={<UpdateCategoryPage />}
             />
             {children.adminRouter}
           </Route>

@@ -9,7 +9,7 @@ from sqlmodel import Session, SQLModel
 
 from one_public_api.common.query_param import QueryParam
 from one_public_api.core import get_session
-from one_public_api.core.exceptions import DataError, RequestError
+from one_public_api.core.exceptions import DataError, ForbiddenError, RequestError
 from one_public_api.core.i18n import get_translator
 from one_public_api.core.log import logger
 from one_public_api.crud.data_creator import DataCreator
@@ -55,16 +55,31 @@ class BaseService(Generic[T]):
         self.count: int = 0
         self.detail: Optional[MessageSchema] = None
 
+    @staticmethod
+    def _check_auth(data: T) -> bool:
+        if hasattr(data, "requires_auth") and data.requires_auth:
+            return False
+        else:
+            return True
+
     def get_one(self, conditions: Dict[str, Any]) -> T:
         return self.dr.one(self.model, conditions)
 
-    def get_one_by_id(self, target_id: UUID) -> T:
+    def get_one_by_id(self, target_id: UUID, requires_auth: bool = False) -> T:
         try:
-            return self.dr.get(self.model, target_id)
+            rst: T = self.dr.get(self.model, target_id)
+            if requires_auth and not self._check_auth(rst):
+                raise ForbiddenError(
+                    self._("Forbidden"), detail=str(target_id), code="E4030004"
+                )
+
+            return rst
         except NoResultFound:
             raise DataError(
                 self._("Data not found."), detail=str(target_id), code="E4040001"
             )
+        except ForbiddenError as e:
+            raise e
 
     def get_all(self, query: QueryParam) -> List[T]:
         try:
@@ -85,7 +100,8 @@ class BaseService(Generic[T]):
             self.session.refresh(result)
 
             return result
-        except IntegrityError:
+        except IntegrityError as e:
+            print(e)
             raise DataError(
                 self._("Data already exists."), data.model_dump_json(), "E4090001"
             )

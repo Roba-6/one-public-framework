@@ -10,6 +10,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from jwt import ExpiredSignatureError, InvalidTokenError
 from sqlalchemy.exc import NoResultFound
 from sqlmodel import Session
+from starlette.requests import Request
 
 from one_public_api.common import constants
 from one_public_api.common.tools import get_username_from_token
@@ -44,12 +45,12 @@ class AuthenticateService(BaseService[User]):
         response: Response | None = None,
     ) -> Dict[str, str]:
         try:
-            user: User = self.get_one({"name": request.username})
+            user: User = self.get_one({"username": request.username})
             self.is_activate_user(user)
             if not (
                 request.password
-                and user.password
-                and self.verify_password(request.password, user.password)
+                and user.hashed_password
+                and self.verify_password(request.password, user.hashed_password)
             ):
                 user.failed_attempts += 1
                 if user.failed_attempts >= constants.MAX_FAILED_ATTEMPTS:
@@ -109,7 +110,9 @@ class AuthenticateService(BaseService[User]):
 
     def refresh(self, refresh_token: str) -> Dict[str, str]:
         try:
-            user: User = self.get_one({"name": get_username_from_token(refresh_token)})
+            user: User = self.get_one(
+                {"username": get_username_from_token(refresh_token)}
+            )
             self.is_activate_user(user)
             access_token, access_expire = AuthenticateService.create_token(
                 user,
@@ -179,9 +182,9 @@ class AuthenticateService(BaseService[User]):
 
     def is_activate_user(self, user: User) -> None:
         if not user.is_enabled:
-            raise ForbiddenError(self._("user disabled"), user.name, "E4030001")
+            raise ForbiddenError(self._("user disabled"), user.username, "E4030001")
         elif user.is_locked:
-            raise ForbiddenError(self._("user locked"), user.name, "E4030002")
+            raise ForbiddenError(self._("user locked"), user.username, "E4030002")
 
     @staticmethod
     def create_token(
@@ -195,7 +198,7 @@ class AuthenticateService(BaseService[User]):
             expire = datetime.now(timezone.utc) + timedelta(
                 minutes=constants.ACCESS_TOKEN_EXPIRE
             )
-        data = {"sub": user.name, "exp": expire}
+        data = {"sub": user.username, "exp": expire}
         if scope:
             data.update({"scope": scope})
         encoded_jwt = jwt.encode(
@@ -205,9 +208,25 @@ class AuthenticateService(BaseService[User]):
         return encoded_jwt, expire
 
 
+def get_access_token(
+    request: Request,
+    header_token: Annotated[str | None, Depends(oauth2_scheme)],
+) -> str:
+    token = header_token or request.query_params.get("token")
+
+    if token is None:
+        raise UnauthorizedError(
+            _("Authentication token is missing"),
+            None,
+            "E4010010",
+        )
+
+    return token
+
+
 def get_current_user(
     us: Annotated[UserService, Depends()],
-    token: Annotated[str, Depends(oauth2_scheme)],
+    token: Annotated[str, Depends(get_access_token)],
 ) -> User:
     try:
         username = get_username_from_token(token)
@@ -217,7 +236,7 @@ def get_current_user(
             )
         else:
             user: User = us.get_one(
-                {"name": username, "is_enabled": True, "is_locked": False}
+                {"username": username, "is_enabled": True, "is_locked": False}
             )
 
             if len(user.tokens) == 0:

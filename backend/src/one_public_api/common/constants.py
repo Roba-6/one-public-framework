@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import List, Tuple
 
 # Version of the One Public API
-VERSION: str = "0.1.0-alpha.21"
+VERSION: str = "0.1.0-alpha.32"
 # Default Language
 DEFAULT_LANGUAGE: str = "en"
 # Default path for locale files
@@ -20,6 +20,8 @@ ENCODE_UTF8: str = "utf-8"
 EXT_LOG = ".log"
 # SQLite File Extension
 EXT_SQLITE = ".sqlite3"
+# ZIP file extension
+EXT_ZIP = ".zip"
 
 # ----- Security Settings --------------------------------------------------------------
 # Access token expiration time (in minutes)
@@ -36,10 +38,16 @@ FILES_ENV: List[str] = [".env", ".env.dev", ".env.test", ".env.stage", ".env.pro
 FOLDER_LOCALES: str = "locales"
 # Output folder for log files
 FOLDER_LOGS: str = "logs"
+# Root folder of media files
+FOLDER_MEDIA: str = "media"
 # Root folder of the source code
 FOLDER_SRC: str = "src"
 # Root folder of the OPA
 FOLDER_OPA: str = "one_public_api"
+
+FOLDER_FORMAT: str = "%Y/%m/%d"
+
+FILE_FORMAT: str = "%Y%m%d%H%M%S"
 
 # Absolute Path of Application directory
 PATH_APP: str = str(Path(__file__).resolve().parent.parent.parent.parent.parent)
@@ -53,6 +61,13 @@ PATH_SRC: str = os.path.join(PATH_ROOT, FOLDER_SRC)
 PATH_OPA = importlib.resources.files("one_public_api")
 # Absolute Path of language package directory
 PATH_LOCALES = PATH_OPA.joinpath(FOLDER_LOCALES)
+# Absolute Path of media directory
+PATH_MEDIA: str = os.path.join(PATH_APP, FOLDER_MEDIA)
+# Absolute Path of download files directory
+PATH_DOWNLOAD: str = os.path.join(PATH_APP, FOLDER_MEDIA, "download")
+# Absolute Path of upload files directory
+PATH_UPLOAD: str = os.path.join(PATH_APP, FOLDER_MEDIA, "upload")
+
 # Environment File Path
 # Files listed later have higher priority; earlier ones are ignored if multiple exists.
 PATHS_ENV: Tuple[str, ...] = tuple(os.path.join(PATH_APP, env) for env in FILES_ENV)
@@ -102,6 +117,10 @@ ROUTER_AUTH_FORCE_LOGOUT = "/force_logout"
 ROUTER_PREFIX_AUTHENTICATION = "/auth"
 # Path prefix for the action API router
 ROUTER_PREFIX_ACTION = "/actions"
+# Path prefix for the attachment API router
+ROUTER_PREFIX_ATTACHMENT = "/attachments"
+# Path prefix for the category API router
+ROUTER_PREFIX_CATEGORY = "/categories"
 # Path prefix for the feature API router
 ROUTER_PREFIX_FEATURE = "/features"
 # Path prefix for the permission API router
@@ -110,6 +129,19 @@ ROUTER_PREFIX_PERMISSION = "/permissions"
 ROUTER_PREFIX_CONFIGURATION = "/configurations"
 # Path prefix for the user API router
 ROUTER_PREFIX_USER = "/users"
+
+# Attachment router path: upload
+ROUTER_UPLOAD = "/upload"
+# Attachment router path: admin upload
+ROUTER_UPLOAD_ADMIN = ROUTER_COMMON_ADMIN + "/upload"
+# Attachment router path: download
+ROUTER_DOWNLOAD_WITH_ID = ROUTER_COMMON_WITH_ID + "/download"
+# Attachment router path: preview
+ROUTER_PREVIEW_WITH_ID = ROUTER_COMMON_WITH_ID + "/preview"
+# Attachment router path: admin download
+ROUTER_DOWNLOAD_ADMIN_WITH_ID = ROUTER_COMMON_ADMIN_WITH_ID + "/download"
+# Attachment router path: admin preview
+ROUTER_PREVIEW_ADMIN_WITH_ID = ROUTER_COMMON_ADMIN_WITH_ID + "/preview"
 
 # ----- Log Settings -------------------------------------------------------------------
 # Default logging level for the API.
@@ -155,6 +187,7 @@ LENGTH_20: int = 20
 LENGTH_55: int = 55
 LENGTH_64: int = 64
 LENGTH_100: int = 100
+LENGTH_128: int = 128
 LENGTH_255: int = 255
 LENGTH_500: int = 500
 LENGTH_1000: int = 1000

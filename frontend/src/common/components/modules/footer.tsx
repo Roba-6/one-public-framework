@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/common/components/ui/avat
 const Footer = (props: { appName: string }): React.ReactNode => {
   return (
     <footer className="sm:py-4 w-full absolute bottom-0 left-0">
-      <div className="container mx-auto p-4 text-center flex justify-between sm:rounded-2xl bg-[var(--card)]">
+      <div className="opf-container text-center">
         <div className="w-[25%] md:w-[50%] transition-all">
           <Avatar>
             <AvatarImage src="/assets/images/roba-small.png" alt="Roba" />

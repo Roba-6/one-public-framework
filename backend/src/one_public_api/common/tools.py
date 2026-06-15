@@ -32,7 +32,7 @@ def create_response_data(
     Parameters
     ----------
     schema
-        The schema model used to validate the provided results data. This should be
+        is The schema model used to validate the provided results data. This should be
         callable with a
         `model_validate` method to perform validation.
     results : Any or List[Any] or None
@@ -53,7 +53,7 @@ def create_response_data(
         metadata, and optional detailed messages.
     """
 
-    if type(results) is list:
+    if isinstance(results, list):
         rst = [getattr(schema, "model_validate")(d) for d in results]
     elif results is None:
         rst = None

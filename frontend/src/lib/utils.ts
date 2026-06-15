@@ -89,11 +89,15 @@ export const copyToClipboard = (text: string): void => {
  * schemas, where the keys are the names of the form items and the values are their
  * respective validation rules (Zod string validators).
  */
-export const createFormSchema = (formItems: any[]): { [key: string]: z.ZodString } => {
-  const rst: { [key: string]: z.ZodString } = {}
+export const createFormSchema = (
+  formItems: any[]
+): { [key: string]: z.ZodString | z.ZodAny } => {
+  const rst: { [key: string]: z.ZodString | z.ZodAny } = {}
   formItems.forEach((item) => {
     if ('validate' in item) {
       rst[item.name] = item.validate
+    } else {
+      rst[item.name] = z.any()
     }
   })
 
@@ -118,4 +122,8 @@ export const formatNumber = (num: string | number): string => {
   return new Intl.NumberFormat(store.getState().app.settings.language).format(
     parseFloat(num.toString())
   )
+}
+
+export const setDownloadUrl = (url: string): string => {
+  return url + `?token=${store.getState().app.accessToken}`
 }

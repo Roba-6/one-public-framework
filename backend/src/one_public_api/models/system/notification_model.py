@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import TYPE_CHECKING, List, Optional
+from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
 from sqlmodel import Field, Relationship, SQLModel
 
@@ -13,29 +13,51 @@ from one_public_api.models.mixins.maintenance_mixin import MaintenanceMixin
 if TYPE_CHECKING:
     pass
 
+NOTIFICATION_TITLE_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_100,
+    "title": _("Notification title"),
+    "description": _("Title of the notification."),
+}
+
+NOTIFICATION_CONTENT_FIELD_KWARGS: Dict[str, Any] = {
+    "title": _("Notification content"),
+    "description": _("Content of the notification."),
+}
+
+NOTIFICATION_PUBLISHED_AT_FIELD_KWARGS: Dict[str, Any] = {
+    "title": _("Notification published time"),
+    "description": _("Date and time when the notification is published."),
+}
+
+NOTIFICATION_IS_SCHEDULE_FIELD_KWARGS: Dict[str, Any] = {
+    "title": _("Scheduled"),
+    "description": _(
+        "Indicates whether the notification is scheduled for publication."
+    ),
+}
+
 
 class NotificationBase(SQLModel):
     title: Optional[str] = Field(
         default=None,
         min_length=constants.LENGTH_1,
-        max_length=constants.LENGTH_100,
-        description=_("Notification Title"),
+        **NOTIFICATION_TITLE_FIELD_KWARGS,
     )
     content: Optional[str] = Field(
         default=None,
-        description=_("Notification Content"),
+        **NOTIFICATION_CONTENT_FIELD_KWARGS,
     )
     # 公開日時
     published_at: Optional[datetime] = Field(
         default=None,
-        description=_("Notification Published Time"),
+        **NOTIFICATION_PUBLISHED_AT_FIELD_KWARGS,
     )
 
 
 class NotificationOption(SQLModel):
     is_schedule: Optional[bool] = Field(
         default=None,
-        description=_("Is Scheduled"),
+        **NOTIFICATION_IS_SCHEDULE_FIELD_KWARGS,
     )
 
 
@@ -53,13 +75,12 @@ class Notification(
     title: str = Field(
         nullable=False,
         min_length=constants.LENGTH_1,
-        max_length=constants.LENGTH_100,
-        description=_("Notification Title"),
+        **NOTIFICATION_TITLE_FIELD_KWARGS,
     )
     is_schedule: bool = Field(
         default=False,
         nullable=False,
-        description=_("Is Scheduled"),
+        **NOTIFICATION_IS_SCHEDULE_FIELD_KWARGS,
     )
 
     user_links: List["NotificationUserLink"] = Relationship(

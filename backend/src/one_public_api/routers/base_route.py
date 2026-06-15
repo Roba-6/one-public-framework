@@ -51,7 +51,7 @@ class BaseRoute(APIRoute):
     async def is_feature_enabled(self, request: Request) -> None:
         try:
             fs = FeatureService(session, get_language_from_request_header(request))
-            feature: Feature = fs.get_one({"name": self.name})
+            feature: Feature = fs.get_one({"key": self.name})
             if not feature.is_enabled:
                 raise ForbiddenError(_("Feature is disabled"), self.name, "E4030003")
         except ForbiddenError:

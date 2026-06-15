@@ -7,10 +7,10 @@ from one_public_api.common import constants
 from one_public_api.common.utility.str import to_camel
 from one_public_api.core.i18n import translate as _
 from one_public_api.models.mixins.password_mixin import (
-    PASSWORD_FIELD_KWARGS,
+    HASHED_PASSWORD_FIELD_KWARGS,
     PasswordMixin,
 )
-from one_public_api.models.system.user_model import USER_NAME_FIELD_KWARGS
+from one_public_api.models.system.user_model import USER_USERNAME_FIELD_KWARGS
 from one_public_api.schemas import (
     ConfigurationPublicResponse,
     UserPublicResponse,
@@ -30,11 +30,11 @@ example_base: Dict[str, Any] = {
 class LoginRequest(PasswordMixin):
     username: str = Field(
         min_length=constants.LENGTH_3,
-        **USER_NAME_FIELD_KWARGS,
+        **USER_USERNAME_FIELD_KWARGS,
     )
     password: str = Field(
         pattern=r"^[\x21-\x7E]+$",
-        **PASSWORD_FIELD_KWARGS,
+        **HASHED_PASSWORD_FIELD_KWARGS,
     )
     remember_me: bool = Field(
         default=False,
