@@ -11,21 +11,7 @@ export default defineConfig({
     alias({
       entries: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
     }),
-    react({
-      babel: {
-        plugins:
-          process.env.NODE_ENV === 'development'
-            ? []
-            : [
-                [
-                  'transform-remove-console',
-                  {
-                    exclude: ['error', 'warn', 'info', 'log'],
-                  },
-                ],
-              ],
-      },
-    }),
+    react(),
     tailwindcss(),
     dts({ entryRoot: 'src', outDir: 'dist' }),
     viteStaticCopy({
@@ -46,6 +32,12 @@ export default defineConfig({
   envDir: '../',
   envPrefix: ['UI_'],
   build: {
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+      },
+    },
     lib: {
       entry: 'src/index.ts',
       name: 'OnePublicUI',

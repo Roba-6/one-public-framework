@@ -1979,7 +1979,19 @@ files = [
     {file = "websockets-15.0.1.tar.gz", hash = "sha256:82544de02076bafba038ce055ee6412d68da13ab47f0c60cab827346de828dee"},
 ]
 
+[[package]]
+name = "zipstream-ng"
+version = "1.9.2"
+description = "A modern and easy to use streamable zip file generator"
+optional = false
+python-versions = ">=3.5"
+groups = ["main"]
+files = [
+    {file = "zipstream_ng-1.9.2-py3-none-any.whl", hash = "sha256:7292efc812a437ec688cef2c9523a4e710cd669e4b5abc7d5a15eb4d5e68e4ea"},
+    {file = "zipstream_ng-1.9.2.tar.gz", hash = "sha256:116b7304b00f3251328cb300fa90f0f09d523b7faf2a06b3eaf7277dcb82cc3e"},
+]
+
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "6bd25083c3876d6640599a77ebc47a361ef8bf37fb0c2ba1d07f67f3f38d089c"
+content-hash = "3127b97b07b12f7a953a207a9a352cdceabc9105736aa103c6e0adc8f6c73573"

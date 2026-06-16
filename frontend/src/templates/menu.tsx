@@ -22,6 +22,11 @@ const menu: Menu = {
         icon: 'AppWindow',
       },
       {
+        name: 'menus.categories',
+        url: getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_CATEGORY,
+        icon: 'Tags',
+      },
+      {
         name: 'menus.users',
         url: getAdminPath() + CONSTANT.ROUTE_URL.ADMIN_USER,
         icon: 'User2',

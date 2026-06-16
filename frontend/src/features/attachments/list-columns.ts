@@ -4,7 +4,7 @@ import { getLocalMessage } from '@/lib/utils'
 export const listColumns: DataColumn[] = [
   {
     key: 'name',
-    name: getLocalMessage('labels.feature.name'),
+    name: getLocalMessage('labels.attachment.name'),
     isSortable: true,
     align: 'left',
   },
@@ -13,7 +13,7 @@ export const listColumns: DataColumn[] = [
     name: getLocalMessage('labels.requiresAuth'),
     type: 'booleanIcon',
     values: ['ShieldCheck', 'ShieldX'],
-    colors: ['text-orange-500', 'text-red-700'],
+    colors: ['text-[var(--color-green-500)]', 'text-[var(--color-gray-700)]'],
     align: 'center',
     isFilterable: true,
     filters: [

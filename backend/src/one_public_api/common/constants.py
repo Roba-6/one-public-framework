@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import List, Tuple
 
 # Version of the One Public API
-VERSION: str = "0.1.0-alpha.25"
+VERSION: str = "0.1.0-alpha.32"
 # Default Language
 DEFAULT_LANGUAGE: str = "en"
 # Default path for locale files
@@ -20,6 +20,8 @@ ENCODE_UTF8: str = "utf-8"
 EXT_LOG = ".log"
 # SQLite File Extension
 EXT_SQLITE = ".sqlite3"
+# ZIP file extension
+EXT_ZIP = ".zip"
 
 # ----- Security Settings --------------------------------------------------------------
 # Access token expiration time (in minutes)
@@ -45,6 +47,7 @@ FOLDER_OPA: str = "one_public_api"
 
 FOLDER_FORMAT: str = "%Y/%m/%d"
 
+FILE_FORMAT: str = "%Y%m%d%H%M%S"
 
 # Absolute Path of Application directory
 PATH_APP: str = str(Path(__file__).resolve().parent.parent.parent.parent.parent)
@@ -116,6 +119,8 @@ ROUTER_PREFIX_AUTHENTICATION = "/auth"
 ROUTER_PREFIX_ACTION = "/actions"
 # Path prefix for the attachment API router
 ROUTER_PREFIX_ATTACHMENT = "/attachments"
+# Path prefix for the category API router
+ROUTER_PREFIX_CATEGORY = "/categories"
 # Path prefix for the feature API router
 ROUTER_PREFIX_FEATURE = "/features"
 # Path prefix for the permission API router
@@ -182,6 +187,7 @@ LENGTH_20: int = 20
 LENGTH_55: int = 55
 LENGTH_64: int = 64
 LENGTH_100: int = 100
+LENGTH_128: int = 128
 LENGTH_255: int = 255
 LENGTH_500: int = 500
 LENGTH_1000: int = 1000

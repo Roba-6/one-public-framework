@@ -66,7 +66,8 @@ const Logo = (props: { size?: LogoSize }): React.ReactNode => {
       </div>
       <h1
         className={cn(
-          'logo-text text-black dark:text-white tracking-widest font-[Sense]',
+          'logo-text text-black dark:text-[var(--color-gray-500)] tracking-widest' +
+            ' font-[Sense]',
           styles[2]
         )}
       >

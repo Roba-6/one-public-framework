@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, List, Optional
+from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
 from sqlmodel import Field, Relationship, SQLModel
 
@@ -16,18 +16,38 @@ from one_public_api.models.mixins import (
 if TYPE_CHECKING:
     from one_public_api.models import Organization, Permission, User
 
+ROLE_KEY_FIELD_KWARGS: Dict[str, Any] = {
+    "min_length": constants.LENGTH_3,
+    "max_length": constants.LENGTH_100,
+    "title": _("Role name"),
+    "description": _("Display name of the role."),
+}
+
+ROLE_NAME_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_100,
+    "title": _("Role name"),
+    "description": _("Display name of the role."),
+}
+
+ROLE_DESCRIPTION_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_1000,
+    "title": _("Description"),
+    "description": _("Detailed description of the role."),
+}
+
 
 class RoleBase(SQLModel):
+    key: Optional[str] = Field(
+        default=None,
+        **ROLE_KEY_FIELD_KWARGS,
+    )
     name: Optional[str] = Field(
         default=None,
-        min_length=constants.LENGTH_1,
-        max_length=constants.LENGTH_100,
-        description=_("Role name"),
+        **ROLE_NAME_FIELD_KWARGS,
     )
     description: Optional[str] = Field(
         default=None,
-        max_length=constants.LENGTH_1000,
-        description=_("Description"),
+        **ROLE_DESCRIPTION_FIELD_KWARGS,
     )
 
 
@@ -41,6 +61,11 @@ class Role(
 ):
     __tablename__ = settings.DB_TABLE_PRE + "roles"
 
+    key: str = Field(
+        nullable=False,
+        unique=True,
+        **ROLE_KEY_FIELD_KWARGS,
+    )
     creator: Optional["User"] = Relationship(
         sa_relationship_kwargs={
             "foreign_keys": "[Role.created_by]",

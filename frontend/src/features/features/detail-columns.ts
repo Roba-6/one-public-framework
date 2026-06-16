@@ -13,18 +13,22 @@ export const detailColumns: DataColumn[] = [
     type: 'markdown',
   },
   {
+    key: 'key',
+    name: getLocalMessage('labels.key'),
+  },
+  {
     key: 'isEnabled',
     name: getLocalMessage('labels.enabled'),
     type: 'booleanIcon',
     values: ['CircleCheck', 'Ban'],
-    colors: ['text-green-500 dark:text-yellow-500', 'text-orange-500'],
+    colors: ['text-[var(--color-green-500)]', 'text-[var(--color-gray-700)]'],
   },
   {
     key: 'requiresAuth',
     name: getLocalMessage('labels.requiresAuth'),
     type: 'booleanIcon',
     values: ['CircleCheck', 'Ban'],
-    colors: ['text-green-500 dark:text-yellow-500', 'text-orange-500'],
+    colors: ['text-[var(--color-green-500)]', 'text-[var(--color-gray-700)]'],
   },
   {
     key: 'createdAt',

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.24\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-05-23 20:12+0900\n"
+"POT-Creation-Date: 2026-06-15 13:23+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -104,212 +104,226 @@ msgstr ""
 "The primary result data of the API response. Can be a single object, a "
 "list of objects, or `null` when there are no results."
 
-#: src/one_public_api/models/mixins/address_mixin.py:47
+#: src/one_public_api/models/mixins/address_mixin.py:11
 msgid "Postal Code"
 msgstr "Postal Code"
 
-#: src/one_public_api/models/mixins/address_mixin.py:48
-msgid "Postal Code Description"
+#: src/one_public_api/models/mixins/address_mixin.py:12
+msgid "Postal code used for the address."
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:53
+#: src/one_public_api/models/mixins/address_mixin.py:16
 msgid "Country"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:54
-msgid "Country Description"
+#: src/one_public_api/models/mixins/address_mixin.py:17
+msgid "Country name of the address."
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:59
+#: src/one_public_api/models/mixins/address_mixin.py:21
 msgid "Prefecture"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:60
-msgid "Prefecture Description"
+#: src/one_public_api/models/mixins/address_mixin.py:22
+msgid "Prefecture or state of the address."
 msgstr ""
-"A text-based search parameter used to filter results by matching one or "
-"more fields. The API will return only records that contain the provided "
-"keyword(s)."
 
-#: src/one_public_api/models/mixins/address_mixin.py:65
+#: src/one_public_api/models/mixins/address_mixin.py:26
 msgid "Municipality"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:66
-msgid "Municipality Description"
+#: src/one_public_api/models/mixins/address_mixin.py:27
+msgid "City, ward, or municipality of the address."
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:71
+#: src/one_public_api/models/mixins/address_mixin.py:31
 msgid "Address Detail 1"
 msgstr "Address Detail 1"
 
-#: src/one_public_api/models/mixins/address_mixin.py:72
-msgid "Address Detail 1 Description"
+#: src/one_public_api/models/mixins/address_mixin.py:32
+msgid "Primary street address information."
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:77
+#: src/one_public_api/models/mixins/address_mixin.py:36
 msgid "Address Detail 2"
 msgstr "Address Detail 2"
 
-#: src/one_public_api/models/mixins/address_mixin.py:78
-msgid "Address Detail 2 Description"
+#: src/one_public_api/models/mixins/address_mixin.py:38
+msgid "Additional address information such as building name or room number."
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:83
+#: src/one_public_api/models/mixins/address_mixin.py:43
 msgid "Telephone Number"
 msgstr ""
 
-#: src/one_public_api/models/mixins/address_mixin.py:84
-msgid "Telephone Number Description"
+#: src/one_public_api/models/mixins/address_mixin.py:44
+msgid "Contact telephone number."
 msgstr ""
 
-#: src/one_public_api/models/mixins/belong_to_mixin.py:30
+#: src/one_public_api/models/mixins/belong_to_mixin.py:10
 msgid "Organization ID"
 msgstr ""
 
-#: src/one_public_api/models/mixins/belong_to_mixin.py:31
-#, fuzzy
-msgid "Organization ID Description"
+#: src/one_public_api/models/mixins/belong_to_mixin.py:11
+msgid "ID of the associated organization."
 msgstr ""
-"Functions sharing the same first seven characters (e.g. SYS-COF)belong to"
-" the same functional category."
 
-#: src/one_public_api/models/mixins/id_mixin.py:26
+#: src/one_public_api/models/mixins/id_mixin.py:10
 msgid "Record ID"
 msgstr ""
 
-#: src/one_public_api/models/mixins/id_mixin.py:27
-msgid "Auto-generated unique ID for the record"
+#: src/one_public_api/models/mixins/id_mixin.py:11
+msgid "Auto-generated unique ID for the record."
 msgstr ""
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:31
+#: src/one_public_api/models/mixins/maintenance_mixin.py:12
 msgid "Creator ID"
 msgstr ""
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:32
-msgid "Creator ID Description"
+#: src/one_public_api/models/mixins/maintenance_mixin.py:13
+msgid "ID of the user who created this record."
 msgstr ""
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:38
+#: src/one_public_api/models/mixins/maintenance_mixin.py:18
 msgid "Updater ID"
 msgstr ""
 
-#: src/one_public_api/models/mixins/maintenance_mixin.py:39
-msgid "Updater ID Description"
+#: src/one_public_api/models/mixins/maintenance_mixin.py:19
+msgid "ID of the user who last updated this record."
 msgstr ""
 
-#: src/one_public_api/models/mixins/password_mixin.py:11
+#: src/one_public_api/models/mixins/password_mixin.py:10
+#: src/one_public_api/schemas/base_schema.py:108
 msgid "Password"
 msgstr ""
 
-#: src/one_public_api/models/mixins/password_mixin.py:12
-msgid "Password provided by the user"
+#: src/one_public_api/models/mixins/password_mixin.py:11
+msgid "Hashed password used for authentication."
 msgstr ""
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:28
+#: src/one_public_api/models/mixins/timestamp_mixin.py:9
 msgid "Record creation time"
 msgstr ""
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:29
-#, fuzzy
-msgid "Record Creation Time Description"
+#: src/one_public_api/models/mixins/timestamp_mixin.py:10
+msgid "Date and time when the record was created."
 msgstr ""
-"Functions sharing the same first seven characters (e.g. SYS-COF)belong to"
-" the same functional category."
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:35
+#: src/one_public_api/models/mixins/timestamp_mixin.py:14
 msgid "Last update time"
 msgstr ""
 
-#: src/one_public_api/models/mixins/timestamp_mixin.py:36
+#: src/one_public_api/models/mixins/timestamp_mixin.py:15
+msgid "Date and time when the record was last updated."
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:18
 #, fuzzy
-msgid "Last Update Time Description"
-msgstr "**SYS-ATH-P-SUP**<br />Registers a new user account."
-
-#: src/one_public_api/models/system/action_model.py:17
-msgid "Action name"
+msgid "Action key"
 msgstr ""
+"**SYS-ATH-P-LGN**<br />Validates the provided username and password "
+"against the records stored in the database.<br />If the credentials are "
+"correct, the system issues an access token and a refresh token. If "
+"authentication fails and the username exists, the system increments the "
+"login failure count. Once the count reaches the limit defined by "
+"`MAX_FAILED_ATTEMPTS`, the system locks the account. If the username does"
+" not exist, an error is returned.<br />When the `rememberMe` field is set"
+" to `true`, the refresh token cookie remains valid until the period "
+"specified by the `REFRESH_TOKEN_EXPIRE` setting expires.<br />If set to "
+"`false`, the cookie is deleted when the browser session ends."
 
-#: src/one_public_api/models/system/action_model.py:19
-msgid ""
-"Unique identifier for the action. Used internally for referencing and "
-"routing."
-msgstr ""
-
-#: src/one_public_api/models/system/action_model.py:25
-msgid "Action label"
+#: src/one_public_api/models/system/action_model.py:20
+msgid "Unique identifier for the action. Used internally for referencing."
 msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:26
-msgid "Display name of the action shown in the user interface."
+msgid "Action name"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:31
-msgid "Action URL"
+#: src/one_public_api/models/system/action_model.py:27
+msgid "Action name that can be modified by the user."
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:32
+msgid "Action label"
 msgstr ""
 
 #: src/one_public_api/models/system/action_model.py:33
+msgid "Display name of the action shown in the user interface."
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:38
+msgid "Action URL"
+msgstr ""
+
+#: src/one_public_api/models/system/action_model.py:40
 msgid "URL path associated with the action. Used for navigation or routing."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:39
+#: src/one_public_api/models/system/action_model.py:46
 msgid "Action icon"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:41
+#: src/one_public_api/models/system/action_model.py:48
 msgid "Icon name or identifier used to visually represent the action in the UI."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:47
+#: src/one_public_api/models/system/action_model.py:54
 msgid "Component name"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:49
+#: src/one_public_api/models/system/action_model.py:56
 msgid "Frontend component name responsible for rendering the action view."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:54
+#: src/one_public_api/models/system/action_model.py:61
 msgid "Visible"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:55
+#: src/one_public_api/models/system/action_model.py:62
 msgid "Determines whether the action is visible in the user interface."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:60
+#: src/one_public_api/models/system/action_model.py:67
+#: src/one_public_api/models/system/attachment_model.py:29
 #: src/one_public_api/models/system/category_model.py:34
-#: src/one_public_api/models/system/configuration_model.py:64
-#: src/one_public_api/models/system/configuration_model.py:126
-#: src/one_public_api/models/system/feature_model.py:28
-#: src/one_public_api/models/system/feature_model.py:66
-#: src/one_public_api/models/system/organization_model.py:36
-#: src/one_public_api/models/system/permission_model.py:26
-#: src/one_public_api/models/system/role_model.py:30
+#: src/one_public_api/models/system/configuration_model.py:41
+#: src/one_public_api/models/system/feature_model.py:33
+#: src/one_public_api/models/system/organization_model.py:34
+#: src/one_public_api/models/system/permission_model.py:32
+#: src/one_public_api/models/system/role_model.py:34
 msgid "Description"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:61
+#: src/one_public_api/models/system/action_model.py:68
 msgid "Detailed description of the action and its purpose."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:65
-#: src/one_public_api/models/system/user_model.py:58
+#: src/one_public_api/models/system/action_model.py:72
+#: src/one_public_api/models/system/category_model.py:49
+#: src/one_public_api/models/system/feature_model.py:38
+#: src/one_public_api/models/system/organization_model.py:39
+#: src/one_public_api/models/system/user_model.py:62
 msgid "Enabled"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:66
+#: src/one_public_api/models/system/action_model.py:73
 msgid "Indicates whether the action is active and can be used."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:70
+#: src/one_public_api/models/system/action_model.py:77
+#: src/one_public_api/models/system/attachment_model.py:34
+#: src/one_public_api/models/system/configuration_model.py:51
+#: src/one_public_api/models/system/feature_model.py:43
 msgid "Requires authentication"
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:72
+#: src/one_public_api/models/system/action_model.py:79
+#: src/one_public_api/models/system/attachment_model.py:36
 msgid "Specifies whether authentication is required to access this action."
 msgstr ""
 
-#: src/one_public_api/models/system/action_model.py:77
+#: src/one_public_api/models/system/action_model.py:84
 #, fuzzy
 msgid "Parent action ID"
 msgstr ""
@@ -324,236 +338,392 @@ msgstr ""
 "specified by the `REFRESH_TOKEN_EXPIRE` setting expires.<br />If set to "
 "`false`, the cookie is deleted when the browser session ends."
 
-#: src/one_public_api/models/system/action_model.py:79
+#: src/one_public_api/models/system/action_model.py:86
 msgid ""
 "Identifier of the parent action. Used to define hierarchical "
 "relationships between actions (e.g., menu and sub-menu structure)."
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:27
+#: src/one_public_api/models/system/attachment_model.py:23
 msgid "Attachment name"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:31
-#: src/one_public_api/models/system/attachment_model.py:94
-msgid "Description of the attachment"
+#: src/one_public_api/models/system/attachment_model.py:24
+msgid "Attachment name that can be modified by the user."
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:39
-#: src/one_public_api/models/system/attachment_model.py:101
-msgid "Specifies whether authentication is required to access this attachment."
+#: src/one_public_api/models/system/attachment_model.py:30
+msgid "Detailed description of the attachment and its purpose."
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:48
-msgid "Save Path"
+#: src/one_public_api/models/system/attachment_model.py:42
+msgid "Save path"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:57
+#: src/one_public_api/models/system/attachment_model.py:44
+msgid ""
+"For uploaded attachments, this field stores the file path. For online "
+"resources, it stores the resource URL."
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:51
 msgid "Original file name"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:62
-msgid "MIME Type"
+#: src/one_public_api/models/system/attachment_model.py:52
+msgid "Original file name of the uploaded attachment."
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:68
+#: src/one_public_api/models/system/attachment_model.py:57
+msgid "MIME type"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:59
+msgid "Internet media type used to identify the format of the attachment."
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:64
+msgid "File size"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:65
 msgid "File size in bytes"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:73
+#: src/one_public_api/models/system/attachment_model.py:69
 msgid "Download count"
 msgstr ""
 
-#: src/one_public_api/models/system/category_model.py:19
-#: src/one_public_api/models/system/category_model.py:64
+#: src/one_public_api/models/system/attachment_model.py:70
+msgid "Total number of downloads for the attachment."
+msgstr ""
+
+#: src/one_public_api/models/system/category_model.py:16
 msgid "Category name"
 msgstr ""
 
-#: src/one_public_api/models/system/category_model.py:24
+#: src/one_public_api/models/system/category_model.py:17
+msgid "Display name of the category."
+msgstr ""
+
+#: src/one_public_api/models/system/category_model.py:22
 msgid "Category alias"
 msgstr ""
 
-#: src/one_public_api/models/system/category_model.py:29
+#: src/one_public_api/models/system/category_model.py:23
+msgid "Alternative identifier used to reference the category."
+msgstr ""
+
+#: src/one_public_api/models/system/category_model.py:28
 msgid "Category value"
 msgstr ""
 
-#: src/one_public_api/models/system/category_model.py:42
-#: src/one_public_api/models/system/configuration_model.py:72
+#: src/one_public_api/models/system/category_model.py:29
+msgid "Value associated with the category."
+msgstr ""
+
+#: src/one_public_api/models/system/category_model.py:35
+msgid "Detailed description of the category."
+msgstr ""
+
+#: src/one_public_api/models/system/category_model.py:39
+msgid "Category ID"
+msgstr ""
+
+#: src/one_public_api/models/system/category_model.py:40
+msgid "ID of the associated category."
+msgstr ""
+
+#: src/one_public_api/models/system/category_model.py:44
+#: src/one_public_api/models/system/configuration_model.py:46
 msgid "Configuration options"
 msgstr ""
 
-#: src/one_public_api/models/system/category_model.py:46
-#: src/one_public_api/models/system/category_model.py:69
-#: src/one_public_api/models/system/organization_model.py:43
-#: src/one_public_api/models/system/organization_model.py:69
-msgid "Whether the organization is enabled"
+#: src/one_public_api/models/system/category_model.py:45
+msgid "Optional settings associated with the category."
 msgstr ""
 
-#: src/one_public_api/models/system/comment_model.py:21
-msgid "Comment Content"
+#: src/one_public_api/models/system/category_model.py:50
+msgid "Indicates whether the category is active and can be used."
 msgstr ""
 
-#: src/one_public_api/models/system/comment_model.py:29
-msgid "Owner of comment"
+#: src/one_public_api/models/system/comment_model.py:17
+msgid "Comment content"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:44
-#: src/one_public_api/models/system/configuration_model.py:97
+#: src/one_public_api/models/system/comment_model.py:18
+msgid "Content of the comment."
+msgstr ""
+
+#: src/one_public_api/models/system/comment_model.py:22
+msgid "Comment owner"
+msgstr ""
+
+#: src/one_public_api/models/system/comment_model.py:23
+msgid "Owner of the comment."
+msgstr ""
+
+#: src/one_public_api/models/system/configuration_model.py:18
 msgid "Configuration name"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:50
-#: src/one_public_api/models/system/configuration_model.py:103
-#: src/one_public_api/schemas/base_schema.py:223
+#: src/one_public_api/models/system/configuration_model.py:19
+msgid "Display name of the configuration."
+msgstr ""
+
+#: src/one_public_api/models/system/configuration_model.py:24
+#: src/one_public_api/schemas/base_schema.py:227
 msgid "Configuration key"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:55
-#: src/one_public_api/models/system/configuration_model.py:109
-#: src/one_public_api/schemas/base_schema.py:227
+#: src/one_public_api/models/system/configuration_model.py:25
+msgid "Unique key used to identify the configuration."
+msgstr ""
+
+#: src/one_public_api/models/system/configuration_model.py:30
+#: src/one_public_api/schemas/base_schema.py:231
 msgid "Configuration value"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:59
-#: src/one_public_api/models/system/configuration_model.py:114
-#: src/one_public_api/schemas/base_schema.py:230
+#: src/one_public_api/models/system/configuration_model.py:31
+msgid "Value assigned to the configuration."
+msgstr ""
+
+#: src/one_public_api/models/system/configuration_model.py:35
+#: src/one_public_api/schemas/base_schema.py:234
 msgid "Configuration type"
 msgstr ""
 
-#: src/one_public_api/models/system/configuration_model.py:76
-#: src/one_public_api/models/system/configuration_model.py:120
-#: src/one_public_api/models/system/feature_model.py:39
-#: src/one_public_api/models/system/feature_model.py:76
-#: src/one_public_api/schemas/feature_schema.py:63
-msgid "Whether auth is required"
+#: src/one_public_api/models/system/configuration_model.py:36
+msgid "Data type of the configuration value."
 msgstr ""
 
-#: src/one_public_api/models/system/feature_model.py:23
-#: src/one_public_api/models/system/feature_model.py:60
+#: src/one_public_api/models/system/configuration_model.py:42
+msgid "Detailed description of the configuration."
+msgstr ""
+
+#: src/one_public_api/models/system/configuration_model.py:47
+msgid "Available options for the configuration."
+msgstr ""
+
+#: src/one_public_api/models/system/configuration_model.py:53
+msgid "Indicates whether authentication is required to access this configuration."
+msgstr ""
+
+#: src/one_public_api/models/system/feature_model.py:19
+msgid "Feature key"
+msgstr ""
+
+#: src/one_public_api/models/system/feature_model.py:21
+msgid "Unique identifier for the feature. Used internally for referencing."
+msgstr ""
+
+#: src/one_public_api/models/system/feature_model.py:27
 #: src/one_public_api/schemas/feature_schema.py:57
 msgid "Feature name"
 msgstr ""
 
-#: src/one_public_api/models/system/feature_model.py:35
-#: src/one_public_api/models/system/feature_model.py:71
-#: src/one_public_api/schemas/feature_schema.py:60
-msgid "Whether the feature is enabled"
+#: src/one_public_api/models/system/feature_model.py:28
+msgid "Feature name that can be modified by the user."
 msgstr ""
 
-#: src/one_public_api/models/system/notification_model.py:22
-#: src/one_public_api/models/system/notification_model.py:57
-msgid "Notification Title"
+#: src/one_public_api/models/system/feature_model.py:34
+msgid "Detailed description of the feature."
 msgstr ""
 
-#: src/one_public_api/models/system/notification_model.py:26
-msgid "Notification Content"
+#: src/one_public_api/models/system/feature_model.py:39
+msgid "Indicates whether the feature is active and can be used."
 msgstr ""
 
-#: src/one_public_api/models/system/notification_model.py:31
-msgid "Notification Published Time"
+#: src/one_public_api/models/system/feature_model.py:45
+msgid "Indicates whether authentication is required to access this feature."
 msgstr ""
 
-#: src/one_public_api/models/system/notification_model.py:38
-#: src/one_public_api/models/system/notification_model.py:62
-msgid "Is Scheduled"
+#: src/one_public_api/models/system/notification_model.py:18
+msgid "Notification title"
 msgstr ""
 
-#: src/one_public_api/models/system/organization_model.py:26
+#: src/one_public_api/models/system/notification_model.py:19
+msgid "Title of the notification."
+msgstr ""
+
+#: src/one_public_api/models/system/notification_model.py:23
+msgid "Notification content"
+msgstr ""
+
+#: src/one_public_api/models/system/notification_model.py:24
+msgid "Content of the notification."
+msgstr ""
+
+#: src/one_public_api/models/system/notification_model.py:28
+msgid "Notification published time"
+msgstr ""
+
+#: src/one_public_api/models/system/notification_model.py:29
+msgid "Date and time when the notification is published."
+msgstr ""
+
+#: src/one_public_api/models/system/notification_model.py:33
+msgid "Scheduled"
+msgstr ""
+
+#: src/one_public_api/models/system/notification_model.py:35
+msgid "Indicates whether the notification is scheduled for publication."
+msgstr ""
+
+#: src/one_public_api/models/system/organization_model.py:22
 msgid "Organization name"
 msgstr ""
 
-#: src/one_public_api/models/system/organization_model.py:31
-msgid "Nickname"
+#: src/one_public_api/models/system/organization_model.py:23
+#: src/one_public_api/models/system/organization_model.py:29
+msgid "Display name of the organization."
 msgstr ""
 
-#: src/one_public_api/models/system/organization_model.py:64
-#: src/one_public_api/models/system/user_model.py:27
-msgid "User name"
+#: src/one_public_api/models/system/organization_model.py:28
+msgid "Display name"
 msgstr ""
 
-#: src/one_public_api/models/system/permission_model.py:21
-#: src/one_public_api/schemas/permission_schema.py:76
+#: src/one_public_api/models/system/organization_model.py:35
+msgid "Detailed description of the organization."
+msgstr ""
+
+#: src/one_public_api/models/system/organization_model.py:40
+msgid "Whether the organization is enabled"
+msgstr ""
+
+#: src/one_public_api/models/system/permission_model.py:18
+#, fuzzy
+msgid "Permission key"
+msgstr ""
+"Defines the maximum number of records to return in a single request. Used"
+" to control page size and prevent large data loads."
+
+#: src/one_public_api/models/system/permission_model.py:20
+msgid "Unique identifier for the permission. Used internally for referencing."
+msgstr ""
+
+#: src/one_public_api/models/system/permission_model.py:26
 msgid "Permission name"
 msgstr ""
 
-#: src/one_public_api/models/system/role_model.py:25
+#: src/one_public_api/models/system/permission_model.py:27
+msgid "Display name of the permission."
+msgstr ""
+
+#: src/one_public_api/models/system/permission_model.py:33
+msgid "Detailed description of the permission."
+msgstr ""
+
+#: src/one_public_api/models/system/role_model.py:22
+#: src/one_public_api/models/system/role_model.py:28
 msgid "Role name"
 msgstr ""
 
-#: src/one_public_api/models/system/token_model.py:24
+#: src/one_public_api/models/system/role_model.py:23
+#: src/one_public_api/models/system/role_model.py:29
+msgid "Display name of the role."
+msgstr ""
+
+#: src/one_public_api/models/system/role_model.py:35
+#, fuzzy
+msgid "Detailed description of the role."
+msgstr ""
+"This field is used to convey advisory or warning information when the "
+"request is processed successfully (HTTP 2xx), but potentially undesirable"
+" conditions, deprecated behavior, or non-critical issues were detected "
+"during processing."
+
+#: src/one_public_api/models/system/token_model.py:17
 msgid "Token"
 msgstr ""
 
-#: src/one_public_api/models/system/token_model.py:28
+#: src/one_public_api/models/system/token_model.py:18
+msgid "Token value used for authentication or authorization."
+msgstr ""
+
+#: src/one_public_api/models/system/token_model.py:22
 msgid "Token type"
 msgstr ""
 
-#: src/one_public_api/models/system/token_model.py:34
-msgid "Owner of token"
+#: src/one_public_api/models/system/token_model.py:23
+msgid "Type of the token."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:28
+#: src/one_public_api/models/system/token_model.py:27
+msgid "Token owner"
+msgstr ""
+
+#: src/one_public_api/models/system/token_model.py:28
+msgid "User who owns the token."
+msgstr ""
+
+#: src/one_public_api/models/system/user_model.py:31
+msgid "Username"
+msgstr ""
+
+#: src/one_public_api/models/system/user_model.py:32
 msgid "Unique username used for login and system identification."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:33
+#: src/one_public_api/models/system/user_model.py:37
 msgid "Email address"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:34
+#: src/one_public_api/models/system/user_model.py:38
 msgid "User's email address used for authentication and communication."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:39
+#: src/one_public_api/models/system/user_model.py:43
 msgid "First name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:40
+#: src/one_public_api/models/system/user_model.py:44
 msgid "User's given name."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:45
+#: src/one_public_api/models/system/user_model.py:49
 msgid "Last name"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:46
+#: src/one_public_api/models/system/user_model.py:50
 msgid "User's family name."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:51
+#: src/one_public_api/models/system/user_model.py:55
 msgid "Display nickname"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:53
+#: src/one_public_api/models/system/user_model.py:57
 msgid "Nickname displayed in the user interface instead of the full name."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:60
+#: src/one_public_api/models/system/user_model.py:64
 msgid ""
 "Indicates whether the user account is active and allowed to access the "
 "system."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:65
+#: src/one_public_api/models/system/user_model.py:69
 msgid "Locked"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:67
+#: src/one_public_api/models/system/user_model.py:71
 msgid ""
 "Indicates whether the account is locked due to security reasons (e.g., "
 "too many failed login attempts)."
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:73
+#: src/one_public_api/models/system/user_model.py:77
 msgid "Failed login attempts"
 msgstr ""
 
-#: src/one_public_api/models/system/user_model.py:75
+#: src/one_public_api/models/system/user_model.py:79
 msgid "Number of consecutive failed login attempts recorded for the account."
 msgstr ""
 
 #: src/one_public_api/routers/action_router.py:28
-#: src/one_public_api/schemas/permission_schema.py:51
+#: src/one_public_api/schemas/permission_schema.py:53
 msgid "Actions"
 msgstr ""
 
@@ -593,7 +763,7 @@ msgid "The ID of the action item to be updated"
 msgstr ""
 
 #: src/one_public_api/routers/action_router.py:117
-#: src/one_public_api/routers/attachment_router.py:119
+#: src/one_public_api/routers/attachment_router.py:141
 msgid "Delete Action"
 msgstr ""
 
@@ -610,18 +780,28 @@ msgid "Download Public Attachment"
 msgstr ""
 
 #: src/one_public_api/routers/attachment_router.py:42
-#: src/one_public_api/routers/attachment_router.py:91
-msgid "The ID of the attachment to be retrieved"
+#: src/one_public_api/routers/attachment_router.py:60
+#: src/one_public_api/routers/attachment_router.py:184
+#: src/one_public_api/routers/attachment_router.py:200
+msgid "The ID of the attachment to be downloaded"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:54
+#: src/one_public_api/routers/attachment_router.py:55
+#, fuzzy
+msgid "Preview Public Attachment"
+msgstr ""
+"A text-based search parameter used to filter results by matching one or "
+"more fields. The API will return only records that contain the provided "
+"keyword(s)."
+
+#: src/one_public_api/routers/attachment_router.py:76
 #, fuzzy
 msgid "List Attachments"
 msgstr ""
 "Defines the maximum number of records to return in a single request. Used"
 " to control page size and prevent large data loads."
 
-#: src/one_public_api/routers/attachment_router.py:69
+#: src/one_public_api/routers/attachment_router.py:91
 #, fuzzy
 msgid "Create Attachment"
 msgstr ""
@@ -629,41 +809,49 @@ msgstr ""
 "more fields. The API will return only records that contain the provided "
 "keyword(s)."
 
-#: src/one_public_api/routers/attachment_router.py:86
+#: src/one_public_api/routers/attachment_router.py:108
 msgid "Get Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:101
+#: src/one_public_api/routers/attachment_router.py:113
+msgid "The ID of the attachment to be retrieved"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:123
 msgid "Update Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:107
+#: src/one_public_api/routers/attachment_router.py:129
 msgid "The ID of the attachment to be updated"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:124
+#: src/one_public_api/routers/attachment_router.py:146
 msgid "The ID of the attachment to be deleted"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:134
+#: src/one_public_api/routers/attachment_router.py:156
 msgid "Upload Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:142
+#: src/one_public_api/routers/attachment_router.py:164
 msgid "Upload Attachment Files"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:143
+#: src/one_public_api/routers/attachment_router.py:165
 msgid "Upload multiple attachment files"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:157
+#: src/one_public_api/routers/attachment_router.py:179
 msgid "Download Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:162
-msgid "The ID of the attachment to be downloaded"
+#: src/one_public_api/routers/attachment_router.py:195
+#, fuzzy
+msgid "Preview Attachment"
 msgstr ""
+"A text-based search parameter used to filter results by matching one or "
+"more fields. The API will return only records that contain the provided "
+"keyword(s)."
 
 #: src/one_public_api/routers/authenticate_router.py:31
 msgid "Authentication"
@@ -772,9 +960,61 @@ msgstr ""
 msgid "Feature not found."
 msgstr ""
 
+#: src/one_public_api/routers/category_router.py:28
+msgid "Categories"
+msgstr ""
+
+#: src/one_public_api/routers/category_router.py:35
+msgid "List Public Categories"
+msgstr ""
+
+#: src/one_public_api/routers/category_router.py:50
+msgid "Get Public Category"
+msgstr ""
+
+#: src/one_public_api/routers/category_router.py:56
+#: src/one_public_api/routers/category_router.py:108
+msgid "The ID of the category item to be retrieved"
+msgstr ""
+
+#: src/one_public_api/routers/category_router.py:70
+#, fuzzy
+msgid "List Categories"
+msgstr ""
+"Defines the maximum number of records to return in a single request. Used"
+" to control page size and prevent large data loads."
+
+#: src/one_public_api/routers/category_router.py:85
+#, fuzzy
+msgid "Create Category"
+msgstr ""
+"A text-based search parameter used to filter results by matching one or "
+"more fields. The API will return only records that contain the provided "
+"keyword(s)."
+
+#: src/one_public_api/routers/category_router.py:102
+msgid "Get Category"
+msgstr ""
+
+#: src/one_public_api/routers/category_router.py:119
+msgid "Update Category"
+msgstr ""
+
+#: src/one_public_api/routers/category_router.py:125
+msgid "The ID of the category item to be updated"
+msgstr ""
+
+#: src/one_public_api/routers/category_router.py:137
+msgid "Delete Category"
+msgstr ""
+
+#: src/one_public_api/routers/category_router.py:142
+msgid "The ID of the category item to be deleted"
+msgstr ""
+
 #: src/one_public_api/routers/configuration_router.py:28
 #: src/one_public_api/schemas/authenticate_schema.py:93
-#: src/one_public_api/schemas/base_schema.py:144
+#: src/one_public_api/schemas/base_schema.py:148
 msgid "Configuration"
 msgstr ""
 
@@ -816,7 +1056,7 @@ msgid "The ID of the configuration item to be deleted"
 msgstr ""
 
 #: src/one_public_api/routers/feature_router.py:28
-#: src/one_public_api/schemas/permission_schema.py:56
+#: src/one_public_api/schemas/permission_schema.py:58
 msgid "Features"
 msgstr ""
 
@@ -963,6 +1203,16 @@ msgstr ""
 "specified by the `REFRESH_TOKEN_EXPIRE` setting expires.<br />If set to "
 "`false`, the cookie is deleted when the browser session ends."
 
+#: src/one_public_api/schemas/attachment_schema.py:41
+#: src/one_public_api/schemas/attachment_schema.py:55
+msgid "URL"
+msgstr ""
+
+#: src/one_public_api/schemas/attachment_schema.py:48
+#: src/one_public_api/schemas/attachment_schema.py:62
+msgid "PREVIEW"
+msgstr ""
+
 #: src/one_public_api/schemas/authenticate_schema.py:41
 msgid "Remember me"
 msgstr ""
@@ -996,7 +1246,7 @@ msgstr ""
 "returning data."
 
 #: src/one_public_api/schemas/authenticate_schema.py:89
-#: src/one_public_api/schemas/base_schema.py:140
+#: src/one_public_api/schemas/base_schema.py:144
 #: src/one_public_api/schemas/role_schema.py:31
 msgid "Role"
 msgstr ""
@@ -1016,7 +1266,7 @@ msgstr ""
 " the same functional category."
 
 #: src/one_public_api/schemas/base_schema.py:72
-#: src/one_public_api/schemas/base_schema.py:136
+#: src/one_public_api/schemas/base_schema.py:140
 msgid "Organization"
 msgstr ""
 
@@ -1024,23 +1274,50 @@ msgstr ""
 msgid "Full name"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:128
-#: src/one_public_api/schemas/base_schema.py:172
-msgid "Creator"
+#: src/one_public_api/schemas/base_schema.py:109
+msgid "User password"
 msgstr ""
 
 #: src/one_public_api/schemas/base_schema.py:132
-#: src/one_public_api/schemas/base_schema.py:177
+#: src/one_public_api/schemas/base_schema.py:176
+msgid "Creator"
+msgstr ""
+
+#: src/one_public_api/schemas/base_schema.py:136
+#: src/one_public_api/schemas/base_schema.py:181
 msgid "Updater"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:173
+#: src/one_public_api/schemas/base_schema.py:177
 msgid "Creator Description"
 msgstr ""
 
-#: src/one_public_api/schemas/base_schema.py:178
+#: src/one_public_api/schemas/base_schema.py:182
 msgid "Updater Description"
 msgstr ""
+
+#: src/one_public_api/schemas/category_schema.py:86
+#, fuzzy
+msgid "Parent Category"
+msgstr ""
+"A text-based search parameter used to filter results by matching one or "
+"more fields. The API will return only records that contain the provided "
+"keyword(s)."
+
+#: src/one_public_api/schemas/category_schema.py:87
+#, fuzzy
+msgid "Parent Category Description"
+msgstr ""
+"**SYS-ATH-P-LGN**<br />Validates the provided username and password "
+"against the records stored in the database.<br />If the credentials are "
+"correct, the system issues an access token and a refresh token. If "
+"authentication fails and the username exists, the system increments the "
+"login failure count. Once the count reaches the limit defined by "
+"`MAX_FAILED_ATTEMPTS`, the system locks the account. If the username does"
+" not exist, an error is returned.<br />When the `rememberMe` field is set"
+" to `true`, the refresh token cookie remains valid until the period "
+"specified by the `REFRESH_TOKEN_EXPIRE` setting expires.<br />If set to "
+"`false`, the cookie is deleted when the browser session ends."
 
 #: src/one_public_api/schemas/comment_schema.py:23
 msgid "User"
@@ -1064,11 +1341,19 @@ msgstr ""
 "Functions sharing the same first seven characters (e.g. SYS-COF)belong to"
 " the same functional category."
 
+#: src/one_public_api/schemas/feature_schema.py:60
+msgid "Whether the feature is enabled"
+msgstr ""
+
+#: src/one_public_api/schemas/feature_schema.py:63
+msgid "Whether auth is required"
+msgstr ""
+
 #: src/one_public_api/schemas/organization_schema.py:32
 msgid "Category"
 msgstr ""
 
-#: src/one_public_api/schemas/permission_schema.py:52
+#: src/one_public_api/schemas/permission_schema.py:54
 #, fuzzy
 msgid "Actions Description"
 msgstr ""
@@ -1083,7 +1368,7 @@ msgstr ""
 "specified by the `REFRESH_TOKEN_EXPIRE` setting expires.<br />If set to "
 "`false`, the cookie is deleted when the browser session ends."
 
-#: src/one_public_api/schemas/permission_schema.py:57
+#: src/one_public_api/schemas/permission_schema.py:59
 #, fuzzy
 msgid "Features Description"
 msgstr ""
@@ -1091,8 +1376,8 @@ msgstr ""
 "more fields. The API will return only records that contain the provided "
 "keyword(s)."
 
-#: src/one_public_api/schemas/permission_schema.py:81
-#: src/one_public_api/schemas/permission_schema.py:101
+#: src/one_public_api/schemas/permission_schema.py:79
+#: src/one_public_api/schemas/permission_schema.py:99
 #, fuzzy
 msgid "Action IDs"
 msgstr ""
@@ -1107,18 +1392,18 @@ msgstr ""
 "specified by the `REFRESH_TOKEN_EXPIRE` setting expires.<br />If set to "
 "`false`, the cookie is deleted when the browser session ends."
 
-#: src/one_public_api/schemas/permission_schema.py:82
-#: src/one_public_api/schemas/permission_schema.py:102
+#: src/one_public_api/schemas/permission_schema.py:80
+#: src/one_public_api/schemas/permission_schema.py:100
 msgid "List of action IDs associated with the permission"
 msgstr ""
 
-#: src/one_public_api/schemas/permission_schema.py:87
-#: src/one_public_api/schemas/permission_schema.py:107
+#: src/one_public_api/schemas/permission_schema.py:85
+#: src/one_public_api/schemas/permission_schema.py:105
 msgid "Feature IDs"
 msgstr ""
 
-#: src/one_public_api/schemas/permission_schema.py:88
-#: src/one_public_api/schemas/permission_schema.py:108
+#: src/one_public_api/schemas/permission_schema.py:86
+#: src/one_public_api/schemas/permission_schema.py:106
 msgid "List of feature IDs associated with the permission"
 msgstr ""
 
@@ -1186,110 +1471,82 @@ msgstr ""
 " conditions, deprecated behavior, or non-critical issues were detected "
 "during processing."
 
+#: src/one_public_api/services/attachment_service.py:79
+msgid "Failed to upload files."
+msgstr ""
+
 #: src/one_public_api/services/authenticate_service.py:60
 msgid "user not verified"
 msgstr ""
 
 #: src/one_public_api/services/authenticate_service.py:108
-#: src/one_public_api/services/authenticate_service.py:145
+#: src/one_public_api/services/authenticate_service.py:147
 msgid "user not found"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:138
-#: src/one_public_api/services/authenticate_service.py:255
+#: src/one_public_api/services/authenticate_service.py:140
+#: src/one_public_api/services/authenticate_service.py:257
 msgid "The token has expired"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:142
+#: src/one_public_api/services/authenticate_service.py:144
 msgid "Invalid refresh token"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:183
+#: src/one_public_api/services/authenticate_service.py:185
 msgid "user disabled"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:185
+#: src/one_public_api/services/authenticate_service.py:187
 msgid "user locked"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:217
+#: src/one_public_api/services/authenticate_service.py:219
 msgid "Authentication token is missing"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:233
+#: src/one_public_api/services/authenticate_service.py:235
 msgid "No user information found in the token"
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:243
+#: src/one_public_api/services/authenticate_service.py:245
 msgid "Your account has been logged out."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:248
+#: src/one_public_api/services/authenticate_service.py:250
 msgid "Your account has been logged in from another location."
 msgstr ""
 
-#: src/one_public_api/services/authenticate_service.py:257
+#: src/one_public_api/services/authenticate_service.py:259
 msgid "Invalid access token"
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:70
-msgid "Authentication is required"
+#: src/one_public_api/services/base_service.py:73
+msgid "Forbidden"
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:75
+#: src/one_public_api/services/base_service.py:79
 msgid "Data not found."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:87
+#: src/one_public_api/services/base_service.py:91
 msgid "Invalid search column specified."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:101
-#: src/one_public_api/services/base_service.py:112
-#: src/one_public_api/services/user_service.py:36
+#: src/one_public_api/services/base_service.py:106
+#: src/one_public_api/services/base_service.py:117
+#: src/one_public_api/services/user_service.py:37
 msgid "Data already exists."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:148
-#: src/one_public_api/services/base_service.py:163
-#: src/one_public_api/services/base_service.py:177
+#: src/one_public_api/services/base_service.py:153
+#: src/one_public_api/services/base_service.py:168
+#: src/one_public_api/services/base_service.py:182
 msgid "This record might be referenced by other data."
 msgstr ""
 
-#~ msgid "Access token"
+#~ msgid "Display name of the feature."
 #~ msgstr ""
 
-#~ msgid "Show or hide"
-#~ msgstr ""
-
-#~ msgid "Whether the action is enabled"
-#~ msgstr ""
-
-#~ msgid "User name Description"
-#~ msgstr ""
-#~ "Specifies the starting position of the"
-#~ " result set. It is used for "
-#~ "pagination and indicates how many "
-#~ "records should be skipped before "
-#~ "returning data."
-
-#~ msgid "User's email address"
-#~ msgstr ""
-
-#~ msgid "Whether the account is enabled"
-#~ msgstr ""
-
-#~ msgid "Whether the account is locked"
-#~ msgstr ""
-
-#~ msgid "Number of failed login attempts"
-#~ msgstr ""
-
-#~ msgid "Whether the attachment is public"
-#~ msgstr ""
-
-#~ msgid "Get Public Attachment"
-#~ msgstr ""
-
-#~ msgid "The ID of the attachment file to be retrieved"
+#~ msgid "User name"
 #~ msgstr ""

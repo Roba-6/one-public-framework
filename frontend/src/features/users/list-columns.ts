@@ -3,20 +3,20 @@ import { getLocalMessage } from '@/lib/utils'
 
 export const listColumns: DataColumn[] = [
   {
-    key: 'name',
+    key: 'username',
     name: getLocalMessage('labels.user.name'),
     isSortable: true,
     align: 'left',
   },
   { key: 'nickname', name: getLocalMessage('labels.user.nickname'), isSortable: true },
-  { key: 'fullname', name: getLocalMessage('labels.user.fullname') },
+  { key: 'fullName', name: getLocalMessage('labels.user.fullname') },
   { key: 'email', name: getLocalMessage('labels.user.email'), isSortable: true },
   {
     key: 'isEnabled',
     name: getLocalMessage('labels.enabled'),
     type: 'booleanIcon',
     values: ['UserRoundCheck', 'UserRoundX'],
-    colors: ['text-orange-500', 'text-red-700'],
+    colors: ['text-[var(--color-green-500)]', 'text-[var(--color-gray-700)]'],
     align: 'center',
     isFilterable: true,
     filters: [
@@ -29,7 +29,7 @@ export const listColumns: DataColumn[] = [
     name: getLocalMessage('labels.user.lock'),
     type: 'booleanIcon',
     values: ['Lock', 'LockOpen'],
-    colors: ['text-red-700', 'text-orange-500'],
+    colors: ['text-[var(--color-gray-500)]', 'text-[var(--color-green-500)]'],
     align: 'center',
     isFilterable: true,
     filters: [

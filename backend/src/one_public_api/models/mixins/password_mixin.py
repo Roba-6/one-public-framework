@@ -5,11 +5,10 @@ from sqlmodel import Field, SQLModel
 from one_public_api.common import constants
 from one_public_api.core.i18n import translate as _
 
-PASSWORD_FIELD_KWARGS: Dict[str, Any] = {
-    "min_length": constants.LENGTH_6,
-    "max_length": constants.LENGTH_64,
+HASHED_PASSWORD_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_128,
     "title": _("Password"),
-    "description": _("Password provided by the user"),
+    "description": _("Hashed password used for authentication."),
 }
 
 
@@ -23,12 +22,12 @@ class PasswordMixin(SQLModel):
 
     Attributes
     ----------
-    password : Optional[str]
+    hashed_password : Optional[str]
         Password provided by the user.
     """
 
-    password: Optional[str] = Field(
+    hashed_password: Optional[str] = Field(
         default=None,
         nullable=True,
-        **PASSWORD_FIELD_KWARGS,
+        **HASHED_PASSWORD_FIELD_KWARGS,
     )

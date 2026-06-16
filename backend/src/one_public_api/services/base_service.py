@@ -100,7 +100,8 @@ class BaseService(Generic[T]):
             self.session.refresh(result)
 
             return result
-        except IntegrityError:
+        except IntegrityError as e:
+            print(e)
             raise DataError(
                 self._("Data already exists."), data.model_dump_json(), "E4090001"
             )

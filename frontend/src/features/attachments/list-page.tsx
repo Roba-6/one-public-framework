@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router'
 
 import DataList from '@/common/components/modules/data-list'
+import FileUpload from '@/common/components/modules/file-upload'
 import { CONSTANT } from '@/common/constants'
 import type { CommonResponse } from '@/common/types/response'
 import { actions, listColumns } from '@/features/attachments/list-columns'
@@ -37,6 +38,7 @@ const AttachmentListPage = (): React.JSX.Element => {
 
   return (
     <div className="w-full">
+      <FileUpload />
       <DataList<Attachment>
         columns={listColumns}
         data={data}

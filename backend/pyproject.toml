@@ -1,6 +1,6 @@
 [project]
 name = "one-public-api"
-version = "0.1.0-alpha.25"
+version = "0.1.0-alpha.32"
 description = "This package provides the API layer of the One Public Framework."
 license = {file = "LICENSE"}
 authors = [
@@ -11,7 +11,7 @@ requires-python = ">=3.11,<4.0"
 
 [tool.poetry]
 name = "one-public-api"
-version = "0.1.0-alpha.25"
+version = "0.1.0-alpha.32"
 description = "This package provides the API layer of the One Public Framework."
 authors = ["Roba <roba@one-coder.com>"]
 packages = [{ include = "one_public_api", from = "src" }]
@@ -29,6 +29,7 @@ uvicorn = { version = ">=0.34.3,<0.35.0", extras = ["standard"] }
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 bcrypt = "^3.2.2"
 pyjwt = "^2.10.1"
+zipstream-ng = "^1.9.2"
 
 [tool.poetry.group.dev.dependencies]
 alembic = "^1.16.1"
@@ -54,7 +55,7 @@ strict = true
 exclude = [".venv", "migrations/versions", "tests"]
 
 [[tool.mypy.overrides]]
-module = ["parameterized"]
+module = ["parameterized", "zipstream"]
 ignore_missing_imports = true
 
 [tool.black]

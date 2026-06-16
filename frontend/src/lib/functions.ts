@@ -1,5 +1,4 @@
 import { CONSTANT } from '@/common/constants'
-import { store } from '@/store'
 
 /**
  * Retrieves the value of an environment variable.
@@ -49,6 +48,6 @@ export const toCamelCase = (str: string): string =>
 export const toSnakeCase = (str: string): string =>
   str.replace(/[A-Z]/g, (x) => `_${x.toLowerCase()}`)
 
-export const setDownloadUrl = (url: string): string => {
-  return url + `?token=${store.getState().app.accessToken}`
+export const getValue = (obj: any, path: string) => {
+  return path.split('.').reduce((current, key) => current?.[key], obj)
 }

@@ -14,10 +14,10 @@ import { NavUser } from './nav-user'
 const AppSidebar = (): React.ReactNode => {
   return (
     <Sidebar variant="inset" className="select-none">
-      <SidebarHeader>
+      <SidebarHeader className="py-2.5">
         <Logo size="sm" />
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="py-3">
         <SideMenu />
       </SidebarContent>
       <SidebarFooter>

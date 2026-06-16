@@ -12,6 +12,16 @@ export const newFeatureItems: FormFieldItem[] = [
     defaultValue: '',
     validate: z
       .string()
+      .max(1000, { message: getLocalMessage('messages.validations.max', [1000]) }),
+  },
+  {
+    name: 'key',
+    label: getLocalMessage('labels.key'),
+    type: 'text',
+    placeholder: getLocalMessage('placeholder.features.key'),
+    defaultValue: '',
+    validate: z
+      .string()
       .length(13, { message: getLocalMessage('messages.validations.length', [13]) }),
   },
   {

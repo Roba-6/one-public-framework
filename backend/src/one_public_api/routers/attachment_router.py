@@ -7,7 +7,7 @@ from starlette.responses import FileResponse
 
 from one_public_api.common import constants
 from one_public_api.common.query_param import QueryParam
-from one_public_api.common.tools import create_attachment_response, create_response_data
+from one_public_api.common.tools import create_response_data
 from one_public_api.core import translate as _
 from one_public_api.models import Attachment, User
 from one_public_api.routers.base_route import BaseRoute
@@ -41,8 +41,12 @@ def download_public_api(
     atts: Annotated[AttachmentService, Depends()],
     target_id: UUID = Path(description=_("The ID of the attachment to be downloaded")),
 ) -> FileResponse:
-    file = atts.get_one_by_id(target_id, True)
-    return FileResponse(path=file.path, filename=file.original_name)
+    return cast(
+        FileResponse,
+        AttachmentService.create_attachment_response(
+            atts.get_one_by_id(target_id, True)
+        ),
+    )
 
 
 @public_router.get(
@@ -57,8 +61,8 @@ def pview_public_api(
 ) -> FileResponse:
     return cast(
         FileResponse,
-        create_attachment_response(
-            [atts.get_one_by_id(target_id, True)], is_preview=True
+        AttachmentService.create_attachment_response(
+            atts.get_one_by_id(target_id, True), True
         ),
     )
 
@@ -179,8 +183,10 @@ def download_admin_api(
     atts: Annotated[AttachmentService, Depends()],
     target_id: UUID = Path(description=_("The ID of the attachment to be downloaded")),
 ) -> FileResponse:
-    file = atts.get_one_by_id(target_id)
-    return FileResponse(path=file.path, filename=file.original_name)
+    return cast(
+        FileResponse,
+        AttachmentService.create_attachment_response(atts.get_one_by_id(target_id)),
+    )
 
 
 @admin_router.get(
@@ -193,7 +199,9 @@ def preview_admin_api(
     atts: Annotated[AttachmentService, Depends()],
     target_id: UUID = Path(description=_("The ID of the attachment to be downloaded")),
 ) -> FileResponse:
-    file = atts.get_one_by_id(target_id)
-    return FileResponse(
-        path=file.path, filename=file.original_name, content_disposition_type="inline"
+    return cast(
+        FileResponse,
+        AttachmentService.create_attachment_response(
+            atts.get_one_by_id(target_id), True
+        ),
     )

@@ -70,12 +70,14 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
   if (!accessToken && !isAuthenticated) {
     return (
       <div className={cn('flex flex-col gap-6', className)} {...props}>
-        <Card>
+        <Card className="panel">
           <CardHeader>
             <CardTitle className={cn('leading')}>
               {getLocalMessage('title.login')}
             </CardTitle>
-            <CardDescription>{getLocalMessage('messages.pleaseLogin')}</CardDescription>
+            <CardDescription className="type-description">
+              {getLocalMessage('messages.pleaseLogin')}
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <Form {...form}>
@@ -114,7 +116,10 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
                             </FormLabel>
                             <a
                               href="#"
-                              className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                              className={cn(
+                                'link ml-auto inline-block text-sm',
+                                'underline-offset-4 hover:underline hover:decoration-dashed'
+                              )}
                               tabIndex={1}
                             >
                               {getLocalMessage('labels.forgetPassword')}
@@ -129,7 +134,7 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
                     )}
                   />
                   <div className="flex flex-col gap-3">
-                    <Button type="submit" className="w-full">
+                    <Button type="submit" variant="default" className="button w-full">
                       {getLocalMessage('buttons.login')}
                     </Button>
                   </div>

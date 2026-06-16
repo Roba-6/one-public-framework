@@ -6,7 +6,6 @@ from one_public_api.common import constants
 from one_public_api.common.utility.str import to_camel
 from one_public_api.core.i18n import translate as _
 from one_public_api.models.mixins.id_mixin import IdMixin
-from one_public_api.models.mixins.password_mixin import PasswordMixin
 from one_public_api.models.mixins.timestamp_mixin import TimestampMixin
 from one_public_api.models.system.configuration_model import (
     ConfigurationBase,
@@ -14,8 +13,9 @@ from one_public_api.models.system.configuration_model import (
     ConfigurationType,
 )
 from one_public_api.models.system.user_model import (
-    USER_NAME_FIELD_KWARGS,
+    USER_USERNAME_FIELD_KWARGS,
     UserBase,
+    UserSecurity,
     UserStatus,
 )
 from one_public_api.schemas.organization_schema import OrganizationPublicResponse
@@ -31,12 +31,12 @@ from one_public_api.schemas.role_schema import (
 # ===== User Schemas ===================================================================
 
 example_user_base: Dict[str, Any] = {
-    "name": "user-123",
-    "firstname": "Taro",
-    "lastname": "Yamada",
-    "nickname": "Roba",
-    "email": "test@test.com",
-    "password": "password123",
+    "username": "user-123",
+    "first_name": "Sam",
+    "last_name": "Winchester",
+    "nickname": "Sammy",
+    "email": "sam.w@one-coder.com",
+    "password": "8nP2dCj_X7",
 }
 
 example_user_options: Dict[str, Any] = {
@@ -45,8 +45,8 @@ example_user_options: Dict[str, Any] = {
     "role": role_example,
 }
 
-example_fullname: Dict[str, Any] = {
-    "fullname": "Taro Yamada",
+example_full_name: Dict[str, Any] = {
+    "full_name": "Sam Winchester",
 }
 
 example_user_status: Dict[str, Any] = {
@@ -73,9 +73,9 @@ class UserPublicResponse(UserBase, TimestampMixin, IdMixin):
     )
 
     @computed_field(return_type=str, description=_("Full name"))
-    def fullname(self) -> str:
-        firstname = self.firstname if self.firstname else ""
-        lastname = self.lastname if self.lastname else ""
+    def full_name(self) -> str:
+        firstname = self.first_name if self.first_name else ""
+        lastname = self.last_name if self.last_name else ""
 
         return f"{firstname} {lastname}".strip()
 
@@ -86,7 +86,7 @@ class UserPublicResponse(UserBase, TimestampMixin, IdMixin):
             "examples": [
                 {
                     **example_id,
-                    **example_fullname,
+                    **example_full_name,
                     **example_user_base,
                     **example_datetime,
                 }
@@ -98,11 +98,15 @@ class UserPublicResponse(UserBase, TimestampMixin, IdMixin):
 # ----- User Admin Schemas -------------------------------------------------------------
 
 
-class UserCreateRequest(UserBase, PasswordMixin):
-    name: str = Field(
+class UserCreateRequest(UserBase):
+    username: str = Field(
         min_length=constants.LENGTH_3,
         pattern=r"^[A-Za-z0-9_-]+$",
-        **USER_NAME_FIELD_KWARGS,
+        **USER_USERNAME_FIELD_KWARGS,
+    )
+    password: str = Field(
+        title=_("Password"),
+        description=_("User password"),
     )
 
     model_config = {
@@ -122,7 +126,7 @@ class UserUpdateRequest(UserBase, UserStatus):
     }
 
 
-class UserResponse(UserPublicResponse, UserStatus):
+class UserResponse(UserPublicResponse, UserStatus, UserSecurity):
     creator: Optional[UserPublicResponse] = Field(
         default=None,
         description=_("Creator"),
@@ -153,7 +157,7 @@ class UserResponse(UserPublicResponse, UserStatus):
                     "creator": example_user,
                     "updater": example_user,
                     **example_user_base,
-                    **example_fullname,
+                    **example_full_name,
                     **example_user_status,
                     **example_user_options,
                     **example_id,

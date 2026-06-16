@@ -337,7 +337,7 @@ const DataList = <T extends BaseType>(props: DataListProps<T>): React.JSX.Elemen
         unselectAll={handleUnselectAll}
         addUrl={props.addUrl}
       />
-      <div className="overflow-hidden rounded-md border">
+      <div className="data-list-panel">
         <Table className="data-list">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

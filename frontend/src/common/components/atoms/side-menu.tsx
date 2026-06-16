@@ -15,7 +15,7 @@ import {
 } from '@/common/components/ui/sidebar'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import type { Menu, MenuItem } from '@/common/types/data'
-import { getLocalMessage } from '@/lib/utils'
+import { cn, getLocalMessage } from '@/lib/utils'
 
 /**
  * Side Menu Component
@@ -41,7 +41,11 @@ const SideMenu = (): React.ReactNode => {
     <React.Fragment>
       {Object.entries(menu).map(([key, value]) => (
         <Collapsible key={key} open={value.isOpened} className="group/collapsible">
-          <SidebarGroup>
+          <SidebarGroup
+            className={cn(
+              'p-1 border-[1px] rounded-lg bg-[var(--color-white-500)] dark:bg-[var(--color-brown-800)]'
+            )}
+          >
             <SidebarGroupLabel asChild>
               <CollapsibleTrigger onClick={() => dispatch(toggleMenu(key))}>
                 {getLocalMessage(`menus.${key}`)}
