@@ -100,7 +100,7 @@ class Organization(
             "remote_side": "[User.id]",
         }
     )
-    parent_organization: Optional["Organization"] = Relationship(
+    parent: Optional["Organization"] = Relationship(
         sa_relationship_kwargs={
             "foreign_keys": "[Organization.organization_id]",
             "primaryjoin": "Organization.organization_id==Organization.id",

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.24\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-06-15 13:23+0900\n"
+"POT-Creation-Date: 2026-06-16 21:49+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: ja\n"
@@ -388,12 +388,10 @@ msgid "Detailed description of the category."
 msgstr "カテゴリーの概要および目的を説明する詳細情報．"
 
 #: src/one_public_api/models/system/category_model.py:39
-#, fuzzy
 msgid "Category ID"
-msgstr "カテゴリー"
+msgstr "カテゴリー ID"
 
 #: src/one_public_api/models/system/category_model.py:40
-#, fuzzy
 msgid "ID of the associated category."
 msgstr "所属された組織の ID．"
 
@@ -1182,9 +1180,8 @@ msgid "Updater Description"
 msgstr "本データを最後に変更したユーザーの情報．"
 
 #: src/one_public_api/schemas/category_schema.py:86
-#, fuzzy
 msgid "Parent Category"
-msgstr "カテゴリー確認"
+msgstr "親カテゴリー"
 
 #: src/one_public_api/schemas/category_schema.py:87
 #, fuzzy
@@ -1230,9 +1227,8 @@ msgstr "この権限に紐づく機能の一覧です．"
 
 #: src/one_public_api/schemas/permission_schema.py:79
 #: src/one_public_api/schemas/permission_schema.py:99
-#, fuzzy
 msgid "Action IDs"
-msgstr "アクション"
+msgstr "アクション ID"
 
 #: src/one_public_api/schemas/permission_schema.py:80
 #: src/one_public_api/schemas/permission_schema.py:100
@@ -1241,9 +1237,8 @@ msgstr ""
 
 #: src/one_public_api/schemas/permission_schema.py:85
 #: src/one_public_api/schemas/permission_schema.py:105
-#, fuzzy
 msgid "Feature IDs"
-msgstr "機能"
+msgstr "機能 ID"
 
 #: src/one_public_api/schemas/permission_schema.py:86
 #: src/one_public_api/schemas/permission_schema.py:106
