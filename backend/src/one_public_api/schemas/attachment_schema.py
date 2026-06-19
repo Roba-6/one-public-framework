@@ -52,6 +52,13 @@ class AttachmentPublicResponse(AttachmentBase, AttachmentMeta, IdMixin):
             f"{constants.ROUTER_COMMON_ADMIN}/{self.id}/preview"
         )
 
+    @computed_field(return_type=str, description=_("THUMBNAIL"))
+    def thumbnail(self) -> str:
+        return (
+            f"{settings.BASE_URL}{constants.ROUTER_PREFIX_ATTACHMENT}"
+            f"{constants.ROUTER_COMMON_ADMIN}/{self.id}/thumbnail"
+        )
+
     @computed_field(return_type=str, description=_("URL"))
     def public_url(self) -> str:
         return (
@@ -63,6 +70,13 @@ class AttachmentPublicResponse(AttachmentBase, AttachmentMeta, IdMixin):
     def public_preview(self) -> str:
         return (
             f"{settings.BASE_URL}{constants.ROUTER_PREFIX_ATTACHMENT}/{self.id}/preview"
+        )
+
+    @computed_field(return_type=str, description=_("THUMBNAIL"))
+    def public_thumbnail(self) -> str:
+        return (
+            f"{settings.BASE_URL}{constants.ROUTER_PREFIX_ATTACHMENT}"
+            f"/{self.id}/thumbnail"
         )
 
     model_config = {

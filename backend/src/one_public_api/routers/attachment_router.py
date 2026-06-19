@@ -55,14 +55,32 @@ def download_public_api(
     summary=_("Preview Public Attachment"),
     response_class=FileResponse,
 )
-def pview_public_api(
+def preview_public_api(
     atts: Annotated[AttachmentService, Depends()],
-    target_id: UUID = Path(description=_("The ID of the attachment to be downloaded")),
+    target_id: UUID = Path(description=_("The ID of the attachment to be preview")),
 ) -> FileResponse:
     return cast(
         FileResponse,
         AttachmentService.create_attachment_response(
             atts.get_one_by_id(target_id, True), True
+        ),
+    )
+
+
+@public_router.get(
+    constants.ROUTER_THUMBNAIL_WITH_ID,
+    name="SYS-ATT-P-THM",
+    summary=_("Thumbnail Public Attachment"),
+    response_class=FileResponse,
+)
+def thumbnail_public_api(
+    atts: Annotated[AttachmentService, Depends()],
+    target_id: UUID = Path(description=_("The ID of the thumbnail file")),
+) -> FileResponse:
+    return cast(
+        FileResponse,
+        AttachmentService.create_attachment_response(
+            atts.get_one_by_id(target_id, True), is_thumbnail=True
         ),
     )
 
@@ -203,5 +221,23 @@ def preview_admin_api(
         FileResponse,
         AttachmentService.create_attachment_response(
             atts.get_one_by_id(target_id), True
+        ),
+    )
+
+
+@admin_router.get(
+    constants.ROUTER_THUMBNAIL_ADMIN_WITH_ID,
+    name="SYS-ATT-A-THM",
+    summary=_("Thumbnail Attachment"),
+    response_class=FileResponse,
+)
+def thumbnail_admin_api(
+    atts: Annotated[AttachmentService, Depends()],
+    target_id: UUID = Path(description=_("The ID of the thumbnail attachment")),
+) -> FileResponse:
+    return cast(
+        FileResponse,
+        AttachmentService.create_attachment_response(
+            atts.get_one_by_id(target_id), is_thumbnail=True
         ),
     )
