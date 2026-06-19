@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.24\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-06-16 21:49+0900\n"
+"POT-Creation-Date: 2026-06-19 22:44+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -367,34 +367,44 @@ msgid ""
 msgstr ""
 
 #: src/one_public_api/models/system/attachment_model.py:51
+msgid "Thumbnail path"
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:53
+msgid ""
+"For uploaded attachments, this field stores the thumbnail file path. For "
+"online resources, it stores the thumbnail resource URL."
+msgstr ""
+
+#: src/one_public_api/models/system/attachment_model.py:60
 msgid "Original file name"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:52
+#: src/one_public_api/models/system/attachment_model.py:61
 msgid "Original file name of the uploaded attachment."
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:57
+#: src/one_public_api/models/system/attachment_model.py:66
 msgid "MIME type"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:59
+#: src/one_public_api/models/system/attachment_model.py:68
 msgid "Internet media type used to identify the format of the attachment."
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:64
+#: src/one_public_api/models/system/attachment_model.py:73
 msgid "File size"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:65
+#: src/one_public_api/models/system/attachment_model.py:74
 msgid "File size in bytes"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:69
+#: src/one_public_api/models/system/attachment_model.py:78
 msgid "Download count"
 msgstr ""
 
-#: src/one_public_api/models/system/attachment_model.py:70
+#: src/one_public_api/models/system/attachment_model.py:79
 msgid "Total number of downloads for the attachment."
 msgstr ""
 
@@ -763,7 +773,7 @@ msgid "The ID of the action item to be updated"
 msgstr ""
 
 #: src/one_public_api/routers/action_router.py:117
-#: src/one_public_api/routers/attachment_router.py:141
+#: src/one_public_api/routers/attachment_router.py:159
 msgid "Delete Action"
 msgstr ""
 
@@ -780,9 +790,8 @@ msgid "Download Public Attachment"
 msgstr ""
 
 #: src/one_public_api/routers/attachment_router.py:42
-#: src/one_public_api/routers/attachment_router.py:60
-#: src/one_public_api/routers/attachment_router.py:184
-#: src/one_public_api/routers/attachment_router.py:200
+#: src/one_public_api/routers/attachment_router.py:202
+#: src/one_public_api/routers/attachment_router.py:218
 msgid "The ID of the attachment to be downloaded"
 msgstr ""
 
@@ -794,14 +803,30 @@ msgstr ""
 "more fields. The API will return only records that contain the provided "
 "keyword(s)."
 
-#: src/one_public_api/routers/attachment_router.py:76
+#: src/one_public_api/routers/attachment_router.py:60
+msgid "The ID of the attachment to be preview"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:73
+#, fuzzy
+msgid "Thumbnail Public Attachment"
+msgstr ""
+"A text-based search parameter used to filter results by matching one or "
+"more fields. The API will return only records that contain the provided "
+"keyword(s)."
+
+#: src/one_public_api/routers/attachment_router.py:78
+msgid "The ID of the thumbnail file"
+msgstr ""
+
+#: src/one_public_api/routers/attachment_router.py:94
 #, fuzzy
 msgid "List Attachments"
 msgstr ""
 "Defines the maximum number of records to return in a single request. Used"
 " to control page size and prevent large data loads."
 
-#: src/one_public_api/routers/attachment_router.py:91
+#: src/one_public_api/routers/attachment_router.py:109
 #, fuzzy
 msgid "Create Attachment"
 msgstr ""
@@ -809,45 +834,60 @@ msgstr ""
 "more fields. The API will return only records that contain the provided "
 "keyword(s)."
 
-#: src/one_public_api/routers/attachment_router.py:108
+#: src/one_public_api/routers/attachment_router.py:126
 msgid "Get Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:113
+#: src/one_public_api/routers/attachment_router.py:131
 msgid "The ID of the attachment to be retrieved"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:123
+#: src/one_public_api/routers/attachment_router.py:141
 msgid "Update Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:129
+#: src/one_public_api/routers/attachment_router.py:147
 msgid "The ID of the attachment to be updated"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:146
+#: src/one_public_api/routers/attachment_router.py:164
 msgid "The ID of the attachment to be deleted"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:156
+#: src/one_public_api/routers/attachment_router.py:174
 msgid "Upload Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:164
+#: src/one_public_api/routers/attachment_router.py:182
 msgid "Upload Attachment Files"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:165
+#: src/one_public_api/routers/attachment_router.py:183
 msgid "Upload multiple attachment files"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:179
+#: src/one_public_api/routers/attachment_router.py:197
 msgid "Download Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:195
+#: src/one_public_api/routers/attachment_router.py:213
 #, fuzzy
 msgid "Preview Attachment"
+msgstr ""
+"A text-based search parameter used to filter results by matching one or "
+"more fields. The API will return only records that contain the provided "
+"keyword(s)."
+
+#: src/one_public_api/routers/attachment_router.py:231
+#, fuzzy
+msgid "Thumbnail Attachment"
+msgstr ""
+"Defines the maximum number of records to return in a single request. Used"
+" to control page size and prevent large data loads."
+
+#: src/one_public_api/routers/attachment_router.py:236
+#, fuzzy
+msgid "The ID of the thumbnail attachment"
 msgstr ""
 "A text-based search parameter used to filter results by matching one or "
 "more fields. The API will return only records that contain the provided "
@@ -1204,13 +1244,18 @@ msgstr ""
 "`false`, the cookie is deleted when the browser session ends."
 
 #: src/one_public_api/schemas/attachment_schema.py:41
-#: src/one_public_api/schemas/attachment_schema.py:55
+#: src/one_public_api/schemas/attachment_schema.py:62
 msgid "URL"
 msgstr ""
 
 #: src/one_public_api/schemas/attachment_schema.py:48
-#: src/one_public_api/schemas/attachment_schema.py:62
+#: src/one_public_api/schemas/attachment_schema.py:69
 msgid "PREVIEW"
+msgstr ""
+
+#: src/one_public_api/schemas/attachment_schema.py:55
+#: src/one_public_api/schemas/attachment_schema.py:75
+msgid "THUMBNAIL"
 msgstr ""
 
 #: src/one_public_api/schemas/authenticate_schema.py:41
