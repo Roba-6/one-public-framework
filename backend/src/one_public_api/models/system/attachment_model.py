@@ -46,6 +46,15 @@ ATTACHMENT_PATH_FIELD_KWARGS: Dict[str, Any] = {
     ),
 }
 
+ATTACHMENT_THUMBNAIL_PATH_FIELD_KWARGS: Dict[str, Any] = {
+    "max_length": constants.LENGTH_500,
+    "title": _("Thumbnail path"),
+    "description": _(
+        "For uploaded attachments, this field stores the thumbnail file path. "
+        "For online resources, it stores the thumbnail resource URL."
+    ),
+}
+
 ATTACHMENT_ORIGINAL_NAME_FIELD_KWARGS: Dict[str, Any] = {
     "max_length": constants.LENGTH_255,
     "title": _("Original file name"),
@@ -95,6 +104,10 @@ class AttachmentOption(SQLModel):
     path: Optional[str] = Field(
         default=None,
         **ATTACHMENT_PATH_FIELD_KWARGS,
+    )
+    thumbnail_path: Optional[str] = Field(
+        default=None,
+        **ATTACHMENT_THUMBNAIL_PATH_FIELD_KWARGS,
     )
 
 

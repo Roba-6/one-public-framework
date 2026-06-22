@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import List, Tuple
 
 # Version of the One Public API
-VERSION: str = "0.1.0-alpha.32"
+VERSION: str = "0.1.0-alpha.34"
 # Default Language
 DEFAULT_LANGUAGE: str = "en"
 # Default path for locale files
@@ -138,10 +138,14 @@ ROUTER_UPLOAD_ADMIN = ROUTER_COMMON_ADMIN + "/upload"
 ROUTER_DOWNLOAD_WITH_ID = ROUTER_COMMON_WITH_ID + "/download"
 # Attachment router path: preview
 ROUTER_PREVIEW_WITH_ID = ROUTER_COMMON_WITH_ID + "/preview"
+# Attachment router path: thumbnail
+ROUTER_THUMBNAIL_WITH_ID = ROUTER_COMMON_WITH_ID + "/thumbnail"
 # Attachment router path: admin download
 ROUTER_DOWNLOAD_ADMIN_WITH_ID = ROUTER_COMMON_ADMIN_WITH_ID + "/download"
 # Attachment router path: admin preview
 ROUTER_PREVIEW_ADMIN_WITH_ID = ROUTER_COMMON_ADMIN_WITH_ID + "/preview"
+# Attachment router path: admin thumbnail
+ROUTER_THUMBNAIL_ADMIN_WITH_ID = ROUTER_COMMON_ADMIN_WITH_ID + "/thumbnail"
 
 # ----- Log Settings -------------------------------------------------------------------
 # Default logging level for the API.

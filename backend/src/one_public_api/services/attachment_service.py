@@ -138,6 +138,7 @@ class AttachmentService(BaseService[Attachment]):
             Attachment, List[Attachment], str, List[str], Generator[bytes, None, None]
         ],
         is_preview: bool = False,
+        is_thumbnail: bool = False,
         zip_file_name: str | None = None,
         delete_after_zip: bool = False,
     ) -> FileResponse | StreamingResponse:
@@ -147,7 +148,7 @@ class AttachmentService(BaseService[Attachment]):
 
         if isinstance(data, Attachment):
             dwl_file = {
-                "path": data.path,
+                "path": data.thumbnail_path if is_thumbnail else data.path,
                 "media_type": data.mime_type,
                 "filename": data.original_name,
             }
