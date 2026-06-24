@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.24\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-06-23 19:18+0900\n"
+"POT-Creation-Date: 2026-06-24 14:11+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -773,7 +773,7 @@ msgid "The ID of the action item to be updated"
 msgstr ""
 
 #: src/one_public_api/routers/action_router.py:117
-#: src/one_public_api/routers/attachment_router.py:159
+#: src/one_public_api/routers/attachment_router.py:155
 msgid "Delete Action"
 msgstr ""
 
@@ -790,12 +790,12 @@ msgid "Download Public Attachment"
 msgstr ""
 
 #: src/one_public_api/routers/attachment_router.py:42
-#: src/one_public_api/routers/attachment_router.py:202
-#: src/one_public_api/routers/attachment_router.py:218
+#: src/one_public_api/routers/attachment_router.py:198
+#: src/one_public_api/routers/attachment_router.py:214
 msgid "The ID of the attachment to be downloaded"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:55
+#: src/one_public_api/routers/attachment_router.py:53
 #, fuzzy
 msgid "Preview Public Attachment"
 msgstr ""
@@ -803,11 +803,11 @@ msgstr ""
 "more fields. The API will return only records that contain the provided "
 "keyword(s)."
 
-#: src/one_public_api/routers/attachment_router.py:60
+#: src/one_public_api/routers/attachment_router.py:58
 msgid "The ID of the attachment to be preview"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:73
+#: src/one_public_api/routers/attachment_router.py:69
 #, fuzzy
 msgid "Thumbnail Public Attachment"
 msgstr ""
@@ -815,18 +815,18 @@ msgstr ""
 "more fields. The API will return only records that contain the provided "
 "keyword(s)."
 
-#: src/one_public_api/routers/attachment_router.py:78
+#: src/one_public_api/routers/attachment_router.py:74
 msgid "The ID of the thumbnail file"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:94
+#: src/one_public_api/routers/attachment_router.py:90
 #, fuzzy
 msgid "List Attachments"
 msgstr ""
 "Defines the maximum number of records to return in a single request. Used"
 " to control page size and prevent large data loads."
 
-#: src/one_public_api/routers/attachment_router.py:109
+#: src/one_public_api/routers/attachment_router.py:105
 #, fuzzy
 msgid "Create Attachment"
 msgstr ""
@@ -834,43 +834,43 @@ msgstr ""
 "more fields. The API will return only records that contain the provided "
 "keyword(s)."
 
-#: src/one_public_api/routers/attachment_router.py:126
+#: src/one_public_api/routers/attachment_router.py:122
 msgid "Get Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:131
+#: src/one_public_api/routers/attachment_router.py:127
 msgid "The ID of the attachment to be retrieved"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:141
+#: src/one_public_api/routers/attachment_router.py:137
 msgid "Update Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:147
+#: src/one_public_api/routers/attachment_router.py:143
 msgid "The ID of the attachment to be updated"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:164
+#: src/one_public_api/routers/attachment_router.py:160
 msgid "The ID of the attachment to be deleted"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:174
+#: src/one_public_api/routers/attachment_router.py:170
 msgid "Upload Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:182
+#: src/one_public_api/routers/attachment_router.py:178
 msgid "Upload Attachment Files"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:183
+#: src/one_public_api/routers/attachment_router.py:179
 msgid "Upload multiple attachment files"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:197
+#: src/one_public_api/routers/attachment_router.py:193
 msgid "Download Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:213
+#: src/one_public_api/routers/attachment_router.py:209
 #, fuzzy
 msgid "Preview Attachment"
 msgstr ""
@@ -878,14 +878,14 @@ msgstr ""
 "more fields. The API will return only records that contain the provided "
 "keyword(s)."
 
-#: src/one_public_api/routers/attachment_router.py:231
+#: src/one_public_api/routers/attachment_router.py:225
 #, fuzzy
 msgid "Thumbnail Attachment"
 msgstr ""
 "Defines the maximum number of records to return in a single request. Used"
 " to control page size and prevent large data loads."
 
-#: src/one_public_api/routers/attachment_router.py:236
+#: src/one_public_api/routers/attachment_router.py:230
 #, fuzzy
 msgid "The ID of the thumbnail attachment"
 msgstr ""
@@ -1516,9 +1516,16 @@ msgstr ""
 " conditions, deprecated behavior, or non-critical issues were detected "
 "during processing."
 
-#: src/one_public_api/services/attachment_service.py:79
+#: src/one_public_api/services/attachment_service.py:81
 msgid "Failed to upload files."
 msgstr ""
+
+#: src/one_public_api/services/attachment_service.py:156
+#, fuzzy
+msgid "Thumbnail not found."
+msgstr ""
+"Defines the maximum number of records to return in a single request. Used"
+" to control page size and prevent large data loads."
 
 #: src/one_public_api/services/authenticate_service.py:60
 msgid "user not verified"
