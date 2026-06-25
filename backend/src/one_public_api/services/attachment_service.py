@@ -20,6 +20,7 @@ from one_public_api.common.utility.files import clear_dir, remove_file
 from one_public_api.core import get_session
 from one_public_api.core.exceptions import APIError, DataError
 from one_public_api.core.i18n import get_translator
+from one_public_api.core.settings import settings
 from one_public_api.models import Attachment, User
 from one_public_api.services.base_service import BaseService
 
@@ -63,7 +64,7 @@ class AttachmentService(BaseService[Attachment]):
                         "mime_type": success["file"].content_type,
                         "size": success["file"].size,
                         "path": success["path"].removeprefix(
-                            constants.PATH_MEDIA + "/"
+                            str(settings.media_file_path) + "/"
                         ),
                         "created_by": current_user.id,
                         "updated_by": current_user.id,
@@ -157,7 +158,7 @@ class AttachmentService(BaseService[Attachment]):
             else:
                 data_path = data.path
 
-            path = os.path.join(constants.PATH_MEDIA, data_path)
+            path = os.path.join(str(settings.media_file_path), data_path)
 
             dwl_file = {
                 "path": path,
@@ -189,7 +190,7 @@ class AttachmentService(BaseService[Attachment]):
                     {
                         "content": AttachmentService.zip_files(
                             [
-                                os.path.join(constants.PATH_MEDIA, d.path)
+                                os.path.join(str(settings.media_file_path), d.path)
                                 for d in cast(list[Attachment], data)
                             ],
                             delete_after_zip=delete_after_zip,

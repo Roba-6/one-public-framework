@@ -37,6 +37,8 @@ class Settings(BaseSettings):
         The language used for API responses.
     LOCALES_PATH : str
         The path to the locale files used by the application.
+    MEDIA_PATH : str
+        The path to the media files used by the application.
     FEATURE_CONTROL : bool
         Indicates whether the feature availability check is enabled.
     CORS_ORIGINS: list of str
@@ -115,6 +117,8 @@ class Settings(BaseSettings):
     RESPONSE_LANGUAGE: str = constants.DEFAULT_LANGUAGE
     # Path to locale files
     LOCALES_PATH: str = constants.DEFAULT_LOCALES_PATH
+    # Path to media files
+    MEDIA_PATH: str = constants.MEDIA_DEFAULT_PATH
     # Enable feature availability check
     FEATURE_CONTROL: bool = False
     # Allowed origins for CORS
@@ -187,6 +191,24 @@ class Settings(BaseSettings):
         log_path = self.LOG_PATH if self.LOG_PATH else relative_path
 
         return os.path.join(log_path, self.LOG_NAME + constants.EXT_LOG)
+
+    @computed_field
+    def media_file_path(self) -> str:
+        """
+        Create a path to the media files.
+
+        Returns
+        -------
+        path: str
+            path of media files
+        """
+
+        relative_path = (
+            constants.MEDIA_DEFAULT_PATH
+            if is_installed_package()
+            else constants.PATH_MEDIA
+        )
+        return self.MEDIA_PATH if self.MEDIA_PATH else relative_path
 
     @field_validator("CORS_ORIGINS", mode="before")
     def split_origins(cls, v: Any) -> Any:  # noqa

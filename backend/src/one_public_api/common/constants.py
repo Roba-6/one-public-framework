@@ -151,6 +151,10 @@ ROUTER_PREVIEW_ADMIN_WITH_ID = ROUTER_COMMON_ADMIN_WITH_ID + "/preview"
 # Attachment router path: admin thumbnail
 ROUTER_THUMBNAIL_ADMIN_WITH_ID = ROUTER_COMMON_ADMIN_WITH_ID + "/thumbnail"
 
+# ----- Media Settings -----------------------------------------------------------------
+# Default path for the media files.
+MEDIA_DEFAULT_PATH: str = "media"
+
 # ----- Log Settings -------------------------------------------------------------------
 # Default logging level for the API.
 LOG_DEFAULT_LEVEL: str = "DEBUG"
