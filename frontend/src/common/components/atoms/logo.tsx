@@ -5,6 +5,7 @@ import logoDark from '@/assets/images/logo-dark.svg'
 import logoLight from '@/assets/images/logo-light.svg'
 import { selectAppSettings, type Setting } from '@/common/app-slice'
 import { useAppSelector } from '@/common/hooks/use-store'
+import { getEnv } from '@/lib/functions.ts'
 import { cn } from '@/lib/utils'
 
 export type LogoSize = 'sm' | 'md' | 'lg'
@@ -54,12 +55,12 @@ const Logo = (props: { size?: LogoSize }): React.ReactNode => {
     >
       <div className={styles[1]}>
         <img
-          src={logoLight}
+          src={(getEnv('UI_LOGO_PATH') as string).split(',')[0] || logoLight}
           alt={appSettings.name}
           className="block w-full dark:hidden"
         />
         <img
-          src={logoDark}
+          src={(getEnv('UI_LOGO_PATH') as string).split(',')[1] || logoDark}
           alt={appSettings.name}
           className="hidden w-full dark:block"
         />

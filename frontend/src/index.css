@@ -184,16 +184,16 @@ body {
   --color-brown-900: color-mix(in srgb, #3c3530 20%, black);
 
   /* White */
-  --color-white-50: color-mix(in srgb, #f4efe6 10%, white);
-  --color-white-100: color-mix(in srgb, #f4efe6 20%, white);
-  --color-white-200: color-mix(in srgb, #f4efe6 40%, white);
-  --color-white-300: color-mix(in srgb, #f4efe6 60%, white);
-  --color-white-400: color-mix(in srgb, #f4efe6 80%, white);
-  --color-white-500: #f4efe6;
-  --color-white-600: color-mix(in srgb, #f4efe6 80%, burlywood);
-  --color-white-700: color-mix(in srgb, #f4efe6 60%, burlywood);
-  --color-white-800: color-mix(in srgb, #f4efe6 40%, burlywood);
-  --color-white-900: color-mix(in srgb, #f4efe6 20%, burlywood);
+  --color-white-50: color-mix(in srgb, #f6f2ed 10%, white);
+  --color-white-100: color-mix(in srgb, #f6f2ed 20%, white);
+  --color-white-200: color-mix(in srgb, #f6f2ed 40%, white);
+  --color-white-300: color-mix(in srgb, #f6f2ed 60%, white);
+  --color-white-400: color-mix(in srgb, #f6f2ed 80%, white);
+  --color-white-500: #f6f2ed;
+  --color-white-600: color-mix(in srgb, #f6f2ed 80%, burlywood);
+  --color-white-700: color-mix(in srgb, #f6f2ed 60%, burlywood);
+  --color-white-800: color-mix(in srgb, #f6f2ed 40%, burlywood);
+  --color-white-900: color-mix(in srgb, #f6f2ed 20%, burlywood);
 }
 
 .dark {
@@ -359,7 +359,7 @@ table.data-list {
       @apply bg-[var(--card)];
     }
     tr:nth-child(even) td {
-      @apply bg-[color-mix(in_srgb,_#f4efe6_90%,_burlywood)]
+      @apply bg-[color-mix(in_srgb,_#f6f2ed_90%,_burlywood)]
         dark:bg-[color-mix(in_srgb,_#3c3530_50%,_black)];
     }
     tr:hover td {
@@ -774,7 +774,7 @@ textarea:focus-visible {
 
 .opf-container {
   @apply container flex mx-auto p-4 transition-all
-    sm:rounded-2xl border-[1px] border-[var(--border)]
+    sm:rounded-2xl sm:border-[1px] border-t-[1px] border-[var(--border)]
     bg-[var(--card)]
     hover:border-[var(--color-white-700)] hover:bg-[var(--color-white-100)]
     dark:hover:border-[var(--color-brown-400)] dark:hover:bg-[var(--color-brown-700)]
