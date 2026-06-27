@@ -72,7 +72,7 @@ export function NavUser({
             className={cn(
               'w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg',
               'hover:border-[var(--color-white-600)] hover:bg-[var(--color-white-300)]',
-              'dark:hover:border-[var(--color-brown-400)] dark:hover:bg-[var(--color-brown-700)]'
+              'dark:hover:border-[var(--color-espresso-400)] dark:hover:bg-[var(--color-espresso-700)]'
             )}
             side={isMobile ? 'bottom' : 'right'}
             align="end"

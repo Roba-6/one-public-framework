@@ -43,7 +43,7 @@ const SideMenu = (): React.ReactNode => {
         <Collapsible key={key} open={value.isOpened} className="group/collapsible">
           <SidebarGroup
             className={cn(
-              'p-1 border-[1px] rounded-lg bg-[var(--color-white-500)] dark:bg-[var(--color-brown-800)]'
+              'p-1 border-[1px] rounded-lg bg-[var(--color-white-500)] dark:bg-[var(--color-espresso-800)]'
             )}
           >
             <SidebarGroupLabel asChild>
