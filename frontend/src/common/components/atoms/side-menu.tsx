@@ -15,14 +15,14 @@ import {
 } from '@/common/components/ui/sidebar'
 import { useAppDispatch, useAppSelector } from '@/common/hooks/use-store'
 import type { Menu, MenuItem } from '@/common/types/data'
-import { cn, getLocalMessage } from '@/lib/utils'
+import { getLocalMessage } from '@/lib/utils'
 
 /**
  * Side Menu Component
  *
  * @constructor
  */
-const SideMenu = (): React.ReactNode => {
+const SideMenu = (): React.JSX.Element => {
   const dispatch = useAppDispatch()
   const menu: Menu = useAppSelector(selectMenu)
   const currentLocation: Location | null = useAppSelector(selectLocation)
@@ -41,13 +41,12 @@ const SideMenu = (): React.ReactNode => {
     <React.Fragment>
       {Object.entries(menu).map(([key, value]) => (
         <Collapsible key={key} open={value.isOpened} className="group/collapsible">
-          <SidebarGroup
-            className={cn(
-              'p-1 border-[1px] rounded-lg bg-[var(--color-white-500)] dark:bg-[var(--color-espresso-800)]'
-            )}
-          >
+          <SidebarGroup className="p-1">
             <SidebarGroupLabel asChild>
-              <CollapsibleTrigger onClick={() => dispatch(toggleMenu(key))}>
+              <CollapsibleTrigger
+                className="cursor-pointer"
+                onClick={() => dispatch(toggleMenu(key))}
+              >
                 {getLocalMessage(`menus.${key}`)}
                 <Icon.ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
               </CollapsibleTrigger>

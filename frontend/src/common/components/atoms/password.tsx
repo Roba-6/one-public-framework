@@ -14,7 +14,7 @@ const Password = (props: {
     'password'
   >
   tabIndex?: number
-}): React.ReactNode => {
+}): React.JSX.Element => {
   const [showPassword, setShowPassword] = useState<boolean>(false)
   return (
     <div className="relative">

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { cn } from '@/lib/utils.ts'
+
 const building = `
 .\n\n|\n\n|\n\n=\n\n=\n\n#\n\nif\n\n()\n\nelse\n\nexit\n\nwec\n\nsldkjwermern\n
 kslji977we42hwer-----\n\nsldkjwermxbn\n\nsldkjw\n\nhijklsadkfjweryex\n
@@ -42,13 +44,17 @@ elkj f97\n\nwerh jsf\n\nwerndsm;\n\nsdf\n\nwer\n\ncst\n\ngo\n\nj\n\nd\n\n8\n\n4\
  * The component uses `Array.map()` to dynamically generate a list of child elements
  * based on a fixed length.
  *
- * @returns {React.ReactNode} A JSX element that includes a styled container with
+ * @returns {React.JSX.Element} A JSX element that includes a styled container with
  * text and dynamic child elements.
  */
-const TextImage = (): React.ReactNode => {
+const TextImage = (): React.JSX.Element => {
   return (
-    <div className="w-full sm:w-[585px] h-[100px] overflow-hidden relative select-none">
-      <pre className="w-[100%] rotate-180 text-[3pt] font-bold leading-0.5 [writing-mode:vertical-rl]">
+    <div
+      className={cn(
+        'w-full sm:w-[585px] h-[100px] overflow-hidden relative select-none'
+      )}
+    >
+      <pre className="w-full rotate-180 text-[3pt] font-bold leading-0.5 [writing-mode:vertical-rl]">
         <code>{building}</code>
       </pre>
       {Array.from({ length: 3 }).map((_: unknown, idx: number) => (

@@ -10,9 +10,9 @@ import { cn } from '@/lib/utils'
  * Renders a loading spinner using a div container and an animated icon.
  * Uses a side effect to log a message when the component is rendered.
  *
- * @returns {React.ReactNode} React node containing the animated loading spinner.
+ * @returns {React.JSX.Element} React node containing the animated loading spinner.
  */
-const Spinner = (props: { className?: string }): React.ReactNode => {
+const Spinner = (props: { className?: string }): React.JSX.Element => {
   const isLoading = useAppSelector(selectIsLoading)
   const [fadeOut, setFadeOut] = useState<string>('')
 
@@ -35,7 +35,12 @@ const Spinner = (props: { className?: string }): React.ReactNode => {
         props.className
       )}
     >
-      <div className="w-5 h-5 text-center absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2">
+      <div
+        className={cn(
+          'w-5 h-5 text-center',
+          'absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2'
+        )}
+      >
         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
       </div>
     </div>

@@ -52,7 +52,7 @@ const Logo = (props: { size?: LogoSize }): React.JSX.Element => {
         setStyles(['', 'w-6', 'ps-2 pt-1 text-[11.7pt]'])
         break
       default:
-        setStyles(['', 'w-[30px] max-w-[100vw]', 'px-3 pb-2 pt-2.5 text-2xl'])
+        setStyles(['', 'w-[30px] max-w-[100vw]', 'px-3 pb-2 pt-2.5 pe-0 text-2xl'])
     }
   }, [props, appSettings])
 
@@ -60,7 +60,8 @@ const Logo = (props: { size?: LogoSize }): React.JSX.Element => {
     <NavLink
       to=""
       className={cn(
-        'flex items-center whitespace-nowrap cursor-pointer select-none',
+        'flex cursor-pointer select-none items-center whitespace-nowrap',
+        'text-[var(--color-ash-900)] dark:text-[var(--color-ash-300)] hover:opacity-75',
         styles[0]
       )}
     >
@@ -76,19 +77,8 @@ const Logo = (props: { size?: LogoSize }): React.JSX.Element => {
           className="hidden w-full dark:block"
         />
       </div>
-      <h1
-        className={cn(
-          'logo-text text-black dark:text-[var(--color-gray-500)] tracking-widest' +
-            ' font-[Sense]',
-          styles[2]
-        )}
-      >
-        <div className="relative">
-          <div className="autoTyping" data-text={appSettings.name}>
-            {appSettings.name}
-          </div>
-          <div className="invisible">&nbsp;</div>
-        </div>
+      <h1 className={cn('flex font-[Sense] uppercase tracking-widest', styles[2])}>
+        {appSettings.name}
       </h1>
     </NavLink>
   )

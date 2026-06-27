@@ -75,7 +75,7 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
             <CardTitle className={cn('leading')}>
               {getLocalMessage('title.login')}
             </CardTitle>
-            <CardDescription className="type-description">
+            <CardDescription className="auto-typing">
               {getLocalMessage('messages.pleaseLogin')}
             </CardDescription>
           </CardHeader>

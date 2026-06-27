@@ -53,7 +53,10 @@ export function NavUser({
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
               size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+              className={cn(
+                'data-[state=open]:bg-sidebar-accent',
+                'data-[state=open]:text-sidebar-accent-foreground cursor-pointer'
+              )}
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={user.avatar} alt={user.name} />
@@ -69,11 +72,7 @@ export function NavUser({
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className={cn(
-              'w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg',
-              'hover:border-[var(--color-white-600)] hover:bg-[var(--color-white-300)]',
-              'dark:hover:border-[var(--color-espresso-400)] dark:hover:bg-[var(--color-espresso-700)]'
-            )}
+            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
             side={isMobile ? 'bottom' : 'right'}
             align="end"
             sideOffset={4}
@@ -94,21 +93,22 @@ export function NavUser({
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer">
                 <IconUserCircle />
                 Account
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer">
                 <IconCreditCard />
                 Billing
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer">
                 <IconNotification />
                 Notifications
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem
+              className="cursor-pointer"
               onSelect={(event: Event) => {
                 console.log(event)
                 getApi<CommonResponse>(CONSTANT.API_URL.LOGOUT).then(
