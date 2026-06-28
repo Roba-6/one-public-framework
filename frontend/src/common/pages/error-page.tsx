@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { Card, CardContent } from '@/common/components/ui/card.tsx'
+import { Card, CardContent } from '@/common/components/ui/card'
 import { ScrollArea, ScrollBar } from '@/common/components/ui/scroll-area'
 import { useAppDispatch } from '@/common/hooks/use-store'
 import { cn, completed } from '@/lib/utils'

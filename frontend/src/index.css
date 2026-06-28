@@ -45,6 +45,7 @@
   /* Customize */
   --typing-caret: var(--color-ash-800);
   --descript-foreground: var(--color-ash-600);
+  --disabled-foreground: var(--color-ash-400);
 }
 
 /* ---------- Dark Theme ------------------------------------------------------------ */
@@ -84,6 +85,7 @@
   /* Customize */
   --typing-caret: var(--color-ash-400);
   --descript-foreground: var(--color-ash-600);
+  --disabled-foreground: var(--color-ash-700);
 }
 
 /* ---------- Tailwind Theme -------------------------------------------------------- */
@@ -124,8 +126,10 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  /* Customize */
   --color-typing-caret: var(--typing-caret);
   --color-descript-foreground: var(--descript-foreground);
+  --color-disabled-foreground: var(--disabled-foreground);
 }
 
 /* ---------- Reset Tailwindcss styles ---------------------------------------------- */
@@ -144,19 +148,20 @@
       color-scheme: dark;
     }
   }
+  a.link {
+    @apply underline-offset-4 hover:underline hover:decoration-dashed
+      text-[var(--color-ring)] hover:opacity-75;
+  }
   button {
     @apply cursor-pointer;
   }
 }
 @layer components {
-  .button {
-    @apply cursor-pointer;
-  }
 }
 @layer utilities {
 }
 
-/* ---------- One Public UI --------------------------------------------------------- */
+/* ---------- Site of One Public UI ------------------------------------------------- */
 
 .single-info-page {
   @apply mx-auto p-3 sm:p-8 h-screen container flex flex-col items-center
@@ -166,9 +171,47 @@
   @apply md:px-8 relative;
 }
 
-.link {
-  @apply underline-offset-4 hover:underline hover:decoration-dashed
-    text-[var(--color-ring)] hover:opacity-75;
+/* ---------- Admin of One Public UI ------------------------------------------------ */
+
+table.data-list {
+  /*@apply w-full table-fixed;*/
+
+  thead {
+    tr th {
+      @apply bg-[var(--color-antique-400)] dark:bg-[var(--color-espresso-500)];
+
+      * {
+        @apply font-bold;
+      }
+      button:hover {
+        @apply bg-[var(--color-antique-400)] dark:bg-[var(--color-espresso-500)];
+      }
+    }
+
+    button {
+      @apply px-0;
+    }
+  }
+
+  tbody {
+    tr td {
+      @apply bg-[var(--card)];
+    }
+    tr:nth-child(even) td {
+      @apply bg-[var(--color-antique-200)]
+        dark:bg-[var(--color-espresso-700)];
+    }
+    tr:hover td {
+      @apply bg-[var(--color-antique-50)] dark:bg-[var(--color-espresso-800)]
+        transition-all duration-300;
+    }
+  }
+}
+
+input,
+textarea {
+  @apply bg-[var(--color-antique-100)] dark:bg-[var(--color-espresso-800)]
+    placeholder:text-[var(--color-disabled-foreground)];
 }
 
 /* ---------- sample page ---------- */
@@ -177,50 +220,6 @@
 /*}*/
 /*.inner {*/
 /*  @apply p-2 sm:p-4;*/
-/*}*/
-
-/*.data-list-panel {*/
-/*  @apply overflow-hidden rounded-md border;*/
-/*}*/
-/*.data-list-panel:hover {*/
-/*  @apply border-[var(--color-white-900)] dark:border-[var(--color-brown-400)];*/
-
-/*  tr:hover {*/
-/*    @apply text-[var(--color-gray-900)] dark:text-[var(--color-gray-50)];*/
-/*  }*/
-/*}*/
-
-/*table.data-list {*/
-/*  !*@apply w-full table-fixed;*!*/
-
-/*  thead {*/
-/*    tr th {*/
-/*      @apply font-bold;*/
-/*      @apply bg-[var(--color-white-600)] dark:bg-[var(--color-brown-600)];*/
-/*    }*/
-
-/*    button {*/
-/*      @apply px-0;*/
-/*    }*/
-/*  }*/
-
-/*  tbody {*/
-/*    tr td {*/
-/*      @apply bg-[var(--card)];*/
-/*    }*/
-/*    tr:nth-child(even) td {*/
-/*      @apply bg-[color-mix(in_srgb,_#f4efe6_90%,_burlywood)]*/
-/*        dark:bg-[color-mix(in_srgb,_#3c3530_50%,_black)];*/
-/*    }*/
-/*    tr:hover td {*/
-/*      @apply bg-[var(--color-white-300)] dark:bg-[var(--color-brown-700)]*/
-/*        transition-all duration-300;*/
-/*    }*/
-/*  }*/
-/*}*/
-
-/*input {*/
-/*  @apply bg-[var(--color-white-300)] dark:bg-[var(--color-brown-900)];*/
 /*}*/
 
 /*input:focus-visible,*/

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { cn } from '@/lib/utils.ts'
+import { cn } from '@/lib/utils'
 
 const building = `
 .\n\n|\n\n|\n\n=\n\n=\n\n#\n\nif\n\n()\n\nelse\n\nexit\n\nwec\n\nsldkjwermern\n

@@ -3,8 +3,8 @@ import React from 'react'
 import Language from '@/common/components/atoms/language'
 import ModeToggle from '@/common/components/modules/mode-toggle'
 import { Avatar, AvatarFallback, AvatarImage } from '@/common/components/ui/avatar'
-import { Card, CardContent } from '@/common/components/ui/card.tsx'
-import { cn } from '@/lib/utils.ts'
+import { Card, CardContent } from '@/common/components/ui/card'
+import { cn } from '@/lib/utils'
 
 const Footer = (props: { appName: string }): React.ReactNode => {
   return (
