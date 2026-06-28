@@ -7,27 +7,28 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Light Theme */
+/* ---------- Light Theme ----------------------------------------------------------- */
+
 :root {
   --radius: 0.625rem;
   --background: var(--color-antique-200);
   --foreground: var(--color-ash-800);
-  --card: var(--color-antique-200);
+  --card: var(--color-antique-100);
   --card-foreground: var(--color-ash-800);
-  --popover: var(--color-antique-200);
+  --popover: var(--color-antique-100);
   --popover-foreground: var(--color-ash-800);
   --primary: var(--color-leaf-500);
   --primary-foreground: var(--color-antique-200);
   --secondary: var(--color-coral-500);
   --secondary-foreground: var(--color-antique-200);
-  --muted: var(--color-antique-200);
+  --muted: var(--color-antique-100);
   --muted-foreground: var(--color-ash-800);
   --accent: var(--color-antique-500);
   --accent-foreground: var(--color-ash-900);
   --destructive: red;
   --border: var(--color-antique-600);
   --input: var(--color-antique-600);
-  --ring: var(--color-leaf-400);
+  --ring: var(--color-leaf-500);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -41,10 +42,13 @@
   --sidebar-accent-foreground: var(--color-ash-900);
   --sidebar-border: red;
   --sidebar-ring: var(--color-leaf-400);
+  /* Customize */
   --typing-caret: var(--color-ash-800);
+  --descript-foreground: var(--color-ash-600);
 }
 
-/* Dark Theme */
+/* ---------- Dark Theme ------------------------------------------------------------ */
+
 .dark {
   --background: var(--color-espresso-700);
   --foreground: var(--color-ash-400);
@@ -77,16 +81,18 @@
   --sidebar-accent-foreground: var(--color-ash-200);
   --sidebar-border: red;
   --sidebar-ring: var(--color-leaf-600);
+  /* Customize */
   --typing-caret: var(--color-ash-400);
+  --descript-foreground: var(--color-ash-600);
 }
 
-/* Tailwind Theme */
+/* ---------- Tailwind Theme -------------------------------------------------------- */
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -119,9 +125,11 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-typing-caret: var(--typing-caret);
+  --color-descript-foreground: var(--descript-foreground);
 }
 
-/* Reset Tailwindcss styles */
+/* ---------- Reset Tailwindcss styles ---------------------------------------------- */
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -136,11 +144,15 @@
       color-scheme: dark;
     }
   }
+  button {
+    @apply cursor-pointer;
+  }
 }
-
 @layer components {
+  .button {
+    @apply cursor-pointer;
+  }
 }
-
 @layer utilities {
 }
 
@@ -150,29 +162,21 @@
   @apply mx-auto p-3 sm:p-8 h-screen container flex flex-col items-center
     justify-center;
 }
+.single-page {
+  @apply md:px-8 relative;
+}
 
-/*.site-page {*/
-/*  @apply mx-auto p-2 sm:p-8 container flex flex-col items-center justify-center;*/
-/*}*/
+.link {
+  @apply underline-offset-4 hover:underline hover:decoration-dashed
+    text-[var(--color-ring)] hover:opacity-75;
+}
 
+/* ---------- sample page ---------- */
 /*.page {*/
 /*  @apply min-h-screen m-auto container justify-center;*/
 /*}*/
-
 /*.inner {*/
 /*  @apply p-2 sm:p-4;*/
-/*}*/
-
-/*.box {*/
-/*  @apply border-8 border-gray-200*/
-/*    dark:border-0 dark:border-t-1 dark:border-s-1 dark:border-black*/
-/*    rounded-none dark:rounded-md*/
-/*  bg-gray-50 dark:bg-neutral-900*/
-/*    shadow-sm shadow-gray-200 dark:shadow-gray-800;*/
-/*}*/
-
-/*button {*/
-/*  @apply font-bold;*/
 /*}*/
 
 /*.data-list-panel {*/
@@ -226,31 +230,4 @@
 /*  &[aria-invalid="true"] {*/
 /*    box-shadow: 0 0 5px var(--color-rose-500);*/
 /*  }*/
-/*}*/
-
-/*!* Sub Page Styles *!*/
-
-/*!*****animated text start*****!*/
-
-/*.opf-container {*/
-/*  @apply container flex mx-auto p-4 transition-all*/
-/*    sm:rounded-2xl border-[1px] border-[var(--border)]*/
-/*    bg-[var(--card)]*/
-/*    hover:border-[var(--color-white-700)] hover:bg-[var(--color-white-100)]*/
-/*    dark:hover:border-[var(--color-brown-400)] dark:hover:bg-[var(--color-brown-700)]*/
-/*    justify-between;*/
-/*}*/
-
-/*.panel {*/
-/*  @apply select-none;*/
-/*}*/
-/*.panel:hover {*/
-/*  @apply border-[var(--color-white-700)] bg-[var(--color-white-100)]*/
-/*    dark:border-[var(--color-brown-400)] dark:bg-[var(--color-brown-700)];*/
-/*}*/
-
-/*.link {*/
-/*  @apply text-[var(--color-green-600)] hover:text-[var(--color-green-500)]*/
-/*    dark:text-[var(--color-green-500)] dark:hover:text-[var(--color-green-400)]*/
-/*    transition-all;*/
 /*}*/

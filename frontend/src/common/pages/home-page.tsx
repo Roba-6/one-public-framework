@@ -20,7 +20,7 @@ const HomePage = (): React.JSX.Element => {
   }, [dispatch])
 
   return (
-    <div className="single-page md:px-4 relative">
+    <div className="single-page">
       <div className="container mx-auto min-h-[100vh] relative">
         <header className="px-4 sm:px-0 py-2 w-full flex items-center">
           <Logo />

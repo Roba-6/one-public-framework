@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 
+import { Card, CardContent } from '@/common/components/ui/card.tsx'
 import { ScrollArea, ScrollBar } from '@/common/components/ui/scroll-area'
 import { useAppDispatch } from '@/common/hooks/use-store'
-import { completed } from '@/lib/utils'
+import { cn, completed } from '@/lib/utils'
 
 const ErrorPage = ({ error }: { error?: any }): React.JSX.Element => {
   const dispatch = useAppDispatch()
@@ -17,14 +18,18 @@ const ErrorPage = ({ error }: { error?: any }): React.JSX.Element => {
         <h1 className="text-2xl font-bold">{error ? 'Oops!' : '404 Not Found'}</h1>
         {error ? <p>{error.message}</p> : <p>An unexpected error occurred.</p>}
         {error && (
-          <ScrollArea className="box mt-4 pe-2.5 pb-2.5 h-[400px] rounded-2xl overflow-hidden text-gray-500 text-start">
-            <div className="p-2">
-              <pre>
-                <code>{error.stack}</code>
-              </pre>
-            </div>
-            <ScrollBar orientation="horizontal" />
-          </ScrollArea>
+          <Card className="p-0 mt-4">
+            <CardContent className="p-0">
+              <ScrollArea
+                className={cn('p-4 text-[var(--color-descript-foreground)] text-start')}
+              >
+                <pre>
+                  <code>{error.stack}</code>
+                </pre>
+                <ScrollBar orientation="horizontal" />
+              </ScrollArea>
+            </CardContent>
+          </Card>
         )}
       </div>
     </main>
