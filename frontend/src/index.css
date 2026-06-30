@@ -170,6 +170,9 @@
 .single-page {
   @apply md:px-8 relative;
 }
+.inner {
+  @apply px-4 sm:px-0;
+}
 
 /* ---------- Admin of One Public UI ------------------------------------------------ */
 

@@ -13,8 +13,8 @@ const ErrorPage = ({ error }: { error?: any }): React.JSX.Element => {
   }, [dispatch])
 
   return (
-    <main className="single-info-page">
-      <div className="p-2 sm:p-8 w-full align-middle text-center">
+    <div className="single-info-page">
+      <main className="inner py-2 sm:py-8 w-full align-middle text-center">
         <h1 className="text-2xl font-bold">{error ? 'Oops!' : '404 Not Found'}</h1>
         {error ? <p>{error.message}</p> : <p>An unexpected error occurred.</p>}
         {error && (
@@ -31,8 +31,8 @@ const ErrorPage = ({ error }: { error?: any }): React.JSX.Element => {
             </CardContent>
           </Card>
         )}
-      </div>
-    </main>
+      </main>
+    </div>
   )
 }
 
