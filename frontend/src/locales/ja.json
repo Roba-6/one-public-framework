@@ -25,6 +25,7 @@
   },
   "format": {
     "datetime": "YYYY年M月D日 HH:mm",
+    "date": "YYYY年M月D日",
     "shortDatetime": "M月D日 HH:mm"
   },
   "buttons": {
