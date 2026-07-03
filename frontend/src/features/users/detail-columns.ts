@@ -24,14 +24,17 @@ export const detailColumns: DataColumn[] = [
     name: getLocalMessage('labels.enabled'),
     type: 'booleanIcon',
     values: ['UserRoundCheck', 'UserRoundX'],
-    colors: ['text-[var(--color-green-500)]', 'text-[var(--color-gray-700)]'],
+    colors: ['text-[var(--color-ring)]', 'text-[var(--color-disabled-foreground)]'],
   },
   {
     key: 'isLocked',
     name: getLocalMessage('labels.user.lock'),
     type: 'booleanIcon',
     values: ['Lock', 'LockOpen'],
-    colors: ['text-[var(--color-gray-700)]', 'text-[var(--color-green-500)]'],
+    colors: [
+      'text-[var(--color-ring-secondary)]',
+      'text-[var(--color-disabled-foreground)]',
+    ],
   },
   {
     key: 'failedAttempts',

@@ -86,7 +86,7 @@ interface FormFieldItem {
   type: FormType
   placeholder?: string
   autoComplete?: string
-  options?: { label: string; value: string }[]
+  options?: { label: string; value: string | null }[]
   defaultValue?: string | boolean
   validate?:
     | z.ZodString

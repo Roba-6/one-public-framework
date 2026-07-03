@@ -15,7 +15,6 @@ export const newCategoryItems: FormFieldItem[] = [
       .min(1, { message: getLocalMessage('messages.validations.category.name') })
       .max(100, { message: getLocalMessage('messages.validations.max', [100]) }),
   },
-
   {
     name: 'value',
     label: getLocalMessage('labels.category.value'),
@@ -38,10 +37,11 @@ export const newCategoryItems: FormFieldItem[] = [
   },
   {
     name: 'categoryId',
-    label: getLocalMessage('labels.category.parentCategoryId'),
-    type: 'text',
+    label: getLocalMessage('labels.category.parentCategory'),
+    type: 'select',
     placeholder: getLocalMessage('placeholder.categories.parentCategoryId'),
     defaultValue: '',
+    options: [],
   },
   {
     name: 'description',

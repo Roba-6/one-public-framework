@@ -46,6 +46,7 @@
   --typing-caret: var(--color-ash-800);
   --descript-foreground: var(--color-ash-600);
   --disabled-foreground: var(--color-ash-400);
+  --ring-secondary: var(--color-coral-500);
 }
 
 /* ---------- Dark Theme ------------------------------------------------------------ */
@@ -86,6 +87,7 @@
   --typing-caret: var(--color-ash-400);
   --descript-foreground: var(--color-ash-600);
   --disabled-foreground: var(--color-ash-700);
+  --ring-secondary: var(--color-coral-600);
 }
 
 /* ---------- Tailwind Theme -------------------------------------------------------- */
@@ -130,6 +132,7 @@
   --color-typing-caret: var(--typing-caret);
   --color-descript-foreground: var(--descript-foreground);
   --color-disabled-foreground: var(--disabled-foreground);
+  --color-ring-secondary: var(--ring-secondary);
 }
 
 /* ---------- Reset Tailwindcss styles ---------------------------------------------- */
@@ -200,7 +203,7 @@ table.data-list {
     tr td {
       @apply bg-[var(--card)];
     }
-    tr:nth-child(even) td {
+    tr:nth-child(odd) td {
       @apply bg-[var(--color-antique-200)]
         dark:bg-[var(--color-espresso-700)];
     }

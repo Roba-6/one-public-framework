@@ -89,7 +89,8 @@
       "alias": "别名",
       "description": "分类说明",
       "name": "分类名称",
-      "parentCategoryId": "父分类 ID",
+      "parentCategory": "父级分类",
+      "parentCategoryId": "父级分类 ID",
       "value": "值",
       "parent": "父分类"
     },
@@ -114,7 +115,8 @@
       "name": "数据库",
       "parentCategoryId": "父分类 UUID",
       "value": "database"
-    }
+    },
+    "pleaseSelect": "请选择"
   },
   "messages": {
     "pleaseLogin": "请输入用户名登录系统。",

@@ -25,7 +25,7 @@ export const listColumns: DataColumn[] = [
     name: getLocalMessage('labels.enabled'),
     type: 'booleanIcon',
     values: ['CircleCheck', 'CircleX'],
-    colors: ['text-[var(--color-green-500)]', 'text-[var(--color-gray-500)]'],
+    colors: ['text-[var(--color-ring)]', 'text-[var(--color-disabled-foreground)]'],
     align: 'center',
     isFilterable: true,
     filters: [

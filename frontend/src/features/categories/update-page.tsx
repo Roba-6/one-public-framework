@@ -21,7 +21,7 @@ const toCategoryRequest = (data: Category): UpdateCategoryRequest => ({
   value: data.value || undefined,
   alias: data.alias || undefined,
   description: data.description || undefined,
-  categoryId: data.categoryId || undefined,
+  categoryId: data.categoryId || null,
   isEnabled: data.isEnabled,
   options: data.options ? JSON.parse(data.options) : undefined,
 })
@@ -35,15 +35,38 @@ const UpdateCategoryPage = (): React.JSX.Element => {
   const [data, setData] = React.useState<Category | null>(null)
 
   useEffect(() => {
-    if (id) {
-      getApi<CommonResponse>(setUrlParams(CONSTANT.API_URL.CATEGORY_ADMIN_ID, id)).then(
-        (res: CommonResponse) => {
-          setData(res.results! as Category)
-          setLoadingData(false)
-          console.log('Update Page:', res.results! as Category)
+    const fetchData = async () => {
+      try {
+        const parents: Category[] = (
+          await getApi<CommonResponse>(CONSTANT.API_URL.CATEGORY_ADMIN)
+        ).results
+
+        const category: Category = (
+          await getApi<CommonResponse>(
+            setUrlParams(CONSTANT.API_URL.CATEGORY_ADMIN_ID, id)
+          )
+        ).results
+
+        if (parents) {
+          categoryItems[3].options = [{ label: '--', value: null }]
+          parents.forEach((parent) => {
+            if (parent.id !== category.id) {
+              categoryItems[3].options!.push({ label: parent.name, value: parent.id! })
+            }
+          })
         }
-      )
+
+        category.categoryId = category.parent?.id
+        category.options = JSON.stringify(category.options)
+        setData(category)
+        setLoadingData(false)
+        console.log('Update Page:', category)
+      } catch (error) {
+        console.error('', error)
+      }
     }
+
+    if (id) void fetchData()
   }, [id])
 
   const submitForm = (values: Category) => {

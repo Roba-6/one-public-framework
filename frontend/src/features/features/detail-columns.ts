@@ -21,14 +21,14 @@ export const detailColumns: DataColumn[] = [
     name: getLocalMessage('labels.enabled'),
     type: 'booleanIcon',
     values: ['CircleCheck', 'Ban'],
-    colors: ['text-[var(--color-green-500)]', 'text-[var(--color-gray-700)]'],
+    colors: ['text-[var(--color-ring)]', 'text-[var(--color-disabled-foreground)]'],
   },
   {
     key: 'requiresAuth',
     name: getLocalMessage('labels.requiresAuth'),
     type: 'booleanIcon',
     values: ['CircleCheck', 'Ban'],
-    colors: ['text-[var(--color-green-500)]', 'text-[var(--color-gray-700)]'],
+    colors: ['text-[var(--color-ring)]', 'text-[var(--color-disabled-foreground)]'],
   },
   {
     key: 'createdAt',
