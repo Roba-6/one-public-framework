@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: One Public API 0.1.0-alpha.24\n"
 "Report-Msgid-Bugs-To: roba@one-coder.com\n"
-"POT-Creation-Date: 2026-06-30 23:08+0900\n"
+"POT-Creation-Date: 2026-07-03 16:44+0900\n"
 "PO-Revision-Date: 2025-05-25 16:37+0900\n"
 "Last-Translator: Roba <roba@one-coder.com>\n"
 "Language: en\n"
@@ -1044,11 +1044,11 @@ msgstr ""
 msgid "The ID of the category item to be updated"
 msgstr ""
 
-#: src/one_public_api/routers/category_router.py:137
+#: src/one_public_api/routers/category_router.py:139
 msgid "Delete Category"
 msgstr ""
 
-#: src/one_public_api/routers/category_router.py:142
+#: src/one_public_api/routers/category_router.py:144
 msgid "The ID of the category item to be deleted"
 msgstr ""
 
@@ -1591,9 +1591,9 @@ msgstr ""
 msgid "Data already exists."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:153
-#: src/one_public_api/services/base_service.py:168
-#: src/one_public_api/services/base_service.py:182
+#: src/one_public_api/services/base_service.py:155
+#: src/one_public_api/services/base_service.py:170
+#: src/one_public_api/services/base_service.py:184
 msgid "This record might be referenced by other data."
 msgstr ""
 
