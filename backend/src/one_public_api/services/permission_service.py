@@ -40,7 +40,9 @@ class PermissionService(BaseService[Permission]):
 
         return result
 
-    def update_one_by_id(self, target_id: UUID, data: Any) -> Permission:
+    def update_one_by_id(
+        self, target_id: UUID, data: Any, nullable_keys: List[str] | None = None
+    ) -> Permission:
         before: Permission = self.get_one_by_id(target_id)
         result: Permission = self.du.one(
             before,

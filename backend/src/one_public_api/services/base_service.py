@@ -117,7 +117,9 @@ class BaseService(Generic[T]):
                 self._("Data already exists."), data.model_dump_json(), "E4090004"
             )
 
-    def update_one_by_id(self, target_id: UUID, data: T) -> T:
+    def update_one_by_id(
+        self, target_id: UUID, data: T, nullable_keys: List[str] | None = None
+    ) -> T:
         before: T = self.get_one_by_id(target_id)
         result: T = self.du.one(before, data.model_dump(exclude_unset=True))
 
