@@ -18,7 +18,7 @@ const Footer = (props: { appName: string }): React.ReactNode => {
         <CardContent className={cn('flex px-4 sm:px-6 justify-between')}>
           <div className="w-[20%] md:w-[50%] transition-all">
             <Avatar>
-              <AvatarImage src="/assets/images/author.png" alt="Roba" />
+              <AvatarImage src="/images/author.png" alt="Roba" />
               <AvatarFallback>OPF</AvatarFallback>
             </Avatar>
           </div>
