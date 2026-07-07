@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router'
+import { NavLink, useNavigate } from 'react-router'
 import { z } from 'zod/v4'
 
 import { selectAccessToken, setAccessToken } from '@/common/app-slice'
@@ -70,12 +70,12 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
   if (!accessToken && !isAuthenticated) {
     return (
       <div className={cn('flex flex-col gap-6', className)} {...props}>
-        <Card className="panel">
+        <Card className="select-none">
           <CardHeader>
             <CardTitle className={cn('leading')}>
               {getLocalMessage('title.login')}
             </CardTitle>
-            <CardDescription className="type-description">
+            <CardDescription className="auto-typing">
               {getLocalMessage('messages.pleaseLogin')}
             </CardDescription>
           </CardHeader>
@@ -114,16 +114,13 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
                             <FormLabel>
                               {getLocalMessage('labels.user.password')}
                             </FormLabel>
-                            <a
-                              href="#"
-                              className={cn(
-                                'link ml-auto inline-block text-sm',
-                                'underline-offset-4 hover:underline hover:decoration-dashed'
-                              )}
+                            <NavLink
+                              to="#"
+                              className={cn('link ms-auto text-sm')}
                               tabIndex={1}
                             >
                               {getLocalMessage('labels.forgetPassword')}
-                            </a>
+                            </NavLink>
                           </div>
                           <FormControl>
                             <Password field={field} tabIndex={0} />

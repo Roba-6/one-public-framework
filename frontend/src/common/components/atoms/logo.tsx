@@ -5,6 +5,7 @@ import logoDark from '@/assets/images/logo-dark.svg'
 import logoLight from '@/assets/images/logo-light.svg'
 import { selectAppSettings, type Setting } from '@/common/app-slice'
 import { useAppSelector } from '@/common/hooks/use-store'
+import { getEnv } from '@/lib/functions'
 import { cn } from '@/lib/utils'
 
 export type LogoSize = 'sm' | 'md' | 'lg'
@@ -21,10 +22,10 @@ export type LogoSize = 'sm' | 'md' | 'lg'
  * @param {LogoSize} [props.size] - An optional size specification for the logo.
  *                                  Supports `'sm'` for a smaller logo size.
  *                                  Defaults to a standard size if not provided.
- * @returns {React.ReactNode} A React node containing the logo and application name
- *                            styled with responsive design.
+ * @returns {React.JSX.Element} A React node containing the logo and application name
+ *                              styled with responsive design.
  */
-const Logo = (props: { size?: LogoSize }): React.ReactNode => {
+const Logo = (props: { size?: LogoSize }): React.JSX.Element => {
   const appSettings: Setting = useAppSelector(selectAppSettings)
 
   /**
@@ -34,13 +35,24 @@ const Logo = (props: { size?: LogoSize }): React.ReactNode => {
    */
   const [styles, setStyles] = React.useState<string[]>([])
 
+  const isCustomLogos: boolean = !!getEnv('UI_LOGO_PATH')
+  let isDarkLogo: boolean = false
+  let customizeLogos: string[] = []
+
+  if (isCustomLogos) {
+    customizeLogos = (getEnv('UI_LOGO_PATH') as string).split(',')
+    if (customizeLogos.length > 1) {
+      isDarkLogo = true
+    }
+  }
+
   useEffect(() => {
     switch (props.size) {
       case 'sm':
         setStyles(['', 'w-6', 'ps-2 pt-1 text-[11.7pt]'])
         break
       default:
-        setStyles(['', 'w-[30px] max-w-[100vw]', 'px-3 pb-2 pt-2.5 text-2xl'])
+        setStyles(['', 'w-[30px] max-w-[100vw]', 'px-3 pb-2 pt-2.5 pe-0 text-2xl'])
     }
   }, [props, appSettings])
 
@@ -48,35 +60,25 @@ const Logo = (props: { size?: LogoSize }): React.ReactNode => {
     <NavLink
       to=""
       className={cn(
-        'flex items-center whitespace-nowrap cursor-pointer select-none',
+        'flex cursor-pointer select-none items-center whitespace-nowrap',
+        'text-[var(--color-ash-900)] dark:text-[var(--color-ash-300)] hover:opacity-75',
         styles[0]
       )}
     >
       <div className={styles[1]}>
         <img
-          src={logoLight}
+          src={isCustomLogos ? customizeLogos[0] : logoLight}
           alt={appSettings.name}
           className="block w-full dark:hidden"
         />
         <img
-          src={logoDark}
+          src={isDarkLogo ? customizeLogos[1] : logoDark}
           alt={appSettings.name}
           className="hidden w-full dark:block"
         />
       </div>
-      <h1
-        className={cn(
-          'logo-text text-black dark:text-[var(--color-gray-500)] tracking-widest' +
-            ' font-[Sense]',
-          styles[2]
-        )}
-      >
-        <div className="relative">
-          <div className="autoTyping" data-text={appSettings.name}>
-            {appSettings.name}
-          </div>
-          <div className="invisible">&nbsp;</div>
-        </div>
+      <h1 className={cn('flex font-[Sense] uppercase tracking-widest', styles[2])}>
+        {appSettings.name}
       </h1>
     </NavLink>
   )

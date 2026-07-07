@@ -1,4 +1,4 @@
-from typing import Annotated, Any, Dict, TypeVar
+from typing import Annotated, Any, Dict, List, TypeVar
 
 from fastapi.params import Depends
 from sqlmodel import Session, SQLModel
@@ -30,6 +30,7 @@ class DataUpdater:
         self,
         before: T,
         after: Dict[str, Any] | None = None,
+        nullable_keys: List[str] | None = None,
     ) -> T:
         if after is not None:
             for k in after.keys():
@@ -37,6 +38,8 @@ class DataUpdater:
                     continue
                 if after[k] is not None:
                     setattr(before, k, after[k])
+                elif nullable_keys and k in nullable_keys:
+                    setattr(before, k, None)
         self.session.add(before)
         self.session.flush()
 

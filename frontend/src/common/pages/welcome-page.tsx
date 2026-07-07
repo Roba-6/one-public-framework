@@ -18,19 +18,18 @@ const WelcomePage = (): React.JSX.Element => {
 
   return (
     <div className="single-info-page">
-      <header className="w-full flex flex-col items-center gap-8">
+      <header className="inner w-full flex flex-col items-center gap-8">
         <Logo />
         <TextImage />
       </header>
-      <main className="pt-8 pb-4 flex flex-col items-center justify-center">
+      <main className="inner pt-8 pb-4 flex flex-col items-center justify-center">
         <div className="max-w-[800px] text-center">
           <h2 className="pb-2 text-xl">Welcome to One Public Framework</h2>
           <p>
             Thank you for choosing One Public Framework. This screen is displayed
             because the initial setup hasn't been completed yet. To proceed with the
-            configuration, please edit the <b>.env</b> file. Alternatively, you can
-            start by clicking one of the buttons below to explore the corresponding
-            pages.
+            configuration, please edit the .env file. Alternatively, you can start by
+            clicking one of the buttons below to explore the corresponding pages.
           </p>
         </div>
         <div className="pt-8 flex flex-row items-center gap-4">

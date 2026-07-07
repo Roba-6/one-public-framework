@@ -5,11 +5,9 @@ import React, { useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
 import { initState } from '@/common/app-slice'
-import Cursor from '@/common/components/atoms/cursor'
 import Spinner from '@/common/components/atoms/spinner'
 import DevelopPanel from '@/common/components/modules/develop-panel'
 import Messenger from '@/common/components/modules/messenger'
-import MouseStalker from '@/common/components/modules/mouse-stalker'
 import Router, { type RouterProps } from '@/common/components/modules/router'
 import { ThemeProvider } from '@/common/components/theme-provider'
 import { CONSTANT } from '@/common/constants'
@@ -46,9 +44,8 @@ const App = ({ children, menu }: RouterProps): React.ReactNode => {
       </ErrorBoundary>
       <Spinner className="z-50" />
       <Messenger />
-      <MouseStalker />
+      {getEnv('UI_DEBUG')}
       {getEnv('UI_DEBUG') && <DevelopPanel />}
-      <Cursor />
     </ThemeProvider>
   )
 }

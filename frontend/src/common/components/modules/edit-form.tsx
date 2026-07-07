@@ -11,21 +11,34 @@ import { Skeleton } from '@/common/components/ui/skeleton'
 import type { EditFormProps } from '@/common/types/props'
 import { arrayToObject, createFormSchema, getLocalMessage } from '@/lib/utils'
 
+const normalizeFormData = <T extends Record<string, any>>(items: any[], data: T): T => {
+  return items.reduce(
+    (result: Record<string, any>, item: Record<string, any>) => {
+      if (result[item.name] === null || result[item.name] === undefined) {
+        result[item.name] = item.defaultValue ?? ''
+      }
+      return result
+    },
+    { ...data }
+  ) as T
+}
+
 const EditForm = <T extends Record<string, any>>(
   props: EditFormProps<T>
 ): React.ReactNode => {
-  const UserFormSchema = z.object(createFormSchema(props.items))
+  const formSchema = z.object(createFormSchema(props.items))
 
   const nav = useNavigate()
-  const form = useForm<z.infer<typeof UserFormSchema>>({
-    resolver: zodResolver(UserFormSchema),
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
     defaultValues: arrayToObject(props.items, 'name', 'defaultValue'),
   })
 
   useEffect(() => {
-    console.debug('Edit Form Data:', props.data!)
-    form.reset(props.data!)
-  }, [props])
+    if (props.data) {
+      form.reset(normalizeFormData(props.items, props.data))
+    }
+  }, [form, props.data, props.items])
 
   return (
     <Form {...form}>

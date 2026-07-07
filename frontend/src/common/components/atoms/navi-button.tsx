@@ -10,7 +10,7 @@ export interface NaviButtonProps {
   icon?: React.ReactNode
 }
 
-const NaviButton = (props: NaviButtonProps) => {
+const NaviButton = (props: NaviButtonProps): React.JSX.Element => {
   const nav = useNavigate()
 
   return (

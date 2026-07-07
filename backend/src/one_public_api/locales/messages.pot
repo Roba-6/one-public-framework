@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-06-23 19:18+0900\n"
+"POT-Creation-Date: 2026-07-06 23:33+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -713,7 +713,7 @@ msgid "The ID of the action item to be updated"
 msgstr ""
 
 #: src/one_public_api/routers/action_router.py:117
-#: src/one_public_api/routers/attachment_router.py:159
+#: src/one_public_api/routers/attachment_router.py:155
 msgid "Delete Action"
 msgstr ""
 
@@ -730,80 +730,80 @@ msgid "Download Public Attachment"
 msgstr ""
 
 #: src/one_public_api/routers/attachment_router.py:42
-#: src/one_public_api/routers/attachment_router.py:202
-#: src/one_public_api/routers/attachment_router.py:218
+#: src/one_public_api/routers/attachment_router.py:198
+#: src/one_public_api/routers/attachment_router.py:214
 msgid "The ID of the attachment to be downloaded"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:55
+#: src/one_public_api/routers/attachment_router.py:53
 msgid "Preview Public Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:60
+#: src/one_public_api/routers/attachment_router.py:58
 msgid "The ID of the attachment to be preview"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:73
+#: src/one_public_api/routers/attachment_router.py:69
 msgid "Thumbnail Public Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:78
+#: src/one_public_api/routers/attachment_router.py:74
 msgid "The ID of the thumbnail file"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:94
+#: src/one_public_api/routers/attachment_router.py:90
 msgid "List Attachments"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:109
+#: src/one_public_api/routers/attachment_router.py:105
 msgid "Create Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:126
+#: src/one_public_api/routers/attachment_router.py:122
 msgid "Get Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:131
+#: src/one_public_api/routers/attachment_router.py:127
 msgid "The ID of the attachment to be retrieved"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:141
+#: src/one_public_api/routers/attachment_router.py:137
 msgid "Update Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:147
+#: src/one_public_api/routers/attachment_router.py:143
 msgid "The ID of the attachment to be updated"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:164
+#: src/one_public_api/routers/attachment_router.py:160
 msgid "The ID of the attachment to be deleted"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:174
+#: src/one_public_api/routers/attachment_router.py:170
 msgid "Upload Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:182
+#: src/one_public_api/routers/attachment_router.py:178
 msgid "Upload Attachment Files"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:183
+#: src/one_public_api/routers/attachment_router.py:179
 msgid "Upload multiple attachment files"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:197
+#: src/one_public_api/routers/attachment_router.py:193
 msgid "Download Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:213
+#: src/one_public_api/routers/attachment_router.py:209
 msgid "Preview Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:231
+#: src/one_public_api/routers/attachment_router.py:225
 msgid "Thumbnail Attachment"
 msgstr ""
 
-#: src/one_public_api/routers/attachment_router.py:236
+#: src/one_public_api/routers/attachment_router.py:230
 msgid "The ID of the thumbnail attachment"
 msgstr ""
 
@@ -928,11 +928,11 @@ msgstr ""
 msgid "The ID of the category item to be updated"
 msgstr ""
 
-#: src/one_public_api/routers/category_router.py:137
+#: src/one_public_api/routers/category_router.py:139
 msgid "Delete Category"
 msgstr ""
 
-#: src/one_public_api/routers/category_router.py:142
+#: src/one_public_api/routers/category_router.py:144
 msgid "The ID of the category item to be deleted"
 msgstr ""
 
@@ -1305,8 +1305,12 @@ msgstr ""
 msgid "Detail of Result Description"
 msgstr ""
 
-#: src/one_public_api/services/attachment_service.py:79
+#: src/one_public_api/services/attachment_service.py:82
 msgid "Failed to upload files."
+msgstr ""
+
+#: src/one_public_api/services/attachment_service.py:157
+msgid "Thumbnail not found."
 msgstr ""
 
 #: src/one_public_api/services/authenticate_service.py:60
@@ -1373,8 +1377,8 @@ msgstr ""
 msgid "Data already exists."
 msgstr ""
 
-#: src/one_public_api/services/base_service.py:153
-#: src/one_public_api/services/base_service.py:168
-#: src/one_public_api/services/base_service.py:182
+#: src/one_public_api/services/base_service.py:155
+#: src/one_public_api/services/base_service.py:170
+#: src/one_public_api/services/base_service.py:184
 msgid "This record might be referenced by other data."
 msgstr ""

@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import List, Tuple
 
 # Version of the One Public API
-VERSION: str = "0.1.0-alpha.35"
+VERSION: str = "0.1.0-alpha.42"
 # Default Language
 DEFAULT_LANGUAGE: str = "en"
 # Default path for locale files
@@ -40,6 +40,10 @@ FOLDER_LOCALES: str = "locales"
 FOLDER_LOGS: str = "logs"
 # Root folder of media files
 FOLDER_MEDIA: str = "media"
+# Root folder of download files
+FOLDER_DOWNLOAD: str = "download"
+# Root folder of upload files
+FOLDER_UPLOAD: str = "upload"
 # Root folder of the source code
 FOLDER_SRC: str = "src"
 # Root folder of the OPA
@@ -64,9 +68,9 @@ PATH_LOCALES = PATH_OPA.joinpath(FOLDER_LOCALES)
 # Absolute Path of media directory
 PATH_MEDIA: str = os.path.join(PATH_APP, FOLDER_MEDIA)
 # Absolute Path of download files directory
-PATH_DOWNLOAD: str = os.path.join(PATH_APP, FOLDER_MEDIA, "download")
+PATH_DOWNLOAD: str = os.path.join(PATH_APP, FOLDER_MEDIA, FOLDER_DOWNLOAD)
 # Absolute Path of upload files directory
-PATH_UPLOAD: str = os.path.join(PATH_APP, FOLDER_MEDIA, "upload")
+PATH_UPLOAD: str = os.path.join(PATH_APP, FOLDER_MEDIA, FOLDER_UPLOAD)
 
 # Environment File Path
 # Files listed later have higher priority; earlier ones are ignored if multiple exists.
@@ -146,6 +150,10 @@ ROUTER_DOWNLOAD_ADMIN_WITH_ID = ROUTER_COMMON_ADMIN_WITH_ID + "/download"
 ROUTER_PREVIEW_ADMIN_WITH_ID = ROUTER_COMMON_ADMIN_WITH_ID + "/preview"
 # Attachment router path: admin thumbnail
 ROUTER_THUMBNAIL_ADMIN_WITH_ID = ROUTER_COMMON_ADMIN_WITH_ID + "/thumbnail"
+
+# ----- Media Settings -----------------------------------------------------------------
+# Default path for the media files.
+MEDIA_DEFAULT_PATH: str = "media"
 
 # ----- Log Settings -------------------------------------------------------------------
 # Default logging level for the API.

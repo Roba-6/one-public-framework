@@ -25,6 +25,7 @@
   },
   "format": {
     "datetime": "YYYY年M月D日 HH:mm",
+    "date": "YYYY年M月D日",
     "shortDatetime": "M月D日 HH:mm"
   },
   "buttons": {
@@ -89,6 +90,7 @@
       "alias": "別名",
       "description": "カテゴリー説明",
       "name": "カテゴリー名",
+      "parentCategory": "親カテゴリー",
       "parentCategoryId": "親カテゴリーID",
       "value": "値",
       "parent": "親カテゴリー"
@@ -114,7 +116,8 @@
       "name": "データベース",
       "parentCategoryId": "親カテゴリーのUUID",
       "value": "database"
-    }
+    },
+    "pleaseSelect": "選択してください"
   },
   "messages": {
     "pleaseLogin": "ユーザー名をご入力してログインしてください。",

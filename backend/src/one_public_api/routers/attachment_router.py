@@ -43,9 +43,7 @@ def download_public_api(
 ) -> FileResponse:
     return cast(
         FileResponse,
-        AttachmentService.create_attachment_response(
-            atts.get_one_by_id(target_id, True)
-        ),
+        atts.create_attachment_response(atts.get_one_by_id(target_id, True)),
     )
 
 
@@ -61,9 +59,7 @@ def preview_public_api(
 ) -> FileResponse:
     return cast(
         FileResponse,
-        AttachmentService.create_attachment_response(
-            atts.get_one_by_id(target_id, True), True
-        ),
+        atts.create_attachment_response(atts.get_one_by_id(target_id, True), True),
     )
 
 
@@ -79,8 +75,8 @@ def thumbnail_public_api(
 ) -> FileResponse:
     return cast(
         FileResponse,
-        AttachmentService.create_attachment_response(
-            atts.get_one_by_id(target_id, True), is_thumbnail=True
+        atts.create_attachment_response(
+            atts.get_one_by_id(target_id, True), is_preview=True, is_thumbnail=True
         ),
     )
 
@@ -203,7 +199,7 @@ def download_admin_api(
 ) -> FileResponse:
     return cast(
         FileResponse,
-        AttachmentService.create_attachment_response(atts.get_one_by_id(target_id)),
+        atts.create_attachment_response(atts.get_one_by_id(target_id)),
     )
 
 
@@ -219,9 +215,7 @@ def preview_admin_api(
 ) -> FileResponse:
     return cast(
         FileResponse,
-        AttachmentService.create_attachment_response(
-            atts.get_one_by_id(target_id), True
-        ),
+        atts.create_attachment_response(atts.get_one_by_id(target_id), True),
     )
 
 
@@ -237,7 +231,7 @@ def thumbnail_admin_api(
 ) -> FileResponse:
     return cast(
         FileResponse,
-        AttachmentService.create_attachment_response(
-            atts.get_one_by_id(target_id), is_thumbnail=True
+        atts.create_attachment_response(
+            atts.get_one_by_id(target_id), is_preview=True, is_thumbnail=True
         ),
     )

@@ -126,7 +126,9 @@ def update_admin_api(
 ) -> ResponseSchema[CategoryResponse]:
     return create_response_data(
         CategoryResponse,
-        cats.update_one_by_id(target_id, Category(**data.model_dump())),
+        cats.update_one_by_id(
+            target_id, Category(**data.model_dump()), nullable_keys=["category_id"]
+        ),
         detail=cats.detail,
     )
 

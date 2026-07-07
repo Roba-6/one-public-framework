@@ -4,10 +4,20 @@ import { CONSTANT } from '@/common/constants'
  * Retrieves the value of an environment variable.
  *
  * @param {string} key - The name of the environment variable to retrieve.
- * @returns {string|number} The value of the specified environment variable.
+ * @returns {string|number|boolean} The value of the specified environment variable.
  */
 export const getEnv = (key: string): string | number | boolean => {
-  return import.meta.env[key]
+  const value = import.meta.env[key]
+
+  if (typeof value === 'string' && /^\d+$/.test(value)) {
+    return Number(value)
+  } else if (value === 'True') {
+    return true
+  } else if (value === 'False') {
+    return false
+  } else {
+    return value
+  }
 }
 
 /**

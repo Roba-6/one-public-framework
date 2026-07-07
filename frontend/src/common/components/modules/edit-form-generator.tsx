@@ -8,9 +8,18 @@ import {
   FormMessage,
 } from '@/common/components/ui/form'
 import { Input } from '@/common/components/ui/input'
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/common/components/ui/select'
 import { Switch } from '@/common/components/ui/switch'
 import { Textarea } from '@/common/components/ui/textarea'
 import type { FormFieldItem } from '@/common/types/data'
+import { getLocalMessage } from '@/lib/utils'
 
 /**
  * Converts an array of form field items into corresponding JSX elements.
@@ -52,7 +61,7 @@ export const convertFormItems = (
                           type={item.type as string}
                           placeholder={item?.placeholder as string}
                           {...field}
-                          value={field.value as string}
+                          value={(field.value as string | undefined) ?? ''}
                           autoComplete={item?.autoComplete as string}
                           className={item.className}
                         />
@@ -62,7 +71,7 @@ export const convertFormItems = (
                         <Textarea
                           placeholder={item?.placeholder as string}
                           {...field}
-                          value={field.value as string}
+                          value={(field.value as string | undefined) ?? ''}
                           className={`min-h-30 max-h-[80vh] ${item.className}`}
                         />
                       )
@@ -77,6 +86,28 @@ export const convertFormItems = (
                           }}
                           className={item.className}
                         />
+                      )
+                    case 'select':
+                      return (
+                        <Select
+                          value={(field.value as string | undefined) ?? ''}
+                          onValueChange={field.onChange}
+                        >
+                          <SelectTrigger className="w-[180px]">
+                            <SelectValue
+                              placeholder={getLocalMessage('placeholder.pleaseSelect')}
+                            />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectGroup>
+                              {item.options!.map((option) => (
+                                <SelectItem key={option.value} value={option.value!}>
+                                  {option.label}
+                                </SelectItem>
+                              ))}
+                            </SelectGroup>
+                          </SelectContent>
+                        </Select>
                       )
                     default:
                       return null

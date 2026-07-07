@@ -18,8 +18,9 @@ from one_public_api.common import constants
 from one_public_api.common.managements.file_manager import FileManager
 from one_public_api.common.utility.files import clear_dir, remove_file
 from one_public_api.core import get_session
-from one_public_api.core.exceptions import APIError
+from one_public_api.core.exceptions import APIError, DataError
 from one_public_api.core.i18n import get_translator
+from one_public_api.core.settings import settings
 from one_public_api.models import Attachment, User
 from one_public_api.services.base_service import BaseService
 
@@ -62,7 +63,9 @@ class AttachmentService(BaseService[Attachment]):
                         "original_name": success["file"].filename,
                         "mime_type": success["file"].content_type,
                         "size": success["file"].size,
-                        "path": success["path"],
+                        "path": success["path"].removeprefix(
+                            str(settings.media_file_path) + "/"
+                        ),
                         "created_by": current_user.id,
                         "updated_by": current_user.id,
                     }
@@ -76,7 +79,7 @@ class AttachmentService(BaseService[Attachment]):
             self.session.rollback()
             clear_dir(save_folder)
             self.logger.exception(e)
-            raise APIError("E5000002", self._("Failed to upload files."))
+            raise APIError("E5000001", self._("Failed to upload files."))
 
     @staticmethod
     def zip_files(
@@ -132,8 +135,8 @@ class AttachmentService(BaseService[Attachment]):
                 for file in files:
                     shutil.rmtree(file)
 
-    @staticmethod
     def create_attachment_response(
+        self,
         data: Union[
             Attachment, List[Attachment], str, List[str], Generator[bytes, None, None]
         ],
@@ -147,8 +150,18 @@ class AttachmentService(BaseService[Attachment]):
         content_disposition_type = "inline" if is_preview else "attachment"
 
         if isinstance(data, Attachment):
+            if is_thumbnail:
+                if data.thumbnail_path:
+                    data_path = data.thumbnail_path
+                else:
+                    raise DataError(self._("Thumbnail not found."), code="E4040002")
+            else:
+                data_path = data.path
+
+            path = os.path.join(str(settings.media_file_path), data_path)
+
             dwl_file = {
-                "path": data.thumbnail_path if is_thumbnail else data.path,
+                "path": path,
                 "media_type": data.mime_type,
                 "filename": data.original_name,
             }
@@ -176,7 +189,10 @@ class AttachmentService(BaseService[Attachment]):
                 dwl_file.update(
                     {
                         "content": AttachmentService.zip_files(
-                            [d.path for d in cast(list[Attachment], data)],
+                            [
+                                os.path.join(str(settings.media_file_path), d.path)
+                                for d in cast(list[Attachment], data)
+                            ],
                             delete_after_zip=delete_after_zip,
                         )
                     }

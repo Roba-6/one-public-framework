@@ -25,6 +25,7 @@
   },
   "format": {
     "datetime": "D MMM YYYY HH:mm",
+    "date": "D MMM YYYY",
     "shortDatetime": "D MMM HH:mm"
   },
   "buttons": {
