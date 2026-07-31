@@ -1,0 +1,99 @@
+{
+  "nav": {
+    "features": "Features",
+    "start": "Get started",
+    "extend": "Extend",
+    "docs": "Docs",
+    "demo": "View demo"
+  },
+  "hero": {
+    "badge": "v0.1.4 — now available",
+    "before": "Build your ",
+    "product": "product",
+    "after": ", not the plumbing.",
+    "description": "Next.js, Redux, i18n, and Tailwind CSS—initialized and ready, with a complete admin UI. Focus only on what makes your product unique.",
+    "quickStart": "Quick start",
+    "proofStrong": "Set up in 30 seconds",
+    "proof": "Start building immediately"
+  },
+  "common": {
+    "workspace": "Workspace",
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "users": "Users",
+    "content": "Content",
+    "help": "Help",
+    "administrator": "Administrator",
+    "posts": "Posts",
+    "new": "Create new",
+    "save": "Save changes",
+    "language": "Language"
+  },
+  "dashboard": {
+    "welcome": "Welcome back, {{name}}",
+    "today": "Here’s what’s happening today.",
+    "totalUsers": "Total users",
+    "publishedContent": "Published content",
+    "monthlyViews": "Monthly views",
+    "conversion": "Conversion",
+    "compared": "vs last month",
+    "activity": "Activity",
+    "lastSevenDays": "Overview of the last 7 days",
+    "setupComplete": "Setup complete",
+    "setupReady": "Everything is ready"
+  },
+  "features": {
+    "kicker": "EVERYTHING INCLUDED",
+    "title": "Everything you need, already included.",
+    "description": "Leave the repetitive setup to one-public-ui and spend your time on the features only you can build.",
+    "zeroTitle": "Zero config",
+    "zeroText": "Redux, i18n, and Tailwind CSS are ready. Add one Provider and start building.",
+    "adminTitle": "Admin included",
+    "adminText": "Login, dashboard, and settings screens come ready to use.",
+    "extendTitle": "Freely extensible",
+    "extendText": "Add your own screens, reducers, and translations without constraints."
+  },
+  "extend": {
+    "kicker": "BUILT TO EXTEND",
+    "title": "Add your features naturally.",
+    "description": "Layer your screens, state, and translations on top of the provided foundation.",
+    "reducer": "Merge custom reducers into the store",
+    "messages": "Add or override Japanese and English messages",
+    "nav": "Add custom screens to the sidebar"
+  },
+  "cta": {
+    "kicker": "START BUILDING TODAY",
+    "title": "Start your next product today.",
+    "description": "Install, initialize, and write your unique features.",
+    "login": "View login screen"
+  },
+  "settingsScreen": {
+    "title": "Settings",
+    "description": "Manage your workspace and account.",
+    "general": "General",
+    "profile": "Profile",
+    "notifications": "Notifications",
+    "security": "Security",
+    "generalTitle": "General settings",
+    "generalDescription": "Basic workspace information",
+    "workspaceName": "Workspace name",
+    "timezone": "Timezone"
+  },
+  "login": {
+    "kicker": "WELCOME BACK",
+    "title": "Sign in",
+    "description": "Access the admin console.",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign in",
+    "foundation": "The foundation is ready.",
+    "value": "Build the next piece of value."
+  },
+  "posts": {
+    "title": "Posts",
+    "description": "An example screen freely added by the consuming project.",
+    "create": "New post",
+    "list": "Post list",
+    "published": "Published"
+  }
+}

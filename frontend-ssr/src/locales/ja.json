@@ -1,0 +1,99 @@
+{
+  "nav": {
+    "features": "機能",
+    "start": "はじめる",
+    "extend": "拡張する",
+    "docs": "ドキュメント",
+    "demo": "デモを見る"
+  },
+  "hero": {
+    "badge": "v0.1.4 — 利用可能",
+    "before": "共通基盤ではなく、",
+    "product": "プロダクト",
+    "after": "を作ろう。",
+    "description": "Next.js、Redux、i18n、Tailwind CSS。面倒な初期化も、管理画面も、全部ひとつに。あなたは独自機能だけに集中できます。",
+    "quickStart": "クイックスタート",
+    "proofStrong": "導入はたった30秒",
+    "proof": "すぐに開発を始められます"
+  },
+  "common": {
+    "workspace": "ワークスペース",
+    "dashboard": "ダッシュボード",
+    "settings": "設定",
+    "users": "ユーザー",
+    "content": "コンテンツ",
+    "help": "ヘルプ",
+    "administrator": "管理者",
+    "posts": "投稿管理",
+    "new": "新規作成",
+    "save": "変更を保存",
+    "language": "言語"
+  },
+  "dashboard": {
+    "welcome": "おかえりなさい、{{name}}さん",
+    "today": "今日の状況を確認しましょう。",
+    "totalUsers": "総ユーザー数",
+    "publishedContent": "公開コンテンツ",
+    "monthlyViews": "今月のPV",
+    "conversion": "コンバージョン",
+    "compared": "先月比",
+    "activity": "アクティビティ",
+    "lastSevenDays": "過去7日間の概要",
+    "setupComplete": "セットアップ完了",
+    "setupReady": "すべての準備が整いました"
+  },
+  "features": {
+    "kicker": "必要なものをすべて同梱",
+    "title": "必要なものは、すべて揃っています。",
+    "description": "繰り返しの初期設定はone-public-uiに任せて、あなたにしか作れない機能に時間を使ってください。",
+    "zeroTitle": "ゼロコンフィグ",
+    "zeroText": "Redux、i18n、Tailwind CSSは設定済み。Providerを1つ置くだけで開始できます。",
+    "adminTitle": "管理画面つき",
+    "adminText": "ログイン、ダッシュボード、設定画面を標準搭載。すぐに使える美しいUIです。",
+    "extendTitle": "自由に拡張",
+    "extendText": "独自画面、Reducer、翻訳メッセージを追加可能。制約のない設計です。"
+  },
+  "extend": {
+    "kicker": "拡張を前提に設計",
+    "title": "あなたの機能を、自然に追加。",
+    "description": "提供される基盤の上に、独自の画面や状態管理、翻訳をそのまま積み重ねられます。",
+    "reducer": "独自Reducerをストアに統合",
+    "messages": "日本語・英語メッセージを上書き・追加",
+    "nav": "サイドバーへ独自画面を追加"
+  },
+  "cta": {
+    "kicker": "今日から始めよう",
+    "title": "次のプロダクトを、今日から。",
+    "description": "インストールして、初期化して、独自機能を書くだけ。",
+    "login": "ログイン画面を見る"
+  },
+  "settingsScreen": {
+    "title": "設定",
+    "description": "ワークスペースとアカウントの設定を管理します。",
+    "general": "一般",
+    "profile": "プロフィール",
+    "notifications": "通知",
+    "security": "セキュリティ",
+    "generalTitle": "一般設定",
+    "generalDescription": "ワークスペースの基本情報",
+    "workspaceName": "ワークスペース名",
+    "timezone": "タイムゾーン"
+  },
+  "login": {
+    "kicker": "おかえりなさい",
+    "title": "ログイン",
+    "description": "管理画面へアクセスします。",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "submit": "ログイン",
+    "foundation": "基盤はもう、できている。",
+    "value": "あなたは次の価値を作るだけ。"
+  },
+  "posts": {
+    "title": "投稿管理",
+    "description": "これは利用プロジェクト側が自由に追加した画面の例です。",
+    "create": "新しい投稿",
+    "list": "投稿一覧",
+    "published": "公開済み"
+  }
+}
