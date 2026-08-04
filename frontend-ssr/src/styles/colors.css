@@ -1,0 +1,63 @@
+/* Define Basic Colors */
+
+:root {
+  /* Coral */
+  --color-coral-50: color-mix(in srgb, #f16b6f 10%, white);
+  --color-coral-100: color-mix(in srgb, #f16b6f 20%, white);
+  --color-coral-200: color-mix(in srgb, #f16b6f 40%, white);
+  --color-coral-300: color-mix(in srgb, #f16b6f 60%, white);
+  --color-coral-400: color-mix(in srgb, #f16b6f 80%, white);
+  --color-coral-500: #f16b6f;
+  --color-coral-600: color-mix(in srgb, #f16b6f 80%, black);
+  --color-coral-700: color-mix(in srgb, #f16b6f 60%, black);
+  --color-coral-800: color-mix(in srgb, #f16b6f 40%, black);
+  --color-coral-900: color-mix(in srgb, #f16b6f 20%, black);
+
+  /* Leaf */
+  --color-leaf-50: color-mix(in srgb, #aacd6e 10%, white);
+  --color-leaf-100: color-mix(in srgb, #aacd6e 20%, white);
+  --color-leaf-200: color-mix(in srgb, #aacd6e 40%, white);
+  --color-leaf-300: color-mix(in srgb, #aacd6e 60%, white);
+  --color-leaf-400: color-mix(in srgb, #aacd6e 80%, white);
+  --color-leaf-500: #aacd6e;
+  --color-leaf-600: color-mix(in srgb, #aacd6e 80%, black);
+  --color-leaf-700: color-mix(in srgb, #aacd6e 60%, black);
+  --color-leaf-800: color-mix(in srgb, #aacd6e 40%, black);
+  --color-leaf-900: color-mix(in srgb, #aacd6e 20%, black);
+
+  /* Ash */
+  --color-ash-50: color-mix(in srgb, #c5c6b6 10%, white);
+  --color-ash-100: color-mix(in srgb, #c5c6b6 20%, white);
+  --color-ash-200: color-mix(in srgb, #c5c6b6 40%, white);
+  --color-ash-300: color-mix(in srgb, #c5c6b6 60%, white);
+  --color-ash-400: color-mix(in srgb, #c5c6b6 80%, white);
+  --color-ash-500: #c5c6b6;
+  --color-ash-600: color-mix(in srgb, #c5c6b6 80%, black);
+  --color-ash-700: color-mix(in srgb, #c5c6b6 60%, black);
+  --color-ash-800: color-mix(in srgb, #c5c6b6 40%, black);
+  --color-ash-900: color-mix(in srgb, #c5c6b6 20%, black);
+
+  /* Antique - for Light theme */
+  --color-antique-50: color-mix(in srgb, #f5dfbf 10%, white);
+  --color-antique-100: color-mix(in srgb, #f5dfbf 20%, white);
+  --color-antique-200: color-mix(in srgb, #f5dfbf 40%, white);
+  --color-antique-300: color-mix(in srgb, #f5dfbf 60%, white);
+  --color-antique-400: color-mix(in srgb, #f5dfbf 80%, white);
+  --color-antique-500: #f5dfbf;
+  --color-antique-600: color-mix(in srgb, #f5dfbf 80%, darkgray);
+  --color-antique-700: color-mix(in srgb, #f5dfbf 60%, darkgray);
+  --color-antique-800: color-mix(in srgb, #f5dfbf 40%, darkgray);
+  --color-antique-900: color-mix(in srgb, #f5dfbf 20%, darkgray);
+
+  /* Espresso - for Dark theme */
+  --color-espresso-50: color-mix(in srgb, #3c3530 10%, white);
+  --color-espresso-100: color-mix(in srgb, #3c3530 20%, white);
+  --color-espresso-200: color-mix(in srgb, #3c3530 40%, white);
+  --color-espresso-300: color-mix(in srgb, #3c3530 60%, white);
+  --color-espresso-400: color-mix(in srgb, #3c3530 80%, white);
+  --color-espresso-500: #3c3530;
+  --color-espresso-600: color-mix(in srgb, #3c3530 80%, black);
+  --color-espresso-700: color-mix(in srgb, #3c3530 60%, black);
+  --color-espresso-800: color-mix(in srgb, #3c3530 40%, black);
+  --color-espresso-900: color-mix(in srgb, #3c3530 20%, black);
+}

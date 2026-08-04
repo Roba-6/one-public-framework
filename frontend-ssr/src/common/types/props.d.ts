@@ -1,0 +1,28 @@
+import type { Action, DataColumn } from '@/common/types/data'
+
+interface DataListProps<T> {
+  columns: DataColumn<T>[]
+  data: T[]
+  selectable?: boolean
+  total?: number
+  actions?: Action[]
+  addUrl?: string
+  updateUrl?: string
+  deleteUrl?: string
+  detailUrl?: string
+  loading?: boolean
+}
+
+interface EditFormProps<T> {
+  id?: string
+  items: any[]
+  data?: T
+  loadingData?: boolean
+  submitForm: any
+}
+
+interface DataDetailProps<T> {
+  columns: DataColumn<T>[]
+  data: T
+  loadingData?: boolean
+}

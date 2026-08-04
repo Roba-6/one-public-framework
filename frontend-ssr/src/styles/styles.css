@@ -1,0 +1,247 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./fonts.css";
+@import "./colors.css";
+@import "./develop-panel.css";
+@import "./animations.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ---------- Light Theme ----------------------------------------------------------- */
+
+:root {
+  --radius: 0.625rem;
+  --background: var(--color-antique-200);
+  --foreground: var(--color-ash-800);
+  --card: var(--color-antique-100);
+  --card-foreground: var(--color-ash-800);
+  --popover: var(--color-antique-100);
+  --popover-foreground: var(--color-ash-800);
+  --primary: var(--color-leaf-500);
+  --primary-foreground: var(--color-antique-200);
+  --secondary: var(--color-coral-500);
+  --secondary-foreground: var(--color-antique-200);
+  --muted: var(--color-antique-100);
+  --muted-foreground: var(--color-ash-800);
+  --accent: var(--color-antique-500);
+  --accent-foreground: var(--color-ash-900);
+  --destructive: red;
+  --border: var(--color-antique-600);
+  --input: var(--color-antique-600);
+  --ring: var(--color-leaf-500);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: var(--color-antique-400);
+  --sidebar-foreground: var(--color-ash-700);
+  --sidebar-primary: red;
+  --sidebar-primary-foreground: red;
+  --sidebar-accent: var(--color-antique-500);
+  --sidebar-accent-foreground: var(--color-ash-900);
+  --sidebar-border: red;
+  --sidebar-ring: var(--color-leaf-400);
+  /* Customize */
+  --typing-caret: var(--color-ash-800);
+  --descript-foreground: var(--color-ash-600);
+  --disabled-foreground: var(--color-ash-400);
+  --ring-secondary: var(--color-coral-500);
+}
+
+/* ---------- Dark Theme ------------------------------------------------------------ */
+
+.dark {
+  --background: var(--color-espresso-700);
+  --foreground: var(--color-ash-400);
+  --card: var(--color-espresso-600);
+  --card-foreground: var(--color-ash-400);
+  --popover: var(--color-espresso-600);
+  --popover-foreground: var(--color-ash-400);
+  --primary: var(--color-leaf-500);
+  --primary-foreground: var(--color-espresso-700);
+  --secondary: var(--color-coral-500);
+  --secondary-foreground: var(--color-espresso-700);
+  --muted: var(--color-espresso-600);
+  --muted-foreground: var(--color-ash-400);
+  --accent: var(--color-espresso-500);
+  --accent-foreground: var(--color-ash-200);
+  --destructive: red;
+  --border: var(--color-espresso-400);
+  --input: var(--color-espresso-400);
+  --ring: var(--color-leaf-600);
+  --chart-1: var(--color-leaf-600);
+  --chart-2: var(--color-coral-600);
+  --chart-3: var(--color-yellow-600);
+  --chart-4: var(--color-cyan-600);
+  --chart-5: var(--color-violet-600);
+  --sidebar: var(--color-espresso-600);
+  --sidebar-foreground: var(--color-ash-600);
+  --sidebar-primary: red;
+  --sidebar-primary-foreground: red;
+  --sidebar-accent: var(--color-espresso-500);
+  --sidebar-accent-foreground: var(--color-ash-200);
+  --sidebar-border: red;
+  --sidebar-ring: var(--color-leaf-600);
+  /* Customize */
+  --typing-caret: var(--color-ash-400);
+  --descript-foreground: var(--color-ash-600);
+  --disabled-foreground: var(--color-ash-700);
+  --ring-secondary: var(--color-coral-600);
+}
+
+/* ---------- Tailwind Theme -------------------------------------------------------- */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  /* Customize */
+  --color-typing-caret: var(--typing-caret);
+  --color-descript-foreground: var(--descript-foreground);
+  --color-disabled-foreground: var(--disabled-foreground);
+  --color-ring-secondary: var(--ring-secondary);
+}
+
+/* ---------- Reset Tailwindcss styles ---------------------------------------------- */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  *::selection {
+    @apply text-(--color-ash-900) bg-(--color-leaf-500);
+  }
+  html,
+  body {
+    @apply bg-background text-foreground overscroll-none;
+    @media (prefers-color-scheme: dark) {
+      color-scheme: dark;
+    }
+  }
+  a.link {
+    @apply underline-offset-4 hover:underline hover:decoration-dashed
+      text-(--color-ring) hover:opacity-75;
+  }
+  button {
+    @apply cursor-pointer;
+  }
+}
+@layer components {
+}
+@layer utilities {
+}
+
+/* ---------- Site of One Public UI ------------------------------------------------- */
+
+:root {
+  --logo-foreground: var(--color-ash-900);
+}
+
+.dark {
+  --logo-foreground: var(--color-ash-300);
+}
+
+
+.single-info-page {
+  @apply mx-auto p-3 sm:p-8 h-screen container flex flex-col items-center
+    justify-center;
+}
+.single-page {
+  @apply md:px-8 relative;
+}
+.inner {
+  @apply px-4 sm:px-0;
+}
+
+/* ---------- Admin of One Public UI ------------------------------------------------ */
+
+table.data-list {
+  /*@apply w-full table-fixed;*/
+
+  thead {
+    tr th {
+      @apply bg-(--color-antique-400) dark:bg-(--color-espresso-500);
+
+      * {
+        @apply font-bold;
+      }
+      button:hover {
+        @apply bg-(--color-antique-400) dark:bg-(--color-espresso-500);
+      }
+    }
+
+    button {
+      @apply px-0;
+    }
+  }
+
+  tbody {
+    tr td {
+      @apply bg-(--card);
+    }
+    tr:nth-child(odd) td {
+      @apply bg-(--color-antique-200)
+        dark:bg-(--color-espresso-700);
+    }
+    tr:hover td {
+      @apply bg-(--color-antique-50) dark:bg-(--color-espresso-800)
+        transition-all duration-300;
+    }
+  }
+}
+
+input,
+textarea {
+  @apply bg-(--color-antique-100) dark:bg-(--color-espresso-800)
+    placeholder:text-(--color-disabled-foreground);
+}
+
+/* ---------- sample page ---------- */
+/*.page {*/
+/*  @apply min-h-screen m-auto container justify-center;*/
+/*}*/
+/*.inner {*/
+/*  @apply p-2 sm:p-4;*/
+/*}*/
+
+/*input:focus-visible,*/
+/*textarea:focus-visible {*/
+/*  box-shadow: 0 0 5px var(--color-green-500);*/
+
+/*  &[aria-invalid="true"] {*/
+/*    box-shadow: 0 0 5px var(--color-rose-500);*/
+/*  }*/
+/*}*/

@@ -82,7 +82,7 @@ export function AdminShell({
             >
               {i18n.resolvedLanguage === 'ja' ? 'EN' : 'JA'}
             </button>
-            　⌕　♢　<span className="opu-mini-avatar">RN</span>
+            ⌕♢<span className="opu-mini-avatar">RN</span>
           </span>
         </header>
         {children}

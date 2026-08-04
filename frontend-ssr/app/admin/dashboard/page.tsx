@@ -1,4 +1,4 @@
-import { DashboardScreen } from '@/src'
+import { DashboardScreen } from '@/src/client'
 
 import { adminBasePath } from '../../admin-path'
 

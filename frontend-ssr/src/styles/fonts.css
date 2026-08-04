@@ -1,0 +1,13 @@
+/* Define Fonts */
+
+@font-face {
+  font-family: "Sense";
+  src: url("../assets/fonts/DESIGNER.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@theme {
+  --font-sans:
+    "Inter", "Noto Sans JP", "Noto Sans SC", "Noto Sans TC", system-ui, sans-serif;
+}

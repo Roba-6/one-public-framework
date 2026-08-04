@@ -101,18 +101,18 @@ export function ProductSite() {
           <div className="opu-browser">
             <div className="opu-browserbar">
               <span className="opu-dots">● ● ●</span>
-              <span className="opu-url">▣　localhost:3000/admin/dashboard</span>
+              <span className="opu-url">▣localhost:3000/admin/dashboard</span>
               <span>⌄</span>
             </div>
             <div className="opu-browserbody">
               <aside className="opu-demo-side">
                 <b>one public ui</b>
                 <small>{t('common.workspace')}</small>
-                <span className="sel">⌂　{t('common.dashboard')}</span>
-                <span>▤　{t('common.users')}</span>
-                <span>□　{t('common.content')}</span>
-                <span>◇　{t('common.settings')}</span>
-                <span>◉　{t('common.help')}</span>
+                <span className="sel">⌂{t('common.dashboard')}</span>
+                <span>▤{t('common.users')}</span>
+                <span>□{t('common.content')}</span>
+                <span>◇{t('common.settings')}</span>
+                <span>◉{t('common.help')}</span>
                 <div className="opu-demo-user">
                   <i>RN</i>
                   <b>
@@ -122,7 +122,7 @@ export function ProductSite() {
               </aside>
               <div className="opu-demo-main">
                 <div className="opu-demo-top">
-                  ⌕　♢　<span>RN</span>
+                  ⌕♢<span>RN</span>
                 </div>
                 <div className="opu-demo-content">
                   <div className="opu-demo-title">
@@ -134,24 +134,24 @@ export function ProductSite() {
                   </div>
                   <div className="opu-stats">
                     <article>
-                      <span>{t('dashboard.totalUsers')}　↗</span>
+                      <span>{t('dashboard.totalUsers')}↗</span>
                       <b>2,543</b>
-                      <small>+12.5%　{t('dashboard.compared')}</small>
+                      <small>+12.5%{t('dashboard.compared')}</small>
                     </article>
                     <article>
-                      <span>{t('dashboard.publishedContent')}　◫</span>
+                      <span>{t('dashboard.publishedContent')}◫</span>
                       <b>186</b>
-                      <small>+8.2%　{t('dashboard.compared')}</small>
+                      <small>+8.2%{t('dashboard.compared')}</small>
                     </article>
                     <article>
-                      <span>{t('dashboard.monthlyViews')}　⌁</span>
+                      <span>{t('dashboard.monthlyViews')}⌁</span>
                       <b>48.2K</b>
-                      <small>+24.3%　{t('dashboard.compared')}</small>
+                      <small>+24.3%{t('dashboard.compared')}</small>
                     </article>
                     <article>
-                      <span>{t('dashboard.conversion')}　↗</span>
+                      <span>{t('dashboard.conversion')}↗</span>
                       <b>3.8%</b>
-                      <small>+0.4%　{t('dashboard.compared')}</small>
+                      <small>+0.4%{t('dashboard.compared')}</small>
                     </article>
                   </div>
                   <div className="opu-chart">
