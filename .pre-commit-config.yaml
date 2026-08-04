@@ -74,9 +74,9 @@ repos:
         entry: |
           bash -c '
           cd frontend &&
-          npx prettier . --write &&
+          npx prettier . &&
           cd ../frontend-ssr &&
-          npx prettier . --write'
+          npx prettier .'
         language: system
         files: \.(ts|tsx|mjs|html|json)$
 
