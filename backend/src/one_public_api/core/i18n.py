@@ -14,6 +14,7 @@ def get_language_from_request_header(request: Request) -> GNUTranslations:
         constants.HEADER_NAME_LANGUAGE, settings.RESPONSE_LANGUAGE
     )
     lang = re.split(r"[-;,]", lang)[0]
+    lang = settings.RESPONSE_LANGUAGE if lang == "*" else lang
     translator = gettext.translation(
         domain="messages",
         localedir=str(constants.PATH_LOCALES),
