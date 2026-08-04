@@ -21,6 +21,7 @@
 /build
 /dist
 /dist-package
+*.tgz
 
 # misc
 .DS_Store
