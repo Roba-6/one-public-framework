@@ -1,10 +1,12 @@
 'use client'
 
-import Link from 'next/link'
+// import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
 export const TopScreen = () => {
   const { t, i18n } = useTranslation()
+
+  console.debug('==:', t)
 
   return (
     <div className="opu-site">
