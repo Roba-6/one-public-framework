@@ -13,8 +13,12 @@
     },
     "./style.css": "./dist/index.css"
   },
-  "files": ["dist"],
-  "sideEffects": ["*.css"],
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build && tsc --project tsconfig.build.json && tsc-alias -p tsconfig.build.json",

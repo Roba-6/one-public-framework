@@ -14,6 +14,7 @@ overrides:
   - files: '*.json'
     options:
       parser: 'json'
+      printWidth: 1
   - files: '*.html'
     options:
       parser: 'html'
