@@ -1,5 +1,8 @@
 import { type ClassValue, clsx } from 'clsx'
+import i18next from 'i18next'
 import { twMerge } from 'tailwind-merge'
+
+import { CONSTANT } from '@/src/common/constants'
 
 /**
  * Combines multiple class name values into a single string, merging Tailwind CSS
@@ -65,4 +68,21 @@ export const getBrowserLanguage = (): string => {
     navigator.language || navigator.languages?.[0] || (getEnv('UI_LANGUAGE') as string)
 
   return lang.split('-')[0] // ja-JP → ja
+}
+
+export const getLocalMessage = (
+  msgKey: string,
+  args: string[] | number[] = []
+): string => {
+  let msg: string = i18next.t(msgKey)
+
+  args.forEach((arg: string | number) => {
+    msg = msg.replace('{}', arg.toString())
+  })
+
+  return msg
+}
+
+export const getAdminPath = (): string => {
+  return (getEnv('UI_ADMIN_PATH') as string) || CONSTANT.ROUTE_URL.ADMIN
 }

@@ -3,6 +3,8 @@
 // import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
+import Footer from '@/src/components/molecules/footer'
+
 export const TopScreen = () => {
   const { t, i18n } = useTranslation()
 
@@ -20,6 +22,7 @@ export const TopScreen = () => {
           {i18n.resolvedLanguage === 'ja' ? 'EN' : 'JA'}
         </button>
       </nav>
+      <Footer appName="One Public Framework" />
     </div>
   )
 }

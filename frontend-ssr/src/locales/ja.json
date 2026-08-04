@@ -95,5 +95,151 @@
     "create": "新しい投稿",
     "list": "投稿一覧",
     "published": "公開済み"
+  },
+  "languages": {
+    "en": "English",
+    "ja": "日本語",
+    "zh": "简体中文"
+  },
+  "title": {
+    "login": "ログイン",
+    "error": "エラー",
+    "success": "処理完了",
+    "info": "情報",
+    "warning": "警告",
+    "noData": "データが見つかりません"
+  },
+  "menus": {
+    "system": "システム",
+    "dashboard": "ダッシュボード",
+    "attachments": "添付ファイル",
+    "configurations": "システム設定",
+    "users": "ユーザー",
+    "features": "機能",
+    "categories": "カテゴリー",
+    "add": "新規追加",
+    "update": "情報編集"
+  },
+  "format": {
+    "datetime": "YYYY年M月D日 HH:mm",
+    "date": "YYYY年M月D日",
+    "shortDatetime": "M月D日 HH:mm"
+  },
+  "buttons": {
+    "add": "新規",
+    "cancel": "キャンセル",
+    "create": "作成",
+    "clear": "クリア",
+    "close": "閉じる",
+    "column": "表示項目",
+    "copyId": "ID をコピー",
+    "delete": "削除",
+    "details": "詳細確認",
+    "edit": "編集",
+    "login": "ログイン",
+    "logout": "ログアウト",
+    "nextPage": "次へ",
+    "openMenu": "メニューを開く",
+    "previousPage": "前へ",
+    "unselectAll": "選択解除",
+    "download": "ダウンロード"
+  },
+  "labels": {
+    "actions": "操作",
+    "createdAt": "作成日時",
+    "enabled": "有効",
+    "disabled": "無効",
+    "forgetPassword": "パスワードをお忘れですか？",
+    "id": "ID",
+    "options": "オプション",
+    "requiresAuth": "要認証",
+    "noAuthRequired": "認証不要",
+    "dataPagination": {
+      "itemsPerPage": "表示件数",
+      "totalResults": "総件数",
+      "selectedResults": "選択件数"
+    },
+    "user": {
+      "email": "メールアドレス",
+      "failedAttempts": "ログイン失敗",
+      "firstname": "名前",
+      "fullname": "氏名",
+      "lastname": "苗字",
+      "lock": "ロック",
+      "unlock": "アンロック",
+      "name": "ユーザー名",
+      "nickname": "表示名",
+      "password": "パスワード"
+    },
+    "feature": {
+      "description": "機能説明",
+      "name": "機能名"
+    },
+    "attachment": {
+      "name": "添付ファイル名",
+      "description": "添付ファイル説明",
+      "downloadUrl": "ダウンロード URL",
+      "previewUrl": "プレビュー URL",
+      "publicDownloadUrl": "公開ダウンロード URL",
+      "publicPreviewUrl": "公開プレビュー URL"
+    },
+    "category": {
+      "alias": "別名",
+      "description": "カテゴリー説明",
+      "name": "カテゴリー名",
+      "parentCategory": "親カテゴリー",
+      "parentCategoryId": "親カテゴリーID",
+      "value": "値",
+      "parent": "親カテゴリー"
+    },
+    "updatedAt": "最終変更日時",
+    "username": "ユーザー名",
+    "key": "キー"
+  },
+  "placeholder": {
+    "anyKeywords": "キーワードを入力してください",
+    "username": "taro-yamada",
+    "firstname": "太郎",
+    "lastname": "山田",
+    "nickname": "やまちゃん",
+    "email": "yamada.taro@example.com",
+    "description": "説明文をここに入力してください。",
+    "features": {
+      "key": "ABC-XYZ-P-XXX",
+      "name": "機能名"
+    },
+    "categories": {
+      "alias": "db",
+      "name": "データベース",
+      "parentCategoryId": "親カテゴリーのUUID",
+      "value": "database"
+    },
+    "pleaseSelect": "選択してください"
+  },
+  "messages": {
+    "pleaseLogin": "ユーザー名をご入力してログインしてください。",
+    "welcome": "One Public Framework へようこそ！",
+    "noData": "データが登録されていないか、検索条件に一致する結果がありません。",
+    "notices": {
+      "I00100001": "データ「{}」が削除されました。",
+      "I00100002": "機能「{}」が削除されました。"
+    },
+    "validations": {
+      "min": "{}文字以上で入力してください。",
+      "max": "{}文字以内で入力してください。",
+      "length": "{}文字で入力してください。",
+      "username": {
+        "required": "ユーザー名は必須項目です。"
+      },
+      "password": {
+        "required": "パスワードは必須項目です。"
+      },
+      "email": {
+        "format": "メールアドレスの形式が正しくありません。"
+      },
+      "category": {
+        "name": "カテゴリー名は必須項目です。"
+      }
+    }
   }
 }

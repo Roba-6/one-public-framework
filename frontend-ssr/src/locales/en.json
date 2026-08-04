@@ -95,5 +95,149 @@
     "create": "New post",
     "list": "Post list",
     "published": "Published"
+  },
+  "languages": {
+    "en": "English",
+    "ja": "日本語",
+    "zh": "简体中文"
+  },
+  "title": {
+    "login": "Login to your account",
+    "error": "Error",
+    "success": "Success",
+    "info": "Info",
+    "warning": "Warning",
+    "noData": "No data found"
+  },
+  "menus": {
+    "system": "SYSTEM",
+    "dashboard": "Dashboards",
+    "attachments": "Attachments",
+    "configurations": "Configurations",
+    "users": "Users",
+    "features": "Features",
+    "categories": "Categories",
+    "add": "Add",
+    "update": "Update"
+  },
+  "format": {
+    "datetime": "D MMM YYYY HH:mm",
+    "date": "D MMM YYYY",
+    "shortDatetime": "D MMM HH:mm"
+  },
+  "buttons": {
+    "add": "Add",
+    "cancel": "Cancel",
+    "create": "Create",
+    "clear": "Clear",
+    "close": "Close",
+    "column": "Columns",
+    "copyId": "copy ID to clipboard",
+    "delete": "Delete",
+    "details": "Details",
+    "edit": "Edit",
+    "login": "Login",
+    "logout": "Log out",
+    "nextPage": "Next",
+    "openMenu": "Open Menu",
+    "previousPage": "Previous",
+    "unselectAll": "Unselect All",
+    "download": "Download"
+  },
+  "labels": {
+    "actions": "Actions",
+    "createdAt": "Created At",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "forgetPassword": "Forgot your password?",
+    "id": "ID",
+    "options": "Options",
+    "requiresAuth": "Auth Required",
+    "noAuthRequired": "No Auth Required",
+    "dataPagination": {
+      "itemsPerPage": "Items per page",
+      "totalResults": "Total Results",
+      "selectedResults": "Selected Results"
+    },
+    "user": {
+      "email": "E-mail",
+      "failedAttempts": "Failed Attempts",
+      "firstname": "Firstname",
+      "fullname": "Full Name",
+      "lastname": "Lastname",
+      "lock": "Locked",
+      "unlock": "Unlocked",
+      "name": "User Name",
+      "nickname": "Nick Name",
+      "password": "Password"
+    },
+    "feature": {
+      "description": "Description",
+      "name": "Name"
+    },
+    "attachment": {
+      "name": "Attachment Name",
+      "description": "Description",
+      "downloadUrl": "URL for download",
+      "previewUrl": "URL for preview",
+      "publicDownloadUrl": "URL for public download",
+      "publicPreviewUrl": "URL for public preview"
+    },
+    "category": {
+      "alias": "Alias",
+      "description": "Description",
+      "name": "Name",
+      "parentCategoryId": "Parent Category ID",
+      "value": "Value",
+      "parent": "Parent Category"
+    },
+    "updatedAt": "Updated At",
+    "username": "User Name",
+    "key": "Key"
+  },
+  "placeholder": {
+    "anyKeywords": "Enter keywords",
+    "username": "sum-w",
+    "firstname": "Sum",
+    "lastname": "Winchester",
+    "nickname": "Sammy",
+    "email": "sum.w@example.com",
+    "description": "Enter description here.",
+    "features": {
+      "key": "ABC-XYZ-P-XXX",
+      "name": "Feature Name"
+    },
+    "categories": {
+      "alias": "db",
+      "name": "Database",
+      "parentCategoryId": "Parent category UUID",
+      "value": "database"
+    }
+  },
+  "messages": {
+    "pleaseLogin": "Enter User Name below to login to your account",
+    "welcome": "Welcome to One Public Framework!",
+    "noData": "There is no data available, or no results match your search criteria.",
+    "notices": {
+      "I00100001": "The recorder '{}' has been deleted.",
+      "I00100002": "The feature '{}' has been deleted."
+    },
+    "validations": {
+      "min": "Must be at least {} characters.",
+      "max": "Must be at most {} characters.",
+      "length": "Must be {} characters.",
+      "username": {
+        "required": "User Name is required."
+      },
+      "password": {
+        "required": "Password is required."
+      },
+      "email": {
+        "format": "Invalid format."
+      },
+      "category": {
+        "name": "Category Name is required."
+      }
+    }
   }
 }

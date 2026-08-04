@@ -1,9 +1,19 @@
+import enTranslation from '@/src/locales/en.json'
+import jaTranslation from '@/src/locales/ja.json'
+// import zhTranslation from '@/src/locales/zh.json'
+
 /**
  * An immutable object containing constant values used across the application.
  */
 export const CONSTANT = {
   // Default language setting for application
   DEFAULT_LANGUAGE: 'en',
+
+  LANGUAGE_RESOURCES: {
+    en: { translation: enTranslation },
+    ja: { translation: jaTranslation },
+    // zh: { translation: zhTranslation },
+  },
 
   // HTTP header key for specifying the content type of request or response
   HTTP_CONTENT_TYPE_KEY: 'Content-Type',
