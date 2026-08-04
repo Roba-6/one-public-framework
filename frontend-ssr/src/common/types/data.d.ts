@@ -23,12 +23,7 @@ export interface Menu {
 }
 
 export type DatetimeType =
-  | 'datetime'
-  | 'shortDatetime'
-  | 'date'
-  | 'dateForApi'
-  | 'time'
-  | 'defaultDatetime'
+  'datetime' | 'shortDatetime' | 'date' | 'dateForApi' | 'time' | 'defaultDatetime'
 
 export type ColumnType =
   | 'title'

@@ -174,7 +174,6 @@
   --logo-foreground: var(--color-ash-300);
 }
 
-
 .single-info-page {
   @apply mx-auto p-3 sm:p-8 h-screen container flex flex-col items-center
     justify-center;
