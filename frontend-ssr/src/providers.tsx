@@ -6,57 +6,15 @@ import {
   type Reducer,
   type UnknownAction,
 } from '@reduxjs/toolkit'
-import i18next, { type i18n, type Resource } from 'i18next'
+import { type Resource } from 'i18next'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import React, { type PropsWithChildren, useMemo } from 'react'
-import { I18nextProvider, initReactI18next } from 'react-i18next'
+import { I18nextProvider } from 'react-i18next'
 import { Provider } from 'react-redux'
 
+import { createOnePublicUII18n } from '@/src/lib/client-utils'
+
 import { appSlice } from './common/app-slice'
-import enMessages from './locales/en.json'
-import jaMessages from './locales/ja.json'
-
-const mergeMessageTree = (
-  base: Record<string, unknown>,
-  custom: Record<string, unknown>
-): Record<string, unknown> => {
-  const merged = { ...base }
-  for (const [key, value] of Object.entries(custom)) {
-    const baseValue = merged[key]
-    merged[key] =
-      value &&
-      typeof value === 'object' &&
-      !Array.isArray(value) &&
-      baseValue &&
-      typeof baseValue === 'object' &&
-      !Array.isArray(baseValue)
-        ? mergeMessageTree(
-            baseValue as Record<string, unknown>,
-            value as Record<string, unknown>
-          )
-        : value
-  }
-
-  return merged
-}
-
-export const createOnePublicUII18n = (resources: Resource = {}): i18n => {
-  const instance = i18next.createInstance()
-  const customJa = (resources.ja?.translation ?? {}) as Record<string, unknown>
-  const customEn = (resources.en?.translation ?? {}) as Record<string, unknown>
-  instance.use(initReactI18next).init({
-    lng: 'ja',
-    fallbackLng: 'en',
-    resources: {
-      ...resources,
-      ja: { translation: mergeMessageTree(jaMessages, customJa) },
-      en: { translation: mergeMessageTree(enMessages, customEn) },
-    },
-    interpolation: { escapeValue: false },
-  })
-
-  return instance
-}
 
 export type ReducerMap = Record<string, Reducer<unknown, UnknownAction>>
 

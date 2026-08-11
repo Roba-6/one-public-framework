@@ -1,6 +1,8 @@
 import { createSlice, nanoid, type PayloadAction } from '@reduxjs/toolkit'
 import i18n from 'i18next'
+import Cookies from 'js-cookie'
 
+import { CONSTANT } from '@/src/common/constants'
 // import type { WritableDraft } from 'immer'
 // import type { Location } from 'react-router'
 // import { getValueFromObjectArray } from '@/lib/utils'
@@ -156,9 +158,9 @@ export const appSlice = createSlice({
     },
     setAccessToken: (state: AppState, action: PayloadAction<string>) => {
       if (action.payload === '') {
-        // localStorage.removeItem(CONSTANT.STORAGE_KEY.ACCESS_TOKEN)
+        Cookies.remove(CONSTANT.STORAGE_KEY.ACCESS_TOKEN)
       } else {
-        // localStorage.setItem(CONSTANT.STORAGE_KEY.ACCESS_TOKEN, action.payload)
+        Cookies.set(CONSTANT.STORAGE_KEY.ACCESS_TOKEN, action.payload)
       }
       state.accessToken = action.payload
     },

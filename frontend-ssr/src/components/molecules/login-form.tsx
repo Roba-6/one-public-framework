@@ -29,8 +29,9 @@ import {
   FormMessage,
 } from '@/src/components/ui/form'
 import { Input } from '@/src/components/ui/input'
+import { getLocalMessage } from '@/src/lib/client-utils'
 import { postApi } from '@/src/lib/http'
-import { cn, getAdminPath, getLocalMessage } from '@/src/lib/utils'
+import { cn, getAdminPath } from '@/src/lib/utils'
 
 const LoginFormSchema = z.object({
   username: z

@@ -1,8 +1,12 @@
 import { type ClassValue, clsx } from 'clsx'
-import i18next from 'i18next'
+import dayjs from 'dayjs'
+import Cookies from 'js-cookie'
+import qs from 'qs'
 import { twMerge } from 'tailwind-merge'
 
 import { CONSTANT } from '@/src/common/constants'
+import type { DatetimeType } from '@/src/common/types/data'
+import { getLocalMessage } from '@/src/lib/client-utils'
 
 /**
  * Combines multiple class name values into a single string, merging Tailwind CSS
@@ -70,19 +74,51 @@ export const getBrowserLanguage = (): string => {
   return lang.split('-')[0] // ja-JP → ja
 }
 
-export const getLocalMessage = (
-  msgKey: string,
-  args: string[] | number[] = []
-): string => {
-  let msg: string = i18next.t(msgKey)
-
-  args.forEach((arg: string | number) => {
-    msg = msg.replace('{}', arg.toString())
-  })
-
-  return msg
+export const getAdminPath = (): string => {
+  return ((getEnv('UI_ADMIN_PATH') as string) || CONSTANT.ROUTE_URL.ADMIN) + '123'
 }
 
-export const getAdminPath = (): string => {
-  return (getEnv('UI_ADMIN_PATH') as string) || CONSTANT.ROUTE_URL.ADMIN
+export const formatDay = (
+  datetimeStr: string,
+  type: DatetimeType = 'datetime'
+): string => dayjs(datetimeStr).format(getLocalMessage(`format.${type}`))
+
+export const formatNumber = (
+  num: string | number,
+  locale = getBrowserLanguage()
+): string => new Intl.NumberFormat(locale).format(parseFloat(num.toString()))
+
+export const setDownloadUrl = (url: string): string => {
+  return url + `?token=${Cookies.get(CONSTANT.STORAGE_KEY.ACCESS_TOKEN)}`
+}
+
+export const copyToClipboard = (text: string): void => {
+  console.debug('Copying text to clipboard:', text)
+  void navigator.clipboard.writeText(text)
+}
+
+export const setUrlParams = (
+  url: string,
+  id?: number | string,
+  params?: object
+): string => {
+  let rst = url
+  if (id) {
+    rst = rst.replace(':id', id.toString())
+  }
+  if (params) {
+    const queryParams = qs.stringify(params)
+    rst = `${rst}?${queryParams}`
+  }
+  return rst
+}
+
+export const toCamelCase = (str: string): string =>
+  str.replace(/_./g, (x) => x[1].toUpperCase())
+
+export const toSnakeCase = (str: string): string =>
+  str.replace(/[A-Z]/g, (x) => `_${x.toLowerCase()}`)
+
+export const getValue = (obj: any, path: string) => {
+  return path.split('.').reduce((current, key) => current?.[key], obj)
 }

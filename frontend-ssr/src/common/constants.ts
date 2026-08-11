@@ -10,8 +10,8 @@ export const CONSTANT = {
   DEFAULT_LANGUAGE: 'en',
 
   LANGUAGE_RESOURCES: {
-    en: { translation: enTranslation },
-    ja: { translation: jaTranslation },
+    en: enTranslation,
+    ja: jaTranslation,
     // zh: { translation: zhTranslation },
   },
 

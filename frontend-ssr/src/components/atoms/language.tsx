@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/src/components/ui/select'
-import { getLocalMessage } from '@/src/lib/utils'
+import { getLocalMessage } from '@/src/lib/client-utils'
 
 const Language = (): React.ReactNode => {
   const LANGUAGES: SelectItemProps[] = Object.keys(CONSTANT.LANGUAGE_RESOURCES).map(
