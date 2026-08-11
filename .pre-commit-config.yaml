@@ -74,8 +74,6 @@ repos:
         entry: |
           bash -c '
           cd frontend &&
-          npx prettier . &&
-          cd ../frontend-ssr &&
           npx prettier .'
         language: system
         files: \.(ts|tsx|mjs|html|json)$
@@ -87,8 +85,6 @@ repos:
         entry: |
           bash -c '
           cd frontend &&
-          ./node_modules/.bin/eslint . --fix &&
-          cd ../frontend-ssr &&
           ./node_modules/.bin/eslint . --fix'
         language: system
         files: \.(ts|tsx|mjs|html)$
