@@ -135,6 +135,7 @@ const ListFeaturesScreen = () => {
         actions={actions}
         loading={loading}
         selectable
+        detailUrl={CONSTANT.API_URL.FEATURE_ID}
         deleteUrl={CONSTANT.API_URL.FEATURE_ADMIN_ID}
       />
     </div>

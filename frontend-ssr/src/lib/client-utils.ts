@@ -2,6 +2,7 @@
 
 import i18next, { i18n, type Resource } from 'i18next'
 import { initReactI18next } from 'react-i18next'
+import { z } from 'zod/v4'
 
 import { CONSTANT } from '@/src/common/constants'
 
@@ -58,4 +59,26 @@ export const getLocalMessage = (
   })
 
   return msg
+}
+
+export const arrayToObject = (arr: any[], key: string, value: string): any => {
+  return arr.reduce((result: Record<string, any>, item: Record<string, any>) => {
+    result[item[key] as string] = item[value]
+    return result
+  }, {})
+}
+
+export const createFormSchema = (
+  formItems: any[]
+): { [key: string]: z.ZodString | z.ZodAny } => {
+  const rst: { [key: string]: z.ZodString | z.ZodAny } = {}
+  formItems.forEach((item) => {
+    if ('validate' in item) {
+      rst[item.name] = item.validate
+    } else {
+      rst[item.name] = z.any()
+    }
+  })
+
+  return rst
 }

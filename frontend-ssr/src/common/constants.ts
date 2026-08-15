@@ -80,6 +80,7 @@ export const CONSTANT = {
     USER_ADMIN: '/users/admin',
     USER_ADMIN_ID: '/users/admin/:id',
     FEATURE: '/features',
+    FEATURE_ID: '/admin123/features/:id',
     FEATURE_ADMIN: '/features/admin',
     FEATURE_ADMIN_ID: '/features/admin/:id',
     CATEGORY: '/categories',
